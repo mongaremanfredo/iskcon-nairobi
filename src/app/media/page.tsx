@@ -1,0 +1,89 @@
+import type { Metadata } from "next";
+import PageHero from "@/components/ui/PageHero";
+
+export const metadata: Metadata = {
+  title: "Media — Photo & Video Gallery",
+  description: "Photos and videos from ISKCON Nairobi — temple life, festivals, community service, and the beauty of Krishna consciousness in East Africa.",
+};
+
+const categories = ["All", "Temple Life", "Festivals", "Farm & Goshala", "Food For Life", "HKTC", "Kirtan Safari"];
+
+const images = [
+  { src: "https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=600&q=80", caption: "Janmashtami midnight abhishek", category: "Festivals" },
+  { src: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80", caption: "Dawn kirtan on the Kenyan savanna", category: "Kirtan Safari" },
+  { src: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80", caption: "Food For Life distribution, Kibera", category: "Food For Life" },
+  { src: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600&q=80", caption: "Morning milking at the Thika Goshala", category: "Farm & Goshala" },
+  { src: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&q=80", caption: "HKTC students during morning japa", category: "HKTC" },
+  { src: "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=600&q=80", caption: "Temple programme — evening ārati", category: "Temple Life" },
+  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", caption: "Kirtan Safari — sunset session", category: "Kirtan Safari" },
+  { src: "https://images.unsplash.com/photo-1561361058-c24e5b4e5a9d?w=600&q=80", caption: "Rath Yatra procession through Nairobi", category: "Festivals" },
+  { src: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", caption: "Organic farming at Thika", category: "Farm & Goshala" },
+  { src: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&q=80", caption: "Gaura Purnima celebrations", category: "Festivals" },
+  { src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&q=80", caption: "African sunrise from the temple garden", category: "Temple Life" },
+  { src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80", caption: "Golden hour over Nairobi", category: "Temple Life" },
+];
+
+export default function MediaPage() {
+  return (
+    <>
+      <PageHero
+        title="Photo"
+        titleAccent="& Video Gallery"
+        subtitle="Media Library"
+        description="Life at ISKCON Nairobi through the lens — festivals, farm, temple worship, and the beauty of devotional community in East Africa."
+        image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85"
+        breadcrumbs={[{ label: "Media" }]}
+        height="sm"
+      />
+
+      <section className="py-section bg-temple-bg">
+        <div className="content-width section-padding">
+          {/* Category filter (static — would be interactive with client component) */}
+          <div className="flex flex-wrap gap-2 mb-10">
+            {categories.map((cat, i) => (
+              <button
+                key={cat}
+                className={`font-inter text-xs font-semibold tracking-widest uppercase px-4 py-2 border transition-colors ${
+                  i === 0
+                    ? "bg-gold text-white border-gold"
+                    : "border-temple-sand text-ink/50 hover:border-gold hover:text-gold"
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
+
+          {/* Masonry grid */}
+          <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
+            {images.map((img, i) => (
+              <div key={i} className="group relative overflow-hidden break-inside-avoid mb-3 cursor-pointer">
+                <img
+                  src={img.src}
+                  alt={img.caption}
+                  className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
+                <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="font-inter text-white text-xs leading-tight">{img.caption}</p>
+                  <p className="font-inter text-gold text-[10px] mt-1 uppercase tracking-wider">{img.category}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <p className="font-inter text-ink/40 text-sm">More photos and videos available on our social channels.</p>
+            <div className="flex flex-wrap gap-4 justify-center mt-4">
+              {["YouTube", "Instagram", "Facebook"].map(platform => (
+                <a key={platform} href="#" className="font-inter text-xs font-semibold text-gold tracking-widest uppercase border-b border-gold/30 pb-0.5 hover:border-gold transition-colors">
+                  {platform} →
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

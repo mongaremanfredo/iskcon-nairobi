@@ -1,0 +1,81 @@
+"use client";
+
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { projects } from "@/data/site";
+
+export default function ProjectsSection() {
+  return (
+    <section className="py-section bg-temple-bg bg-temple-texture">
+      <div className="content-width section-padding">
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+          <div>
+            <span className="eyebrow block mb-3">Our Work</span>
+            <h2 className="section-title">
+              Where Devotion<br />
+              <em className="text-gold not-italic font-normal">Meets Action</em>
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
+          >
+            All Projects <ArrowRight size={12} />
+          </Link>
+        </div>
+
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
+          {projects.map((project, i) => (
+            <Link
+              key={project.id}
+              href={project.href}
+              className="group relative overflow-hidden block"
+            >
+              {/* Image */}
+              <div className="relative aspect-card overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+
+                {/* Tag */}
+                <div className="absolute top-4 left-4">
+                  <span className="font-inter text-[10px] font-semibold tracking-[0.15em] uppercase bg-gold/90 text-white px-3 py-1">
+                    {project.tag}
+                  </span>
+                </div>
+
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-6">
+                  <p className="font-inter text-white/60 text-xs tracking-widest uppercase mb-1">
+                    {project.subtitle}
+                  </p>
+                  <h3 className="font-playfair text-white text-2xl font-semibold mb-2 text-shadow">
+                    {project.title}
+                  </h3>
+                  <p className="font-inter text-white/70 text-sm leading-relaxed max-w-xs line-clamp-2 mb-4">
+                    {project.description}
+                  </p>
+                  <div className="flex items-center gap-2 font-inter text-gold text-xs font-semibold tracking-widest uppercase transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                    Learn More <ArrowRight size={12} />
+                  </div>
+                </div>
+
+                {/* Gold corner accent */}
+                <div className="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-0 right-0 w-full h-full border-t-2 border-r-2 border-gold" />
+                </div>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

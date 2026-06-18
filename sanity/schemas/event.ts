@@ -1,0 +1,20 @@
+export default {
+  name: 'event',
+  title: 'Event',
+  type: 'document',
+  fields: [
+    { name: 'title', title: 'Event Title', type: 'string', validation: (R: any) => R.required() },
+    { name: 'slug', title: 'Slug', type: 'slug', options: { source: 'title' } },
+    { name: 'date', title: 'Event Date & Time', type: 'datetime', validation: (R: any) => R.required() },
+    { name: 'endDate', title: 'End Date & Time', type: 'datetime' },
+    { name: 'location', title: 'Location', type: 'string' },
+    { name: 'type', title: 'Event Type', type: 'string', options: { list: ['Class', 'Kirtan', 'Festival', 'Workshop', 'Retreat', 'Service', 'Other'].map(t => ({ title: t, value: t })) }},
+    { name: 'description', title: 'Description', type: 'text', rows: 3 },
+    { name: 'image', title: 'Event Image', type: 'image', options: { hotspot: true } },
+    { name: 'registrationRequired', title: 'Registration Required', type: 'boolean', initialValue: false },
+    { name: 'registrationUrl', title: 'Registration URL', type: 'url' },
+    { name: 'free', title: 'Free Event', type: 'boolean', initialValue: true },
+    { name: 'cost', title: 'Cost (if applicable)', type: 'string' },
+  ],
+  preview: { select: { title: 'title', subtitle: 'date', media: 'image' } },
+}
