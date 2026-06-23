@@ -7,7 +7,7 @@ export default function FestivalHighlightSection() {
   return (
     <section className="relative overflow-hidden">
       {/* Full-bleed image */}
-      <div className="relative h-[70vh] min-h-[500px] max-h-[750px]">
+      <div className="relative h-[70vh] min-h-[500px] max-h-[750px] image-grade">
         <img
           src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=85"
           alt="Kirtan Safari Festival — African Savanna"
@@ -15,13 +15,13 @@ export default function FestivalHighlightSection() {
         />
 
         {/* Multi-layer overlay for legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-black/20" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-dusk/90 via-dusk/55 to-dusk/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dusk/70 via-transparent to-transparent" />
 
         {/* Gold texture overlay */}
         <div className="absolute inset-0 opacity-10"
           style={{
-            backgroundImage: "radial-gradient(circle at 70% 30%, #C79A3B 0%, transparent 50%)"
+            backgroundImage: "radial-gradient(circle at 70% 30%, var(--color-gold) 0%, transparent 50%)"
           }}
         />
 
@@ -37,10 +37,10 @@ export default function FestivalHighlightSection() {
             </div>
 
             {/* Title */}
-            <h2 className="font-playfair text-white text-shadow mb-2" style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
+            <h2 className="font-playfair text-white text-shadow mb-2" style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)", lineHeight: 1.0, letterSpacing: "0" }}>
               Kirtan Safari
             </h2>
-            <h2 className="font-playfair text-gold italic text-shadow mb-6" style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)", lineHeight: 1.0, letterSpacing: "-0.02em" }}>
+            <h2 className="font-playfair text-gold italic text-shadow mb-6" style={{ fontSize: "clamp(2.2rem, 6vw, 4.5rem)", lineHeight: 1.0, letterSpacing: "0" }}>
               Festival
             </h2>
 

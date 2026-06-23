@@ -2,35 +2,45 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import SavannaDivider from "@/components/ui/SavannaDivider";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://iskcon-nairobi.vercel.app"),
   title: {
-    default: "ISKCON Nairobi — Faith. Community. Service.",
+    default: "ISKCON Nairobi - Faith. Community. Service.",
     template: "%s | ISKCON Nairobi",
   },
   description:
-    "The digital headquarters for ISKCON East Africa. Discover Krishna Consciousness in Nairobi — temple worship, spiritual education, cow protection, food distribution, and community service.",
+    "The digital headquarters for ISKCON East Africa. Discover Krishna Consciousness in Nairobi - temple worship, spiritual education, cow protection, food distribution, and community service.",
   keywords: ["ISKCON Nairobi", "Hare Krishna Kenya", "Krishna Consciousness", "HKTC", "Kirtan Safari", "Food For Life Kenya"],
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://iskconnairobi.org",
+    url: "https://iskcon-nairobi.vercel.app",
     siteName: "ISKCON Nairobi",
-    title: "ISKCON Nairobi — Faith. Community. Service.",
+    title: "ISKCON Nairobi - Faith. Community. Service.",
     description: "Discover Krishna Consciousness in the heart of East Africa.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80",
+        url: "/brand/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "ISKCON Nairobi",
+        alt: "ISKCON Nairobi brand lockup over a savanna sunset",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "ISKCON Nairobi",
-    description: "Faith. Community. Service. — East Africa.",
+    description: "Faith. Community. Service. - East Africa.",
+    images: ["/brand/og-image.jpg"],
+  },
+  icons: {
+    icon: [
+      { url: "/icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/iskcon-icon.svg", type: "image/svg+xml" },
+    ],
+    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
   },
 };
 
@@ -41,9 +51,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className="bg-temple-bg text-ink antialiased">
+      <body className="bg-sand text-dusk antialiased">
         <Navigation />
         <main>{children}</main>
+        <SavannaDivider tone="sand" />
         <Footer />
       </body>
     </html>

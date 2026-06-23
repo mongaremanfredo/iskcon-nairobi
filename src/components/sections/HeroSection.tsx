@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { ArrowDown, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
+import BrandLogo from "@/components/ui/BrandLogo";
 
 const heroImages = [
   "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1920&q=90", // African landscape/sunrise
@@ -47,8 +48,9 @@ export default function HeroSection() {
       ))}
 
       {/* Layered overlays for depth */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-br from-sunset/20 via-primary/10 to-dusk/55 mix-blend-multiply" />
+      <div className="absolute inset-0 bg-gradient-to-b from-dusk/30 via-dusk/20 to-dusk/80" />
+      <div className="absolute inset-0 bg-gradient-to-r from-dusk/70 via-dusk/20 to-transparent" />
 
       {/* Subtle gold accent at bottom */}
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold to-transparent opacity-60" />
@@ -58,6 +60,14 @@ export default function HeroSection() {
         {/* Main Content */}
         <div className="flex-1 flex items-center section-padding content-width">
           <div className="max-w-3xl">
+            <div
+              className={cn(
+                "mb-8 inline-flex rounded-sm bg-dusk/25 py-2 pr-4 text-sand backdrop-blur-[1px] transition-all duration-1000 delay-200",
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              )}
+            >
+              <BrandLogo className="h-20 w-[216px] sm:h-24 sm:w-[258px]" />
+            </div>
             {/* Eyebrow */}
             <div
               className={cn(

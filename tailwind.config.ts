@@ -9,20 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        primary: "var(--color-primary)",
+        sunset: "var(--color-sunset)",
+        acacia: "var(--color-acacia)",
+        dusk: "var(--color-dusk)",
+        sand: "var(--color-sand)",
         gold: {
-          DEFAULT: "#C79A3B",
-          light: "#D4AA55",
-          dark: "#A67E2A",
+          DEFAULT: "var(--color-gold)",
+          light: "var(--color-gold-light)",
+          dark: "var(--color-gold-dark)",
         },
         temple: {
-          brown: "#5E3B1F",
-          cream: "#F8F2E8",
-          sand: "#E8D8BE",
-          bg: "#FCFAF7",
+          brown: "var(--color-dusk)",
+          cream: "var(--color-sand)",
+          sand: "var(--color-temple-sand)",
+          bg: "var(--color-sand)",
         },
-        forest: "#3E5F46",
-        saffron: "#D86C24",
-        ink: "#1A1A1A",
+        forest: "var(--color-acacia)",
+        saffron: "var(--color-sunset)",
+        ink: "var(--color-dusk)",
       },
       fontFamily: {
         playfair: ["var(--font-playfair)", "Georgia", "serif"],
@@ -30,9 +35,9 @@ const config: Config = {
         cormorant: ["var(--font-cormorant)", "Georgia", "serif"],
       },
       fontSize: {
-        "display-xl": ["clamp(2.5rem, 7vw, 5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.02em" }],
-        "display-lg": ["clamp(2rem, 5vw, 4rem)", { lineHeight: "1.1", letterSpacing: "-0.02em" }],
-        "display-md": ["clamp(1.5rem, 3.5vw, 2.75rem)", { lineHeight: "1.15", letterSpacing: "-0.01em" }],
+        "display-xl": ["clamp(2.5rem, 7vw, 5.5rem)", { lineHeight: "1.05", letterSpacing: "0" }],
+        "display-lg": ["clamp(2rem, 5vw, 4rem)", { lineHeight: "1.1", letterSpacing: "0" }],
+        "display-md": ["clamp(1.5rem, 3.5vw, 2.75rem)", { lineHeight: "1.15", letterSpacing: "0" }],
         "display-sm": ["clamp(1.25rem, 2.5vw, 2rem)", { lineHeight: "1.2" }],
         "body-lg": ["1.125rem", { lineHeight: "1.7" }],
         "body-md": ["1rem", { lineHeight: "1.65" }],

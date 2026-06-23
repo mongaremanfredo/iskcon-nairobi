@@ -46,7 +46,7 @@ export default function TestimonialsSection() {
         {/* Split Layout */}
         <div className="grid lg:grid-cols-2 gap-0 min-h-[400px]">
           {/* Left — Image */}
-          <div className="relative overflow-hidden order-2 lg:order-1">
+          <div className="relative overflow-hidden order-2 lg:order-1 border-4 border-sand image-grade">
             <div className="aspect-[4/3] lg:aspect-auto lg:h-full lg:absolute lg:inset-0">
               <img
                 key={current.image}

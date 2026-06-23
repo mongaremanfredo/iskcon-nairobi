@@ -38,7 +38,7 @@ export default function GallerySection() {
           {galleryImages.map((img, i) => (
             <div
               key={i}
-              className={`group relative overflow-hidden cursor-pointer ${img.span}`}
+              className={`group relative overflow-hidden cursor-pointer image-grade ${img.span}`}
             >
               <img
                 src={img.src}

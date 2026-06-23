@@ -88,7 +88,7 @@ export default function StatsSection() {
         />
         <div className="absolute inset-0 bg-temple-brown/90" />
         <div className="absolute inset-0 opacity-5"
-          style={{ backgroundImage: "radial-gradient(circle at 50% 50%, #C79A3B 0%, transparent 70%)" }}
+          style={{ backgroundImage: "radial-gradient(circle at 50% 50%, var(--color-gold) 0%, transparent 70%)" }}
         />
       </div>
 

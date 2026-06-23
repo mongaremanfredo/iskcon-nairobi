@@ -4,6 +4,14 @@ import Link from "next/link";
 import { Heart, ArrowRight } from "lucide-react";
 import { donationPaths } from "@/data/site";
 
+const donationAccent = (title: string) => {
+  if (title.includes("Food")) return "border-sunset/30 bg-sunset/10 text-sunset";
+  if (title.includes("Cow")) return "border-acacia/30 bg-acacia/10 text-acacia";
+  if (title.includes("Student")) return "border-gold/40 bg-gold/15 text-dusk";
+  if (title.includes("Festival")) return "border-primary/30 bg-primary/10 text-primary";
+  return "border-primary/30 bg-primary/10 text-primary";
+};
+
 export default function DonationSection() {
   return (
     <section className="py-section relative overflow-hidden">
@@ -41,17 +49,17 @@ export default function DonationSection() {
           {donationPaths.map((path) => (
             <div
               key={path.title}
-              className="group bg-white border border-temple-sand hover:border-gold/40 hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden"
+              className="group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden"
             >
               {/* Image */}
-              <div className="relative h-40 overflow-hidden">
+              <div className="relative h-40 overflow-hidden image-grade">
                 <img
                   src={path.image}
                   alt={path.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                <div className="absolute top-3 left-3 text-2xl">{path.icon}</div>
+                <div className={`absolute top-3 left-3 border px-2 py-1 text-2xl ${donationAccent(path.title)}`}>{path.icon}</div>
               </div>
 
               {/* Content */}
@@ -60,7 +68,7 @@ export default function DonationSection() {
                 <p className="font-inter text-ink/55 text-xs leading-relaxed flex-1">{path.description}</p>
                 <Link
                   href={path.href}
-                  className="mt-5 flex items-center justify-center gap-2 bg-gold text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold-dark transition-colors"
+                  className="mt-5 flex items-center justify-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-sunset transition-colors"
                 >
                   <Heart size={12} />
                   Donate
@@ -74,7 +82,7 @@ export default function DonationSection() {
         <div className="mt-12 text-center">
           <Link
             href="/donate"
-            className="inline-flex items-center gap-3 font-inter text-sm text-gold font-semibold tracking-widest uppercase border-b border-gold/30 pb-1 hover:border-gold transition-colors"
+            className="inline-flex items-center gap-3 font-inter text-sm text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-1 hover:border-primary transition-colors"
           >
             Explore all giving options <ArrowRight size={14} />
           </Link>

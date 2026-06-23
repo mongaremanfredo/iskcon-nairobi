@@ -9,15 +9,18 @@ import LeadershipSection from "@/components/sections/LeadershipSection";
 import DonationSection from "@/components/sections/DonationSection";
 import GallerySection from "@/components/sections/GallerySection";
 import GuestHouseSection from "@/components/sections/GuestHouseSection";
+import SavannaDivider from "@/components/ui/SavannaDivider";
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <SavannaDivider />
       <QuickNavSection />
       <FestivalHighlightSection />
       <ProjectsSection />
       <StatsSection />
+      <SavannaDivider />
       <TestimonialsSection />
       <FestivalCalendarSection />
       <LeadershipSection />

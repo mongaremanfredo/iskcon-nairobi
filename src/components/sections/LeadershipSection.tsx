@@ -24,18 +24,18 @@ export default function LeadershipSection() {
             <div key={leader.name} className="group flex flex-col items-center text-center">
               {/* Portrait */}
               <div className="relative mb-6">
-                <div className="w-44 h-44 overflow-hidden rounded-none relative">
+                <div className="w-44 h-44 overflow-hidden rounded-none relative border-4 border-sand shadow-card">
                   <img
                     src={leader.image}
                     alt={leader.name}
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
                   />
                   {/* Gold frame on hover */}
-                  <div className="absolute inset-0 border-2 border-gold/0 group-hover:border-gold/60 transition-colors duration-300" />
+                  <div className="absolute inset-0 border-2 border-primary/0 group-hover:border-primary/70 transition-colors duration-300" />
                 </div>
                 {/* Decorative gold corner */}
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-gold opacity-40 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-gold opacity-40 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-primary opacity-40 group-hover:opacity-100 transition-opacity" />
+                <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-primary opacity-40 group-hover:opacity-100 transition-opacity" />
               </div>
 
               {/* Name & Title */}

@@ -4,6 +4,12 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { projects } from "@/data/site";
 
+const tagClasses: Record<string, string> = {
+  Education: "bg-gold/95 text-dusk",
+  Agriculture: "bg-acacia/95 text-white",
+  "Community Service": "bg-sunset/95 text-white",
+};
+
 export default function ProjectsSection() {
   return (
     <section className="py-section bg-temple-bg bg-temple-texture">
@@ -34,7 +40,7 @@ export default function ProjectsSection() {
               className="group relative overflow-hidden block"
             >
               {/* Image */}
-              <div className="relative aspect-card overflow-hidden">
+              <div className="relative aspect-card overflow-hidden image-grade">
                 <img
                   src={project.image}
                   alt={project.title}
@@ -46,7 +52,7 @@ export default function ProjectsSection() {
 
                 {/* Tag */}
                 <div className="absolute top-4 left-4">
-                  <span className="font-inter text-[10px] font-semibold tracking-[0.15em] uppercase bg-gold/90 text-white px-3 py-1">
+                  <span className={`font-inter text-[10px] font-semibold tracking-[0.15em] uppercase px-3 py-1 ${tagClasses[project.tag] ?? "bg-primary/95 text-white"}`}>
                     {project.tag}
                   </span>
                 </div>
