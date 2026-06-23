@@ -27,12 +27,12 @@ export default function Navigation() {
       )}
     >
       <div className="content-width section-padding">
-        <nav className="flex items-center justify-between h-16 lg:h-20">
+        <nav className="flex items-center justify-between h-20 lg:h-24">
           <Link
             href="/"
-            className="flex min-w-[132px] items-center pr-6 text-sand transition-colors hover:text-white"
+            className="flex min-w-[164px] items-center pr-8 text-sand transition-colors hover:text-white"
           >
-            <BrandLogo className="h-12 w-[130px] lg:h-14 lg:w-[150px]" />
+            <BrandLogo className="h-16 w-[172px] lg:h-18 lg:w-[194px]" />
           </Link>
 
           <div className="hidden xl:flex items-center gap-6">
@@ -79,7 +79,7 @@ export default function Navigation() {
           )}
         >
           <div className="flex items-center justify-between p-6 border-b border-white/10">
-            <BrandLogo className="h-12 w-[130px] text-sand" />
+            <BrandLogo className="h-14 w-[150px] text-sand" />
             <button
               onClick={() => setIsOpen(false)}
               className="text-white/60 hover:text-white transition-colors"
