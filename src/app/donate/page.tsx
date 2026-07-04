@@ -18,7 +18,6 @@ export default function DonatePage() {
         subtitle="Give With Purpose"
         description="Your contribution directly sustains temple worship, feeds thousands, protects cows, educates students, and celebrates festivals across East Africa."
         image="https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1600&q=85"
-        breadcrumbs={[{ label: "Donate" }]}
       />
 
       {/* Payment methods */}

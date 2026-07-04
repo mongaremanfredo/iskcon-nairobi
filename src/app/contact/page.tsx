@@ -15,7 +15,6 @@ export default function ContactPage() {
         titleAccent="Touch"
         subtitle="Contact Us"
         image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=80"
-        breadcrumbs={[{ label: "Contact" }]}
         height="sm"
       />
 

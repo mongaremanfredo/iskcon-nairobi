@@ -18,7 +18,6 @@ export default function VisitPage() {
         subtitle="Plan Your Visit"
         description="The temple is open daily to all visitors. Come as you are — no prior experience needed."
         image="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=1600&q=85"
-        breadcrumbs={[{ label: "Visit" }]}
       />
 
       <section className="py-section bg-temple-bg">

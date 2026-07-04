@@ -25,7 +25,6 @@ export default function GuestHousePage() {
         subtitle="Spiritual Hospitality"
         description="Rest, retreat, and reconnect at ISKCON Nairobi's on-campus guest accommodation — serene rooms with full access to daily temple programmes."
         image="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=85"
-        breadcrumbs={[{ label: "Guest House" }]}
         height="md"
       />
 

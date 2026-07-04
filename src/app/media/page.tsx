@@ -32,7 +32,6 @@ export default function MediaPage() {
         subtitle="Media Library"
         description="Life at ISKCON Nairobi through the lens — festivals, farm, temple worship, and the beauty of devotional community in East Africa."
         image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85"
-        breadcrumbs={[{ label: "Media" }]}
         height="sm"
       />
 

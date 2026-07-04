@@ -1,18 +1,9 @@
-import Link from "next/link";
-import { ChevronRight } from "lucide-react";
-
-interface Breadcrumb {
-  label: string;
-  href?: string;
-}
-
 interface PageHeroProps {
   title: string;
   titleAccent?: string;
   subtitle?: string;
   description?: string;
   image: string;
-  breadcrumbs?: Breadcrumb[];
   height?: "sm" | "md" | "lg";
   align?: "left" | "center";
 }
@@ -23,7 +14,6 @@ export default function PageHero({
   subtitle,
   description,
   image,
-  breadcrumbs,
   height = "md",
   align = "left",
 }: PageHeroProps) {
@@ -47,27 +37,6 @@ export default function PageHero({
 
       {/* Content */}
       <div className={`relative z-10 h-full flex flex-col justify-end pb-12 section-padding content-width ${align === "center" ? "items-center text-center" : ""}`}>
-        {/* Breadcrumbs */}
-        {breadcrumbs && breadcrumbs.length > 0 && (
-          <div className="flex items-center gap-1.5 mb-6 flex-wrap">
-            <Link href="/" className="font-inter text-white/40 text-xs hover:text-gold transition-colors">
-              Home
-            </Link>
-            {breadcrumbs.map((crumb, i) => (
-              <span key={i} className="flex items-center gap-1.5">
-                <ChevronRight size={10} className="text-white/20" />
-                {crumb.href ? (
-                  <Link href={crumb.href} className="font-inter text-white/40 text-xs hover:text-gold transition-colors">
-                    {crumb.label}
-                  </Link>
-                ) : (
-                  <span className="font-inter text-gold text-xs">{crumb.label}</span>
-                )}
-              </span>
-            ))}
-          </div>
-        )}
-
         {subtitle && (
           <span className="eyebrow text-gold/80 block mb-3">{subtitle}</span>
         )}

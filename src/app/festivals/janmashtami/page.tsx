@@ -10,7 +10,7 @@ export default function FestivalPage() {
   const d = data[slug] || data["rath-yatra"];
   return (
     <>
-      <PageHero title={d.title} titleAccent={d.accent} subtitle={d.sub} description={d.desc} image={d.img} breadcrumbs={[{ label: "Festivals", href: "/festivals" }, { label: d.title }]} height="lg" />
+      <PageHero title={d.title} titleAccent={d.accent} subtitle={d.sub} description={d.desc} image={d.img} height="lg" />
       <section className="py-section bg-temple-bg"><div className="content-width section-padding max-w-3xl"><p className="font-inter text-ink/70 leading-relaxed mb-8">{d.desc}</p><div className="flex flex-wrap gap-4"><Link href="/donate/festivals" className="btn-primary">Support this Festival</Link><Link href="/contact" className="btn-outline border-gold text-gold hover:bg-gold hover:text-white">Register Interest</Link></div></div></section>
     </>
   );

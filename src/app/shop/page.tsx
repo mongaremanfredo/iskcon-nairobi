@@ -26,7 +26,6 @@ export default function ShopPage() {
         subtitle="Artisanal Temple Sweets"
         description="Handcrafted Vaishnava sweets prepared with pure ingredients, devotion, and the highest culinary standards from our temple kitchen."
         image="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1600&q=85"
-        breadcrumbs={[{ label: "Shop" }]}
       />
 
       {/* Brand strip */}

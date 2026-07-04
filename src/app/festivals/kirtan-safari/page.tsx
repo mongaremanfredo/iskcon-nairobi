@@ -24,7 +24,6 @@ export default function KirtanSafariPage() {
         subtitle="ISKCON Nairobi Flagship Event"
         description="August 14–17, 2025 · Four days under the African sky where the mahā-mantra meets the savanna."
         image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85"
-        breadcrumbs={[{ label: "Festivals", href: "/festivals" }, { label: "Kirtan Safari" }]}
         height="lg"
       />
 

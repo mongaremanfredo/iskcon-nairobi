@@ -24,7 +24,6 @@ export default function HKTCNairobiPage() {
         subtitle="Hare Krishna Theological College"
         description="East Africa's premier residential institution for Vaishnava theological education — forming scholars, teachers, and devotees."
         image="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1600&q=85"
-        breadcrumbs={[{ label: "Projects", href: "/projects" }, { label: "HKTC Nairobi" }]}
         height="lg"
       />
 

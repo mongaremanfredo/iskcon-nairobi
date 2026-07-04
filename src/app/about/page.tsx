@@ -16,7 +16,6 @@ export default function AboutPage() {
         subtitle="Our Story"
         description="From a small devotional circle to East Africa's largest Vaishnava community — a four-decade journey of faith and service."
         image="https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=1600&q=85"
-        breadcrumbs={[{ label: "About" }]}
         height="md"
       />
 
