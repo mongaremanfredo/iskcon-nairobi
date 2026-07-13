@@ -14,8 +14,8 @@ export default function AboutPage() {
         title="About ISKCON"
         titleAccent="Nairobi"
         subtitle="Our Story"
-        description="From a small devotional circle to East Africa's largest Vaishnava community — a four-decade journey of faith and service."
-        image="https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=1600&q=85"
+        description="A living temple community in Nairobi, carrying devotion, education, prasadam, and service into the heart of East Africa."
+        image="/images/iskcon-nairobi-aerial.jpg"
         height="md"
       />
 
@@ -32,13 +32,13 @@ export default function AboutPage() {
               </h2>
               <div className="space-y-5 font-inter text-ink/70 text-body-md leading-relaxed">
                 <p>
-                  ISKCON Nairobi was established in the early 1980s by disciples of His Divine Grace A.C. Bhaktivedanta Swami Prabhupāda, the founder-ācārya of the International Society for Krishna Consciousness. What began as a small gathering of devotees has grown into one of the most active spiritual communities in sub-Saharan Africa.
+                  ISKCON Nairobi is centred around Sri Sri Radha Bankebihari Temple on Hare Krishna Close, a devotional landmark set within the city and visible against the Nairobi skyline.
                 </p>
                 <p>
-                  Today, ISKCON Nairobi serves as the regional hub for East Africa — home to a residential temple community, two theological colleges, a working farm and goshala, a prasādam distribution programme, and a vibrant festival culture that draws thousands of Kenyans each year.
+                  Today, ISKCON Nairobi serves as a regional hub for East Africa - home to daily worship, spiritual education, Food For Life, farm and cow protection service, and a vibrant festival culture.
                 </p>
                 <p>
-                  Our mission is rooted in the teachings of Śrīmad-Bhāgavatam and the Bhagavad-gītā: to offer every soul an accessible path to spiritual knowledge, community, and devotional practice — regardless of background.
+                  Our mission is rooted in the teachings of Srimad-Bhagavatam and the Bhagavad-gita: to offer every soul an accessible path to spiritual knowledge, community, and devotional practice.
                 </p>
               </div>
             </div>
@@ -93,3 +93,4 @@ export default function AboutPage() {
     </>
   );
 }
+

@@ -17,7 +17,7 @@ export default function VisitPage() {
         titleAccent="Temple"
         subtitle="Plan Your Visit"
         description="The temple is open daily to all visitors. Come as you are - no prior experience needed."
-        image="https://images.unsplash.com/photo-1600298881974-6be191ceeda1?w=1600&q=85"
+        image="/images/iskcon-nairobi-aerial.jpg"
       />
 
       <section className="py-section bg-temple-bg">

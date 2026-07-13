@@ -49,7 +49,7 @@ export const projects = [
     title: "HKTC Nairobi",
     subtitle: "Hare Krishna Theological College",
     description: "A Vaishnava education initiative connected to ISKCON Nairobi, offering serious study of Bhagavad-gita, Srimad-Bhagavatam, kirtan, and devotional practice.",
-    image: "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=800&q=80",
+    image: "/images/iskcon-nairobi-aerial.jpg",
     href: "/projects/hktc-nairobi",
     tag: "Education",
   },

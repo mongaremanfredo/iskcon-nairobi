@@ -22,10 +22,10 @@ export const metadata: Metadata = {
     description: "Discover Krishna Consciousness in the heart of East Africa.",
     images: [
       {
-        url: "/brand/og-image.jpg",
+        url: "/images/iskcon-nairobi-aerial-og.jpg",
         width: 1200,
         height: 630,
-        alt: "ISKCON Nairobi brand lockup over a savanna sunset",
+        alt: "Aerial view of ISKCON Nairobi temple and Nairobi skyline",
       },
     ],
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "ISKCON Nairobi",
     description: "Faith. Community. Service. - East Africa.",
-    images: ["/brand/og-image.jpg"],
+    images: ["/images/iskcon-nairobi-aerial-og.jpg"],
   },
   icons: {
     icon: [

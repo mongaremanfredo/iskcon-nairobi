@@ -6,9 +6,21 @@ import { ArrowDown, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const heroImages = [
-  "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=1920&q=90", // African landscape/sunrise
-  "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=90", // Kenya savanna
-  "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=90", // Africa golden hour
+  {
+    src: "/images/iskcon-nairobi-aerial.jpg",
+    alt: "Aerial view of ISKCON Nairobi temple with the Nairobi skyline",
+    position: "center 58%",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=90",
+    alt: "Kenyan savanna landscape",
+    position: "center",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=90",
+    alt: "African golden hour landscape",
+    position: "center",
+  },
 ];
 
 export default function HeroSection() {
@@ -30,18 +42,19 @@ export default function HeroSection() {
   return (
     <section className="relative w-full h-screen min-h-[600px] max-h-[1000px] overflow-hidden">
       {/* Background Images */}
-      {heroImages.map((src, i) => (
+      {heroImages.map((image, i) => (
         <div
-          key={src}
+          key={image.src}
           className={cn(
             "absolute inset-0 transition-opacity duration-2000 ease-in-out",
             i === currentImage ? "opacity-100" : "opacity-0"
           )}
         >
           <img
-            src={src}
-            alt="ISKCON Nairobi"
+            src={image.src}
+            alt={image.alt}
             className="w-full h-full object-cover"
+            style={{ objectPosition: image.position }}
           />
         </div>
       ))}
