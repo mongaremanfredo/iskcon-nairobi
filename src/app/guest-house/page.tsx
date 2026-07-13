@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import { guestRooms } from "@/data/site";
+import { guestRooms, templeInfo } from "@/data/site";
 import Link from "next/link";
 import { Wifi, Shield, Coffee, MapPin, Phone, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Guest House — Spiritual Hospitality in Nairobi",
+  title: "Guest House - Spiritual Hospitality in Nairobi",
   description: "Stay at ISKCON Nairobi's on-campus guest house. Serene, affordable accommodation with access to all temple programmes.",
 };
 
 const facilities = [
   { icon: <Wifi size={18} />, label: "Free WiFi", desc: "High-speed internet across the campus" },
-  { icon: <Coffee size={18} />, label: "Prasādam Meals", desc: "Fresh vegetarian meals included" },
+  { icon: <Coffee size={18} />, label: "Prasadam Meals", desc: "Fresh vegetarian meals available through temple programmes" },
   { icon: <Shield size={18} />, label: "24hr Security", desc: "Gated campus with round-the-clock security" },
-  { icon: <MapPin size={18} />, label: "Prime Location", desc: "South C, close to Nairobi CBD" },
+  { icon: <MapPin size={18} />, label: "Temple Location", desc: "Hare Krishna Close, Nairobi" },
 ];
 
 export default function GuestHousePage() {
@@ -23,7 +23,7 @@ export default function GuestHousePage() {
         title="Guest House"
         titleAccent="& Retreat Stay"
         subtitle="Spiritual Hospitality"
-        description="Rest, retreat, and reconnect at ISKCON Nairobi's on-campus guest accommodation — serene rooms with full access to daily temple programmes."
+        description="Rest, retreat, and reconnect at ISKCON Nairobi's temple accommodation - simple rooms with access to daily temple programmes."
         image="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1600&q=85"
         height="md"
       />
@@ -36,9 +36,9 @@ export default function GuestHousePage() {
               <span className="eyebrow block mb-4">Why Stay With Us</span>
               <h2 className="section-title mb-6">A Temple Stay<br /><em className="text-gold not-italic font-normal">Unlike Any Other</em></h2>
               <div className="space-y-4 font-inter text-ink/70 leading-relaxed">
-                <p>Staying at ISKCON Nairobi's guest house means waking to the sound of conches and bells at 4:30 AM, attending Maṅgala Ārati as the city sleeps, and experiencing the full rhythm of a devotional community.</p>
+                <p>Staying at ISKCON Nairobi's guest house means waking to the sound of conches and bells at 4:30 AM, attending Mangala Arati as the city sleeps, and experiencing the full rhythm of a devotional community.</p>
                 <p>Whether you are a visiting devotee, a spiritual seeker, or a researcher interested in Vaishnava life, the guest house offers a rare opportunity to experience authentic Krishna conscious community living.</p>
-                <p>All rooms include access to the temple, daily prasādam, the library, and the temple gardens.</p>
+                <p>All rooms include access to the temple, prasadam timings, temple access, and retreat arrangements before travelling.</p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -68,7 +68,7 @@ export default function GuestHousePage() {
                   <img src={room.image} alt={room.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute top-4 right-4 bg-white/95 px-3 py-2 text-center shadow-sm">
                     <p className="font-playfair text-gold font-bold text-lg leading-none">{room.price}</p>
-                    <p className="font-inter text-ink/40 text-[10px] mt-0.5">{room.priceUSD} · per night</p>
+                    <p className="font-inter text-ink/40 text-[10px] mt-0.5">confirm with office</p>
                   </div>
                 </div>
                 <div className="p-7">
@@ -110,11 +110,11 @@ export default function GuestHousePage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Phone size={14} className="text-gold" />
-                  <a href="tel:+254700000000" className="font-inter text-white/60 text-sm hover:text-gold transition-colors">+254 700 000 000</a>
+                  <a href={`tel:${templeInfo.phoneHref}`} className="font-inter text-white/60 text-sm hover:text-gold transition-colors">{templeInfo.phoneDisplay}</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={14} className="text-gold" />
-                  <a href="mailto:guesthouse@iskconnairobi.org" className="font-inter text-white/60 text-sm hover:text-gold transition-colors">guesthouse@iskconnairobi.org</a>
+                  <a href={`mailto:${templeInfo.email}?subject=Guest%20House%20Enquiry`} className="font-inter text-white/60 text-sm hover:text-gold transition-colors">{templeInfo.email}</a>
                 </div>
               </div>
             </div>
@@ -143,9 +143,7 @@ export default function GuestHousePage() {
                   className="w-full bg-white/10 border border-white/15 text-white placeholder-white/30 font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold resize-none"
                 />
               </div>
-              <button className="btn-primary w-full justify-center text-xs mt-2">
-                Send Enquiry
-              </button>
+              <a href={`mailto:${templeInfo.email}?subject=Guest%20House%20Enquiry`} className="btn-primary w-full justify-center text-xs mt-2">`n                Send Enquiry`n              </a>
             </div>
           </div>
         </div>
@@ -153,3 +151,4 @@ export default function GuestHousePage() {
     </>
   );
 }
+

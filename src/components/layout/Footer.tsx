@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { templeSchedule, navigation } from "@/data/site";
+import { templeInfo, templeSchedule, navigation, socialLinks } from "@/data/site";
 import BrandLogo from "@/components/ui/BrandLogo";
 
 export default function Footer() {
@@ -16,16 +16,13 @@ export default function Footer() {
               The digital headquarters for ISKCON East Africa - where devotion, education, community service, and the beauty of the African landscape come together.
             </p>
             <div className="flex items-center gap-3">
-              {[
-                { href: "#", label: "FB" },
-                { href: "#", label: "IG" },
-                { href: "#", label: "YT" },
-                { href: "#", label: "X" },
-              ].map(({ href, label }) => (
+              {socialLinks.map(({ href, label, name }) => (
                 <a
                   key={label}
                   href={href}
-                  aria-label={label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={name}
                   className="w-8 h-8 border border-white/10 flex items-center justify-center text-white/30 hover:text-primary hover:border-primary/50 transition-colors font-inter text-[10px] font-bold"
                 >
                   {label}
@@ -70,31 +67,33 @@ export default function Footer() {
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-gold mt-0.5 flex-shrink-0" />
                 <span className="font-inter text-white/40 text-sm leading-relaxed">
-                  Muhoho Avenue, South C<br />Nairobi, Kenya
+                  {templeInfo.addressLines.map((line) => (
+                    <span key={line}>{line}<br /></span>
+                  ))}
                 </span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-gold flex-shrink-0" />
-                <a href="tel:+254700000000" className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
-                  +254 700 000 000
+                <a href={`tel:${templeInfo.phoneHref}`} className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
+                  {templeInfo.phoneDisplay}
                 </a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-gold flex-shrink-0" />
-                <a href="mailto:info@iskconnairobi.org" className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
-                  info@iskconnairobi.org
+                <a href={`mailto:${templeInfo.email}`} className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
+                  {templeInfo.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Clock size={14} className="text-gold mt-0.5 flex-shrink-0" />
                 <span className="font-inter text-white/40 text-sm leading-relaxed">
-                  Temple open daily<br />4:30 AM - 9:00 PM
+                  Temple open daily<br />{templeInfo.hours.replace("Daily: ", "")}
                 </span>
               </li>
             </ul>
 
             <a
-              href="https://maps.google.com"
+              href={templeInfo.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 mt-5 font-inter text-xs text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-0.5 hover:border-primary transition-colors"

@@ -1,43 +1,45 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
+import { socialLinks } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Media — Photo & Video Gallery",
-  description: "Photos and videos from ISKCON Nairobi — temple life, festivals, community service, and the beauty of Krishna consciousness in East Africa.",
+  title: "Media - Photo & Video Gallery",
+  description: "Photos and videos from ISKCON Nairobi - temple life, festivals, community service, and the beauty of Krishna consciousness in East Africa.",
 };
 
 const categories = ["All", "Temple Life", "Festivals", "Farm & Goshala", "Food For Life", "HKTC", "Kirtan Safari"];
 
 const images = [
-  { src: "https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=600&q=80", caption: "Janmashtami midnight abhishek", category: "Festivals" },
+  { src: "https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=600&q=80", caption: "Janmashtami celebration mood", category: "Festivals" },
   { src: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80", caption: "Dawn kirtan on the Kenyan savanna", category: "Kirtan Safari" },
-  { src: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80", caption: "Food For Life distribution, Kibera", category: "Food For Life" },
-  { src: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600&q=80", caption: "Morning milking at the Thika Goshala", category: "Farm & Goshala" },
-  { src: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&q=80", caption: "HKTC students during morning japa", category: "HKTC" },
-  { src: "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=600&q=80", caption: "Temple programme — evening ārati", category: "Temple Life" },
-  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", caption: "Kirtan Safari — sunset session", category: "Kirtan Safari" },
-  { src: "https://images.unsplash.com/photo-1561361058-c24e5b4e5a9d?w=600&q=80", caption: "Rath Yatra procession through Nairobi", category: "Festivals" },
+  { src: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80", caption: "Food For Life prasadam service", category: "Food For Life" },
+  { src: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600&q=80", caption: "Cow protection and farm service", category: "Farm & Goshala" },
+  { src: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&q=80", caption: "Students during morning study", category: "HKTC" },
+  { src: "https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=600&q=80", caption: "Temple programme - evening arati", category: "Temple Life" },
+  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", caption: "Kirtan Safari - sunset session", category: "Kirtan Safari" },
+  { src: "https://images.unsplash.com/photo-1561361058-c24e5b4e5a9d?w=600&q=80", caption: "Ratha Yatra procession atmosphere", category: "Festivals" },
   { src: "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&q=80", caption: "Organic farming at Thika", category: "Farm & Goshala" },
-  { src: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&q=80", caption: "Gaura Purnima celebrations", category: "Festivals" },
-  { src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&q=80", caption: "African sunrise from the temple garden", category: "Temple Life" },
-  { src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80", caption: "Golden hour over Nairobi", category: "Temple Life" },
+  { src: "https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&q=80", caption: "Gaura Purnima celebration mood", category: "Festivals" },
+  { src: "https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&q=80", caption: "African sunrise near Nairobi", category: "Temple Life" },
+  { src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=600&q=80", caption: "Golden hour over Kenya", category: "Temple Life" },
 ];
 
 export default function MediaPage() {
+  const mediaSocials = socialLinks.filter((link) => ["YouTube", "Instagram", "Facebook"].includes(link.name));
+
   return (
     <>
       <PageHero
         title="Photo"
         titleAccent="& Video Gallery"
         subtitle="Media Library"
-        description="Life at ISKCON Nairobi through the lens — festivals, farm, temple worship, and the beauty of devotional community in East Africa."
+        description="Life at ISKCON Nairobi through the lens - festivals, farm, temple worship, and the beauty of devotional community in East Africa."
         image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85"
         height="sm"
       />
 
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding">
-          {/* Category filter (static — would be interactive with client component) */}
           <div className="flex flex-wrap gap-2 mb-10">
             {categories.map((cat, i) => (
               <button
@@ -53,10 +55,9 @@ export default function MediaPage() {
             ))}
           </div>
 
-          {/* Masonry grid */}
           <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
             {images.map((img, i) => (
-              <div key={i} className="group relative overflow-hidden break-inside-avoid mb-3 cursor-pointer">
+              <div key={i} className="group relative overflow-hidden break-inside-avoid mb-3 cursor-pointer image-grade">
                 <img
                   src={img.src}
                   alt={img.caption}
@@ -72,11 +73,11 @@ export default function MediaPage() {
           </div>
 
           <div className="mt-10 text-center">
-            <p className="font-inter text-ink/40 text-sm">More photos and videos available on our social channels.</p>
+            <p className="font-inter text-ink/40 text-sm">More photos and videos are shared on ISKCON Nairobi social channels.</p>
             <div className="flex flex-wrap gap-4 justify-center mt-4">
-              {["YouTube", "Instagram", "Facebook"].map(platform => (
-                <a key={platform} href="#" className="font-inter text-xs font-semibold text-gold tracking-widest uppercase border-b border-gold/30 pb-0.5 hover:border-gold transition-colors">
-                  {platform} →
+              {mediaSocials.map((platform) => (
+                <a key={platform.name} href={platform.href} target="_blank" rel="noopener noreferrer" className="font-inter text-xs font-semibold text-gold tracking-widest uppercase border-b border-gold/30 pb-0.5 hover:border-gold transition-colors">
+                  {platform.name} →
                 </a>
               ))}
             </div>
