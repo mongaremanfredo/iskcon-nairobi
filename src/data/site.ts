@@ -31,7 +31,6 @@ export const navigation = [
   { label: "Projects", href: "/projects" },
   { label: "Festivals", href: "/festivals" },
   { label: "Guest House", href: "/guest-house" },
-  { label: "Shop", href: "/shop" },
   { label: "Media", href: "/media" },
   { label: "Donate", href: "/donate" },
   { label: "Contact", href: "/contact" },
