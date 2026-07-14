@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Camera, Star, Ticket } from "lucide-react";
+import { Camera, Ticket } from "lucide-react";
 
 /* Countdown hook */
 function useCountdown(target: Date) {
@@ -48,6 +48,31 @@ function YouTubeIcon({
         fill={color}
       />
       <path d="M9.6 12.36V5.16l6.28 3.6-6.28 3.6Z" fill="#071c10" />
+    </svg>
+  );
+}
+
+function TikTokIcon({
+  size = 13,
+  color = "#d69c2b",
+}: {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block", flexShrink: 0 }}
+    >
+      <path
+        d="M15.45 2.75c.26 2.34 1.59 3.73 3.85 3.88v3.25a7.12 7.12 0 0 1-3.74-1.11v6.68c0 3.38-2.1 5.8-5.38 5.8-3.05 0-5.48-2.05-5.48-5.08 0-3.39 2.61-5.36 5.96-5.08v3.34c-1.48-.2-2.57.42-2.57 1.65 0 1.04.86 1.72 1.95 1.72 1.28 0 2.08-.76 2.08-2.42V2.75h3.33Z"
+        fill={color}
+      />
     </svg>
   );
 }
@@ -234,11 +259,12 @@ export default function KirtanSafariSection() {
                 color: "#f3c86a",
                 fontSize: "0.6rem",
                 fontWeight: 700,
-                letterSpacing: "0.2em",
+                letterSpacing: "0.16em",
                 textTransform: "uppercase",
+                whiteSpace: "nowrap",
               }}
             >
-              Featured Festival · ISKCON 60th Anniversary
+              Featured · ISKCON 60th Anniversary
             </span>
           </div>
 
@@ -488,7 +514,7 @@ export default function KirtanSafariSection() {
             {[
               { label: "Instagram", href: "https://www.instagram.com/kirtansafari", Icon: Camera },
               { label: "YouTube", href: "https://www.youtube.com/@kirtan_safari", Icon: YouTubeIcon },
-              { label: "TikTok", href: "https://www.tiktok.com/@kirtan.safari", Icon: Star },
+              { label: "TikTok", href: "https://www.tiktok.com/@kirtan.safari", Icon: TikTokIcon },
             ].map(({ label, href, Icon }) => (
               <a
                 key={label}
