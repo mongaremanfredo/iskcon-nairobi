@@ -331,50 +331,11 @@ export default function KirtanSafariSection() {
             seconds={seconds}
             className="ks-countdown-mobile"
           />
-          <p
-            style={{
-              fontFamily: "var(--font-cormorant, serif)",
-              color: "rgba(255,255,255,0.45)",
-              fontSize: "1rem",
-              fontStyle: "italic",
-              marginBottom: "1.75rem",
-            }}
-          >
-            &ldquo;Every word a song, every step a dance.&rdquo;
-          </p>
-
-          {/* Meta pills */}
-          <div
-            className="ks-meta-pills"
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "0.5rem",
-              marginBottom: "2rem",
-            }}
-          >
-            {[
-              "📅 28–30 August 2026",
-              "📍 Nairobi Hare Krishna Temple",
-            ].map((item) => (
-              <span
-                key={item}
-                style={{
-                  fontFamily: "var(--font-inter, sans-serif)",
-                  color: "rgba(255,255,255,0.7)",
-                  fontSize: "0.75rem",
-                  background: "rgba(255,255,255,0.06)",
-                  border: "1px solid rgba(255,255,255,0.1)",
-                  padding: "0.375rem 0.75rem",
-                }}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
-
           {/* CTA Buttons */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}>
+          <div
+            className="ks-cta-desktop"
+            style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}
+          >
             <a
               href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
               target="_blank"
@@ -394,7 +355,7 @@ export default function KirtanSafariSection() {
                 textDecoration: "none",
               }}
             >
-              Register Now →
+              Register Now
             </a>
             <Link
               href="/festivals/kirtan-safari"
@@ -451,9 +412,9 @@ export default function KirtanSafariSection() {
               At a Glance
             </p>
             {[
-              { date: "Aug 28 — Fri", highlight: "Adivas Kirtan · Balaram Purnima" },
-              { date: "Aug 29 — Sat", highlight: "Special Harinam · Kirtan Sessions" },
-              { date: "Aug 30 — Sun", highlight: "Continuous Kirtan All Day!" },
+              { date: "Aug 28 - Fri", highlight: "Adivas Kirtan | Balaram Purnima" },
+              { date: "Aug 29 - Sat", highlight: "Special Harinam | Kirtan Sessions" },
+              { date: "Aug 30 - Sun", highlight: "Continuous Kirtan All Day!" },
             ].map((item) => (
               <div
                 key={item.date}
@@ -507,6 +468,52 @@ export default function KirtanSafariSection() {
               <Ticket size={14} color="#f6e2b1" strokeWidth={1.8} />
               Free Entry
             </p>
+          </div>
+
+          <div
+            className="ks-cta-mobile"
+            style={{ display: "none", flexWrap: "wrap", gap: "0.875rem" }}
+          >
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "#d69c2b",
+                color: "#fff",
+                fontFamily: "var(--font-inter, sans-serif)",
+                fontWeight: 700,
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                padding: "0.875rem 1.75rem",
+                textDecoration: "none",
+              }}
+            >
+              Register Now
+            </a>
+            <Link
+              href="/festivals/kirtan-safari"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                border: "1px solid rgba(255,255,255,0.25)",
+                color: "rgba(255,255,255,0.8)",
+                fontFamily: "var(--font-inter, sans-serif)",
+                fontWeight: 600,
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                padding: "0.875rem 1.75rem",
+                textDecoration: "none",
+              }}
+            >
+              Full Details
+            </Link>
           </div>
 
           {/* Social strip */}
@@ -571,11 +578,40 @@ export default function KirtanSafariSection() {
 
           .ks-countdown-mobile {
             display: block;
-            margin: 0.25rem 0 0.8rem !important;
+            margin: 0.2rem 0 0.35rem !important;
+            padding: 0.7rem !important;
+          }
+
+          .ks-countdown-mobile p {
+            margin-bottom: 0.55rem !important;
+            font-size: 0.52rem !important;
+            letter-spacing: 0.14em !important;
+          }
+
+          .ks-countdown-mobile div[style*="grid-template-columns: repeat(4, 1fr)"] {
+            gap: 0.18rem !important;
+          }
+
+          .ks-countdown-mobile div[style*="font-size: clamp(1.5rem"] {
+            font-size: 1.05rem !important;
+          }
+
+          .ks-countdown-mobile span {
+            font-size: 0.46rem !important;
           }
 
           .ks-countdown-desktop {
             display: none !important;
+          }
+
+          .ks-cta-desktop {
+            display: none !important;
+          }
+
+          .ks-cta-mobile {
+            display: flex !important;
+            gap: 0.5rem !important;
+            margin-top: 0.65rem !important;
           }
 
           .ks-home-section h2 span:first-child {
@@ -597,20 +633,6 @@ export default function KirtanSafariSection() {
           .ks-home-section div[style*="display: inline-flex"] span:last-child {
             white-space: nowrap !important;
             letter-spacing: 0.12em !important;
-          }
-
-          .ks-home-section .ks-meta-pills {
-            flex-wrap: nowrap !important;
-            gap: 0.35rem !important;
-          }
-
-          .ks-home-section .ks-meta-pills span {
-            flex: 1 1 0 !important;
-            min-width: 0 !important;
-            padding: 0.34rem 0.42rem !important;
-            font-size: 0.58rem !important;
-            line-height: 1.25 !important;
-            text-align: center !important;
           }
 
           .ks-home-section a[style*="padding: 0.875rem 1.75rem"] {
@@ -642,7 +664,7 @@ export default function KirtanSafariSection() {
           }
 
           .ks-home-section div[style*="padding: 1.5rem"] {
-            padding: 1rem !important;
+            padding: 0.72rem 0.85rem !important;
           }
 
           .ks-home-section div[style*="flex-direction: column"][style*="gap: 1.5rem"] {
@@ -658,8 +680,12 @@ export default function KirtanSafariSection() {
           }
 
           .ks-home-section div[style*="padding: 0.625rem 0"] {
-            padding: 0.45rem 0 !important;
+            padding: 0.28rem 0 !important;
             gap: 0.6rem !important;
+          }
+
+          .ks-home-section p[style*="marginBottom: 1rem"] {
+            margin-bottom: 0.45rem !important;
           }
 
           .ks-home-section div[style*="display: flex"][style*="gap: 0.75rem"][style*="flex-wrap: wrap"] {
