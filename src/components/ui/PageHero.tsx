@@ -18,9 +18,9 @@ export default function PageHero({
   align = "left",
 }: PageHeroProps) {
   const heights = {
-    sm: "h-64 min-h-[240px]",
-    md: "h-[50vh] min-h-[360px] max-h-[560px]",
-    lg: "h-[65vh] min-h-[460px] max-h-[700px]",
+    sm: "h-[42vh] min-h-[220px] sm:h-64 sm:min-h-[240px]",
+    md: "h-[48vh] min-h-[320px] max-h-[520px] sm:h-[50vh] sm:min-h-[360px] sm:max-h-[560px]",
+    lg: "h-[58vh] min-h-[420px] max-h-[640px] sm:h-[65vh] sm:min-h-[460px] sm:max-h-[700px]",
   };
 
   return (
@@ -36,12 +36,12 @@ export default function PageHero({
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
       {/* Content */}
-      <div className={`relative z-10 h-full flex flex-col justify-end pb-12 section-padding content-width ${align === "center" ? "items-center text-center" : ""}`}>
+      <div className={`relative z-10 h-full flex flex-col justify-end pb-8 sm:pb-12 section-padding content-width ${align === "center" ? "items-center text-center" : ""}`}>
         {subtitle && (
           <span className="eyebrow text-gold/80 block mb-3">{subtitle}</span>
         )}
 
-        <h1 className="font-playfair text-white text-shadow leading-tight" style={{ fontSize: "clamp(2rem, 6vw, 4.5rem)" }}>
+        <h1 className="font-playfair text-white text-shadow leading-tight" style={{ fontSize: "clamp(2.25rem, 12vw, 4.5rem)" }}>
           {title}
           {titleAccent && (
             <>
@@ -52,7 +52,7 @@ export default function PageHero({
         </h1>
 
         {description && (
-          <p className="font-inter text-white/70 text-base mt-4 max-w-xl leading-relaxed">
+          <p className="font-inter text-white/70 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
             {description}
           </p>
         )}

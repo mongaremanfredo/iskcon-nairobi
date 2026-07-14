@@ -75,7 +75,7 @@ export default function MediaPage() {
             ))}
           </div>
 
-          <div className="columns-2 sm:columns-3 lg:columns-4 gap-3 space-y-3">
+          <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
             {images.map((img, i) => (
               <div key={i} className="group relative overflow-hidden break-inside-avoid mb-3 cursor-pointer image-grade">
                 <img

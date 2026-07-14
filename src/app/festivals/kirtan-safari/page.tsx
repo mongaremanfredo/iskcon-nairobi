@@ -1,13 +1,8 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import {
   MapPin,
   Phone,
   Mail,
-  Clock,
-  Music,
-  Sun,
-  Utensils,
   ExternalLink,
 } from "lucide-react";
 
@@ -498,7 +493,7 @@ export default function KirtanSafariPage() {
                   lineHeight: 1.6,
                 }}
               >
-                "Every word a song, every step a dance."
+                &ldquo;Every word a song, every step a dance.&rdquo;
               </p>
             </div>
 
@@ -1019,7 +1014,7 @@ export default function KirtanSafariPage() {
                   lineHeight: 1.6,
                 }}
               >
-                "The mantra was made for this moment."
+                &ldquo;The mantra was made for this moment.&rdquo;
               </p>
               <a
                 href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
@@ -1209,6 +1204,92 @@ export default function KirtanSafariPage() {
           </a>
         </div>
       </section>
+
+      <style>{`
+        @media (max-width: 640px) {
+          .kirtan-safari-page {
+            max-width: 100vw;
+            overflow-x: hidden;
+          }
+
+          .kirtan-safari-page .ks-hero {
+            min-height: 720px !important;
+          }
+
+          .kirtan-safari-page .ks-hero > div:first-of-type {
+            background-position: 58% top !important;
+          }
+
+          .kirtan-safari-page .ks-hero .content-width {
+            padding-bottom: 2.5rem !important;
+          }
+
+          .kirtan-safari-page .ks-hero h1 span:first-child {
+            font-size: clamp(3.05rem, 18vw, 4.35rem) !important;
+            letter-spacing: -0.035em !important;
+          }
+
+          .kirtan-safari-page .ks-hero h1 span:last-child {
+            font-size: clamp(2.35rem, 15vw, 3.35rem) !important;
+            letter-spacing: 0.04em !important;
+          }
+
+          .kirtan-safari-page .ks-hero p {
+            max-width: 100% !important;
+          }
+
+          .kirtan-safari-page .ks-hero > div[style*="top: 6rem"] {
+            top: 4.5rem !important;
+            right: 1rem !important;
+            transform: scale(0.86);
+            transform-origin: top right;
+          }
+
+          .kirtan-safari-page .ks-hero > div[style*="bottom: 1.5rem"] {
+            display: none !important;
+          }
+
+          .kirtan-safari-page section {
+            scroll-margin-top: 4.5rem;
+          }
+
+          .kirtan-safari-page section[style*="padding: 5rem 0"],
+          .kirtan-safari-page section[style*="padding: 4rem 0"],
+          .kirtan-safari-page section[style*="padding: 3rem 0"] {
+            padding: 3.25rem 0 !important;
+          }
+
+          .kirtan-safari-page div[style*="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr))"],
+          .kirtan-safari-page div[style*="grid-template-columns: 1fr 1fr"] {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+          }
+
+          .kirtan-safari-page div[style*="background-attachment: fixed"] {
+            background-attachment: scroll !important;
+          }
+
+          .kirtan-safari-page a[style*="padding: 1rem 2rem"] {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 0.9rem 1rem !important;
+            text-align: center !important;
+          }
+
+          .kirtan-safari-page div[style*="display: flex"][style*="justify-content: space-between"] {
+            align-items: flex-start !important;
+          }
+
+          .kirtan-safari-page span[style*="min-width: 6rem"],
+          .kirtan-safari-page span[style*="min-width: 6.5rem"] {
+            min-width: 5rem !important;
+          }
+
+          .kirtan-safari-page div[style*="font-size: 8rem"] {
+            font-size: 5.5rem !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }

@@ -27,12 +27,12 @@ export default function Navigation() {
       )}
     >
       <div className="content-width section-padding">
-        <nav className="flex items-center justify-between h-20 lg:h-24">
+        <nav className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
           <Link
             href="/"
-            className="flex min-w-[164px] items-center pr-8 text-sand transition-colors hover:text-white"
+            className="flex min-w-[132px] items-center pr-3 text-sand transition-colors hover:text-white sm:min-w-[164px] sm:pr-8"
           >
-            <BrandLogo className="h-16 w-[172px] lg:h-18 lg:w-[194px]" />
+            <BrandLogo className="h-12 w-[132px] sm:h-16 sm:w-[172px] lg:h-18 lg:w-[194px]" />
           </Link>
 
           <div className="hidden xl:flex items-center gap-6">
@@ -74,7 +74,7 @@ export default function Navigation() {
 
         <div
           className={cn(
-            "absolute top-0 right-0 h-full w-[300px] bg-dusk flex flex-col transition-transform duration-500",
+            "absolute top-0 right-0 h-full w-[min(320px,100vw)] bg-dusk flex flex-col transition-transform duration-500",
             isOpen ? "translate-x-0" : "translate-x-full"
           )}
         >

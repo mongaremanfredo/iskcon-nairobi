@@ -32,6 +32,7 @@ export default function KirtanSafariSection() {
 
   return (
     <section
+      className="ks-home-section"
       style={{
         position: "relative",
         overflow: "hidden",
@@ -198,7 +199,7 @@ export default function KirtanSafariSection() {
               marginBottom: "1.75rem",
             }}
           >
-            "Every word a song, every step a dance."
+            &ldquo;Every word a song, every step a dance.&rdquo;
           </p>
 
           {/* Meta pills */}
@@ -450,6 +451,49 @@ export default function KirtanSafariSection() {
         @keyframes ks-pulse {
           0%, 100% { opacity: 1; transform: scale(1); }
           50% { opacity: 0.5; transform: scale(0.8); }
+        }
+
+        @media (max-width: 640px) {
+          .ks-home-section {
+            max-width: 100vw;
+            overflow-x: hidden;
+          }
+
+          .ks-home-section > .content-width {
+            padding-top: 3.5rem !important;
+            padding-bottom: 3.5rem !important;
+            grid-template-columns: 1fr !important;
+            gap: 2.25rem !important;
+          }
+
+          .ks-home-section h2 span:first-child {
+            font-size: clamp(3rem, 18vw, 4.4rem) !important;
+            letter-spacing: -0.035em !important;
+          }
+
+          .ks-home-section h2 span:last-child {
+            font-size: clamp(2.35rem, 15vw, 3.35rem) !important;
+            letter-spacing: 0.04em !important;
+          }
+
+          .ks-home-section div[style*="display: inline-flex"] {
+            max-width: 100% !important;
+          }
+
+          .ks-home-section a[style*="padding: 0.875rem 1.75rem"] {
+            width: 100% !important;
+            justify-content: center !important;
+            padding: 0.9rem 1rem !important;
+            text-align: center !important;
+          }
+
+          .ks-home-section div[style*="grid-template-columns: repeat(4, 1fr)"] {
+            gap: 0.25rem !important;
+          }
+
+          .ks-home-section span[style*="min-width: 6.5rem"] {
+            min-width: 5rem !important;
+          }
         }
       `}</style>
     </section>

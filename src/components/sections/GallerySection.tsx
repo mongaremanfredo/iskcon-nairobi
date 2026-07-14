@@ -34,7 +34,7 @@ export default function GallerySection() {
         </div>
 
         {/* Masonry-style grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-3 grid-rows-[auto] gap-3 lg:gap-4" style={{ gridAutoRows: "200px" }}>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-[auto] gap-3 lg:gap-4" style={{ gridAutoRows: "200px" }}>
           {galleryImages.map((img, i) => (
             <div
               key={i}

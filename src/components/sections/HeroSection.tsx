@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { ArrowDown, Play } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const heroImages = [
@@ -45,7 +45,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-full h-screen min-h-[600px] max-h-[1000px] overflow-hidden">
+    <section className="relative w-full h-[100svh] min-h-[620px] max-h-[1000px] overflow-hidden sm:h-screen sm:min-h-[600px]">
       {/* Background Images */}
       {heroImages.map((image, i) => (
         <div
@@ -129,7 +129,7 @@ export default function HeroSection() {
             {/* CTA Buttons */}
             <div
               className={cn(
-                "flex flex-wrap gap-4 mt-10 transition-all duration-1000 delay-[900ms]",
+                "flex flex-col gap-3 mt-8 transition-all duration-1000 delay-[900ms] sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4",
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
@@ -174,7 +174,7 @@ export default function HeroSection() {
 
       {/* Temple schedule ticker */}
       <div className="absolute top-20 right-0 hidden lg:flex flex-col items-end gap-1 pr-8 pt-8">
-        <span className="eyebrow text-gold/70 text-[9px]">Today's Programmes</span>
+        <span className="eyebrow text-gold/70 text-[9px]">Today&apos;s Programmes</span>
         <div className="text-right">
           <p className="font-inter text-white/60 text-xs">4:30 AM — Maṅgala Ārati</p>
           <p className="font-inter text-white/60 text-xs">7:15 AM — Bhāgavatam Class</p>
