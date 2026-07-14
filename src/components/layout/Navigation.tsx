@@ -20,7 +20,7 @@ export default function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 border-b px-5 transition-all duration-300 max-[760px]:px-[18px]",
+        "fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[760px]:px-[18px]",
         scrolled
           ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
           : "border-transparent bg-transparent py-[18px] backdrop-blur-0 max-[760px]:py-3",
@@ -36,7 +36,7 @@ export default function Navigation() {
             <BrandLogo
               markOnly
               className={cn(
-                "text-primary mix-blend-screen transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
+                "text-primary transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                 scrolled
                   ? "h-16 w-[58px] max-[760px]:h-[58px] max-[760px]:w-[52px]"
                   : "h-[104px] w-24 max-[760px]:h-[78px] max-[760px]:w-[72px]"
@@ -79,7 +79,10 @@ export default function Navigation() {
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/40 bg-dusk/25 p-0 text-gold transition-colors hover:border-gold/70 hover:bg-dusk/40 xl:hidden"
+              className={cn(
+                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/40 p-0 text-gold transition-colors hover:border-gold/70 xl:hidden",
+                scrolled || isOpen ? "bg-dusk/25 hover:bg-dusk/40" : "bg-transparent hover:bg-transparent"
+              )}
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close navigation" : "Open navigation"}
               type="button"
