@@ -35,7 +35,7 @@ export default function KirtanSafariSection() {
       style={{
         position: "relative",
         overflow: "hidden",
-        background: "#0D0800",
+        background: "#0b1f12",
       }}
     >
       {/* ── Background image ── */}
@@ -44,9 +44,9 @@ export default function KirtanSafariSection() {
           position: "absolute",
           inset: 0,
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=85')",
+            "url('/images/kirtan-safari-2026-forest-bg.jpg')",
           backgroundSize: "cover",
-          backgroundPosition: "center 30%",
+          backgroundPosition: "center",
         }}
       />
 
@@ -56,7 +56,7 @@ export default function KirtanSafariSection() {
           position: "absolute",
           inset: 0,
           background:
-            "linear-gradient(to right, rgba(10,5,0,0.95) 0%, rgba(10,5,0,0.70) 55%, rgba(10,5,0,0.40) 100%)",
+            "linear-gradient(to right, rgba(7,28,16,0.96) 0%, rgba(7,28,16,0.78) 48%, rgba(7,28,16,0.42) 100%)",
         }}
       />
       {/* amber glow from bottom-right */}
@@ -65,7 +65,7 @@ export default function KirtanSafariSection() {
           position: "absolute",
           inset: 0,
           background:
-            "radial-gradient(ellipse at 85% 110%, rgba(232,130,10,0.25) 0%, transparent 55%)",
+            "radial-gradient(ellipse at 85% 110%, rgba(214,156,43,0.26) 0%, transparent 55%)",
         }}
       />
       {/* Top gold rule */}
@@ -77,7 +77,7 @@ export default function KirtanSafariSection() {
           right: 0,
           height: "2px",
           background:
-            "linear-gradient(to right, #E8820A, rgba(232,130,10,0.3), transparent)",
+            "linear-gradient(to right, #d69c2b, rgba(214,156,43,0.35), transparent)",
         }}
       />
 
@@ -103,8 +103,8 @@ export default function KirtanSafariSection() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "rgba(232,130,10,0.15)",
-              border: "1px solid rgba(232,130,10,0.4)",
+              background: "rgba(214,156,43,0.16)",
+              border: "1px solid rgba(214,156,43,0.45)",
               padding: "0.375rem 0.875rem",
               marginBottom: "1.5rem",
             }}
@@ -114,7 +114,7 @@ export default function KirtanSafariSection() {
                 width: "6px",
                 height: "6px",
                 borderRadius: "50%",
-                background: "#E8820A",
+                background: "#d69c2b",
                 display: "inline-block",
                 animation: "ks-pulse 2s ease-in-out infinite",
               }}
@@ -122,7 +122,7 @@ export default function KirtanSafariSection() {
             <span
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
-                color: "#E8820A",
+                color: "#f3c86a",
                 fontSize: "0.6rem",
                 fontWeight: 700,
                 letterSpacing: "0.2em",
@@ -156,11 +156,11 @@ export default function KirtanSafariSection() {
             <span
               style={{
                 display: "block",
-                color: "#E8820A",
+                color: "#d69c2b",
                 fontSize: "clamp(2.8rem, 8vw, 5.5rem)",
                 fontWeight: 700,
                 letterSpacing: "0.06em",
-                textShadow: "0 2px 30px rgba(232,130,10,0.3)",
+                textShadow: "0 2px 30px rgba(214,156,43,0.32)",
               }}
             >
               SAFARI
@@ -172,7 +172,7 @@ export default function KirtanSafariSection() {
             style={{
               width: "4rem",
               height: "2px",
-              background: "linear-gradient(to right, #E8820A, transparent)",
+              background: "linear-gradient(to right, #d69c2b, transparent)",
               margin: "1.25rem 0",
             }}
           />
@@ -181,7 +181,7 @@ export default function KirtanSafariSection() {
           <p
             style={{
               fontFamily: "var(--font-cormorant, serif)",
-              color: "rgba(245,201,122,0.85)",
+              color: "rgba(246,226,177,0.9)",
               fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
               fontStyle: "italic",
               marginBottom: "0.75rem",
@@ -241,7 +241,7 @@ export default function KirtanSafariSection() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "#E8820A",
+                background: "#d69c2b",
                 color: "#fff",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 700,
@@ -281,8 +281,8 @@ export default function KirtanSafariSection() {
           {/* Countdown */}
           <div
             style={{
-              background: "rgba(0,0,0,0.5)",
-              border: "1px solid rgba(232,130,10,0.25)",
+              background: "rgba(7,28,16,0.72)",
+              border: "1px solid rgba(214,156,43,0.3)",
               backdropFilter: "blur(10px)",
               padding: "1.75rem",
             }}
@@ -290,7 +290,7 @@ export default function KirtanSafariSection() {
             <p
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
-                color: "rgba(232,130,10,0.8)",
+                color: "rgba(246,226,177,0.82)",
                 fontSize: "0.6rem",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
@@ -318,7 +318,7 @@ export default function KirtanSafariSection() {
                   <div
                     style={{
                       fontFamily: "var(--font-playfair, serif)",
-                      color: "#E8820A",
+                      color: "#d69c2b",
                       fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
                       fontWeight: 700,
                       lineHeight: 1,
@@ -346,8 +346,8 @@ export default function KirtanSafariSection() {
           {/* Quick schedule */}
           <div
             style={{
-              background: "rgba(0,0,0,0.4)",
-              border: "1px solid rgba(255,255,255,0.07)",
+              background: "rgba(7,28,16,0.66)",
+              border: "1px solid rgba(246,226,177,0.12)",
               backdropFilter: "blur(8px)",
               padding: "1.5rem",
             }}
@@ -381,7 +381,7 @@ export default function KirtanSafariSection() {
                 <span
                   style={{
                     fontFamily: "var(--font-inter, sans-serif)",
-                    color: "#E8820A",
+                    color: "#d69c2b",
                     fontSize: "0.7rem",
                     fontWeight: 600,
                     minWidth: "6.5rem",
@@ -433,7 +433,7 @@ export default function KirtanSafariSection() {
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   textDecoration: "none",
-                  borderBottom: "1px solid rgba(232,130,10,0.3)",
+                  borderBottom: "1px solid rgba(214,156,43,0.35)",
                   paddingBottom: "1px",
                   transition: "color 0.2s",
                 }}

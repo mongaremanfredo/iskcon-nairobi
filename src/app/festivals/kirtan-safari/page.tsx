@@ -21,9 +21,9 @@ export const metadata: Metadata = {
       "Every word a song, every step a dance. A three-day kirtan journey through Jarikhand Forest — August 28–30, 2026.",
     images: [
       {
-        url: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80",
-        width: 1200,
-        height: 630,
+        url: "/images/kirtan-safari-2026-header.jpg",
+        width: 1397,
+        height: 367,
       },
     ],
   },
@@ -119,9 +119,9 @@ export default function KirtanSafariPage() {
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=90')",
+              "url('/images/kirtan-safari-2026-header.jpg')",
             backgroundSize: "cover",
-            backgroundPosition: "center 40%",
+            backgroundPosition: "center",
           }}
         />
 
@@ -131,7 +131,7 @@ export default function KirtanSafariPage() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to bottom, rgba(30,15,0,0.3) 0%, rgba(180,90,10,0.15) 40%, rgba(10,5,0,0.85) 100%)",
+              "linear-gradient(to bottom, rgba(246,226,177,0.08) 0%, rgba(7,28,16,0.32) 38%, rgba(7,28,16,0.94) 100%)",
           }}
         />
         <div
@@ -139,7 +139,7 @@ export default function KirtanSafariPage() {
             position: "absolute",
             inset: 0,
             background:
-              "linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 60%)",
+              "linear-gradient(to right, rgba(7,28,16,0.72) 0%, rgba(7,28,16,0.34) 44%, rgba(7,28,16,0.16) 100%)",
           }}
         />
 
@@ -149,8 +149,8 @@ export default function KirtanSafariPage() {
             position: "absolute",
             top: "6rem",
             right: "1.5rem",
-            background: "rgba(232,130,10,0.15)",
-            border: "1px solid rgba(232,130,10,0.5)",
+            background: "rgba(214,156,43,0.15)",
+            border: "1px solid rgba(214,156,43,0.5)",
             backdropFilter: "blur(8px)",
             padding: "0.5rem 0.875rem",
             textAlign: "center",
@@ -159,7 +159,7 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
-              color: "#E8820A",
+              color: "#d69c2b",
               fontSize: "0.6rem",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
@@ -171,7 +171,7 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-playfair, serif)",
-              color: "#F5C97A",
+              color: "#f6e2b1",
               fontSize: "1.4rem",
               fontWeight: 700,
               margin: "0.1rem 0",
@@ -183,7 +183,7 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
-              color: "rgba(245,201,122,0.7)",
+              color: "rgba(246,226,177,0.7)",
               fontSize: "0.55rem",
               letterSpacing: "0.15em",
               margin: 0,
@@ -202,7 +202,7 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-cormorant, serif)",
-              color: "rgba(245,201,122,0.85)",
+              color: "rgba(246,226,177,0.85)",
               fontSize: "clamp(1rem, 3vw, 1.4rem)",
               fontStyle: "italic",
               marginBottom: "1.25rem",
@@ -250,11 +250,11 @@ export default function KirtanSafariPage() {
               <span
                 style={{
                   display: "block",
-                  color: "#E8820A",
+                  color: "#d69c2b",
                   fontSize: "clamp(3.5rem, 13vw, 8rem)",
                   fontWeight: 700,
                   letterSpacing: "0.08em",
-                  textShadow: "0 4px 40px rgba(232,130,10,0.4)",
+                  textShadow: "0 4px 40px rgba(214,156,43,0.4)",
                   marginTop: "-0.1em",
                 }}
               >
@@ -273,12 +273,12 @@ export default function KirtanSafariPage() {
             }}
           >
             <div
-              style={{ height: "1px", width: "2rem", background: "#E8820A", opacity: 0.6 }}
+              style={{ height: "1px", width: "2rem", background: "#d69c2b", opacity: 0.6 }}
             />
             <p
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
-                color: "rgba(245,201,122,0.9)",
+                color: "rgba(246,226,177,0.9)",
                 fontSize: "0.7rem",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
@@ -288,7 +288,7 @@ export default function KirtanSafariPage() {
               A Kirtan Journey Through Jarikhand Forest
             </p>
             <div
-              style={{ height: "1px", flex: 1, background: "#E8820A", opacity: 0.3 }}
+              style={{ height: "1px", flex: 1, background: "#d69c2b", opacity: 0.3 }}
             />
           </div>
 
@@ -311,8 +311,8 @@ export default function KirtanSafariPage() {
                   display: "flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  background: "rgba(0,0,0,0.45)",
-                  border: "1px solid rgba(232,130,10,0.3)",
+                  background: "rgba(7,28,16,0.58)",
+                  border: "1px solid rgba(214,156,43,0.3)",
                   backdropFilter: "blur(6px)",
                   padding: "0.5rem 1rem",
                 }}
@@ -341,7 +341,7 @@ export default function KirtanSafariPage() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "#E8820A",
+                background: "#d69c2b",
                 color: "#fff",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 700,
@@ -406,7 +406,7 @@ export default function KirtanSafariPage() {
               width: "1px",
               height: "2rem",
               background:
-                "linear-gradient(to bottom, rgba(232,130,10,0.7), transparent)",
+                "linear-gradient(to bottom, rgba(214,156,43,0.7), transparent)",
             }}
           />
         </div>
@@ -417,7 +417,7 @@ export default function KirtanSafariPage() {
       ═══════════════════════════════════════ */}
       <section
         style={{
-          background: "#0D0800",
+          background: "#071c10",
           padding: "5rem 0",
         }}
       >
@@ -435,7 +435,7 @@ export default function KirtanSafariPage() {
               <p
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
-                  color: "#E8820A",
+                  color: "#d69c2b",
                   fontSize: "0.65rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
@@ -454,12 +454,12 @@ export default function KirtanSafariPage() {
                 }}
               >
                 Where the Mantra<br />
-                <em style={{ color: "#E8820A", fontStyle: "normal" }}>
+                <em style={{ color: "#d69c2b", fontStyle: "normal" }}>
                   Meets the Wild
                 </em>
               </h2>
               <div
-                style={{ width: "2.5rem", height: "2px", background: "#E8820A", marginBottom: "1.5rem" }}
+                style={{ width: "2.5rem", height: "2px", background: "#d69c2b", marginBottom: "1.5rem" }}
               />
               <p
                 style={{
@@ -485,14 +485,14 @@ export default function KirtanSafariPage() {
                 }}
               >
                 This year carries special significance — ISKCON Nairobi marks its{" "}
-                <span style={{ color: "#F5C97A", fontWeight: 600 }}>60th anniversary</span>,
+                <span style={{ color: "#f6e2b1", fontWeight: 600 }}>60th anniversary</span>,
                 making Kirtan Safari 2026 a historic celebration of six decades of
                 Krishna consciousness in East Africa.
               </p>
               <p
                 style={{
                   fontFamily: "var(--font-cormorant, serif)",
-                  color: "rgba(245,201,122,0.7)",
+                  color: "rgba(246,226,177,0.7)",
                   fontSize: "1.15rem",
                   fontStyle: "italic",
                   lineHeight: 1.6,
@@ -508,7 +508,7 @@ export default function KirtanSafariPage() {
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
                 gap: "1px",
-                background: "rgba(232,130,10,0.15)",
+                background: "rgba(214,156,43,0.15)",
               }}
             >
               {[
@@ -520,7 +520,7 @@ export default function KirtanSafariPage() {
                 <div
                   key={stat.label}
                   style={{
-                    background: "#0D0800",
+                    background: "#071c10",
                     padding: "2rem 1.5rem",
                     textAlign: "center",
                   }}
@@ -528,7 +528,7 @@ export default function KirtanSafariPage() {
                   <p
                     style={{
                       fontFamily: "var(--font-playfair, serif)",
-                      color: "#E8820A",
+                      color: "#d69c2b",
                       fontSize: "clamp(2rem, 5vw, 3rem)",
                       fontWeight: 700,
                       lineHeight: 1,
@@ -573,9 +573,9 @@ export default function KirtanSafariPage() {
       <section
         id="schedule"
         style={{
-          background: "#110900",
+          background: "#0b1f12",
           padding: "5rem 0",
-          borderTop: "1px solid rgba(232,130,10,0.15)",
+          borderTop: "1px solid rgba(214,156,43,0.15)",
         }}
       >
         <div className="content-width section-padding">
@@ -584,7 +584,7 @@ export default function KirtanSafariPage() {
             <p
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
-                color: "#E8820A",
+                color: "#d69c2b",
                 fontSize: "0.65rem",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
@@ -617,9 +617,9 @@ export default function KirtanSafariPage() {
               <div
                 key={day.date}
                 style={{
-                  background: i === 2 ? "rgba(232,130,10,0.08)" : "#0D0800",
+                  background: i === 2 ? "rgba(214,156,43,0.08)" : "#071c10",
                   border: i === 2
-                    ? "1px solid rgba(232,130,10,0.5)"
+                    ? "1px solid rgba(214,156,43,0.5)"
                     : "1px solid rgba(255,255,255,0.06)",
                   padding: "2rem",
                   position: "relative",
@@ -632,7 +632,7 @@ export default function KirtanSafariPage() {
                     <span
                       style={{
                         fontFamily: "var(--font-playfair, serif)",
-                        color: "#E8820A",
+                        color: "#d69c2b",
                         fontSize: "clamp(3rem, 8vw, 4.5rem)",
                         fontWeight: 900,
                         lineHeight: 1,
@@ -643,7 +643,7 @@ export default function KirtanSafariPage() {
                     <span
                       style={{
                         fontFamily: "var(--font-inter, sans-serif)",
-                        color: "#E8820A",
+                        color: "#d69c2b",
                         fontSize: "0.75rem",
                         fontWeight: 700,
                         textTransform: "uppercase",
@@ -672,15 +672,15 @@ export default function KirtanSafariPage() {
                       style={{
                         display: "inline-block",
                         marginTop: "0.5rem",
-                        background: "rgba(232,130,10,0.2)",
-                        border: "1px solid rgba(232,130,10,0.4)",
+                        background: "rgba(214,156,43,0.2)",
+                        border: "1px solid rgba(214,156,43,0.4)",
                         padding: "0.25rem 0.625rem",
                       }}
                     >
                       <span
                         style={{
                           fontFamily: "var(--font-inter, sans-serif)",
-                          color: "#F5C97A",
+                          color: "#f6e2b1",
                           fontSize: "0.6rem",
                           letterSpacing: "0.12em",
                           textTransform: "uppercase",
@@ -697,7 +697,7 @@ export default function KirtanSafariPage() {
                 <div
                   style={{
                     height: "1px",
-                    background: "rgba(232,130,10,0.2)",
+                    background: "rgba(214,156,43,0.2)",
                     marginBottom: "1.25rem",
                   }}
                 />
@@ -712,7 +712,7 @@ export default function KirtanSafariPage() {
                       <span
                         style={{
                           fontFamily: "var(--font-inter, sans-serif)",
-                          color: "#E8820A",
+                          color: "#d69c2b",
                           fontSize: "0.72rem",
                           fontWeight: 600,
                           minWidth: "6rem",
@@ -743,7 +743,7 @@ export default function KirtanSafariPage() {
                     right: "-0.5rem",
                     fontFamily: "var(--font-playfair, serif)",
                     fontSize: "8rem",
-                    color: "rgba(232,130,10,0.04)",
+                    color: "rgba(214,156,43,0.04)",
                     fontWeight: 900,
                     lineHeight: 1,
                     pointerEvents: "none",
@@ -774,7 +774,7 @@ export default function KirtanSafariPage() {
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=80')",
+              "url('/images/kirtan-safari-2026-forest-bg.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundAttachment: "fixed",
@@ -784,7 +784,7 @@ export default function KirtanSafariPage() {
           style={{
             position: "absolute",
             inset: 0,
-            background: "rgba(10,5,0,0.88)",
+            background: "rgba(7,28,16,0.9)",
           }}
         />
         <div
@@ -792,7 +792,7 @@ export default function KirtanSafariPage() {
             position: "absolute",
             inset: 0,
             background:
-              "radial-gradient(ellipse at center, rgba(232,130,10,0.08) 0%, transparent 70%)",
+              "radial-gradient(ellipse at center, rgba(214,156,43,0.08) 0%, transparent 70%)",
           }}
         />
 
@@ -812,7 +812,7 @@ export default function KirtanSafariPage() {
               <p
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
-                  color: "#E8820A",
+                  color: "#d69c2b",
                   fontSize: "0.65rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
@@ -835,15 +835,15 @@ export default function KirtanSafariPage() {
               <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
                 {[
                   {
-                    icon: <MapPin size={14} color="#E8820A" />,
+                    icon: <MapPin size={14} color="#d69c2b" />,
                     text: "ISKCON Nairobi, Radha Banke Bihari Mandir\nWest Ngara Road, Nairobi",
                   },
                   {
-                    icon: <Phone size={14} color="#E8820A" />,
+                    icon: <Phone size={14} color="#d69c2b" />,
                     text: "0753 419 194",
                   },
                   {
-                    icon: <Mail size={14} color="#E8820A" />,
+                    icon: <Mail size={14} color="#d69c2b" />,
                     text: "iskcon.nairobi@gmail.com",
                   },
                 ].map((item, i) => (
@@ -873,7 +873,7 @@ export default function KirtanSafariPage() {
               <p
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
-                  color: "#E8820A",
+                  color: "#d69c2b",
                   fontSize: "0.65rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
@@ -895,8 +895,8 @@ export default function KirtanSafariPage() {
               </h3>
               <div
                 style={{
-                  background: "rgba(232,130,10,0.08)",
-                  border: "1px solid rgba(232,130,10,0.3)",
+                  background: "rgba(214,156,43,0.08)",
+                  border: "1px solid rgba(214,156,43,0.3)",
                   padding: "1.5rem",
                   marginBottom: "1.25rem",
                 }}
@@ -923,7 +923,7 @@ export default function KirtanSafariPage() {
                   <span
                     style={{
                       fontFamily: "var(--font-playfair, serif)",
-                      color: "#F5C97A",
+                      color: "#f6e2b1",
                       fontSize: "1.6rem",
                       fontWeight: 700,
                       letterSpacing: "0.05em",
@@ -935,7 +935,7 @@ export default function KirtanSafariPage() {
                 <div
                   style={{
                     height: "1px",
-                    background: "rgba(232,130,10,0.2)",
+                    background: "rgba(214,156,43,0.2)",
                     marginBottom: "0.875rem",
                   }}
                 />
@@ -960,7 +960,7 @@ export default function KirtanSafariPage() {
                   <span
                     style={{
                       fontFamily: "var(--font-playfair, serif)",
-                      color: "#F5C97A",
+                      color: "#f6e2b1",
                       fontSize: "1.6rem",
                       fontWeight: 700,
                       letterSpacing: "0.08em",
@@ -988,7 +988,7 @@ export default function KirtanSafariPage() {
               <p
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
-                  color: "#E8820A",
+                  color: "#d69c2b",
                   fontSize: "0.65rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
@@ -1007,12 +1007,12 @@ export default function KirtanSafariPage() {
                 }}
               >
                 Register for<br />
-                <em style={{ color: "#E8820A", fontStyle: "normal" }}>Kirtan Safari 2026</em>
+                <em style={{ color: "#d69c2b", fontStyle: "normal" }}>Kirtan Safari 2026</em>
               </h3>
               <p
                 style={{
                   fontFamily: "var(--font-cormorant, serif)",
-                  color: "rgba(245,201,122,0.7)",
+                  color: "rgba(246,226,177,0.7)",
                   fontSize: "1.1rem",
                   fontStyle: "italic",
                   marginBottom: "1.5rem",
@@ -1029,7 +1029,7 @@ export default function KirtanSafariPage() {
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.5rem",
-                  background: "#E8820A",
+                  background: "#d69c2b",
                   color: "#fff",
                   fontFamily: "var(--font-inter, sans-serif)",
                   fontWeight: 700,
@@ -1052,8 +1052,8 @@ export default function KirtanSafariPage() {
       ═══════════════════════════════════════ */}
       <section
         style={{
-          background: "#0D0800",
-          borderTop: "1px solid rgba(232,130,10,0.15)",
+          background: "#071c10",
+          borderTop: "1px solid rgba(214,156,43,0.15)",
           padding: "4rem 0",
         }}
       >
@@ -1071,7 +1071,7 @@ export default function KirtanSafariPage() {
               <p
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
-                  color: "#E8820A",
+                  color: "#d69c2b",
                   fontSize: "0.65rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
@@ -1110,7 +1110,7 @@ export default function KirtanSafariPage() {
                     transition: "border-color 0.3s",
                   }}
                 >
-                  <Icon size={14} color="#E8820A" />
+                  <Icon size={14} color="#d69c2b" />
                   <div>
                     <p
                       style={{
@@ -1148,7 +1148,7 @@ export default function KirtanSafariPage() {
       ═══════════════════════════════════════ */}
       <section
         style={{
-          background: "#E8820A",
+          background: "#0b1f12",
           padding: "3rem 0",
         }}
       >
@@ -1193,8 +1193,8 @@ export default function KirtanSafariPage() {
               display: "inline-flex",
               alignItems: "center",
               gap: "0.5rem",
-              background: "#fff",
-              color: "#E8820A",
+              background: "#d69c2b",
+              color: "#071c10",
               fontFamily: "var(--font-inter, sans-serif)",
               fontWeight: 800,
               fontSize: "0.7rem",
