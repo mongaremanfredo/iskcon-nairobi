@@ -45,19 +45,19 @@ const navCards = [
 export default function QuickNavSection() {
   return (
     <section className="py-10 bg-temple-cream sm:py-section-sm">
-      <div className="content-width section-padding">
+      <div className="content-width px-3 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-10">
           <span className="eyebrow">Find Your Path</span>
         </div>
 
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
+        <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4 lg:gap-6">
           {navCards.map((card) => {
             const Icon = card.icon;
             return (
               <Link
                 key={card.href}
                 href={card.href}
-                className={`group relative flex min-h-[164px] flex-col items-start bg-white border border-temple-sand p-4 transition-all duration-300 sm:min-h-0 sm:p-6 lg:p-8 ${card.bg} hover:shadow-card-hover hover:-translate-y-1`}
+                className={`group relative flex min-h-[164px] flex-col items-start bg-white border border-temple-sand p-3.5 transition-all duration-300 sm:min-h-0 sm:p-6 lg:p-8 ${card.bg} hover:shadow-card-hover hover:-translate-y-1`}
               >
                 <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${card.color} flex items-center justify-center mb-3 sm:mb-5 flex-shrink-0`}>
                   <Icon size={16} className="text-white sm:size-[18px]" />
