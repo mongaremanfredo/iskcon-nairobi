@@ -44,33 +44,33 @@ const navCards = [
 
 export default function QuickNavSection() {
   return (
-    <section className="py-section-sm bg-temple-cream">
+    <section className="py-10 bg-temple-cream sm:py-section-sm">
       <div className="content-width section-padding">
-        <div className="text-center mb-10">
+        <div className="text-center mb-6 sm:mb-10">
           <span className="eyebrow">Find Your Path</span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-6">
           {navCards.map((card) => {
             const Icon = card.icon;
             return (
               <Link
                 key={card.href}
                 href={card.href}
-                className={`group relative flex flex-col items-start p-6 lg:p-8 bg-white border border-temple-sand transition-all duration-300 ${card.bg} hover:shadow-card-hover hover:-translate-y-1`}
+                className={`group relative flex min-h-[164px] flex-col items-start bg-white border border-temple-sand p-4 transition-all duration-300 sm:min-h-0 sm:p-6 lg:p-8 ${card.bg} hover:shadow-card-hover hover:-translate-y-1`}
               >
-                <div className={`w-10 h-10 rounded-full ${card.color} flex items-center justify-center mb-5 flex-shrink-0`}>
-                  <Icon size={18} className="text-white" />
+                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${card.color} flex items-center justify-center mb-3 sm:mb-5 flex-shrink-0`}>
+                  <Icon size={16} className="text-white sm:size-[18px]" />
                 </div>
 
-                <h3 className="font-playfair text-xl font-semibold text-ink mb-2 transition-colors group-hover:text-primary">
+                <h3 className="font-playfair text-lg sm:text-xl font-semibold text-ink mb-1.5 sm:mb-2 leading-tight transition-colors group-hover:text-primary">
                   {card.title}
                 </h3>
-                <p className="font-inter text-body-sm text-ink/60 leading-relaxed">
+                <p className="font-inter text-[0.72rem] sm:text-body-sm text-ink/60 leading-relaxed">
                   {card.description}
                 </p>
 
-                <div className={`mt-6 flex items-center gap-1 font-inter text-xs font-semibold tracking-widest uppercase ${card.accent} opacity-0 group-hover:opacity-100 transition-opacity`}>
+                <div className={`mt-auto pt-4 flex items-center gap-1 font-inter text-[0.62rem] sm:text-xs font-semibold tracking-widest uppercase ${card.accent} opacity-70 sm:opacity-0 group-hover:opacity-100 transition-opacity`}>
                   <span>Explore</span>
                   <span>→</span>
                 </div>
