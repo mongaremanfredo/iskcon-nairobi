@@ -7,11 +7,6 @@ import { cn } from "@/lib/utils";
 
 const heroImages = [
   {
-    src: "/images/iskcon-nairobi-main-altar.jpg",
-    alt: "Main altar of ISKCON Nairobi arranged in three sections with flowers and offerings",
-    position: "center",
-  },
-  {
     src: "/images/iskcon-nairobi-aerial.jpg",
     alt: "Aerial view of ISKCON Nairobi temple with the Nairobi skyline",
     position: "center 58%",
