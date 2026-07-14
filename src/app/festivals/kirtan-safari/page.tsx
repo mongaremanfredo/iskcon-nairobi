@@ -115,7 +115,6 @@ export default function KirtanSafariPage() {
       >
         {/* Background — savanna sunset */}
         <div
-          className="ks-hero-bg"
           style={{
             position: "absolute",
             inset: 0,
@@ -1210,15 +1209,6 @@ export default function KirtanSafariPage() {
           </a>
         </div>
       </section>
-
-      <style>{`
-        @media (max-width: 640px) {
-          .ks-hero-bg {
-            background-image: url('/images/kirtan-safari-2026-hero-bg-phone.jpg') !important;
-            background-position: center top !important;
-          }
-        }
-      `}</style>
     </div>
   );
 }
