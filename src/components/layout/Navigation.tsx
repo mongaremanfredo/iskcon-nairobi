@@ -27,7 +27,7 @@ export default function Navigation() {
         isOpen && "bg-dusk/95 border-gold/25"
       )}
     >
-      <div className="mx-auto w-full max-w-[1280px]">
+      <div className="content-width section-padding">
         <nav className="flex items-center justify-between gap-6 max-[760px]:gap-3">
           <Link
             href="/"
@@ -42,7 +42,12 @@ export default function Navigation() {
                   : "h-[104px] w-24 max-[760px]:h-[78px] max-[760px]:w-[72px]"
               )}
             />
-            <span className="flex min-w-0 flex-col gap-[3px]">
+            <span
+              className={cn(
+                "min-w-0 flex-col gap-[3px] transition-opacity duration-300 max-[760px]:flex",
+                scrolled ? "flex opacity-100" : "hidden opacity-0 max-[760px]:flex max-[760px]:opacity-100"
+              )}
+            >
               <span className="font-playfair text-xs uppercase leading-none tracking-[0.08em] text-sand">
                 ISKCON NAIROBI
               </span>
