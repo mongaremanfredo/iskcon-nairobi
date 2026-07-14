@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Camera, Music2, Star } from "lucide-react";
+import { Camera, Star, Ticket } from "lucide-react";
 
 /* Countdown hook */
 function useCountdown(target: Date) {
@@ -24,6 +24,32 @@ function useCountdown(target: Date) {
 
 function Pad({ n }: { n: number }) {
   return <>{String(n).padStart(2, "0")}</>;
+}
+
+function YouTubeIcon({
+  size = 13,
+  color = "#d69c2b",
+}: {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+}) {
+  return (
+    <svg
+      width={size + 2}
+      height={size}
+      viewBox="0 0 24 18"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block", flexShrink: 0 }}
+    >
+      <path
+        d="M23.5 3.1c-.27-1.02-1.08-1.82-2.08-2.09C19.59.5 12 .5 12 .5S4.41.5 2.58 1.01C1.58 1.28.77 2.08.5 3.1.01 4.94.01 8.76.01 8.76s0 3.82.49 5.66c.27 1.02 1.08 1.78 2.08 2.05 1.83.52 9.42.52 9.42.52s7.59 0 9.42-.52c1-.27 1.81-1.03 2.08-2.05.49-1.84.49-5.66.49-5.66s0-3.82-.49-5.66Z"
+        fill={color}
+      />
+      <path d="M9.6 12.36V5.16l6.28 3.6-6.28 3.6Z" fill="#071c10" />
+    </svg>
+  );
 }
 
 function CountdownPanel({
@@ -212,7 +238,7 @@ export default function KirtanSafariSection() {
                 textTransform: "uppercase",
               }}
             >
-              Featured Festival · 60th Anniversary
+              Featured Festival · ISKCON 60th Anniversary
             </span>
           </div>
 
@@ -303,7 +329,7 @@ export default function KirtanSafariSection() {
           >
             {[
               "📅 28–30 August 2026",
-              "📍 Hare Krishna Temple",
+              "📍 Nairobi Hare Krishna Temple",
             ].map((item) => (
               <span
                 key={item}
@@ -438,26 +464,21 @@ export default function KirtanSafariSection() {
             <p
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
-                color: "rgba(255,255,255,0.3)",
-                fontSize: "0.65rem",
-                marginTop: "0.875rem",
-                textAlign: "center",
-              }}
-            >
-              Venue: Hare Krishna Temple, West Ngara Rd
-            </p>
-            <p
-              style={{
-                fontFamily: "var(--font-inter, sans-serif)",
                 color: "#f6e2b1",
                 fontSize: "0.65rem",
                 fontWeight: 700,
                 letterSpacing: "0.14em",
-                marginTop: "0.6rem",
+                marginTop: "0.85rem",
                 textAlign: "center",
                 textTransform: "uppercase",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.4rem",
+                width: "100%",
               }}
             >
+              <Ticket size={14} color="#f6e2b1" strokeWidth={1.8} />
               Free Entry
             </p>
           </div>
@@ -466,7 +487,7 @@ export default function KirtanSafariSection() {
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             {[
               { label: "Instagram", href: "https://www.instagram.com/kirtansafari", Icon: Camera },
-              { label: "YouTube", href: "https://www.youtube.com/@kirtan_safari", Icon: Music2 },
+              { label: "YouTube", href: "https://www.youtube.com/@kirtan_safari", Icon: YouTubeIcon },
               { label: "TikTok", href: "https://www.tiktok.com/@kirtan.safari", Icon: Star },
             ].map(({ label, href, Icon }) => (
               <a
