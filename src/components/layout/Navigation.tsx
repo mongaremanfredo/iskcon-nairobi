@@ -23,7 +23,7 @@ export default function Navigation() {
         "fixed top-0 left-0 right-0 z-50 border-b px-5 transition-all duration-300 max-[760px]:px-[18px]",
         scrolled
           ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
-          : "bg-dusk/80 border-gold/15 py-[18px] backdrop-blur-xl max-[760px]:py-3",
+          : "bg-dusk/80 border-gold/15 py-[18px] backdrop-blur-xl max-[760px]:border-transparent max-[760px]:bg-transparent max-[760px]:py-3 max-[760px]:backdrop-blur-0",
         isOpen && "bg-dusk/95 border-gold/25"
       )}
     >
@@ -43,8 +43,8 @@ export default function Navigation() {
               )}
             />
             <span className="flex min-w-0 flex-col gap-[3px]">
-              <span className="font-playfair text-xs leading-none tracking-[0.08em] text-sand">
-                ISKCON Nairobi
+              <span className="font-playfair text-xs uppercase leading-none tracking-[0.08em] text-sand">
+                ISKCON NAIROBI
               </span>
               <span
                 className={cn(
