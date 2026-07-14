@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronRight } from "lucide-react";
+import { X, ChevronRight } from "lucide-react";
 import { navigation } from "@/data/site";
 import { cn } from "@/lib/utils";
 import BrandLogo from "@/components/ui/BrandLogo";
@@ -20,19 +20,41 @@ export default function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
+        "fixed top-0 left-0 right-0 z-50 border-b px-5 transition-all duration-300 max-[760px]:px-[18px]",
         scrolled
-          ? "bg-dusk/95 backdrop-blur-md shadow-lg"
-          : "bg-gradient-to-b from-dusk/80 via-dusk/35 to-transparent"
+          ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
+          : "bg-dusk/80 border-gold/15 py-[18px] backdrop-blur-xl max-[760px]:py-3",
+        isOpen && "bg-dusk/95 border-gold/25"
       )}
     >
-      <div className="content-width section-padding">
-        <nav className="flex items-center justify-between h-16 sm:h-20 lg:h-24">
+      <div className="mx-auto w-full max-w-[1280px]">
+        <nav className="flex items-center justify-between gap-6 max-[760px]:gap-3">
           <Link
             href="/"
-            className="flex min-w-[132px] items-center pr-3 text-sand transition-colors hover:text-white sm:min-w-[164px] sm:pr-8"
+            className="flex min-w-0 items-center gap-3 text-sand no-underline transition-colors hover:text-white"
           >
-            <BrandLogo className="h-12 w-[132px] sm:h-16 sm:w-[172px] lg:h-18 lg:w-[194px]" />
+            <BrandLogo
+              markOnly
+              className={cn(
+                "text-primary mix-blend-screen transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
+                scrolled
+                  ? "h-16 w-[58px] max-[760px]:h-[58px] max-[760px]:w-[52px]"
+                  : "h-[104px] w-24 max-[760px]:h-[78px] max-[760px]:w-[72px]"
+              )}
+            />
+            <span className="flex min-w-0 flex-col gap-[3px]">
+              <span className="font-playfair text-xs leading-none tracking-[0.08em] text-sand">
+                ISKCON Nairobi
+              </span>
+              <span
+                className={cn(
+                  "font-inter text-[10px] uppercase leading-tight tracking-[0.12em] text-sand/60 transition-opacity",
+                  scrolled ? "hidden" : "block max-[760px]:hidden"
+                )}
+              >
+                Sri Sri Radha Bankebihari Temple
+              </span>
+            </span>
           </Link>
 
           <div className="hidden xl:flex items-center gap-6">
@@ -52,10 +74,31 @@ export default function Navigation() {
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="xl:hidden text-white p-2 hover:text-sunset transition-colors"
-              aria-label="Toggle menu"
+              className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/40 bg-dusk/25 p-0 text-gold transition-colors hover:border-gold/70 hover:bg-dusk/40 xl:hidden"
+              aria-expanded={isOpen}
+              aria-label={isOpen ? "Close navigation" : "Open navigation"}
+              type="button"
             >
-              {isOpen ? <X size={22} /> : <Menu size={22} />}
+              <span className="grid h-3.5 w-[18px] content-between" aria-hidden="true">
+                <span
+                  className={cn(
+                    "block h-px w-full origin-center bg-current transition-transform duration-200",
+                    isOpen && "translate-y-[6.5px] rotate-45"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block h-px w-full bg-current transition-opacity duration-150",
+                    isOpen && "opacity-0"
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block h-px w-full origin-center bg-current transition-transform duration-200",
+                    isOpen && "-translate-y-[6.5px] -rotate-45"
+                  )}
+                />
+              </span>
             </button>
           </div>
         </nav>
