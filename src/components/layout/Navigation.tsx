@@ -34,18 +34,17 @@ export default function Navigation() {
             className="flex min-w-0 items-center gap-3 text-sand no-underline transition-colors hover:text-white"
           >
             <BrandLogo
-              markOnly
               className={cn(
-                "text-primary transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
+                "transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                 scrolled
-                  ? "h-16 w-[58px] max-[760px]:h-[58px] max-[760px]:w-[52px]"
-                  : "h-[104px] w-24 max-[760px]:h-[78px] max-[760px]:w-[72px]"
+                  ? "h-16 w-[69px] max-[760px]:h-[58px] max-[760px]:w-[62px]"
+                  : "h-[104px] w-28 max-[760px]:h-[78px] max-[760px]:w-[84px]"
               )}
             />
             <span
               className={cn(
-                "min-w-0 flex-col gap-[3px] transition-opacity duration-300 max-[760px]:flex",
-                scrolled ? "flex opacity-100" : "hidden opacity-0 max-[760px]:flex max-[760px]:opacity-100"
+                "min-w-0 flex-col gap-[3px] transition-opacity duration-300 max-[760px]:hidden",
+                scrolled ? "flex opacity-100" : "hidden opacity-0"
               )}
             >
               <span className="font-playfair text-xs uppercase leading-none tracking-[0.08em] text-sand">
