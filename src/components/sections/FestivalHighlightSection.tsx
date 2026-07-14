@@ -460,31 +460,62 @@ export default function KirtanSafariSection() {
           }
 
           .ks-home-section > .content-width {
-            padding-top: 3.5rem !important;
-            padding-bottom: 3.5rem !important;
+            padding-top: 2.5rem !important;
+            padding-bottom: 2.5rem !important;
             grid-template-columns: 1fr !important;
-            gap: 2.25rem !important;
+            gap: 1.4rem !important;
           }
 
           .ks-home-section h2 span:first-child {
-            font-size: clamp(3rem, 18vw, 4.4rem) !important;
+            font-size: clamp(2.55rem, 15vw, 3.6rem) !important;
             letter-spacing: -0.035em !important;
           }
 
           .ks-home-section h2 span:last-child {
-            font-size: clamp(2.35rem, 15vw, 3.35rem) !important;
+            font-size: clamp(2rem, 12vw, 2.85rem) !important;
             letter-spacing: 0.04em !important;
           }
 
           .ks-home-section div[style*="display: inline-flex"] {
             max-width: 100% !important;
+            margin-bottom: 1rem !important;
+            padding: 0.35rem 0.65rem !important;
           }
 
           .ks-home-section a[style*="padding: 0.875rem 1.75rem"] {
             width: 100% !important;
             justify-content: center !important;
-            padding: 0.9rem 1rem !important;
+            padding: 0.78rem 0.85rem !important;
             text-align: center !important;
+          }
+
+          .ks-home-section p {
+            margin-bottom: 0.65rem !important;
+          }
+
+          .ks-home-section h2 + div {
+            margin: 0.75rem 0 !important;
+          }
+
+          .ks-home-section div[style*="marginBottom: 2rem"],
+          .ks-home-section div[style*="margin-bottom: 2rem"] {
+            margin-bottom: 1.15rem !important;
+          }
+
+          .ks-home-section div[style*="gap: 0.875rem"] {
+            gap: 0.55rem !important;
+          }
+
+          .ks-home-section div[style*="padding: 1.75rem"] {
+            padding: 1rem !important;
+          }
+
+          .ks-home-section div[style*="padding: 1.5rem"] {
+            padding: 1rem !important;
+          }
+
+          .ks-home-section div[style*="flex-direction: column"][style*="gap: 1.5rem"] {
+            gap: 0.85rem !important;
           }
 
           .ks-home-section div[style*="grid-template-columns: repeat(4, 1fr)"] {
@@ -492,7 +523,16 @@ export default function KirtanSafariSection() {
           }
 
           .ks-home-section span[style*="min-width: 6.5rem"] {
-            min-width: 5rem !important;
+            min-width: 4.65rem !important;
+          }
+
+          .ks-home-section div[style*="padding: 0.625rem 0"] {
+            padding: 0.45rem 0 !important;
+            gap: 0.6rem !important;
+          }
+
+          .ks-home-section div[style*="display: flex"][style*="gap: 0.75rem"][style*="flex-wrap: wrap"] {
+            gap: 0.55rem !important;
           }
         }
       `}</style>
