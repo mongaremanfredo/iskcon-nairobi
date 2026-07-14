@@ -85,10 +85,10 @@ export const projects = [
 export const festivals = [
   {
     title: "Kirtan Safari Festival",
-    date: "Annual festival",
-    location: "Hosted by ISKCON Nairobi",
-    description: "ISKCON Nairobi's distinctive devotional music gathering, bringing devotees and kirtaniyas together in Kenya for immersive chanting, classes, prasadam, and community.",
-    image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80",
+    date: "28-30 August 2026",
+    location: "Hare Krishna Temple",
+    description: "A kirtan journey through Jarikhand Forest with kirtan, Harinam, Abhishek, prasadam, and devotional community.",
+    image: "/images/kirtan-safari-2026-poster-thumb.jpg",
     href: "/festivals/kirtan-safari",
     featured: true,
   },
