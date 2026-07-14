@@ -4,15 +4,15 @@ import Link from "next/link";
 import { CheckCircle, Users, BookOpen, Home, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "HKTC Nairobi — Hare Krishna Theological College",
-  description: "Residential Vaishnava theological education in Nairobi. Bhakti-śāstrī and Bhakti-vaibhava programmes for students across East Africa.",
+  title: "HKTC Nairobi — Hare Krishna Training Centre",
+  description: "Residential Vaishnava devotional education in Nairobi. Bhakti-śāstrī and Bhakti-vaibhava programmes for students across East Africa.",
 };
 
 const programmes = [
   { name: "Bhakti-śāstrī", duration: "1 Year", description: "Systematic study of Bhagavad-gītā, Nectar of Devotion, Nectar of Instruction, and Īśopaniṣad.", level: "Foundation" },
   { name: "Bhakti-vaibhava", duration: "2 Years", description: "Deep study of Śrīmad-Bhāgavatam Cantos 1–6, devotional practice, and Sanskrit.", level: "Advanced" },
   { name: "Bhakti-vedanta", duration: "2 Years", description: "Śrīmad-Bhāgavatam Cantos 7–12, Caitanya-caritāmṛta, and comparative philosophy.", level: "Scholar" },
-  { name: "Bhakti-sarvabhauma", duration: "2 Years", description: "The highest level of ISKCON theological education, including advanced Sanskrit and original texts.", level: "Master" },
+  { name: "Bhakti-sarvabhauma", duration: "2 Years", description: "The highest level of ISKCON devotional education, including advanced Sanskrit and original texts.", level: "Master" },
 ];
 
 export default function HKTCNairobiPage() {
@@ -21,8 +21,8 @@ export default function HKTCNairobiPage() {
       <PageHero
         title="HKTC"
         titleAccent="Nairobi"
-        subtitle="Hare Krishna Theological College"
-        description="East Africa's premier residential institution for Vaishnava theological education — forming scholars, teachers, and devotees."
+        subtitle="Hare Krishna Training Centre"
+        description="East Africa's premier residential institution for Vaishnava devotional education — forming scholars, teachers, and devotees."
         image="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1600&q=85"
         height="lg"
       />
@@ -38,11 +38,11 @@ export default function HKTCNairobiPage() {
                 <em className="text-gold not-italic font-normal">Shaping Lives</em>
               </h2>
               <div className="space-y-4 font-inter text-ink/70 leading-relaxed">
-                <p>The Hare Krishna Theological College in Nairobi offers a full residential educational programme rooted in the Vaishnava tradition. Students from across Kenya, Uganda, Tanzania, Ethiopia, and beyond come here to receive a complete academic and devotional formation.</p>
+                <p>The Hare Krishna Training Centre in Nairobi offers a full residential educational programme rooted in the Vaishnava tradition. Students from across Kenya, Uganda, Tanzania, Ethiopia, and beyond come here to receive a complete academic and devotional formation.</p>
                 <p>Our curriculum follows the ISKCON Ministry of Educational Development's graded programme, from Bhakti-śāstrī to Bhakti-sarvabhauma, combined with daily temple service, physical training, and practical devotional skills.</p>
               </div>
               <div className="mt-8 grid grid-cols-3 gap-6">
-                {[{ v: "100+", l: "Students" }, { v: "15+", l: "Nations" }, { v: "20+", l: "Yrs Active" }].map(s => (
+                {[{ v: "1000+", l: "Students" }, { v: "15+", l: "Nations" }, { v: "20+", l: "Yrs Active" }].map(s => (
                   <div key={s.l}>
                     <p className="font-playfair text-gold text-3xl font-bold">{s.v}</p>
                     <p className="font-inter text-ink/50 text-xs uppercase tracking-wide mt-1">{s.l}</p>

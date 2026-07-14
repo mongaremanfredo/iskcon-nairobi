@@ -37,9 +37,9 @@ export const navigation = [
 ];
 
 export const stats = [
-  { value: 100, suffix: "+", label: "Students & Youth", description: "Learning through temple classes, retreats, and outreach" },
-  { value: 5000, suffix: "+", label: "Meals Monthly", description: "Prasadam served through Food For Life and temple programmes" },
-  { value: 50, suffix: "+", label: "Protected Cows", description: "Cow protection and natural farming at Thika" },
+  { value: 1000, suffix: "+", label: "Students & Youth", description: "Learning through temple classes, retreats, and outreach" },
+  { value: 10000, suffix: "+", label: "Meals Monthly", description: "Prasadam served through Food For Life and temple programmes" },
+  { value: 200, suffix: "+", label: "Protected Cows", description: "Cow protection and natural farming at Thika" },
   { value: 1000, suffix: "+", label: "Festival Guests", description: "Gathering for Ratha Yatra, Janmashtami, and Kirtan Safari" },
 ];
 
@@ -47,7 +47,7 @@ export const projects = [
   {
     id: "hktc-nairobi",
     title: "HKTC Nairobi",
-    subtitle: "Hare Krishna Theological College",
+    subtitle: "Hare Krishna Training Centre",
     description: "A Vaishnava education initiative connected to ISKCON Nairobi, offering serious study of Bhagavad-gita, Srimad-Bhagavatam, kirtan, and devotional practice.",
     image: "/images/iskcon-nairobi-aerial.jpg",
     href: "/projects/hktc-nairobi",
@@ -162,7 +162,7 @@ export const leadership = [
   {
     name: "Education Team",
     title: "Scriptural Study & Youth Programmes",
-    description: "Teachers and mentors support Bhagavad-gita study, kirtan training, youth outreach, and the Hare Krishna Theological College initiatives.",
+    description: "Teachers and mentors support Bhagavad-gita study, kirtan training, youth outreach, and the Hare Krishna Training Centre initiatives.",
     image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80",
   },
   {

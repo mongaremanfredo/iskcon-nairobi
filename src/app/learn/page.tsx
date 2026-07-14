@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 const courses = [
   { title: "Bhagavad-gītā Introduction", format: "Weekly · In-Person", duration: "8 Weeks", level: "Beginner", desc: "A structured introduction to the Bhagavad-gītā As It Is for newcomers. No prior knowledge required." },
   { title: "Śrīmad-Bhāgavatam Study Circle", format: "Weekly · In-Person & Online", duration: "Ongoing", level: "All Levels", desc: "Deep study of the Śrīmad-Bhāgavatam through guided verse-by-verse reading and discussion." },
-  { title: "Bhakti-śāstrī Programme", format: "Residential · HKTC Nairobi", duration: "1 Year", level: "Committed", desc: "Full residential theological education in Nairobi. Applications open annually." },
+  { title: "Bhakti-śāstrī Programme", format: "Residential · HKTC Nairobi", duration: "1 Year", level: "Committed", desc: "Full residential devotional education in Nairobi. Applications open annually." },
   { title: "Sunday Feast Class", format: "Weekly · Sunday", duration: "1.5 Hours", level: "All Levels", desc: "Weekly philosophy lecture followed by communal prasādam. Open to everyone — the ideal starting point." },
   { title: "Sanskrit Fundamentals", format: "Monthly Intensive", duration: "3 Days", level: "Intermediate", desc: "Introduction to Devanāgarī script and Vedic Sanskrit grammar for devotional purposes." },
   { title: "Kirtan & Mṛdaṅga Training", format: "Weekly · Small Groups", duration: "Ongoing", level: "Beginner", desc: "Learn the basics of kīrtan leading, mṛdaṅga, and kartāl for community worship." },
@@ -64,7 +64,7 @@ export default function LearnPage() {
             </div>
             <div>
               <p className="font-inter text-white/60 leading-relaxed mb-6">
-                The Hare Krishna Theological College offers a full residential programme for those who want to go deep. Join 100+ students from across East Africa and beyond.
+                The Hare Krishna Training Centre offers a full residential programme for those who want to go deep. Join 1000+ students from across East Africa and beyond.
               </p>
               <Link href="/projects/hktc-nairobi" className="btn-outline border-gold text-gold hover:bg-gold hover:text-white">
                 Explore HKTC Nairobi

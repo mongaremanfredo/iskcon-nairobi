@@ -5,7 +5,7 @@ import { templeInfo } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Apply - HKTC Nairobi",
-  description: "Express interest in Hare Krishna Theological College programmes connected with ISKCON Nairobi.",
+  description: "Express interest in Hare Krishna Training Centre programmes connected with ISKCON Nairobi.",
 };
 
 export default function HktcApplyPage() {

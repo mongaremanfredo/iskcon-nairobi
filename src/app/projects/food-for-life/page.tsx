@@ -24,7 +24,7 @@ export default function FoodForLifePage() {
         <div className="content-width">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 text-center">
             {[
-              { v: "5,000+", l: "Meals per Month" },
+              { v: "10,000+", l: "Meals per Month" },
               { v: "12+", l: "Distribution Points" },
               { v: "10+", l: "Years Running" },
               { v: "500+", l: "Volunteers" },
