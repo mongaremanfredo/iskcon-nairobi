@@ -10,6 +10,8 @@ export const metadata: Metadata = {
 const categories = ["All", "Temple Life", "Festivals", "Farm & Goshala", "Food For Life", "HKTC", "Kirtan Safari"];
 
 const images = [
+  { src: "/images/iskcon-nairobi-main-altar-thumb.jpg", caption: "Main altar at ISKCON Nairobi", category: "Temple Life" },
+  { src: "/images/iskcon-nairobi-main-altar-wide-thumb.jpg", caption: "Full altar view with three sections", category: "Temple Life" },
   { src: "https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=600&q=80", caption: "Janmashtami celebration mood", category: "Festivals" },
   { src: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80", caption: "Dawn kirtan on the Kenyan savanna", category: "Kirtan Safari" },
   { src: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80", caption: "Food For Life prasadam service", category: "Food For Life" },
@@ -40,6 +42,24 @@ export default function MediaPage() {
 
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding">
+          <div className="mb-10 bg-white border border-temple-sand p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div>
+              <span className="eyebrow block mb-2">HKTC Nairobi</span>
+              <h2 className="font-playfair text-2xl font-semibold text-ink">Graduation Ceremony Album</h2>
+              <p className="font-inter text-ink/60 text-sm mt-2 max-w-2xl">
+                To keep this website fast, the full graduation gallery stays in Google Photos while selected images can be curated locally when needed.
+              </p>
+            </div>
+            <a
+              href="https://photos.app.goo.gl/MIZfuQWWgNPvBuG43"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary justify-center text-xs"
+            >
+              View Full Album
+            </a>
+          </div>
+
           <div className="flex flex-wrap gap-2 mb-10">
             {categories.map((cat, i) => (
               <button

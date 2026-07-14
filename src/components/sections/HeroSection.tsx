@@ -7,6 +7,11 @@ import { cn } from "@/lib/utils";
 
 const heroImages = [
   {
+    src: "/images/iskcon-nairobi-main-altar.jpg",
+    alt: "Main altar of ISKCON Nairobi arranged in three sections with flowers and offerings",
+    position: "center",
+  },
+  {
     src: "/images/iskcon-nairobi-aerial.jpg",
     alt: "Aerial view of ISKCON Nairobi temple with the Nairobi skyline",
     position: "center 58%",
@@ -80,7 +85,7 @@ export default function HeroSection() {
               )}
             >
               <span className="gold-dot" />
-              <span className="eyebrow text-gold">Hare Krishna — East Africa</span>
+              <span className="eyebrow text-gold">Sri Sri Radha Bankebihari Temple</span>
             </div>
 
             {/* Main Title */}
@@ -117,7 +122,7 @@ export default function HeroSection() {
                 Faith.&ensp;Community.&ensp;Service.
               </p>
               <p className="font-inter text-white/70 mt-4 text-sm sm:text-base tracking-wide max-w-md leading-relaxed">
-                Discover Krishna Consciousness in the heart of East Africa — where devotion meets the beauty of the Kenyan landscape.
+                Discover Krishna Consciousness in Nairobi through worship, kirtan, prasadam, education, and service.
               </p>
             </div>
 
