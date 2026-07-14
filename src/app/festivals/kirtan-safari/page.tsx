@@ -21,8 +21,8 @@ export const metadata: Metadata = {
       "Every word a song, every step a dance. A three-day kirtan journey through Jarikhand Forest — August 28–30, 2026.",
     images: [
       {
-        url: "/images/kirtan-safari-2026-header.jpg",
-        width: 1397,
+        url: "/images/kirtan-safari-2026-hero-bg.jpg",
+        width: 612,
         height: 367,
       },
     ],
@@ -119,7 +119,7 @@ export default function KirtanSafariPage() {
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "url('/images/kirtan-safari-2026-header.jpg')",
+              "url('/images/kirtan-safari-2026-hero-bg.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
