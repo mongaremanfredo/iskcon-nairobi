@@ -23,7 +23,7 @@ export default function Navigation() {
         "fixed top-0 left-0 right-0 z-50 border-b px-5 transition-all duration-300 max-[760px]:px-[18px]",
         scrolled
           ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
-          : "bg-dusk/80 border-gold/15 py-[18px] backdrop-blur-xl max-[760px]:border-transparent max-[760px]:bg-transparent max-[760px]:py-3 max-[760px]:backdrop-blur-0",
+          : "border-transparent bg-transparent py-[18px] backdrop-blur-0 max-[760px]:py-3",
         isOpen && "bg-dusk/95 border-gold/25"
       )}
     >
