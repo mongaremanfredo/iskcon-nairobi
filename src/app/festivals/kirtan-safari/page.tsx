@@ -1,253 +1,1214 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { CalendarDays, Clock, ExternalLink, HeartHandshake, MapPin, Music2, Share2, Utensils } from "lucide-react";
-
-const registrationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform";
-
-const socialLinks = [
-  { label: "Instagram", href: "https://www.instagram.com/kirtansafari" },
-  { label: "YouTube", href: "https://www.youtube.com/@kirtan_safari" },
-  { label: "TikTok", href: "https://www.tiktok.com/@kirtan.safari" },
-];
-
-const eventDays = [
-  {
-    day: "28",
-    suffix: "th",
-    month: "August",
-    weekday: "Friday",
-    note: "Balaram Purnima",
-    programme: [
-      ["10:00am", "Adivas Kirtan"],
-      ["01:00pm", "Prasadam"],
-      ["06:00pm", "Abhishek & talk"],
-      ["07:30pm", "Kirtan"],
-      ["09:00pm", "Prasadam"],
-    ],
-  },
-  {
-    day: "29",
-    suffix: "th",
-    month: "August",
-    weekday: "Saturday",
-    note: "Special Harinam",
-    programme: [
-      ["10:00am", "Kirtan starts"],
-      ["01:00pm", "Prasadam"],
-      ["02:30pm", "Special Harinam"],
-      ["05:00pm", "Kirtan"],
-      ["09:00pm", "Prasadam"],
-    ],
-  },
-  {
-    day: "30",
-    suffix: "th",
-    month: "August",
-    weekday: "Sunday",
-    note: "Continuous Kirtan",
-    programme: [
-      ["10:00am - 9:00pm", "Continuous kirtan all day"],
-      ["01:00pm", "Prasadam"],
-      ["09:00pm", "Prasadam"],
-    ],
-  },
-];
-
-const highlights = [
-  { icon: <Music2 size={18} />, title: "Every Word a Song", text: "A full weekend of maha-mantra kirtan, devotional music, and shared chanting." },
-  { icon: <Share2 size={18} />, title: "Every Step a Dance", text: "A safari-inspired devotional gathering shaped by Nairobi's forest and savanna mood." },
-  { icon: <Utensils size={18} />, title: "Prasadam Daily", text: "Sanctified vegetarian meals are part of each festival day." },
-];
+import {
+  MapPin,
+  Phone,
+  Mail,
+  Clock,
+  Music,
+  Sun,
+  Utensils,
+  ExternalLink,
+} from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Kirtan Safari 2026",
-  description: "Kirtan Safari 2026 at ISKCON Nairobi, 28-30 August: a kirtan journey through Jarikhand Forest with kirtan, prasadam, Harinam, Abhishek, and classes.",
+  title: "Kirtan Safari 2026 — A Kirtan Journey Through Jarikhand Forest",
+  description:
+    "Join us August 28–30, 2026 at Hare Krishna Temple Nairobi for Kirtan Safari — three days of devotional music, prasadam, and kirtan in the wild. ISKCON Nairobi 60th Anniversary.",
+  openGraph: {
+    title: "Kirtan Safari 2026 | ISKCON Nairobi",
+    description:
+      "Every word a song, every step a dance. A three-day kirtan journey through Jarikhand Forest — August 28–30, 2026.",
+    images: [
+      {
+        url: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1200&q=80",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
+/* ─── schedule data ─────────────────────────────────────── */
+const days = [
+  {
+    date: "28",
+    month: "August",
+    day: "Friday",
+    special: "Balaram Purnima",
+    icon: "🌕",
+    sessions: [
+      { time: "10:00 am", event: "Adivas Kirtan" },
+      { time: "01:00 pm", event: "Prasadam" },
+      { time: "06:00 pm", event: "Abhishek & Talk" },
+      { time: "07:30 pm", event: "Kirtan" },
+      { time: "09:00 pm", event: "Prasadam" },
+    ],
+  },
+  {
+    date: "29",
+    month: "August",
+    day: "Saturday",
+    special: null,
+    icon: "🥁",
+    sessions: [
+      { time: "10:00 am", event: "Kirtan Starts" },
+      { time: "01:00 pm", event: "Prasadam" },
+      { time: "02:30 pm", event: "Special Harinam" },
+      { time: "05:00 pm", event: "Kirtan" },
+      { time: "09:00 pm", event: "Prasadam" },
+    ],
+  },
+  {
+    date: "30",
+    month: "August",
+    day: "Sunday",
+    special: "Continuous Kirtan All Day!",
+    icon: "☀️",
+    sessions: [
+      { time: "10:00 am – 9:00 pm", event: "Continuous Kirtan" },
+      { time: "01:00 pm", event: "Prasadam" },
+      { time: "09:00 pm", event: "Prasadam" },
+    ],
+  },
+];
+
+/* ─── social links ──────────────────────────────────────── */
+const socials = [
+  {
+    label: "Instagram",
+    handle: "@kirtansafari",
+    href: "https://www.instagram.com/kirtansafari",
+    icon: ExternalLink,
+  },
+  {
+    label: "YouTube",
+    handle: "@kirtan_safari",
+    href: "https://www.youtube.com/@kirtan_safari",
+    icon: ExternalLink,
+  },
+  {
+    label: "TikTok",
+    handle: "@kirtan.safari",
+    href: "https://www.tiktok.com/@kirtan.safari",
+    icon: ExternalLink,
+  },
+];
+
+/* ─── page ──────────────────────────────────────────────── */
 export default function KirtanSafariPage() {
   return (
-    <>
-      <section className="relative overflow-hidden bg-[#152018] text-white">
-        <div className="absolute inset-0">
-          <img
-            src="/images/kirtan-safari-2026-logo-wide.jpg"
-            alt=""
-            className="h-full w-full object-cover opacity-70"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#12180f] via-[#182315]/88 to-[#f09a22]/20" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#12180f] via-transparent to-[#12180f]/35" />
+    <div className="kirtan-safari-page">
+      {/* ═══════════════════════════════════════
+          1. CINEMATIC HERO
+      ═══════════════════════════════════════ */}
+      <section
+        className="ks-hero"
+        style={{
+          position: "relative",
+          minHeight: "100svh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "flex-end",
+          overflow: "hidden",
+        }}
+      >
+        {/* Background — savanna sunset */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=90')",
+            backgroundSize: "cover",
+            backgroundPosition: "center 40%",
+          }}
+        />
+
+        {/* Layered overlays — amber burn + dark vignette */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to bottom, rgba(30,15,0,0.3) 0%, rgba(180,90,10,0.15) 40%, rgba(10,5,0,0.85) 100%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(to right, rgba(0,0,0,0.5) 0%, transparent 60%)",
+          }}
+        />
+
+        {/* Anniversary badge — top right */}
+        <div
+          style={{
+            position: "absolute",
+            top: "6rem",
+            right: "1.5rem",
+            background: "rgba(232,130,10,0.15)",
+            border: "1px solid rgba(232,130,10,0.5)",
+            backdropFilter: "blur(8px)",
+            padding: "0.5rem 0.875rem",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-inter, sans-serif)",
+              color: "#E8820A",
+              fontSize: "0.6rem",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              margin: 0,
+            }}
+          >
+            ISKCON Nairobi
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-playfair, serif)",
+              color: "#F5C97A",
+              fontSize: "1.4rem",
+              fontWeight: 700,
+              margin: "0.1rem 0",
+              lineHeight: 1,
+            }}
+          >
+            60
+          </p>
+          <p
+            style={{
+              fontFamily: "var(--font-inter, sans-serif)",
+              color: "rgba(245,201,122,0.7)",
+              fontSize: "0.55rem",
+              letterSpacing: "0.15em",
+              margin: 0,
+            }}
+          >
+            1966 · 2026
+          </p>
         </div>
 
-        <div className="relative content-width section-padding min-h-[calc(100vh-5rem)] py-28 lg:py-36 flex items-center">
-          <div className="grid lg:grid-cols-[1fr_380px] gap-12 items-center w-full">
-            <div className="max-w-3xl">
-              <div className="inline-flex items-center gap-2 border border-[#f4b553]/50 bg-[#f4b553]/15 px-4 py-2 mb-8">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f4b553]" />
-                <span className="font-inter text-[11px] tracking-[0.18em] uppercase text-[#f7d18a]">28-30 August 2026</span>
-              </div>
+        {/* Hero content */}
+        <div
+          className="content-width section-padding"
+          style={{ position: "relative", zIndex: 10, paddingBottom: "4rem" }}
+        >
+          {/* Tagline */}
+          <p
+            style={{
+              fontFamily: "var(--font-cormorant, serif)",
+              color: "rgba(245,201,122,0.85)",
+              fontSize: "clamp(1rem, 3vw, 1.4rem)",
+              fontStyle: "italic",
+              marginBottom: "1.25rem",
+              letterSpacing: "0.04em",
+            }}
+          >
+            Every word a song &nbsp;·&nbsp; every step a dance
+          </p>
 
-              <p className="font-cormorant text-[#f7d18a] italic text-2xl mb-3">Every word a song. Every step a dance.</p>
-              <h1 className="font-playfair text-white text-shadow leading-[0.9]" style={{ fontSize: "clamp(3.5rem, 10vw, 8rem)" }}>
-                Kirtan
-                <br />
-                <span className="text-[#f4b553]">Safari</span>
-              </h1>
-              <p className="font-inter text-white/75 max-w-2xl mt-7 leading-relaxed">
-                You are invited to a kirtan journey through Jarikhand Forest at Hare Krishna Temple, ISKCON Nairobi.
-                Join three days of kirtan, Harinam, Abhishek, prasadam, and devotional association.
-              </p>
+          {/* You are invited */}
+          <p
+            style={{
+              fontFamily: "var(--font-inter, sans-serif)",
+              color: "rgba(255,255,255,0.5)",
+              fontSize: "0.65rem",
+              letterSpacing: "0.25em",
+              textTransform: "uppercase",
+              marginBottom: "0.75rem",
+            }}
+          >
+            You are invited to
+          </p>
 
-              <div className="flex flex-wrap gap-4 mt-10">
-                <a href={registrationUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  Register for 2026 <ExternalLink size={14} />
-                </a>
-                <Link href="#programme" className="btn-ghost">
-                  View Programme
-                </Link>
-              </div>
-            </div>
-
-            <div className="hidden lg:block">
-              <div className="bg-[#fff7e4] p-3 shadow-2xl rotate-2">
-                <img
-                  src="/images/kirtan-safari-2026-poster-thumb.jpg"
-                  alt="Kirtan Safari 2026 poster"
-                  className="w-full object-cover"
-                />
-              </div>
-            </div>
+          {/* KIRTAN SAFARI wordmark */}
+          <div style={{ marginBottom: "1.5rem" }}>
+            <h1
+              style={{
+                fontFamily: "var(--font-playfair, serif)",
+                lineHeight: 0.9,
+                margin: 0,
+              }}
+            >
+              <span
+                style={{
+                  display: "block",
+                  color: "#fff",
+                  fontSize: "clamp(4.5rem, 16vw, 10rem)",
+                  fontWeight: 900,
+                  letterSpacing: "-0.03em",
+                  textShadow: "0 4px 40px rgba(0,0,0,0.6)",
+                }}
+              >
+                KIRTAN
+              </span>
+              <span
+                style={{
+                  display: "block",
+                  color: "#E8820A",
+                  fontSize: "clamp(3.5rem, 13vw, 8rem)",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textShadow: "0 4px 40px rgba(232,130,10,0.4)",
+                  marginTop: "-0.1em",
+                }}
+              >
+                SAFARI
+              </span>
+            </h1>
           </div>
+
+          {/* Sub-tagline */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              marginBottom: "2.5rem",
+            }}
+          >
+            <div
+              style={{ height: "1px", width: "2rem", background: "#E8820A", opacity: 0.6 }}
+            />
+            <p
+              style={{
+                fontFamily: "var(--font-inter, sans-serif)",
+                color: "rgba(245,201,122,0.9)",
+                fontSize: "0.7rem",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                margin: 0,
+              }}
+            >
+              A Kirtan Journey Through Jarikhand Forest
+            </p>
+            <div
+              style={{ height: "1px", flex: 1, background: "#E8820A", opacity: 0.3 }}
+            />
+          </div>
+
+          {/* Date + Venue pill row */}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              gap: "0.75rem",
+              marginBottom: "2rem",
+            }}
+          >
+            {[
+              { icon: "📅", text: "28 – 30 August 2026" },
+              { icon: "📍", text: "Hare Krishna Temple, West Ngara Rd, Nairobi" },
+            ].map((item) => (
+              <div
+                key={item.text}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  background: "rgba(0,0,0,0.45)",
+                  border: "1px solid rgba(232,130,10,0.3)",
+                  backdropFilter: "blur(6px)",
+                  padding: "0.5rem 1rem",
+                }}
+              >
+                <span style={{ fontSize: "0.875rem" }}>{item.icon}</span>
+                <span
+                  style={{
+                    fontFamily: "var(--font-inter, sans-serif)",
+                    color: "rgba(255,255,255,0.85)",
+                    fontSize: "0.8rem",
+                  }}
+                >
+                  {item.text}
+                </span>
+              </div>
+            ))}
+          </div>
+
+          {/* CTAs */}
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+            <a
+              href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                background: "#E8820A",
+                color: "#fff",
+                fontFamily: "var(--font-inter, sans-serif)",
+                fontWeight: 700,
+                fontSize: "0.7rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                padding: "1rem 2rem",
+                textDecoration: "none",
+                transition: "background 0.3s",
+              }}
+            >
+              Register Now →
+            </a>
+            <a
+              href="#schedule"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                border: "1px solid rgba(255,255,255,0.35)",
+                color: "#fff",
+                fontFamily: "var(--font-inter, sans-serif)",
+                fontWeight: 600,
+                fontSize: "0.7rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                padding: "1rem 2rem",
+                textDecoration: "none",
+              }}
+            >
+              View Schedule
+            </a>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div
+          style={{
+            position: "absolute",
+            bottom: "1.5rem",
+            right: "1.5rem",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: "0.4rem",
+          }}
+        >
+          <p
+            style={{
+              fontFamily: "var(--font-inter, sans-serif)",
+              color: "rgba(255,255,255,0.3)",
+              fontSize: "0.55rem",
+              letterSpacing: "0.2em",
+              textTransform: "uppercase",
+              margin: 0,
+            }}
+          >
+            Scroll
+          </p>
+          <div
+            style={{
+              width: "1px",
+              height: "2rem",
+              background:
+                "linear-gradient(to bottom, rgba(232,130,10,0.7), transparent)",
+            }}
+          />
         </div>
       </section>
 
-      <div className="bg-[#203221] py-6 section-padding">
-        <div className="content-width grid sm:grid-cols-3 gap-5">
-          {[
-            { icon: <CalendarDays size={16} />, label: "Dates", value: "28-30 August 2026" },
-            { icon: <MapPin size={16} />, label: "Venue", value: "Hare Krishna Temple" },
-            { icon: <Clock size={16} />, label: "Sunday", value: "Continuous kirtan all day" },
-          ].map((item) => (
-            <div key={item.label} className="flex items-center gap-3 text-white">
-              <div className="text-[#f4b553]">{item.icon}</div>
-              <div>
-                <p className="font-inter text-[10px] uppercase tracking-[0.16em] text-white/45">{item.label}</p>
-                <p className="font-inter text-sm text-white/90">{item.value}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <section className="py-section bg-[#fff7e4]">
+      {/* ═══════════════════════════════════════
+          2. INTRO / ABOUT THE EVENT
+      ═══════════════════════════════════════ */}
+      <section
+        style={{
+          background: "#0D0800",
+          padding: "5rem 0",
+        }}
+      >
         <div className="content-width section-padding">
-          <div className="grid lg:grid-cols-[0.85fr_1.15fr] gap-12 items-start">
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "4rem",
+              alignItems: "center",
+            }}
+          >
+            {/* Text */}
             <div>
-              <span className="eyebrow block mb-4 text-[#b86f16]">2026 Theme</span>
-              <h2 className="font-playfair text-[#203221] leading-tight mb-6" style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)" }}>
-                A Kirtan Journey Through Jarikhand Forest
-              </h2>
-              <p className="font-inter text-[#203221]/70 leading-relaxed mb-8">
-                The 2026 visual language is warm, earthy, and celebratory: forest silhouettes, safari sunset gold,
-                dancing devotees, and the mood of sacred sound moving through nature.
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "#E8820A",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  marginBottom: "1rem",
+                }}
+              >
+                About the Event
               </p>
-
-              <div className="grid sm:grid-cols-3 lg:grid-cols-1 gap-4">
-                {highlights.map((item) => (
-                  <div key={item.title} className="border border-[#dec787] bg-white/65 p-5">
-                    <div className="text-[#b86f16] mb-3">{item.icon}</div>
-                    <h3 className="font-playfair text-xl font-semibold text-[#203221]">{item.title}</h3>
-                    <p className="font-inter text-xs leading-relaxed text-[#203221]/65 mt-2">{item.text}</p>
-                  </div>
-                ))}
-              </div>
+              <h2
+                style={{
+                  fontFamily: "var(--font-playfair, serif)",
+                  color: "#fff",
+                  fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                  lineHeight: 1.1,
+                  marginBottom: "1.5rem",
+                }}
+              >
+                Where the Mantra<br />
+                <em style={{ color: "#E8820A", fontStyle: "normal" }}>
+                  Meets the Wild
+                </em>
+              </h2>
+              <div
+                style={{ width: "2.5rem", height: "2px", background: "#E8820A", marginBottom: "1.5rem" }}
+              />
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "rgba(255,255,255,0.6)",
+                  lineHeight: 1.8,
+                  fontSize: "0.95rem",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Kirtan Safari is a three-day immersive journey into devotional sound,
+                held in the sacred landscape of Jarikhand Forest. Voices rise with the
+                sun. Mṛdaṅgas echo through the trees. Giraffes and deer walk alongside
+                devotees lost in the mahā-mantra.
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "rgba(255,255,255,0.6)",
+                  lineHeight: 1.8,
+                  fontSize: "0.95rem",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                This year carries special significance — ISKCON Nairobi marks its{" "}
+                <span style={{ color: "#F5C97A", fontWeight: 600 }}>60th anniversary</span>,
+                making Kirtan Safari 2026 a historic celebration of six decades of
+                Krishna consciousness in East Africa.
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-cormorant, serif)",
+                  color: "rgba(245,201,122,0.7)",
+                  fontSize: "1.15rem",
+                  fontStyle: "italic",
+                  lineHeight: 1.6,
+                }}
+              >
+                "Every word a song, every step a dance."
+              </p>
             </div>
 
-            <div id="programme" className="grid gap-4">
-              {eventDays.map((eventDay) => (
-                <article key={eventDay.day} className="bg-white border border-[#dec787] p-6 lg:p-7">
-                  <div className="grid sm:grid-cols-[150px_1fr] gap-6">
-                    <div className="border-b sm:border-b-0 sm:border-r border-[#dec787] pb-5 sm:pb-0 sm:pr-6">
-                      <p className="font-inter text-[11px] uppercase tracking-[0.18em] text-[#b86f16]">{eventDay.weekday}</p>
-                      <div className="flex items-start gap-1 my-2">
-                        <span className="font-playfair text-6xl leading-none text-[#203221]">{eventDay.day}</span>
-                        <span className="font-inter text-xs font-bold uppercase text-[#203221]/50 mt-2">{eventDay.suffix}</span>
-                      </div>
-                      <p className="font-inter text-sm font-semibold uppercase tracking-[0.12em] text-[#b86f16]">{eventDay.month}</p>
-                      <p className="font-cormorant text-lg italic text-[#203221]/65 mt-3">{eventDay.note}</p>
-                    </div>
-                    <div className="space-y-3">
-                      {eventDay.programme.map(([time, title]) => (
-                        <div key={`${eventDay.day}-${time}-${title}`} className="grid grid-cols-[120px_1fr] gap-4 items-baseline">
-                          <p className="font-inter text-xs font-semibold text-[#203221]/55">{time}</p>
-                          <p className="font-inter text-sm text-[#203221]">{title}</p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </article>
+            {/* Stats grid */}
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "1fr 1fr",
+                gap: "1px",
+                background: "rgba(232,130,10,0.15)",
+              }}
+            >
+              {[
+                { value: "3", unit: "Days", label: "of continuous kirtan" },
+                { value: "60", unit: "Years", label: "ISKCON Nairobi anniversary" },
+                { value: "∞", unit: "Kirtan", label: "all day Sunday" },
+                { value: "Free", unit: "Entry", label: "donations welcome" },
+              ].map((stat) => (
+                <div
+                  key={stat.label}
+                  style={{
+                    background: "#0D0800",
+                    padding: "2rem 1.5rem",
+                    textAlign: "center",
+                  }}
+                >
+                  <p
+                    style={{
+                      fontFamily: "var(--font-playfair, serif)",
+                      color: "#E8820A",
+                      fontSize: "clamp(2rem, 5vw, 3rem)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      margin: "0 0 0.25rem",
+                    }}
+                  >
+                    {stat.value}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-inter, sans-serif)",
+                      color: "#fff",
+                      fontSize: "0.75rem",
+                      fontWeight: 600,
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      margin: "0 0 0.35rem",
+                    }}
+                  >
+                    {stat.unit}
+                  </p>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-inter, sans-serif)",
+                      color: "rgba(255,255,255,0.35)",
+                      fontSize: "0.7rem",
+                      margin: 0,
+                    }}
+                  >
+                    {stat.label}
+                  </p>
+                </div>
               ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-section bg-[#182315] text-white">
+      {/* ═══════════════════════════════════════
+          3. FULL SCHEDULE
+      ═══════════════════════════════════════ */}
+      <section
+        id="schedule"
+        style={{
+          background: "#110900",
+          padding: "5rem 0",
+          borderTop: "1px solid rgba(232,130,10,0.15)",
+        }}
+      >
         <div className="content-width section-padding">
-          <div className="grid lg:grid-cols-[1fr_360px] gap-10 items-center">
-            <div>
-              <span className="eyebrow block mb-4 text-[#f4b553]">Registration & Support</span>
-              <h2 className="font-playfair text-display-md mb-5">Join Kirtan Safari 2026</h2>
-              <p className="font-inter text-white/65 leading-relaxed max-w-2xl">
-                Register through the official 2026 form and follow Kirtan Safari for updates, reminders, and festival media.
-                Donations can be sent by Paybill to support the festival prasadam, kirtan, and outreach arrangements.
-              </p>
-              <div className="flex flex-wrap gap-4 mt-8">
-                <a href={registrationUrl} target="_blank" rel="noopener noreferrer" className="btn-primary">
-                  Open Registration Form <ExternalLink size={14} />
-                </a>
-                <a href="/images/kirtan-safari-2026-poster.jpg" target="_blank" rel="noopener noreferrer" className="btn-ghost">
-                  View Poster
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-[#fff7e4] text-[#203221] p-6 border border-[#f4b553]/40">
-              <div className="flex items-center gap-3 mb-5">
-                <HeartHandshake size={20} className="text-[#b86f16]" />
-                <h3 className="font-playfair text-2xl font-semibold">Festival Donations</h3>
-              </div>
-              <div className="space-y-4 font-inter text-sm">
-                <div>
-                  <p className="text-[#203221]/45 uppercase tracking-[0.16em] text-[10px]">Paybill No.</p>
-                  <p className="text-3xl font-semibold text-[#203221]">250144</p>
-                </div>
-                <div>
-                  <p className="text-[#203221]/45 uppercase tracking-[0.16em] text-[10px]">Account</p>
-                  <p className="text-xl font-semibold text-[#203221]">KIRTAN</p>
-                </div>
-                <div>
-                  <p className="text-[#203221]/45 uppercase tracking-[0.16em] text-[10px]">Location</p>
-                  <p className="text-[#203221]/75">ISKCON Nairobi, Radha Banke Bihari Mandir, West Ngara Road</p>
-                </div>
-              </div>
-            </div>
+          {/* Header */}
+          <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
+            <p
+              style={{
+                fontFamily: "var(--font-inter, sans-serif)",
+                color: "#E8820A",
+                fontSize: "0.65rem",
+                letterSpacing: "0.2em",
+                textTransform: "uppercase",
+                marginBottom: "0.75rem",
+              }}
+            >
+              Programme
+            </p>
+            <h2
+              style={{
+                fontFamily: "var(--font-playfair, serif)",
+                color: "#fff",
+                fontSize: "clamp(2rem, 5vw, 3rem)",
+                margin: 0,
+              }}
+            >
+              Three Days of Kirtan
+            </h2>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-3">
-            {socialLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border border-white/15 px-4 py-2 font-inter text-xs uppercase tracking-[0.14em] text-white/65 hover:border-[#f4b553] hover:text-[#f4b553] transition-colors"
+          {/* Day cards */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "1.5rem",
+            }}
+          >
+            {days.map((day, i) => (
+              <div
+                key={day.date}
+                style={{
+                  background: i === 2 ? "rgba(232,130,10,0.08)" : "#0D0800",
+                  border: i === 2
+                    ? "1px solid rgba(232,130,10,0.5)"
+                    : "1px solid rgba(255,255,255,0.06)",
+                  padding: "2rem",
+                  position: "relative",
+                  overflow: "hidden",
+                }}
               >
-                {link.label}
-              </a>
+                {/* Day number */}
+                <div style={{ marginBottom: "1.5rem" }}>
+                  <div style={{ display: "flex", alignItems: "baseline", gap: "0.4rem" }}>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-playfair, serif)",
+                        color: "#E8820A",
+                        fontSize: "clamp(3rem, 8vw, 4.5rem)",
+                        fontWeight: 900,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {day.date}
+                    </span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-inter, sans-serif)",
+                        color: "#E8820A",
+                        fontSize: "0.75rem",
+                        fontWeight: 700,
+                        textTransform: "uppercase",
+                        letterSpacing: "0.1em",
+                        alignSelf: "flex-start",
+                        marginTop: "0.5rem",
+                      }}
+                    >
+                      th
+                    </span>
+                  </div>
+                  <p
+                    style={{
+                      fontFamily: "var(--font-inter, sans-serif)",
+                      color: "rgba(255,255,255,0.5)",
+                      fontSize: "0.65rem",
+                      letterSpacing: "0.2em",
+                      textTransform: "uppercase",
+                      margin: "0.25rem 0 0",
+                    }}
+                  >
+                    {day.month} · {day.day}
+                  </p>
+                  {day.special && (
+                    <div
+                      style={{
+                        display: "inline-block",
+                        marginTop: "0.5rem",
+                        background: "rgba(232,130,10,0.2)",
+                        border: "1px solid rgba(232,130,10,0.4)",
+                        padding: "0.25rem 0.625rem",
+                      }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "var(--font-inter, sans-serif)",
+                          color: "#F5C97A",
+                          fontSize: "0.6rem",
+                          letterSpacing: "0.12em",
+                          textTransform: "uppercase",
+                          fontWeight: 600,
+                        }}
+                      >
+                        {day.special}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {/* Divider */}
+                <div
+                  style={{
+                    height: "1px",
+                    background: "rgba(232,130,10,0.2)",
+                    marginBottom: "1.25rem",
+                  }}
+                />
+
+                {/* Sessions */}
+                <div style={{ display: "flex", flexDirection: "column", gap: "0.875rem" }}>
+                  {day.sessions.map((session) => (
+                    <div
+                      key={session.time + session.event}
+                      style={{ display: "flex", alignItems: "flex-start", gap: "1rem" }}
+                    >
+                      <span
+                        style={{
+                          fontFamily: "var(--font-inter, sans-serif)",
+                          color: "#E8820A",
+                          fontSize: "0.72rem",
+                          fontWeight: 600,
+                          minWidth: "6rem",
+                          flexShrink: 0,
+                          paddingTop: "0.05rem",
+                        }}
+                      >
+                        {session.time}
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: "var(--font-inter, sans-serif)",
+                          color: "rgba(255,255,255,0.8)",
+                          fontSize: "0.875rem",
+                        }}
+                      >
+                        {session.event}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Watermark day number */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: "-1rem",
+                    right: "-0.5rem",
+                    fontFamily: "var(--font-playfair, serif)",
+                    fontSize: "8rem",
+                    color: "rgba(232,130,10,0.04)",
+                    fontWeight: 900,
+                    lineHeight: 1,
+                    pointerEvents: "none",
+                    userSelect: "none",
+                  }}
+                >
+                  {day.date}
+                </div>
+              </div>
             ))}
           </div>
         </div>
       </section>
-    </>
+
+      {/* ═══════════════════════════════════════
+          4. VENUE & DONATIONS
+      ═══════════════════════════════════════ */}
+      <section
+        style={{
+          position: "relative",
+          padding: "5rem 0",
+          overflow: "hidden",
+        }}
+      >
+        {/* Parallax bg */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            backgroundImage:
+              "url('https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=80')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundAttachment: "fixed",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background: "rgba(10,5,0,0.88)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse at center, rgba(232,130,10,0.08) 0%, transparent 70%)",
+          }}
+        />
+
+        <div
+          className="content-width section-padding"
+          style={{ position: "relative", zIndex: 10 }}
+        >
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+              gap: "3rem",
+            }}
+          >
+            {/* Venue */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "#E8820A",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  marginBottom: "1rem",
+                }}
+              >
+                Venue
+              </p>
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair, serif)",
+                  color: "#fff",
+                  fontSize: "clamp(1.5rem, 4vw, 2.25rem)",
+                  marginBottom: "1.5rem",
+                  lineHeight: 1.2,
+                }}
+              >
+                Hare Krishna Temple
+              </h3>
+              <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+                {[
+                  {
+                    icon: <MapPin size={14} color="#E8820A" />,
+                    text: "ISKCON Nairobi, Radha Banke Bihari Mandir\nWest Ngara Road, Nairobi",
+                  },
+                  {
+                    icon: <Phone size={14} color="#E8820A" />,
+                    text: "0753 419 194",
+                  },
+                  {
+                    icon: <Mail size={14} color="#E8820A" />,
+                    text: "iskcon.nairobi@gmail.com",
+                  },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    style={{ display: "flex", alignItems: "flex-start", gap: "0.75rem" }}
+                  >
+                    <span style={{ marginTop: "0.15rem", flexShrink: 0 }}>{item.icon}</span>
+                    <span
+                      style={{
+                        fontFamily: "var(--font-inter, sans-serif)",
+                        color: "rgba(255,255,255,0.6)",
+                        fontSize: "0.875rem",
+                        lineHeight: 1.6,
+                        whiteSpace: "pre-line",
+                      }}
+                    >
+                      {item.text}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Donations */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "#E8820A",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  marginBottom: "1rem",
+                }}
+              >
+                Support the Festival
+              </p>
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair, serif)",
+                  color: "#fff",
+                  fontSize: "clamp(1.5rem, 4vw, 2.25rem)",
+                  marginBottom: "1.5rem",
+                  lineHeight: 1.2,
+                }}
+              >
+                Donate via M-PESA
+              </h3>
+              <div
+                style={{
+                  background: "rgba(232,130,10,0.08)",
+                  border: "1px solid rgba(232,130,10,0.3)",
+                  padding: "1.5rem",
+                  marginBottom: "1.25rem",
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    marginBottom: "0.875rem",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-inter, sans-serif)",
+                      color: "rgba(255,255,255,0.5)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Paybill No.
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-playfair, serif)",
+                      color: "#F5C97A",
+                      fontSize: "1.6rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.05em",
+                    }}
+                  >
+                    250144
+                  </span>
+                </div>
+                <div
+                  style={{
+                    height: "1px",
+                    background: "rgba(232,130,10,0.2)",
+                    marginBottom: "0.875rem",
+                  }}
+                />
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontFamily: "var(--font-inter, sans-serif)",
+                      color: "rgba(255,255,255,0.5)",
+                      fontSize: "0.7rem",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Account
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-playfair, serif)",
+                      color: "#F5C97A",
+                      fontSize: "1.6rem",
+                      fontWeight: 700,
+                      letterSpacing: "0.08em",
+                    }}
+                  >
+                    KIRTAN
+                  </span>
+                </div>
+              </div>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "rgba(255,255,255,0.4)",
+                  fontSize: "0.75rem",
+                  lineHeight: 1.6,
+                }}
+              >
+                Entry is free. Donations support prasadam, kirtan logistics, and future
+                editions of the festival.
+              </p>
+            </div>
+
+            {/* Register */}
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "#E8820A",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  marginBottom: "1rem",
+                }}
+              >
+                Secure Your Place
+              </p>
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair, serif)",
+                  color: "#fff",
+                  fontSize: "clamp(1.5rem, 4vw, 2.25rem)",
+                  marginBottom: "1rem",
+                  lineHeight: 1.2,
+                }}
+              >
+                Register for<br />
+                <em style={{ color: "#E8820A", fontStyle: "normal" }}>Kirtan Safari 2026</em>
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-cormorant, serif)",
+                  color: "rgba(245,201,122,0.7)",
+                  fontSize: "1.1rem",
+                  fontStyle: "italic",
+                  marginBottom: "1.5rem",
+                  lineHeight: 1.6,
+                }}
+              >
+                "The mantra was made for this moment."
+              </p>
+              <a
+                href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  background: "#E8820A",
+                  color: "#fff",
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  fontWeight: 700,
+                  fontSize: "0.7rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  padding: "1rem 2rem",
+                  textDecoration: "none",
+                }}
+              >
+                Fill Registration Form →
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          5. SOCIAL / FOLLOW
+      ═══════════════════════════════════════ */}
+      <section
+        style={{
+          background: "#0D0800",
+          borderTop: "1px solid rgba(232,130,10,0.15)",
+          padding: "4rem 0",
+        }}
+      >
+        <div className="content-width section-padding">
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: "2rem",
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "#E8820A",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                Follow the Journey
+              </p>
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair, serif)",
+                  color: "#fff",
+                  fontSize: "clamp(1.5rem, 4vw, 2rem)",
+                  margin: 0,
+                }}
+              >
+                Stay Connected
+              </h3>
+            </div>
+
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+              {socials.map(({ label, handle, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "0.625rem",
+                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    padding: "0.75rem 1.25rem",
+                    textDecoration: "none",
+                    transition: "border-color 0.3s",
+                  }}
+                >
+                  <Icon size={14} color="#E8820A" />
+                  <div>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-inter, sans-serif)",
+                        color: "rgba(255,255,255,0.4)",
+                        fontSize: "0.55rem",
+                        letterSpacing: "0.12em",
+                        textTransform: "uppercase",
+                        margin: "0 0 0.1rem",
+                      }}
+                    >
+                      {label}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: "var(--font-inter, sans-serif)",
+                        color: "#fff",
+                        fontSize: "0.8rem",
+                        fontWeight: 600,
+                        margin: 0,
+                      }}
+                    >
+                      {handle}
+                    </p>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          6. FINAL CTA STRIP
+      ═══════════════════════════════════════ */}
+      <section
+        style={{
+          background: "#E8820A",
+          padding: "3rem 0",
+        }}
+      >
+        <div
+          className="content-width section-padding"
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: "1.5rem",
+          }}
+        >
+          <div>
+            <p
+              style={{
+                fontFamily: "var(--font-playfair, serif)",
+                color: "#fff",
+                fontSize: "clamp(1.25rem, 4vw, 1.75rem)",
+                fontWeight: 700,
+                margin: 0,
+              }}
+            >
+              Kirtan Safari 2026
+            </p>
+            <p
+              style={{
+                fontFamily: "var(--font-inter, sans-serif)",
+                color: "rgba(255,255,255,0.7)",
+                fontSize: "0.8rem",
+                margin: "0.25rem 0 0",
+              }}
+            >
+              28 – 30 August · Hare Krishna Temple, Nairobi
+            </p>
+          </div>
+          <a
+            href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              background: "#fff",
+              color: "#E8820A",
+              fontFamily: "var(--font-inter, sans-serif)",
+              fontWeight: 800,
+              fontSize: "0.7rem",
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              padding: "1rem 2rem",
+              textDecoration: "none",
+              flexShrink: 0,
+            }}
+          >
+            Register Free →
+          </a>
+        </div>
+      </section>
+    </div>
   );
 }
