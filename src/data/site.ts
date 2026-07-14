@@ -127,28 +127,28 @@ export const testimonials = [
     name: "Temple visitor",
     role: "Sunday Feast guest",
     origin: "Nairobi, Kenya",
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
+    image: "https://source.unsplash.com/400x400/?african,woman,portrait,smile&sig=iskcon-testimonial-1",
   },
   {
     quote: "Serving prasadam changes the whole mood of the day. People come for food, but they leave with dignity and joy.",
     name: "Food For Life volunteer",
     role: "Community outreach",
     origin: "Nairobi, Kenya",
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&q=80",
+    image: "https://source.unsplash.com/400x400/?african,man,portrait,smile&sig=iskcon-testimonial-2",
   },
   {
     quote: "The farm helped me understand simple living in a practical way: caring for cows, working with the land, and chanting together.",
     name: "Farm participant",
     role: "Thika Farm service",
     origin: "Kenya",
-    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80",
+    image: "https://source.unsplash.com/400x400/?indian,man,portrait,smile&sig=iskcon-testimonial-3",
   },
   {
     quote: "Ratha Yatra brought the whole city into celebration. I had never seen devotion expressed so publicly and joyfully.",
     name: "Festival volunteer",
     role: "Ratha Yatra service",
     origin: "Kiambu, Kenya",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b193?w=200&q=80",
+    image: "https://source.unsplash.com/400x400/?kenyan,student,portrait,graduation&sig=iskcon-testimonial-4",
   },
 ];
 
