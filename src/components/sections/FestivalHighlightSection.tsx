@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Camera, Music2, Star } from "lucide-react";
 
-/* ── Countdown hook ─────────────────────────────────── */
+/* Countdown hook */
 function useCountdown(target: Date) {
   const [diff, setDiff] = useState(0);
   useEffect(() => {
@@ -25,7 +26,88 @@ function Pad({ n }: { n: number }) {
   return <>{String(n).padStart(2, "0")}</>;
 }
 
-/* ── Component ──────────────────────────────────────── */
+function CountdownPanel({
+  days,
+  hours,
+  minutes,
+  seconds,
+  className,
+}: {
+  days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
+  className?: string;
+}) {
+  return (
+    <div
+      className={className}
+      style={{
+        background: "rgba(7,28,16,0.72)",
+        border: "1px solid rgba(214,156,43,0.3)",
+        backdropFilter: "blur(10px)",
+        padding: "1.75rem",
+      }}
+    >
+      <p
+        style={{
+          fontFamily: "var(--font-inter, sans-serif)",
+          color: "rgba(246,226,177,0.82)",
+          fontSize: "0.6rem",
+          letterSpacing: "0.2em",
+          textTransform: "uppercase",
+          marginBottom: "1.25rem",
+          textAlign: "center",
+        }}
+      >
+        Begins in
+      </p>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)",
+          gap: "0.5rem",
+          textAlign: "center",
+        }}
+      >
+        {[
+          { value: days, label: "Days" },
+          { value: hours, label: "Hrs" },
+          { value: minutes, label: "Min" },
+          { value: seconds, label: "Sec" },
+        ].map(({ value, label }) => (
+          <div key={label}>
+            <div
+              style={{
+                fontFamily: "var(--font-playfair, serif)",
+                color: "#d69c2b",
+                fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
+                fontWeight: 700,
+                lineHeight: 1,
+                marginBottom: "0.25rem",
+              }}
+            >
+              <Pad n={value} />
+            </div>
+            <div
+              style={{
+                fontFamily: "var(--font-inter, sans-serif)",
+                color: "rgba(255,255,255,0.35)",
+                fontSize: "0.55rem",
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+              }}
+            >
+              {label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* Component */
 export default function KirtanSafariSection() {
   const target = new Date("2026-08-28T10:00:00+03:00");
   const { days, hours, minutes, seconds } = useCountdown(target);
@@ -39,7 +121,7 @@ export default function KirtanSafariSection() {
         background: "#0b1f12",
       }}
     >
-      {/* ── Background image ── */}
+      {/* Background image */}
       <div
         style={{
           position: "absolute",
@@ -51,7 +133,7 @@ export default function KirtanSafariSection() {
         }}
       />
 
-      {/* ── Overlays ── */}
+      {/* Overlays */}
       <div
         style={{
           position: "absolute",
@@ -82,7 +164,7 @@ export default function KirtanSafariSection() {
         }}
       />
 
-      {/* ── Content ── */}
+      {/* Content */}
       <div
         className="content-width section-padding"
         style={{
@@ -96,7 +178,7 @@ export default function KirtanSafariSection() {
           alignItems: "center",
         }}
       >
-        {/* Left — main info */}
+        {/* Left - main info */}
         <div>
           {/* Badge */}
           <div
@@ -130,7 +212,7 @@ export default function KirtanSafariSection() {
                 textTransform: "uppercase",
               }}
             >
-              Featured Festival · ISKCON Nairobi 60th Anniversary
+              Featured Festival · 60th Anniversary
             </span>
           </div>
 
@@ -190,6 +272,13 @@ export default function KirtanSafariSection() {
           >
             A Kirtan Journey Through Jarikhand Forest
           </p>
+          <CountdownPanel
+            days={days}
+            hours={hours}
+            minutes={minutes}
+            seconds={seconds}
+            className="ks-countdown-mobile"
+          />
           <p
             style={{
               fontFamily: "var(--font-cormorant, serif)",
@@ -204,6 +293,7 @@ export default function KirtanSafariSection() {
 
           {/* Meta pills */}
           <div
+            className="ks-meta-pills"
             style={{
               display: "flex",
               flexWrap: "wrap",
@@ -212,9 +302,8 @@ export default function KirtanSafariSection() {
             }}
           >
             {[
-              "📅 28 – 30 August 2026",
-              "📍 Hare Krishna Temple, Nairobi",
-              "🎟 Free Entry",
+              "📅 28–30 August 2026",
+              "📍 Hare Krishna Temple",
             ].map((item) => (
               <span
                 key={item}
@@ -277,72 +366,16 @@ export default function KirtanSafariSection() {
           </div>
         </div>
 
-        {/* Right — countdown + quick schedule */}
+        {/* Right - countdown + quick schedule */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           {/* Countdown */}
-          <div
-            style={{
-              background: "rgba(7,28,16,0.72)",
-              border: "1px solid rgba(214,156,43,0.3)",
-              backdropFilter: "blur(10px)",
-              padding: "1.75rem",
-            }}
-          >
-            <p
-              style={{
-                fontFamily: "var(--font-inter, sans-serif)",
-                color: "rgba(246,226,177,0.82)",
-                fontSize: "0.6rem",
-                letterSpacing: "0.2em",
-                textTransform: "uppercase",
-                marginBottom: "1.25rem",
-                textAlign: "center",
-              }}
-            >
-              Begins in
-            </p>
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(4, 1fr)",
-                gap: "0.5rem",
-                textAlign: "center",
-              }}
-            >
-              {[
-                { value: days, label: "Days" },
-                { value: hours, label: "Hrs" },
-                { value: minutes, label: "Min" },
-                { value: seconds, label: "Sec" },
-              ].map(({ value, label }) => (
-                <div key={label}>
-                  <div
-                    style={{
-                      fontFamily: "var(--font-playfair, serif)",
-                      color: "#d69c2b",
-                      fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
-                      fontWeight: 700,
-                      lineHeight: 1,
-                      marginBottom: "0.25rem",
-                    }}
-                  >
-                    <Pad n={value} />
-                  </div>
-                  <div
-                    style={{
-                      fontFamily: "var(--font-inter, sans-serif)",
-                      color: "rgba(255,255,255,0.35)",
-                      fontSize: "0.55rem",
-                      letterSpacing: "0.15em",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {label}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
+          <CountdownPanel
+            days={days}
+            hours={hours}
+            minutes={minutes}
+            seconds={seconds}
+            className="ks-countdown-desktop"
+          />
 
           {/* Quick schedule */}
           <div
@@ -413,15 +446,29 @@ export default function KirtanSafariSection() {
             >
               Venue: Hare Krishna Temple, West Ngara Rd
             </p>
+            <p
+              style={{
+                fontFamily: "var(--font-inter, sans-serif)",
+                color: "#f6e2b1",
+                fontSize: "0.65rem",
+                fontWeight: 700,
+                letterSpacing: "0.14em",
+                marginTop: "0.6rem",
+                textAlign: "center",
+                textTransform: "uppercase",
+              }}
+            >
+              Free Entry
+            </p>
           </div>
 
           {/* Social strip */}
           <div style={{ display: "flex", gap: "0.75rem", flexWrap: "wrap" }}>
             {[
-              { label: "Instagram", href: "https://www.instagram.com/kirtansafari" },
-              { label: "YouTube", href: "https://www.youtube.com/@kirtan_safari" },
-              { label: "TikTok", href: "https://www.tiktok.com/@kirtan.safari" },
-            ].map(({ label, href }) => (
+              { label: "Instagram", href: "https://www.instagram.com/kirtansafari", Icon: Camera },
+              { label: "YouTube", href: "https://www.youtube.com/@kirtan_safari", Icon: Music2 },
+              { label: "TikTok", href: "https://www.tiktok.com/@kirtan.safari", Icon: Star },
+            ].map(({ label, href, Icon }) => (
               <a
                 key={label}
                 href={href}
@@ -429,17 +476,22 @@ export default function KirtanSafariSection() {
                 rel="noopener noreferrer"
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
-                  color: "rgba(255,255,255,0.4)",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.4rem",
+                  color: "rgba(246,226,177,0.74)",
                   fontSize: "0.65rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   textDecoration: "none",
-                  borderBottom: "1px solid rgba(214,156,43,0.35)",
-                  paddingBottom: "1px",
+                  border: "1px solid rgba(214,156,43,0.24)",
+                  background: "rgba(214,156,43,0.08)",
+                  padding: "0.4rem 0.55rem",
                   transition: "color 0.2s",
                 }}
               >
-                {label} ↗
+                <Icon size={13} color="#d69c2b" strokeWidth={1.8} />
+                {label}
               </a>
             ))}
           </div>
@@ -453,6 +505,10 @@ export default function KirtanSafariSection() {
           50% { opacity: 0.5; transform: scale(0.8); }
         }
 
+        .ks-countdown-mobile {
+          display: none;
+        }
+
         @media (max-width: 640px) {
           .ks-home-section {
             max-width: 100vw;
@@ -463,7 +519,16 @@ export default function KirtanSafariSection() {
             padding-top: 2.5rem !important;
             padding-bottom: 2.5rem !important;
             grid-template-columns: 1fr !important;
-            gap: 1.4rem !important;
+            gap: 0.95rem !important;
+          }
+
+          .ks-countdown-mobile {
+            display: block;
+            margin: 0.25rem 0 0.8rem !important;
+          }
+
+          .ks-countdown-desktop {
+            display: none !important;
           }
 
           .ks-home-section h2 span:first-child {
@@ -480,6 +545,25 @@ export default function KirtanSafariSection() {
             max-width: 100% !important;
             margin-bottom: 1rem !important;
             padding: 0.35rem 0.65rem !important;
+          }
+
+          .ks-home-section div[style*="display: inline-flex"] span:last-child {
+            white-space: nowrap !important;
+            letter-spacing: 0.12em !important;
+          }
+
+          .ks-home-section .ks-meta-pills {
+            flex-wrap: nowrap !important;
+            gap: 0.35rem !important;
+          }
+
+          .ks-home-section .ks-meta-pills span {
+            flex: 1 1 0 !important;
+            min-width: 0 !important;
+            padding: 0.34rem 0.42rem !important;
+            font-size: 0.58rem !important;
+            line-height: 1.25 !important;
+            text-align: center !important;
           }
 
           .ks-home-section a[style*="padding: 0.875rem 1.75rem"] {
