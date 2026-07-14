@@ -75,7 +75,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col">
         {/* Main Content */}
-        <div className="flex-1 flex items-center section-padding content-width">
+        <div className="flex-1 flex items-end pb-4 section-padding content-width sm:items-center sm:pb-0">
           <div className="max-w-3xl">
             {/* Eyebrow */}
             <div
@@ -144,7 +144,7 @@ export default function HeroSection() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="section-padding content-width pb-8">
+        <div className="section-padding content-width pb-5 sm:pb-8">
           <div className="flex items-end justify-between">
             {/* Image Dots */}
             <div className="flex items-center gap-2">
