@@ -44,9 +44,9 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Split Layout */}
-        <div className="grid lg:grid-cols-2 gap-0 min-h-[400px]">
+        <div className="grid grid-cols-2 gap-0 min-h-0">
           {/* Left — Image */}
-          <div className="relative overflow-hidden order-2 lg:order-1 border-4 border-sand image-grade">
+          <div className="relative overflow-hidden border-4 border-sand image-grade testimonial-image">
             <div className="aspect-[4/3] lg:aspect-auto lg:h-full lg:absolute lg:inset-0">
               <img
                 key={current.image}
@@ -57,16 +57,16 @@ export default function TestimonialsSection() {
               {/* Overlay */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/10" />
               {/* Quote mark watermark */}
-              <div className="absolute top-6 left-6 font-playfair text-white/10 leading-none" style={{ fontSize: "10rem" }}>
+              <div className="absolute top-6 left-6 font-playfair text-white/10 leading-none testimonial-watermark" style={{ fontSize: "10rem" }}>
                 "
               </div>
             </div>
           </div>
 
           {/* Right — Quote */}
-          <div className="bg-temple-cream p-8 lg:p-14 flex flex-col justify-between order-1 lg:order-2">
+          <div className="bg-temple-cream p-8 lg:p-14 flex flex-col justify-between testimonial-quote">
             {/* Tab indicators */}
-            <div className="flex gap-2 mb-10">
+            <div className="flex gap-2 mb-10 testimonial-tabs">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
@@ -84,7 +84,7 @@ export default function TestimonialsSection() {
             <div className="flex-1">
               <blockquote
                 key={active}
-                className="font-cormorant text-temple-brown italic leading-relaxed mb-8"
+                className="font-cormorant text-temple-brown italic leading-relaxed mb-8 testimonial-blockquote"
                 style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)" }}
               >
                 "{current.quote}"
@@ -92,7 +92,7 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Attribution */}
-            <div className="border-t border-temple-sand pt-6">
+            <div className="border-t border-temple-sand pt-6 testimonial-attribution">
               <p className="font-inter font-semibold text-ink text-sm">{current.name}</p>
               <p className="font-inter text-ink/50 text-sm mt-0.5">{current.role}</p>
               <div className="flex items-center gap-2 mt-2">
@@ -103,6 +103,104 @@ export default function TestimonialsSection() {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 640px) {
+          section {
+            padding-top: calc(var(--space-section, 6rem) / 4) !important;
+            padding-bottom: calc(var(--space-section, 6rem) / 4) !important;
+          }
+
+          section :global(.section-padding) {
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+          }
+
+          section :global(.eyebrow) {
+            margin-bottom: 0.35rem !important;
+          }
+
+          section :global(.section-title) {
+            font-size: clamp(1.15rem, 5.5vw, 1.5rem) !important;
+            line-height: 1 !important;
+          }
+
+          section :global(.flex.flex-col.sm\\:flex-row) {
+            gap: 0.55rem !important;
+            margin-bottom: 0.75rem !important;
+          }
+
+          section :global(.flex.items-center.gap-3 button) {
+            width: 1.75rem !important;
+            height: 1.75rem !important;
+          }
+
+          section :global(.flex.items-center.gap-3 button svg) {
+            width: 0.75rem !important;
+            height: 0.75rem !important;
+          }
+
+          .testimonial-image {
+            border-width: 2px !important;
+          }
+
+          .testimonial-image :global(.absolute.top-6.left-6) {
+            top: 0.25rem !important;
+            left: 0.25rem !important;
+          }
+
+          .testimonial-watermark {
+            font-size: 4rem !important;
+          }
+
+          .testimonial-quote {
+            padding: 0.6rem 0.65rem !important;
+          }
+
+          .testimonial-tabs {
+            margin-bottom: 0.45rem !important;
+            gap: 0.35rem !important;
+          }
+
+          .testimonial-tabs button {
+            height: 0.22rem !important;
+          }
+
+          .testimonial-tabs button:first-child {
+            width: 1.85rem !important;
+          }
+
+          .testimonial-tabs button:last-child {
+            width: 0.75rem !important;
+          }
+
+          .testimonial-blockquote {
+            font-size: 0.65rem !important;
+            line-height: 1.25 !important;
+            margin-bottom: 0.5rem !important;
+          }
+
+          .testimonial-attribution {
+            padding-top: 0.35rem !important;
+          }
+
+          .testimonial-attribution p {
+            font-size: 0.6rem !important;
+          }
+
+          .testimonial-attribution p:first-child {
+            font-size: 0.65rem !important;
+          }
+
+          .testimonial-attribution div {
+            margin-top: 0.2rem !important;
+            gap: 0.3rem !important;
+          }
+
+          section :global(.gold-dot) {
+            transform: scale(0.45) !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
