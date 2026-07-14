@@ -106,77 +106,96 @@ export default function TestimonialsSection() {
       <style>{`
         @media (max-width: 640px) {
           .testimonials-section {
-            padding-top: 2rem !important;
-            padding-bottom: 2rem !important;
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.2rem !important;
           }
           .testimonials-section > div > .testimonials-header {
-            gap: 0.55rem !important;
-            margin-bottom: 0.75rem !important;
+            flex-direction: row !important;
+            align-items: flex-end !important;
+            gap: 0.5rem !important;
+            margin-bottom: 0.55rem !important;
           }
           .testimonials-header .eyebrow {
-            margin-bottom: 0.25rem !important;
-            font-size: 0.55rem !important;
+            margin-bottom: 0.18rem !important;
+            font-size: 0.5rem !important;
+            letter-spacing: 0.14em !important;
           }
           .testimonials-header .section-title {
-            font-size: clamp(1.05rem, 5vw, 1.3rem) !important;
-            line-height: 1.05 !important;
+            font-size: clamp(1rem, 4.65vw, 1.18rem) !important;
+            line-height: 1 !important;
+          }
+          .testimonials-header > div:first-child {
+            min-width: 0 !important;
+          }
+          .testimonials-header > div:last-child {
+            flex-shrink: 0 !important;
+            gap: 0.35rem !important;
           }
           .testimonials-header button {
-            width: 1.75rem !important;
-            height: 1.75rem !important;
+            width: 1.55rem !important;
+            height: 1.55rem !important;
           }
           .testimonials-header button svg {
-            width: 0.75rem !important;
-            height: 0.75rem !important;
+            width: 0.68rem !important;
+            height: 0.68rem !important;
+          }
+          .testimonials-grid {
+            grid-template-columns: 0.95fr 1.05fr !important;
           }
           .testimonials-image-col {
             border-width: 2px !important;
           }
+          .testimonials-image-col > div {
+            aspect-ratio: 1 / 1.08 !important;
+          }
           .testimonials-watermark {
-            font-size: 3.5rem !important;
-            top: 0.2rem !important;
-            left: 0.2rem !important;
+            font-size: 3rem !important;
+            top: 0.1rem !important;
+            left: 0.15rem !important;
           }
           .testimonials-quote-col {
-            padding: 0.5rem 0.55rem !important;
+            padding: 0.38rem 0.45rem !important;
           }
           .testimonials-tabs {
-            margin-bottom: 0.35rem !important;
-            gap: 0.3rem !important;
+            margin-bottom: 0.24rem !important;
+            gap: 0.24rem !important;
           }
           .testimonials-tabs button {
-            height: 0.2rem !important;
+            height: 0.16rem !important;
           }
           .testimonials-tabs button:first-child {
-            width: 1.5rem !important;
+            width: 1.2rem !important;
           }
           .testimonials-tabs button:last-child {
-            width: 0.6rem !important;
+            width: 0.5rem !important;
           }
           .testimonials-quote-col blockquote {
-            font-size: 0.58rem !important;
-            line-height: 1.2 !important;
-            margin-bottom: 0.35rem !important;
+            font-size: 0.52rem !important;
+            line-height: 1.16 !important;
+            margin-bottom: 0.24rem !important;
           }
           .testimonials-attribution {
-            padding-top: 0.25rem !important;
+            padding-top: 0.2rem !important;
           }
           .testimonials-attribution p:first-child {
-            font-size: 0.6rem !important;
+            font-size: 0.55rem !important;
+            line-height: 1.05 !important;
           }
           .testimonials-attribution p:nth-child(2) {
-            font-size: 0.52rem !important;
-            margin-top: 0.1rem !important;
+            font-size: 0.48rem !important;
+            margin-top: 0.05rem !important;
+            line-height: 1.05 !important;
           }
           .testimonials-attribution div {
-            margin-top: 0.1rem !important;
-            gap: 0.25rem !important;
+            margin-top: 0.04rem !important;
+            gap: 0.18rem !important;
           }
           .testimonials-attribution .gold-dot {
-            transform: scale(0.4) !important;
+            transform: scale(0.34) !important;
           }
           .testimonials-attribution p:last-child {
-            font-size: 0.52rem !important;
+            font-size: 0.46rem !important;
+            line-height: 1.05 !important;
           }
         }
       `}</style>
