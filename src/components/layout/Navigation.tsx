@@ -31,28 +31,28 @@ export default function Navigation() {
         <nav className="flex items-center justify-between gap-6 max-[760px]:gap-3">
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-3 text-sand no-underline transition-colors hover:text-white max-[760px]:gap-2.5"
+            className="flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[760px]:gap-2"
           >
             <BrandLogo
               className={cn(
                 "transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                 scrolled
-                  ? "h-14 w-[60px] max-[760px]:h-[50px] max-[760px]:w-[54px]"
-                  : "h-[86px] w-[92px] max-[760px]:h-[58px] max-[760px]:w-[62px]"
+                  ? "h-[46px] w-[50px] max-[760px]:h-[42px] max-[760px]:w-[45px]"
+                  : "h-[68px] w-[73px] max-[760px]:h-[48px] max-[760px]:w-[52px]"
               )}
             />
             <span
               className={cn(
-                "flex min-w-0 flex-col gap-[4px] transition-all duration-300",
+                "flex min-w-0 flex-col gap-[3px] transition-all duration-300",
                 scrolled ? "translate-y-0" : "translate-y-0"
               )}
             >
-              <span className="font-inter text-base font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[760px]:text-[1.02rem]">
+              <span className="font-inter text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[760px]:text-[0.9rem]">
                 ISKCON Nairobi
               </span>
               <span
                 className={cn(
-                  "font-inter text-[0.58rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[760px]:text-[0.58rem]",
+                  "font-inter text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[760px]:text-[0.47rem]",
                   scrolled ? "opacity-80" : "opacity-95"
                 )}
               >
