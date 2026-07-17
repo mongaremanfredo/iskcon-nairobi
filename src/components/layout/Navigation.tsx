@@ -23,7 +23,7 @@ export default function Navigation() {
         "fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[760px]:px-[18px]",
         scrolled
           ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
-          : "border-transparent bg-transparent py-[18px] backdrop-blur-0 max-[760px]:py-3",
+          : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[760px]:py-3",
         isOpen && "bg-dusk/95 border-gold/25"
       )}
     >
@@ -31,32 +31,32 @@ export default function Navigation() {
         <nav className="flex items-center justify-between gap-6 max-[760px]:gap-3">
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-3 text-sand no-underline transition-colors hover:text-white"
+            className="flex min-w-0 items-center gap-3 text-sand no-underline transition-colors hover:text-white max-[760px]:gap-2.5"
           >
             <BrandLogo
               className={cn(
                 "transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                 scrolled
-                  ? "h-16 w-[69px] max-[760px]:h-[58px] max-[760px]:w-[62px]"
-                  : "h-[104px] w-28 max-[760px]:h-[78px] max-[760px]:w-[84px]"
+                  ? "h-14 w-[60px] max-[760px]:h-[50px] max-[760px]:w-[54px]"
+                  : "h-[86px] w-[92px] max-[760px]:h-[58px] max-[760px]:w-[62px]"
               )}
             />
             <span
               className={cn(
-                "min-w-0 flex-col gap-[3px] transition-opacity duration-300 max-[760px]:hidden",
-                scrolled ? "flex opacity-100" : "hidden opacity-0"
+                "flex min-w-0 flex-col gap-[4px] transition-all duration-300",
+                scrolled ? "translate-y-0" : "translate-y-0"
               )}
             >
-              <span className="font-playfair text-xs uppercase leading-none tracking-[0.08em] text-sand">
-                ISKCON NAIROBI
+              <span className="font-inter text-base font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[760px]:text-[1.02rem]">
+                ISKCON Nairobi
               </span>
               <span
                 className={cn(
-                  "font-inter text-[10px] uppercase leading-tight tracking-[0.12em] text-sand/60 transition-opacity",
-                  scrolled ? "hidden" : "block max-[760px]:hidden"
+                  "font-inter text-[0.58rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[760px]:text-[0.58rem]",
+                  scrolled ? "opacity-80" : "opacity-95"
                 )}
               >
-                Sri Sri Radha Bankebihari Temple
+                International Society for Krishna Consciousness
               </span>
             </span>
           </Link>
