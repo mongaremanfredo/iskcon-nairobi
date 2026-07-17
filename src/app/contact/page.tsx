@@ -22,7 +22,7 @@ export default function ContactPage() {
         title="Get in"
         titleAccent="Touch"
         subtitle="Contact Us"
-        image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=80"
+        image="/images/placeholders/hare-krishna-harinam.jpg"
         height="sm"
       />
 

@@ -4,12 +4,12 @@ import Link from "next/link";
 import { ArrowRight, Camera } from "lucide-react";
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=600&q=80", caption: "Janmashtami celebrations at ISKCON Nairobi", span: "row-span-2" },
-  { src: "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=600&q=80", caption: "Food For Life distribution, Kibera", span: "" },
-  { src: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=600&q=80", caption: "Kirtan Safari — dawn session on the savanna", span: "" },
-  { src: "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600&q=80", caption: "Cows at the Thika Goshala Farm", span: "row-span-2" },
-  { src: "https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=600&q=80", caption: "HKTC Nairobi students during morning class", span: "" },
-  { src: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80", caption: "East African landscape at golden hour", span: "" },
+  { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Janmashtami celebrations at ISKCON Nairobi", span: "row-span-2" },
+  { src: "/images/placeholders/iskcon-food-for-life.jpg", caption: "Food For Life distribution, Kibera", span: "" },
+  { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Kirtan Safari — dawn session on the savanna", span: "" },
+  { src: "/images/placeholders/cows-pasture-pixabay.jpg", caption: "Cows at the Thika Goshala Farm", span: "row-span-2" },
+  { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "HKTC Nairobi students during morning class", span: "" },
+  { src: "/images/placeholders/iskcon-ratha-yatra-moscow.jpg", caption: "East African landscape at golden hour", span: "" },
 ];
 
 export default function GallerySection() {

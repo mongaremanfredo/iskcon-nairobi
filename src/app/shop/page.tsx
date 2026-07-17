@@ -9,12 +9,12 @@ export const metadata: Metadata = {
 };
 
 const products = [
-  { name: "Laddhū (Box of 12)", price: "KES 950", desc: "Classic saffron-infused gram flour laddhu prepared with pure ghee. The original prasādam sweet.", tag: "Bestseller", image: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=500&q=80" },
-  { name: "Gulab Jamun (Box of 16)", price: "KES 800", desc: "Soft milk-solid dumplings soaked in rose-infused sugar syrup. Prepared fresh to order.", tag: "Popular", image: "https://images.unsplash.com/photo-1565557623262-b51c2513a641?w=500&q=80" },
-  { name: "Halava Gift Pack", price: "KES 1,200", desc: "Semolina halava packed in artisan containers — ideal as a devotional gift or festival offering.", tag: "Gift", image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=500&q=80" },
-  { name: "Barfi Assortment (500g)", price: "KES 1,400", desc: "Mixed milk-based barfi selection — pistachio, saffron, coconut, and rose. Beautifully boxed.", tag: "Assortment", image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=500&q=80" },
-  { name: "Festival Sweet Hamper", price: "KES 3,500", desc: "A curated hamper of six varieties — the perfect corporate or family gift for festivals and celebrations.", tag: "Festival", image: "https://images.unsplash.com/photo-1607920592519-bab2a80efd90?w=500&q=80" },
-  { name: "Bulk Order (5kg+)", price: "From KES 4,500", desc: "Wholesale prasādam sweets for events, weddings, corporate functions, and temple programmes.", tag: "Bulk", image: "https://images.unsplash.com/photo-1559181567-c3190b001b24?w=500&q=80" },
+  { name: "Laddhū (Box of 12)", price: "KES 950", desc: "Classic saffron-infused gram flour laddhu prepared with pure ghee. The original prasādam sweet.", tag: "Bestseller", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Gulab Jamun (Box of 16)", price: "KES 800", desc: "Soft milk-solid dumplings soaked in rose-infused sugar syrup. Prepared fresh to order.", tag: "Popular", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Halava Gift Pack", price: "KES 1,200", desc: "Semolina halava packed in artisan containers — ideal as a devotional gift or festival offering.", tag: "Gift", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Barfi Assortment (500g)", price: "KES 1,400", desc: "Mixed milk-based barfi selection — pistachio, saffron, coconut, and rose. Beautifully boxed.", tag: "Assortment", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Festival Sweet Hamper", price: "KES 3,500", desc: "A curated hamper of six varieties — the perfect corporate or family gift for festivals and celebrations.", tag: "Festival", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Bulk Order (5kg+)", price: "From KES 4,500", desc: "Wholesale prasādam sweets for events, weddings, corporate functions, and temple programmes.", tag: "Bulk", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
 ];
 
 export default function ShopPage() {
@@ -25,7 +25,7 @@ export default function ShopPage() {
         titleAccent="Sweet Shop"
         subtitle="Artisanal Temple Sweets"
         description="Handcrafted Vaishnava sweets prepared with pure ingredients, devotion, and the highest culinary standards from our temple kitchen."
-        image="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=1600&q=85"
+        image="/images/placeholders/iskcon-khichdi-prasadam.jpg"
       />
 
       {/* Brand strip */}

@@ -23,7 +23,7 @@ export default function HKTCNairobiPage() {
         titleAccent="Nairobi"
         subtitle="Hare Krishna Training Centre"
         description="East Africa's premier residential institution for Vaishnava devotional education — forming scholars, teachers, and devotees."
-        image="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1600&q=85"
+        image="/images/placeholders/hare-krishna-harinam.jpg"
         height="lg"
       />
 
@@ -51,7 +51,7 @@ export default function HKTCNairobiPage() {
               </div>
             </div>
             <div className="relative">
-              <img src="https://images.unsplash.com/photo-1590012314607-cda9d9b699ae?w=700&q=80" alt="Students at HKTC" className="w-full aspect-card object-cover" />
+              <img src="/images/placeholders/hare-krishna-harinam.jpg" alt="Students at HKTC" className="w-full aspect-card object-cover" />
               <div className="absolute -bottom-4 -left-4 bg-gold p-5 hidden sm:block">
                 <p className="font-playfair text-white text-sm">Accredited by ISKCON</p>
                 <p className="font-inter text-white/70 text-xs">Ministry of Educational Development</p>

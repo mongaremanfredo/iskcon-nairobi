@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   return (
     <>
-      <PageHero title="Privacy" titleAccent="Notice" subtitle="Website Information" image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=80" height="sm" />
+      <PageHero title="Privacy" titleAccent="Notice" subtitle="Website Information" image="/images/placeholders/hare-krishna-harinam.jpg" height="sm" />
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding max-w-3xl font-inter text-ink/70 leading-relaxed space-y-5">
           <p>This website shares public information about ISKCON Nairobi programmes, festivals, projects, and contact options.</p>

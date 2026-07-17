@@ -10,7 +10,7 @@ export default function RathYatraPage() {
         titleAccent="Festival of Chariots"
         subtitle="Annual Nairobi Procession"
         description={description}
-        image="https://images.unsplash.com/photo-1561361058-c24e5b4e5a9d?w=1600&q=85"
+        image="/images/placeholders/iskcon-ratha-yatra.jpg"
         height="lg"
       />
       <section className="py-section bg-temple-bg">

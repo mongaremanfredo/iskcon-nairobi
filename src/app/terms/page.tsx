@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <>
-      <PageHero title="Website" titleAccent="Terms" subtitle="Use of This Site" image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=80" height="sm" />
+      <PageHero title="Website" titleAccent="Terms" subtitle="Use of This Site" image="/images/placeholders/hare-krishna-harinam.jpg" height="sm" />
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding max-w-3xl font-inter text-ink/70 leading-relaxed space-y-5">
           <p>Information on this site is provided to help visitors learn about ISKCON Nairobi and its public programmes. Programme details may change, especially around festival days.</p>

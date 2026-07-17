@@ -24,7 +24,7 @@ export default function LearnPage() {
         titleAccent="& Study"
         subtitle="Spiritual Education"
         description="From introductory Gītā courses to full residential theology programmes — there is a learning path for every stage of your journey."
-        image="https://images.unsplash.com/photo-1580674684081-7617fbf3d745?w=1600&q=85"
+        image="/images/placeholders/hare-krishna-harinam.jpg"
       />
 
       <section className="py-section bg-temple-bg">

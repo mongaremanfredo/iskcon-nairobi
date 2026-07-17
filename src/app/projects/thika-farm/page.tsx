@@ -15,7 +15,7 @@ export default function ThikaFarmPage() {
         titleAccent="& Goshala"
         subtitle="Organic Farming & Cow Protection"
         description="Forty acres of sacred land in the Kenyan highlands — where cow protection, organic farming, and devotional community life thrive together."
-        image="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1600&q=85"
+        image="/images/placeholders/cows-pasture-pixabay.jpg"
         height="lg"
       />
 
@@ -33,8 +33,8 @@ export default function ThikaFarmPage() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               {[
-                "https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&q=80",
-                "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&q=80",
+                "/images/placeholders/cows-pasture-pixabay.jpg",
+                "/images/placeholders/cows-pasture-pixabay.jpg",
               ].map((src, i) => (
                 <img key={i} src={src} alt="Farm" className={`w-full object-cover ${i === 1 ? "mt-8" : ""}`} style={{ aspectRatio: "3/4" }} />
               ))}

@@ -15,7 +15,7 @@ export default function FoodForLifePage() {
         titleAccent="Life"
         subtitle="Prasādam Distribution"
         description="Thousands of free sanctified meals distributed every month across Nairobi — driven by compassion, sustained by community."
-        image="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=1600&q=85"
+        image="/images/placeholders/iskcon-food-for-life.jpg"
         height="lg"
       />
 
@@ -55,7 +55,7 @@ export default function FoodForLifePage() {
               </Link>
             </div>
             <div>
-              <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?w=700&q=80" alt="Food distribution" className="w-full aspect-card object-cover" />
+              <img src="/images/placeholders/iskcon-food-for-life.jpg" alt="Food distribution" className="w-full aspect-card object-cover" />
             </div>
           </div>
         </div>

@@ -17,7 +17,7 @@ export default function FestivalsPage() {
         titleAccent="Festivals"
         subtitle="Temple Calendar"
         description="Celebrate Lord Krishna, Lord Jagannath, Sri Chaitanya Mahaprabhu, and the holy name with Nairobi's devotional community."
-        image="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1600&q=85"
+        image="/images/placeholders/hare-krishna-harinam.jpg"
         height="sm"
       />
 

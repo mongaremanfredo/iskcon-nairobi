@@ -45,8 +45,8 @@ export default function AboutPage() {
 
             {/* Image collage */}
             <div className="grid grid-cols-2 gap-4">
-              <img src="https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=400&q=80" alt="Temple worship" className="w-full aspect-portrait object-cover" />
-              <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=400&q=80" alt="Farm" className="w-full aspect-portrait object-cover mt-8" />
+              <img src="/images/placeholders/iskcon-temple-bangalore.jpg" alt="Temple worship" className="w-full aspect-portrait object-cover" />
+              <img src="/images/placeholders/cows-pasture-pixabay.jpg" alt="Farm" className="w-full aspect-portrait object-cover mt-8" />
             </div>
           </div>
         </div>

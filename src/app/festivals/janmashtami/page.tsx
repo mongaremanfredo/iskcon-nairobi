@@ -11,7 +11,7 @@ export default function JanmashtamiPage() {
         titleAccent="Appearance of Lord Krishna"
         subtitle={templeInfo.legalName}
         description={description}
-        image="https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=1600&q=85"
+        image="/images/placeholders/iskcon-temple-bangalore.jpg"
         height="lg"
       />
       <section className="py-section bg-temple-bg">

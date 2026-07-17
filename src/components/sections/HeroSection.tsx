@@ -12,12 +12,12 @@ const heroImages = [
     position: "center 58%",
   },
   {
-    src: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?w=1920&q=90",
+    src: "/images/placeholders/hare-krishna-harinam.jpg",
     alt: "Kenyan savanna landscape",
     position: "center",
   },
   {
-    src: "https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=90",
+    src: "/images/placeholders/iskcon-temple-bangalore.jpg",
     alt: "African golden hour landscape",
     position: "center",
   },

@@ -82,7 +82,7 @@ export default function StatsSection() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=1920&q=80"
+          src="/images/placeholders/iskcon-temple-bangalore.jpg"
           alt="African landscape"
           className="w-full h-full object-cover"
         />
