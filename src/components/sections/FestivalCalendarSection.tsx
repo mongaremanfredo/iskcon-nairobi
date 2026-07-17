@@ -2,11 +2,9 @@
 
 import Link from "next/link";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
-import { festivals } from "@/data/site";
+import { homepageFestivalPreview } from "@/data/site";
 
 export default function FestivalCalendarSection() {
-  const upcoming = festivals.filter((f) => !f.featured);
-
   return (
     <section className="py-section bg-temple-cream">
       <div className="content-width section-padding">
@@ -29,7 +27,7 @@ export default function FestivalCalendarSection() {
 
         {/* Festival Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {upcoming.map((festival) => (
+          {homepageFestivalPreview.map((festival) => (
             <Link
               key={festival.href}
               href={festival.href}
@@ -49,6 +47,11 @@ export default function FestivalCalendarSection() {
                     <Calendar size={11} className="text-gold" />
                     <span className="font-inter text-white text-xs">{festival.date}</span>
                   </div>
+                </div>
+                <div className="absolute top-4 left-4 bg-gold px-2.5 py-1">
+                  <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-white">
+                    {festival.tag}
+                  </span>
                 </div>
               </div>
 
@@ -76,18 +79,14 @@ export default function FestivalCalendarSection() {
         <div className="mt-12 bg-temple-brown p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <p className="font-playfair text-white text-xl mb-1">Never Miss a Festival</p>
-            <p className="font-inter text-white/60 text-sm">Get updates on ISKCON Nairobi events directly to your inbox.</p>
+            <p className="font-inter text-white/60 text-sm">See the full 2026 Vaishnava calendar for ISKCON Nairobi.</p>
           </div>
-          <div className="flex gap-3 w-full sm:w-auto">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 sm:w-64 bg-white/10 border border-white/20 text-white placeholder-white/40 font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold"
-            />
-            <button className="bg-gold text-white font-inter text-xs font-semibold tracking-widest uppercase px-6 py-3 hover:bg-gold-dark transition-colors flex-shrink-0">
-              Subscribe
-            </button>
-          </div>
+          <Link
+            href="/festivals"
+            className="bg-gold text-white font-inter text-xs font-semibold tracking-widest uppercase px-6 py-3 hover:bg-gold-dark transition-colors"
+          >
+            Open Calendar
+          </Link>
         </div>
       </div>
     </section>

@@ -121,6 +121,183 @@ export const festivals = [
   },
 ];
 
+export const homepageFestivalPreview = [
+  {
+    title: "Kirtan Safari Festival",
+    date: "28-30 August 2026",
+    month: "Aug",
+    day: "28",
+    location: "Hare Krishna Temple, Nairobi",
+    description: "Three days of kirtan, Harinam, prasadam, and devotional community through the Jarikhand Forest theme.",
+    image: "/images/kirtan-safari-2026-poster-thumb.jpg",
+    href: "/festivals/kirtan-safari",
+    tag: "Featured",
+  },
+  {
+    title: "Sri Krishna Janmashtami",
+    date: "4 September 2026",
+    month: "Sep",
+    day: "04",
+    location: templeInfo.legalName,
+    description: "The appearance day of Lord Krishna, observed with fasting until midnight, kirtan, abhishek, offerings, and prasadam.",
+    image: "https://images.unsplash.com/photo-1609709295948-17d77cb2a69b?w=800&q=80",
+    href: "/festivals/janmashtami",
+    tag: "Major Festival",
+  },
+  {
+    title: "Radhashtami",
+    date: "19 September 2026",
+    month: "Sep",
+    day: "19",
+    location: templeInfo.legalName,
+    description: "Appearance of Srimati Radharani, celebrated with kirtan, class, worship, and special temple programmes.",
+    image: "https://images.unsplash.com/photo-1609609830354-8f615d61b9c8?w=800&q=80",
+    href: "/festivals",
+    tag: "Temple Festival",
+  },
+];
+
+export const vaishnavaCalendar2026 = [
+  {
+    month: "January",
+    events: [
+      { date: "Jan 3", day: "Sat", event: "Shri Krishna Pushya Abhisheka" },
+      { date: "Jan 14", day: "Wed", event: "Shat Tila Ekadashi", type: "Ekadashi" },
+      { date: "Jan 15", day: "Thu", event: "Ganga Sagara Mela / Makara Sankranti" },
+      { date: "Jan 23", day: "Fri", event: "Vasanta Panchami / Saraswati Puja" },
+      { date: "Jan 26", day: "Mon", event: "Bhishmashtami" },
+      { date: "Jan 29", day: "Thu", event: "Bhaimi Ekadashi", type: "Ekadashi" },
+      { date: "Jan 30", day: "Fri", event: "Varaha Dwadashi - Lord Varahadeva appearance" },
+      { date: "Jan 31", day: "Sat", event: "Nityananda Trayodashi - Nityananda Prabhu appearance", type: "Major" },
+    ],
+  },
+  {
+    month: "February",
+    events: [
+      { date: "Feb 1", day: "Sun", event: "Shri Krishna Madhura Utsava" },
+      { date: "Feb 6", day: "Fri", event: "Bhaktisiddhanta Sarasvati Thakura - Appearance" },
+      { date: "Feb 13", day: "Fri", event: "Vijaya Ekadashi", type: "Ekadashi" },
+      { date: "Feb 16", day: "Mon", event: "Shiva Ratri" },
+      { date: "Feb 27", day: "Fri", event: "Amalaki Ekadashi", type: "Ekadashi" },
+    ],
+  },
+  {
+    month: "March",
+    events: [
+      { date: "Mar 3", day: "Tue", event: "Gaura Purnima - Appearance of Sri Chaitanya Mahaprabhu", type: "Major" },
+      { date: "Mar 4", day: "Wed", event: "Festival of Jagannatha Mishra" },
+      { date: "Mar 15", day: "Sun", event: "Papamochani Ekadashi", type: "Ekadashi" },
+      { date: "Mar 27", day: "Fri", event: "Rama Navami - Appearance of Lord Ramachandra", type: "Major" },
+      { date: "Mar 29", day: "Sun", event: "Kamada Ekadashi", type: "Ekadashi" },
+      { date: "Mar 30", day: "Mon", event: "Damanakaropana Dwadashi" },
+    ],
+  },
+  {
+    month: "April",
+    events: [
+      { date: "Apr 2", day: "Thu", event: "Shri Balarama Rasayatra / Krishna Vasanta Rasa" },
+      { date: "Apr 13", day: "Mon", event: "Varuthini Ekadashi", type: "Ekadashi" },
+      { date: "Apr 14", day: "Tue", event: "Beginning of Tulasi Jala Dan" },
+      { date: "Apr 20", day: "Mon", event: "Akshaya Tritiya / Chandana Yatra begins", type: "Major" },
+      { date: "Apr 27", day: "Mon", event: "Mohini Ekadashi", type: "Ekadashi" },
+      { date: "Apr 28", day: "Tue", event: "Rukmini Dwadashi" },
+      { date: "Apr 30", day: "Thu", event: "Narasimha Chaturdashi - Appearance of Lord Narasimhadeva", type: "Major" },
+    ],
+  },
+  {
+    month: "May",
+    events: [
+      { date: "May 1", day: "Fri", event: "Krishna Phula Dola, Salila Vihara" },
+      { date: "May 13", day: "Wed", event: "Apara Ekadashi", type: "Ekadashi" },
+      { date: "May 14", day: "Thu", event: "End of Tulasi Jala Dan" },
+      { date: "May 27", day: "Wed", event: "Padmini Ekadashi", type: "Ekadashi" },
+    ],
+  },
+  {
+    month: "June",
+    events: [
+      { date: "Jun 11", day: "Thu", event: "Parama Ekadashi", type: "Ekadashi" },
+      { date: "Jun 24", day: "Wed", event: "Ganga Puja" },
+      { date: "Jun 26", day: "Fri", event: "Pandava Nirjala Ekadashi - strictest fast of the year", type: "Ekadashi" },
+      { date: "Jun 27", day: "Sat", event: "Panihati Chida Dahi Utsava" },
+      { date: "Jun 29", day: "Mon", event: "Snana Yatra" },
+    ],
+  },
+  {
+    month: "July",
+    events: [
+      { date: "Jul 11", day: "Sat", event: "Yogini Ekadashi", type: "Ekadashi" },
+      { date: "Jul 15", day: "Wed", event: "Gundica Marjana" },
+      { date: "Jul 16", day: "Thu", event: "Ratha Yatra - Chariot festival of Jagannath, Baladeva, Subhadra", type: "Major" },
+      { date: "Jul 20", day: "Mon", event: "Hera Panchami" },
+      { date: "Jul 24", day: "Fri", event: "Return Ratha Yatra" },
+      { date: "Jul 25", day: "Sat", event: "Sayana Ekadashi", type: "Ekadashi" },
+      { date: "Jul 29", day: "Wed", event: "Guru Purnima / 1st Chaturmasya begins", type: "Major" },
+    ],
+  },
+  {
+    month: "August",
+    events: [
+      { date: "Aug 7", day: "Fri", event: "Incorporation of ISKCON in New York (1966)" },
+      { date: "Aug 9", day: "Sun", event: "Kamika Ekadashi", type: "Ekadashi" },
+      { date: "Aug 23", day: "Sun", event: "Radha Govinda Jhulana Yatra begins" },
+      { date: "Aug 24", day: "Mon", event: "Pavitropana Ekadashi", type: "Ekadashi" },
+      { date: "Aug 27", day: "Thu", event: "Last day of 1st Chaturmasya" },
+      { date: "Aug 28", day: "Fri", event: "Lord Balarama Appearance / Kirtan Safari begins", type: "Major" },
+      { date: "Aug 29", day: "Sat", event: "Srila Prabhupada's Departure for the USA / Kirtan Safari" },
+      { date: "Aug 30", day: "Sun", event: "Kirtan Safari closing day", type: "Major" },
+    ],
+  },
+  {
+    month: "September",
+    events: [
+      { date: "Sep 4", day: "Fri", event: "Sri Krishna Janmashtami - Appearance of Lord Krishna", type: "Major" },
+      { date: "Sep 5", day: "Sat", event: "Nandotsava / Srila Prabhupada Appearance day", type: "Major" },
+      { date: "Sep 7", day: "Mon", event: "Annada Ekadashi", type: "Ekadashi" },
+      { date: "Sep 19", day: "Sat", event: "Radhashtami - Appearance of Srimati Radharani", type: "Major" },
+      { date: "Sep 22", day: "Tue", event: "Parshva Ekadashi", type: "Ekadashi" },
+      { date: "Sep 25", day: "Fri", event: "Ananta Chaturdashi / Last day of 2nd Chaturmasya" },
+      { date: "Sep 26", day: "Sat", event: "Shri Vishwarupa Mahotsava / 3rd Chaturmasya begins" },
+    ],
+  },
+  {
+    month: "October",
+    events: [
+      { date: "Oct 3", day: "Sat", event: "Srila Prabhupada's Arrival in the USA" },
+      { date: "Oct 6", day: "Tue", event: "Indira Ekadashi", type: "Ekadashi" },
+      { date: "Oct 18", day: "Sun", event: "Durga Puja" },
+      { date: "Oct 21", day: "Wed", event: "Ramachandra Vijayotsava" },
+      { date: "Oct 22", day: "Thu", event: "Pashankusha Ekadashi", type: "Ekadashi" },
+      { date: "Oct 25", day: "Sun", event: "Last day of 3rd Chaturmasya" },
+      { date: "Oct 26", day: "Mon", event: "Shri Krishna Sharadiya Rasayatra / Lakshmi Puja" },
+    ],
+  },
+  {
+    month: "November",
+    events: [
+      { date: "Nov 2", day: "Mon", event: "Appearance of Radha Kunda / Bahulashtami" },
+      { date: "Nov 5", day: "Thu", event: "Rama Ekadashi", type: "Ekadashi" },
+      { date: "Nov 9", day: "Mon", event: "Dipa Dana, Dipavali, Kali Puja" },
+      { date: "Nov 10", day: "Tue", event: "Go Puja, Govardhana Puja", type: "Major" },
+      { date: "Nov 13", day: "Fri", event: "Srila Prabhupada Disappearance day", type: "Major" },
+      { date: "Nov 17", day: "Tue", event: "Gopashtami, Gosthashtami" },
+      { date: "Nov 21", day: "Sat", event: "Utthana Ekadashi / end of Chaturmasya observance", type: "Ekadashi" },
+      { date: "Nov 24", day: "Tue", event: "Shri Krishna Rasayatra / Tulasi-Saligrama Vivaha" },
+      { date: "Nov 25", day: "Wed", event: "Katyayani Vrata begins" },
+    ],
+  },
+  {
+    month: "December",
+    events: [
+      { date: "Dec 5", day: "Sat", event: "Utpanna Ekadashi", type: "Ekadashi" },
+      { date: "Dec 15", day: "Tue", event: "Odana Shashthi" },
+      { date: "Dec 20", day: "Sun", event: "Mokshada Ekadashi / Gita Jayanti", type: "Major" },
+      { date: "Dec 24", day: "Thu", event: "Katyayani Vrata ends" },
+      { date: "Dec 27", day: "Sun", event: "Bhaktisiddhanta Sarasvati Thakura - Disappearance" },
+    ],
+  },
+];
+
 export const testimonials = [
   {
     quote: "The first thing I felt at the temple was welcome. The kirtan, prasadam, and classes gave me a spiritual home in Nairobi.",
