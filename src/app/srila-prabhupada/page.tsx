@@ -1,0 +1,318 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import {
+  ArrowRight,
+  BookOpen,
+  Globe2,
+  HeartHandshake,
+  MapPin,
+  Ship,
+  Sparkles,
+  Utensils,
+} from "lucide-react";
+
+export const metadata: Metadata = {
+  title: "Srila Prabhupada | ISKCON Nairobi",
+  description:
+    "A tribute to His Divine Grace A.C. Bhaktivedanta Swami Prabhupada, Founder-Acarya of ISKCON, and his personal connection with Nairobi and East Africa.",
+};
+
+const timeline = [
+  {
+    year: "1896",
+    title: "Born Abhay Charan De",
+    text: "Srila Prabhupada appeared in Calcutta on September 1, 1896, in a Vaishnava family devoted to Krishna.",
+  },
+  {
+    year: "1922",
+    title: "The instruction",
+    text: "He met Srila Bhaktisiddhanta Sarasvati Thakura, who asked him to share Sri Caitanya Mahaprabhu's teachings in English.",
+  },
+  {
+    year: "1965",
+    title: "Across the ocean",
+    text: "At sixty-nine, he sailed to America on the Jaladuta with trunks of books and a mission larger than any institution he yet had.",
+  },
+  {
+    year: "1966",
+    title: "ISKCON founded",
+    text: "In New York City he incorporated the International Society for Krishna Consciousness, beginning a worldwide movement from a small storefront.",
+  },
+  {
+    year: "1971-72",
+    title: "Nairobi blessed",
+    text: "He visited Kenya, preached in Nairobi, directed outreach to African people, and personally installed Sri Sri Radha Bankebihari in 1972.",
+  },
+  {
+    year: "1977",
+    title: "Living legacy",
+    text: "He passed from this world in Vrindavan, leaving his books, temples, disciples, kirtan, prasadam, and instructions as a continuing shelter.",
+  },
+];
+
+const teachings = [
+  {
+    icon: Sparkles,
+    title: "Chanting the holy names",
+    text: "He taught the Hare Krishna maha-mantra as the direct spiritual practice for this age: hearing, chanting, and remembering Krishna together.",
+  },
+  {
+    icon: BookOpen,
+    title: "Books as the foundation",
+    text: "His translations and commentaries on Bhagavad-gita, Srimad-Bhagavatam, and Caitanya-caritamrta gave ISKCON its philosophical backbone.",
+  },
+  {
+    icon: Utensils,
+    title: "Prasadam for everyone",
+    text: "He wanted sanctified vegetarian food shared widely, famously urging that no one near an ISKCON temple should go hungry.",
+  },
+  {
+    icon: HeartHandshake,
+    title: "Mercy beyond boundaries",
+    text: "He insisted Krishna consciousness was not for one race, caste, or nationality, but for every living being.",
+  },
+];
+
+const sourceLinks = [
+  {
+    label: "ISKCON GBC biography",
+    href: "https://gbc.iskcon.org/srila-prabhupada/",
+  },
+  {
+    label: "Back to Godhead: Prabhupada in Africa",
+    href: "https://btg.krishna.com/brahmananda-dasa-remembers-prabhupada-in-africa/",
+  },
+  {
+    label: "ISKCON News: Nairobi HKTC",
+    href: "https://iskconnews.org/students-join-nairobi-hare-krishna-training-centre/",
+  },
+  {
+    label: "ISKCON News: Nairobi temple facilities",
+    href: "https://iskconnews.org/iskcon-nairobi-temple-gets-upgraded-facilities/",
+  },
+  {
+    label: "BBT",
+    href: "https://bbt.org/",
+  },
+  {
+    label: "Wikimedia image: portrait",
+    href: "https://commons.wikimedia.org/wiki/File:A._C._Bhaktivedanta_Swami_Prabhupada.jpg",
+  },
+  {
+    label: "Wikimedia image: Golden Gate Park",
+    href: "https://commons.wikimedia.org/wiki/File:Bhaktivedanta_Swami_with_Jagannath_in_Golden_Gate_Park,_February_1967.jpg",
+  },
+];
+
+export default function SrilaPrabhupadaPage() {
+  return (
+    <main className="bg-temple-bg">
+      <section className="relative min-h-[92vh] overflow-hidden bg-dusk text-sand">
+        <img
+          src="/images/prabhupada/prabhupada-golden-gate-kirtan.jpg"
+          alt="Srila Prabhupada leading public kirtan"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-70"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-dusk via-dusk/82 to-dusk/28" />
+        <div className="absolute inset-0 bg-gradient-to-t from-dusk via-transparent to-black/20" />
+
+        <div className="relative z-10 flex min-h-[92vh] items-end">
+          <div className="content-width section-padding pb-12 pt-36 sm:pb-20">
+            <div className="max-w-3xl">
+              <span className="eyebrow mb-5 block text-gold/85">Founder-Acarya of ISKCON</span>
+              <h1 className="font-playfair text-[clamp(3rem,10vw,7rem)] leading-[0.95] text-white text-shadow">
+                Srila
+                <br />
+                <em className="not-italic text-gold">Prabhupada</em>
+              </h1>
+              <p className="mt-6 max-w-2xl font-cormorant text-2xl leading-relaxed text-sand/86 sm:text-3xl">
+                His Divine Grace A.C. Bhaktivedanta Swami Prabhupada carried Krishna consciousness across the world and personally planted its roots in Kenya.
+              </p>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="#nairobi" className="btn-primary">
+                  His Nairobi Legacy <ArrowRight size={14} />
+                </Link>
+                <Link href="#life" className="btn-ghost">
+                  Read the Story
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="life" className="py-section bg-temple-bg bg-temple-texture">
+        <div className="content-width section-padding">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+            <div className="lg:sticky lg:top-28">
+              <span className="eyebrow mb-4 block">An Ocean of Mercy</span>
+              <h2 className="section-title">
+                One life,
+                <br />
+                <em className="not-italic text-gold">a world awakened</em>
+              </h2>
+              <p className="mt-6 font-inter text-body-md text-ink/70">
+                At an age when most people retire, Srila Prabhupada began the work that would define the modern global Hare Krishna movement.
+              </p>
+            </div>
+
+            <div className="space-y-5 font-inter text-body-md leading-relaxed text-ink/72">
+              <p>
+                Born Abhay Charan De in Calcutta in 1896, Srila Prabhupada was raised with devotion to Krishna from childhood. As a young man he studied, worked, and lived a responsible family life, but the central instruction of his life came in 1922 when he met Srila Bhaktisiddhanta Sarasvati Thakura: take the teachings of Sri Caitanya Mahaprabhu to the English-speaking world.
+              </p>
+              <p>
+                More than four decades later, after accepting sannyasa and publishing early volumes of Srimad-Bhagavatam, he boarded the cargo ship Jaladuta in 1965. He arrived in America with little money, no institution waiting for him, and a trunk of books. In July 1966 he incorporated ISKCON in New York City.
+              </p>
+              <p>
+                In only twelve years, his small storefront mission became an international society with temples, farms, schools, restaurants, book distribution, public kirtan, deity worship, and prasadam service across continents. His achievement was not only organizational; it was deeply personal. He gave people a daily practice, a spiritual family, and a way to live in relationship with Krishna.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-sand py-section-sm">
+        <div className="content-width section-padding">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {timeline.map((item) => (
+              <div key={item.year} className="border border-temple-sand bg-white p-6 shadow-card">
+                <div className="mb-4 flex items-center gap-3">
+                  <span className="font-playfair text-3xl font-semibold text-primary">{item.year}</span>
+                  <span className="h-px flex-1 bg-gold/30" />
+                </div>
+                <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/65">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="nairobi" className="overflow-hidden bg-dusk py-section text-sand">
+        <div className="content-width section-padding">
+          <div className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
+            <div>
+              <span className="eyebrow mb-4 block text-gold/75">Kenya and East Africa</span>
+              <h2 className="section-title-light">
+                He did not send only a movement.
+                <br />
+                <em className="not-italic text-gold">He came in person.</em>
+              </h2>
+              <div className="mt-7 space-y-5 font-inter text-body-md leading-relaxed text-sand/72">
+                <p>
+                  ISKCON's early Kenyan work began remarkably soon after the society was founded. Srila Prabhupada came to Nairobi in 1971, giving darshan, leading kirtan, lecturing in the evenings, and encouraging the devotees who were trying to establish Krishna consciousness in East Africa.
+                </p>
+                <p>
+                  Nairobi was not peripheral to him. He instructed his leaders that Kenya was an African country and that Krishna consciousness should be shared with African people, not only with the resident Indian community. That instruction still shapes the heart of ISKCON Nairobi's outreach, education, Food For Life, and student work.
+                </p>
+                <p>
+                  In 1972, Srila Prabhupada personally installed Sri Sri Radha Bankebihari in Nairobi. The worship, kirtan, prasadam, and hospitality offered today at Hare Krishna Close stand in continuity with that personal blessing.
+                </p>
+              </div>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-3">
+                {[
+                  { icon: MapPin, label: "Nairobi visits", value: "1971-72" },
+                  { icon: Globe2, label: "East Africa mission", value: "Personal care" },
+                  { icon: HeartHandshake, label: "Core instruction", value: "Reach everyone" },
+                ].map((stat) => (
+                  <div key={stat.label} className="border border-gold/15 bg-white/5 p-4">
+                    <stat.icon className="mb-3 text-gold" size={20} />
+                    <p className="font-playfair text-xl text-white">{stat.value}</p>
+                    <p className="mt-1 font-inter text-[0.62rem] uppercase tracking-[0.14em] text-sand/50">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <figure className="relative">
+              <div className="absolute -inset-4 border border-gold/20" />
+              <img
+                src="/images/prabhupada/swami-prabhupada-classic.jpg"
+                alt="Srila Prabhupada"
+                className="relative aspect-[4/3] w-full object-cover object-[center_30%] shadow-card-hover"
+              />
+              <figcaption className="relative mt-4 border-l border-gold/40 pl-4 font-inter text-xs leading-relaxed text-sand/55">
+                I found references to Nairobi photos of Srila Prabhupada, but did not download them because the available copies did not show a clear reuse license.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-section bg-temple-bg">
+        <div className="content-width section-padding">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="eyebrow mb-4 block">What He Gave</span>
+            <h2 className="section-title">
+              A practical path of
+              <br />
+              <em className="not-italic text-gold">hearing, chanting, serving</em>
+            </h2>
+          </div>
+
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {teachings.map((item) => (
+              <div key={item.title} className="border border-temple-sand bg-white p-6 shadow-card">
+                <item.icon className="mb-5 text-primary" size={24} />
+                <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/65">{item.text}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mx-auto mt-14 max-w-3xl border-y border-gold/25 py-9 text-center">
+            <p className="font-cormorant text-2xl italic leading-relaxed text-ink/75 sm:text-3xl">
+              Hare Krishna Hare Krishna, Krishna Krishna Hare Hare
+              <br />
+              Hare Rama Hare Rama, Rama Rama Hare Hare
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-temple-brown py-section-sm text-sand">
+        <div className="content-width section-padding">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+            <div>
+              <Ship className="mb-5 text-gold" size={28} />
+              <h2 className="font-playfair text-display-md text-white">Sources and image notes</h2>
+              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/60">
+                This page combines your supplied text with public references. The downloaded images are from Wikimedia Commons pages with reuse/license information. Nairobi-specific Prabhupada photos were found online, but not used as site assets because the license status was not clear enough.
+              </p>
+            </div>
+            <div className="grid gap-3 sm:grid-cols-2">
+              {sourceLinks.map((source) => (
+                <a
+                  key={source.href}
+                  href={source.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group flex items-center justify-between gap-4 border border-white/10 bg-white/5 px-4 py-3 font-inter text-xs text-sand/70 transition-colors hover:border-gold/40 hover:text-white"
+                >
+                  {source.label}
+                  <ArrowRight size={13} className="text-gold transition-transform group-hover:translate-x-1" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-primary py-14 text-center text-white">
+        <div className="content-width section-padding">
+          <span className="eyebrow mb-4 block text-white/70">Visit, chant, take part</span>
+          <h2 className="font-playfair text-display-md">The doors he asked us to keep open are still open.</h2>
+          <div className="mt-7 flex flex-wrap justify-center gap-3">
+            <Link href="/visit" className="btn-ghost">
+              Plan Your Visit
+            </Link>
+            <Link href="/learn" className="btn-ghost">
+              Study His Books
+            </Link>
+          </div>
+        </div>
+      </section>
+    </main>
+  );
+}

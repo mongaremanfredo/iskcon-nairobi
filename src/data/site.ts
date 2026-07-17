@@ -26,6 +26,7 @@ export const socialLinks = [
 export const navigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Founder", href: "/srila-prabhupada" },
   { label: "Visit", href: "/visit" },
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },

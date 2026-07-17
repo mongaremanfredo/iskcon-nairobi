@@ -1,5 +1,6 @@
 import HeroSection from "@/components/sections/HeroSection";
 import QuickNavSection from "@/components/sections/QuickNavSection";
+import PrabhupadaSection from "@/components/sections/PrabhupadaSection";
 import FestivalHighlightSection from "@/components/sections/FestivalHighlightSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import StatsSection from "@/components/sections/StatsSection";
@@ -17,6 +18,7 @@ export default function HomePage() {
       <HeroSection />
       <SavannaDivider className="h-[8.333vw] min-h-8 sm:h-24" />
       <QuickNavSection />
+      <PrabhupadaSection />
       <FestivalHighlightSection />
       <ProjectsSection />
       <StatsSection />
