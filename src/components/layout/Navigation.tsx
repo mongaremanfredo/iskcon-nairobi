@@ -20,39 +20,39 @@ export default function Navigation() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[760px]:px-[18px]",
+        "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-[18px]",
         scrolled
           ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
-          : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[760px]:py-3",
+          : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[900px]:py-3",
         isOpen && "bg-dusk/95 border-gold/25"
       )}
     >
       <div className="content-width section-padding">
-        <nav className="flex items-center justify-between gap-6 max-[760px]:gap-3">
+        <nav className="flex items-center justify-between gap-6 max-[900px]:gap-3">
           <Link
             href="/"
-            className="flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[760px]:gap-2"
+            className="nav-brand flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
           >
             <BrandLogo
               className={cn(
-                "transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
+                "nav-brand-logo transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                 scrolled
-                  ? "h-[46px] w-[50px] max-[760px]:h-[42px] max-[760px]:w-[45px]"
-                  : "h-[68px] w-[73px] max-[760px]:h-[48px] max-[760px]:w-[52px]"
+                  ? "h-[46px] w-[50px] max-[900px]:h-[42px] max-[900px]:w-[45px]"
+                  : "h-[68px] w-[73px] max-[900px]:h-[48px] max-[900px]:w-[52px]"
               )}
             />
             <span
               className={cn(
-                "flex min-w-0 flex-col gap-[3px] transition-all duration-300",
+                "nav-brand-text flex min-w-0 flex-col gap-[3px] transition-all duration-300",
                 scrolled ? "translate-y-0" : "translate-y-0"
               )}
             >
-              <span className="font-inter text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[760px]:text-[0.9rem]">
+              <span className="nav-brand-name font-inter text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
                 ISKCON Nairobi
               </span>
               <span
                 className={cn(
-                  "font-inter text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[760px]:text-[0.47rem]",
+                  "nav-brand-expansion font-inter text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:text-[0.47rem]",
                   scrolled ? "opacity-80" : "opacity-95"
                 )}
               >
@@ -72,7 +72,7 @@ export default function Navigation() {
           <div className="flex items-center gap-3">
             <Link
               href="/donate"
-              className="hidden sm:inline-flex items-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-sunset"
+              className="hidden sm:inline-flex max-[900px]:hidden items-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-sunset"
             >
               Donate
             </Link>
@@ -165,6 +165,39 @@ export default function Navigation() {
           </div>
         </div>
       </div>
+      <style>{`
+        @media (max-height: 520px) and (orientation: landscape) {
+          .site-nav {
+            padding-top: 0.35rem !important;
+            padding-bottom: 0.35rem !important;
+          }
+
+          .site-nav .section-padding {
+            padding-left: 0.75rem !important;
+            padding-right: 0.75rem !important;
+          }
+
+          .site-nav .nav-brand-logo {
+            width: 42px !important;
+            height: 39px !important;
+          }
+
+          .site-nav .nav-brand-name {
+            font-size: 0.78rem !important;
+          }
+
+          .site-nav .nav-brand-expansion {
+            font-size: 0.42rem !important;
+            max-width: 12rem !important;
+            white-space: nowrap !important;
+          }
+
+          .site-nav button[aria-label] {
+            width: 2.35rem !important;
+            height: 2.35rem !important;
+          }
+        }
+      `}</style>
     </header>
   );
 }
