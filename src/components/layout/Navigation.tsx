@@ -20,7 +20,7 @@ export default function Navigation() {
   return (
     <header
       className={cn(
-        "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-[18px]",
+        "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
         scrolled
           ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
           : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[900px]:py-3",
