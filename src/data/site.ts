@@ -27,6 +27,7 @@ export const navigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Founder", href: "/srila-prabhupada" },
+  { label: "Leadership", href: "/leadership" },
   { label: "Visit", href: "/visit" },
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },
@@ -332,23 +333,74 @@ export const testimonials = [
 
 export const leadership = [
   {
-    name: "Temple Council",
-    title: "Community Stewardship",
-    description: "ISKCON Nairobi is guided by senior devotees and service leaders who coordinate worship, education, outreach, festivals, and community care.",
-    image: "/images/placeholders/iskcon-temple-bangalore.jpg",
+    name: "Spiritual Guidance",
+    title: "Senior Vaishnava Direction",
+    description: "Senior devotees guide the temple's spiritual priorities, preaching standards, education, and East Africa service vision.",
+    image: "/images/leadership/umapati-prabhu-web.jpg",
   },
   {
-    name: "Education Team",
-    title: "Scriptural Study & Youth Programmes",
-    description: "Teachers and mentors support Bhagavad-gita study, kirtan training, youth outreach, and the Hare Krishna Training Centre initiatives.",
-    image: "/images/placeholders/hare-krishna-harinam.jpg",
+    name: "Departmental Service",
+    title: "Distributed Temple Coordination",
+    description: "ISKCON Nairobi now runs through a departmental service model, with responsibilities shared across education, worship, kirtan, outreach, hospitality, festivals, and administration.",
+    image: "/images/leadership/govinda-prem-prabhu-web.jpg",
   },
   {
-    name: "Outreach Volunteers",
-    title: "Food, Festivals & Service",
-    description: "A wide volunteer network supports prasadam distribution, Ratha Yatra, Kirtan Safari, guest care, and day-to-day temple service.",
-    image: "/images/placeholders/iskcon-food-for-life.jpg",
+    name: "Resident Teaching",
+    title: "Training, Kirtan & Daily Culture",
+    description: "Resident teachers, kirtan leaders, and service coordinators carry the daily culture of study, worship, music, mentorship, and community care.",
+    image: "/images/leadership/sri-gauranga-prabhu-web.jpg",
   },
+];
+
+export const leadershipProfiles = [
+  {
+    name: "Umapati Prabhu",
+    role: "GBC Member, Initiating Guru, Senior Preacher",
+    category: "Spiritual Guidance",
+    image: "/images/leadership/umapati-prabhu-web.jpg",
+    summary: "The senior-most guide connected with ISKCON Nairobi's East Africa mission, now an initiating guru who travels widely across the region.",
+    details: "Umapati Prabhu provides senior Vaishnava guidance, preaches throughout East Africa, and helps establish and strengthen new centres in the region.",
+    emphasis: true,
+  },
+  {
+    name: "Govinda Prem Prabhu",
+    role: "Regional Secretary, Hare Krishna Training Centre",
+    category: "Regional & Educational Leadership",
+    image: "/images/leadership/govinda-prem-prabhu-web.jpg",
+    summary: "Regional Secretary and key leader of the Hare Krishna Training Centre.",
+    details: "Govinda Prem Prabhu supports regional coordination and runs HKTC, helping shape serious Vaishnava education, student training, and devotional formation in Nairobi.",
+  },
+  {
+    name: "Mukund Morari Prabhu",
+    role: "Vice President, Kirtan Coordination",
+    category: "Temple Coordination",
+    image: "/images/leadership/mukund-morari-prabhu-web.jpg",
+    summary: "One of the vice presidents and a world-class mrdanga player.",
+    details: "Mukund Morari Prabhu coordinates kirtans at the temple and supports Nairobi's devotional music culture through training, festival service, and regular programmes.",
+  },
+  {
+    name: "Sri Gauranga Prabhu",
+    role: "Senior Resident Brahmachari, Teacher",
+    category: "Resident Teaching",
+    image: "/images/leadership/sri-gauranga-prabhu-web.jpg",
+    summary: "The senior-most resident brahmachari and a respected teacher.",
+    details: "Sri Gauranga Prabhu supports daily temple culture through teaching, resident training, mentorship, and steady brahmachari service.",
+  },
+];
+
+export const leadershipDepartments = [
+  "Spiritual guidance",
+  "Regional coordination",
+  "Hare Krishna Training Centre",
+  "Temple worship",
+  "Kirtan and festivals",
+  "Food For Life",
+  "Guest care",
+  "Youth and student outreach",
+  "Farm and goshala",
+  "Administration",
+  "Communications",
+  "Volunteer service",
 ];
 
 export const donationPaths = [

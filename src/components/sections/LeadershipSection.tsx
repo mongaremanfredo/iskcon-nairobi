@@ -35,6 +35,12 @@ export default function LeadershipSection() {
             >
               Discover His Nairobi Legacy <ArrowRight size={13} />
             </Link>
+            <Link
+              href="/leadership"
+              className="ml-0 mt-4 inline-flex items-center gap-2 font-inter text-xs text-sand/70 font-semibold tracking-widest uppercase transition-all hover:gap-3 hover:text-gold sm:ml-6"
+            >
+              Meet the Service Leaders <ArrowRight size={13} />
+            </Link>
           </div>
 
           <div className="relative">
