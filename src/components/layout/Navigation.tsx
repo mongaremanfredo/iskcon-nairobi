@@ -30,103 +30,105 @@ export default function Navigation() {
   };
 
   return (
-    <header
-      className={cn(
-        "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
-        scrolled
-          ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
-          : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[900px]:py-3",
-        isOpen && "bg-dusk/95 border-gold/25"
-      )}
-    >
-      <div className="content-width section-padding">
-        <nav className="flex items-center justify-between gap-6 max-[900px]:gap-3">
-          <Link
-            href="/"
-            className="nav-brand flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
-            onClick={handleBrandClick}
-          >
-            <BrandLogo
-              className={cn(
-                "nav-brand-logo transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
-                scrolled
-                  ? "h-[46px] w-[50px] max-[900px]:h-[42px] max-[900px]:w-[45px]"
-                  : "h-[68px] w-[73px] max-[900px]:h-[48px] max-[900px]:w-[52px]"
-              )}
-            />
-            <span
-              className={cn(
-                "nav-brand-text flex min-w-0 flex-col gap-[3px] transition-all duration-300",
-                scrolled ? "translate-y-0" : "translate-y-0"
-              )}
+    <>
+      <header
+        className={cn(
+          "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
+          scrolled
+            ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
+            : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[900px]:py-3",
+          isOpen && "bg-dusk/95 border-gold/25"
+        )}
+      >
+        <div className="content-width section-padding">
+          <nav className="flex items-center justify-between gap-6 max-[900px]:gap-3">
+            <Link
+              href="/"
+              className="nav-brand flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
+              onClick={handleBrandClick}
             >
-              <span className="nav-brand-name font-inter text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
-                ISKCON Nairobi
-              </span>
+              <BrandLogo
+                className={cn(
+                  "nav-brand-logo transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
+                  scrolled
+                    ? "h-[46px] w-[50px] max-[900px]:h-[42px] max-[900px]:w-[45px]"
+                    : "h-[68px] w-[73px] max-[900px]:h-[48px] max-[900px]:w-[52px]"
+                )}
+              />
               <span
                 className={cn(
-                  "nav-brand-expansion font-inter text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:text-[0.47rem]",
-                  scrolled ? "opacity-80" : "opacity-95"
+                  "nav-brand-text flex min-w-0 flex-col gap-[3px] transition-all duration-300",
+                  scrolled ? "translate-y-0" : "translate-y-0"
                 )}
               >
-                International Society for Krishna Consciousness
+                <span className="nav-brand-name font-inter text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
+                  ISKCON Nairobi
+                </span>
+                <span
+                  className={cn(
+                    "nav-brand-expansion font-inter text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:text-[0.47rem]",
+                    scrolled ? "opacity-80" : "opacity-95"
+                  )}
+                >
+                  International Society for Krishna Consciousness
+                </span>
               </span>
-            </span>
-          </Link>
-
-          <div className="hidden xl:flex items-center gap-6">
-            {navigation.slice(0, 8).map((item) => (
-              <Link key={item.href} href={item.href} className="nav-link text-xs tracking-wider uppercase">
-                {item.label}
-              </Link>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-3">
-            <Link
-              href="/donate"
-              className="hidden sm:inline-flex max-[900px]:hidden items-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-sunset"
-            >
-              Donate
             </Link>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className={cn(
-                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/60 bg-dusk/45 p-0 text-gold shadow-[0_8px_24px_rgba(0,0,0,0.22)] backdrop-blur-sm transition-colors hover:border-gold/80 hover:bg-dusk/65 xl:hidden",
-                isOpen && "bg-dusk/70"
-              )}
-              aria-expanded={isOpen}
-              aria-label={isOpen ? "Close navigation" : "Open navigation"}
-              type="button"
-            >
-              <span className="grid h-3.5 w-[18px] content-between" aria-hidden="true">
-                <span
-                  className={cn(
-                    "block h-px w-full origin-center bg-current transition-transform duration-200",
-                    isOpen && "translate-y-[6.5px] rotate-45"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block h-px w-full bg-current transition-opacity duration-150",
-                    isOpen && "opacity-0"
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block h-px w-full origin-center bg-current transition-transform duration-200",
-                    isOpen && "-translate-y-[6.5px] -rotate-45"
-                  )}
-                />
-              </span>
-            </button>
-          </div>
-        </nav>
-      </div>
+
+            <div className="hidden xl:flex items-center gap-6">
+              {navigation.slice(0, 8).map((item) => (
+                <Link key={item.href} href={item.href} className="nav-link text-xs tracking-wider uppercase">
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-3">
+              <Link
+                href="/donate"
+                className="hidden sm:inline-flex max-[900px]:hidden items-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-sunset"
+              >
+                Donate
+              </Link>
+              <button
+                onClick={() => setIsOpen(!isOpen)}
+                className={cn(
+                  "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/60 bg-dusk/45 p-0 text-gold shadow-[0_8px_24px_rgba(0,0,0,0.22)] backdrop-blur-sm transition-colors hover:border-gold/80 hover:bg-dusk/65 xl:hidden",
+                  isOpen && "bg-dusk/70"
+                )}
+                aria-expanded={isOpen}
+                aria-label={isOpen ? "Close navigation" : "Open navigation"}
+                type="button"
+              >
+                <span className="grid h-3.5 w-[18px] content-between" aria-hidden="true">
+                  <span
+                    className={cn(
+                      "block h-px w-full origin-center bg-current transition-transform duration-200",
+                      isOpen && "translate-y-[6.5px] rotate-45"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "block h-px w-full bg-current transition-opacity duration-150",
+                      isOpen && "opacity-0"
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "block h-px w-full origin-center bg-current transition-transform duration-200",
+                      isOpen && "-translate-y-[6.5px] -rotate-45"
+                    )}
+                  />
+                </span>
+              </button>
+            </div>
+          </nav>
+        </div>
+      </header>
 
       <div
         className={cn(
-          "xl:hidden fixed inset-0 z-40 transition-all duration-500",
+          "xl:hidden fixed inset-0 z-[70] transition-all duration-500",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
@@ -211,6 +213,6 @@ export default function Navigation() {
           }
         }
       `}</style>
-    </header>
+    </>
   );
 }
