@@ -11,7 +11,6 @@ import BrandLogo from "@/components/ui/BrandLogo";
 const primaryNavigation = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
-  { label: "Founder & Leadership", href: "/#guidance-vision" },
   { label: "Visit", href: "/visit" },
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },
