@@ -46,18 +46,21 @@ export default function TestimonialsSection() {
         {/* Split Layout */}
         <div className="testimonials-grid grid grid-cols-2 gap-0 min-h-0">
           {/* Left — Image */}
-          <div className="testimonials-image-col relative overflow-hidden border-4 border-sand image-grade">
-            <div className="aspect-[4/3] lg:aspect-auto lg:h-full lg:absolute lg:inset-0">
+          <div className="testimonials-image-col group flex items-center justify-center bg-dusk p-8">
+            <div className="testimonials-portrait-frame relative">
+              <div className="testimonials-portrait relative h-64 w-64 overflow-hidden border-4 border-sand/20 shadow-card sm:h-72 sm:w-72">
               <img
                 key={current.image}
                 src={current.image}
                 alt={current.name}
-                className="w-full h-full object-cover transition-opacity duration-500"
+                className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
               />
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-black/10" />
+                <div className="absolute inset-0 border-2 border-gold/0 transition-colors duration-300 group-hover:border-gold/70" />
+              </div>
+              <div className="absolute -bottom-2 -right-2 h-8 w-8 border-r-2 border-b-2 border-gold opacity-40 transition-opacity group-hover:opacity-100" />
+              <div className="absolute -top-2 -left-2 h-8 w-8 border-l-2 border-t-2 border-gold opacity-40 transition-opacity group-hover:opacity-100" />
               {/* Quote mark watermark */}
-              <div className="testimonials-watermark absolute top-6 left-6 font-playfair text-white/10 leading-none" style={{ fontSize: "10rem" }}>
+              <div className="testimonials-watermark absolute -left-5 -top-7 font-playfair text-white/10 leading-none" style={{ fontSize: "6rem" }}>
                 "
               </div>
             </div>
@@ -153,20 +156,26 @@ export default function TestimonialsSection() {
             padding: 0.7rem 0.75rem 0.8rem !important;
           }
           .testimonials-image-col {
-            width: 5.4rem !important;
-            height: 5.4rem !important;
-            border-width: 2px !important;
-            border-color: var(--color-gold) !important;
-            border-radius: 999px !important;
-            overflow: hidden !important;
+            width: 5.8rem !important;
+            height: 5.8rem !important;
+            padding: 0 !important;
+            background: transparent !important;
             order: 1 !important;
             margin-bottom: 0.5rem !important;
-            box-shadow: 0 10px 24px rgba(56, 37, 21, 0.16) !important;
           }
-          .testimonials-image-col > div {
+          .testimonials-portrait-frame,
+          .testimonials-portrait {
             width: 100% !important;
             height: 100% !important;
             aspect-ratio: 1 / 1 !important;
+          }
+          .testimonials-portrait {
+            border-width: 3px !important;
+            box-shadow: 0 10px 24px rgba(56, 37, 21, 0.16) !important;
+          }
+          .testimonials-portrait-frame > div:not(.testimonials-portrait):not(.testimonials-watermark) {
+            width: 1rem !important;
+            height: 1rem !important;
           }
           .testimonials-watermark {
             display: none !important;
