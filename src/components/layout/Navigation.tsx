@@ -9,6 +9,9 @@ import { navigation } from "@/data/site";
 import { cn } from "@/lib/utils";
 import BrandLogo from "@/components/ui/BrandLogo";
 
+const mobileNavLabels = new Set(["Home", "About", "Visit", "Learn", "Projects", "Festivals", "Contact"]);
+const mobileNavigation = navigation.filter((item) => mobileNavLabels.has(item.label));
+
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -155,7 +158,7 @@ export default function Navigation() {
           </div>
 
           <div className="flex-1 overflow-y-auto py-4">
-            {navigation.map((item, i) => (
+            {mobileNavigation.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
