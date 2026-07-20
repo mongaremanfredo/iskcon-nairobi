@@ -32,15 +32,15 @@ export default function Navigation() {
   return (
     <header
       className={cn(
-        "site-nav fixed top-0 left-0 right-0 z-[80] border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
+        "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
         scrolled
           ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
           : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[900px]:py-3",
-        isOpen && "!bg-dusk/95 border-gold/25 backdrop-blur-[14px]"
+        isOpen && "bg-dusk/95 border-gold/25"
       )}
     >
       <div className="content-width section-padding">
-        <nav className="relative z-[90] flex items-center justify-between gap-6 max-[900px]:gap-3">
+        <nav className="flex items-center justify-between gap-6 max-[900px]:gap-3">
           <Link
             href="/"
             className="nav-brand flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
@@ -50,8 +50,8 @@ export default function Navigation() {
               className={cn(
                 "nav-brand-logo transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                 scrolled
-                  ? "h-[46px] w-[50px] max-[900px]:h-[52px] max-[900px]:w-[60px]"
-                  : "h-[68px] w-[73px] max-[900px]:h-[58px] max-[900px]:w-[66px]"
+                  ? "h-[46px] w-[50px] max-[900px]:h-[42px] max-[900px]:w-[45px]"
+                  : "h-[68px] w-[73px] max-[900px]:h-[48px] max-[900px]:w-[52px]"
               )}
             />
             <span
@@ -92,8 +92,8 @@ export default function Navigation() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={cn(
-                "relative z-[95] inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/40 p-0 text-gold transition-colors hover:border-gold/70 xl:hidden",
-                scrolled || isOpen ? "bg-dusk/25 hover:bg-dusk/40" : "bg-transparent hover:bg-transparent"
+                "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/60 bg-dusk/45 p-0 text-gold shadow-[0_8px_24px_rgba(0,0,0,0.22)] backdrop-blur-sm transition-colors hover:border-gold/80 hover:bg-dusk/65 xl:hidden",
+                isOpen && "bg-dusk/70"
               )}
               aria-expanded={isOpen}
               aria-label={isOpen ? "Close navigation" : "Open navigation"}
@@ -126,7 +126,7 @@ export default function Navigation() {
 
       <div
         className={cn(
-          "xl:hidden fixed inset-0 z-[100] transition-all duration-500",
+          "xl:hidden fixed inset-0 z-40 transition-all duration-500",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
         )}
       >
@@ -137,28 +137,28 @@ export default function Navigation() {
 
         <div
           className={cn(
-            "absolute top-0 right-0 z-[110] h-full w-[min(340px,100vw)] bg-dusk flex flex-col transition-transform duration-500 shadow-2xl",
+            "absolute top-0 right-0 h-full w-[min(320px,100vw)] bg-dusk flex flex-col transition-transform duration-500",
             isOpen ? "translate-x-0" : "translate-x-full"
           )}
         >
-          <div className="flex min-h-[84px] items-center justify-between p-5 border-b border-white/10">
-            <BrandLogo className="h-14 w-16 text-sand" />
+          <div className="flex items-center justify-between p-6 border-b border-white/10">
+            <BrandLogo className="h-14 w-[150px] text-sand" />
             <button
               onClick={() => setIsOpen(false)}
-              className="inline-flex h-11 w-11 items-center justify-center border border-white/10 text-white/60 hover:text-white transition-colors"
+              className="text-white/60 hover:text-white transition-colors"
               aria-label="Close menu"
             >
               <X size={20} />
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto py-3">
+          <div className="flex-1 overflow-y-auto py-4">
             {navigation.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-between px-5 py-3.5 font-inter text-sm text-white/80 hover:text-sunset hover:bg-white/5 transition-all border-b border-white/5"
+                className="flex items-center justify-between px-6 py-3.5 font-inter text-sm text-white/80 hover:text-sunset hover:bg-white/5 transition-all border-b border-white/5"
                 style={{ animationDelay: `${i * 50}ms` }}
               >
                 {item.label}
@@ -167,7 +167,7 @@ export default function Navigation() {
             ))}
           </div>
 
-          <div className="p-5 border-t border-white/10">
+          <div className="p-6 border-t border-white/10">
             <Link
               href="/donate"
               onClick={() => setIsOpen(false)}
@@ -191,8 +191,8 @@ export default function Navigation() {
           }
 
           .site-nav .nav-brand-logo {
-            width: 50px !important;
-            height: 44px !important;
+            width: 42px !important;
+            height: 39px !important;
           }
 
           .site-nav .nav-brand-name {
