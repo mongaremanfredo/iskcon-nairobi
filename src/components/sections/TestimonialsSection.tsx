@@ -151,9 +151,9 @@ export default function TestimonialsSection() {
             flex-direction: column !important;
             align-items: center !important;
             min-height: 0 !important;
-            border: 1px solid rgba(199, 163, 93, 0.28) !important;
-            background: #f7efdf !important;
-            padding: 0.7rem 0.75rem 0.8rem !important;
+            border: 0 !important;
+            background: transparent !important;
+            padding: 0 !important;
           }
           .testimonials-image-col {
             width: 5.8rem !important;
