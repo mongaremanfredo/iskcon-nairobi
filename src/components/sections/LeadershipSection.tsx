@@ -4,7 +4,7 @@ import { leadership } from "@/data/site";
 
 export default function LeadershipSection() {
   return (
-    <section className="relative overflow-hidden bg-temple-brown py-section text-sand">
+    <section id="guidance-vision" className="relative scroll-mt-24 overflow-hidden bg-temple-brown py-section text-sand">
       <div className="absolute inset-0">
         <img
           src="/images/prabhupada/prabhupada-golden-gate-kirtan.jpg"

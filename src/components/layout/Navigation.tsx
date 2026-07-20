@@ -5,12 +5,19 @@ import type { MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, ChevronRight } from "lucide-react";
-import { navigation } from "@/data/site";
 import { cn } from "@/lib/utils";
 import BrandLogo from "@/components/ui/BrandLogo";
 
-const mobileNavLabels = new Set(["Home", "About", "Visit", "Learn", "Projects", "Festivals", "Contact"]);
-const mobileNavigation = navigation.filter((item) => mobileNavLabels.has(item.label));
+const primaryNavigation = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Founder & Leadership", href: "/#guidance-vision" },
+  { label: "Visit", href: "/visit" },
+  { label: "Learn", href: "/learn" },
+  { label: "Projects", href: "/projects" },
+  { label: "Kirtan Safari", href: "/festivals/kirtan-safari" },
+  { label: "Contact", href: "/contact" },
+];
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -79,7 +86,7 @@ export default function Navigation() {
             </Link>
 
             <div className="hidden xl:flex items-center gap-6">
-              {navigation.slice(0, 8).map((item) => (
+              {primaryNavigation.map((item) => (
                 <Link key={item.href} href={item.href} className="nav-link text-xs tracking-wider uppercase">
                   {item.label}
                 </Link>
@@ -158,7 +165,7 @@ export default function Navigation() {
           </div>
 
           <div className="flex-1 overflow-y-auto py-4">
-            {mobileNavigation.map((item, i) => (
+            {primaryNavigation.map((item, i) => (
               <Link
                 key={item.href}
                 href={item.href}
