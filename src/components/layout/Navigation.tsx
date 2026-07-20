@@ -1,7 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { MouseEvent } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X, ChevronRight } from "lucide-react";
 import { navigation } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -10,12 +12,22 @@ import BrandLogo from "@/components/ui/BrandLogo";
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleBrandClick = (event: MouseEvent<HTMLAnchorElement>) => {
+    setIsOpen(false);
+
+    if (pathname === "/") {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   return (
     <header
@@ -32,7 +44,7 @@ export default function Navigation() {
           <Link
             href="/"
             className="nav-brand flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
-            onClick={() => setIsOpen(false)}
+            onClick={handleBrandClick}
           >
             <BrandLogo
               className={cn(
