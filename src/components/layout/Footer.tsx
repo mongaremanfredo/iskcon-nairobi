@@ -118,19 +118,10 @@ export default function Footer() {
 
       <div className="content-width section-padding py-5">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="font-inter text-white/20 text-xs">
+          <p className="text-center font-inter text-white/20 text-xs sm:text-left">
             © {new Date().getFullYear()} ISKCON Nairobi. All rights reserved.
           </p>
-          <div className="flex items-center gap-1 font-inter text-white/20 text-xs">
-            <span className="text-gold">Hare Krishna</span>
-            <span>·</span>
-            <span>Hare Krishna</span>
-            <span>·</span>
-            <span>Krishna Krishna</span>
-            <span>·</span>
-            <span>Hare Hare</span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">
             <Link href="/privacy" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Privacy</Link>
             <Link href="/terms" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Terms</Link>
             <a
