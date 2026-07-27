@@ -11,7 +11,7 @@ export default function FestivalCalendarSection() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="eyebrow block mb-3">Sacred Calendar</span>
+            <span className="eyebrow block mb-3">Calendar</span>
             <h2 className="section-title">
               Upcoming<br />
               <em className="text-gold not-italic font-normal">Festivals & Events</em>
@@ -38,7 +38,7 @@ export default function FestivalCalendarSection() {
                 <img
                   src={festival.image}
                   alt={festival.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 {/* Date badge */}
