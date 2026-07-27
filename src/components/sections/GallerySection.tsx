@@ -4,22 +4,58 @@ import Link from "next/link";
 import { ArrowRight, Camera } from "lucide-react";
 
 const galleryImages = [
-  { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Janmashtami celebrations at ISKCON Nairobi", span: "row-span-2" },
-  { src: "/images/placeholders/iskcon-food-for-life.jpg", caption: "Food For Life distribution, Kibera", span: "" },
-  { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Kirtan Safari — dawn session on the savanna", span: "" },
-  { src: "/images/placeholders/cows-pasture-pixabay.jpg", caption: "Cows at the Thika Goshala Farm", span: "row-span-2" },
-  { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "HKTC Nairobi students during morning class", span: "" },
-  { src: "/images/placeholders/iskcon-ratha-yatra-moscow.jpg", caption: "East African landscape at golden hour", span: "" },
+  {
+    src: "/images/placeholders/iskcon-temple-bangalore.jpg",
+    caption: "Janmashtami celebrations at ISKCON Nairobi",
+    tone: "Temple Life",
+    className: "lg:col-span-5 lg:row-span-2",
+    imageClass: "h-[320px] sm:h-[420px] lg:h-full",
+  },
+  {
+    src: "/images/placeholders/iskcon-food-for-life.jpg",
+    caption: "Food For Life distribution, Kibera",
+    tone: "Prasadam",
+    className: "lg:col-span-3",
+    imageClass: "h-[170px] sm:h-[240px] lg:h-full",
+  },
+  {
+    src: "/images/placeholders/hare-krishna-harinam.jpg",
+    caption: "Kirtan Safari - dawn session on the savanna",
+    tone: "Kirtan",
+    className: "lg:col-span-4",
+    imageClass: "h-[170px] sm:h-[240px] lg:h-full",
+  },
+  {
+    src: "/images/placeholders/cows-pasture-pixabay.jpg",
+    caption: "Cows at the Thika Goshala Farm",
+    tone: "Goshala",
+    className: "lg:col-span-4",
+    imageClass: "h-[170px] sm:h-[240px] lg:h-full",
+  },
+  {
+    src: "/images/placeholders/hare-krishna-harinam.jpg",
+    caption: "HKTC Nairobi students during morning class",
+    tone: "Training",
+    className: "lg:col-span-3",
+    imageClass: "h-[170px] sm:h-[240px] lg:h-full",
+  },
+  {
+    src: "/images/placeholders/iskcon-ratha-yatra-moscow.jpg",
+    caption: "East African landscape at golden hour",
+    tone: "Festival Mood",
+    className: "lg:col-span-12",
+    imageClass: "h-[240px] sm:h-[300px] lg:h-full",
+  },
 ];
 
 export default function GallerySection() {
   return (
-    <section className="py-section bg-temple-cream">
+    <section className="relative overflow-hidden bg-temple-cream py-section">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-temple-bg/70 to-transparent" />
       <div className="content-width section-padding">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
+        <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
-            <span className="eyebrow block mb-3">Our World</span>
+            <span className="eyebrow mb-3 block">Our World</span>
             <h2 className="section-title">
               Life at<br />
               <em className="text-gold not-italic font-normal">ISKCON Nairobi</em>
@@ -27,37 +63,61 @@ export default function GallerySection() {
           </div>
           <Link
             href="/media"
-            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
+            className="flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
           >
             Full Gallery <ArrowRight size={12} />
           </Link>
         </div>
 
-        {/* Masonry-style grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 grid-rows-[auto] gap-3 lg:gap-4" style={{ gridAutoRows: "200px" }}>
-          {galleryImages.map((img, i) => (
-            <div
-              key={i}
-              className={`group relative overflow-hidden cursor-pointer image-grade ${img.span}`}
-            >
-              <img
-                src={img.src}
-                alt={img.caption}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-              />
-              {/* Hover overlay */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300" />
-              {/* Caption */}
-              <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 bg-gradient-to-t from-black/80 to-transparent">
-                <div className="flex items-start gap-2">
-                  <Camera size={11} className="text-gold mt-0.5 flex-shrink-0" />
-                  <p className="font-inter text-white text-xs leading-relaxed">{img.caption}</p>
+        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-12 lg:grid-rows-[250px_250px_300px]">
+          {galleryImages.map((img, i) => {
+            const isLead = i === 0;
+            const isWide = i === galleryImages.length - 1;
+
+            return (
+              <Link
+                key={img.caption}
+                href="/media"
+                className={`group relative overflow-hidden border border-temple-sand bg-dusk shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover ${
+                  isLead || isWide ? "col-span-2" : ""
+                } ${img.className}`}
+              >
+                <img
+                  src={img.src}
+                  alt={img.caption}
+                  className={`h-full w-full object-cover image-grade transition-transform duration-700 group-hover:scale-105 ${img.imageClass}`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dusk/92 via-dusk/18 to-transparent" />
+                <div className="absolute inset-0 bg-gold/0 transition-colors duration-300 group-hover:bg-gold/10" />
+
+                <div className="absolute left-3 top-3 flex items-center gap-1.5 border border-white/15 bg-dusk/62 px-2 py-1 backdrop-blur-sm sm:left-4 sm:top-4">
+                  <Camera size={isLead ? 13 : 11} className="text-gold" />
+                  <span className="font-inter text-[0.58rem] font-semibold uppercase tracking-[0.14em] text-sand/78 sm:text-[0.62rem]">
+                    {img.tone}
+                  </span>
                 </div>
-              </div>
-              {/* Gold corner */}
-              <div className="absolute top-0 left-0 w-6 h-6 border-l-2 border-t-2 border-gold/0 group-hover:border-gold/80 transition-colors duration-300" />
-            </div>
-          ))}
+
+                <div className={`absolute bottom-0 left-0 right-0 ${isLead ? "p-5 sm:p-7" : isWide ? "p-4 sm:p-5" : "p-3"}`}>
+                  <p
+                    className={`font-playfair font-semibold leading-tight text-white ${
+                      isLead
+                        ? "max-w-md text-2xl sm:text-4xl"
+                        : isWide
+                          ? "text-lg sm:text-2xl lg:text-xl"
+                          : "line-clamp-3 text-[0.95rem] sm:text-xl"
+                    }`}
+                  >
+                    {img.caption}
+                  </p>
+                  <div className={`mt-2 items-center gap-2 font-inter text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-gold/85 opacity-90 transition-opacity group-hover:opacity-100 ${isLead || isWide ? "flex" : "hidden sm:flex"}`}>
+                    View Story <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+                  </div>
+                </div>
+
+                <div className="absolute bottom-3 right-3 h-8 w-8 border-b border-r border-gold/50 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              </Link>
+            );
+          })}
         </div>
       </div>
     </section>
