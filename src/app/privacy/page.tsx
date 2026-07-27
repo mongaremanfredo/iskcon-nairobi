@@ -18,8 +18,10 @@ const dataCategories = [
   ["Account data", "Username, password credentials where accounts exist, and account preferences.", "Provided directly by you."],
   ["Engagement data", "Event RSVPs, course applications, volunteer sign-ups, newsletter subscriptions, and programme interests.", "Provided directly by you."],
   ["Communications", "Messages, prayer requests, testimonials, support queries, and contact-form submissions.", "Provided directly by you."],
+  ["Media data", "Photographs, video, livestream footage, audio recordings, testimonials, and public event images.", "Captured at Temple programmes or submitted by you."],
   ["Technical data", "IP address, browser type, device information, cookie data, and usage or analytics data.", "Collected automatically when you browse."],
-  ["Sensitive data", "Religious interest inherent to the website's purpose and, only where voluntarily provided, dietary or health notes relevant to a service request.", "Provided directly by you with consent."],
+  ["Children's data", "Parent or guardian contact details, emergency contacts, age/date of birth where needed, programme attendance, and relevant medical or allergy notes.", "Provided by a parent, guardian, or authorized programme contact."],
+  ["Sensitive data", "Religious interest inherent to the website's purpose and, only where voluntarily provided, dietary, allergy, health, prayer, pastoral, or safeguarding information relevant to a service request.", "Provided directly by you or by a parent/guardian with consent."],
 ];
 
 const legalBasis = [
@@ -30,6 +32,8 @@ const legalBasis = [
   ["Improving and securing the website", "Legitimate interest, subject to cookie preferences where required."],
   ["Maintaining accounting, tax, and compliance records", "Legal obligation."],
   ["Preventing fraud, abuse, or unauthorized access", "Legitimate interest and legal obligation."],
+  ["Photographing, filming, livestreaming, or archiving public Temple events", "Legitimate interest, consent where required, and religious/community purpose."],
+  ["Managing children, youth, safeguarding, and emergency information", "Consent, explicit consent where needed, vital interests, legitimate interest, and legal obligation."],
   ["Processing sensitive or special-category data", "Explicit consent or voluntary public disclosure where applicable."],
 ];
 
@@ -38,6 +42,7 @@ const privacySections = [
     title: "1. Who We Are",
     content: [
       `${templeInfo.name}, also known as ${templeInfo.legalName}, operates ${platformUrl} from ${templeAddress}.`,
+      "If ISKCON Nairobi publishes additional registered entity details, registration numbers, or statutory status information, those details will be read together with this Policy.",
       "For personal data collected through this website, ISKCON Nairobi acts as the data controller unless a third-party service states otherwise.",
       "We process personal data in accordance with Kenya's Data Protection Act, 2019 and its subsidiary regulations, as administered by the Office of the Data Protection Commissioner.",
       `Privacy contact: ${templeInfo.email}.`,
@@ -47,6 +52,8 @@ const privacySections = [
     title: "3. How We Collect Data",
     content: [
       "We collect data directly from you when you submit forms, register interest, make an enquiry, request prayer or blessings, sign up to volunteer, subscribe to updates, book an event, apply for a course, or contact us.",
+      "We may collect data from a parent or guardian where a child is enrolled in a youth programme, class, festival service, retreat, or other supervised activity.",
+      "We may collect photographs, video, audio, and livestream footage during Temple programmes, festivals, kirtans, classes, processions, community service, and other public events.",
       "We may collect limited technical data automatically through cookies, analytics, logs, and similar technologies when you browse the website.",
       "We may receive confirmation data from third parties such as payment processors, registration forms, email tools, messaging platforms, or social media services when you choose to use those services.",
     ],
@@ -57,13 +64,15 @@ const privacySections = [
       "We do not store complete debit or credit card numbers, CVV codes, M-Pesa PINs, or other full payment credentials on this website.",
       "Where payments are enabled, they are processed through third-party providers such as mobile money, card, bank-transfer, or other payment gateways. Those providers apply their own security standards, terms, and privacy policies.",
       "We may retain transaction metadata such as amount, date, purpose, payer contact information, and transaction reference for receipts, accounting, donor records, fraud prevention, and legal compliance.",
+      "If a transaction appears fraudulent, unauthorized, reversed, or disputed, we may retain related records and share necessary information with payment processors, banks, mobile-money providers, law enforcement, regulators, or professional advisors.",
     ],
   },
   {
     title: "6. How We Share Data",
     content: [
       "We do not sell personal data.",
-      "We may share personal data with payment processors and financial institutions to complete transactions; service providers who support website hosting, email, SMS, WhatsApp, analytics, CRM, forms, or automation; ISKCON governing bodies where needed for coordination, reporting, festivals, or governance; regulators and authorities where required by Kenyan law; and professional advisors such as auditors or lawyers.",
+      "We may share personal data with payment processors and financial institutions to complete transactions; service providers who support website hosting, email, SMS, WhatsApp, analytics, CRM, forms, security, or automation; ISKCON governing bodies where needed for coordination, reporting, festivals, safeguarding, or governance; regulators and authorities where required by Kenyan law; and professional advisors such as auditors or lawyers.",
+      "Service providers who process personal data for us are expected to be bound by appropriate confidentiality, security, and data-processing obligations before receiving personal data.",
       "Where a service provider is located outside Kenya, we take reasonable steps to ensure appropriate safeguards are applied, consistent with Kenya's cross-border transfer requirements.",
     ],
   },
@@ -72,7 +81,9 @@ const privacySections = [
     content: [
       "We retain personal data only for as long as necessary for the purposes described in this Policy, including legal, accounting, reporting, dispute-resolution, and security requirements.",
       "Donation and financial transaction records may be retained according to Kenyan financial and tax record-keeping requirements, generally for at least five to seven years where applicable.",
-      "Account data is retained while an account is active and for a reasonable period after closure. Marketing and newsletter data is retained until you unsubscribe or withdraw consent. Prayer requests and sensitive communications are retained only as long as needed for their purpose, then deleted or anonymized where appropriate.",
+      "Account data is retained while an account is active and for a reasonable period after closure. Marketing and newsletter data is retained until you unsubscribe or withdraw consent.",
+      "Prayer requests, pastoral communications, allergy notes, child programme details, safeguarding information, and other sensitive communications are retained only as long as needed for their purpose, then deleted, anonymized, or securely archived where legal or safeguarding obligations require retention.",
+      "Media files may be retained for religious, historical, archival, educational, reporting, or promotional purposes unless removal is requested and removal is practical, lawful, and proportionate.",
     ],
   },
   {
@@ -80,6 +91,8 @@ const privacySections = [
     content: [
       "Under Kenya's Data Protection Act, 2019, you have the right to be informed of how your personal data is used, access personal data we hold about you, object to processing, request correction of false or misleading data, request deletion of false or misleading data, and withdraw consent where processing is based on consent.",
       `To exercise these rights, contact ${templeInfo.email}. We will respond within the timeframe required by law.`,
+      "You may opt out of direct marketing messages through the unsubscribe link, reply instructions, or by contacting us. Service, safety, transaction, event-change, or legal notices may still be sent where necessary.",
+      "Parents and guardians may contact us about personal data relating to their children, subject to verification and applicable safeguarding or legal retention duties.",
       "If you are not satisfied with our response, you may lodge a complaint with the Office of the Data Protection Commissioner in Kenya.",
     ],
   },
@@ -87,6 +100,7 @@ const privacySections = [
     title: "9. Cookies and Tracking Technologies",
     content: [
       "The website may use cookies and similar technologies to enable core functionality, remember preferences, understand usage, improve performance, secure the website, and support event or programme communication.",
+      "If we use analytics, advertising, retargeting, embedded social media, or similar non-essential tracking, we will provide an appropriate cookie notice or consent mechanism where required.",
       "You can control cookies through your browser settings and, where available, through a cookie consent tool on the website. Disabling non-essential cookies may affect some features.",
     ],
   },
@@ -94,14 +108,16 @@ const privacySections = [
     title: "10. Data Security",
     content: [
       "We apply reasonable technical and organizational measures appropriate to the risk, including HTTPS encryption in transit, access controls, and restricted internal access to personal data on a need-to-know basis.",
+      "We may preserve access logs, transaction records, form submissions, and security information where reasonably necessary to investigate fraud, cyber abuse, unauthorized access, safety incidents, safeguarding concerns, or legal claims.",
       "No digital system is completely secure. If a data breach is likely to result in risk to your rights, we will notify the Office of the Data Protection Commissioner and affected users as required by applicable Kenyan law.",
     ],
   },
   {
     title: "11. Children's Data",
     content: [
-      "Where the website supports programmes for minors, such as Sunday school, youth programmes, or training classes, we collect only the personal data necessary for that programme and require consent from a parent or legal guardian where required.",
-      "Parents or guardians may contact us to review, correct, or request deletion of a minor's personal data, subject to records we are legally required to retain.",
+      "Where the website supports programmes for minors, such as Sunday school, youth programmes, training classes, retreats, transport, or festival service, we collect only the personal data necessary for that programme and require consent from a parent or legal guardian where required.",
+      "Children's data may include emergency contacts, medical or allergy notes, attendance records, pick-up permissions, media consent preferences, and safeguarding information where necessary.",
+      "Parents or guardians may contact us to review, correct, or request deletion of a minor's personal data, subject to records we are legally required to retain or must retain for safeguarding reasons.",
     ],
   },
   {
@@ -116,6 +132,14 @@ const privacySections = [
     content: [
       "We may update this Privacy Policy from time to time to reflect changes in our practices, services, or legal requirements.",
       "The Last Updated date at the top of this Policy shows the most recent revision. Material changes may be communicated through a website notice or by email where appropriate.",
+    ],
+  },
+  {
+    title: "14. Media, Public Events, and Consent",
+    content: [
+      "Temple programmes and public events may be photographed, filmed, livestreamed, or recorded for religious, archival, educational, reporting, fundraising, and promotional purposes.",
+      "If you do not want to appear in identifiable close-up media, you should notify the organizer where practical. We will make reasonable efforts to respect such requests, but wide crowd images, public processions, livestreams, and incidental appearances may not always be avoidable.",
+      "Close-up promotional use of identifiable children should be based on parent or guardian consent unless another lawful basis applies.",
     ],
   },
 ];
@@ -220,7 +244,7 @@ export default function PrivacyPage() {
             </article>
 
             <div className="mt-10 border border-temple-sand bg-temple-cream p-6">
-              <h2 className="font-playfair text-xl font-semibold text-ink">14. Contact Us</h2>
+              <h2 className="font-playfair text-xl font-semibold text-ink">15. Contact Us</h2>
               <div className="mt-3 space-y-2 font-inter text-sm leading-relaxed text-ink/70">
                 <p>{templeInfo.name}</p>
                 <p>{templeAddress}</p>
