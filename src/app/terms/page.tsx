@@ -11,6 +11,37 @@ const lastUpdated = "July 27, 2026";
 const platformUrl = "https://iskcon-nairobi.vercel.app";
 const templeAddress = templeInfo.addressLines.join(", ");
 
+const parseClauseTitle = (title: string) => {
+  const match = title.match(/^(\d+(?:\.\d+)*)\.\s+(.+)$/);
+  return {
+    number: match?.[1] ?? "",
+    label: match?.[2] ?? title,
+  };
+};
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const sectionId = (title: string) => {
+  const { number, label } = parseClauseTitle(title);
+  const numberPart = number.replace(/\./g, "-");
+  return `section-${numberPart}-${slugify(label)}`;
+};
+
+const subClauseNumber = (title: string, index: number) => {
+  const { number } = parseClauseTitle(title);
+  return `${number}.${index + 1}`;
+};
+
+const subClauseId = (title: string, index: number) => {
+  const { label } = parseClauseTitle(title);
+  return `section-${subClauseNumber(title, index).replace(/\./g, "-")}-${slugify(label)}`;
+};
+
 const termsSections = [
   {
     title: "1. Introduction and Acceptance",
@@ -242,13 +273,31 @@ export default function TermsPage() {
               </p>
             </div>
 
+            <nav aria-labelledby="terms-table-of-contents" className="mb-10 border border-temple-sand bg-temple-cream p-6">
+              <h2 id="terms-table-of-contents" className="font-playfair text-xl font-semibold text-ink">Table of Contents</h2>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {termsSections.map((section) => (
+                  <a
+                    key={section.title}
+                    href={`#${sectionId(section.title)}`}
+                    className="font-inter text-sm leading-relaxed text-ink/70 underline decoration-gold/30 underline-offset-4 transition-colors hover:text-primary"
+                  >
+                    {section.title}
+                  </a>
+                ))}
+              </div>
+            </nav>
+
             <article className="space-y-9">
               {termsSections.map((section) => (
                 <section key={section.title} className="border-b border-temple-sand pb-8 last:border-b-0">
-                  <h2 className="font-playfair text-2xl font-semibold text-ink">{section.title}</h2>
+                  <h2 id={sectionId(section.title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{section.title}</h2>
                   <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
-                    {section.items.map((item) => (
-                      <p key={item}>{item}</p>
+                    {section.items.map((item, index) => (
+                      <p key={item} id={subClauseId(section.title, index)} className="scroll-mt-32">
+                        <span className="font-semibold text-ink">{subClauseNumber(section.title, index)} </span>
+                        {item}
+                      </p>
                     ))}
                   </div>
                 </section>

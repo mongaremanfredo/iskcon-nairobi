@@ -11,6 +11,37 @@ const lastUpdated = "July 27, 2026";
 const platformUrl = "https://iskcon-nairobi.vercel.app";
 const templeAddress = templeInfo.addressLines.join(", ");
 
+const parseClauseTitle = (title: string) => {
+  const match = title.match(/^(\d+(?:\.\d+)*)\.\s+(.+)$/);
+  return {
+    number: match?.[1] ?? "",
+    label: match?.[2] ?? title,
+  };
+};
+
+const slugify = (value: string) =>
+  value
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+
+const sectionId = (title: string) => {
+  const { number, label } = parseClauseTitle(title);
+  const numberPart = number.replace(/\./g, "-");
+  return `section-${numberPart}-${slugify(label)}`;
+};
+
+const subClauseNumber = (title: string, index: number) => {
+  const { number } = parseClauseTitle(title);
+  return `${number}.${index + 1}`;
+};
+
+const subClauseId = (title: string, index: number) => {
+  const { label } = parseClauseTitle(title);
+  return `section-${subClauseNumber(title, index).replace(/\./g, "-")}-${slugify(label)}`;
+};
+
 const dataCategories = [
   ["Identity data", "Full name and, where relevant for children's programmes, date of birth.", "Provided directly by you."],
   ["Contact data", "Email address, phone number, physical address, or postal address.", "Provided directly by you."],
@@ -144,6 +175,15 @@ const privacySections = [
   },
 ];
 
+const privacyToc = [
+  privacySections[0].title,
+  "2. Personal Data We Collect",
+  privacySections[1].title,
+  "4. Legal Basis and Purpose of Processing",
+  ...privacySections.slice(2).map((section) => section.title),
+  "15. Contact Us",
+];
+
 export default function PrivacyPage() {
   return (
     <>
@@ -166,18 +206,36 @@ export default function PrivacyPage() {
               </p>
             </div>
 
+            <nav aria-labelledby="privacy-table-of-contents" className="mb-10 border border-temple-sand bg-temple-cream p-6">
+              <h2 id="privacy-table-of-contents" className="font-playfair text-xl font-semibold text-ink">Table of Contents</h2>
+              <div className="mt-4 grid gap-2 sm:grid-cols-2">
+                {privacyToc.map((title) => (
+                  <a
+                    key={title}
+                    href={`#${sectionId(title)}`}
+                    className="font-inter text-sm leading-relaxed text-ink/70 underline decoration-gold/30 underline-offset-4 transition-colors hover:text-primary"
+                  >
+                    {title}
+                  </a>
+                ))}
+              </div>
+            </nav>
+
             <article className="space-y-10">
               <section className="border-b border-temple-sand pb-8">
-                <h2 className="font-playfair text-2xl font-semibold text-ink">{privacySections[0].title}</h2>
+                <h2 id={sectionId(privacySections[0].title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{privacySections[0].title}</h2>
                 <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
-                  {privacySections[0].content.map((item) => (
-                    <p key={item}>{item}</p>
+                  {privacySections[0].content.map((item, index) => (
+                    <p key={item} id={subClauseId(privacySections[0].title, index)} className="scroll-mt-32">
+                      <span className="font-semibold text-ink">{subClauseNumber(privacySections[0].title, index)} </span>
+                      {item}
+                    </p>
                   ))}
                 </div>
               </section>
 
               <section className="border-b border-temple-sand pb-8">
-                <h2 className="font-playfair text-2xl font-semibold text-ink">2. Personal Data We Collect</h2>
+                <h2 id={sectionId("2. Personal Data We Collect")} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">2. Personal Data We Collect</h2>
                 <div className="mt-5 overflow-x-auto border border-temple-sand bg-white">
                   <table className="w-full min-w-[680px] border-collapse text-left font-inter text-xs text-ink/70">
                     <thead className="bg-temple-cream text-ink">
@@ -201,16 +259,19 @@ export default function PrivacyPage() {
               </section>
 
               <section className="border-b border-temple-sand pb-8">
-                <h2 className="font-playfair text-2xl font-semibold text-ink">{privacySections[1].title}</h2>
+                <h2 id={sectionId(privacySections[1].title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{privacySections[1].title}</h2>
                 <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
-                  {privacySections[1].content.map((item) => (
-                    <p key={item}>{item}</p>
+                  {privacySections[1].content.map((item, index) => (
+                    <p key={item} id={subClauseId(privacySections[1].title, index)} className="scroll-mt-32">
+                      <span className="font-semibold text-ink">{subClauseNumber(privacySections[1].title, index)} </span>
+                      {item}
+                    </p>
                   ))}
                 </div>
               </section>
 
               <section className="border-b border-temple-sand pb-8">
-                <h2 className="font-playfair text-2xl font-semibold text-ink">4. Legal Basis and Purpose of Processing</h2>
+                <h2 id={sectionId("4. Legal Basis and Purpose of Processing")} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">4. Legal Basis and Purpose of Processing</h2>
                 <div className="mt-5 overflow-x-auto border border-temple-sand bg-white">
                   <table className="w-full min-w-[620px] border-collapse text-left font-inter text-xs text-ink/70">
                     <thead className="bg-temple-cream text-ink">
@@ -233,17 +294,20 @@ export default function PrivacyPage() {
 
               {privacySections.slice(2).map((section) => (
                 <section key={section.title} className="border-b border-temple-sand pb-8 last:border-b-0">
-                  <h2 className="font-playfair text-2xl font-semibold text-ink">{section.title}</h2>
+                  <h2 id={sectionId(section.title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{section.title}</h2>
                   <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
-                    {section.content.map((item) => (
-                      <p key={item}>{item}</p>
+                    {section.content.map((item, index) => (
+                      <p key={item} id={subClauseId(section.title, index)} className="scroll-mt-32">
+                        <span className="font-semibold text-ink">{subClauseNumber(section.title, index)} </span>
+                        {item}
+                      </p>
                     ))}
                   </div>
                 </section>
               ))}
             </article>
 
-            <div className="mt-10 border border-temple-sand bg-temple-cream p-6">
+            <div id={sectionId("15. Contact Us")} className="mt-10 scroll-mt-32 border border-temple-sand bg-temple-cream p-6">
               <h2 className="font-playfair text-xl font-semibold text-ink">15. Contact Us</h2>
               <div className="mt-3 space-y-2 font-inter text-sm leading-relaxed text-ink/70">
                 <p>{templeInfo.name}</p>
