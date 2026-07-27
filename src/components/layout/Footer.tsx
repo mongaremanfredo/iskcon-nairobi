@@ -130,9 +130,23 @@ export default function Footer() {
             <span>·</span>
             <span>Hare Hare</span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-4">
             <Link href="/privacy" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Privacy</Link>
             <Link href="/terms" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Terms</Link>
+            <a
+              href="https://esthrema.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 border-l border-white/10 pl-4 font-inter text-white/20 text-xs transition-colors hover:text-white/50"
+              aria-label="Powered by Esthrema"
+            >
+              <span>Powered by</span>
+              <img
+                src="/images/esthrema-logo.png"
+                alt="Esthrema"
+                className="h-5 w-auto opacity-55 transition-opacity group-hover:opacity-90"
+              />
+            </a>
           </div>
         </div>
       </div>
