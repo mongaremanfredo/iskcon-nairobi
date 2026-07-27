@@ -3,19 +3,240 @@ import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Privacy",
-  description: "Privacy information for the ISKCON Nairobi website.",
+  title: "Privacy Policy",
+  description: "Privacy policy for the ISKCON Nairobi website.",
 };
+
+const lastUpdated = "July 27, 2026";
+const platformUrl = "https://iskcon-nairobi.vercel.app";
+const templeAddress = templeInfo.addressLines.join(", ");
+
+const dataCategories = [
+  ["Identity data", "Full name and, where relevant for children's programmes, date of birth.", "Provided directly by you."],
+  ["Contact data", "Email address, phone number, physical address, or postal address.", "Provided directly by you."],
+  ["Transaction data", "Donation or seva amount, payment reference, payment method metadata, order or booking history.", "Generated through website use or payment processors."],
+  ["Account data", "Username, password credentials where accounts exist, and account preferences.", "Provided directly by you."],
+  ["Engagement data", "Event RSVPs, course applications, volunteer sign-ups, newsletter subscriptions, and programme interests.", "Provided directly by you."],
+  ["Communications", "Messages, prayer requests, testimonials, support queries, and contact-form submissions.", "Provided directly by you."],
+  ["Technical data", "IP address, browser type, device information, cookie data, and usage or analytics data.", "Collected automatically when you browse."],
+  ["Sensitive data", "Religious interest inherent to the website's purpose and, only where voluntarily provided, dietary or health notes relevant to a service request.", "Provided directly by you with consent."],
+];
+
+const legalBasis = [
+  ["Processing donations, seva payments, bookings, and orders", "Performance of a contract, consent, or legitimate interest."],
+  ["Managing accounts or login features", "Performance of a contract."],
+  ["Sending event, festival, programme, and newsletter updates", "Consent or legitimate interest for existing engaged users, with opt-out available."],
+  ["Responding to enquiries, prayer requests, and support messages", "Consent or legitimate interest."],
+  ["Improving and securing the website", "Legitimate interest, subject to cookie preferences where required."],
+  ["Maintaining accounting, tax, and compliance records", "Legal obligation."],
+  ["Preventing fraud, abuse, or unauthorized access", "Legitimate interest and legal obligation."],
+  ["Processing sensitive or special-category data", "Explicit consent or voluntary public disclosure where applicable."],
+];
+
+const privacySections = [
+  {
+    title: "1. Who We Are",
+    content: [
+      `${templeInfo.name}, also known as ${templeInfo.legalName}, operates ${platformUrl} from ${templeAddress}.`,
+      "For personal data collected through this website, ISKCON Nairobi acts as the data controller unless a third-party service states otherwise.",
+      "We process personal data in accordance with Kenya's Data Protection Act, 2019 and its subsidiary regulations, as administered by the Office of the Data Protection Commissioner.",
+      `Privacy contact: ${templeInfo.email}.`,
+    ],
+  },
+  {
+    title: "3. How We Collect Data",
+    content: [
+      "We collect data directly from you when you submit forms, register interest, make an enquiry, request prayer or blessings, sign up to volunteer, subscribe to updates, book an event, apply for a course, or contact us.",
+      "We may collect limited technical data automatically through cookies, analytics, logs, and similar technologies when you browse the website.",
+      "We may receive confirmation data from third parties such as payment processors, registration forms, email tools, messaging platforms, or social media services when you choose to use those services.",
+    ],
+  },
+  {
+    title: "5. Payment Data",
+    content: [
+      "We do not store complete debit or credit card numbers, CVV codes, M-Pesa PINs, or other full payment credentials on this website.",
+      "Where payments are enabled, they are processed through third-party providers such as mobile money, card, bank-transfer, or other payment gateways. Those providers apply their own security standards, terms, and privacy policies.",
+      "We may retain transaction metadata such as amount, date, purpose, payer contact information, and transaction reference for receipts, accounting, donor records, fraud prevention, and legal compliance.",
+    ],
+  },
+  {
+    title: "6. How We Share Data",
+    content: [
+      "We do not sell personal data.",
+      "We may share personal data with payment processors and financial institutions to complete transactions; service providers who support website hosting, email, SMS, WhatsApp, analytics, CRM, forms, or automation; ISKCON governing bodies where needed for coordination, reporting, festivals, or governance; regulators and authorities where required by Kenyan law; and professional advisors such as auditors or lawyers.",
+      "Where a service provider is located outside Kenya, we take reasonable steps to ensure appropriate safeguards are applied, consistent with Kenya's cross-border transfer requirements.",
+    ],
+  },
+  {
+    title: "7. Data Retention",
+    content: [
+      "We retain personal data only for as long as necessary for the purposes described in this Policy, including legal, accounting, reporting, dispute-resolution, and security requirements.",
+      "Donation and financial transaction records may be retained according to Kenyan financial and tax record-keeping requirements, generally for at least five to seven years where applicable.",
+      "Account data is retained while an account is active and for a reasonable period after closure. Marketing and newsletter data is retained until you unsubscribe or withdraw consent. Prayer requests and sensitive communications are retained only as long as needed for their purpose, then deleted or anonymized where appropriate.",
+    ],
+  },
+  {
+    title: "8. Your Rights",
+    content: [
+      "Under Kenya's Data Protection Act, 2019, you have the right to be informed of how your personal data is used, access personal data we hold about you, object to processing, request correction of false or misleading data, request deletion of false or misleading data, and withdraw consent where processing is based on consent.",
+      `To exercise these rights, contact ${templeInfo.email}. We will respond within the timeframe required by law.`,
+      "If you are not satisfied with our response, you may lodge a complaint with the Office of the Data Protection Commissioner in Kenya.",
+    ],
+  },
+  {
+    title: "9. Cookies and Tracking Technologies",
+    content: [
+      "The website may use cookies and similar technologies to enable core functionality, remember preferences, understand usage, improve performance, secure the website, and support event or programme communication.",
+      "You can control cookies through your browser settings and, where available, through a cookie consent tool on the website. Disabling non-essential cookies may affect some features.",
+    ],
+  },
+  {
+    title: "10. Data Security",
+    content: [
+      "We apply reasonable technical and organizational measures appropriate to the risk, including HTTPS encryption in transit, access controls, and restricted internal access to personal data on a need-to-know basis.",
+      "No digital system is completely secure. If a data breach is likely to result in risk to your rights, we will notify the Office of the Data Protection Commissioner and affected users as required by applicable Kenyan law.",
+    ],
+  },
+  {
+    title: "11. Children's Data",
+    content: [
+      "Where the website supports programmes for minors, such as Sunday school, youth programmes, or training classes, we collect only the personal data necessary for that programme and require consent from a parent or legal guardian where required.",
+      "Parents or guardians may contact us to review, correct, or request deletion of a minor's personal data, subject to records we are legally required to retain.",
+    ],
+  },
+  {
+    title: "12. International Users",
+    content: [
+      "Although this website is operated from Kenya, it may be accessed by devotees, guests, and supporters outside Kenya.",
+      "If you access the website from outside Kenya, your data may be processed in Kenya and in jurisdictions where our service providers operate, in accordance with this Policy and applicable safeguards.",
+    ],
+  },
+  {
+    title: "13. Changes to This Policy",
+    content: [
+      "We may update this Privacy Policy from time to time to reflect changes in our practices, services, or legal requirements.",
+      "The Last Updated date at the top of this Policy shows the most recent revision. Material changes may be communicated through a website notice or by email where appropriate.",
+    ],
+  },
+];
 
 export default function PrivacyPage() {
   return (
     <>
-      <PageHero title="Privacy" titleAccent="Notice" subtitle="Website Information" image="/images/placeholders/hare-krishna-harinam.jpg" height="sm" />
+      <PageHero
+        title="Privacy"
+        titleAccent="Policy"
+        subtitle="How We Handle Data"
+        image="/images/placeholders/hare-krishna-harinam.jpg"
+        height="sm"
+      />
+
       <section className="py-section bg-temple-bg">
-        <div className="content-width section-padding max-w-3xl font-inter text-ink/70 leading-relaxed space-y-5">
-          <p>This website shares public information about ISKCON Nairobi programmes, festivals, projects, and contact options.</p>
-          <p>If you contact the temple by email, phone, or a mailto form, your details are used only to respond to your enquiry or coordinate the service you requested.</p>
-          <p>For privacy questions, contact <a href={`mailto:${templeInfo.email}`} className="text-primary underline">{templeInfo.email}</a>.</p>
+        <div className="content-width section-padding">
+          <div className="mx-auto max-w-4xl">
+            <div className="mb-10 border border-gold/20 bg-white p-6 shadow-sm">
+              <p className="font-inter text-xs font-semibold uppercase tracking-[0.22em] text-gold">Last Updated</p>
+              <p className="mt-2 font-playfair text-2xl text-ink">{lastUpdated}</p>
+              <p className="mt-4 font-inter text-sm leading-relaxed text-ink/60">
+                This Privacy Policy explains how ISKCON Nairobi collects, uses, shares, and protects personal data through this website and related digital services.
+              </p>
+            </div>
+
+            <article className="space-y-10">
+              <section className="border-b border-temple-sand pb-8">
+                <h2 className="font-playfair text-2xl font-semibold text-ink">{privacySections[0].title}</h2>
+                <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
+                  {privacySections[0].content.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </section>
+
+              <section className="border-b border-temple-sand pb-8">
+                <h2 className="font-playfair text-2xl font-semibold text-ink">2. Personal Data We Collect</h2>
+                <div className="mt-5 overflow-x-auto border border-temple-sand bg-white">
+                  <table className="w-full min-w-[680px] border-collapse text-left font-inter text-xs text-ink/70">
+                    <thead className="bg-temple-cream text-ink">
+                      <tr>
+                        <th className="border-b border-temple-sand px-4 py-3 font-semibold">Category</th>
+                        <th className="border-b border-temple-sand px-4 py-3 font-semibold">Examples</th>
+                        <th className="border-b border-temple-sand px-4 py-3 font-semibold">Source</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {dataCategories.map(([category, examples, source]) => (
+                        <tr key={category} className="border-b border-temple-sand last:border-b-0">
+                          <td className="px-4 py-3 font-semibold text-ink">{category}</td>
+                          <td className="px-4 py-3">{examples}</td>
+                          <td className="px-4 py-3">{source}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              <section className="border-b border-temple-sand pb-8">
+                <h2 className="font-playfair text-2xl font-semibold text-ink">{privacySections[1].title}</h2>
+                <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
+                  {privacySections[1].content.map((item) => (
+                    <p key={item}>{item}</p>
+                  ))}
+                </div>
+              </section>
+
+              <section className="border-b border-temple-sand pb-8">
+                <h2 className="font-playfair text-2xl font-semibold text-ink">4. Legal Basis and Purpose of Processing</h2>
+                <div className="mt-5 overflow-x-auto border border-temple-sand bg-white">
+                  <table className="w-full min-w-[620px] border-collapse text-left font-inter text-xs text-ink/70">
+                    <thead className="bg-temple-cream text-ink">
+                      <tr>
+                        <th className="border-b border-temple-sand px-4 py-3 font-semibold">Purpose</th>
+                        <th className="border-b border-temple-sand px-4 py-3 font-semibold">Legal Basis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {legalBasis.map(([purpose, basis]) => (
+                        <tr key={purpose} className="border-b border-temple-sand last:border-b-0">
+                          <td className="px-4 py-3 font-semibold text-ink">{purpose}</td>
+                          <td className="px-4 py-3">{basis}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+
+              {privacySections.slice(2).map((section) => (
+                <section key={section.title} className="border-b border-temple-sand pb-8 last:border-b-0">
+                  <h2 className="font-playfair text-2xl font-semibold text-ink">{section.title}</h2>
+                  <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
+                    {section.content.map((item) => (
+                      <p key={item}>{item}</p>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </article>
+
+            <div className="mt-10 border border-temple-sand bg-temple-cream p-6">
+              <h2 className="font-playfair text-xl font-semibold text-ink">14. Contact Us</h2>
+              <div className="mt-3 space-y-2 font-inter text-sm leading-relaxed text-ink/70">
+                <p>{templeInfo.name}</p>
+                <p>{templeAddress}</p>
+                <p>
+                  Email: <a href={`mailto:${templeInfo.email}`} className="text-primary underline">{templeInfo.email}</a>
+                </p>
+                <p>
+                  Phone: <a href={`tel:${templeInfo.phoneHref}`} className="text-primary underline">{templeInfo.phoneDisplay}</a>
+                </p>
+                <p>
+                  Office of the Data Protection Commissioner, Kenya:{" "}
+                  <a href="https://www.odpc.go.ke" target="_blank" rel="noopener noreferrer" className="text-primary underline">www.odpc.go.ke</a>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </>
