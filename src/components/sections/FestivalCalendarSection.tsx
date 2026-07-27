@@ -48,11 +48,13 @@ export default function FestivalCalendarSection() {
                     <span className="font-inter text-white text-xs">{festival.date}</span>
                   </div>
                 </div>
-                <div className="absolute top-4 left-4 bg-gold px-2.5 py-1">
-                  <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-white">
-                    {festival.tag}
-                  </span>
-                </div>
+                {festival.tag && (
+                  <div className="absolute top-4 left-4 bg-gold px-2.5 py-1">
+                    <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-white">
+                      {festival.tag}
+                    </span>
+                  </div>
+                )}
               </div>
 
               {/* Content */}

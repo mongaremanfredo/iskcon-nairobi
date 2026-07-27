@@ -23,6 +23,20 @@ export default function LeadershipSection() {
               Srila Prabhupada<br />
               <em className="text-gold not-italic font-normal">and Africa's doorway</em>
             </h2>
+            <div className="relative mt-6 lg:hidden">
+              <div className="relative overflow-hidden border border-gold/20 bg-dusk shadow-card-hover">
+                <img
+                  src="/images/prabhupada/swami-prabhupada-classic.jpg"
+                  alt="Srila Prabhupada"
+                  className="aspect-[4/3] w-full object-cover object-[center_28%] opacity-95"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-dusk/88 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5">
+                  <p className="font-inter text-[0.62rem] uppercase tracking-[0.16em] text-gold/80">Founder-Acarya</p>
+                  <p className="mt-1 font-playfair text-2xl text-white">The person behind the movement</p>
+                </div>
+              </div>
+            </div>
             <p className="font-cormorant text-sand/86 text-2xl leading-relaxed mt-5 sm:text-3xl">
               Srila Prabhupada is not a historical footnote for ISKCON Nairobi. He is the source of its existence, its books, its kirtan, its Deities, and its Africa-facing mission.
             </p>
@@ -43,7 +57,7 @@ export default function LeadershipSection() {
             </Link>
           </div>
 
-          <div className="relative">
+          <div className="relative max-lg:hidden">
             <div className="absolute -inset-4 border border-gold/20 max-sm:hidden" />
             <div className="relative overflow-hidden border border-gold/20 bg-dusk shadow-card-hover">
               <img

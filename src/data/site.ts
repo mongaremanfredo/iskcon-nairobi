@@ -144,7 +144,7 @@ export const homepageFestivalPreview = [
     description: "The appearance day of Lord Krishna, observed with fasting until midnight, kirtan, abhishek, offerings, and prasadam.",
     image: "/images/calendar-janmashtami-krishna.jpeg",
     href: "/festivals/janmashtami",
-    tag: "Major Festival",
+    tag: "",
   },
   {
     title: "Radhashtami",
@@ -155,7 +155,7 @@ export const homepageFestivalPreview = [
     description: "Appearance of Srimati Radharani, celebrated with kirtan, class, worship, and special temple programmes.",
     image: "/images/calendar-radhashtami-sakhis.jpeg",
     href: "/festivals",
-    tag: "Temple Festival",
+    tag: "",
   },
 ];
 
