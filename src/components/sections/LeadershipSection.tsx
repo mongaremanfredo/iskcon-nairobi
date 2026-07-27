@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, Globe2, HeartHandshake } from "lucide-react";
-import { leadership } from "@/data/site";
 
 export default function LeadershipSection() {
   return (
@@ -42,18 +41,39 @@ export default function LeadershipSection() {
             <p className="mt-5 font-inter text-sm leading-relaxed text-sand/62 max-w-xl">
               Public histories of the African mission record that after recovering in Mombasa, Prabhupada returned to Nairobi and launched the African preaching campaign from here. His instruction was clear: Kenya is an African country, and Krishna consciousness must be shared with African people, not only with the Indian community.
             </p>
-            <Link
-              href="/srila-prabhupada"
-              className="mt-7 inline-flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase transition-all hover:gap-3"
-            >
-              Discover His Nairobi Legacy <ArrowRight size={13} />
-            </Link>
-            <Link
-              href="/leadership"
-              className="ml-0 mt-4 inline-flex items-center gap-2 font-inter text-xs text-sand/70 font-semibold tracking-widest uppercase transition-all hover:gap-3 hover:text-gold sm:ml-6"
-            >
-              Meet the Service Leaders <ArrowRight size={13} />
-            </Link>
+            <div className="mt-8 grid gap-3 sm:grid-cols-2">
+              <Link
+                href="/srila-prabhupada"
+                className="group border border-gold/35 bg-gold/12 p-4 transition-all hover:-translate-y-0.5 hover:border-gold hover:bg-gold/18"
+              >
+                <span className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold/80">
+                  Founder-Acarya
+                </span>
+                <span className="mt-2 flex items-center justify-between gap-4 font-playfair text-xl leading-tight text-white">
+                  Nairobi Legacy
+                  <ArrowRight className="shrink-0 text-gold transition-transform group-hover:translate-x-1" size={16} />
+                </span>
+                <span className="mt-2 block font-inter text-xs leading-relaxed text-sand/58">
+                  Read how Srila Prabhupada placed Nairobi within ISKCON's African mission.
+                </span>
+              </Link>
+
+              <Link
+                href="/leadership"
+                className="group border border-sand/18 bg-white/[0.06] p-4 transition-all hover:-translate-y-0.5 hover:border-gold/70 hover:bg-white/[0.09]"
+              >
+                <span className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold/80">
+                  Service Structure
+                </span>
+                <span className="mt-2 flex items-center justify-between gap-4 font-playfair text-xl leading-tight text-white">
+                  Meet the Leaders
+                  <ArrowRight className="shrink-0 text-gold transition-transform group-hover:translate-x-1" size={16} />
+                </span>
+                <span className="mt-2 block font-inter text-xs leading-relaxed text-sand/58">
+                  See the devotees guiding departments, education, worship, kirtan, and outreach.
+                </span>
+              </Link>
+            </div>
           </div>
 
           <div className="relative max-lg:hidden">
@@ -86,45 +106,6 @@ export default function LeadershipSection() {
           ))}
         </div>
 
-        <div className="mb-10 text-center">
-          <span className="eyebrow block mb-3 text-gold/75">Continuing the instruction</span>
-          <h3 className="font-playfair text-display-sm text-temple-cream">
-            How Nairobi carries<br />
-            <em className="text-gold not-italic font-normal">that vision today</em>
-          </h3>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
-          {leadership.map((leader, i) => (
-            <div key={leader.name} className="group flex flex-col items-center text-center border border-white/10 bg-white/[0.04] p-6 backdrop-blur-sm">
-              {/* Portrait */}
-              <div className="relative mb-6">
-                <div className="w-36 h-36 overflow-hidden rounded-none relative border-4 border-sand/20 shadow-card sm:w-40 sm:h-40">
-                  <img
-                    src={leader.image}
-                    alt={leader.name}
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105"
-                  />
-                  {/* Gold frame on hover */}
-                  <div className="absolute inset-0 border-2 border-gold/0 group-hover:border-gold/70 transition-colors duration-300" />
-                </div>
-                {/* Decorative gold corner */}
-                <div className="absolute -bottom-2 -right-2 w-8 h-8 border-r-2 border-b-2 border-gold opacity-40 group-hover:opacity-100 transition-opacity" />
-                <div className="absolute -top-2 -left-2 w-8 h-8 border-l-2 border-t-2 border-gold opacity-40 group-hover:opacity-100 transition-opacity" />
-              </div>
-
-              {/* Name & Title */}
-              <h3 className="font-playfair text-xl font-semibold text-white mb-1">{leader.name}</h3>
-              <p className="font-inter text-gold text-xs font-semibold tracking-[0.15em] uppercase mb-4">{leader.title}</p>
-
-              {/* Divider */}
-              <div className="w-8 h-px bg-gold/30 mb-4" />
-
-              {/* Description */}
-              <p className="font-inter text-sand/58 text-sm leading-relaxed">{leader.description}</p>
-            </div>
-          ))}
-        </div>
       </div>
     </section>
   );
