@@ -28,12 +28,11 @@ export default function LeadershipSection() {
                 <img
                   src="/images/prabhupada/swami-prabhupada-classic.jpg"
                   alt="Srila Prabhupada"
-                  className="aspect-[4/3] w-full object-cover object-[center_28%] opacity-95"
+                  className="aspect-[4/3] w-full object-contain opacity-95"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dusk/88 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-5">
                   <p className="font-inter text-[0.62rem] uppercase tracking-[0.16em] text-gold/80">Founder-Acarya</p>
-                  <p className="mt-1 font-playfair text-2xl text-white">The person behind the movement</p>
                 </div>
               </div>
             </div>
@@ -63,12 +62,11 @@ export default function LeadershipSection() {
               <img
                 src="/images/prabhupada/swami-prabhupada-classic.jpg"
                 alt="Srila Prabhupada"
-                className="aspect-[4/3] w-full object-cover object-[center_28%] opacity-95"
+                className="aspect-[4/3] w-full object-contain opacity-95"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dusk/88 via-transparent to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-5">
                 <p className="font-inter text-[0.62rem] uppercase tracking-[0.16em] text-gold/80">Founder-Acarya</p>
-                <p className="mt-1 font-playfair text-2xl text-white">The person behind the movement</p>
               </div>
             </div>
           </div>
