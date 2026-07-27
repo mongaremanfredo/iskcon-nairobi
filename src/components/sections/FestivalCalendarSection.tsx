@@ -1,93 +1,55 @@
-"use client";
-
 import Link from "next/link";
-import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { homepageFestivalPreview } from "@/data/site";
 
 export default function FestivalCalendarSection() {
   return (
-    <section className="py-section bg-temple-cream">
+    <section className="sacred-section bg-temple-cream">
       <div className="content-width section-padding">
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+        <div className="mb-12 grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
           <div>
-            <span className="eyebrow block mb-3">Sacred Calendar</span>
-            <h2 className="section-title">
-              Upcoming<br />
-              <em className="text-gold not-italic font-normal">Festivals & Events</em>
-            </h2>
+            <p className="eyebrow mb-3">Sacred Calendar</p>
+            <h2 className="section-title">Upcoming festivals</h2>
           </div>
-          <Link
-            href="/festivals"
-            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
-          >
-            Full Calendar <ArrowRight size={12} />
-          </Link>
+          <p className="editorial-copy max-w-2xl">
+            Festivals gather the community around worship, kirtan, prasadam,
+            and remembrance. These are the next major observances at ISKCON
+            Nairobi.
+          </p>
         </div>
 
-        {/* Festival Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="border-y border-dusk/12">
           {homepageFestivalPreview.map((festival) => (
             <Link
               key={festival.href}
               href={festival.href}
-              className="group block bg-white border border-temple-sand hover:border-gold/40 transition-all duration-300 hover:shadow-card-hover overflow-hidden"
+              className="grid gap-4 border-b border-dusk/12 py-6 last:border-b-0 sm:grid-cols-[8rem_1fr_auto] sm:items-center"
             >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={festival.image}
-                  alt={festival.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
-                {/* Date badge */}
-                <div className="absolute bottom-4 left-4 bg-temple-brown/90 backdrop-blur-sm px-3 py-1.5">
-                  <div className="flex items-center gap-2">
-                    <Calendar size={11} className="text-gold" />
-                    <span className="font-inter text-white text-xs">{festival.date}</span>
-                  </div>
-                </div>
-                <div className="absolute top-4 left-4 bg-gold px-2.5 py-1">
-                  <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-white">
-                    {festival.tag}
-                  </span>
-                </div>
+              <div>
+                <p className="font-playfair text-3xl leading-none text-gold-dark">
+                  {festival.day}
+                </p>
+                <p className="mt-1 font-inter text-[0.62rem] uppercase tracking-[0.08em] text-dusk/46">
+                  {festival.month}
+                </p>
               </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <h3 className="font-playfair text-xl font-semibold text-ink mb-1 group-hover:text-gold transition-colors">
+              <div>
+                <h3 className="font-playfair text-2xl leading-tight text-ink">
                   {festival.title}
                 </h3>
-                <div className="flex items-center gap-1.5 mb-3">
-                  <MapPin size={11} className="text-gold flex-shrink-0" />
-                  <span className="font-inter text-ink/50 text-xs">{festival.location}</span>
-                </div>
-                <p className="font-inter text-ink/60 text-sm leading-relaxed line-clamp-2">
+                <p className="mt-2 editorial-copy text-[1rem] leading-relaxed">
                   {festival.description}
                 </p>
-                <div className="mt-4 flex items-center gap-1.5 font-inter text-xs font-semibold text-gold tracking-widest uppercase opacity-0 group-hover:opacity-100 transition-opacity">
-                  Learn More <ArrowRight size={11} />
-                </div>
               </div>
+              <p className="font-inter text-[0.68rem] uppercase tracking-[0.08em] text-gold-dark">
+                {festival.date}
+              </p>
             </Link>
           ))}
         </div>
 
-        {/* CTA Banner */}
-        <div className="mt-12 bg-temple-brown p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <div>
-            <p className="font-playfair text-white text-xl mb-1">Never Miss a Festival</p>
-            <p className="font-inter text-white/60 text-sm">See the full 2026 Vaishnava calendar for ISKCON Nairobi.</p>
-          </div>
-          <Link
-            href="/festivals"
-            className="bg-gold text-white font-inter text-xs font-semibold tracking-widest uppercase px-6 py-3 hover:bg-gold-dark transition-colors"
-          >
-            Open Calendar
-          </Link>
-        </div>
+        <Link href="/festivals" className="quiet-link mt-10">
+          Open Full Calendar
+        </Link>
       </div>
     </section>
   );

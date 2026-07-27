@@ -1,84 +1,55 @@
-"use client";
-
 import Link from "next/link";
-import { BookOpen, Heart, MapPin, HandHeart } from "lucide-react";
 
-const navCards = [
+const pathways = [
   {
-    icon: MapPin,
-    title: "Visit Temple",
-    description: "Temple timings, location, and what to expect on your first visit.",
+    title: "Visit the Temple",
+    description: "Timings, location, Sunday Feast, and what to expect when you come.",
     href: "/visit",
-    color: "bg-primary",
-    accent: "text-primary",
-    bg: "hover:bg-primary/5",
   },
   {
-    icon: BookOpen,
-    title: "Learn",
-    description: "Philosophy courses, Bhakti-sastri programmes, and weekly classes.",
+    title: "Study and Practice",
+    description: "Classes, courses, kirtan training, and the daily practice of bhakti.",
     href: "/learn",
-    color: "bg-gold",
-    accent: "text-gold",
-    bg: "hover:bg-gold/5",
   },
   {
-    icon: HandHeart,
     title: "Serve",
-    description: "Volunteer with Food For Life, the farm, festivals, and more.",
+    description: "Volunteer with prasadam distribution, festivals, education, and temple care.",
     href: "/serve",
-    color: "bg-sunset",
-    accent: "text-sunset",
-    bg: "hover:bg-sunset/5",
   },
   {
-    icon: Heart,
-    title: "Donate",
-    description: "Support temple worship, cow protection, students, and prasadam.",
+    title: "Support",
+    description: "Sustain worship, Food For Life, students, festivals, and cow protection.",
     href: "/donate",
-    color: "bg-primary",
-    accent: "text-primary",
-    bg: "hover:bg-primary/5",
   },
 ];
 
 export default function QuickNavSection() {
   return (
-    <section className="py-10 bg-temple-cream sm:py-section-sm">
-      <div className="content-width px-3 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 sm:mb-10">
-          <span className="eyebrow">Find Your Path</span>
+    <section className="sacred-section bg-temple-cream">
+      <div className="content-width section-padding">
+        <div className="mb-10 max-w-xl">
+          <p className="eyebrow mb-3">Find Your Path</p>
+          <h2 className="section-title">Begin gently</h2>
         </div>
 
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4 lg:gap-6">
-          {navCards.map((card) => {
-            const Icon = card.icon;
-            return (
-              <Link
-                key={card.href}
-                href={card.href}
-                className={`group relative flex min-h-[164px] flex-col items-start bg-white border border-temple-sand p-3.5 transition-all duration-300 sm:min-h-0 sm:p-6 lg:p-8 ${card.bg} hover:shadow-card-hover hover:-translate-y-1`}
-              >
-                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${card.color} flex items-center justify-center mb-3 sm:mb-5 flex-shrink-0`}>
-                  <Icon size={16} className="text-white sm:size-[18px]" />
-                </div>
-
-                <h3 className="font-playfair text-lg sm:text-xl font-semibold text-ink mb-1.5 sm:mb-2 leading-tight transition-colors group-hover:text-primary">
-                  {card.title}
-                </h3>
-                <p className="font-inter text-[0.72rem] sm:text-body-sm text-ink/60 leading-relaxed">
-                  {card.description}
-                </p>
-
-                <div className={`mt-auto pt-4 flex items-center gap-1 font-inter text-[0.62rem] sm:text-xs font-semibold tracking-widest uppercase ${card.accent} opacity-70 sm:opacity-0 group-hover:opacity-100 transition-opacity`}>
-                  <span>Explore</span>
-                  <span>→</span>
-                </div>
-
-                <div className={`absolute bottom-0 left-0 right-0 h-0.5 ${card.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
-              </Link>
-            );
-          })}
+        <div className="border-y border-dusk/12">
+          {pathways.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="group grid gap-3 border-b border-dusk/12 py-6 last:border-b-0 sm:grid-cols-[0.7fr_1.3fr_auto] sm:items-center sm:py-7"
+            >
+              <h3 className="font-playfair text-[1.45rem] leading-tight text-ink sm:text-[1.7rem]">
+                {item.title}
+              </h3>
+              <p className="editorial-copy max-w-2xl text-[1.02rem] leading-relaxed">
+                {item.description}
+              </p>
+              <span className="font-inter text-[0.68rem] font-semibold uppercase tracking-[0.08em] text-gold-dark transition-colors group-hover:text-dusk">
+                Continue
+              </span>
+            </Link>
+          ))}
         </div>
       </div>
     </section>
