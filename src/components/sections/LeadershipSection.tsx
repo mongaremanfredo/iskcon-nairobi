@@ -15,7 +15,7 @@ export default function LeadershipSection() {
       </div>
 
       <div className="relative z-10 content-width section-padding">
-        <div className="mb-12 grid gap-10 lg:grid-cols-[0.92fr_1.08fr] lg:items-center">
+        <div className="mb-12 grid gap-10 lg:grid-cols-[0.94fr_0.86fr] lg:items-center">
           <div>
             <span className="eyebrow block mb-4 text-gold/80">Guidance & Vision</span>
             <h2 className="section-title-light">
@@ -23,14 +23,14 @@ export default function LeadershipSection() {
               <em className="text-gold not-italic font-normal">and Africa's doorway</em>
             </h2>
             <div className="relative mt-6 lg:hidden">
-              <div className="relative overflow-hidden border border-gold/20 bg-dusk shadow-card-hover">
+              <div className="relative overflow-hidden border border-gold/20 bg-dusk/92 p-3 shadow-card-hover">
                 <img
-                  src="/images/prabhupada/swami-prabhupada-classic.jpg"
+                  src="/images/prabhupada/srila-prabhupada-seated-smiling.jpg"
                   alt="Srila Prabhupada"
-                  className="aspect-[4/3] w-full object-contain opacity-95"
+                  className="mx-auto aspect-[736/937] max-h-[520px] w-full object-contain opacity-95"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-dusk/88 via-transparent to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-5">
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk/78 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
                   <p className="font-inter text-[0.62rem] uppercase tracking-[0.16em] text-gold/80">Founder-Acarya</p>
                 </div>
               </div>
@@ -78,14 +78,14 @@ export default function LeadershipSection() {
 
           <div className="relative max-lg:hidden">
             <div className="absolute -inset-4 border border-gold/20 max-sm:hidden" />
-            <div className="relative overflow-hidden border border-gold/20 bg-dusk shadow-card-hover">
+            <div className="relative overflow-hidden border border-gold/20 bg-dusk/92 p-4 shadow-card-hover">
               <img
-                src="/images/prabhupada/swami-prabhupada-classic.jpg"
+                src="/images/prabhupada/srila-prabhupada-seated-smiling.jpg"
                 alt="Srila Prabhupada"
-                className="aspect-[4/3] w-full object-contain opacity-95"
+                className="mx-auto aspect-[736/937] max-h-[720px] w-full object-contain opacity-95"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-dusk/88 via-transparent to-transparent" />
-              <div className="absolute bottom-0 left-0 right-0 p-5">
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk/78 via-transparent to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-5 text-center">
                 <p className="font-inter text-[0.62rem] uppercase tracking-[0.16em] text-gold/80">Founder-Acarya</p>
               </div>
             </div>
