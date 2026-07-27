@@ -1,58 +1,249 @@
+"use client";
+
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/site";
+import { cn } from "@/lib/utils";
 
 export default function TestimonialsSection() {
+  const [active, setActive] = useState(0);
+
+  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
+  const next = () => setActive((a) => (a + 1) % testimonials.length);
+
+  const current = testimonials[active];
+
   return (
-    <section className="sacred-section bg-temple-bg">
+    <section className="testimonials-section py-section bg-temple-bg">
       <div className="content-width section-padding">
-        <div className="mb-14 grid gap-8 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
+        {/* Header */}
+        <div className="testimonials-header flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
           <div>
-            <p className="eyebrow mb-3">Stories From the Field</p>
+            <span className="eyebrow block mb-3">Stories From the Field</span>
             <h2 className="section-title">
-              Voices of our community
+              Voices of<br />
+              <em className="text-gold not-italic font-normal">Our Community</em>
             </h2>
           </div>
-          <p className="editorial-copy max-w-2xl">
-            The temple is carried by many lives: guests, students, volunteers,
-            teachers, families, and friends who find shelter in worship and
-            service.
-          </p>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={prev}
+              className="w-10 h-10 border border-temple-sand hover:border-gold flex items-center justify-center transition-colors group"
+              aria-label="Previous"
+            >
+              <ChevronLeft size={16} className="text-ink/40 group-hover:text-gold transition-colors" />
+            </button>
+            <button
+              onClick={next}
+              className="w-10 h-10 border border-temple-sand hover:border-gold flex items-center justify-center transition-colors group"
+              aria-label="Next"
+            >
+              <ChevronRight size={16} className="text-ink/40 group-hover:text-gold transition-colors" />
+            </button>
+          </div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
-          {testimonials.map((item) => (
-            <article
-              key={item.image}
-              className="grid gap-6 border-t border-dusk/12 pt-7 sm:grid-cols-[9rem_1fr] sm:items-start"
-            >
-              <div className="relative w-32 sm:w-36">
-                <div className="relative h-32 w-32 overflow-hidden border-4 border-dusk/10 shadow-card sm:h-36 sm:w-36">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="h-full w-full object-cover grayscale"
-                  />
-                  <div className="absolute inset-0 border-2 border-gold/20" />
-                </div>
-                <div className="absolute -bottom-2 -right-2 h-8 w-8 border-r-2 border-b-2 border-gold/60" />
-                <div className="absolute -top-2 -left-2 h-8 w-8 border-l-2 border-t-2 border-gold/50" />
+        {/* Split Layout */}
+        <div className="testimonials-grid grid grid-cols-2 gap-0 min-h-0">
+          {/* Left — Image */}
+          <div className="testimonials-image-col group flex items-center justify-center bg-dusk p-8">
+            <div className="testimonials-portrait-frame relative">
+              <div className="testimonials-portrait relative h-64 w-64 overflow-hidden border-4 border-sand/20 shadow-card sm:h-72 sm:w-72">
+              <img
+                key={current.image}
+                src={current.image}
+                alt={current.name}
+                className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+              />
+                <div className="absolute inset-0 border-2 border-gold/0 transition-colors duration-300 group-hover:border-gold/70" />
               </div>
+              <div className="absolute -bottom-2 -right-2 h-8 w-8 border-r-2 border-b-2 border-gold opacity-40 transition-opacity group-hover:opacity-100" />
+              <div className="absolute -top-2 -left-2 h-8 w-8 border-l-2 border-t-2 border-gold opacity-40 transition-opacity group-hover:opacity-100" />
+              {/* Quote mark watermark */}
+              <div className="testimonials-watermark absolute -left-5 -top-7 font-playfair text-white/10 leading-none" style={{ fontSize: "6rem" }}>
+                "
+              </div>
+            </div>
+          </div>
 
-              <div>
-                <blockquote className="font-cormorant text-[1.18rem] italic leading-relaxed text-dusk/76 sm:text-[1.35rem]">
-                  &quot;{item.quote}&quot;
-                </blockquote>
-                <div className="mt-5 border-t border-dusk/10 pt-4">
-                  <p className="font-inter text-sm font-semibold text-ink">{item.name}</p>
-                  <p className="mt-1 font-inter text-xs text-ink/48">{item.role}</p>
-                  <p className="mt-2 font-inter text-[0.62rem] uppercase tracking-[0.08em] text-gold-dark">
-                    {item.origin}
-                  </p>
-                </div>
+          {/* Right — Quote */}
+          <div className="testimonials-quote-col bg-temple-cream p-8 lg:p-14 flex flex-col justify-between">
+            {/* Tab indicators */}
+            <div className="testimonials-tabs flex gap-2 mb-10">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActive(i)}
+                  className={cn(
+                    "h-0.5 transition-all duration-300",
+                    i === active ? "w-12 bg-gold" : "w-4 bg-temple-sand hover:bg-gold/40"
+                  )}
+                  aria-label={`Testimonial ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            {/* Quote */}
+            <div className="flex-1">
+              <blockquote
+                key={active}
+                className="font-cormorant text-temple-brown italic leading-relaxed mb-8"
+                style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)" }}
+              >
+                "{current.quote}"
+              </blockquote>
+            </div>
+
+            {/* Attribution */}
+            <div className="testimonials-attribution border-t border-temple-sand pt-6">
+              <p className="font-inter font-semibold text-ink text-sm">{current.name}</p>
+              <p className="font-inter text-ink/50 text-sm mt-0.5">{current.role}</p>
+              <div className="flex items-center gap-2 mt-2">
+                <span className="gold-dot scale-75" />
+                <p className="font-inter text-gold text-xs tracking-wide">{current.origin}</p>
               </div>
-            </article>
-          ))}
+            </div>
+          </div>
         </div>
       </div>
+      <style>{`
+        @media (max-width: 640px) {
+          .testimonials-section {
+            padding-top: 1.5rem !important;
+            padding-bottom: 1.2rem !important;
+          }
+          .testimonials-section > .content-width {
+            padding-left: 0.85rem !important;
+            padding-right: 0.85rem !important;
+          }
+          .testimonials-section > div > .testimonials-header {
+            flex-direction: row !important;
+            align-items: flex-end !important;
+            gap: 0.5rem !important;
+            margin-bottom: 0.55rem !important;
+          }
+          .testimonials-header .eyebrow {
+            margin-bottom: 0.18rem !important;
+            font-size: 0.5rem !important;
+            letter-spacing: 0.14em !important;
+          }
+          .testimonials-header .section-title {
+            font-size: clamp(1rem, 4.65vw, 1.18rem) !important;
+            line-height: 1 !important;
+          }
+          .testimonials-header > div:first-child {
+            min-width: 0 !important;
+          }
+          .testimonials-header > div:last-child {
+            flex-shrink: 0 !important;
+            gap: 0.35rem !important;
+          }
+          .testimonials-header button {
+            width: 1.55rem !important;
+            height: 1.55rem !important;
+          }
+          .testimonials-header button svg {
+            width: 0.68rem !important;
+            height: 0.68rem !important;
+          }
+          .testimonials-grid {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            min-height: 0 !important;
+            border: 0 !important;
+            background: transparent !important;
+            padding: 0 !important;
+          }
+          .testimonials-image-col {
+            width: 5.8rem !important;
+            height: 5.8rem !important;
+            padding: 0 !important;
+            background: transparent !important;
+            order: 1 !important;
+            margin-bottom: 0.5rem !important;
+          }
+          .testimonials-portrait-frame,
+          .testimonials-portrait {
+            width: 100% !important;
+            height: 100% !important;
+            aspect-ratio: 1 / 1 !important;
+          }
+          .testimonials-portrait {
+            border-width: 3px !important;
+            box-shadow: 0 10px 24px rgba(56, 37, 21, 0.16) !important;
+          }
+          .testimonials-portrait-frame > div:not(.testimonials-portrait):not(.testimonials-watermark) {
+            width: 1rem !important;
+            height: 1rem !important;
+          }
+          .testimonials-watermark {
+            display: none !important;
+          }
+          .testimonials-quote-col {
+            width: 100% !important;
+            background: transparent !important;
+            padding: 0 !important;
+            order: 2 !important;
+            text-align: center !important;
+            align-items: center !important;
+          }
+          .testimonials-tabs {
+            order: 3 !important;
+            margin: 0.45rem 0 0 !important;
+            justify-content: center !important;
+            gap: 0.28rem !important;
+          }
+          .testimonials-tabs button {
+            height: 0.16rem !important;
+          }
+          .testimonials-tabs button:first-child {
+            width: 1.2rem !important;
+          }
+          .testimonials-tabs button:last-child {
+            width: 0.5rem !important;
+          }
+          .testimonials-quote-col .flex-1 {
+            width: 100% !important;
+            flex: 0 1 auto !important;
+          }
+          .testimonials-quote-col blockquote {
+            max-width: 18.5rem !important;
+            margin: 0 auto 0.48rem !important;
+            font-size: clamp(0.92rem, 4.35vw, 1.08rem) !important;
+            line-height: 1.26 !important;
+            color: var(--color-temple-brown) !important;
+          }
+          .testimonials-attribution {
+            width: 100% !important;
+            max-width: 15rem !important;
+            margin: 0 auto !important;
+            padding-top: 0.45rem !important;
+            text-align: center !important;
+          }
+          .testimonials-attribution p:first-child {
+            font-size: 0.72rem !important;
+            line-height: 1.1 !important;
+          }
+          .testimonials-attribution p:nth-child(2) {
+            font-size: 0.6rem !important;
+            margin-top: 0.12rem !important;
+            line-height: 1.1 !important;
+          }
+          .testimonials-attribution div {
+            justify-content: center !important;
+            margin-top: 0.16rem !important;
+            gap: 0.24rem !important;
+          }
+          .testimonials-attribution .gold-dot {
+            transform: scale(0.48) !important;
+          }
+          .testimonials-attribution p:last-child {
+            font-size: 0.56rem !important;
+            line-height: 1.1 !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

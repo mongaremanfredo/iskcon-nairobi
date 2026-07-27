@@ -90,12 +90,15 @@ export default function Navigation() {
                   {item.label}
                 </Link>
               ))}
-              <Link href="/donate" className="nav-link text-xs tracking-wider uppercase">
-                Support
-              </Link>
             </div>
 
             <div className="flex items-center gap-3">
+              <Link
+                href="/donate"
+                className="hidden sm:inline-flex max-[900px]:hidden items-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-sunset"
+              >
+                Donate
+              </Link>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
@@ -179,9 +182,9 @@ export default function Navigation() {
             <Link
               href="/donate"
               onClick={() => setIsOpen(false)}
-              className="quiet-link border-sand/25 text-sand hover:text-gold-light hover:border-gold-light"
+              className="btn-primary w-full justify-center text-xs"
             >
-              Support the Temple
+              Support Our Mission
             </Link>
           </div>
         </div>
