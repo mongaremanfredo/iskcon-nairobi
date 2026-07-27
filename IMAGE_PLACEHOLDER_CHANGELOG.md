@@ -40,10 +40,12 @@ The four testimonial portrait URLs remain flagged as temporary placeholders, but
 | Unsplash sweets/shop food images (`photo-1567620905732...`, `photo-1565557623262...`, `photo-1551024506...`, `photo-1488477181946...`, `photo-1607920592519...`, `photo-1559181567...`) | `/images/placeholders/iskcon-khichdi-prasadam.jpg` | https://commons.wikimedia.org/wiki/File:Khichdi_Prasadam_in_Donna_(Iskcon_Bangalore).jpg | Uses prasadam imagery instead of unrelated dessert stock while the shop remains hidden. |
 | Unsplash cow/farm/goshala images (`photo-1500595046743...`, `photo-1416879595882...`) | `/images/placeholders/cows-pasture-pixabay.jpg` | https://pixabay.com/images/search/cow%2Bpasture/ and https://cdn.pixabay.com/photo/2025/07/10/07/21/beef-9706049_1280.jpg | Cows in pasture are a better temporary fit for cow protection and goshala content than generic farm/field imagery. |
 | Unsplash leadership portraits (`photo-1560250097...`, `photo-1559839734...`, `photo-1534030347209...`) | `/images/placeholders/iskcon-temple-bangalore.jpg`, `/images/placeholders/hare-krishna-harinam.jpg`, `/images/placeholders/iskcon-food-for-life.jpg` | See source URLs above | Avoids generic business/medical/portrait stock in leadership and service cards. |
+| Guest-house room cards reusing `/images/placeholders/iskcon-temple-bangalore.jpg` | `/images/guest-house/temple-view-room.jpg` | https://www.pexels.com/photo/bedroom-in-a-hotel-34496701/ | Gives the Temple View Room a warm accommodation image instead of repeating a temple exterior placeholder. |
+| Guest-house room cards reusing `/images/placeholders/iskcon-temple-bangalore.jpg` | `/images/guest-house/sadhana-suite.jpg` | https://www.pexels.com/photo/bedroom-with-large-bed-7745929/ | Adds a calmer suite-style room placeholder suitable for a retreat or longer stay. |
+| Guest-house room cards reusing `/images/placeholders/iskcon-temple-bangalore.jpg` | `/images/guest-house/family-quarters.jpg` | https://www.pexels.com/photo/hotel-room-interior-14750394/ | Adds a broader hotel-room placeholder for the family accommodation card. |
 
 ## Downloaded But Not Currently Used
 
 | Image path | Source URL | Note |
 |---|---|---|
 | `/images/placeholders/iskcon-temple-night-janmashtami.jpg` | https://commons.wikimedia.org/wiki/File:ISKCON_temple,_Delhi_at_Janamashtami.jpg | Downloaded successfully, but only 604px wide, so it was not used for high-impact layout slots. |
-

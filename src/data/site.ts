@@ -448,7 +448,7 @@ export const guestRooms = [
     price: "Enquire",
     priceUSD: "",
     capacity: "1-2 guests",
-    image: "/images/placeholders/iskcon-temple-bangalore.jpg",
+    image: "/images/guest-house/temple-view-room.jpg",
     amenities: ["Temple access", "Desk", "Quiet stay", "Vegetarian meals nearby"],
   },
   {
@@ -457,7 +457,7 @@ export const guestRooms = [
     price: "Enquire",
     priceUSD: "",
     capacity: "1-2 guests",
-    image: "/images/placeholders/iskcon-temple-bangalore.jpg",
+    image: "/images/guest-house/sadhana-suite.jpg",
     amenities: ["Private space", "Study area", "Temple schedule", "Laundry access"],
   },
   {
@@ -466,7 +466,7 @@ export const guestRooms = [
     price: "Enquire",
     priceUSD: "",
     capacity: "Up to 4 guests",
-    image: "/images/placeholders/iskcon-temple-bangalore.jpg",
+    image: "/images/guest-house/family-quarters.jpg",
     amenities: ["Family room", "Shared living", "Retreat friendly", "Advance booking"],
   },
 ];
