@@ -144,7 +144,7 @@ export default function Footer() {
               <img
                 src="/images/esthrema-logo.png"
                 alt="Esthrema"
-                className="h-5 w-auto opacity-55 transition-opacity group-hover:opacity-90"
+                className="h-10 w-auto opacity-80 transition-opacity group-hover:opacity-100"
               />
             </a>
           </div>
