@@ -36,7 +36,7 @@ export default function GuestHousePage() {
               <span className="eyebrow block mb-4">Why Stay With Us</span>
               <h2 className="section-title mb-6">A Temple Stay<br /><em className="text-gold not-italic font-normal">Unlike Any Other</em></h2>
               <div className="space-y-4 font-inter text-ink/70 leading-relaxed">
-                <p>Staying at ISKCON Nairobi's guest house means waking to the sound of conches and bells at 4:30 AM, attending Mangala Arati as the city sleeps, and experiencing the full rhythm of a devotional community.</p>
+                <p>Staying at ISKCON Nairobi's guest house means waking to the sound of conches and bells at 4:30 A.M., attending Mangala Arati as the city sleeps, and experiencing the full rhythm of a devotional community.</p>
                 <p>Whether you are a visiting devotee, a spiritual seeker, or a researcher interested in Vaishnava life, the guest house offers a rare opportunity to experience authentic Krishna conscious community living.</p>
                 <p>All rooms include access to the temple, prasadam timings, temple access, and retreat arrangements before travelling.</p>
               </div>

@@ -171,9 +171,9 @@ export default function HeroSection() {
       <div className="absolute top-20 right-0 hidden lg:flex flex-col items-end gap-1 pr-8 pt-8">
         <span className="eyebrow text-gold/70 text-[9px]">Today&apos;s Programmes</span>
         <div className="text-right">
-          <p className="font-inter text-white/60 text-xs">4:30 AM — Maṅgala Ārati</p>
-          <p className="font-inter text-white/60 text-xs">7:15 AM — Bhāgavatam Class</p>
-          <p className="font-inter text-white/60 text-xs">6:30 PM — Sandhyā Ārati</p>
+          <p className="font-inter text-white/60 text-xs">4:30 A.M. - Mangala Arati</p>
+          <p className="font-inter text-white/60 text-xs">7:15 A.M. - Shringar Darshan</p>
+          <p className="font-inter text-white/60 text-xs">7:00 P.M. - Sandhya - Gaur Arati</p>
         </div>
       </div>
       <style>{`

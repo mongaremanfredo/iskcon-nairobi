@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
-import { templeInfo, templeSchedule, navigation, socialLinks } from "@/data/site";
+import { templeInfo, templeScheduleGroups, navigation, socialLinks } from "@/data/site";
 import BrandLogo from "@/components/ui/BrandLogo";
 
 export default function Footer() {
@@ -51,11 +51,21 @@ export default function Footer() {
             <h4 className="font-inter text-white font-semibold text-xs tracking-[0.15em] uppercase mb-5">
               Daily Programme
             </h4>
-            <ul className="space-y-2.5">
-              {templeSchedule.map((item) => (
-                <li key={item.time} className="flex items-start gap-3">
-                  <span className="font-inter text-gold text-xs w-16 flex-shrink-0 pt-0.5">{item.time}</span>
-                  <span className="font-inter text-white/40 text-sm">{item.event}</span>
+            <ul className="space-y-4">
+              {templeScheduleGroups.map((group) => (
+                <li key={group.title}>
+                  <p className="font-inter text-gold/80 text-[0.65rem] font-semibold uppercase tracking-[0.14em]">
+                    {group.title}
+                  </p>
+                  <p className="font-inter text-white/30 text-xs mt-1 mb-2">{group.timeRange}</p>
+                  <ul className="space-y-2">
+                    {group.items.map((item) => (
+                      <li key={`${group.title}-${item.time}-${item.event}`} className="flex items-start gap-3">
+                        <span className="font-inter text-gold text-xs w-20 flex-shrink-0 pt-0.5">{item.time}</span>
+                        <span className="font-inter text-white/40 text-sm">{item.event}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>

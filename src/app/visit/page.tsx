@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
-import { templeInfo, templeSchedule } from "@/data/site";
+import { templeInfo, templeScheduleGroups } from "@/data/site";
 import { MapPin, Clock, Phone, AlertCircle } from "lucide-react";
 import Link from "next/link";
 
@@ -26,14 +26,24 @@ export default function VisitPage() {
             <div className="lg:col-span-2">
               <span className="eyebrow block mb-4">Daily Programmes</span>
               <h2 className="section-title mb-8">Temple Schedule</h2>
-              <div className="divide-y divide-temple-sand">
-                {templeSchedule.map((item) => (
-                  <div key={item.time} className="flex items-center justify-between py-4">
-                    <div className="flex items-center gap-5">
-                      <span className="font-inter text-gold font-semibold text-sm w-20">{item.time}</span>
-                      <span className="font-playfair text-ink text-lg">{item.event}</span>
+              <div className="space-y-8">
+                {templeScheduleGroups.map((group) => (
+                  <div key={group.title} className="border border-temple-sand bg-white/50">
+                    <div className="border-b border-temple-sand p-4">
+                      <p className="font-playfair text-ink text-xl">{group.title}</p>
+                      <p className="font-inter text-gold text-xs font-semibold tracking-widest uppercase mt-1">{group.timeRange}</p>
                     </div>
-                    <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-gold/40" />
+                    <div className="divide-y divide-temple-sand">
+                      {group.items.map((item) => (
+                        <div key={`${group.title}-${item.time}-${item.event}`} className="flex items-center justify-between px-4 py-3">
+                          <div className="flex items-center gap-5">
+                            <span className="font-inter text-gold font-semibold text-sm w-24 flex-shrink-0">{item.time}</span>
+                            <span className="font-playfair text-ink text-lg">{item.event}</span>
+                          </div>
+                          <span className="hidden sm:block w-1.5 h-1.5 rounded-full bg-gold/40" />
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>

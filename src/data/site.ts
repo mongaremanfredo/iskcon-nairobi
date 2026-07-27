@@ -12,7 +12,7 @@ export const templeInfo = {
   phoneHref: "+254722815039",
   email: "iskconnairobi@gmail.com",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=ISKCON%20Nairobi%20Hare%20Krishna%20Close%20Nairobi%20Kenya",
-  hours: "Daily: 4:30 AM - 9:00 PM",
+  hours: "Morning: 4:30 A.M. - 12:45 P.M. | Evening: 4:30 P.M. - 8:45 P.M.",
   note: "Programme timings can vary on festival days. Contact the temple before travelling for major celebrations.",
 };
 
@@ -471,12 +471,37 @@ export const guestRooms = [
   },
 ];
 
-export const templeSchedule = [
-  { time: "4:30 AM", event: "Mangala Arati" },
-  { time: "7:15 AM", event: "Guru Puja & Bhagavatam Class" },
-  { time: "8:30 AM", event: "Breakfast Prasadam" },
-  { time: "12:00 PM", event: "Raja Bhoga Arati" },
-  { time: "4:30 PM", event: "Utthapana Arati" },
-  { time: "6:30 PM", event: "Sandhya Arati" },
-  { time: "8:00 PM", event: "Sayana Arati" },
+export const templeScheduleGroups = [
+  {
+    title: "Morning Aarti & Darshan Timings",
+    timeRange: "4:30 A.M. - 12:45 P.M.",
+    items: [
+      { time: "4:30 A.M.", event: "Mangala Arati in the Main Temple" },
+      { time: "5:00 A.M.", event: "Sri Tulasi Arati" },
+      { time: "7:00 A.M.", event: "Shringar Bhoga" },
+      { time: "7:15 A.M.", event: "Shringar Darshan" },
+      { time: "7:20 A.M.", event: "Sri Guru Puja" },
+      { time: "8:00 A.M.", event: "Srimad-Bhagavatam Class" },
+      { time: "8:10 A.M.", event: "Baal Bhoga" },
+      { time: "8:30 A.M.", event: "Dhoop Arati" },
+      { time: "11:10 A.M.", event: "Raj Bhoga" },
+      { time: "12:00 P.M.", event: "Raj Bhoga Arati" },
+      { time: "12:45 P.M.", event: "Temple Closes" },
+    ],
+  },
+  {
+    title: "Evening Aarti & Darshan Timings",
+    timeRange: "4:30 P.M. - 8:45 P.M.",
+    items: [
+      { time: "4:10 P.M.", event: "Utthapan Bhoga" },
+      { time: "4:30 P.M.", event: "Uthapan Arati" },
+      { time: "6:35 P.M.", event: "Sandhya Bhoga" },
+      { time: "7:00 P.M.", event: "Sandhya - Gaur Arati" },
+      { time: "8:10 P.M.", event: "Sayana Bhoga" },
+      { time: "8:30 P.M.", event: "Sayana Arati" },
+      { time: "8:45 P.M.", event: "Temple Closes" },
+    ],
+  },
 ];
+
+export const templeSchedule = templeScheduleGroups.flatMap((group) => group.items);
