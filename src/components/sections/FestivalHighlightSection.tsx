@@ -160,7 +160,7 @@ function CountdownPanel({
 
 /* Component */
 export default function KirtanSafariSection() {
-  const target = new Date("2026-08-28T10:00:00+03:00");
+  const target = new Date("2026-08-27T18:00:00+03:00");
   const { days, hours, minutes, seconds } = useCountdown(target);
 
   return (
@@ -412,7 +412,8 @@ export default function KirtanSafariSection() {
               At a Glance
             </p>
             {[
-              { date: "Aug 28 - Fri", highlight: "Adivas Kirtan | Balaram Purnima" },
+              { date: "Aug 27 - Thu", highlight: "Adivas | 6:00 PM onwards" },
+              { date: "Aug 28 - Fri", highlight: "Balaram Purnima | Kirtan" },
               { date: "Aug 29 - Sat", highlight: "Special Harinam | Kirtan Sessions" },
               { date: "Aug 30 - Sun", highlight: "Continuous Kirtan All Day!" },
             ].map((item) => (

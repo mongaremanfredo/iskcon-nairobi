@@ -87,9 +87,9 @@ export const projects = [
 export const festivals = [
   {
     title: "Kirtan Safari Festival",
-    date: "28-30 August 2026",
+    date: "27-30 August 2026",
     location: "Hare Krishna Temple",
-    description: "A kirtan journey through Jarikhand Forest with kirtan, Harinam, Abhishek, prasadam, and devotional community.",
+    description: "Adivas on 27 August followed by a kirtan journey through Jarikhand Forest with kirtan, Harinam, Abhishek, prasadam, and devotional community.",
     image: "/images/kirtan-safari-2026-poster-thumb.jpg",
     href: "/festivals/kirtan-safari",
     featured: true,
@@ -126,11 +126,11 @@ export const festivals = [
 export const homepageFestivalPreview = [
   {
     title: "Kirtan Safari Festival",
-    date: "28-30 August 2026",
+    date: "27-30 August 2026",
     month: "Aug",
-    day: "28",
+    day: "27",
     location: "ISKCON Nairobi, Hare Krishna Temple",
-    description: "Three days of kirtan, Harinam, prasadam, and devotional community through the Jarikhand Forest theme.",
+    description: "Adivas opens the festival on 27 August, followed by three days of kirtan, Harinam, prasadam, and devotional community.",
     image: "/images/calendar-kirtan-safari-bg.png",
     href: "/festivals/kirtan-safari",
     tag: "Featured",
@@ -244,8 +244,8 @@ export const vaishnavaCalendar2026 = [
       { date: "Aug 9", day: "Sun", event: "Kamika Ekadashi", type: "Ekadashi" },
       { date: "Aug 23", day: "Sun", event: "Radha Govinda Jhulana Yatra begins" },
       { date: "Aug 24", day: "Mon", event: "Pavitropana Ekadashi", type: "Ekadashi" },
-      { date: "Aug 27", day: "Thu", event: "Last day of 1st Chaturmasya" },
-      { date: "Aug 28", day: "Fri", event: "Lord Balarama Appearance / Kirtan Safari begins", type: "Major" },
+      { date: "Aug 27", day: "Thu", event: "Last day of 1st Chaturmasya / Kirtan Safari Adivas", type: "Major" },
+      { date: "Aug 28", day: "Fri", event: "Lord Balarama Appearance / Kirtan Safari", type: "Major" },
       { date: "Aug 29", day: "Sat", event: "Srila Prabhupada's Departure for the USA / Kirtan Safari" },
       { date: "Aug 30", day: "Sun", event: "Kirtan Safari closing day", type: "Major" },
     ],

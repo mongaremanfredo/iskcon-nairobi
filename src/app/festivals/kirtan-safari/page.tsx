@@ -9,11 +9,11 @@ import {
 export const metadata: Metadata = {
   title: "Kirtan Safari 2026 — A Kirtan Journey Through Jarikhand Forest",
   description:
-    "Join us August 28–30, 2026 at Hare Krishna Temple Nairobi for Kirtan Safari — three days of devotional music, prasadam, and kirtan in the wild. ISKCON Nairobi 60th Anniversary.",
+    "Join us August 27–30, 2026 at Hare Krishna Temple Nairobi for Kirtan Safari — Adivas followed by three days of devotional music, prasadam, and kirtan in the wild. ISKCON Nairobi 60th Anniversary.",
   openGraph: {
     title: "Kirtan Safari 2026 | ISKCON Nairobi",
     description:
-      "Every word a song, every step a dance. A three-day kirtan journey through Jarikhand Forest — August 28–30, 2026.",
+      "Every word a song, every step a dance. Adivas on August 27 followed by a three-day kirtan journey through Jarikhand Forest.",
     images: [
       {
         url: "/images/kirtan-safari-2026-hero-bg.jpg",
@@ -33,7 +33,7 @@ const days = [
     special: "Balaram Purnima",
     icon: "🌕",
     sessions: [
-      { time: "10:00 am", event: "Adivas Kirtan" },
+      { time: "10:00 am", event: "Balaram Purnima Kirtan" },
       { time: "01:00 pm", event: "Prasadam" },
       { time: "06:00 pm", event: "Abhishek & Talk" },
       { time: "07:30 pm", event: "Kirtan" },
@@ -69,6 +69,17 @@ const days = [
 ];
 
 /* ─── social links ──────────────────────────────────────── */
+const adhivasEvent = {
+  title: "Adivas",
+  date: "Thursday, 27th August",
+  time: "From 6:00 PM onwards",
+  location: "Hare Krishna Temple",
+  prasadam: "Followed by Prasad",
+  description:
+    "Get ready for an extra day of Kirtan Safari celebrations with Adivas as we begin the festival mood together.",
+  image: "/images/kirtan-safari-2026-adhivas.png",
+};
+
 const socials = [
   {
     label: "Instagram",
@@ -297,7 +308,7 @@ export default function KirtanSafariPage() {
             }}
           >
             {[
-              { icon: "📅", text: "28 – 30 August 2026" },
+              { icon: "📅", text: "27 – 30 August 2026" },
               { icon: "📍", text: "Hare Krishna Temple, West Ngara Rd, Nairobi" },
             ].map((item) => (
               <div
@@ -598,6 +609,83 @@ export default function KirtanSafariPage() {
             >
               Three Days of Kirtan
             </h2>
+          </div>
+
+          {/* Adivas extra day */}
+          <div
+            className="ks-adhivas-card"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 0.92fr) minmax(0, 1.08fr)",
+              gap: "1.5rem",
+              alignItems: "stretch",
+              background: "linear-gradient(135deg, rgba(246,226,177,0.08), rgba(214,156,43,0.12))",
+              border: "1px solid rgba(214,156,43,0.42)",
+              marginBottom: "2rem",
+              overflow: "hidden",
+            }}
+          >
+            <div
+              style={{
+                minHeight: "220px",
+                backgroundImage: `url('${adhivasEvent.image}')`,
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+              aria-label="Adivas extra day poster"
+            />
+            <div style={{ padding: "clamp(1.35rem, 3vw, 2rem)" }}>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "#d69c2b",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.18em",
+                  textTransform: "uppercase",
+                  fontWeight: 700,
+                  margin: "0 0 0.65rem",
+                }}
+              >
+                Extra Day of Celebrations
+              </p>
+              <h3
+                style={{
+                  fontFamily: "var(--font-playfair, serif)",
+                  color: "#fff",
+                  fontSize: "clamp(2rem, 4vw, 3rem)",
+                  lineHeight: 1,
+                  margin: 0,
+                }}
+              >
+                {adhivasEvent.title}
+              </h3>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "rgba(255,255,255,0.72)",
+                  fontSize: "0.95rem",
+                  lineHeight: 1.7,
+                  margin: "1rem 0 1.25rem",
+                  maxWidth: "38rem",
+                }}
+              >
+                {adhivasEvent.description}
+              </p>
+              <div
+                style={{
+                  display: "grid",
+                  gap: "0.65rem",
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "rgba(255,255,255,0.82)",
+                  fontSize: "0.86rem",
+                }}
+              >
+                <span><strong style={{ color: "#f6e2b1" }}>Date:</strong> {adhivasEvent.date}</span>
+                <span><strong style={{ color: "#f6e2b1" }}>Time:</strong> {adhivasEvent.time}</span>
+                <span><strong style={{ color: "#f6e2b1" }}>Venue:</strong> {adhivasEvent.location}</span>
+                <span><strong style={{ color: "#f6e2b1" }}>Prasad:</strong> {adhivasEvent.prasadam}</span>
+              </div>
+            </div>
           </div>
 
           {/* Day cards */}
@@ -1177,7 +1265,7 @@ export default function KirtanSafariPage() {
                 margin: "0.25rem 0 0",
               }}
             >
-              28 – 30 August · Hare Krishna Temple, Nairobi
+              27 – 30 August · Hare Krishna Temple, Nairobi
             </p>
           </div>
           <a
@@ -1263,6 +1351,11 @@ export default function KirtanSafariPage() {
           .kirtan-safari-page div[style*="grid-template-columns: 1fr 1fr"] {
             grid-template-columns: 1fr !important;
             gap: 1.5rem !important;
+          }
+
+          .kirtan-safari-page .ks-adhivas-card {
+            grid-template-columns: 1fr !important;
+            gap: 0 !important;
           }
 
           .kirtan-safari-page div[style*="background-attachment: fixed"] {
