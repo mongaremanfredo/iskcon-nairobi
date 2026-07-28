@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { X, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import BrandLogo from "@/components/ui/BrandLogo";
+import TempleStatusBar from "@/components/layout/TempleStatusBar";
 
 const primaryNavigation = [
   { label: "Home", href: "/" },
@@ -134,6 +135,7 @@ export default function Navigation() {
           </nav>
         </div>
       </header>
+      <TempleStatusBar visible={scrolled && !isOpen} />
 
       <div
         className={cn(
