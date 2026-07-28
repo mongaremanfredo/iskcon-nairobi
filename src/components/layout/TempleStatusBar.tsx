@@ -16,38 +16,10 @@ type TempleStatus = {
 const NAIROBI_TIMEZONE = "Africa/Nairobi";
 
 const windows = [
-  {
-    start: 250,
-    end: 765,
-    isOpen: true,
-    label: "04:10 - 12:45",
-    openText: "Temple Open",
-    closedText: "",
-  },
-  {
-    start: 765,
-    end: 970,
-    isOpen: false,
-    label: "12:45 - 16:10",
-    openText: "",
-    closedText: "Temple Closed",
-  },
-  {
-    start: 970,
-    end: 1245,
-    isOpen: true,
-    label: "16:10 - 20:45",
-    openText: "Temple Open",
-    closedText: "",
-  },
-  {
-    start: 1245,
-    end: 1690,
-    isOpen: false,
-    label: "20:45 - 04:10",
-    openText: "",
-    closedText: "Temple Closed",
-  },
+  { start: 250, end: 765, isOpen: true, label: "04:10 - 12:45", openText: "Temple Open", closedText: "" },
+  { start: 765, end: 970, isOpen: false, label: "12:45 - 16:10", openText: "", closedText: "Temple Closed" },
+  { start: 970, end: 1245, isOpen: true, label: "16:10 - 20:45", openText: "Temple Open", closedText: "" },
+  { start: 1245, end: 1690, isOpen: false, label: "20:45 - 04:10", openText: "", closedText: "Temple Closed" },
 ];
 
 const programmes = [
@@ -148,42 +120,43 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
   return (
     <div
       className={cn(
-        "fixed left-0 right-0 top-[63px] z-[49] border-b border-gold/20 bg-dusk/92 text-sand shadow-[0_10px_30px_rgba(0,0,0,0.16)] backdrop-blur-[14px] transition-all duration-300 max-[900px]:top-[61px]",
+        "fixed left-0 right-0 top-[63px] z-[49] border-b border-gold/30 bg-[#f4dfad]/95 text-ink shadow-[0_10px_28px_rgba(64,34,17,0.13)] backdrop-blur-[14px] transition-all duration-300 max-[900px]:top-[61px]",
         visible ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0 pointer-events-none"
       )}
       aria-hidden={!visible}
     >
       <div className="content-width section-padding">
-        <div className="flex min-h-11 items-center justify-between gap-3 py-2 max-[900px]:min-h-[3.45rem] max-[900px]:items-start max-[900px]:flex-col max-[900px]:gap-1.5 max-[900px]:py-1.5">
-          <div className="flex min-w-0 items-center gap-3 font-inter text-xs max-[900px]:w-full max-[900px]:gap-2">
+        <div className="flex min-h-11 items-center justify-between gap-3 py-2 max-[900px]:min-h-9 max-[900px]:gap-2 max-[900px]:py-1">
+          <div className="flex min-w-0 items-center gap-3 font-inter text-xs max-[900px]:flex-1 max-[900px]:gap-1.5">
             <span
               className={cn(
-                "h-2.5 w-2.5 shrink-0 rounded-full shadow-[0_0_16px_currentColor]",
-                status.isOpen ? "bg-emerald-400 text-emerald-400" : "bg-gold text-gold"
+                "h-2.5 w-2.5 shrink-0 rounded-full shadow-[0_0_16px_currentColor] max-[900px]:h-2 max-[900px]:w-2",
+                status.isOpen ? "bg-emerald-600 text-emerald-600" : "bg-sunset text-sunset"
               )}
               aria-hidden="true"
             />
-            <span className="shrink-0 font-semibold uppercase tracking-[0.16em] text-white max-[900px]:text-[0.64rem]">
+            <span className="shrink-0 font-semibold uppercase tracking-[0.16em] text-ink max-[900px]:text-[0.58rem] max-[900px]:tracking-[0.09em]">
               {status.primaryText}
             </span>
-            <span className="h-3 w-px shrink-0 bg-gold/25 max-[900px]:hidden" />
-            <span className="truncate text-sand/78 max-[900px]:text-[0.72rem]">
-              {status.detailText} · {status.windowLabel}
+            <span className="h-3 w-px shrink-0 bg-gold/40 max-[900px]:hidden" />
+            <span className="truncate text-ink/72 max-[900px]:text-[0.68rem]">
+              <span className="max-[900px]:hidden">{status.detailText} - {status.windowLabel}</span>
+              <span className="hidden max-[900px]:inline">{status.detailText}</span>
             </span>
           </div>
 
-          <div className="flex min-w-0 items-center justify-end gap-3 font-inter text-xs max-[900px]:w-full max-[900px]:justify-between max-[900px]:gap-2">
-            <span className="hidden min-w-0 items-center gap-1.5 text-sand/68 lg:flex">
-              <Clock3 size={13} className="shrink-0 text-gold" />
+          <div className="flex min-w-0 items-center justify-end gap-3 font-inter text-xs max-[900px]:shrink-0 max-[900px]:gap-2">
+            <span className="hidden min-w-0 items-center gap-1.5 text-ink/62 lg:flex">
+              <Clock3 size={13} className="shrink-0 text-sunset" />
               <span className="truncate">Next: {status.nextProgramme}</span>
             </span>
             <Link
               href="/festivals/kirtan-safari"
-              className="inline-flex shrink-0 items-center gap-1.5 border border-gold/30 bg-gold/12 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-gold transition-colors hover:border-gold/60 hover:bg-gold/20 max-[900px]:px-2.5 max-[900px]:py-1 max-[900px]:text-[0.58rem]"
+              className="inline-flex shrink-0 items-center gap-1.5 border border-sunset/35 bg-sunset/10 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-sunset transition-colors hover:border-sunset/60 hover:bg-sunset/15 max-[900px]:gap-1 max-[900px]:px-2 max-[900px]:py-1 max-[900px]:text-[0.54rem] max-[900px]:tracking-[0.08em]"
             >
-              <CalendarDays size={13} className="shrink-0" />
-              <span className="max-[360px]:hidden">Kirtan Safari 2026</span>
-              <span className="hidden max-[360px]:inline">Kirtan Safari</span>
+              <CalendarDays size={13} className="shrink-0 max-[900px]:h-3 max-[900px]:w-3" />
+              <span className="max-[900px]:hidden">Kirtan Safari 2026</span>
+              <span className="hidden max-[900px]:inline">Safari</span>
             </Link>
           </div>
         </div>
