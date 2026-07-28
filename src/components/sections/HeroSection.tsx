@@ -19,10 +19,10 @@ const heroImages = [
     mobilePosition: "62% center",
   },
   {
-    src: "/images/kirtan-safari-2026-page-hero.png",
-    alt: "Kirtan Safari festival artwork with African landscape",
-    position: "center",
-    mobilePosition: "42% center",
+    src: "/images/kirtan-safari-daily-darshan-2026.jpg",
+    alt: "Daily darshan of Sri Sri Radha Bankebihari in red festival attire",
+    position: "center top",
+    mobilePosition: "center top",
     fit: "contain",
   },
 ];
