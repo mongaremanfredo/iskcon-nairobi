@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,14 @@ export default function TestimonialsSection() {
   const next = () => setActive((a) => (a + 1) % testimonials.length);
 
   const current = testimonials[active];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActive((a) => (a + 1) % testimonials.length);
+    }, 10000);
+
+    return () => window.clearInterval(timer);
+  }, []);
 
   return (
     <section className="testimonials-section py-section bg-temple-bg">
@@ -25,7 +33,7 @@ export default function TestimonialsSection() {
               <em className="text-gold not-italic font-normal">Our Community</em>
             </h2>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="testimonials-header-controls flex items-center gap-3">
             <button
               onClick={prev}
               className="w-10 h-10 border border-temple-sand hover:border-gold flex items-center justify-center transition-colors group"
@@ -48,6 +56,13 @@ export default function TestimonialsSection() {
           {/* Left — Image */}
           <div className="testimonials-image-col group flex items-center justify-center bg-dusk p-8">
             <div className="testimonials-portrait-frame relative">
+              <button
+                onClick={prev}
+                className="testimonials-side-control testimonials-side-control-prev hidden"
+                aria-label="Previous"
+              >
+                <ChevronLeft size={16} />
+              </button>
               <div className="testimonials-portrait relative h-64 w-64 overflow-hidden border-4 border-sand/20 shadow-card sm:h-72 sm:w-72">
               <img
                 key={current.image}
@@ -57,6 +72,13 @@ export default function TestimonialsSection() {
               />
                 <div className="absolute inset-0 border-2 border-gold/0 transition-colors duration-300 group-hover:border-gold/70" />
               </div>
+              <button
+                onClick={next}
+                className="testimonials-side-control testimonials-side-control-next hidden"
+                aria-label="Next"
+              >
+                <ChevronRight size={16} />
+              </button>
               <div className="absolute -bottom-2 -right-2 h-8 w-8 border-r-2 border-b-2 border-gold opacity-40 transition-opacity group-hover:opacity-100" />
               <div className="absolute -top-2 -left-2 h-8 w-8 border-l-2 border-t-2 border-gold opacity-40 transition-opacity group-hover:opacity-100" />
               {/* Quote mark watermark */}
@@ -135,10 +157,11 @@ export default function TestimonialsSection() {
             min-width: 0 !important;
             width: 100% !important;
           }
-          .testimonials-header > div:last-child {
+          .testimonials-header-controls {
             flex-shrink: 0 !important;
             gap: 0.6rem !important;
             justify-content: center !important;
+            display: none !important;
           }
           .testimonials-header button {
             width: 2.35rem !important;
@@ -172,6 +195,27 @@ export default function TestimonialsSection() {
             width: min(58vw, 12rem) !important;
             height: min(58vw, 12rem) !important;
             aspect-ratio: 1 / 1 !important;
+          }
+          .testimonials-side-control {
+            position: absolute !important;
+            top: 50% !important;
+            z-index: 5 !important;
+            display: flex !important;
+            width: 2.35rem !important;
+            height: 2.35rem !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border: 1px solid rgba(214, 156, 43, 0.38) !important;
+            background: rgba(255, 255, 255, 0.58) !important;
+            color: var(--color-gold) !important;
+            transform: translateY(-50%) !important;
+            box-shadow: 0 12px 28px rgba(56, 37, 21, 0.12) !important;
+          }
+          .testimonials-side-control-prev {
+            left: -3.15rem !important;
+          }
+          .testimonials-side-control-next {
+            right: -3.15rem !important;
           }
           .testimonials-portrait {
             width: 100% !important;
