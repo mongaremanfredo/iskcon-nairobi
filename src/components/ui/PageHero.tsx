@@ -6,6 +6,7 @@ interface PageHeroProps {
   image: string;
   height?: "sm" | "md" | "lg";
   align?: "left" | "center";
+  className?: string;
 }
 
 export default function PageHero({
@@ -16,6 +17,7 @@ export default function PageHero({
   image,
   height = "md",
   align = "left",
+  className = "",
 }: PageHeroProps) {
   const heights = {
     sm: "h-[42vh] min-h-[220px] sm:h-64 sm:min-h-[240px]",
@@ -24,7 +26,7 @@ export default function PageHero({
   };
 
   return (
-    <section className={`relative overflow-hidden ${heights[height]}`}>
+    <section className={`relative overflow-hidden ${heights[height]} ${className}`}>
       {/* Background */}
       <img src={image} alt={title} className="absolute inset-0 w-full h-full object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
