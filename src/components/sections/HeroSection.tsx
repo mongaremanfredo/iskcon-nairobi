@@ -23,6 +23,7 @@ const heroImages = [
     alt: "Kirtan Safari festival artwork with African landscape",
     position: "center",
     mobilePosition: "42% center",
+    fit: "contain",
   },
 ];
 
@@ -56,7 +57,7 @@ export default function HeroSection() {
           <img
             src={image.src}
             alt={image.alt}
-            className="hero-bg-image w-full h-full object-cover"
+            className={cn("hero-bg-image w-full h-full", image.fit === "contain" ? "object-contain" : "object-cover")}
             style={{
               objectPosition: image.position,
               "--hero-mobile-position": image.mobilePosition ?? image.position,
