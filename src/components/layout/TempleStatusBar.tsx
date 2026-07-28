@@ -152,11 +152,11 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
             </span>
             <Link
               href="/festivals/kirtan-safari"
-              className="inline-flex shrink-0 items-center gap-1.5 border border-sunset/35 bg-sunset/10 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-sunset transition-colors hover:border-sunset/60 hover:bg-sunset/15 max-[900px]:gap-1 max-[900px]:px-2 max-[900px]:py-1 max-[900px]:text-[0.54rem] max-[900px]:tracking-[0.08em]"
+              className="inline-flex shrink-0 items-center gap-1.5 border border-sunset/35 bg-sunset/10 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-sunset transition-colors hover:border-sunset/60 hover:bg-sunset/15 max-[900px]:gap-1 max-[900px]:px-1.5 max-[900px]:py-1 max-[900px]:text-[0.54rem] max-[900px]:tracking-[0.06em]"
             >
               <CalendarDays size={13} className="shrink-0 max-[900px]:h-3 max-[900px]:w-3" />
               <span className="max-[900px]:hidden">Kirtan Safari 2026</span>
-              <span className="hidden max-[900px]:inline">Safari</span>
+              <span className="hidden max-[900px]:inline">Kirtan Safari</span>
             </Link>
           </div>
         </div>
