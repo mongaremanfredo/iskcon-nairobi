@@ -7,6 +7,7 @@ interface PageHeroProps {
   height?: "sm" | "md" | "lg";
   align?: "left" | "center";
   className?: string;
+  contentClassName?: string;
 }
 
 export default function PageHero({
@@ -18,6 +19,7 @@ export default function PageHero({
   height = "md",
   align = "left",
   className = "",
+  contentClassName = "",
 }: PageHeroProps) {
   const heights = {
     sm: "h-[42vh] min-h-[220px] sm:h-64 sm:min-h-[240px]",
@@ -38,7 +40,7 @@ export default function PageHero({
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
       {/* Content */}
-      <div className={`relative z-10 h-full flex flex-col justify-end pb-8 sm:pb-12 section-padding content-width ${align === "center" ? "items-center text-center" : ""}`}>
+      <div className={`relative z-10 h-full flex flex-col justify-end pb-8 sm:pb-12 section-padding content-width ${contentClassName} ${align === "center" ? "items-center text-center" : ""}`}>
         {subtitle && (
           <span className="eyebrow text-gold/80 block mb-3">{subtitle}</span>
         )}
