@@ -7,14 +7,27 @@ import { cn } from "@/lib/utils";
 
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
+  const [direction, setDirection] = useState<"next" | "prev">("next");
 
-  const prev = () => setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
-  const next = () => setActive((a) => (a + 1) % testimonials.length);
+  const prev = () => {
+    setDirection("prev");
+    setActive((a) => (a - 1 + testimonials.length) % testimonials.length);
+  };
+  const next = () => {
+    setDirection("next");
+    setActive((a) => (a + 1) % testimonials.length);
+  };
+  const selectTestimonial = (index: number) => {
+    if (index === active) return;
+    setDirection(index > active ? "next" : "prev");
+    setActive(index);
+  };
 
   const current = testimonials[active];
 
   useEffect(() => {
     const timer = window.setInterval(() => {
+      setDirection("next");
       setActive((a) => (a + 1) % testimonials.length);
     }, 10000);
 
@@ -22,7 +35,7 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section className="testimonials-section py-section bg-temple-bg">
+    <section className="testimonials-section py-section bg-temple-bg" data-direction={direction}>
       <div className="content-width section-padding">
         {/* Header */}
         <div className="testimonials-header flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
@@ -52,7 +65,7 @@ export default function TestimonialsSection() {
         </div>
 
         {/* Split Layout */}
-        <div className="testimonials-grid grid grid-cols-2 gap-0 min-h-0">
+        <div className="testimonials-grid grid grid-cols-2 gap-0 min-h-[32rem]">
           {/* Left — Image */}
           <div className="testimonials-image-col group flex items-center justify-center bg-dusk p-8">
             <div className="testimonials-portrait-frame relative">
@@ -68,7 +81,7 @@ export default function TestimonialsSection() {
                 key={current.image}
                 src={current.image}
                 alt={current.name}
-                className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
+                className="testimonial-slide-panel h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
               />
                 <div className="absolute inset-0 border-2 border-gold/0 transition-colors duration-300 group-hover:border-gold/70" />
               </div>
@@ -95,7 +108,7 @@ export default function TestimonialsSection() {
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setActive(i)}
+                  onClick={() => selectTestimonial(i)}
                   className={cn(
                     "h-0.5 transition-all duration-300",
                     i === active ? "w-12 bg-gold" : "w-4 bg-temple-sand hover:bg-gold/40"
@@ -106,10 +119,10 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Quote */}
-            <div className="flex-1">
+            <div className="testimonials-quote-body flex-1">
               <blockquote
                 key={active}
-                className="font-cormorant text-temple-brown italic leading-relaxed mb-8"
+                className="testimonial-slide-panel font-cormorant text-temple-brown italic leading-relaxed mb-8"
                 style={{ fontSize: "clamp(1.2rem, 2.5vw, 1.6rem)" }}
               >
                 "{current.quote}"
@@ -117,7 +130,7 @@ export default function TestimonialsSection() {
             </div>
 
             {/* Attribution */}
-            <div className="testimonials-attribution border-t border-temple-sand pt-6">
+            <div key={current.name} className="testimonial-slide-panel testimonials-attribution border-t border-temple-sand pt-6">
               <p className="font-inter font-semibold text-ink text-sm">{current.name}</p>
               <p className="font-inter text-ink/50 text-sm mt-0.5">{current.role}</p>
               <div className="flex items-center gap-2 mt-2">
@@ -129,6 +142,45 @@ export default function TestimonialsSection() {
         </div>
       </div>
       <style>{`
+        .testimonials-section {
+          --testimonial-enter-x: 1.25rem;
+        }
+
+        .testimonials-section[data-direction="prev"] {
+          --testimonial-enter-x: -1.25rem;
+        }
+
+        .testimonials-grid {
+          height: 32rem;
+        }
+
+        .testimonials-image-col,
+        .testimonials-quote-col {
+          min-height: 100%;
+        }
+
+        .testimonials-quote-body {
+          min-height: 12rem;
+          display: flex;
+          align-items: center;
+        }
+
+        .testimonial-slide-panel {
+          animation: testimonialSlideIn 560ms cubic-bezier(0.22, 1, 0.36, 1) both;
+          will-change: opacity, transform;
+        }
+
+        @keyframes testimonialSlideIn {
+          from {
+            opacity: 0;
+            transform: translateX(var(--testimonial-enter-x)) scale(0.985);
+          }
+          to {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+          }
+        }
+
         @media (max-width: 640px) {
           .testimonials-section {
             padding-top: 3rem !important;
@@ -179,6 +231,7 @@ export default function TestimonialsSection() {
             align-items: center !important;
             gap: 1.1rem !important;
             min-height: 0 !important;
+            height: auto !important;
             border: 0 !important;
             background: transparent !important;
             padding: 0 !important;
@@ -234,6 +287,7 @@ export default function TestimonialsSection() {
           }
           .testimonials-quote-col {
             width: 100% !important;
+            min-height: 0 !important;
             background: transparent !important;
             padding: 0 !important;
             order: 2 !important;
@@ -250,9 +304,11 @@ export default function TestimonialsSection() {
           .testimonials-tabs button {
             height: 0.18rem !important;
           }
-          .testimonials-quote-col .flex-1 {
+          .testimonials-quote-body {
             width: 100% !important;
+            min-height: 7.2rem !important;
             flex: 0 1 auto !important;
+            align-items: center !important;
           }
           .testimonials-quote-col blockquote {
             max-width: 21.5rem !important;
