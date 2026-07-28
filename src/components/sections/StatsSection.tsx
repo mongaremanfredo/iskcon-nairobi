@@ -82,12 +82,12 @@ export default function StatsSection() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="/images/placeholders/iskcon-temple-bangalore.jpg"
+          src="/images/impact-africa-map.jpeg"
           alt="African landscape"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-temple-brown/90" />
-        <div className="absolute inset-0 opacity-5"
+        <div className="absolute inset-0 bg-temple-brown/82" />
+        <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "radial-gradient(circle at 50% 50%, var(--color-gold) 0%, transparent 70%)" }}
         />
       </div>
