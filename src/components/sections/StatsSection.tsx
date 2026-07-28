@@ -81,11 +81,14 @@ export default function StatsSection() {
     <section className="stats-section relative overflow-hidden py-section" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0">
-        <img
-          src="/images/impact-africa-map.jpeg"
-          alt="African landscape"
-          className="stats-bg-image w-full h-full object-cover object-center"
-        />
+        <picture className="block h-full w-full">
+          <source media="(min-width: 641px)" srcSet="/images/impact-africa-desktop.jpeg" />
+          <img
+            src="/images/impact-africa-mobile-giraffes.jpeg"
+            alt="African landscape"
+            className="stats-bg-image w-full h-full object-cover object-center"
+          />
+        </picture>
         <div className="absolute inset-0 bg-temple-brown/82" />
         <div className="absolute inset-0 opacity-10"
           style={{ backgroundImage: "radial-gradient(circle at 50% 50%, var(--color-gold) 0%, transparent 70%)" }}
