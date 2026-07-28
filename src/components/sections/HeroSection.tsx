@@ -23,7 +23,6 @@ const heroImages = [
     alt: "Daily darshan of Sri Sri Radha Bankebihari in red festival attire",
     position: "center top",
     mobilePosition: "center top",
-    fit: "contain",
   },
 ];
 
@@ -57,7 +56,7 @@ export default function HeroSection() {
           <img
             src={image.src}
             alt={image.alt}
-            className={cn("hero-bg-image w-full h-full", image.fit === "contain" ? "object-contain" : "object-cover")}
+            className="hero-bg-image w-full h-full object-cover"
             style={{
               objectPosition: image.position,
               "--hero-mobile-position": image.mobilePosition ?? image.position,

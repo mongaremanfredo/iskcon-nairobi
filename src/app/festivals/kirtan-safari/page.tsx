@@ -128,7 +128,7 @@ export default function KirtanSafariPage() {
               "url('/images/kirtan-safari-daily-darshan-2026.jpg')",
             backgroundColor: "#3f160f",
             backgroundRepeat: "no-repeat",
-            backgroundSize: "contain",
+            backgroundSize: "100% auto",
             backgroundPosition: "center top",
           }}
         />
@@ -1308,7 +1308,7 @@ export default function KirtanSafariPage() {
 
           .kirtan-safari-page .ks-hero > div:first-of-type {
             background-position: center top !important;
-            background-size: contain !important;
+            background-size: 100% auto !important;
           }
 
           .kirtan-safari-page .ks-hero .content-width {
