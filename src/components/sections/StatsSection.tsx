@@ -84,7 +84,7 @@ export default function StatsSection() {
         <img
           src="/images/impact-africa-map.jpeg"
           alt="African landscape"
-          className="w-full h-full object-cover object-center"
+          className="stats-bg-image w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-temple-brown/82" />
         <div className="absolute inset-0 opacity-10"
@@ -134,6 +134,11 @@ export default function StatsSection() {
           .stats-section :global(.section-padding) {
             padding-top: 0 !important;
             padding-bottom: 0 !important;
+          }
+
+          .stats-bg-image {
+            object-fit: contain !important;
+            object-position: center !important;
           }
 
           .stats-header {
