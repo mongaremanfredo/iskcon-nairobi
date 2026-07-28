@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,14 +13,16 @@ const heroImages = [
     position: "center 58%",
   },
   {
-    src: "/images/placeholders/hare-krishna-harinam.jpg",
-    alt: "Kenyan savanna landscape",
-    position: "center",
+    src: "/images/hero-ratha-yatra-kenya.jpg",
+    alt: "Ratha Yatra devotees in Nairobi carrying a Hare Krishna sign",
+    position: "center 48%",
+    mobilePosition: "62% center",
   },
   {
-    src: "/images/placeholders/iskcon-temple-bangalore.jpg",
-    alt: "African golden hour landscape",
+    src: "/images/kirtan-safari-2026-page-hero.png",
+    alt: "Kirtan Safari festival artwork with African landscape",
     position: "center",
+    mobilePosition: "42% center",
   },
 ];
 
@@ -53,8 +56,11 @@ export default function HeroSection() {
           <img
             src={image.src}
             alt={image.alt}
-            className="w-full h-full object-cover"
-            style={{ objectPosition: image.position }}
+            className="hero-bg-image w-full h-full object-cover"
+            style={{
+              objectPosition: image.position,
+              "--hero-mobile-position": image.mobilePosition ?? image.position,
+            } as CSSProperties}
           />
         </div>
       ))}
@@ -177,6 +183,12 @@ export default function HeroSection() {
         </div>
       </div>
       <style>{`
+        @media (max-width: 640px) {
+          .home-hero .hero-bg-image {
+            object-position: var(--hero-mobile-position) !important;
+          }
+        }
+
         @media (max-height: 520px) and (orientation: landscape) {
           .home-hero {
             min-height: 100svh !important;

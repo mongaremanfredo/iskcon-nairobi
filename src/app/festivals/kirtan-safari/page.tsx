@@ -125,7 +125,7 @@ export default function KirtanSafariPage() {
             position: "absolute",
             inset: 0,
             backgroundImage:
-              "url('/images/kirtan-safari-2026-hero-bg.jpg')",
+              "url('/images/kirtan-safari-2026-page-hero.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
@@ -1305,7 +1305,7 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-hero > div:first-of-type {
-            background-position: 58% top !important;
+            background-position: 42% top !important;
           }
 
           .kirtan-safari-page .ks-hero .content-width {
