@@ -15,12 +15,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <SavannaDivider className="h-[8.333vw] min-h-8 sm:h-24" />
+      <SavannaDivider className="h-[7vw] min-h-6 sm:h-24" />
       <QuickNavSection />
       <FestivalHighlightSection />
       <ProjectsSection />
       <StatsSection />
-      <SavannaDivider className="h-[8.333vw] min-h-8 sm:h-24" />
+      <SavannaDivider className="h-[7vw] min-h-6 sm:h-24" />
       <TestimonialsSection />
       <LeadershipSection />
       <FestivalCalendarSection />

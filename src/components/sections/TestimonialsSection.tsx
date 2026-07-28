@@ -183,7 +183,7 @@ export default function TestimonialsSection() {
 
         @media (max-width: 640px) {
           .testimonials-section {
-            padding-top: 3rem !important;
+            padding-top: 2.5rem !important;
             padding-bottom: 3rem !important;
           }
           .testimonials-section > .content-width {

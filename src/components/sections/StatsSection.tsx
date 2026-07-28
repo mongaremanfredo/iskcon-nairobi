@@ -130,7 +130,7 @@ export default function StatsSection() {
       <style jsx>{`
         @media (max-width: 640px) {
           .stats-section {
-            padding-top: calc(var(--space-section, 6rem) / 2) !important;
+            padding-top: 2.5rem !important;
             padding-bottom: calc(var(--space-section, 6rem) / 2) !important;
           }
 
