@@ -303,28 +303,28 @@ export const vaishnavaCalendar2026 = [
 export const testimonials = [
   {
     quote: "The first thing I felt at the temple was welcome. The kirtan, prasadam, and classes gave me a spiritual home in Nairobi.",
-    name: "Temple visitor",
+    name: "Mama Mary",
     role: "Sunday Feast guest",
     origin: "Nairobi, Kenya",
     image: "/images/community/mama-nairobi.jpg",
   },
   {
     quote: "Serving prasadam changes the whole mood of the day. People come for food, but they leave with dignity and joy.",
-    name: "Food For Life volunteer",
+    name: "Josh",
     role: "Community outreach",
     origin: "Nairobi, Kenya",
     image: "/images/community/joshua.jpg",
   },
   {
     quote: "The farm helped me understand simple living in a practical way: caring for cows, working with the land, and chanting together.",
-    name: "Farm participant",
+    name: "Mike",
     role: "Thika Farm service",
     origin: "Kenya",
     image: "/images/community/eng-m.jpg",
   },
   {
     quote: "Ratha Yatra brought the whole city into celebration. I had never seen devotion expressed so publicly and joyfully.",
-    name: "Festival volunteer",
+    name: "Visva Daksina",
     role: "Ratha Yatra service",
     origin: "Kiambu, Kenya",
     image: "/images/community/visva-daksina.jpg",
