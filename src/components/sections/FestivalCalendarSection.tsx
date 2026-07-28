@@ -6,7 +6,7 @@ import { homepageFestivalPreview } from "@/data/site";
 
 export default function FestivalCalendarSection() {
   return (
-    <section className="py-section bg-temple-cream">
+    <section className="pt-8 pb-section bg-temple-cream sm:py-section">
       <div className="content-width section-padding">
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
