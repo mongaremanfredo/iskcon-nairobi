@@ -23,12 +23,6 @@ export default function ProjectsSection() {
               <em className="text-gold not-italic font-normal">Meets Action</em>
             </h2>
           </div>
-          <Link
-            href="/projects"
-            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
-          >
-            All Projects <ArrowRight size={12} />
-          </Link>
         </div>
 
         {/* Projects Grid */}
@@ -81,6 +75,15 @@ export default function ProjectsSection() {
             </Link>
           ))}
         </div>
+
+        <div className="projects-cta mt-8 flex justify-center sm:mt-10">
+          <Link
+            href="/projects"
+            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
+          >
+            All Projects <ArrowRight size={12} />
+          </Link>
+        </div>
       </div>
       <style jsx>{`
         @media (max-width: 640px) {
@@ -111,6 +114,10 @@ export default function ProjectsSection() {
           .projects-header :global(a) {
             font-size: 0.62rem !important;
             margin-top: -0.15rem !important;
+          }
+
+          .projects-cta {
+            margin-top: 1.05rem !important;
           }
 
           .projects-grid {

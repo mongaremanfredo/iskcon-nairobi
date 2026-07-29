@@ -32,12 +32,6 @@ export default function GuestHouseSection() {
               Rest, retreat, and reconnect. Our guest house offers serene accommodation within the temple campus, with access to all morning and evening programmes.
             </p>
           </div>
-          <Link
-            href="/guest-house"
-            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all flex-shrink-0"
-          >
-            All Rooms & Facilities <ArrowRight size={12} />
-          </Link>
         </div>
 
         {/* Room Cards */}
@@ -86,6 +80,15 @@ export default function GuestHouseSection() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <Link
+            href="/guest-house"
+            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all flex-shrink-0"
+          >
+            All Rooms & Facilities <ArrowRight size={12} />
+          </Link>
         </div>
 
         {/* Facilities strip */}

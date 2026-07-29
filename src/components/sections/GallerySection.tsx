@@ -61,12 +61,6 @@ export default function GallerySection() {
               <em className="text-gold not-italic font-normal">ISKCON Nairobi</em>
             </h2>
           </div>
-          <Link
-            href="/media"
-            className="flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
-          >
-            Full Gallery <ArrowRight size={12} />
-          </Link>
         </div>
 
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-12 lg:grid-rows-[250px_250px_300px]">
@@ -118,6 +112,15 @@ export default function GallerySection() {
               </Link>
             );
           })}
+        </div>
+
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <Link
+            href="/media"
+            className="flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
+          >
+            Full Gallery <ArrowRight size={12} />
+          </Link>
         </div>
       </div>
     </section>

@@ -45,11 +45,11 @@ export default function DonationSection() {
         </div>
 
         {/* Donation Paths */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+        <div className="donation-paths-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {donationPaths.map((path) => (
             <div
               key={path.title}
-              className="group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden"
+              className="donation-path-card group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden"
             >
               {/* Image */}
               <div className="relative h-40 overflow-hidden image-grade">
@@ -88,6 +88,27 @@ export default function DonationSection() {
           </Link>
         </div>
       </div>
+      <style jsx>{`
+        @media (max-width: 640px) {
+          .donation-paths-grid {
+            display: flex !important;
+            gap: 0.85rem !important;
+            margin-left: calc(clamp(1rem, 5vw, 1.25rem) * -1) !important;
+            margin-right: calc(clamp(1rem, 5vw, 1.25rem) * -1) !important;
+            overflow-x: auto !important;
+            padding: 0 1rem 0.6rem !important;
+            scroll-padding-left: 1rem !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch !important;
+          }
+
+          .donation-path-card {
+            width: min(78vw, 18rem) !important;
+            min-width: min(78vw, 18rem) !important;
+            scroll-snap-align: start !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }

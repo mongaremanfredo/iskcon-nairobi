@@ -17,12 +17,6 @@ export default function FestivalCalendarSection() {
               <em className="text-gold not-italic font-normal">Festivals & Events</em>
             </h2>
           </div>
-          <Link
-            href="/festivals"
-            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
-          >
-            Full Calendar <ArrowRight size={12} />
-          </Link>
         </div>
 
         {/* Festival Cards Grid */}
@@ -75,6 +69,15 @@ export default function FestivalCalendarSection() {
               </div>
             </Link>
           ))}
+        </div>
+
+        <div className="mt-8 flex justify-center sm:mt-10">
+          <Link
+            href="/festivals"
+            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
+          >
+            Full Calendar <ArrowRight size={12} />
+          </Link>
         </div>
 
         {/* CTA Banner */}
