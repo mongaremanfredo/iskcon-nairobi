@@ -16,6 +16,7 @@ const primaryNavigation = [
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },
   { label: "Kirtan Safari", href: "/festivals/kirtan-safari" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 

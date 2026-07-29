@@ -32,6 +32,7 @@ export const navigation = [
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },
   { label: "Festivals", href: "/festivals" },
+  { label: "Blog", href: "/blog" },
   { label: "Guest House", href: "/guest-house" },
   { label: "Media", href: "/media" },
   { label: "Donate", href: "/donate" },

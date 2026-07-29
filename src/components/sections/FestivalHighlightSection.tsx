@@ -376,6 +376,24 @@ export default function KirtanSafariSection() {
             >
               Full Details
             </Link>
+            <Link
+              href="/blog/jharikhanda-forest-kirtan-safari"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                color: "rgba(246,226,177,0.82)",
+                fontFamily: "var(--font-inter, sans-serif)",
+                fontWeight: 600,
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                padding: "0.875rem 0",
+                textDecoration: "none",
+              }}
+            >
+              Story Behind the Theme
+            </Link>
           </div>
         </div>
 
@@ -514,6 +532,24 @@ export default function KirtanSafariSection() {
               }}
             >
               Full Details
+            </Link>
+            <Link
+              href="/blog/jharikhanda-forest-kirtan-safari"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                color: "rgba(246,226,177,0.82)",
+                fontFamily: "var(--font-inter, sans-serif)",
+                fontWeight: 600,
+                fontSize: "0.65rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                padding: "0.875rem 0",
+                textDecoration: "none",
+              }}
+            >
+              Story Behind the Theme
             </Link>
           </div>
 
