@@ -21,8 +21,8 @@ export default function HomePage() {
       <ProjectsSection />
       <StatsSection />
       <SavannaDivider className="h-[7vw] min-h-6 sm:h-24" />
-      <TestimonialsSection />
       <LeadershipSection />
+      <TestimonialsSection />
       <FestivalCalendarSection />
       <DonationSection />
       <GallerySection />

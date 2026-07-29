@@ -14,7 +14,7 @@ const donationAccent = (title: string) => {
 
 export default function DonationSection() {
   return (
-    <section className="relative overflow-hidden pt-10 pb-16 md:pt-8 md:pb-24 lg:pt-8 lg:pb-28">
+    <section className="relative overflow-hidden pt-10 pb-16 md:pt-4 md:pb-16 lg:pt-4 lg:pb-16">
       {/* Background */}
       <div className="absolute inset-0">
         <img

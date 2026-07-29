@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
   }, []);
 
   return (
-    <section className="testimonials-section py-section bg-temple-bg" data-direction={direction}>
+    <section className="testimonials-section py-section bg-temple-bg sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]" data-direction={direction}>
       <div className="content-width section-padding">
         {/* Header */}
         <div className="testimonials-header flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">

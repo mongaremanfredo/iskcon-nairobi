@@ -3,7 +3,7 @@ import { ArrowRight, BookOpen, Globe2, HeartHandshake } from "lucide-react";
 
 export default function LeadershipSection() {
   return (
-    <section id="guidance-vision" className="relative scroll-mt-24 overflow-hidden bg-temple-brown pt-10 pb-section text-sand sm:py-section">
+    <section id="guidance-vision" className="relative scroll-mt-24 overflow-hidden bg-temple-brown pt-10 pb-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
       <div className="absolute inset-0">
         <img
           src="/images/prabhupada/prabhupada-golden-gate-kirtan.jpg"

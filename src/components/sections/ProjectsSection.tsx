@@ -12,7 +12,7 @@ const tagClasses: Record<string, string> = {
 
 export default function ProjectsSection() {
   return (
-    <section className="projects-section py-section bg-temple-bg bg-temple-texture">
+    <section className="projects-section py-section bg-temple-bg bg-temple-texture sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
       <div className="content-width section-padding">
         {/* Header */}
         <div className="projects-header flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">

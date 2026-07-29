@@ -44,7 +44,7 @@ const navCards = [
 
 export default function QuickNavSection() {
   return (
-    <section className="pt-9 pb-10 bg-temple-cream sm:py-section-sm">
+    <section className="pt-9 pb-10 bg-temple-cream sm:pt-[clamp(1.7rem,3.35vw,3.35rem)] sm:pb-section-sm">
       <div className="content-width px-3 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-10">
           <span className="eyebrow">Find Your Path</span>

@@ -50,7 +50,7 @@ const galleryImages = [
 
 export default function GallerySection() {
   return (
-    <section className="relative overflow-hidden bg-temple-cream pt-10 pb-section sm:py-section">
+    <section className="relative overflow-hidden bg-temple-cream pt-10 pb-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-temple-bg/70 to-transparent" />
       <div className="content-width section-padding">
         <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">

@@ -78,7 +78,7 @@ export default function StatsSection() {
   }, []);
 
   return (
-    <section className="stats-section relative overflow-hidden py-section" ref={ref}>
+    <section className="stats-section relative overflow-hidden py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]" ref={ref}>
       {/* Background */}
       <div className="absolute inset-0">
         <picture className="block h-full w-full">
