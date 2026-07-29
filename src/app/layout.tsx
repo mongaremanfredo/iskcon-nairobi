@@ -54,7 +54,7 @@ export default function RootLayout({
       <body className="bg-sand text-dusk antialiased">
         <Navigation />
         <main>{children}</main>
-        <SavannaDivider tone="sand" />
+        <SavannaDivider tone="sand" className="h-[7vw] min-h-6 sm:h-24" />
         <Footer />
       </body>
     </html>
