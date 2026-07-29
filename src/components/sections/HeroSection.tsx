@@ -86,7 +86,7 @@ export default function HeroSection() {
               )}
             >
               <span className="gold-dot" />
-              <span className="eyebrow text-gold">Sri Sri Radha Bankebihari Temple</span>
+              <span className="eyebrow text-gold">Welcome to</span>
             </div>
 
             {/* Main Title */}
@@ -96,10 +96,12 @@ export default function HeroSection() {
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
               )}
             >
-              <h1 className="font-playfair text-white text-shadow leading-[0.95]" style={{ fontSize: "clamp(3rem, 9vw, 7rem)" }}>
-                ISKCON
+              <h1 className="font-playfair text-white text-shadow leading-[0.95]" style={{ fontSize: "clamp(2.75rem, 8vw, 6.6rem)" }}>
+                Sri Sri
                 <br />
-                <span className="text-gold italic">Nairobi</span>
+                <span className="text-gold italic">Radha Bankebihari</span>
+                <br />
+                <span>Temple</span>
               </h1>
             </div>
 
