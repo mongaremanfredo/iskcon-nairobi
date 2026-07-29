@@ -4,10 +4,11 @@ import { useState, useEffect } from "react";
 import type { MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { X, ChevronRight } from "lucide-react";
+import { X, ChevronRight, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import BrandLogo from "@/components/ui/BrandLogo";
 import TempleStatusBar from "@/components/layout/TempleStatusBar";
+import { templeInfo } from "@/data/site";
 
 const primaryNavigation = [
   { label: "Home", href: "/" },
@@ -182,6 +183,14 @@ export default function Navigation() {
           </div>
 
           <div className="p-6 border-t border-white/10">
+            <a
+              href={`tel:${templeInfo.phoneHref}`}
+              onClick={() => setIsOpen(false)}
+              className="mb-3 flex w-full items-center justify-center gap-2 border border-gold/40 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-white/5"
+            >
+              <Phone size={13} />
+              Call Temple
+            </a>
             <Link
               href="/donate"
               onClick={() => setIsOpen(false)}

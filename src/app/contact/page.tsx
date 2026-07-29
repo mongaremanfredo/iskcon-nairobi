@@ -10,9 +10,9 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const contactItems = [
-    { icon: <MapPin size={16} />, label: "Address", value: templeInfo.addressLines.join("\n") },
-    { icon: <Phone size={16} />, label: "Phone", value: templeInfo.phoneDisplay },
-    { icon: <Mail size={16} />, label: "Email", value: templeInfo.email },
+    { icon: <MapPin size={16} />, label: "Address", value: templeInfo.addressLines.join("\n"), href: templeInfo.mapUrl },
+    { icon: <Phone size={16} />, label: "Phone", value: templeInfo.phoneDisplay, href: `tel:${templeInfo.phoneHref}` },
+    { icon: <Mail size={16} />, label: "Email", value: templeInfo.email, href: `mailto:${templeInfo.email}` },
     { icon: <Clock size={16} />, label: "Temple Hours", value: templeInfo.hours },
   ];
 
@@ -39,7 +39,16 @@ export default function ContactPage() {
                   <div className="text-gold mt-0.5 flex-shrink-0">{item.icon}</div>
                   <div>
                     <p className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/40 mb-0.5">{item.label}</p>
-                    <p className="font-inter text-ink/70 text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        className="block font-inter text-ink/70 text-sm whitespace-pre-line leading-relaxed transition-colors hover:text-primary hover:underline"
+                      >
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="font-inter text-ink/70 text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
+                    )}
                   </div>
                 </div>
               ))}

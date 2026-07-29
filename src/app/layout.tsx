@@ -3,45 +3,111 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import SavannaDivider from "@/components/ui/SavannaDivider";
+import { templeInfo } from "@/data/site";
+
+const siteUrl = "https://iskcon-nairobi.vercel.app";
+const previewImage = "/brand/og-image.jpg";
+const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
+const siteDescription =
+  "Visit ISKCON Nairobi, Sri Sri Radha Bankebihari Temple: daily darshan, kirtan, prasadam, spiritual education, festivals, cow protection, and service in East Africa.";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://iskcon-nairobi.vercel.app"),
+  metadataBase: new URL(siteUrl),
+  applicationName: "ISKCON Nairobi",
   title: {
-    default: "ISKCON Nairobi - Faith. Community. Service.",
+    default: siteTitle,
     template: "%s | ISKCON Nairobi",
   },
-  description:
-    "The digital headquarters for ISKCON East Africa. Discover Krishna Consciousness in Nairobi - temple worship, spiritual education, cow protection, food distribution, and community service.",
+  description: siteDescription,
   keywords: ["ISKCON Nairobi", "Hare Krishna Kenya", "Krishna Consciousness", "HKTC", "Kirtan Safari", "Food For Life Kenya"],
+  authors: [{ name: "ISKCON Nairobi" }],
+  creator: "ISKCON Nairobi",
+  publisher: "ISKCON Nairobi",
+  category: "religion",
+  alternates: {
+    canonical: "/",
+  },
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
+  appleWebApp: {
+    capable: true,
+    title: "ISKCON Nairobi",
+    statusBarStyle: "black-translucent",
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://iskcon-nairobi.vercel.app",
+    url: siteUrl,
     siteName: "ISKCON Nairobi",
-    title: "ISKCON Nairobi - Faith. Community. Service.",
-    description: "Discover Krishna Consciousness in the heart of East Africa.",
+    title: siteTitle,
+    description: siteDescription,
     images: [
       {
-        url: "/images/iskcon-nairobi-aerial-og.jpg",
+        url: previewImage,
         width: 1200,
         height: 630,
-        alt: "Aerial view of ISKCON Nairobi temple and Nairobi skyline",
+        alt: "ISKCON Nairobi link preview",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "ISKCON Nairobi",
-    description: "Faith. Community. Service. - East Africa.",
-    images: ["/images/iskcon-nairobi-aerial-og.jpg"],
+    title: siteTitle,
+    description: siteDescription,
+    images: [previewImage],
   },
   icons: {
     icon: [
+      { url: "/favicon.ico", sizes: "any" },
       { url: "/icon.png", sizes: "32x32", type: "image/png" },
+      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/brand/icon-512.png", sizes: "512x512", type: "image/png" },
       { url: "/brand/iskcon-icon.svg", type: "image/svg+xml" },
     ],
-    apple: [{ url: "/apple-icon.png", sizes: "180x180", type: "image/png" }],
+    apple: [
+      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+    shortcut: ["/favicon.ico"],
   },
+  other: {
+    "theme-color": "#3a2a24",
+  },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "HinduTemple",
+  name: templeInfo.name,
+  alternateName: templeInfo.legalName,
+  url: siteUrl,
+  telephone: templeInfo.phoneHref,
+  email: templeInfo.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Hare Krishna Close, Parklands / West Ngara",
+    addressLocality: "Nairobi",
+    addressCountry: "KE",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "04:30",
+      closes: "12:45",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      opens: "16:30",
+      closes: "20:45",
+    },
+  ],
+  image: `${siteUrl}${previewImage}`,
 };
 
 export default function RootLayout({
@@ -52,6 +118,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-sand text-dusk antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <Navigation />
         <main>{children}</main>
         <SavannaDivider tone="sand" className="h-[7vw] min-h-6 sm:h-24" />
