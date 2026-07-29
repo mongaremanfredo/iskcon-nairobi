@@ -25,8 +25,23 @@
 }
 
 /* Base styles */
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-body { background-color: var(--color-sand); color: var(--color-dusk); font-family: var(--font-inter); overflow-x: hidden; width: 100%; }
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--color-dusk);
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+}
+body {
+  background-color: var(--color-sand);
+  color: var(--color-dusk);
+  font-family: var(--font-inter);
+  overflow-x: hidden;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: none;
+  width: 100%;
+}
 ::selection { background-color: var(--color-primary); color: white; }
 * { box-sizing: border-box; }
 img, video, canvas, svg { max-width: 100%; }
