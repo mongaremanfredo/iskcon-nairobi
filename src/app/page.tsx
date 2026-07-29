@@ -22,10 +22,10 @@ export default function HomePage() {
       <StatsSection />
       <SavannaDivider className="h-[7vw] min-h-6 sm:h-24" />
       <LeadershipSection />
-      <TestimonialsSection />
       <FestivalCalendarSection />
       <DonationSection />
       <GallerySection />
+      <TestimonialsSection />
       <GuestHouseSection />
     </>
   );
