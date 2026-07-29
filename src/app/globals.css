@@ -31,7 +31,6 @@ html {
   background-color: var(--color-dusk);
   overflow-x: hidden;
   overscroll-behavior-x: none;
-  overscroll-behavior-y: none;
 }
 body {
   background-color: var(--color-sand);
@@ -39,7 +38,6 @@ body {
   font-family: var(--font-inter);
   overflow-x: hidden;
   overscroll-behavior-x: none;
-  overscroll-behavior-y: none;
   width: 100%;
 }
 ::selection { background-color: var(--color-primary); color: white; }
