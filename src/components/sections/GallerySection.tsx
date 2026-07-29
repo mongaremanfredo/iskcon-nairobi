@@ -114,7 +114,7 @@ export default function GallerySection() {
           })}
         </div>
 
-        <div className="mt-8 flex justify-center sm:mt-10">
+        <div className="mt-8 flex justify-start sm:mt-10">
           <Link
             href="/media"
             className="flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"

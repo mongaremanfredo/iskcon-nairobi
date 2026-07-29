@@ -71,7 +71,7 @@ export default function FestivalCalendarSection() {
           ))}
         </div>
 
-        <div className="mt-8 flex justify-center sm:mt-10">
+        <div className="mt-8 flex justify-start sm:mt-10">
           <Link
             href="/festivals"
             className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
