@@ -3,6 +3,7 @@ import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import SavannaDivider from "@/components/ui/SavannaDivider";
+import PwaRegistrar from "@/components/system/PwaRegistrar";
 import { templeInfo } from "@/data/site";
 
 const siteUrl = "https://iskcon-nairobi.vercel.app";
@@ -122,6 +123,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <PwaRegistrar />
         <Navigation />
         <main>{children}</main>
         <SavannaDivider tone="sand" className="h-[7vw] min-h-6 sm:h-24" />
