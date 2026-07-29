@@ -81,34 +81,18 @@ export default function HeroSection() {
             {/* Eyebrow */}
             <div
               className={cn(
-                "hero-eyebrow flex items-center gap-3 mb-8 transition-all duration-1000 delay-300",
+                "hero-eyebrow flex items-center gap-3 mb-4 transition-all duration-1000 delay-300",
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
               <span className="gold-dot" />
-              <span className="eyebrow text-gold">Welcome to</span>
-            </div>
-
-            {/* Main Title */}
-            <div
-              className={cn(
-                "hero-title transition-all duration-1000 delay-500",
-                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-              )}
-            >
-              <h1 className="font-playfair text-white text-shadow leading-[0.95]" style={{ fontSize: "clamp(2.75rem, 8vw, 6.6rem)" }}>
-                Sri Sri
-                <br />
-                <span className="text-gold italic">Radha Bankebihari</span>
-                <br />
-                <span>Temple</span>
-              </h1>
+              <span className="eyebrow text-gold">Sri Sri Radha Bankebihari Temple</span>
             </div>
 
             {/* Animated gold rule */}
             <div
               className={cn(
-                "hero-rule my-8 h-px bg-gradient-to-r from-gold via-gold/60 to-transparent origin-left transition-all duration-1000 delay-700",
+                "hero-rule my-6 h-px bg-gradient-to-r from-gold via-gold/60 to-transparent origin-left transition-all duration-1000 delay-700",
                 loaded ? "opacity-100 scale-x-100 w-64" : "opacity-0 scale-x-0 w-64"
               )}
               style={{ transformOrigin: "left" }}
