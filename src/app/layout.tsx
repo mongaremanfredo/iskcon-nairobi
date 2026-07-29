@@ -8,6 +8,7 @@ import { templeInfo } from "@/data/site";
 
 const siteUrl = "https://iskcon-nairobi.vercel.app";
 const previewImage = "/brand/og-image.jpg";
+const iconVersion = "v=iskcon-2026-07-30";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
   "Visit ISKCON Nairobi, Sri Sri Radha Bankebihari Temple: daily darshan, kirtan, prasadam, spiritual education, festivals, cow protection, and service in East Africa.";
@@ -63,17 +64,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/icon.png", sizes: "32x32", type: "image/png" },
-      { url: "/brand/icon-192.png", sizes: "192x192", type: "image/png" },
-      { url: "/brand/icon-512.png", sizes: "512x512", type: "image/png" },
-      { url: "/brand/iskcon-icon.svg", type: "image/svg+xml" },
+      { url: `/favicon.ico?${iconVersion}`, sizes: "any" },
+      { url: `/icon.png?${iconVersion}`, sizes: "32x32", type: "image/png" },
+      { url: `/brand/icon-192.png?${iconVersion}`, sizes: "192x192", type: "image/png" },
+      { url: `/brand/icon-512.png?${iconVersion}`, sizes: "512x512", type: "image/png" },
+      { url: `/brand/iskcon-icon.svg?${iconVersion}`, type: "image/svg+xml" },
     ],
     apple: [
-      { url: "/apple-icon.png", sizes: "180x180", type: "image/png" },
-      { url: "/brand/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: `/apple-icon.png?${iconVersion}`, sizes: "180x180", type: "image/png" },
+      { url: `/brand/apple-touch-icon.png?${iconVersion}`, sizes: "180x180", type: "image/png" },
     ],
-    shortcut: ["/favicon.ico"],
+    shortcut: [`/favicon.ico?${iconVersion}`],
   },
   other: {
     "theme-color": "#3a2a24",
