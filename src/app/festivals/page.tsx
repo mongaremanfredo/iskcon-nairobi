@@ -20,6 +20,8 @@ export default function FestivalsPage() {
         description="Celebrate Lord Krishna, Lord Jagannath, Sri Chaitanya Mahaprabhu, and the holy name with Nairobi's devotional community."
         image="/images/placeholders/hare-krishna-harinam.jpg"
         height="sm"
+        className="lg:min-h-[520px]"
+        contentClassName="lg:pt-[22rem]"
       />
 
       <section className="py-section bg-temple-bg">
@@ -75,15 +77,12 @@ export default function FestivalsPage() {
           </div>
 
           <div className="mt-16 rounded-none border border-gold/20 bg-white/70 p-5 sm:p-7">
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <span className="eyebrow block mb-2">2026 Vaishnava Calendar</span>
                 <h2 className="font-playfair text-2xl font-semibold text-ink sm:text-3xl">
                   Gaurabda 539-540
                 </h2>
-              </div>
-              <div className="max-w-2xl font-inter text-xs leading-relaxed text-ink/55 sm:text-sm">
-                Ekadashi and Dvadashi observances depend on local sunrise calculations. Please verify fasting details with ISKCON Nairobi announcements before publishing fasting instructions.
               </div>
             </div>
           </div>

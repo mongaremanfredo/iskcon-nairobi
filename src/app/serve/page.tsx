@@ -16,7 +16,14 @@ const opportunities = [
 export default function ServePage() {
   return (
     <>
-      <PageHero title="Serve the" titleAccent="Community" subtitle="Volunteer Opportunities" description="Join hundreds of dedicated volunteers whose selfless service sustains ISKCON Nairobi's programmes across Kenya." image="/images/placeholders/iskcon-temple-bangalore.jpg" />
+      <PageHero
+        title="Serve the"
+        titleAccent="Community"
+        subtitle="Volunteer Opportunities"
+        description="Join hundreds of dedicated volunteers whose selfless service sustains ISKCON Nairobi's programmes across Kenya."
+        image="/images/serve/krishna-balarama-service.jpeg"
+        contentClassName="lg:pt-[27rem]"
+      />
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
