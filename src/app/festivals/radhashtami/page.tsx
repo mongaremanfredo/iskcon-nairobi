@@ -6,63 +6,63 @@ import {
   ArrowRight,
   BookOpen,
   CalendarDays,
+  Flower2,
   HeartHandshake,
   Music,
   Sparkles,
   Users,
-  Utensils,
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Krishna Janmashtami",
+  title: "Radhashtami",
   description:
-    "Celebrate Sri Krishna Janmashtami, the biggest festival of the year at ISKCON Nairobi, with kirtan, midnight arati, abhishek, classes, offerings, drama, seva, and prasadam.",
+    "Celebrate Radhashtami, the appearance day of Srimati Radharani, at ISKCON Nairobi with kirtan, class, worship, offerings, seva, and prasadam.",
 };
 
 const story = [
   {
-    title: "A prophecy in Mathura",
-    text: "King Kamsa heard that the eighth child of his sister Devaki and Vasudeva would end his tyranny. Out of fear, he imprisoned them and tried to stop the Lord's plan.",
+    title: "The mercy of devotion",
+    text: "Srimati Radharani is honoured as the supreme devotee of Krishna, the embodiment of pure love, compassion, and the highest mood of devotional service.",
   },
   {
-    title: "Krishna appears at midnight",
-    text: "On the dark eighth night of the month of Bhadra, Lord Krishna appeared in the prison cell, first revealing His divine form before becoming a beautiful child.",
+    title: "Appearance in Vraja",
+    text: "Vaishnava tradition describes Her appearance in the home of Vrishabhanu Maharaja and Kirtida Devi, bringing joy to Barsana and all of Vraja.",
   },
   {
-    title: "The journey to Gokula",
-    text: "By Krishna's arrangement, the prison doors opened. Vasudeva carried the Lord across the Yamuna to Gokula and placed Him under the care of Nanda Maharaja and Mother Yashoda.",
+    title: "Eyes opened for Krishna",
+    text: "Devotees remember the tender pastime that Radharani first opened Her eyes when Krishna came before Her, revealing that Her life is fully centred on Him.",
   },
   {
-    title: "Vrindavan awakens",
-    text: "The child Krishna grew in Vraja, enchanting everyone with His flute, protecting the devotees, and revealing that divine love is the highest treasure.",
+    title: "Gateway to Krishna's grace",
+    text: "Because Radharani is most dear to Krishna, devotees pray for Her mercy, knowing that by Her kindness the heart can truly approach Krishna.",
   },
 ];
 
 const engagements = [
-  { icon: Music, title: "Kirtan throughout the day", text: "Devotees gather for holy name chanting, bhajans, and festival kirtan leading into the midnight celebration." },
-  { icon: Sparkles, title: "Midnight arati and darshan", text: "The temple mood rises toward the sacred moment of Krishna's appearance with worship, lamps, and special darshan." },
-  { icon: BookOpen, title: "Classes and drama", text: "Talks, readings, children's presentations, and drama help the whole family enter the story of Krishna's birth." },
-  { icon: Utensils, title: "Offerings and prasadam", text: "Devotees prepare offerings for the Lord and share sanctified vegetarian prasadam after the festival programme." },
-  { icon: HeartHandshake, title: "Festival seva", text: "Service teams help with garlands, cooking, cleaning, guest care, crowd flow, media, and many practical festival needs." },
-  { icon: Users, title: "Community celebration", text: "Families, students, guests, and friends fill the temple in one of the most joyful devotional gatherings of the year." },
+  { icon: Music, title: "Kirtan and bhajans", text: "Devotees glorify Srimati Radharani through the holy names, Vaishnava songs, and a gentle festival mood of prayer." },
+  { icon: Sparkles, title: "Special darshan", text: "The altar and temple are decorated beautifully as the community honours the appearance of Krishna's dearest devotee." },
+  { icon: BookOpen, title: "Class on Radha's mercy", text: "Festival talks help devotees understand Radharani's position through Srila Prabhupada's teachings and the Goswamis." },
+  { icon: Flower2, title: "Flowers and offerings", text: "Garlands, lamps, flowers, and offerings create a devotional atmosphere of gratitude and surrender." },
+  { icon: HeartHandshake, title: "Seva opportunities", text: "Devotees can assist with worship support, decorations, prasadam service, guest care, and festival preparation." },
+  { icon: Users, title: "Community remembrance", text: "Radhashtami brings the temple family together to pray for deeper devotion and a heart softened by service." },
 ];
 
 const quickNotes = [
-  "Biggest temple celebration of the year",
-  "Fasting and special worship",
-  "Midnight appearance programme",
-  "Family friendly engagement",
+  "Appearance of Srimati Radharani",
+  "Prayer for devotional mercy",
+  "Special worship and class",
+  "Kirtan, offerings, and prasadam",
 ];
 
-export default function JanmashtamiPage() {
+export default function RadhashtamiPage() {
   return (
     <>
       <PageHero
-        title="Krishna Janmashtami"
-        titleAccent="The Lord Appears"
+        title="Radhashtami"
+        titleAccent="Srimati Radharani Appears"
         subtitle={templeInfo.legalName}
-        description="The biggest celebration of the year at ISKCON Nairobi, honouring the divine appearance of Lord Krishna with worship, kirtan, drama, service, and prasadam."
-        image="/images/calendar-janmashtami-krishna.jpeg"
+        description="A sacred festival honouring Srimati Radharani, the supreme devotee of Krishna and the compassionate doorway to pure devotional service."
+        image="/images/calendar-radhashtami-sakhis.jpeg"
         height="lg"
         className="festival-page-hero"
       />
@@ -71,17 +71,17 @@ export default function JanmashtamiPage() {
         <div className="content-width section-padding">
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div>
-              <span className="eyebrow block mb-3">Festival of Krishna's appearance</span>
+              <span className="eyebrow block mb-3">Festival of Radha's mercy</span>
               <h2 className="section-title max-w-3xl">
-                The night when hope entered the prison of Mathura
+                The day devotees pray to enter Krishna's service
               </h2>
               <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/68 sm:text-base">
-                Janmashtami remembers the moment Lord Krishna appeared to protect the devotees and draw the world back to love of God. In the Srimad-Bhagavatam, His birth is not an ordinary event. It is a divine appearance, filled with purpose, compassion, and the promise that dharma can be restored even in the darkest hour.
+                Radhashtami celebrates the divine appearance of Srimati Radharani, the topmost devotee and eternal companion of Lord Krishna. In the Gaudiya Vaishnava tradition, She is honoured as the personification of pure devotion, the tender heart of Vraja, and the one whose mercy makes love for Krishna accessible.
               </p>
             </div>
             <div className="border border-gold/25 bg-white/75 p-5 shadow-sm sm:p-6">
               <p className="font-playfair text-2xl leading-tight text-ink sm:text-3xl">
-                Biggest celebration of the year
+                A festival of prayer, beauty, and surrender
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3">
                 {quickNotes.map((note) => (
@@ -102,7 +102,7 @@ export default function JanmashtamiPage() {
           <div className="mb-8 max-w-3xl sm:mb-10">
             <span className="eyebrow block mb-3">Backstory</span>
             <h2 className="section-title">
-              From Kamsa's fear to Vrindavan's joy
+              From Barsana's joy to the devotee's heart
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -125,11 +125,11 @@ export default function JanmashtamiPage() {
             <div>
               <span className="eyebrow block mb-3 text-gold">Devotional engagement</span>
               <h2 className="section-title-light max-w-3xl">
-                A festival that involves the whole community
+                A celebration shaped by worship and inner prayer
               </h2>
             </div>
             <p className="max-w-xl font-inter text-sm leading-relaxed text-temple-cream/64">
-              Janmashtami is designed for participation. Devotees do not simply watch the festival; they sing, serve, decorate, cook, welcome guests, sponsor offerings, and bring family and friends into Krishna's celebration.
+              Radhashtami invites devotees to celebrate with humility and attention. The festival mood is full of kirtan, decoration, hearing, offerings, and the prayer to become useful in Krishna's service.
             </p>
           </div>
 
@@ -156,7 +156,7 @@ export default function JanmashtamiPage() {
             <div>
               <span className="eyebrow block mb-3">Plan around the festival</span>
               <h2 className="font-playfair text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-                Come early, serve deeply, stay for the midnight celebration
+                Come ready to hear, chant, serve, and pray for Radha's mercy
               </h2>
             </div>
             <div>
@@ -170,7 +170,7 @@ export default function JanmashtamiPage() {
                 <div className="flex gap-3 border border-temple-sand bg-temple-cream/60 p-4">
                   <HeartHandshake className="mt-0.5 shrink-0 text-gold" size={18} />
                   <p className="font-inter text-sm leading-relaxed text-ink/66">
-                    Festival sponsorship and volunteer service help welcome every guest with care and prasadam.
+                    Sponsorship and volunteer service help support flowers, offerings, prasadam, and guest care.
                   </p>
                 </div>
               </div>
