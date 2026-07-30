@@ -1,9 +1,31 @@
 import Link from "next/link";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { Camera, Clock, Mail, MapPin, MessageCircle, Phone, Play } from "lucide-react";
 import { templeInfo, templeScheduleGroups, navigation, socialLinks } from "@/data/site";
 import BrandLogo from "@/components/ui/BrandLogo";
 
+function SocialIcon({ name, label }: { name: string; label: string }) {
+  if (name === "Instagram") {
+    return <Camera size={16} />;
+  }
+
+  if (name === "YouTube") {
+    return <Play size={16} fill="currentColor" />;
+  }
+
+  if (name === "WhatsApp") {
+    return <MessageCircle size={16} />;
+  }
+
+  if (name === "Facebook") {
+    return <span className="font-inter text-base font-black leading-none">f</span>;
+  }
+
+  return <span className="font-inter text-[10px] font-bold">{label}</span>;
+}
+
 export default function Footer() {
+  const whatsappLink = socialLinks.find((link) => link.name === "WhatsApp");
+
   return (
     <footer className="bg-dusk">
       <div className="content-width section-padding py-16">
@@ -16,18 +38,20 @@ export default function Footer() {
               The digital headquarters for ISKCON East Africa - where devotion, education, community service, and the beauty of the African landscape come together.
             </p>
             <div className="flex items-center gap-3">
-              {socialLinks.map(({ href, label, name }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={name}
-                  className="w-8 h-8 border border-white/10 flex items-center justify-center text-white/30 hover:text-primary hover:border-primary/50 transition-colors font-inter text-[10px] font-bold"
-                >
-                  {label}
-                </a>
-              ))}
+              {socialLinks.map(({ href, label, name }) => {
+                return (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={name}
+                    className="flex h-9 w-9 items-center justify-center border border-white/10 text-white/35 transition-colors hover:border-primary/50 hover:text-primary"
+                  >
+                    <SocialIcon name={name} label={label} />
+                  </a>
+                );
+              })}
             </div>
           </div>
 
@@ -88,6 +112,14 @@ export default function Footer() {
                   {templeInfo.phoneDisplay}
                 </a>
               </li>
+              {whatsappLink && (
+                <li className="flex items-center gap-3">
+                  <MessageCircle size={14} className="text-gold flex-shrink-0" />
+                  <a href={whatsappLink.href} target="_blank" rel="noopener noreferrer" className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
+                    WhatsApp +254 721 667 181
+                  </a>
+                </li>
+              )}
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-gold flex-shrink-0" />
                 <a href={`mailto:${templeInfo.email}`} className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
@@ -122,8 +154,8 @@ export default function Footer() {
             © {new Date().getFullYear()} ISKCON Nairobi. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">
-            <Link href="/privacy" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Privacy</Link>
-            <Link href="/terms" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Terms</Link>
+            <Link href="/privacy" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Terms and Conditions</Link>
             <a
               href="https://esthrema.com"
               target="_blank"

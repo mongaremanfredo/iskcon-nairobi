@@ -17,10 +17,10 @@ export const templeInfo = {
 };
 
 export const socialLinks = [
-  { label: "FB", name: "Facebook", href: "https://www.facebook.com/ISKCONNairobi/" },
+  { label: "FB", name: "Facebook", href: "https://www.facebook.com/profile.php?id=100064683579429" },
   { label: "IG", name: "Instagram", href: "https://www.instagram.com/iskcon_nairobi/" },
   { label: "YT", name: "YouTube", href: "https://www.youtube.com/results?search_query=ISKCON+Nairobi" },
-  { label: "WA", name: "WhatsApp", href: `https://wa.me/${templeInfo.phoneHref.replace("+", "")}` },
+  { label: "WA", name: "WhatsApp", href: "https://wa.me/254721667181" },
 ];
 
 export const navigation = [
