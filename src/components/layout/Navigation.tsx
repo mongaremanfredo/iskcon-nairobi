@@ -25,6 +25,8 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+  const forceSolidNav = pathname === "/privacy" || pathname === "/terms";
+  const solidNav = scrolled || forceSolidNav;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -46,7 +48,7 @@ export default function Navigation() {
       <header
         className={cn(
           "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
-          scrolled
+          solidNav
             ? "bg-dusk/90 border-gold/25 py-2 backdrop-blur-[14px] shadow-lg"
             : "border-transparent !bg-transparent py-[18px] !shadow-none backdrop-blur-0 max-[900px]:py-3",
           isOpen && "bg-dusk/95 border-gold/25"
@@ -62,7 +64,7 @@ export default function Navigation() {
               <BrandLogo
                 className={cn(
                   "nav-brand-logo transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
-                  scrolled
+                  solidNav
                     ? "h-[46px] w-[50px] max-[900px]:h-[42px] max-[900px]:w-[45px]"
                     : "h-[68px] w-[73px] max-[900px]:h-[48px] max-[900px]:w-[52px]"
                 )}
@@ -70,7 +72,7 @@ export default function Navigation() {
               <span
                 className={cn(
                   "nav-brand-text flex min-w-0 flex-col gap-[3px] transition-all duration-300",
-                  scrolled ? "translate-y-0" : "translate-y-0"
+                  solidNav ? "translate-y-0" : "translate-y-0"
                 )}
               >
                 <span className="nav-brand-name font-inter text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
@@ -79,7 +81,7 @@ export default function Navigation() {
                 <span
                   className={cn(
                     "nav-brand-expansion font-inter text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:text-[0.47rem]",
-                    scrolled ? "opacity-80" : "opacity-95"
+                    solidNav ? "opacity-80" : "opacity-95"
                   )}
                 >
                   International Society for Krishna Consciousness
