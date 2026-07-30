@@ -161,8 +161,8 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
         aria-expanded={isOpen}
         aria-label="Open temple noticeboard"
         className={cn(
-          "relative inline-flex h-11 w-11 items-center justify-center rounded-[3px] border border-gold/55 bg-dusk/42 text-gold shadow-[0_8px_24px_rgba(0,0,0,0.18)] backdrop-blur-sm transition-all hover:border-gold/80 hover:bg-dusk/62 max-[900px]:h-10 max-[900px]:w-10",
-          isOpen && "border-gold bg-dusk/70 text-gold"
+          "relative inline-flex h-11 w-11 items-center justify-center rounded-full border-0 bg-transparent text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all hover:scale-105 hover:text-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold max-[900px]:h-10 max-[900px]:w-10",
+          isOpen && "text-sand"
         )}
       >
         <Bell size={18} className="max-[900px]:h-4 max-[900px]:w-4" />
