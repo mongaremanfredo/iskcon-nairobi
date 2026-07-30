@@ -156,8 +156,8 @@ export default function HKTCNairobiPage() {
             <div className="grid gap-4">
               <div className="overflow-hidden border border-temple-sand bg-white shadow-card">
                 <img
-                  src="/images/hktc/hktc-nairobi-student-class.jpg"
-                  alt="HKTC Nairobi students studying during class"
+                  src="/images/hktc/hktc-nairobi-kirtan-class.jpg"
+                  alt="HKTC Nairobi students leading kirtan and class"
                   className="h-full w-full object-cover"
                 />
               </div>
@@ -251,6 +251,11 @@ export default function HKTCNairobiPage() {
             </div>
 
             <aside className="border border-gold/25 bg-temple-brown p-6 text-sand shadow-card">
+              <img
+                src="/images/hktc/hktc-nairobi-graduation-certificates.jpg"
+                alt="HKTC Nairobi students after graduation with certificates"
+                className="mb-6 aspect-[16/9] w-full object-cover"
+              />
               <GraduationCap className="mb-5 text-gold" size={30} />
               <h3 className="font-playfair text-2xl font-semibold text-white">Graduation Ceremony</h3>
               <p className="mt-4 font-inter text-sm leading-relaxed text-sand/68">
