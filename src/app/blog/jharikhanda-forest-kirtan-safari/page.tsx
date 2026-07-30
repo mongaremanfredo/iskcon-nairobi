@@ -3,23 +3,25 @@ import Link from "next/link";
 import { ArrowRight, BookOpen, CalendarDays, ExternalLink, Leaf, Music2 } from "lucide-react";
 
 const sourceUrl = "https://vedabase.io/en/library/cc/madhya/17/";
+const creditUrl = "https://pin.it/1DvGSgZr7";
+const heroImage = "/images/blog/jharikhanda-mahaprabhu-animals.jpeg";
 
 export const metadata: Metadata = {
   title: "The Forest That Learned to Chant",
   description:
-    "A close retelling of Sri Chaitanya Mahaprabhu's journey through Jharikhanda Forest in Chaitanya-caritamrita, Madhya-lila 17, and why it shapes Kirtan Safari.",
+    "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
   alternates: {
     canonical: "/blog/jharikhanda-forest-kirtan-safari",
   },
   openGraph: {
     title: "The Forest That Learned to Chant | ISKCON Nairobi",
     description:
-      "A close reading of Sri Chaitanya Mahaprabhu's Jharikhanda Forest pastime and the meaning behind Kirtan Safari.",
+      "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
     images: [
       {
-        url: "/images/blog/jharikhanda-forest-path.jpg",
-        width: 1200,
-        height: 800,
+        url: heroImage,
+        width: 736,
+        height: 981,
       },
     ],
   },
@@ -27,67 +29,44 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "The Forest That Learned to Chant | ISKCON Nairobi",
     description:
-      "A close reading of Sri Chaitanya Mahaprabhu's Jharikhanda Forest pastime and the meaning behind Kirtan Safari.",
-    images: ["/images/blog/jharikhanda-forest-path.jpg"],
+      "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
+    images: [heroImage],
   },
 };
 
-const sourceTrail = [
-  {
-    range: "Madhya 17.24",
-    title: "Mahaprabhu leaves the public road",
-    text: "The Lord gives up the well-known road, keeps Cuttack on His right, and enters the forest by a side route.",
-  },
-  {
-    range: "Madhya 17.25-27",
-    title: "The animals make way",
-    text: "As He chants through the solitary forest, tigers, elephants, rhinoceroses, and boars appear. Balabhadra Bhattacharya is afraid, yet by the Lord's influence the animals stand aside.",
-  },
-  {
-    range: "Madhya 17.28-29",
-    title: "The tiger begins to chant",
-    text: "A tiger lies on the path. Mahaprabhu touches it with His foot and tells it to chant Krishna's name. The tiger rises, chants, and dances.",
-  },
-  {
-    range: "Madhya 17.30-33",
-    title: "The elephants receive water",
-    text: "While the Lord bathes and murmurs Gayatri, maddened elephants come to drink. He splashes water on them and asks them to chant. They sing, dance, fall, and cry out in ecstasy.",
-  },
-  {
-    range: "Madhya 17.34-36",
-    title: "The deer come near",
-    text: "The Lord's loud, sweet chanting draws the does to His side. He pats them and recites the Bhagavatam remembrance of deer worshiping Krishna with loving glances.",
-  },
-  {
-    range: "Madhya 17.37-39",
-    title: "Tigers join the deer",
-    text: "Five or seven tigers join the deer and follow the Lord. Seeing them together, Mahaprabhu remembers Vrindavan and recites how natural enemies live there in transcendental friendship.",
-  },
-  {
-    range: "Madhya 17.40-43",
-    title: "Enemies dance together",
-    text: "At Mahaprabhu's command, the tigers and deer chant Krishna's name, dance, jump, embrace, and touch mouths. The Lord smiles and continues His journey.",
-  },
-  {
-    range: "Madhya 17.44-46",
-    title: "The whole forest responds",
-    text: "Peacocks and other birds follow, chant, and dance. Trees and creepers become jubilant when He calls Haribol. Moving and nonmoving beings become overwhelmed by the sound of Krishna's name.",
-  },
+const storyParagraphs = [
+  "On His way to Vrindavan, Lord Sri Chaitanya Mahaprabhu passed through the forest of Jharikhanda. As He moved through that wild forest, He made the tigers, elephants, deer, birds, and all living beings chant the Hare Krishna maha-mantra and dance. By His mercy, the animals became overwhelmed with ecstatic love.",
+  "All glories to Sri Chaitanya Mahaprabhu. All glories to Lord Nityananda. All glories to Advaitacandra. All glories to all the devotees of the Lord.",
+  "When autumn arrived, Sri Chaitanya Mahaprabhu desired to go to Vrindavan. In a solitary place, He spoke with Ramananda Raya and Svarupa Damodara Gosvami, asking them to help Him leave for Vrindavan.",
+  "The Lord told them that He would depart very early in the morning, quietly and without being seen. He would not take the well-known public road. He wanted to travel secretly through the forest, and He wished to go alone. If anyone tried to follow Him, He asked that they be stopped.",
+  "He also asked them not to be unhappy. If they gave Him permission with joy, He said, then He would be happy on His way to Vrindavan.",
+  "Ramananda Raya and Svarupa Damodara replied that the Lord was completely independent. He was not dependent on anyone, and He would certainly do whatever He desired. Still, they placed one request before Him, because He had said that He would be happy if they were happy.",
+  "They begged Him to take at least one gentle and qualified brahmana. Such a person could collect alms, cook for Him, offer Him prasadam, and carry His waterpot while traveling. They explained that in the jungle there might be no brahmana from whom the Lord could accept lunch, so one pure brahmana should accompany Him.",
+  "Sri Chaitanya Mahaprabhu answered that He would not take any of His close associates, because if He chose one of them, the others would be unhappy. If someone were to go, that person would have to be new, peaceful, and suitable for the journey.",
+  "Svarupa Damodara then proposed Balabhadra Bhattacharya. He was deeply attached to the Lord, honest, learned, and advanced in spiritual consciousness. He had originally come with the Lord from Bengal, and he also desired to see the holy places of pilgrimage.",
+  "Svarupa Damodara also suggested that another brahmana could go as a servant to help on the way, carry the Lord's cloth and waterpot, and make arrangements for food. Balabhadra Bhattacharya would collect alms and cook for the Lord. With two people accompanying Him through the jungle, there would be no difficulty.",
+  "Sri Chaitanya Mahaprabhu accepted this request. On the previous night, He went to see Lord Jagannatha and took His permission. Then, near the end of the night, before others could see Him, the Lord rose and immediately began His journey.",
+  "In the morning, the devotees could not find Him. Their hearts became anxious, and they searched everywhere. Svarupa Damodara restrained them, and understanding the mind of Sri Chaitanya Mahaprabhu, they became silent.",
+  "The Lord avoided the famous public road and took a side path. Keeping the city of Kataka on His right, He entered the forest. As He moved through the solitary jungle, He chanted the holy name of Krishna.",
+  "Tigers and elephants saw Him and moved aside. The Lord walked through the jungle in deep ecstasy. Packs of tigers, elephants, rhinoceroses, and boars appeared before Him, yet He passed directly through them. Balabhadra Bhattacharya was frightened to see such animals, but by the influence of Sri Chaitanya Mahaprabhu, they all stood aside.",
+  "One day, a tiger was lying across the path. Sri Chaitanya Mahaprabhu, absorbed in ecstatic love, walked along that path and touched the tiger with His feet. The Lord told the tiger, \"Chant the holy name of Krishna.\" At once the tiger rose, began to dance, and chanted, \"Krishna! Krishna!\"",
+  "On another day, Sri Chaitanya Mahaprabhu was bathing in a river and murmuring the Gayatri mantra. A herd of maddened elephants came to drink water. Seeing them before Him, the Lord splashed water on the elephants and asked them to chant the name of Krishna.",
+  "The water touched their bodies, and the elephants began chanting, \"Krishna! Krishna!\" They danced and sang in ecstasy. Some fell to the ground, and some cried out in spiritual joy. Balabhadra Bhattacharya watched all this in complete astonishment.",
+  "At other times, Sri Chaitanya Mahaprabhu chanted loudly as He passed through the jungle. Hearing His sweet voice, the does came near Him. Drawn by the Lord's great vibration, the deer followed Him on both sides. With great affection, the Lord patted them.",
+  "Seeing them, He remembered the description of the deer of Vrindavan, who approached the son of Maharaja Nanda, gorgeously dressed and playing His flute. The does and the bucks worshiped the Lord with loving glances.",
+  "As Sri Chaitanya Mahaprabhu continued through the jungle, five or seven tigers came. They joined the deer and began following the Lord. Seeing tigers and deer walking together, the Lord remembered Vrindavan and recited a verse describing the nature of that transcendental abode.",
+  "In Vrindavan there is no ordinary hunger, anger, or thirst. There, even beings who are naturally hostile live together in transcendental friendship. Seeing the animals of Jharikhanda together in this mood, Mahaprabhu saw the forest through remembrance of Vrindavan.",
+  "Then Sri Chaitanya Mahaprabhu said, \"Chant Krishna! Krishna!\" The tigers and deer began to chant the holy name and dance. They jumped together, and Balabhadra Bhattacharya was struck with wonder. The tigers and deer embraced one another. Touching mouths, they began to kiss.",
+  "When Sri Chaitanya Mahaprabhu saw this extraordinary scene, He smiled. After enjoying that joyful transformation, He left the animals and continued on His way.",
+  "Various birds, including peacocks, saw Sri Chaitanya Mahaprabhu and began to follow Him. They chanted and danced, maddened by the holy name of Krishna. When the Lord loudly chanted \"Haribol!\", the trees and creepers became jubilant simply by hearing Him.",
+  "In this way, all living entities in the forest of Jharikhanda became overwhelmed by the holy name of Lord Krishna as it was vibrated by Sri Chaitanya Mahaprabhu. Some were moving beings, and some were standing still, yet all were touched by the sound of Krishna's name.",
 ];
 
-const meaningCards = [
-  {
-    title: "The holy name is not sentimental sound",
-    text: "The passage presents kirtan as spiritual force. It reaches beings who cannot study, argue, or perform ritual.",
-  },
-  {
-    title: "Vrindavan appears where Krishna is remembered",
-    text: "Mahaprabhu sees Jharikhanda through love. The forest becomes a mirror of Vrindavan because the holy name awakens the soul beneath fear.",
-  },
-  {
-    title: "Kirtan Safari is participation",
-    text: "The theme is not simply a forest aesthetic. It is an invitation to enter the wild places of the heart and let the holy name transform them.",
-  },
+const articleGuide = [
+  { icon: BookOpen, label: "Primary source", value: "Chaitanya-caritamrita, Madhya-lila 17.1-46" },
+  { icon: Music2, label: "Theme", value: "The holy name awakens ecstatic love" },
+  { icon: Leaf, label: "Setting", value: "Jharikhanda Forest on the road to Vrindavan" },
+  { icon: CalendarDays, label: "Festival link", value: "Kirtan Safari, 27-30 August 2026" },
 ];
 
 export default function JharikhandaBlogPage() {
@@ -95,23 +74,22 @@ export default function JharikhandaBlogPage() {
     <>
       <section className="relative overflow-hidden bg-dusk pt-32 text-temple-cream sm:pt-36 lg:pt-40">
         <img
-          src="/images/blog/jharikhanda-forest-path.jpg"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-46"
+          src={heroImage}
+          alt="Sri Chaitanya Mahaprabhu with animals in the forest of Jharikhanda"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-48"
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-dusk via-dusk/86 to-dusk/54" />
+        <div className="absolute inset-0 bg-gradient-to-br from-dusk via-dusk/88 to-dusk/46" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
         <div className="relative z-10 content-width section-padding pb-[clamp(3rem,7vw,6rem)]">
           <div className="max-w-4xl">
-            <span className="eyebrow block text-gold">Kirtan Safari Source Story</span>
-            <h1 className="mt-4 font-playfair text-[clamp(2.55rem,9vw,6rem)] font-semibold leading-[0.98] text-white text-shadow">
+            <h1 className="font-playfair text-[clamp(2.55rem,9vw,6rem)] font-semibold leading-[0.98] text-white text-shadow">
               The Forest That Learned to Chant
             </h1>
-            <p className="mt-6 max-w-2xl font-inter text-sm leading-relaxed text-temple-cream/72 sm:text-base">
-              Sri Chaitanya Mahaprabhu, the animals of Jharikhanda, and the Chaitanya-caritamrita story behind a kirtan journey through the forest.
+            <p className="mt-6 max-w-2xl font-inter text-sm leading-relaxed text-temple-cream/76 sm:text-base">
+              Sri Chaitanya Mahaprabhu and the animals of Jharikhanda
             </p>
-            <div className="mt-7 flex flex-wrap gap-3 font-inter text-xs uppercase tracking-[0.14em] text-temple-cream/62">
+            <div className="mt-7 flex flex-wrap gap-3 font-inter text-xs uppercase tracking-[0.14em] text-temple-cream/64">
               <span>July 2026</span>
               <span className="h-1 w-1 self-center rounded-full bg-gold" />
               <span>12 min read</span>
@@ -126,109 +104,25 @@ export default function JharikhandaBlogPage() {
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.68fr)_minmax(300px,0.32fr)] lg:items-start">
             <article className="mx-auto max-w-3xl">
-              <div className="border border-gold/25 bg-white p-5 shadow-card sm:p-7">
-                <p className="font-cormorant text-2xl italic leading-relaxed text-ink/78 sm:text-3xl">
-                  This is the scriptural heart of Kirtan Safari: Sri Chaitanya Mahaprabhu walks into a dangerous forest chanting Krishna's names, and the forest answers.
-                </p>
+              <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
+                {storyParagraphs.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
+                ))}
               </div>
-
-              <section className="mt-10 space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
-                <p>
-                  The Jharikhanda episode appears in Sri Chaitanya-caritamrita, Madhya-lila, Chapter 17, as the Lord travels toward Vrindavan. The story is not told as a vague symbol. It unfolds step by step: a route is chosen, a forest is entered, animals appear, Balabhadra Bhattacharya becomes afraid, and then the holy name overturns the normal laws of fear and hostility.
-                </p>
-                <p>
-                  For ISKCON Nairobi's Kirtan Safari, this matters because the festival is not only a musical gathering. It carries a scriptural image: the holy name entering the forest, touching living beings beyond calculation, and revealing that even the most unlikely heart can be moved toward Krishna.
-                </p>
-              </section>
-
-              <section className="mt-12">
-                <span className="eyebrow mb-3 block">The source sequence</span>
-                <h2 className="font-playfair text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-                  What happens in Madhya-lila 17
-                </h2>
-                <div className="mt-7 space-y-4">
-                  {sourceTrail.map((item, index) => (
-                    <article key={item.range} className="grid gap-4 border border-temple-sand bg-white p-5 shadow-sm sm:grid-cols-[5.5rem_1fr] sm:p-6">
-                      <div>
-                        <div className="flex h-11 w-11 items-center justify-center bg-primary font-inter text-sm font-bold text-white">
-                          {String(index + 1).padStart(2, "0")}
-                        </div>
-                        <p className="mt-3 font-inter text-[0.62rem] font-semibold uppercase leading-snug tracking-[0.12em] text-gold">
-                          {item.range}
-                        </p>
-                      </div>
-                      <div>
-                        <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                        <p className="mt-3 font-inter text-sm leading-relaxed text-ink/65">{item.text}</p>
-                      </div>
-                    </article>
-                  ))}
-                </div>
-              </section>
 
               <figure className="my-12 overflow-hidden border border-temple-sand bg-white shadow-card">
                 <img
-                  src="/images/blog/chaitanya-dances-with-followers.jpg"
-                  alt="Sri Chaitanya Mahaprabhu dancing in sankirtan"
+                  src={heroImage}
+                  alt="Sri Chaitanya Mahaprabhu dancing with animals in Jharikhanda Forest"
                   className="h-auto w-full object-cover"
                 />
                 <figcaption className="border-t border-temple-sand px-5 py-3 font-inter text-xs leading-relaxed text-ink/48">
-                  Sri Chaitanya Mahaprabhu dancing in sankirtan. Public domain image via Wikimedia Commons.
+                  Image credit: Mayapur Institute via{" "}
+                  <a className="text-gold hover:underline" href={creditUrl} target="_blank" rel="noopener noreferrer">
+                    Pinterest
+                  </a>.
                 </figcaption>
               </figure>
-
-              <section>
-                <span className="eyebrow mb-3 block">The turning point</span>
-                <h2 className="font-playfair text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-                  Predator and prey under the same holy name
-                </h2>
-                <div className="mt-6 space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
-                  <p>
-                    The most startling moment is not merely that animals become peaceful. It is that creatures normally divided by instinct begin to move together. The text names tigers and deer, animals who should fear or hunt one another. Yet in Mahaprabhu's presence they chant, dance, jump, embrace, and show affection.
-                  </p>
-                  <p>
-                    This is why the Jharikhanda story is so powerful for a kirtan festival. The holy name does not simply decorate an already peaceful scene. It enters a world of danger, nervousness, appetite, and instinct. Then, by the Lord's mercy, the same beings who would ordinarily oppose each other become joined in remembrance of Krishna.
-                  </p>
-                </div>
-              </section>
-
-              <section className="mt-12 border-l-2 border-gold bg-white/78 p-6 shadow-card sm:p-8">
-                <h2 className="font-playfair text-2xl font-semibold leading-tight text-ink">
-                  Why Mahaprabhu remembers Vrindavan
-                </h2>
-                <div className="mt-5 space-y-5 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
-                  <p>
-                    When the tigers and deer follow Him together, Mahaprabhu remembers Vrindavan. He recites the mood that in Vrindavan there is no ordinary hunger, anger, or thirst, and even natural enemies live in transcendental friendship. Jharikhanda briefly reflects that atmosphere because the holy name reveals the soul beneath the body.
-                  </p>
-                  <p>
-                    The forest does not cease to be a forest. Rather, the Lord's remembrance transforms how it is seen. The path, animals, rivers, trees, and creepers all become connected to Krishna.
-                  </p>
-                </div>
-              </section>
-
-              <section className="mt-12">
-                <span className="eyebrow mb-3 block">Meaning for Kirtan Safari</span>
-                <h2 className="font-playfair text-3xl font-semibold leading-tight text-ink sm:text-4xl">
-                  Not observation, but participation
-                </h2>
-                <div className="mt-6 space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
-                  <p>
-                    A safari usually means entering wild territory to observe from a distance. Jharikhanda gives the opposite image. Sri Chaitanya Mahaprabhu does not stand outside the forest. He walks through it with the holy name, and the forest joins Him.
-                  </p>
-                  <p>
-                    That is the mood of Kirtan Safari: come into the sound, not as a spectator but as a participant. Bring the restless, fearful, distracted, and divided parts of the heart. Let the holy name do what argument, pressure, and performance cannot do.
-                  </p>
-                </div>
-              </section>
-
-              <section className="mt-12 grid gap-4 md:grid-cols-3">
-                {meaningCards.map((card) => (
-                  <article key={card.title} className="border border-temple-sand bg-white p-5">
-                    <h3 className="font-playfair text-xl font-semibold leading-tight text-ink">{card.title}</h3>
-                    <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">{card.text}</p>
-                  </article>
-                ))}
-              </section>
 
               <div className="mt-12 flex flex-col gap-4 border border-gold/30 bg-dusk p-6 text-sand sm:flex-row sm:items-center sm:justify-between sm:p-8">
                 <div>
@@ -254,12 +148,7 @@ export default function JharikhandaBlogPage() {
                   Article guide
                 </p>
                 <div className="mt-5 space-y-4">
-                  {[
-                    { icon: BookOpen, label: "Primary source", value: "Chaitanya-caritamrita, Madhya-lila 17.24-46" },
-                    { icon: Music2, label: "Theme", value: "The holy name awakens devotion beyond fear" },
-                    { icon: Leaf, label: "Image", value: "Jharikhanda as forest transformed by kirtan" },
-                    { icon: CalendarDays, label: "Festival", value: "Kirtan Safari, 27-30 August 2026" },
-                  ].map((item) => {
+                  {articleGuide.map((item) => {
                     const Icon = item.icon;
                     return (
                       <div key={item.label} className="flex gap-3 border-t border-temple-sand pt-4 first:border-t-0 first:pt-0">
@@ -278,10 +167,10 @@ export default function JharikhandaBlogPage() {
 
               <div className="mt-5 border border-gold/25 bg-temple-cream p-5">
                 <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/45">
-                  Read the source
+                  Read source
                 </p>
                 <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">
-                  This article closely follows the sequence in Madhya-lila 17 and links readers to the full chapter for direct study.
+                  Read the full chapter in Chaitanya-caritamrita, Madhya-lila 17.
                 </p>
                 <a
                   href={sourceUrl}
@@ -297,20 +186,12 @@ export default function JharikhandaBlogPage() {
                 <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/45">
                   Image credits
                 </p>
-                <ul className="mt-3 space-y-2 font-inter text-xs leading-relaxed text-ink/55">
-                  <li>
-                    Forest path image from{" "}
-                    <a className="text-gold hover:underline" href="https://unsplash.com/photos/a-winding-forest-path-leads-uphill-toward-the-light-1aCxlDogCCM" target="_blank" rel="noopener noreferrer">
-                      Unsplash
-                    </a>.
-                  </li>
-                  <li>
-                    Chaitanya artwork from{" "}
-                    <a className="text-gold hover:underline" href="https://commons.wikimedia.org/wiki/File:Chaitanya_dances_with_followers.jpg" target="_blank" rel="noopener noreferrer">
-                      Wikimedia Commons
-                    </a>.
-                  </li>
-                </ul>
+                <p className="mt-3 font-inter text-xs leading-relaxed text-ink/55">
+                  Artwork credited to Mayapur Institute via{" "}
+                  <a className="text-gold hover:underline" href={creditUrl} target="_blank" rel="noopener noreferrer">
+                    Pinterest
+                  </a>.
+                </p>
               </div>
             </aside>
           </div>
