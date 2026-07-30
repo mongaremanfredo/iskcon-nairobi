@@ -10,6 +10,15 @@ export type SiteNotice = {
 
 export const siteNotices: SiteNotice[] = [
   {
+    id: "welcome-to-iskcon-nairobi",
+    title: "Welcome to ISKCON Nairobi",
+    body: "Welcome to the ISKCON Nairobi website. Explore temple timings, festivals, classes, service opportunities, guest facilities, and ways to connect with Sri Sri Radha Bankebihari Temple.",
+    dateLabel: "Welcome",
+    tag: "Notice",
+    href: "/",
+    priority: "high",
+  },
+  {
     id: "kirtan-safari-2026-registration",
     title: "Kirtan Safari 2026 registration is open",
     body: "Reserve your place for the four-day Kirtan Safari celebration at ISKCON Nairobi, beginning with Adivas on 27 August.",
@@ -25,13 +34,5 @@ export const siteNotices: SiteNotice[] = [
     dateLabel: "New feature",
     tag: "Calendar",
     href: "/festivals",
-  },
-  {
-    id: "temple-daily-timings-updated",
-    title: "Daily temple timings updated",
-    body: "Morning darshan, evening arati, Tulasi arati, classes, bhoga and temple closing times are now reflected across the website.",
-    dateLabel: "Temple notice",
-    tag: "Timings",
-    href: "/visit",
   },
 ];
