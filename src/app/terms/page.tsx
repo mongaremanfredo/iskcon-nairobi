@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -253,17 +252,17 @@ const termsSections = [
 export default function TermsPage() {
   return (
     <>
-      <PageHero
-        title="Terms"
-        titleAccent="& Conditions"
-        subtitle="Use of This Site"
-        image="/images/placeholders/hare-krishna-harinam.jpg"
-        height="sm"
-      />
-
-      <section className="py-section bg-temple-bg">
+      <section className="bg-temple-bg pb-section pt-32 sm:pt-36">
         <div className="content-width section-padding">
           <div className="mx-auto max-w-4xl">
+            <header className="mb-10">
+              <span className="eyebrow block mb-3">Use of This Site</span>
+              <h1 className="section-title">
+                Terms<br />
+                <em className="text-gold not-italic font-normal">and Conditions</em>
+              </h1>
+            </header>
+
             <div className="mb-10 border border-gold/20 bg-white p-6 shadow-sm">
               <p className="font-inter text-xs font-semibold uppercase tracking-[0.22em] text-gold">Last Updated</p>
               <p className="mt-2 font-playfair text-2xl text-ink">{lastUpdated}</p>
