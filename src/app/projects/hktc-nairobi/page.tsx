@@ -250,28 +250,46 @@ export default function HKTCNairobiPage() {
               </div>
             </div>
 
-            <aside className="border border-gold/25 bg-temple-brown p-6 text-sand shadow-card">
-              <img
-                src="/images/hktc/hktc-nairobi-graduation-certificates.jpg"
-                alt="HKTC Nairobi students after graduation with certificates"
-                className="mb-6 aspect-[16/9] w-full object-cover"
-              />
-              <GraduationCap className="mb-5 text-gold" size={30} />
-              <h3 className="font-playfair text-2xl font-semibold text-white">Graduation Ceremony</h3>
-              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/68">
-                The graduation ceremony is held every year after students complete the book sequence and sit for
-                examinations. The full HKTC graduation album is hosted externally so the website stays fast.
-              </p>
-              <a
-                href="https://photos.app.goo.gl/MIZfuQWWgNPvBuG43"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-6 inline-flex items-center gap-2 border-b border-gold/50 pb-1 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-white"
-              >
-                View Graduation Album
-                <ExternalLink size={13} />
-              </a>
-            </aside>
+            <div className="space-y-5">
+              <aside className="overflow-hidden border border-temple-sand bg-white shadow-card">
+                <img
+                  src="/images/hktc/hktc-nairobi-prabhupada-book-study.jpg"
+                  alt="HKTC Nairobi students studying Srila Prabhupada's books"
+                  className="aspect-[16/10] w-full object-cover"
+                />
+                <div className="border-t border-temple-sand p-6">
+                  <BookOpen className="mb-4 text-gold" size={28} />
+                  <h3 className="font-playfair text-2xl font-semibold text-ink">Prabhupada Book Study</h3>
+                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">
+                    Students study directly from Srila Prabhupada's books, with reading, written work, discussion,
+                    and examinations woven into the yearly programme.
+                  </p>
+                </div>
+              </aside>
+
+              <aside className="border border-gold/25 bg-temple-brown p-6 text-sand shadow-card">
+                <img
+                  src="/images/hktc/hktc-nairobi-graduation-certificates.jpg"
+                  alt="HKTC Nairobi students after graduation with certificates"
+                  className="mb-6 aspect-[16/9] w-full object-cover"
+                />
+                <GraduationCap className="mb-5 text-gold" size={30} />
+                <h3 className="font-playfair text-2xl font-semibold text-white">Graduation Ceremony</h3>
+                <p className="mt-4 font-inter text-sm leading-relaxed text-sand/68">
+                  The graduation ceremony is held every year after students complete the book sequence and sit for
+                  examinations. The full HKTC graduation album is hosted externally so the website stays fast.
+                </p>
+                <a
+                  href="https://photos.app.goo.gl/MIZfuQWWgNPvBuG43"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex items-center gap-2 border-b border-gold/50 pb-1 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-white"
+                >
+                  View Graduation Album
+                  <ExternalLink size={13} />
+                </a>
+              </aside>
+            </div>
           </div>
         </div>
       </section>
