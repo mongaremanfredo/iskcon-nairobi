@@ -5,21 +5,21 @@ import { ArrowRight, Camera } from "lucide-react";
 
 const galleryImages = [
   {
-    src: "/images/placeholders/iskcon-temple-bangalore.jpg",
+    src: "/images/donate/main-altar-offering.jpg",
     caption: "Janmashtami celebrations at ISKCON Nairobi",
     tone: "Temple Life",
     className: "lg:col-span-5 lg:row-span-2",
     imageClass: "h-[320px] sm:h-[420px] lg:h-full",
   },
   {
-    src: "/images/placeholders/iskcon-food-for-life.jpg",
+    src: "/images/food-for-life/prasadam-students.jpg",
     caption: "Food For Life distribution, Kibera",
     tone: "Prasadam",
     className: "lg:col-span-3",
     imageClass: "h-[170px] sm:h-[240px] lg:h-full",
   },
   {
-    src: "/images/placeholders/hare-krishna-harinam.jpg",
+    src: "/images/kirtan-safari-2026-page-hero.png",
     caption: "Kirtan Safari - dawn session on the savanna",
     tone: "Kirtan",
     className: "lg:col-span-4",
@@ -35,14 +35,14 @@ const galleryImages = [
     external: true,
   },
   {
-    src: "/images/placeholders/hare-krishna-harinam.jpg",
+    src: "/images/hktc/hktc-nairobi-prabhupada-book-study.jpg",
     caption: "HKTC Nairobi students during morning class",
     tone: "Training",
     className: "lg:col-span-3",
     imageClass: "h-[170px] sm:h-[240px] lg:h-full",
   },
   {
-    src: "/images/placeholders/iskcon-ratha-yatra-moscow.jpg",
+    src: "/images/hero-ratha-yatra-kenya.jpg",
     caption: "East African landscape at golden hour",
     tone: "Festival Mood",
     className: "lg:col-span-12",

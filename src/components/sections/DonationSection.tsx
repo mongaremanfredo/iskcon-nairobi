@@ -18,7 +18,7 @@ export default function DonationSection() {
       {/* Background */}
       <div className="absolute inset-0">
         <img
-          src="/images/placeholders/iskcon-temple-bangalore.jpg"
+          src="/images/donate/main-altar-offering.jpg"
           alt=""
           className="w-full h-full object-cover"
         />
