@@ -37,6 +37,7 @@ const programmes = [
   { minute: 970, label: "Utthapan Bhoga" },
   { minute: 990, label: "Uthapan Arati" },
   { minute: 1115, label: "Sandhya Bhoga" },
+  { minute: 1125, label: "Sri Tulasi Arati" },
   { minute: 1140, label: "Sandhya - Gaur Arati" },
   { minute: 1210, label: "Sayana Bhoga" },
   { minute: 1230, label: "Sayana Arati" },

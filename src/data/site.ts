@@ -497,6 +497,7 @@ export const templeScheduleGroups = [
       { time: "4:10 P.M.", event: "Utthapan Bhoga" },
       { time: "4:30 P.M.", event: "Uthapan Arati" },
       { time: "6:35 P.M.", event: "Sandhya Bhoga" },
+      { time: "6:45 P.M.", event: "Sri Tulasi Arati" },
       { time: "7:00 P.M.", event: "Sandhya - Gaur Arati" },
       { time: "8:10 P.M.", event: "Sayana Bhoga" },
       { time: "8:30 P.M.", event: "Sayana Arati" },
