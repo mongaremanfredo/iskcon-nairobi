@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Bell, BookOpen, CalendarDays, Clock, Home, MessageCircle, Users } from "lucide-react";
+import { ArrowRight, Bell, BookOpen, CalendarDays, Clock, GraduationCap, Home, LibraryBig, MessageCircle, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
@@ -41,6 +41,21 @@ const hktcSchedule = [
   { days: "Wednesday, Saturday", time: "8:00 P.M.", note: "Community student class" },
 ];
 
+const formalStudyTracks = [
+  {
+    title: "Bhakti Sastri",
+    scope: "Bhagavad-gita, Nectar of Devotion, Nectar of Instruction, and Sri Isopanisad",
+    description:
+      "A structured study path for devotees who want deeper grounding in Srila Prabhupada's foundational books.",
+  },
+  {
+    title: "Bhakti Vaibhava",
+    scope: "A systematic study of Srimad-Bhagavatam",
+    description:
+      "A more advanced course track for serious students who want to study Bhagavatam with discipline, guidance, and service mood.",
+  },
+];
+
 const communityLearning = [
   {
     icon: Users,
@@ -76,7 +91,8 @@ export default function LearnPage() {
         titleAccent="& Study"
         subtitle="Spiritual Education"
         description="All our philosophy is Prabhupada-centered: rooted in Srila Prabhupada's books, the teachings of the Goswamis, and practical devotional life."
-        image="/images/placeholders/hare-krishna-harinam.jpg"
+        image="/images/learn/six-goswamis.jpeg"
+        contentClassName="lg:pt-[27rem]"
       />
 
       <section className="bg-temple-bg py-section">
@@ -116,6 +132,62 @@ export default function LearnPage() {
                 <p className="mt-4 font-inter text-sm leading-relaxed text-ink/60">{path.description}</p>
               </article>
             ))}
+          </div>
+
+          <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
+            <article className="overflow-hidden border border-temple-sand bg-white shadow-card">
+              <div className="grid h-full gap-0 sm:grid-cols-[0.76fr_1fr]">
+                <div className="relative min-h-[14rem] overflow-hidden bg-dusk">
+                  <img
+                    src="/images/learn/krishna-guru-study.jpeg"
+                    alt="Lord Krishna learning from His guru"
+                    className="h-full w-full object-cover opacity-90"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-dusk/40 to-transparent" />
+                </div>
+                <div className="flex flex-col justify-center p-6 sm:p-7">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
+                    <LibraryBig size={19} />
+                  </div>
+                  <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                    Srila Prabhupada's Books
+                  </p>
+                  <h3 className="mt-2 font-playfair text-2xl font-semibold leading-tight text-ink">
+                    Books Available at the Temple
+                  </h3>
+                  <p className="mt-4 font-inter text-sm leading-relaxed text-ink/62">
+                    The temple stocks Srila Prabhupada's books through the office, gift shop, or on request by contacting the temple. Visitors and students are welcome to ask for guidance on where to begin.
+                  </p>
+                </div>
+              </div>
+            </article>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {formalStudyTracks.map((track) => (
+                <article key={track.title} className="flex flex-col justify-between border border-temple-sand bg-temple-cream/65 p-6">
+                  <div>
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
+                      <GraduationCap size={19} />
+                    </div>
+                    <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                      Formal Study
+                    </p>
+                    <h3 className="mt-2 font-playfair text-2xl font-semibold leading-tight text-ink">{track.title}</h3>
+                    <p className="mt-3 font-inter text-xs font-semibold uppercase tracking-[0.12em] text-ink/45">
+                      {track.scope}
+                    </p>
+                    <p className="mt-4 font-inter text-sm leading-relaxed text-ink/60">{track.description}</p>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="mt-6 inline-flex items-center gap-2 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
+                  >
+                    Inquire About This Course
+                    <ArrowRight size={12} />
+                  </Link>
+                </article>
+              ))}
+            </div>
           </div>
         </div>
       </section>
