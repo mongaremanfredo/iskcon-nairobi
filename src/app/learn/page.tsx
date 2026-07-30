@@ -77,6 +77,7 @@ export default function LearnPage() {
         subtitle="Spiritual Education"
         description="All our philosophy is Prabhupada-centered: rooted in Srila Prabhupada's books, the teachings of the Goswamis, and practical devotional life."
         image="/images/placeholders/hare-krishna-harinam.jpg"
+        contentClassName="sm:!pb-5"
       />
 
       <section className="bg-temple-bg py-section">
