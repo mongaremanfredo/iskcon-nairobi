@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
+import CalendarNotificationOptIn from "@/components/ui/CalendarNotificationOptIn";
 import { homepageFestivalPreview, vaishnavaCalendar2026 } from "@/data/site";
 import { Calendar, MapPin, ArrowRight, Sparkles } from "lucide-react";
 
@@ -23,6 +24,8 @@ export default function FestivalsPage() {
 
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding">
+          <CalendarNotificationOptIn />
+
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="eyebrow block mb-3">Next Temple Programmes</span>
