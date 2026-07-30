@@ -7,6 +7,9 @@ export const metadata: Metadata = {
   title: "The Forest That Learned to Chant",
   description:
     "The story of Sri Chaitanya Mahaprabhu in Jharikhanda Forest, and why it gives Kirtan Safari its theme.",
+  alternates: {
+    canonical: "/blog/jharikhanda-forest-kirtan-safari",
+  },
   openGraph: {
     title: "The Forest That Learned to Chant | ISKCON Nairobi",
     description:
@@ -18,6 +21,13 @@ export const metadata: Metadata = {
         height: 800,
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "The Forest That Learned to Chant | ISKCON Nairobi",
+    description:
+      "Why Kirtan Safari is called a kirtan journey through Jharikhanda Forest.",
+    images: ["/images/blog/jharikhanda-forest-path.jpg"],
   },
 };
 

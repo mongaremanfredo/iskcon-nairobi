@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  BookOpen,
   MapPin,
   Phone,
   Mail,
@@ -361,7 +362,7 @@ export default function KirtanSafariPage() {
                 transition: "background 0.3s",
               }}
             >
-              Register Now →
+              Register Now
             </a>
             <a
               href="#schedule"
@@ -381,6 +382,29 @@ export default function KirtanSafariPage() {
               }}
             >
               View Schedule
+            </a>
+            <a
+              href="/blog/jharikhanda-forest-kirtan-safari"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.5rem",
+                border: "1px solid rgba(246,226,177,0.26)",
+                background: "rgba(246,226,177,0.08)",
+                color: "rgba(246,226,177,0.92)",
+                fontFamily: "var(--font-inter, sans-serif)",
+                fontWeight: 600,
+                fontSize: "0.7rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                padding: "1rem 2rem",
+                textDecoration: "none",
+              }}
+            >
+              <BookOpen size={14} strokeWidth={1.8} />
+              Story Behind the Theme
             </a>
           </div>
         </div>

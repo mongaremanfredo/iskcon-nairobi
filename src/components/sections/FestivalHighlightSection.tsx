@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { Camera, Ticket } from "lucide-react";
+import { BookOpen, Camera, Ticket } from "lucide-react";
 
 /* Countdown hook */
 function useCountdown(target: Date) {
@@ -378,20 +378,25 @@ export default function KirtanSafariSection() {
             </Link>
             <Link
               href="/blog/jharikhanda-forest-kirtan-safari"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                color: "rgba(246,226,177,0.82)",
+                border: "1px solid rgba(246,226,177,0.26)",
+                background: "rgba(246,226,177,0.08)",
+                color: "rgba(246,226,177,0.92)",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
                 fontSize: "0.65rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                padding: "0.875rem 0",
+                padding: "0.875rem 1.75rem",
                 textDecoration: "none",
               }}
             >
+              <BookOpen size={13} strokeWidth={1.8} />
               Story Behind the Theme
             </Link>
           </div>
@@ -535,20 +540,25 @@ export default function KirtanSafariSection() {
             </Link>
             <Link
               href="/blog/jharikhanda-forest-kirtan-safari"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                color: "rgba(246,226,177,0.82)",
+                border: "1px solid rgba(246,226,177,0.26)",
+                background: "rgba(246,226,177,0.08)",
+                color: "rgba(246,226,177,0.92)",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
                 fontSize: "0.65rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
-                padding: "0.875rem 0",
+                padding: "0.875rem 1.75rem",
                 textDecoration: "none",
               }}
             >
+              <BookOpen size={13} strokeWidth={1.8} />
               Story Behind the Theme
             </Link>
           </div>
