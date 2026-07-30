@@ -69,6 +69,8 @@ const articleGuide = [
   { icon: CalendarDays, label: "Festival link", value: "Kirtan Safari, 27-30 August 2026" },
 ];
 
+const imageAfterParagraph = 14;
+
 export default function JharikhandaBlogPage() {
   return (
     <>
@@ -105,26 +107,26 @@ export default function JharikhandaBlogPage() {
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.68fr)_minmax(300px,0.32fr)] lg:items-start">
             <article className="mx-auto max-w-3xl">
               <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
-                {storyParagraphs.map((paragraph) => (
-                  <p key={paragraph}>{paragraph}</p>
+                {storyParagraphs.map((paragraph, index) => (
+                  <div key={paragraph}>
+                    <p>{paragraph}</p>
+                    {index === imageAfterParagraph && (
+                      <figure className="my-12 overflow-hidden border border-temple-sand bg-white shadow-card">
+                        <img
+                          src={heroImage}
+                          alt="Sri Chaitanya Mahaprabhu dancing with animals in Jharikhanda Forest"
+                          className="h-auto w-full object-cover"
+                        />
+                        <figcaption className="border-t border-temple-sand px-5 py-3 font-inter text-xs leading-relaxed text-ink/48">
+                          Mahaprabhu chants with the animals of Jharikanda.
+                        </figcaption>
+                      </figure>
+                    )}
+                  </div>
                 ))}
               </div>
 
-              <figure className="my-12 overflow-hidden border border-temple-sand bg-white shadow-card">
-                <img
-                  src={heroImage}
-                  alt="Sri Chaitanya Mahaprabhu dancing with animals in Jharikhanda Forest"
-                  className="h-auto w-full object-cover"
-                />
-                <figcaption className="border-t border-temple-sand px-5 py-3 font-inter text-xs leading-relaxed text-ink/48">
-                  Image credit: Mayapur Institute via{" "}
-                  <a className="text-gold hover:underline" href={creditUrl} target="_blank" rel="noopener noreferrer">
-                    Pinterest
-                  </a>.
-                </figcaption>
-              </figure>
-
-              <div className="mt-12 flex flex-col gap-4 border border-gold/30 bg-dusk p-6 text-sand sm:flex-row sm:items-center sm:justify-between sm:p-8">
+              <div className="mt-12 flex flex-col items-start gap-4 border border-gold/30 bg-dusk p-6 text-sand sm:p-8">
                 <div>
                   <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
                     Kirtan Safari 2026
@@ -135,7 +137,7 @@ export default function JharikhandaBlogPage() {
                 </div>
                 <Link
                   href="/festivals/kirtan-safari"
-                  className="inline-flex items-center gap-2 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
+                  className="inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-sand"
                 >
                   Festival details <ArrowRight size={12} />
                 </Link>
