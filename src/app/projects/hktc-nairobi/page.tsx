@@ -110,7 +110,7 @@ export default function HKTCNairobiPage() {
         titleAccent="Nairobi"
         subtitle="Hare Krishna Training Centre"
         description="A Prabhupada-centered home for university students: study, sadhana, prasadam, service, and mentorship in the heart of Nairobi."
-        image="/images/hktc/hktc-nairobi-student-class.jpg"
+        image="/images/hktc/hktc-nairobi-hero-class.jpg"
         height="lg"
         contentClassName="sm:!pb-10"
       />
