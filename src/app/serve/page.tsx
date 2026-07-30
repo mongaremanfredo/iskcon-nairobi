@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 
-export const metadata: Metadata = { title: "Serve — Volunteer at ISKCON Nairobi" };
+export const metadata: Metadata = { title: "Serve" };
 
 const opportunities = [
   { emoji: "🍛", title: "Food For Life", desc: "Cook, pack, and distribute prasādam meals. Daily and weekend shifts available.", commitment: "Flexible" },

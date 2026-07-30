@@ -33,7 +33,7 @@ export default function DonationSection() {
             Support the Mission
           </h2>
           <p className="font-inter text-ink/60 text-body-md mt-4 max-w-lg mx-auto">
-            Every contribution — large or small — directly funds real programmes that serve thousands of people across East Africa.
+            Every contribution - large or small - directly funds real programmes that serve thousands of people across East Africa.
           </p>
           {/* MPESA note */}
           <div className="inline-flex items-center gap-2 mt-5 bg-forest/10 border border-forest/20 px-4 py-2">

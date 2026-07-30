@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
 import QuickNavSection from "@/components/sections/QuickNavSection";
 import FestivalHighlightSection from "@/components/sections/FestivalHighlightSection";
@@ -10,6 +11,12 @@ import DonationSection from "@/components/sections/DonationSection";
 import GallerySection from "@/components/sections/GallerySection";
 import GuestHouseSection from "@/components/sections/GuestHouseSection";
 import SavannaDivider from "@/components/ui/SavannaDivider";
+
+export const metadata: Metadata = {
+  title: {
+    absolute: "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple",
+  },
+};
 
 export default function HomePage() {
   return (

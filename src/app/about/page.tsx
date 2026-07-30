@@ -3,8 +3,8 @@ import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About ISKCON Nairobi",
-  description: "The story, mission, and vision of ISKCON Nairobi — the spiritual and devotional centre for Hare Krishna communities across East Africa.",
+  title: "About",
+  description: "The story, mission, and vision of ISKCON Nairobi - the spiritual and devotional centre for Hare Krishna communities across East Africa.",
 };
 
 export default function AboutPage() {

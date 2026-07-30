@@ -5,7 +5,7 @@ import PageHero from "@/components/ui/PageHero";
 import { leadershipDepartments, leadershipProfiles } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Leadership & Service Structure | ISKCON Nairobi",
+  title: "Leadership and Service Structure",
   description:
     "Meet key leaders and service coordinators guiding ISKCON Nairobi through a departmental service structure rooted in Srila Prabhupada's vision for Africa.",
 };

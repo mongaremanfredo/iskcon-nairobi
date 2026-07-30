@@ -7,9 +7,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Kirtan Safari 2026 — A Kirtan Journey Through Jarikhand Forest",
+  title: "Kirtan Safari 2026",
   description:
-    "Join us August 27–30, 2026 at Hare Krishna Temple Nairobi for Kirtan Safari — Adivas followed by three days of devotional music, prasadam, and kirtan in the wild. ISKCON Nairobi 60th Anniversary.",
+    "Join us August 27 - 30, 2026 at Hare Krishna Temple Nairobi for Kirtan Safari - Adivas followed by three days of devotional music, prasadam, and kirtan in the wild. ISKCON Nairobi 60th Anniversary.",
   openGraph: {
     title: "Kirtan Safari 2026 | ISKCON Nairobi",
     description:
@@ -61,7 +61,7 @@ const days = [
     special: "Continuous Kirtan All Day!",
     icon: "☀️",
     sessions: [
-      { time: "10:00 am – 9:00 pm", event: "Continuous Kirtan" },
+      { time: "10:00 am - 9:00 pm", event: "Continuous Kirtan" },
       { time: "01:00 pm", event: "Prasadam" },
       { time: "09:00 pm", event: "Prasadam" },
     ],
@@ -119,7 +119,7 @@ export default function KirtanSafariPage() {
           overflow: "hidden",
         }}
       >
-        {/* Background — savanna sunset */}
+        {/* Background - savanna sunset */}
         <div
           style={{
             position: "absolute",
@@ -133,7 +133,7 @@ export default function KirtanSafariPage() {
           }}
         />
 
-        {/* Layered overlays — amber burn + dark vignette */}
+        {/* Layered overlays - amber burn + dark vignette */}
         <div
           style={{
             position: "absolute",
@@ -151,7 +151,7 @@ export default function KirtanSafariPage() {
           }}
         />
 
-        {/* Anniversary badge — top right */}
+        {/* Anniversary badge - top right */}
         <div
           style={{
             position: "absolute",
@@ -310,7 +310,7 @@ export default function KirtanSafariPage() {
             }}
           >
             {[
-              { icon: "📅", text: "27 – 30 August 2026" },
+              { icon: "📅", text: "27 - 30 August 2026" },
               { icon: "📍", text: "Hare Krishna Temple, West Ngara Rd, Nairobi" },
             ].map((item) => (
               <div
@@ -492,7 +492,7 @@ export default function KirtanSafariPage() {
                   marginBottom: "1.25rem",
                 }}
               >
-                This year carries special significance — ISKCON Nairobi marks its{" "}
+                This year carries special significance - ISKCON Nairobi marks its{" "}
                 <span style={{ color: "#f6e2b1", fontWeight: 600 }}>60th anniversary</span>,
                 making Kirtan Safari 2026 a historic celebration of six decades of
                 Krishna consciousness in East Africa.
@@ -1267,7 +1267,7 @@ export default function KirtanSafariPage() {
                 margin: "0.25rem 0 0",
               }}
             >
-              27 – 30 August · Hare Krishna Temple, Nairobi
+              27 - 30 August · Hare Krishna Temple, Nairobi
             </p>
           </div>
           <a

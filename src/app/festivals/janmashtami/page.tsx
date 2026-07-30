@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 import { templeInfo } from "@/data/site";
+
+export const metadata: Metadata = {
+  title: "Janmashtami",
+  description: "Celebrate Lord Krishna's appearance day at ISKCON Nairobi with kirtan, abhishek, classes, offerings, drama, and prasadam.",
+};
 
 export default function JanmashtamiPage() {
   const description = "Janmashtami celebrates the divine appearance of Lord Krishna with kirtan, abhishek, classes, offerings, drama, and prasadam.";

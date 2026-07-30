@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Srila Prabhupada | ISKCON Nairobi",
+  title: "Srila Prabhupada",
   description:
     "A tribute to His Divine Grace A.C. Bhaktivedanta Swami Prabhupada, Founder-Acarya of ISKCON, and his personal connection with Nairobi and East Africa.",
 };

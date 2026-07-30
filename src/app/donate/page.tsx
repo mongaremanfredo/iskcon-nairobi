@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Heart, Shield, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Donate — Support the Mission",
+  title: "Donate",
   description: "Support ISKCON Nairobi's temple, Food For Life, cow protection, student sponsorship, and festival programmes. M-PESA and card accepted.",
 };
 
@@ -64,7 +64,7 @@ export default function DonatePage() {
               <div>
                 <div className="text-3xl mb-4">🙏</div>
                 <h3 className="font-playfair text-gold text-xl font-semibold mb-3">General Fund</h3>
-                <p className="font-inter text-white/60 text-sm leading-relaxed">Give to the general operations fund — the temple committee allocates your gift where the need is greatest.</p>
+                <p className="font-inter text-white/60 text-sm leading-relaxed">Give to the general operations fund - the temple committee allocates your gift where the need is greatest.</p>
               </div>
               <Link href="/donate/general" className="mt-6 flex items-center justify-center gap-2 bg-gold text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold-dark transition-colors">
                 <Heart size={12} />

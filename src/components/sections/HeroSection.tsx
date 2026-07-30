@@ -97,7 +97,7 @@ export default function HeroSection() {
               style={{ transformOrigin: "left" }}
             />
 
-            {/* Tagline — the signature element */}
+            {/* Tagline - the signature element */}
             <div
               className={cn(
                 "hero-tagline transition-all duration-1000 delay-700",

@@ -4,7 +4,7 @@ import { MapPin, Phone, Mail, Clock, MessageSquare } from "lucide-react";
 import { templeInfo } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Contact Us - ISKCON Nairobi",
+  title: "Contact",
   description: "Get in touch with ISKCON Nairobi. Temple address, phone, email, and enquiry form.",
 };
 

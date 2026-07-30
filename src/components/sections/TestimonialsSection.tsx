@@ -66,7 +66,7 @@ export default function TestimonialsSection() {
 
         {/* Split Layout */}
         <div className="testimonials-grid grid grid-cols-2 gap-0 min-h-[32rem]">
-          {/* Left — Image */}
+          {/* Left - Image */}
           <div className="testimonials-image-col group flex items-center justify-center bg-dusk p-8">
             <div className="testimonials-portrait-frame relative">
               <button
@@ -101,7 +101,7 @@ export default function TestimonialsSection() {
             </div>
           </div>
 
-          {/* Right — Quote */}
+          {/* Right - Quote */}
           <div className="testimonials-quote-col bg-temple-cream p-8 lg:p-14 flex flex-col justify-between">
             {/* Tab indicators */}
             <div className="testimonials-tabs flex gap-2 mb-10">

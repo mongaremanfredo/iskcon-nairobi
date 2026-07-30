@@ -4,7 +4,7 @@ import { ArrowRight, Bell, BookOpen, CalendarDays, Clock, Home, MessageCircle, U
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
-  title: "Learn - Spiritual Education at ISKCON Nairobi",
+  title: "Learn",
   description:
     "Daily Srimad-Bhagavatam classes, Bhagavad-gita study, HKTC philosophy classes, Sunday festival classes, Bhakti Vriksha, seminars, and personal guidance at ISKCON Nairobi.",
 };

@@ -3,7 +3,7 @@ import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Food For Life — ISKCON Nairobi",
+  title: "Food For Life",
   description: "Distributing thousands of free prasādam meals monthly to students, street children, and vulnerable families across Nairobi.",
 };
 
@@ -14,7 +14,7 @@ export default function FoodForLifePage() {
         title="Food For"
         titleAccent="Life"
         subtitle="Prasādam Distribution"
-        description="Thousands of free sanctified meals distributed every month across Nairobi — driven by compassion, sustained by community."
+        description="Thousands of free sanctified meals distributed every month across Nairobi - driven by compassion, sustained by community."
         image="/images/placeholders/iskcon-food-for-life.jpg"
         height="lg"
       />
@@ -48,7 +48,7 @@ export default function FoodForLifePage() {
               <div className="space-y-4 font-inter text-ink/70 leading-relaxed">
                 <p>Food For Life began with a simple principle from Śrīla Prabhupāda: "No one within ten miles of a temple should go hungry." In Nairobi, we take that mandate seriously.</p>
                 <p>Every day, our volunteers prepare fresh vegetarian prasādam in the temple kitchen and distribute it to street children, school students, and families in Kibera, Mathare, and beyond.</p>
-                <p>The food is more than nutrition — it is sanctified, prepared with devotion, and offered to the Lord before distribution. Recipients receive not just sustenance but the mercy of prasādam.</p>
+                <p>The food is more than nutrition - it is sanctified, prepared with devotion, and offered to the Lord before distribution. Recipients receive not just sustenance but the mercy of prasādam.</p>
               </div>
               <Link href="/donate/food" className="btn-primary mt-8 inline-flex">
                 Fund a Meal Programme
@@ -82,7 +82,7 @@ export default function FoodForLifePage() {
       {/* Volunteer CTA */}
       <section className="py-16 bg-saffron text-center section-padding">
         <h2 className="font-playfair text-display-md text-white mb-4">Volunteer With Us</h2>
-        <p className="font-inter text-white/80 mb-8 max-w-md mx-auto">Join our Food For Life team — cooking, distributing, fundraising, or driving. Every hour of service makes a direct impact.</p>
+        <p className="font-inter text-white/80 mb-8 max-w-md mx-auto">Join our Food For Life team - cooking, distributing, fundraising, or driving. Every hour of service makes a direct impact.</p>
         <Link href="/contact" className="btn-ghost">Become a Volunteer</Link>
       </section>
     </>

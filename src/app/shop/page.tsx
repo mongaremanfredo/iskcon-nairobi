@@ -4,24 +4,24 @@ import Link from "next/link";
 import { ShoppingBag, Star } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Prasādam Sweet Shop — ISKCON Nairobi",
-  description: "Artisanal Vaishnava sweets and prasādam products from ISKCON Nairobi's kitchen. Festival specials, gift packs, and bulk orders.",
+  title: "Prasadam Sweet Shop",
+  description: "Artisanal Vaishnava sweets and prasadam products from ISKCON Nairobi's kitchen. Festival specials, gift packs, and bulk orders.",
 };
 
 const products = [
-  { name: "Laddhū (Box of 12)", price: "KES 950", desc: "Classic saffron-infused gram flour laddhu prepared with pure ghee. The original prasādam sweet.", tag: "Bestseller", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Laddhu (Box of 12)", price: "KES 950", desc: "Classic saffron-infused gram flour laddhu prepared with pure ghee. The original prasadam sweet.", tag: "Bestseller", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
   { name: "Gulab Jamun (Box of 16)", price: "KES 800", desc: "Soft milk-solid dumplings soaked in rose-infused sugar syrup. Prepared fresh to order.", tag: "Popular", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
-  { name: "Halava Gift Pack", price: "KES 1,200", desc: "Semolina halava packed in artisan containers — ideal as a devotional gift or festival offering.", tag: "Gift", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
-  { name: "Barfi Assortment (500g)", price: "KES 1,400", desc: "Mixed milk-based barfi selection — pistachio, saffron, coconut, and rose. Beautifully boxed.", tag: "Assortment", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
-  { name: "Festival Sweet Hamper", price: "KES 3,500", desc: "A curated hamper of six varieties — the perfect corporate or family gift for festivals and celebrations.", tag: "Festival", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
-  { name: "Bulk Order (5kg+)", price: "From KES 4,500", desc: "Wholesale prasādam sweets for events, weddings, corporate functions, and temple programmes.", tag: "Bulk", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Halava Gift Pack", price: "KES 1,200", desc: "Semolina halava packed in artisan containers - ideal as a devotional gift or festival offering.", tag: "Gift", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Barfi Assortment (500g)", price: "KES 1,400", desc: "Mixed milk-based barfi selection - pistachio, saffron, coconut, and rose. Beautifully boxed.", tag: "Assortment", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Festival Sweet Hamper", price: "KES 3,500", desc: "A curated hamper of six varieties - the perfect corporate or family gift for festivals and celebrations.", tag: "Festival", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
+  { name: "Bulk Order (5kg+)", price: "From KES 4,500", desc: "Wholesale prasadam sweets for events, weddings, corporate functions, and temple programmes.", tag: "Bulk", image: "/images/placeholders/iskcon-khichdi-prasadam.jpg" },
 ];
 
 export default function ShopPage() {
   return (
     <>
       <PageHero
-        title="Prasādam"
+        title="Prasadam"
         titleAccent="Sweet Shop"
         subtitle="Artisanal Temple Sweets"
         description="Handcrafted Vaishnava sweets prepared with pure ingredients, devotion, and the highest culinary standards from our temple kitchen."
@@ -45,7 +45,7 @@ export default function ShopPage() {
         <div className="content-width section-padding">
           <div className="text-center mb-12">
             <span className="eyebrow block mb-3">Our Products</span>
-            <h2 className="section-title">Temple Sweets<br /><em className="text-gold not-italic font-normal">& Prasādam</em></h2>
+            <h2 className="section-title">Temple Sweets<br /><em className="text-gold not-italic font-normal">& Prasadam</em></h2>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -75,7 +75,7 @@ export default function ShopPage() {
           {/* Ordering info */}
           <div className="mt-14 bg-temple-cream border border-temple-sand p-8 lg:p-10 grid sm:grid-cols-3 gap-8">
             {[
-              { title: "Order Process", desc: "Place your order via WhatsApp or email. We confirm availability and prepare fresh within 24–48 hours." },
+              { title: "Order Process", desc: "Place your order via WhatsApp or email. We confirm availability and prepare fresh within 24 - 48 hours." },
               { title: "Delivery", desc: "Nairobi delivery available. Same-day pickup at the temple (South C). Outstation orders via courier." },
               { title: "Bulk & Events", desc: "Special pricing for orders over 2kg. Ideal for weddings, corporate events, and festival distribution." },
             ].map((item) => (

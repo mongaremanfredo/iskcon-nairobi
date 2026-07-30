@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Wifi, Shield, Coffee, MapPin, Phone, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Guest House - Spiritual Hospitality in Nairobi",
+  title: "Guest House",
   description: "Stay at ISKCON Nairobi's on-campus guest house. Serene, affordable accommodation with access to all temple programmes.",
 };
 

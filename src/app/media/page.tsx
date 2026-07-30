@@ -3,7 +3,7 @@ import PageHero from "@/components/ui/PageHero";
 import { socialLinks } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "Media - Photo & Video Gallery",
+  title: "Media Gallery",
   description: "Photos and videos from ISKCON Nairobi - temple life, festivals, community service, and the beauty of Krishna consciousness in East Africa.",
 };
 

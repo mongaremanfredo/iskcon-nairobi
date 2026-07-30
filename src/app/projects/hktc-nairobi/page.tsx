@@ -4,14 +4,14 @@ import Link from "next/link";
 import { CheckCircle, Users, BookOpen, Home, ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "HKTC Nairobi — Hare Krishna Training Centre",
+  title: "HKTC Nairobi",
   description: "Residential Vaishnava devotional education in Nairobi. Bhakti-śāstrī and Bhakti-vaibhava programmes for students across East Africa.",
 };
 
 const programmes = [
   { name: "Bhakti-śāstrī", duration: "1 Year", description: "Systematic study of Bhagavad-gītā, Nectar of Devotion, Nectar of Instruction, and Īśopaniṣad.", level: "Foundation" },
-  { name: "Bhakti-vaibhava", duration: "2 Years", description: "Deep study of Śrīmad-Bhāgavatam Cantos 1–6, devotional practice, and Sanskrit.", level: "Advanced" },
-  { name: "Bhakti-vedanta", duration: "2 Years", description: "Śrīmad-Bhāgavatam Cantos 7–12, Caitanya-caritāmṛta, and comparative philosophy.", level: "Scholar" },
+  { name: "Bhakti-vaibhava", duration: "2 Years", description: "Deep study of Śrīmad-Bhāgavatam Cantos 1 - 6, devotional practice, and Sanskrit.", level: "Advanced" },
+  { name: "Bhakti-vedanta", duration: "2 Years", description: "Śrīmad-Bhāgavatam Cantos 7 - 12, Caitanya-caritāmṛta, and comparative philosophy.", level: "Scholar" },
   { name: "Bhakti-sarvabhauma", duration: "2 Years", description: "The highest level of ISKCON devotional education, including advanced Sanskrit and original texts.", level: "Master" },
 ];
 
@@ -22,7 +22,7 @@ export default function HKTCNairobiPage() {
         title="HKTC"
         titleAccent="Nairobi"
         subtitle="Hare Krishna Training Centre"
-        description="East Africa's premier residential institution for Vaishnava devotional education — forming scholars, teachers, and devotees."
+        description="East Africa's premier residential institution for Vaishnava devotional education - forming scholars, teachers, and devotees."
         image="/images/placeholders/hare-krishna-harinam.jpg"
         height="lg"
       />

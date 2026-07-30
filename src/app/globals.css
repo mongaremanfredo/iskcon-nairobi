@@ -44,7 +44,7 @@ body {
 * { box-sizing: border-box; }
 img, video, canvas, svg { max-width: 100%; }
 
-/* Section layout helpers — plain CSS, no @apply needed */
+/* Section layout helpers - plain CSS, no @apply needed */
 .section-padding { padding-left: 1rem; padding-right: 1rem; }
 .content-width { max-width: 1280px; margin-left: auto; margin-right: auto; width: 100%; }
 

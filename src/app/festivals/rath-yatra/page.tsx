@@ -1,5 +1,11 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Ratha Yatra",
+  description: "Join ISKCON Nairobi's Festival of Chariots with Lord Jagannath, kirtan, procession, dance, and prasadam distribution.",
+};
 
 export default function RathYatraPage() {
   const description = "Ratha Yatra is the Festival of Chariots, a public celebration of Lord Jagannath with kirtan, procession, dance, and prasadam distribution in Nairobi.";

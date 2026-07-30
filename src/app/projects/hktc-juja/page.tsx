@@ -1,5 +1,12 @@
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "HKTC Juja",
+  description: "A growing Hare Krishna Training Centre satellite campus serving students around Juja and the Greater Nairobi region.",
+};
+
 export default function HKTCJujaPage() {
   return (
     <>
