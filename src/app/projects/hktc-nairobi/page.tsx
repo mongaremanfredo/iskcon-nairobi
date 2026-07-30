@@ -97,8 +97,33 @@ const careModel = [
   },
 ];
 
+const studentLife = [
+  {
+    title: "Vedic Culture",
+    text:
+      "Students are introduced to Vaishnava culture through kirtan, japa, scripture, temple etiquette, festivals, service, and daily association.",
+  },
+  {
+    title: "Food and Prasadam",
+    text:
+      "Life at HKTC includes a practical experience of sanctified vegetarian food, simple cooking culture, and honoring prasadam together.",
+  },
+  {
+    title: "Attire and Identity",
+    text:
+      "Students naturally encounter tilaka, dhoti, kurta, sari, bead bags, and other visible parts of devotional culture in a guided setting.",
+  },
+  {
+    title: "Guided Growth",
+    text:
+      "The centre gives students room to explore Krishna consciousness at their own pace, with expert guidance from senior devotees.",
+  },
+];
+
 const sourceNotes = [
-  "ISKCON News reports HKTC Nairobi as a university student hostel and training model directed by Govinda Prema Das.",
+  "ISKCON News describes HKTC Nairobi as an ashram-style student experience near major universities, with morning programmes, Bhagavatam class, japa, service, kirtan, Bhagavad-gita study, and certificates after character training.",
+  "People Daily describes Kenya's young Vaishnava monks through simple living, early rising, chanting, temple classes, devotional attire, vegetarian culture, and service.",
+  "Dandavats reports that students joined HKTC Nairobi to chant, study Srila Prabhupada's books, follow the four regulative principles, and respond to Srila Prabhupada's desire to preach to local Africans.",
   "A public Dandavats graduation report records HKTC activities in Kenya from April 2011 and an official opening on 11 January 2017, attributed in context to H.H. Gopal Krishna Goswami Maharaja.",
 ];
 
@@ -182,6 +207,40 @@ export default function HKTCNairobiPage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-temple-brown py-section text-sand">
+        <div className="content-width section-padding">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
+            <div>
+              <span className="eyebrow mb-3 block text-gold/75">Life as a Student</span>
+              <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
+                A Living Introduction
+                <br />
+                <em className="text-gold not-italic font-normal">to Vedic Culture</em>
+              </h2>
+              <p className="mt-5 font-inter text-sm leading-relaxed text-sand/68 sm:text-base">
+                Life at HKTC is a fascinating introduction to Vedic culture: its food, philosophy, attire, music,
+                discipline, service mood, and community life. Students are not forced into an artificial pace. They
+                explore, ask questions, practice, and grow under expert guidance.
+              </p>
+              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/58 sm:text-base">
+                Public articles about the centre describe a rhythm of simple living and high thinking, with students
+                rising early, attending temple programmes, chanting, studying, serving, cooking, taking prasadam, and
+                building character through Srila Prabhupada's books.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {studentLife.map((item) => (
+                <article key={item.title} className="border border-gold/15 bg-white/[0.06] p-5">
+                  <h3 className="font-playfair text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 font-inter text-sm leading-relaxed text-sand/60">{item.text}</p>
+                </article>
+              ))}
             </div>
           </div>
         </div>
@@ -384,6 +443,22 @@ export default function HKTCNairobiPage() {
                 </div>
                 <div className="mt-5 flex flex-wrap gap-4">
                   <a
+                    href="https://peopledaily.digital/lifestyle/young-hare-krishna-monks-revive-simple-way-of-living"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                  >
+                    People Daily
+                  </a>
+                  <a
+                    href="https://iskconnews.org/kenyas-hare-krishna-training-centre-gives-students-ashram-experience/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                  >
+                    Ashram Experience
+                  </a>
+                  <a
                     href="https://iskconnews.org/students-join-nairobi-hare-krishna-training-centre/"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -398,6 +473,14 @@ export default function HKTCNairobiPage() {
                     className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
                   >
                     Dandavats Report
+                  </a>
+                  <a
+                    href="https://www.dandavats.com/?p=26003"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                  >
+                    Dandavats HKTC
                   </a>
                 </div>
               </div>
