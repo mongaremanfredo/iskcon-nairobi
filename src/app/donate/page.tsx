@@ -17,11 +17,12 @@ export default function DonatePage() {
         titleAccent="Mission"
         subtitle="Give With Purpose"
         description="Your contribution directly sustains temple worship, feeds thousands, protects cows, educates students, and celebrates festivals across East Africa."
-        image="/images/placeholders/iskcon-temple-bangalore.jpg"
+        image="/images/donate/main-altar-offering.jpg"
+        className="lg:min-h-[680px]"
       />
 
       {/* Payment methods */}
-      <div className="bg-temple-brown py-5 section-padding">
+      <div className="bg-temple-brown py-3 section-padding">
         <div className="content-width">
           <div className="flex flex-wrap items-center gap-6 justify-center">
             {["M-PESA", "Visa / Mastercard", "Bank Transfer", "PayPal", "Crypto (BTC/ETH)"].map(method => (
@@ -35,7 +36,7 @@ export default function DonatePage() {
       </div>
 
       {/* Donation paths */}
-      <section className="py-section bg-temple-bg">
+      <section className="pt-section-sm pb-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
             <span className="eyebrow block mb-3">Choose Your Cause</span>
@@ -76,7 +77,7 @@ export default function DonatePage() {
       </section>
 
       {/* Trust signals */}
-      <section className="py-12 bg-temple-cream section-padding">
+      <section className="pt-6 pb-12 bg-temple-cream section-padding">
         <div className="content-width">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 text-center">
             <div className="flex flex-col items-center gap-3">
