@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
+  const safeTextPattern = "[^<>{}]*";
   const contactItems = [
     { icon: <MapPin size={16} />, label: "Address", value: templeInfo.addressLines.join("\n"), href: templeInfo.mapUrl },
     { icon: <Phone size={16} />, label: "Phone", value: templeInfo.phoneDisplay, href: `tel:${templeInfo.phoneHref}` },
@@ -74,27 +75,48 @@ export default function ContactPage() {
               <form action={`mailto:${templeInfo.email}`} method="post" encType="text/plain" className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
                   {[
-                    { label: "First Name", type: "text", placeholder: "First name" },
-                    { label: "Last Name", type: "text", placeholder: "Last name" },
+                    { label: "First Name", type: "text", placeholder: "First name", autoComplete: "given-name" },
+                    { label: "Last Name", type: "text", placeholder: "Last name", autoComplete: "family-name" },
                   ].map((f) => (
                     <div key={f.label}>
                       <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">{f.label}</label>
-                      <input name={f.label} type={f.type} placeholder={f.placeholder} className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink placeholder-ink/30" />
+                      <input
+                        name={f.label}
+                        type={f.type}
+                        placeholder={f.placeholder}
+                        autoComplete={f.autoComplete}
+                        maxLength={60}
+                        pattern={safeTextPattern}
+                        required
+                        title="Please do not include code, angle brackets, or markup."
+                        className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink placeholder-ink/30"
+                      />
                     </div>
                   ))}
                 </div>
                 {[
-                  { label: "Email Address", type: "email", placeholder: "your@email.com" },
-                  { label: "Phone Number (optional)", type: "tel", placeholder: "+254 ..." },
+                  { label: "Email Address", type: "email", placeholder: "your@email.com", autoComplete: "email", inputMode: "email", required: true },
+                  { label: "Phone Number (optional)", type: "tel", placeholder: "+254 ...", autoComplete: "tel", inputMode: "tel", required: false },
                 ].map((f) => (
                   <div key={f.label}>
                     <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">{f.label}</label>
-                    <input name={f.label} type={f.type} placeholder={f.placeholder} className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink placeholder-ink/30" />
+                    <input
+                      name={f.label}
+                      type={f.type}
+                      placeholder={f.placeholder}
+                      autoComplete={f.autoComplete}
+                      inputMode={f.inputMode as "email" | "tel"}
+                      maxLength={f.type === "tel" ? 24 : 120}
+                      pattern={f.type === "tel" ? "[+0-9 ()-]{7,24}" : undefined}
+                      required={f.required}
+                      title={f.type === "tel" ? "Use numbers, spaces, brackets, plus signs, or hyphens only." : undefined}
+                      className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink placeholder-ink/30"
+                    />
                   </div>
                 ))}
                 <div>
                   <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">Subject</label>
-                  <select name="Subject" className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink/70">
+                  <select name="Subject" required className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink/70">
                     <option>General Enquiry</option>
                     <option>Guest House Booking</option>
                     <option>HKTC Admissions</option>
@@ -106,9 +128,17 @@ export default function ContactPage() {
                 </div>
                 <div>
                   <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">Message</label>
-                  <textarea name="Message" rows={5} placeholder="Tell us how we can help..." className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink placeholder-ink/30 resize-none" />
+                  <textarea
+                    name="Message"
+                    rows={5}
+                    placeholder="Tell us how we can help..."
+                    maxLength={1200}
+                    required
+                    title="Please do not include code or markup."
+                    className="w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink placeholder-ink/30 resize-none"
+                  />
                 </div>
-                <button className="btn-primary w-full justify-center">
+                <button type="submit" className="btn-primary w-full justify-center">
                   Send Message
                 </button>
               </form>

@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import SavannaDivider from "@/components/ui/SavannaDivider";
 import PwaRegistrar from "@/components/system/PwaRegistrar";
 import { templeInfo } from "@/data/site";
+import { safeJsonLd } from "@/lib/security";
 
 const siteUrl = "https://iskcon-nairobi.vercel.app";
 const previewImage = "/brand/og-image.jpg";
@@ -122,7 +123,7 @@ export default function RootLayout({
       <body className="bg-sand text-dusk antialiased">
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
         />
         <PwaRegistrar />
         <Navigation />

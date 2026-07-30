@@ -17,6 +17,8 @@ const facilities = [
 ];
 
 export default function GuestHousePage() {
+  const safeTextPattern = "[^<>{}]*";
+
   return (
     <>
       <PageHero
@@ -119,18 +121,24 @@ export default function GuestHousePage() {
               </div>
             </div>
             {/* Simple enquiry form */}
-            <div className="bg-white/5 border border-white/10 p-8 space-y-4">
+            <form action={`mailto:${templeInfo.email}`} method="post" encType="text/plain" className="bg-white/5 border border-white/10 p-8 space-y-4">
               {[
-                { label: "Full Name", type: "text", placeholder: "Your name" },
-                { label: "Email Address", type: "email", placeholder: "your@email.com" },
-                { label: "Arrival Date", type: "date", placeholder: "" },
-                { label: "Departure Date", type: "date", placeholder: "" },
+                { label: "Full Name", type: "text", placeholder: "Your name", autoComplete: "name", maxLength: 100, pattern: safeTextPattern, required: true },
+                { label: "Email Address", type: "email", placeholder: "your@email.com", autoComplete: "email", maxLength: 120, pattern: undefined, required: true },
+                { label: "Arrival Date", type: "date", placeholder: "", autoComplete: "off", maxLength: undefined, pattern: undefined, required: true },
+                { label: "Departure Date", type: "date", placeholder: "", autoComplete: "off", maxLength: undefined, pattern: undefined, required: true },
               ].map((field) => (
                 <div key={field.label}>
                   <label className="font-inter text-white/50 text-xs uppercase tracking-wider block mb-1.5">{field.label}</label>
                   <input
+                    name={field.label}
                     type={field.type}
                     placeholder={field.placeholder}
+                    autoComplete={field.autoComplete}
+                    maxLength={field.maxLength}
+                    pattern={field.pattern}
+                    required={field.required}
+                    title={field.pattern ? "Please do not include code, angle brackets, or markup." : undefined}
                     className="w-full bg-white/10 border border-white/15 text-white placeholder-white/30 font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold"
                   />
                 </div>
@@ -138,13 +146,17 @@ export default function GuestHousePage() {
               <div>
                 <label className="font-inter text-white/50 text-xs uppercase tracking-wider block mb-1.5">Message</label>
                 <textarea
+                  name="Message"
                   rows={3}
                   placeholder="Room preference, special requirements..."
+                  maxLength={800}
                   className="w-full bg-white/10 border border-white/15 text-white placeholder-white/30 font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold resize-none"
                 />
               </div>
-              <a href={`mailto:${templeInfo.email}?subject=Guest%20House%20Enquiry`} className="btn-primary w-full justify-center text-xs mt-2">`n                Send Enquiry`n              </a>
-            </div>
+              <button type="submit" className="btn-primary w-full justify-center text-xs mt-2">
+                Send Enquiry
+              </button>
+            </form>
           </div>
         </div>
       </section>
