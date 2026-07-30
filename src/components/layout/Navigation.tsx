@@ -8,6 +8,7 @@ import { X, ChevronRight, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import BrandLogo from "@/components/ui/BrandLogo";
 import TempleStatusBar from "@/components/layout/TempleStatusBar";
+import NoticeboardButton from "@/components/layout/NoticeboardButton";
 import { templeInfo } from "@/data/site";
 
 const primaryNavigation = [
@@ -16,7 +17,6 @@ const primaryNavigation = [
   { label: "Visit", href: "/visit" },
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },
-  { label: "Kirtan Safari", href: "/festivals/kirtan-safari" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -95,7 +95,8 @@ export default function Navigation() {
               ))}
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 max-[900px]:gap-2">
+              <NoticeboardButton statusBarVisible={scrolled && !isOpen} />
               <Link
                 href="/donate"
                 className="hidden sm:inline-flex max-[900px]:hidden items-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-sunset"

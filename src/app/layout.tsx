@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import SavannaDivider from "@/components/ui/SavannaDivider";
 import PwaRegistrar from "@/components/system/PwaRegistrar";
 import CalendarNotificationManager from "@/components/system/CalendarNotificationManager";
+import NoticeNotificationManager from "@/components/system/NoticeNotificationManager";
 import { templeInfo } from "@/data/site";
 import { safeJsonLd } from "@/lib/security";
 
@@ -128,6 +129,7 @@ export default function RootLayout({
         />
         <PwaRegistrar />
         <CalendarNotificationManager />
+        <NoticeNotificationManager />
         <Navigation />
         <main>{children}</main>
         <SavannaDivider tone="sand" className="h-[7vw] min-h-6 sm:h-24" />
