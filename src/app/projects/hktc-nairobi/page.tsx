@@ -1,18 +1,105 @@
 import type { Metadata } from "next";
-import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
-import { CheckCircle, Users, BookOpen, Home, ArrowRight } from "lucide-react";
+import PageHero from "@/components/ui/PageHero";
+import { templeInfo } from "@/data/site";
+import {
+  ArrowRight,
+  BookOpen,
+  CalendarDays,
+  CheckCircle,
+  ExternalLink,
+  GraduationCap,
+  HeartHandshake,
+  Home,
+  Camera,
+  Utensils,
+  Users,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "HKTC Nairobi",
-  description: "Residential Vaishnava devotional education in Nairobi. Bhakti-śāstrī and Bhakti-vaibhava programmes for students across East Africa.",
+  description:
+    "Hare Krishna Training Centre Nairobi serves university students with Prabhupada-centered study, daily classes, accommodation, prasadam, and devotional mentorship.",
 };
 
-const programmes = [
-  { name: "Bhakti-śāstrī", duration: "1 Year", description: "Systematic study of Bhagavad-gītā, Nectar of Devotion, Nectar of Instruction, and Īśopaniṣad.", level: "Foundation" },
-  { name: "Bhakti-vaibhava", duration: "2 Years", description: "Deep study of Śrīmad-Bhāgavatam Cantos 1 - 6, devotional practice, and Sanskrit.", level: "Advanced" },
-  { name: "Bhakti-vedanta", duration: "2 Years", description: "Śrīmad-Bhāgavatam Cantos 7 - 12, Caitanya-caritāmṛta, and comparative philosophy.", level: "Scholar" },
-  { name: "Bhakti-sarvabhauma", duration: "2 Years", description: "The highest level of ISKCON devotional education, including advanced Sanskrit and original texts.", level: "Master" },
+const stats = [
+  { value: "10,000+", label: "Students Reached" },
+  { value: "10+", label: "Years Active" },
+  { value: "15+", label: "Nations" },
+  { value: "2", label: "Student Homes" },
+];
+
+const principles = [
+  "No meat eating",
+  "No intoxication",
+  "No illicit sex",
+  "No gambling",
+];
+
+const dailyRhythm = [
+  {
+    title: "Daily Srimad-Bhagavatam",
+    time: "8:00 A.M.",
+    detail:
+      "One verse is studied with Srila Prabhupada's purport and practical discussion for devotional life.",
+  },
+  {
+    title: "HKTC Philosophy Classes",
+    time: "7:00 P.M.",
+    detail:
+      "Monday, Tuesday, and Thursday classes serve residents and students from the wider community.",
+  },
+  {
+    title: "Community Student Class",
+    time: "8:00 P.M.",
+    detail:
+      "Wednesday and Saturday evening classes run for one hour and are followed by prasadam.",
+  },
+  {
+    title: "Special Bhagavatam Class",
+    time: "Saturday, 6:00 A.M.",
+    detail:
+      "A focused Saturday morning study session for deeper hearing, reflection, and discussion.",
+  },
+];
+
+const studySequence = [
+  "Nectar of Instruction",
+  "Science of Self Realization",
+  "Journey to Other Planets",
+  "Laws of Nature",
+  "Life Comes from Life",
+  "Beyond Birth and Death",
+  "On the Way to Krishna",
+  "Sri Isopanisad",
+  "Bhagavad-gita As It Is",
+  "Srimad-Bhagavatam",
+];
+
+const careModel = [
+  {
+    icon: Home,
+    title: "Two Nairobi Residences",
+    text:
+      "HKTC supports separate accommodation for male and female students, held under dedicated and unified guidance.",
+  },
+  {
+    icon: Utensils,
+    title: "Daily Sanctified Meals",
+    text:
+      "Students receive breakfast, lunch, and dinner in a purely vegetarian prasadam culture.",
+  },
+  {
+    icon: Users,
+    title: "University Student Community",
+    text:
+      "Most students are drawn from Nairobi's university community, with outreach extending across Kenya and beyond.",
+  },
+];
+
+const sourceNotes = [
+  "ISKCON News reports HKTC Nairobi as a university student hostel and training model directed by Govinda Prema Das.",
+  "A public Dandavats graduation report records HKTC activities in Kenya from April 2011 and an official opening on 11 January 2017, attributed in context to H.H. Gopal Krishna Goswami Maharaja.",
 ];
 
 export default function HKTCNairobiPage() {
@@ -22,95 +109,284 @@ export default function HKTCNairobiPage() {
         title="HKTC"
         titleAccent="Nairobi"
         subtitle="Hare Krishna Training Centre"
-        description="East Africa's premier residential institution for Vaishnava devotional education - forming scholars, teachers, and devotees."
-        image="/images/placeholders/hare-krishna-harinam.jpg"
+        description="A Prabhupada-centered home for university students: study, sadhana, prasadam, service, and mentorship in the heart of Nairobi."
+        image="/images/hktc/hktc-nairobi-student-class.jpg"
         height="lg"
+        contentClassName="sm:!pb-10"
       />
 
-      {/* Mission */}
-      <section className="py-section bg-temple-bg">
+      <section className="bg-temple-bg py-section">
         <div className="content-width section-padding">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
+          <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
-              <span className="eyebrow block mb-4">Our Mission</span>
-              <h2 className="section-title mb-6">
-                Forming Scholars,<br />
-                <em className="text-gold not-italic font-normal">Shaping Lives</em>
+              <span className="eyebrow mb-4 block">Student Formation</span>
+              <h2 className="section-title">
+                University Life
+                <br />
+                <em className="text-gold not-italic font-normal">Rooted in Bhakti</em>
               </h2>
-              <div className="space-y-4 font-inter text-ink/70 leading-relaxed">
-                <p>The Hare Krishna Training Centre in Nairobi offers a full residential educational programme rooted in the Vaishnava tradition. Students from across Kenya, Uganda, Tanzania, Ethiopia, and beyond come here to receive a complete academic and devotional formation.</p>
-                <p>Our curriculum follows the ISKCON Ministry of Educational Development's graded programme, from Bhakti-śāstrī to Bhakti-sarvabhauma, combined with daily temple service, physical training, and practical devotional skills.</p>
+              <div className="mt-6 space-y-4 font-inter text-sm leading-relaxed text-ink/68 sm:text-base">
+                <p>
+                  The Hare Krishna Training Centre serves mostly university students, giving them a serious
+                  spiritual foundation while they continue their academic and professional development in Nairobi.
+                </p>
+                <p>
+                  The centre is headed by Govinda Prem Prabhu, Regional Secretary for ISKCON Nairobi and the devotee
+                  guiding HKTC's student training, devotional education, and community care.
+                </p>
+                <p>
+                  HKTC is part of the vision carried forward from Srila Prabhupada's mission for Africa. Public
+                  reports record its work beginning in Kenya in April 2011, with an official opening on 11 January
+                  2017 under the blessings of H.H. Gopal Krishna Goswami Maharaja.
+                </p>
               </div>
-              <div className="mt-8 grid grid-cols-3 gap-6">
-                {[{ v: "1000+", l: "Students" }, { v: "15+", l: "Nations" }, { v: "20+", l: "Yrs Active" }].map(s => (
-                  <div key={s.l}>
-                    <p className="font-playfair text-gold text-3xl font-bold">{s.v}</p>
-                    <p className="font-inter text-ink/50 text-xs uppercase tracking-wide mt-1">{s.l}</p>
+
+              <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                {stats.map((stat) => (
+                  <div key={stat.label} className="border border-temple-sand bg-white p-4">
+                    <p className="font-playfair text-2xl font-semibold text-gold sm:text-3xl">{stat.value}</p>
+                    <p className="mt-1 font-inter text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-ink/48">
+                      {stat.label}
+                    </p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="relative">
-              <img src="/images/placeholders/hare-krishna-harinam.jpg" alt="Students at HKTC" className="w-full aspect-card object-cover" />
-              <div className="absolute -bottom-4 -left-4 bg-gold p-5 hidden sm:block">
-                <p className="font-playfair text-white text-sm">Accredited by ISKCON</p>
-                <p className="font-inter text-white/70 text-xs">Ministry of Educational Development</p>
+
+            <div className="grid gap-4">
+              <div className="overflow-hidden border border-temple-sand bg-white shadow-card">
+                <img
+                  src="/images/hktc/hktc-nairobi-student-class.jpg"
+                  alt="HKTC Nairobi students studying during class"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <div className="border border-gold/25 bg-gold/10 p-5">
+                <div className="flex items-start gap-3">
+                  <CheckCircle className="mt-1 shrink-0 text-gold" size={20} />
+                  <div>
+                    <h3 className="font-playfair text-xl font-semibold text-ink">Four Regulative Principles</h3>
+                    <p className="mt-2 font-inter text-sm leading-relaxed text-ink/62">
+                      Students are trained in disciplined devotional life through the four regulative principles:
+                    </p>
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      {principles.map((principle) => (
+                        <span
+                          key={principle}
+                          className="border border-gold/25 bg-white px-3 py-2 font-inter text-xs font-semibold uppercase tracking-[0.08em] text-ink/70"
+                        >
+                          {principle}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Programmes */}
-      <section className="py-section bg-temple-cream">
+      <section className="bg-temple-cream py-section">
         <div className="content-width section-padding">
-          <div className="text-center mb-12">
-            <span className="eyebrow block mb-3">Curriculum</span>
-            <h2 className="section-title">Academic Programmes</h2>
+          <div className="mb-10 max-w-3xl">
+            <span className="eyebrow mb-3 block">Daily Classes</span>
+            <h2 className="section-title">
+              Hearing,
+              <br />
+              <em className="text-gold not-italic font-normal">Study and Prasadam</em>
+            </h2>
+            <p className="mt-5 font-inter text-sm leading-relaxed text-ink/62 sm:text-base">
+              HKTC follows the same Prabhupada-centered learning culture described on the Learn page. Bhagavad-gita
+              and Srimad-Bhagavatam are studied verse by verse, with attention to Srila Prabhupada's purports and
+              the teachings of the Goswamis.
+            </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {programmes.map((p) => (
-              <div key={p.name} className="bg-white p-8 border border-temple-sand hover:shadow-card-hover hover:border-gold/30 transition-all group">
-                <div className="flex items-start justify-between mb-4">
+
+          <div className="grid gap-4 md:grid-cols-2">
+            {dailyRhythm.map((item) => (
+              <article key={item.title} className="border border-temple-sand bg-white p-5 shadow-card">
+                <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
-                    <span className="font-inter text-[10px] font-semibold tracking-[0.15em] uppercase text-gold bg-gold/10 px-2 py-1">{p.level}</span>
-                    <h3 className="font-playfair text-xl font-semibold text-ink mt-2">{p.name}</h3>
+                    <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
+                    <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">{item.detail}</p>
                   </div>
-                  <span className="font-inter text-ink/40 text-sm">{p.duration}</span>
+                  <div className="flex w-fit shrink-0 items-center gap-2 bg-temple-brown px-4 py-2 font-inter text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-sand">
+                    <CalendarDays size={13} className="text-gold" />
+                    {item.time}
+                  </div>
                 </div>
-                <p className="font-inter text-ink/60 text-sm leading-relaxed">{p.description}</p>
-              </div>
+              </article>
             ))}
-          </div>
-          <div className="mt-10 text-center">
-            <Link href="/projects/hktc-nairobi/apply" className="btn-primary">
-              Apply for Admission
-            </Link>
           </div>
         </div>
       </section>
 
-      {/* Student Life */}
-      <section className="py-section bg-temple-bg">
+      <section className="bg-temple-bg py-section">
         <div className="content-width section-padding">
-          <span className="eyebrow block mb-4">Campus Life</span>
-          <h2 className="section-title mb-10">
-            Life as a<br />
-            <em className="text-gold not-italic font-normal">Resident Student</em>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-            {[
-              { icon: <BookOpen size={20} />, title: "Daily Classes", desc: "Morning Bhāgavatam class, academic sessions, and evening philosophy discussions." },
-              { icon: <Users size={20} />, title: "Community Life", desc: "Live and practice alongside fellow students in a structured devotional environment." },
-              { icon: <Home size={20} />, title: "Accommodation", desc: "Clean, comfortable on-campus dormitory accommodation with all meals included." },
-              { icon: <CheckCircle size={20} />, title: "Certification", desc: "ISKCON-accredited certificates recognized across 100+ countries and 500+ temples." },
-            ].map((item) => (
-              <div key={item.title} className="flex flex-col gap-4 p-6 bg-temple-cream border border-temple-sand hover:border-gold/30 transition-colors">
-                <div className="w-10 h-10 bg-gold/10 flex items-center justify-center text-gold">{item.icon}</div>
-                <h3 className="font-playfair text-lg font-semibold text-ink">{item.title}</h3>
-                <p className="font-inter text-ink/60 text-sm leading-relaxed">{item.desc}</p>
+          <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+            <div>
+              <span className="eyebrow mb-3 block">Book Programme</span>
+              <h2 className="section-title">
+                Sequential Study of
+                <br />
+                <em className="text-gold not-italic font-normal">Srila Prabhupada's Books</em>
+              </h2>
+              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/64 sm:text-base">
+                Students move through Srila Prabhupada's books in sequence, growing from introductory philosophy to
+                deeper scriptural study. The year culminates in examinations and an annual graduation ceremony for
+                those who complete the prescribed study.
+              </p>
+
+              <div className="mt-8 grid gap-3 sm:grid-cols-2">
+                {studySequence.map((book, index) => (
+                  <div key={book} className="flex items-center gap-3 border border-temple-sand bg-white p-3">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/10 font-inter text-xs font-bold text-gold">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-inter text-sm font-medium text-ink/72">{book}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+
+            <aside className="border border-gold/25 bg-temple-brown p-6 text-sand shadow-card">
+              <GraduationCap className="mb-5 text-gold" size={30} />
+              <h3 className="font-playfair text-2xl font-semibold text-white">Graduation Ceremony</h3>
+              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/68">
+                The graduation ceremony is held every year after students complete the book sequence and sit for
+                examinations. The full HKTC graduation album is hosted externally so the website stays fast.
+              </p>
+              <a
+                href="https://photos.app.goo.gl/MIZfuQWWgNPvBuG43"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-flex items-center gap-2 border-b border-gold/50 pb-1 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-white"
+              >
+                View Graduation Album
+                <ExternalLink size={13} />
+              </a>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-temple-cream py-section">
+        <div className="content-width section-padding">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+            <div>
+              <span className="eyebrow mb-3 block">Student Care</span>
+              <h2 className="section-title">
+                Accommodation,
+                <br />
+                <em className="text-gold not-italic font-normal">Meals and Guidance</em>
+              </h2>
+              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/62 sm:text-base">
+                HKTC is more than a classroom. It supports a protected devotional environment where students can
+                learn, live, serve, eat prasadam, and receive guidance in Krishna consciousness.
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {careModel.map((item) => (
+                <article key={item.title} className="border border-temple-sand bg-white p-5 shadow-card">
+                  <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
+                    <item.icon size={20} />
+                  </div>
+                  <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
+                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/60">{item.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-temple-brown py-section text-sand">
+        <div className="content-width section-padding">
+          <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
+            <div>
+              <span className="eyebrow mb-3 block text-gold/75">Support HKTC</span>
+              <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
+                Help Sponsor
+                <br />
+                <em className="text-gold not-italic font-normal">Student Formation</em>
+              </h2>
+              <p className="mt-5 max-w-2xl font-inter text-sm leading-relaxed text-sand/68 sm:text-base">
+                Support can help provide study materials, prasadam, student accommodation, retreats, examinations,
+                visiting speakers, and the daily service that keeps the centre running.
+              </p>
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+                <Link href="/donate/students" className="btn-primary justify-center">
+                  Support Student Sponsorship
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center justify-center gap-2 border border-gold/40 px-5 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-white"
+                >
+                  Speak to the Temple
+                  <ArrowRight size={14} />
+                </Link>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <a
+                href="https://www.instagram.com/hktc.africa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-between gap-4 border border-gold/20 bg-white/[0.06] p-5 transition-colors hover:border-gold/45 hover:bg-white/[0.09]"
+              >
+                <div className="flex items-center gap-4">
+                  <Camera className="text-gold" size={24} />
+                  <div>
+                    <p className="font-playfair text-xl font-semibold text-white">Follow HKTC Africa</p>
+                    <p className="mt-1 font-inter text-xs uppercase tracking-[0.14em] text-sand/45">
+                      Classes, students, and updates
+                    </p>
+                  </div>
+                </div>
+                <ExternalLink className="shrink-0 text-gold" size={16} />
+              </a>
+
+              <div className="border border-gold/15 bg-white/[0.05] p-5">
+                <BookOpen className="mb-4 text-gold" size={24} />
+                <h3 className="font-playfair text-xl font-semibold text-white">Notes from public reports</h3>
+                <div className="mt-3 space-y-2">
+                  {sourceNotes.map((note) => (
+                    <p key={note} className="font-inter text-xs leading-relaxed text-sand/58">
+                      {note}
+                    </p>
+                  ))}
+                </div>
+                <div className="mt-5 flex flex-wrap gap-4">
+                  <a
+                    href="https://iskconnews.org/students-join-nairobi-hare-krishna-training-centre/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                  >
+                    ISKCON News
+                  </a>
+                  <a
+                    href="https://www.dandavats.com/?p=56815"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                  >
+                    Dandavats Report
+                  </a>
+                </div>
+              </div>
+
+              <div className="border border-gold/15 bg-white/[0.05] p-5">
+                <HeartHandshake className="mb-4 text-gold" size={24} />
+                <p className="font-inter text-sm leading-relaxed text-sand/64">
+                  For visits, sponsorship, class enquiries, or student support, contact {templeInfo.name} through
+                  the temple office.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
