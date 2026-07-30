@@ -22,9 +22,9 @@ export default function PageHero({
   contentClassName = "",
 }: PageHeroProps) {
   const heights = {
-    sm: "h-[42vh] min-h-[220px] sm:h-64 sm:min-h-[240px]",
-    md: "h-[48vh] min-h-[320px] max-h-[520px] sm:h-[50vh] sm:min-h-[360px] sm:max-h-[560px]",
-    lg: "h-[58vh] min-h-[420px] max-h-[640px] sm:h-[65vh] sm:min-h-[460px] sm:max-h-[700px]",
+    sm: "h-[48vh] min-h-[340px] max-h-[460px] sm:h-[42vh] sm:min-h-[360px] sm:max-h-[500px]",
+    md: "h-[52vh] min-h-[380px] max-h-[540px] sm:h-[50vh] sm:min-h-[420px] sm:max-h-[580px]",
+    lg: "h-[58vh] min-h-[440px] max-h-[660px] sm:h-[65vh] sm:min-h-[500px] sm:max-h-[720px]",
   };
 
   return (
@@ -40,7 +40,7 @@ export default function PageHero({
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
       {/* Content */}
-      <div className={`relative z-10 h-full flex flex-col justify-end pb-8 sm:pb-12 section-padding content-width ${contentClassName} ${align === "center" ? "items-center text-center" : ""}`}>
+      <div className={`relative z-10 h-full flex flex-col justify-end pt-32 pb-10 sm:pt-36 sm:pb-14 section-padding content-width ${contentClassName} ${align === "center" ? "items-center text-center" : ""}`}>
         {subtitle && (
           <span className="eyebrow text-gold/80 block mb-3">{subtitle}</span>
         )}

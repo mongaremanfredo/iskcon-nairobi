@@ -18,7 +18,6 @@ export default function DonatePage() {
         subtitle="Give With Purpose"
         description="Your contribution directly sustains temple worship, feeds thousands, protects cows, educates students, and celebrates festivals across East Africa."
         image="/images/placeholders/iskcon-temple-bangalore.jpg"
-        contentClassName="sm:!pb-5"
       />
 
       {/* Payment methods */}
