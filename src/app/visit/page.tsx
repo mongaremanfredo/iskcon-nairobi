@@ -18,10 +18,10 @@ export default function VisitPage() {
         subtitle="Plan Your Visit"
         description="The temple is open daily to all visitors. Come as you are - no prior experience needed."
         image="/images/iskcon-nairobi-aerial.jpg"
-        contentClassName="lg:pt-[27rem]"
+        className="lg:min-h-[680px]"
       />
 
-      <section className="py-section bg-temple-bg">
+      <section className="pt-section-sm pb-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="grid lg:grid-cols-3 gap-10">
             <div className="lg:col-span-2">

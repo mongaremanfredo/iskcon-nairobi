@@ -20,11 +20,10 @@ export default function FestivalsPage() {
         description="Celebrate Lord Krishna, Lord Jagannath, Sri Chaitanya Mahaprabhu, and the holy name with Nairobi's devotional community."
         image="/images/placeholders/hare-krishna-harinam.jpg"
         height="sm"
-        className="lg:min-h-[520px]"
-        contentClassName="lg:pt-[22rem]"
+        className="lg:min-h-[560px]"
       />
 
-      <section className="py-section bg-temple-bg">
+      <section className="pt-section-sm pb-section bg-temple-bg">
         <div className="content-width section-padding">
           <CalendarNotificationOptIn />
 

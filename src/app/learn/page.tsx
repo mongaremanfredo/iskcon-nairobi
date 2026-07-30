@@ -92,10 +92,10 @@ export default function LearnPage() {
         subtitle="Spiritual Education"
         description="All our philosophy is Prabhupada-centered: rooted in Srila Prabhupada's books, the teachings of the Goswamis, and practical devotional life."
         image="/images/learn/six-goswamis.jpeg"
-        contentClassName="lg:pt-[27rem]"
+        className="lg:min-h-[680px]"
       />
 
-      <section className="bg-temple-bg py-section">
+      <section className="bg-temple-bg pt-section-sm pb-section">
         <div className="content-width section-padding">
           <div className="mx-auto mb-12 max-w-3xl text-center">
             <span className="eyebrow mb-3 block">Programmes & Classes</span>
@@ -192,7 +192,7 @@ export default function LearnPage() {
         </div>
       </section>
 
-      <section className="bg-temple-cream py-16">
+      <section className="bg-temple-cream pt-8 pb-16">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[0.84fr_1fr] lg:items-start">
             <div>
@@ -236,7 +236,7 @@ export default function LearnPage() {
         </div>
       </section>
 
-      <section className="bg-temple-brown py-16 text-sand">
+      <section className="bg-temple-brown pt-8 pb-16 text-sand">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-2xl">
             <span className="eyebrow mb-3 block text-gold/75">Community Learning</span>
