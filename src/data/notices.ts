@@ -24,7 +24,7 @@ export const siteNotices: SiteNotice[] = [
     body: "Reserve your place for the four-day Kirtan Safari celebration at ISKCON Nairobi, beginning with Adivas on 27 August.",
     dateLabel: "27-30 Aug 2026",
     tag: "Festival",
-    href: "/festivals/kirtan-safari/register",
+    href: "/festivals/kirtan-safari",
     priority: "high",
   },
   {
