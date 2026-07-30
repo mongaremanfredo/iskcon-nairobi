@@ -8,7 +8,7 @@ export const blogPosts = [
     category: "Scriptural Reflection",
     date: "July 2026",
     readTime: "12 min read",
-    image: "/images/blog/jharikhanda-forest-path.jpg",
+    image: "/images/blog/jharikhanda-mahaprabhu-animals.jpeg",
     href: "/blog/jharikhanda-forest-kirtan-safari",
   },
 ];

@@ -16,7 +16,7 @@ export default function BlogPage() {
     <>
       <section className="relative overflow-hidden bg-dusk pt-32 text-temple-cream sm:pt-36 lg:pt-40">
         <img
-          src="/images/blog/jharikhanda-forest-path.jpg"
+          src="/images/blog/jharikhanda-mahaprabhu-animals.jpeg"
           alt=""
           className="absolute inset-0 h-full w-full object-cover opacity-42"
         />
