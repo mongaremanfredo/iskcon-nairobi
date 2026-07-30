@@ -8,7 +8,7 @@ import { templeInfo } from "@/data/site";
 
 const siteUrl = "https://iskcon-nairobi.vercel.app";
 const previewImage = "/brand/og-image.jpg";
-const iconVersion = "v=iskcon-tab-icon-2026-07-30-2";
+const iconVersion = "v=pwa-safe-icon-2026-07-30";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
   "Visit ISKCON Nairobi, Sri Sri Radha Bankebihari Temple: daily darshan, kirtan, prasadam, spiritual education, festivals, cow protection, and service in East Africa.";
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     title: "ISKCON Nairobi",
     statusBarStyle: "black-translucent",
   },
-  manifest: "/manifest.webmanifest",
+  manifest: `/manifest.webmanifest?${iconVersion}`,
   openGraph: {
     type: "website",
     locale: "en_US",
