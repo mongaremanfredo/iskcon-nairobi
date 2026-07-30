@@ -15,12 +15,12 @@ const images = [
   { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Janmashtami celebration mood", category: "Festivals" },
   { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Dawn kirtan on the Kenyan savanna", category: "Kirtan Safari" },
   { src: "/images/placeholders/iskcon-food-for-life.jpg", caption: "Food For Life prasadam service", category: "Food For Life" },
-  { src: "/images/placeholders/cows-pasture-pixabay.jpg", caption: "Cow protection and farm service", category: "Farm & Goshala" },
+  { src: "/images/thika-farm/thika-farm-visit-gate.jpg", caption: "Thika Farm and goshala visit", category: "Farm & Goshala" },
   { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Students during morning study", category: "HKTC" },
   { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Temple programme - evening arati", category: "Temple Life" },
   { src: "/images/placeholders/iskcon-ratha-yatra-moscow.jpg", caption: "Kirtan Safari - sunset session", category: "Kirtan Safari" },
   { src: "/images/placeholders/iskcon-ratha-yatra.jpg", caption: "Ratha Yatra procession atmosphere", category: "Festivals" },
-  { src: "/images/placeholders/cows-pasture-pixabay.jpg", caption: "Organic farming at Thika", category: "Farm & Goshala" },
+  { src: "/images/thika-farm/thika-farm-visit-gate.jpg", caption: "Organic farming and cow protection at Thika", category: "Farm & Goshala" },
   { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Gaura Purnima celebration mood", category: "Festivals" },
   { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "African sunrise near Nairobi", category: "Temple Life" },
   { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Golden hour over Kenya", category: "Temple Life" },
@@ -57,6 +57,24 @@ export default function MediaPage() {
               className="btn-primary justify-center text-xs"
             >
               View Full Album
+            </a>
+          </div>
+
+          <div className="mb-10 bg-white border border-temple-sand p-6 lg:p-8 flex flex-col lg:flex-row lg:items-center justify-between gap-5">
+            <div>
+              <span className="eyebrow block mb-2">Thika Farm & Goshala</span>
+              <h2 className="font-playfair text-2xl font-semibold text-ink">Farm Visit Album</h2>
+              <p className="font-inter text-ink/60 text-sm mt-2 max-w-2xl">
+                A fuller visit album is hosted on Google Drive so the website can stay light while the farm gallery grows.
+              </p>
+            </div>
+            <a
+              href="https://drive.google.com/drive/folders/10o0rJGeiIebEz0DRN1xsaiHlxrrF8Gtw?usp=drive_link"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-primary justify-center text-xs"
+            >
+              View Farm Album
             </a>
           </div>
 

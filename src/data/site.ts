@@ -70,7 +70,7 @@ export const projects = [
     title: "Thika Farm & Goshala",
     subtitle: "Organic Farming & Cow Protection",
     description: "Sacred land where cow protection, natural farming, and devotional community life come together outside Nairobi.",
-    image: "/images/placeholders/cows-pasture-pixabay.jpg",
+    image: "/images/thika-farm/thika-farm-visit-gate.jpg",
     href: "/projects/thika-farm",
     tag: "Agriculture",
   },

@@ -26,11 +26,13 @@ const galleryImages = [
     imageClass: "h-[170px] sm:h-[240px] lg:h-full",
   },
   {
-    src: "/images/placeholders/cows-pasture-pixabay.jpg",
-    caption: "Cows at the Thika Goshala Farm",
+    src: "/images/thika-farm/thika-farm-visit-gate.jpg",
+    caption: "A visit to the Thika Farm and Goshala",
     tone: "Goshala",
     className: "lg:col-span-4",
     imageClass: "h-[170px] sm:h-[240px] lg:h-full",
+    href: "https://drive.google.com/drive/folders/10o0rJGeiIebEz0DRN1xsaiHlxrrF8Gtw?usp=drive_link",
+    external: true,
   },
   {
     src: "/images/placeholders/hare-krishna-harinam.jpg",
@@ -71,7 +73,9 @@ export default function GallerySection() {
             return (
               <Link
                 key={img.caption}
-                href="/media"
+                href={img.href ?? "/media"}
+                target={img.external ? "_blank" : undefined}
+                rel={img.external ? "noopener noreferrer" : undefined}
                 className={`group relative overflow-hidden border border-temple-sand bg-dusk shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover ${
                   isLead || isWide ? "col-span-2" : ""
                 } ${img.className}`}
