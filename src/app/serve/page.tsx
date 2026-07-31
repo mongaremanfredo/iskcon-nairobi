@@ -22,7 +22,7 @@ export default function ServePage() {
         subtitle="Volunteer Opportunities"
         description="Join hundreds of dedicated volunteers whose selfless service sustains ISKCON Nairobi's programmes across Kenya."
         image="/images/serve/krishna-balarama-service.jpeg"
-        className="lg:min-h-[680px]"
+        className="sm:min-h-[500px]"
       />
       <section className="pt-section-sm pb-section bg-temple-bg">
         <div className="content-width section-padding">
