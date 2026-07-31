@@ -24,7 +24,8 @@ export default function ContactPage() {
         titleAccent="Touch"
         subtitle="Contact Us"
         image="/images/placeholders/hare-krishna-harinam.jpg"
-        height="sm"
+        height="md"
+        className="sm:min-h-[500px]"
       />
 
       <section className="py-section bg-temple-bg">
