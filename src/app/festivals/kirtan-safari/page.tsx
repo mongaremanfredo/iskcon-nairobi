@@ -518,10 +518,10 @@ export default function KirtanSafariPage() {
                   marginBottom: "1.25rem",
                 }}
               >
-                This year carries special significance - ISKCON Nairobi marks its{" "}
+                This year carries special significance - ISKCON marks its{" "}
                 <span style={{ color: "#f6e2b1", fontWeight: 600 }}>60th anniversary</span>,
                 making Kirtan Safari 2026 a historic celebration of six decades of
-                Krishna consciousness in East Africa.
+                Krishna consciousness.
               </p>
               <p
                 style={{
