@@ -44,7 +44,7 @@ export default function LeadershipPage() {
         titleAccent="& Service"
         subtitle="Guidance Structure"
         description="ISKCON Nairobi carries Srila Prabhupada's vision through senior spiritual guidance and a practical departmental service model."
-        image="/images/leadership/umapati-prabhu.jpg"
+        image="/images/leadership/umapati-prabhu-web.jpg"
         height="md"
         className="sm:min-h-[500px]"
       />
