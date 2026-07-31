@@ -11,4 +11,15 @@ export const blogPosts = [
     image: "/images/blog/jharikhanda-mahaprabhu-animals.jpeg",
     href: "/blog/jharikhanda-forest-kirtan-safari",
   },
+  {
+    href: "/blog/sri-nama-sankirtana-adhivasa",
+    image: "/images/blog/chaitanya-dances-with-followers.jpg",
+    title: "The Invitation Before the Festival",
+    category: "Song & Translation",
+    date: "July 2026",
+    readTime: "4 min read",
+    subtitle: "Vrindavana Dasa Thakura's evening summons to the Vaishnavas",
+    excerpt:
+      "A verse-by-verse translation of the traditional adhivasa-kirtana sung the evening before every great festival, with the life of its author, Vrindavana Dasa Thakura.",
+  },
 ];

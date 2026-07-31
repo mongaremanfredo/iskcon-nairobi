@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Clock, Leaf, Music2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, BookOpen, Clock, Leaf, Music2 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { blogPosts } from "@/data/blog";
 
@@ -10,8 +11,13 @@ export const metadata: Metadata = {
     "Devotional essays, festival stories, and scriptural reflections from ISKCON Nairobi.",
 };
 
+const categoryIcons: Record<string, LucideIcon> = {
+  "Scriptural Reflection": BookOpen,
+  "Song & Translation": Music2,
+};
+
 export default function BlogPage() {
-  const featured = blogPosts[0];
+  const [featured, ...rest] = blogPosts;
 
   return (
     <>
@@ -43,12 +49,12 @@ export default function BlogPage() {
                   Featured
                 </span>
                 <span className="bg-dusk/72 px-3 py-1 font-inter text-[0.62rem] font-bold uppercase tracking-[0.14em] text-temple-cream">
-                  Source study
+                  {featured.category}
                 </span>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
                 <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-gold">
-                  {featured.category}
+                  {featured.date}
                 </p>
                 <h2 className="mt-3 max-w-2xl font-playfair text-3xl font-semibold leading-tight text-white text-shadow sm:text-5xl">
                   {featured.title}
@@ -101,6 +107,70 @@ export default function BlogPage() {
               </Link>
             </article>
           </div>
+
+          {rest.length > 0 && (
+            <div className="mt-16 sm:mt-20">
+              <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-temple-sand pb-4">
+                <div>
+                  <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-gold">
+                    Temple Journal
+                  </p>
+                  <h3 className="mt-2 font-playfair text-2xl font-semibold text-ink sm:text-3xl">
+                    More from the Journal
+                  </h3>
+                </div>
+                <p className="font-inter text-xs uppercase tracking-[0.14em] text-ink/45">
+                  {rest.length} {rest.length === 1 ? "story" : "stories"}
+                </p>
+              </div>
+
+              <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+                {rest.map((post) => {
+                  const Icon = categoryIcons[post.category] ?? Leaf;
+                  return (
+                    <Link
+                      key={post.href}
+                      href={post.href}
+                      className="group flex flex-col overflow-hidden border border-temple-sand bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover"
+                    >
+                      <div className="relative h-44 overflow-hidden">
+                        <img
+                          src={post.image}
+                          alt=""
+                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-dusk/45 via-transparent to-transparent" />
+                        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 bg-white/92 px-2.5 py-1 font-inter text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-dusk">
+                          <Icon size={12} className="text-gold" />
+                          {post.category}
+                        </span>
+                      </div>
+
+                      <div className="flex flex-1 flex-col p-6">
+                        <div className="flex items-center gap-3 font-inter text-[0.68rem] uppercase tracking-[0.12em] text-ink/45">
+                          <span>{post.date}</span>
+                          <span className="h-1 w-1 rounded-full bg-gold" />
+                          <span>{post.readTime}</span>
+                        </div>
+                        <h4 className="mt-3 font-playfair text-xl font-semibold leading-snug text-ink">
+                          {post.title}
+                        </h4>
+                        <p className="mt-2 font-inter text-sm leading-relaxed text-ink/60">
+                          {post.subtitle}
+                        </p>
+                        <p className="mt-3 flex-1 font-inter text-sm leading-relaxed text-ink/55">
+                          {post.excerpt}
+                        </p>
+                        <span className="mt-5 inline-flex items-center gap-1.5 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all group-hover:gap-2.5">
+                          Read the story <ArrowUpRight size={12} />
+                        </span>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+          )}
         </div>
       </section>
     </>
