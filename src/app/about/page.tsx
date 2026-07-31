@@ -135,7 +135,8 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="ISKCON Nairobi"
+        title="About ISKCON"
+        titleAccent="Nairobi"
         subtitle="Sri Sri Radha Bankebihari Temple"
         description="A temple for all: worship, learning, prasadam, kirtan, service, and community in the heart of Nairobi."
         image="/images/iskcon-nairobi-aerial.jpg"
