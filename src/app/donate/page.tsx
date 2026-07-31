@@ -18,7 +18,7 @@ export default function DonatePage() {
         subtitle="Give With Purpose"
         description="Your contribution directly sustains temple worship, feeds thousands, protects cows, educates students, and celebrates festivals across East Africa."
         image="/images/donate/main-altar-offering.jpg"
-        className="lg:min-h-[680px]"
+        className="sm:min-h-[500px]"
       />
 
       {/* Payment methods */}
