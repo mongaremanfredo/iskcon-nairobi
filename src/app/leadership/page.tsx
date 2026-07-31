@@ -46,6 +46,7 @@ export default function LeadershipPage() {
         description="ISKCON Nairobi carries Srila Prabhupada's vision through senior spiritual guidance and a practical departmental service model."
         image="/images/leadership/umapati-prabhu.jpg"
         height="md"
+        className="sm:min-h-[500px]"
       />
 
       <section className="bg-temple-bg py-section bg-temple-texture">
