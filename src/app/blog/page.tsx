@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, Clock, Leaf, Music2 } from "lucide-react";
+import PageHero from "@/components/ui/PageHero";
 import { blogPosts } from "@/data/blog";
 
 export const metadata: Metadata = {
@@ -14,37 +15,15 @@ export default function BlogPage() {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-dusk pt-32 text-temple-cream sm:pt-36 lg:pt-40">
-        <img
-          src="/images/blog/jharikhanda-mahaprabhu-animals.jpeg"
-          alt=""
-          className="absolute inset-0 h-full w-full object-cover opacity-42"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-dusk via-dusk/82 to-dusk/58" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-
-        <div className="relative z-10 content-width section-padding pb-[clamp(3rem,7vw,6rem)]">
-          <div className="grid gap-8 lg:grid-cols-[0.82fr_0.18fr] lg:items-end">
-            <div className="max-w-4xl">
-              <span className="eyebrow block text-gold">Temple Journal</span>
-              <h1 className="mt-4 font-playfair text-[clamp(2.7rem,9vw,6.2rem)] font-semibold leading-[0.96] text-white text-shadow">
-                Devotional stories with roots
-              </h1>
-              <p className="mt-6 max-w-2xl font-inter text-sm leading-relaxed text-temple-cream/72 sm:text-base">
-                A quieter space for the meaning behind festivals, scriptural themes, temple culture, and the living practice of Krishna consciousness in Nairobi.
-              </p>
-            </div>
-            <div className="hidden border-l border-gold/30 pl-5 lg:block">
-              <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
-                First essay
-              </p>
-              <p className="mt-2 font-playfair text-2xl leading-tight text-white">
-                Jharikhanda and Kirtan Safari
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="Devotional"
+        titleAccent="stories with roots"
+        subtitle="Temple Journal"
+        description="A quieter space for the meaning behind festivals, scriptural themes, temple culture, and the living practice of Krishna consciousness in Nairobi."
+        image="/images/blog/jharikhanda-mahaprabhu-animals.jpeg"
+        height="md"
+        className="sm:min-h-[500px]"
+      />
 
       <section className="bg-temple-bg bg-temple-texture py-[clamp(2.7rem,12vw,3.8rem)] sm:py-[clamp(3.5rem,5vw,5.5rem)]">
         <div className="content-width section-padding">
