@@ -37,7 +37,8 @@ export default function MediaPage() {
         subtitle="Media Library"
         description="Life at ISKCON Nairobi through the lens - festivals, farm, temple worship, and the beauty of devotional community in East Africa."
         image="/images/placeholders/hare-krishna-harinam.jpg"
-        height="sm"
+        height="md"
+        className="sm:min-h-[500px]"
       />
 
       <section className="py-section bg-temple-bg">
