@@ -158,9 +158,8 @@ export default function KirtanSafariPage() {
             position: "absolute",
             top: "6rem",
             right: "1.5rem",
-            background: "rgba(214,156,43,0.15)",
-            border: "1px solid rgba(214,156,43,0.5)",
-            backdropFilter: "blur(8px)",
+            background: "#f6e2b1",
+            border: "1px solid rgba(183,134,38,0.45)",
             padding: "0.5rem 0.875rem",
             textAlign: "center",
           }}
@@ -168,19 +167,20 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
-              color: "#d69c2b",
+              color: "#071c10",
               fontSize: "0.6rem",
+              fontWeight: 700,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               margin: 0,
             }}
           >
-            ISKCON Nairobi
+            ISKCON
           </p>
           <p
             style={{
               fontFamily: "var(--font-playfair, serif)",
-              color: "#f6e2b1",
+              color: "#071c10",
               fontSize: "1.4rem",
               fontWeight: 700,
               margin: "0.1rem 0",
@@ -192,7 +192,7 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
-              color: "rgba(246,226,177,0.7)",
+              color: "rgba(7,28,16,0.7)",
               fontSize: "0.55rem",
               letterSpacing: "0.15em",
               margin: 0,
@@ -1327,7 +1327,7 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-hero {
-            min-height: 720px !important;
+            min-height: 860px !important;
           }
 
           .kirtan-safari-page .ks-hero > div:first-of-type {
