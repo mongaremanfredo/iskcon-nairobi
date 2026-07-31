@@ -36,7 +36,7 @@ export default function DonatePage() {
       </div>
 
       {/* Donation paths */}
-      <section className="pt-section-sm pb-section bg-temple-bg">
+      <section className="pt-section-sm pb-section bg-temple-bg sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
             <span className="eyebrow block mb-3">Choose Your Cause</span>

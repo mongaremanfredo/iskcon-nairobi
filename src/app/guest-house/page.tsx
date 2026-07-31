@@ -32,7 +32,7 @@ export default function GuestHousePage() {
       />
 
       {/* Intro */}
-      <section className="py-section bg-temple-bg">
+      <section className="py-section bg-temple-bg sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
@@ -58,7 +58,7 @@ export default function GuestHousePage() {
       </section>
 
       {/* Rooms */}
-      <section className="py-section bg-temple-cream">
+      <section className="py-section bg-temple-cream sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
             <span className="eyebrow block mb-3">Accommodation</span>
@@ -99,7 +99,7 @@ export default function GuestHousePage() {
       </section>
 
       {/* Booking enquiry */}
-      <section className="py-section bg-temple-brown">
+      <section className="py-section bg-temple-brown sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
