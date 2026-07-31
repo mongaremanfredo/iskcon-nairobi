@@ -16,7 +16,8 @@ export default function FoodForLifePage() {
         subtitle="Prasādam Distribution"
         description="Thousands of free sanctified meals distributed every month across Nairobi - driven by compassion, sustained by community."
         image="/images/food-for-life/prasadam-students.jpg"
-        height="lg"
+        height="md"
+        className="sm:min-h-[500px]"
       />
 
       {/* Impact numbers */}

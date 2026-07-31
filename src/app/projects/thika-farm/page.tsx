@@ -16,7 +16,8 @@ export default function ThikaFarmPage() {
         subtitle="Organic Farming & Cow Protection"
         description="Forty acres of sacred land in the Kenyan highlands - where cow protection, organic farming, and devotional community life thrive together."
         image="/images/thika-farm/thika-farm-visit-gate.jpg"
-        height="lg"
+        height="md"
+        className="sm:min-h-[500px]"
       />
 
       {/* Overview */}
