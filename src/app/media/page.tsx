@@ -11,19 +11,7 @@ const categories = ["All", "Temple Life", "Festivals", "Farm & Goshala", "Food F
 
 const images = [
   { src: "/images/iskcon-nairobi-main-altar-thumb.jpg", caption: "Main altar at ISKCON Nairobi", category: "Temple Life" },
-  { src: "/images/iskcon-nairobi-main-altar-wide-thumb.jpg", caption: "Full altar view with three sections", category: "Temple Life" },
-  { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Janmashtami celebration mood", category: "Festivals" },
-  { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Dawn kirtan on the Kenyan savanna", category: "Kirtan Safari" },
-  { src: "/images/placeholders/iskcon-food-for-life.jpg", caption: "Food For Life prasadam service", category: "Food For Life" },
-  { src: "/images/thika-farm/thika-farm-visit-gate.jpg", caption: "Thika Farm and goshala visit", category: "Farm & Goshala" },
-  { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Students during morning study", category: "HKTC" },
-  { src: "/images/placeholders/hare-krishna-harinam.jpg", caption: "Temple programme - evening arati", category: "Temple Life" },
-  { src: "/images/placeholders/iskcon-ratha-yatra-moscow.jpg", caption: "Kirtan Safari - sunset session", category: "Kirtan Safari" },
-  { src: "/images/placeholders/iskcon-ratha-yatra.jpg", caption: "Ratha Yatra procession atmosphere", category: "Festivals" },
   { src: "/images/thika-farm/thika-farm-visit-gate.jpg", caption: "Organic farming and cow protection at Thika", category: "Farm & Goshala" },
-  { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Gaura Purnima celebration mood", category: "Festivals" },
-  { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "African sunrise near Nairobi", category: "Temple Life" },
-  { src: "/images/placeholders/iskcon-temple-bangalore.jpg", caption: "Golden hour over Kenya", category: "Temple Life" },
 ];
 
 export default function MediaPage() {
@@ -48,7 +36,7 @@ export default function MediaPage() {
               <span className="eyebrow block mb-2">HKTC Nairobi</span>
               <h2 className="font-playfair text-2xl font-semibold text-ink">Graduation Ceremony Album</h2>
               <p className="font-inter text-ink/60 text-sm mt-2 max-w-2xl">
-                To keep this website fast, the full graduation gallery stays in Google Photos while selected images can be curated locally when needed.
+                Enjoy the full gallery from the HKTC Graduation Ceremony on Google Photos.
               </p>
             </div>
             <a
@@ -66,7 +54,7 @@ export default function MediaPage() {
               <span className="eyebrow block mb-2">Thika Farm & Goshala</span>
               <h2 className="font-playfair text-2xl font-semibold text-ink">Farm Visit Album</h2>
               <p className="font-inter text-ink/60 text-sm mt-2 max-w-2xl">
-                A fuller visit album is hosted on Google Drive so the website can stay light while the farm gallery grows.
+                View the complete Farm Visit photo collection on Google Drive.
               </p>
             </div>
             <a
