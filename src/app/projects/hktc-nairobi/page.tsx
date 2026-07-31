@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
+import StickySubNav from "@/components/hktc/StickySubNav";
+import Timeline from "@/components/hktc/Timeline";
+import Gallery from "@/components/hktc/Gallery";
+import FAQAccordion from "@/components/hktc/FAQAccordion";
 import { templeInfo } from "@/data/site";
 import {
   ArrowRight,
@@ -141,7 +145,10 @@ export default function HKTCNairobiPage() {
         contentClassName="sm:!pb-10"
       />
 
-      <section className="bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+      <StickySubNav />
+
+      {/* OVERVIEW */}
+      <section id="overview" className="scroll-mt-32 bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
@@ -213,7 +220,8 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+      {/* STUDENT LIFE */}
+      <section id="student-life" className="scroll-mt-32 bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
@@ -247,7 +255,8 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+      {/* DAILY RHYTHM */}
+      <section id="daily-rhythm" className="scroll-mt-32 bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-3xl">
             <span className="eyebrow mb-3 block">Daily Classes</span>
@@ -282,7 +291,8 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+      {/* BOOK PROGRAMME */}
+      <section id="book-programme" className="scroll-mt-32 bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-start">
             <div>
@@ -354,7 +364,53 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+      {/* TIMELINE — NEW */}
+      <section id="timeline" className="scroll-mt-32 bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+        <div className="content-width section-padding">
+          <div className="mb-10 max-w-2xl">
+            <span className="eyebrow mb-3 block text-gold/75">Our Story</span>
+            <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
+              A Decade of
+              <br />
+              <em className="text-gold not-italic font-normal">Building Students</em>
+            </h2>
+          </div>
+          <div className="text-sand [&_.eyebrow]:text-gold/75 [&_h3]:text-white [&_p]:text-sand/62 [&_li]:border-sand/15">
+            <Timeline />
+          </div>
+        </div>
+      </section>
+
+      {/* GALLERY — NEW */}
+      <section id="gallery" className="scroll-mt-32 bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+        <div className="content-width section-padding">
+          <div className="mb-10 max-w-2xl">
+            <span className="eyebrow mb-3 block">Moments at HKTC</span>
+            <h2 className="section-title">
+              Life in
+              <br />
+              <em className="text-gold not-italic font-normal">Pictures</em>
+            </h2>
+            <p className="mt-5 font-inter text-sm leading-relaxed text-ink/62 sm:text-base">
+              A glimpse into daily life at HKTC Nairobi. Tap any photo to see it full size.
+            </p>
+          </div>
+          <Gallery />
+          <a
+            href="https://www.instagram.com/hktc.africa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-6 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold hover:text-ink"
+          >
+            <Camera size={14} />
+            More on Instagram @hktc.africa
+            <ExternalLink size={13} />
+          </a>
+        </div>
+      </section>
+
+      {/* STUDENT CARE */}
+      <section id="student-care" className="scroll-mt-32 bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div>
@@ -385,7 +441,23 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+      {/* FAQ — NEW */}
+      <section id="faq" className="scroll-mt-32 bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
+        <div className="content-width section-padding">
+          <div className="mb-10 max-w-2xl">
+            <span className="eyebrow mb-3 block">Common Questions</span>
+            <h2 className="section-title">
+              Frequently
+              <br />
+              <em className="text-gold not-italic font-normal">Asked Questions</em>
+            </h2>
+          </div>
+          <FAQAccordion />
+        </div>
+      </section>
+
+      {/* SUPPORT */}
+      <section id="support" className="scroll-mt-32 bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
