@@ -21,7 +21,7 @@ export default function ThikaFarmPage() {
       />
 
       {/* Overview */}
-      <section className="py-section bg-temple-bg">
+      <section className="py-section bg-temple-bg sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
@@ -45,7 +45,7 @@ export default function ThikaFarmPage() {
       </section>
 
       {/* Activities */}
-      <section className="py-section bg-temple-cream">
+      <section className="py-section bg-temple-cream sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
             <span className="eyebrow block mb-3">What We Do</span>

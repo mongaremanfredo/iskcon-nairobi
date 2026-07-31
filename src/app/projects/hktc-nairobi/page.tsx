@@ -141,7 +141,7 @@ export default function HKTCNairobiPage() {
         contentClassName="sm:!pb-10"
       />
 
-      <section className="bg-temple-bg py-section">
+      <section className="bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
@@ -213,7 +213,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-brown py-section text-sand">
+      <section className="bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
@@ -247,7 +247,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-cream py-section">
+      <section className="bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-3xl">
             <span className="eyebrow mb-3 block">Daily Classes</span>
@@ -282,7 +282,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-bg py-section">
+      <section className="bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-start">
             <div>
@@ -354,7 +354,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-cream py-section">
+      <section className="bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
             <div>
@@ -385,7 +385,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      <section className="bg-temple-brown py-section text-sand">
+      <section className="bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
