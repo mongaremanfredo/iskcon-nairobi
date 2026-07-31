@@ -49,7 +49,7 @@ export default function LeadershipPage() {
         className="sm:min-h-[500px]"
       />
 
-      <section className="bg-temple-bg py-section bg-temple-texture">
+      <section className="bg-temple-bg py-section bg-temple-texture sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
@@ -73,7 +73,7 @@ export default function LeadershipPage() {
       </section>
 
       {featured && (
-        <section className="bg-temple-brown py-section text-sand">
+        <section className="bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
           <div className="content-width section-padding">
             <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div className="relative">
@@ -104,7 +104,7 @@ export default function LeadershipPage() {
         </section>
       )}
 
-      <section className="bg-sand py-section">
+      <section className="bg-sand py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-12 text-center">
             <span className="eyebrow mb-3 block">Key Service Leaders</span>
@@ -144,7 +144,7 @@ export default function LeadershipPage() {
         </div>
       </section>
 
-      <section className="bg-temple-bg py-section-sm">
+      <section className="bg-temple-bg py-section-sm sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
