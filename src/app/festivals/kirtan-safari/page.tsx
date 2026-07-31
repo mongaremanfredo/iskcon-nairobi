@@ -154,20 +154,22 @@ export default function KirtanSafariPage() {
 
         {/* Anniversary badge - top right */}
         <div
+          className="ks-badge"
           style={{
             position: "absolute",
-            top: "6rem",
-            right: "1.5rem",
-            background: "#f6e2b1",
-            border: "1px solid rgba(183,134,38,0.45)",
+            top: "7rem",
+            right: "max(52px, calc((100vw - 1320px) / 2 + 52px))",
+            background: "#D9A441",
+            border: "1px solid rgba(183,134,38,0.55)",
             padding: "0.5rem 0.875rem",
             textAlign: "center",
+            minWidth: "8.5rem",
           }}
         >
           <p
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
-              color: "#071c10",
+              color: "#3A2A24",
               fontSize: "0.6rem",
               fontWeight: 700,
               letterSpacing: "0.2em",
@@ -180,7 +182,7 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-playfair, serif)",
-              color: "#071c10",
+              color: "#3A2A24",
               fontSize: "1.4rem",
               fontWeight: 700,
               margin: "0.1rem 0",
@@ -192,7 +194,7 @@ export default function KirtanSafariPage() {
           <p
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
-              color: "rgba(7,28,16,0.7)",
+              color: "rgba(58,42,36,0.72)",
               fontSize: "0.55rem",
               letterSpacing: "0.15em",
               margin: 0,
@@ -1353,7 +1355,7 @@ export default function KirtanSafariPage() {
             max-width: 100% !important;
           }
 
-          .kirtan-safari-page .ks-hero > div[style*="top: 6rem"] {
+          .kirtan-safari-page .ks-hero .ks-badge {
             top: 4.5rem !important;
             right: 1rem !important;
             transform: scale(0.86);
