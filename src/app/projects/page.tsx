@@ -24,7 +24,8 @@ export default function ProjectsPage() {
         subtitle="Service in Action"
         description="Education, prasadam distribution, festivals, cow protection, and community care rooted in Krishna consciousness."
         image="/images/placeholders/iskcon-temple-bangalore.jpg"
-        height="sm"
+        height="md"
+        className="sm:min-h-[500px]"
       />
 
       <section className="py-section bg-temple-bg">
