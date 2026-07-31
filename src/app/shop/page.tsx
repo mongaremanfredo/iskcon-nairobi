@@ -26,6 +26,7 @@ export default function ShopPage() {
         subtitle="Artisanal Temple Sweets"
         description="Handcrafted Vaishnava sweets prepared with pure ingredients, devotion, and the highest culinary standards from our temple kitchen."
         image="/images/placeholders/iskcon-khichdi-prasadam.jpg"
+        className="sm:min-h-[500px]"
       />
 
       {/* Brand strip */}
