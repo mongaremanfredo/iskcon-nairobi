@@ -135,12 +135,12 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        title="About ISKCON"
-        titleAccent="Nairobi"
+        title="ISKCON Nairobi"
         subtitle="Sri Sri Radha Bankebihari Temple"
         description="A temple for all: worship, learning, prasadam, kirtan, service, and community in the heart of Nairobi."
         image="/images/iskcon-nairobi-aerial.jpg"
         height="md"
+        className="sm:min-h-[500px]"
       />
 
       <section className="bg-temple-bg py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
