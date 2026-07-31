@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, BookOpen, CalendarDays, ExternalLink, Leaf, Music2 } from "lucide-react";
+import PageHero from "@/components/ui/PageHero";
 
 const sourceUrl = "https://vedabase.io/en/library/cc/madhya/17/";
 const creditUrl = "https://pin.it/1DvGSgZr7";
@@ -74,36 +75,25 @@ const imageAfterParagraph = 14;
 export default function JharikhandaBlogPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-dusk pt-32 text-temple-cream sm:pt-36 lg:pt-40">
-        <img
-          src={heroImage}
-          alt="Sri Chaitanya Mahaprabhu with animals in the forest of Jharikhanda"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-48"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-dusk via-dusk/88 to-dusk/46" />
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
-
-        <div className="relative z-10 content-width section-padding pb-[clamp(3rem,7vw,6rem)]">
-          <div className="max-w-4xl">
-            <h1 className="font-playfair text-[clamp(2.55rem,9vw,6rem)] font-semibold leading-[0.98] text-white text-shadow">
-              The Forest That Learned to Chant
-            </h1>
-            <p className="mt-6 max-w-2xl font-inter text-sm leading-relaxed text-temple-cream/76 sm:text-base">
-              Sri Chaitanya Mahaprabhu and the animals of Jharikhanda
-            </p>
-            <div className="mt-7 flex flex-wrap gap-3 font-inter text-xs uppercase tracking-[0.14em] text-temple-cream/64">
-              <span>July 2026</span>
-              <span className="h-1 w-1 self-center rounded-full bg-gold" />
-              <span>12 min read</span>
-              <span className="h-1 w-1 self-center rounded-full bg-gold" />
-              <span>Chaitanya-caritamrita, Madhya-lila 17</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <PageHero
+        title="The Forest That"
+        titleAccent="Learned to Chant"
+        subtitle="Temple Journal"
+        description="Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17."
+        image={heroImage}
+        height="md"
+        className="sm:min-h-[500px]"
+      />
 
       <section className="bg-temple-bg py-[clamp(2.7rem,12vw,3.8rem)] sm:py-[clamp(3.5rem,5vw,5.5rem)]">
         <div className="content-width section-padding">
+          <div className="mb-12 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/55">
+            <span>July 2026</span>
+            <span className="h-1 w-1 self-center rounded-full bg-gold" />
+            <span>12 min read</span>
+            <span className="h-1 w-1 self-center rounded-full bg-gold" />
+            <span>Chaitanya-caritamrita, Madhya-lila 17</span>
+          </div>
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.68fr)_minmax(300px,0.32fr)] lg:items-start">
             <article className="mx-auto max-w-3xl">
               <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
