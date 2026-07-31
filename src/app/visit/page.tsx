@@ -18,7 +18,7 @@ export default function VisitPage() {
         subtitle="Plan Your Visit"
         description="The temple is open daily to all visitors. Come as you are - no prior experience needed."
         image="/images/iskcon-nairobi-aerial.jpg"
-        className="lg:min-h-[680px]"
+        className="sm:min-h-[500px]"
       />
 
       <section className="pt-section-sm pb-section bg-temple-bg">
