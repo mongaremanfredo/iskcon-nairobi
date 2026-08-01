@@ -91,7 +91,7 @@ export default function LearnPage() {
         titleAccent="& Study"
         subtitle="Spiritual Education"
         description="All our philosophy is Prabhupada-centered: rooted in Srila Prabhupada's books, the teachings of the Goswamis, and practical devotional life."
-        image="/images/learn/six-goswamis.jpeg"
+        image="/images/krishna-student.jpeg"
         className="sm:min-h-[500px]"
       />
 
