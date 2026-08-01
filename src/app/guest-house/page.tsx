@@ -26,7 +26,7 @@ export default function GuestHousePage() {
         titleAccent="& Retreat Stay"
         subtitle="Spiritual Hospitality"
         description="Rest, retreat, and reconnect at ISKCON Nairobi's temple accommodation - simple rooms with access to daily temple programmes."
-        image="/images/placeholders/iskcon-temple-bangalore.jpg"
+        image="/images/iskcon-thika-farm-2022.jpg"
         height="md"
         className="sm:min-h-[500px]"
       />
