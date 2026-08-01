@@ -11,7 +11,7 @@ type Props = {
 const generalFund = {
   title: "General Fund",
   description: "Support temple operations, urgent needs, worship, outreach, maintenance, and community service where help is most needed.",
-  image: "/images/placeholders/iskcon-temple-bangalore.jpg",
+  image: "/images/divine-childhood-of-krishna-vrindavan.jpeg",
   icon: "🙏",
   href: "/donate/general",
 };
