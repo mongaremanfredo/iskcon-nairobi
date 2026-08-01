@@ -23,7 +23,7 @@ export default function ProjectsPage() {
         titleAccent="Projects"
         subtitle="Service in Action"
         description="Education, prasadam distribution, festivals, cow protection, and community care rooted in Krishna consciousness."
-        image="/images/placeholders/iskcon-temple-bangalore.jpg"
+        image="/images/iskcon-nairobi-aerial.jpg"
         height="md"
         className="sm:min-h-[500px]"
       />
