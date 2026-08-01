@@ -39,7 +39,8 @@ export default async function DonateFundPage({ params }: Props) {
         subtitle="Support ISKCON Nairobi"
         description={fund.description}
         image={fund.image}
-        height="sm"
+        height="md"
+        className="sm:min-h-[500px]"
       />
 
       <section className="py-section bg-temple-bg">
