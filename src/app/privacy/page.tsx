@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const lastUpdated = "July 27, 2026";
-const platformUrl = "https://iskcon-nairobi.vercel.app";
+const platformUrl = "https://iskconnairobi.com";
 const templeAddress = templeInfo.addressLines.join(", ");
 
 const parseClauseTitle = (title: string) => {
