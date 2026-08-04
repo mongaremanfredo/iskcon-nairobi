@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { BookOpen, Camera, Ticket } from "lucide-react";
+import KirtanSafariRegistrationModal, {
+  KirtanSafariRegistrationButton,
+} from "./KirtanSafariRegistrationModal";
 
 /* Countdown hook */
 function useCountdown(target: Date) {
@@ -172,6 +175,7 @@ export default function KirtanSafariSection() {
         background: "#0b1f12",
       }}
     >
+      <KirtanSafariRegistrationModal />
       {/* Background image */}
       <div
         style={{
@@ -336,8 +340,7 @@ export default function KirtanSafariSection() {
             className="ks-cta-desktop"
             style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}
           >
-            <a
-              href="/festivals/kirtan-safari#registration"
+            <KirtanSafariRegistrationButton
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -351,10 +354,12 @@ export default function KirtanSafariSection() {
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
                 textDecoration: "none",
+                border: 0,
+                cursor: "pointer",
               }}
             >
               Register Now
-            </a>
+            </KirtanSafariRegistrationButton>
             <Link
               href="/festivals/kirtan-safari"
               style={{
@@ -496,8 +501,7 @@ export default function KirtanSafariSection() {
             className="ks-cta-mobile"
             style={{ display: "none", flexWrap: "wrap", gap: "0.875rem" }}
           >
-            <a
-              href="/festivals/kirtan-safari#registration"
+            <KirtanSafariRegistrationButton
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -511,10 +515,12 @@ export default function KirtanSafariSection() {
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
                 textDecoration: "none",
+                border: 0,
+                cursor: "pointer",
               }}
             >
               Register Now
-            </a>
+            </KirtanSafariRegistrationButton>
             <Link
               href="/festivals/kirtan-safari"
               style={{
@@ -678,7 +684,8 @@ export default function KirtanSafariSection() {
             letter-spacing: 0.12em !important;
           }
 
-          .ks-home-section a[style*="padding: 0.875rem 1.75rem"] {
+          .ks-home-section a[style*="padding: 0.875rem 1.75rem"],
+          .ks-home-section button[style*="padding: 0.875rem 1.75rem"] {
             width: 100% !important;
             justify-content: center !important;
             padding: 0.78rem 0.85rem !important;
