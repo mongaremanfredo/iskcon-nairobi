@@ -136,8 +136,12 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
 
     syncChromeHeight();
 
-    const observer = new ResizeObserver(syncChromeHeight);
-    observer.observe(bar);
+    let rafId = 0;
+    const loop = () => {
+      syncChromeHeight();
+      rafId = requestAnimationFrame(loop);
+    };
+    rafId = requestAnimationFrame(loop);
 
     const handleOrientationChange = () => {
       requestAnimationFrame(() => requestAnimationFrame(syncChromeHeight));
@@ -147,7 +151,7 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
     window.addEventListener("resize", syncChromeHeight);
 
     return () => {
-      observer.disconnect();
+      cancelAnimationFrame(rafId);
       window.removeEventListener("orientationchange", handleOrientationChange);
       window.removeEventListener("resize", syncChromeHeight);
     };

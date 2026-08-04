@@ -39,17 +39,28 @@ export default function Navigation() {
     const header = headerRef.current;
     if (!header) return;
 
+    let lastHeight = "";
+
     const syncHeaderHeight = () => {
-      document.documentElement.style.setProperty(
-        "--site-header-height",
-        `${header.offsetHeight}px`
-      );
+      const height = header.getBoundingClientRect().height;
+      const value = `${height}px`;
+      if (value !== lastHeight) {
+        lastHeight = value;
+        document.documentElement.style.setProperty("--site-header-height", value);
+      }
     };
 
     syncHeaderHeight();
 
-    const observer = new ResizeObserver(syncHeaderHeight);
-    observer.observe(header);
+    // Keep the header height continuously in sync. A rAF loop (instead of
+    // ResizeObserver/offsetHeight) guarantees the value tracks CSS transitions,
+    // the landscape media query, and device rotation without stale reads.
+    let rafId = 0;
+    const loop = () => {
+      syncHeaderHeight();
+      rafId = requestAnimationFrame(loop);
+    };
+    rafId = requestAnimationFrame(loop);
 
     const handleOrientationChange = () => {
       requestAnimationFrame(() => requestAnimationFrame(syncHeaderHeight));
@@ -59,7 +70,7 @@ export default function Navigation() {
     window.addEventListener("resize", syncHeaderHeight);
 
     return () => {
-      observer.disconnect();
+      cancelAnimationFrame(rafId);
       window.removeEventListener("orientationchange", handleOrientationChange);
       window.removeEventListener("resize", syncHeaderHeight);
     };
