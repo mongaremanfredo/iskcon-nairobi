@@ -314,11 +314,17 @@ export default function KirtanSafariRegistrationForm() {
         .ks-updates input {
           accent-color: #d69c2b;
           flex: 0 0 auto;
+          height: 1rem;
+          margin: 0;
+          padding: 0;
+          width: 1rem;
         }
 
         .ks-day-option span,
         .ks-updates span {
           color: rgba(255, 255, 255, 0.74);
+          display: block;
+          flex: 1 1 auto;
           font-size: 0.72rem;
           letter-spacing: 0.04em;
           line-height: 1.35;
