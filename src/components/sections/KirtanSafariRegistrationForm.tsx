@@ -50,9 +50,6 @@ export default function KirtanSafariRegistrationForm() {
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [message, setMessage] = useState("");
 
-  const scriptUrl = process.env.NEXT_PUBLIC_KIRTAN_SAFARI_REGISTRATION_URL;
-  const isConfigured = Boolean(scriptUrl);
-
   const selectedDaysText = useMemo(
     () => (form.days.length ? form.days.join(", ") : "Select at least one day"),
     [form.days]
@@ -73,12 +70,6 @@ export default function KirtanSafariRegistrationForm() {
 
   const submitRegistration = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    if (!isConfigured) {
-      setStatus("error");
-      setMessage("Registration is being connected to the temple response sheet. Please try again later.");
-      return;
-    }
 
     if (form.website) {
       setStatus("success");
@@ -106,21 +97,29 @@ export default function KirtanSafariRegistrationForm() {
     };
 
     try {
-      await fetch(scriptUrl!, {
+      const response = await fetch("/api/kirtan-safari-registration", {
         method: "POST",
-        mode: "no-cors",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8",
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
 
+      if (!response.ok) {
+        const result = (await response.json().catch(() => null)) as { message?: string } | null;
+        throw new Error(result?.message || "Registration failed");
+      }
+
       setStatus("success");
       setMessage("Thank you. Your Kirtan Safari registration has been received.");
       setForm(initialForm);
-    } catch {
+    } catch (error) {
       setStatus("error");
-      setMessage("We could not submit the form. Please check your connection and try again.");
+      setMessage(
+        error instanceof Error
+          ? error.message
+          : "We could not submit the form. Please check your connection and try again."
+      );
     }
   };
 
@@ -229,15 +228,9 @@ export default function KirtanSafariRegistrationForm() {
         </p>
       )}
 
-      {!isConfigured && (
-        <p className="ks-form-note">
-          Sheet connection pending. Add `NEXT_PUBLIC_KIRTAN_SAFARI_REGISTRATION_URL` after deploying the Apps Script web app.
-        </p>
-      )}
-
       <button
         type="submit"
-        disabled={status === "submitting" || !isConfigured}
+        disabled={status === "submitting"}
         className="ks-submit"
       >
         {status === "submitting" ? "Submitting..." : "Submit Registration"}
