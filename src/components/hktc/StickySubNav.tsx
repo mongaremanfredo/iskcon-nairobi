@@ -66,7 +66,7 @@ export default function StickySubNav() {
   return (
     <nav
       aria-label="HKTC page sections"
-      className="sticky top-[63px] z-[49] border-b border-temple-sand bg-white/95 backdrop-blur max-[900px]:top-[61px]"
+      className="sticky top-[var(--site-header-height,63px)] z-[49] border-b border-temple-sand bg-white/95 backdrop-blur"
     >
       <div className="content-width section-padding">
         <ul

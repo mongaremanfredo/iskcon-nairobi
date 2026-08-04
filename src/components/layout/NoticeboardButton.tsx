@@ -175,7 +175,9 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
         <div
           className={cn(
             "fixed left-3 right-3 z-[90] border border-gold/25 bg-[#fffaf0] text-ink shadow-[0_26px_80px_rgba(24,14,6,0.28)] sm:absolute sm:left-auto sm:right-0 sm:top-[calc(100%+0.85rem)] sm:w-[420px]",
-            statusBarVisible ? "top-[112px]" : "top-[76px]"
+            statusBarVisible
+              ? "top-[var(--site-chrome-height,112px)]"
+              : "top-[var(--site-header-height,76px)]"
           )}
         >
           <div className="border-b border-temple-sand bg-dusk px-4 py-4 text-sand">

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import type { MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -24,6 +24,7 @@ const primaryNavigation = [
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
   const pathname = usePathname();
   const forceSolidNav = pathname === "/privacy" || pathname === "/terms";
   const solidNav = scrolled || forceSolidNav;
@@ -33,6 +34,36 @@ export default function Navigation() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    const header = headerRef.current;
+    if (!header) return;
+
+    const syncHeaderHeight = () => {
+      document.documentElement.style.setProperty(
+        "--site-header-height",
+        `${header.offsetHeight}px`
+      );
+    };
+
+    syncHeaderHeight();
+
+    const observer = new ResizeObserver(syncHeaderHeight);
+    observer.observe(header);
+
+    const handleOrientationChange = () => {
+      requestAnimationFrame(() => requestAnimationFrame(syncHeaderHeight));
+    };
+
+    window.addEventListener("orientationchange", handleOrientationChange);
+    window.addEventListener("resize", syncHeaderHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("orientationchange", handleOrientationChange);
+      window.removeEventListener("resize", syncHeaderHeight);
+    };
+  }, [solidNav, isOpen]);
 
   const handleBrandClick = (event: MouseEvent<HTMLAnchorElement>) => {
     setIsOpen(false);
@@ -46,6 +77,7 @@ export default function Navigation() {
   return (
     <>
       <header
+        ref={headerRef}
         className={cn(
           "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
           solidNav

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { CalendarDays, Clock3 } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -110,6 +110,7 @@ interface TempleStatusBarProps {
 }
 
 export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
+  const barRef = useRef<HTMLDivElement>(null);
   const [now, setNow] = useState(() => new Date());
   const status = useMemo(() => getTempleStatus(now), [now]);
 
@@ -118,12 +119,48 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
     return () => window.clearInterval(timer);
   }, []);
 
+  useEffect(() => {
+    const bar = barRef.current;
+    if (!bar) return;
+
+    const syncChromeHeight = () => {
+      const headerHeight = parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue("--site-header-height")
+      );
+      const totalHeight =
+        (Number.isFinite(headerHeight) ? headerHeight : bar.offsetTop) +
+        (visible ? bar.offsetHeight : 0);
+
+      document.documentElement.style.setProperty("--site-chrome-height", `${totalHeight}px`);
+    };
+
+    syncChromeHeight();
+
+    const observer = new ResizeObserver(syncChromeHeight);
+    observer.observe(bar);
+
+    const handleOrientationChange = () => {
+      requestAnimationFrame(() => requestAnimationFrame(syncChromeHeight));
+    };
+
+    window.addEventListener("orientationchange", handleOrientationChange);
+    window.addEventListener("resize", syncChromeHeight);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("orientationchange", handleOrientationChange);
+      window.removeEventListener("resize", syncChromeHeight);
+    };
+  }, [visible, status]);
+
   return (
     <div
+      ref={barRef}
       className={cn(
-        "fixed left-0 right-0 top-[63px] z-[49] border-b border-gold/30 bg-[#f4dfad]/95 text-ink shadow-[0_10px_28px_rgba(64,34,17,0.13)] backdrop-blur-[14px] transition-all duration-300 max-[900px]:top-[61px]",
+        "fixed left-0 right-0 z-[49] border-b border-gold/30 bg-[#f4dfad]/95 text-ink shadow-[0_10px_28px_rgba(64,34,17,0.13)] backdrop-blur-[14px] transition-all duration-300",
         visible ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0 pointer-events-none"
       )}
+      style={{ top: "var(--site-header-height, 63px)" }}
       aria-hidden={!visible}
     >
       <div className="content-width section-padding">
