@@ -6,6 +6,7 @@ import {
   Mail,
   ExternalLink,
 } from "lucide-react";
+import KirtanSafariRegistrationForm from "@/components/sections/KirtanSafariRegistrationForm";
 
 export const metadata: Metadata = {
   title: "Kirtan Safari 2026",
@@ -345,9 +346,7 @@ export default function KirtanSafariPage() {
           {/* CTAs */}
           <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#registration"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -1133,9 +1132,7 @@ export default function KirtanSafariPage() {
                 &ldquo;The mantra was made for this moment.&rdquo;
               </p>
               <a
-                href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#registration"
                 style={{
                   display: "inline-flex",
                   alignItems: "center",
@@ -1154,6 +1151,79 @@ export default function KirtanSafariPage() {
                 Fill Registration Form →
               </a>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="registration"
+        style={{
+          background: "#071c10",
+          borderTop: "1px solid rgba(214,156,43,0.16)",
+          padding: "5rem 0",
+          scrollMarginTop: "7rem",
+        }}
+      >
+        <div className="content-width section-padding">
+          <div
+            className="ks-registration-layout"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "minmax(0, 0.82fr) minmax(320px, 1fr)",
+              gap: "clamp(2rem, 5vw, 4rem)",
+              alignItems: "start",
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "#d69c2b",
+                  fontSize: "0.65rem",
+                  letterSpacing: "0.2em",
+                  textTransform: "uppercase",
+                  marginBottom: "1rem",
+                }}
+              >
+                Registration
+              </p>
+              <h2
+                style={{
+                  fontFamily: "var(--font-playfair, serif)",
+                  color: "#fff",
+                  fontSize: "clamp(2rem, 5vw, 3.25rem)",
+                  lineHeight: 1.1,
+                  marginBottom: "1.25rem",
+                }}
+              >
+                Reserve Your<br />
+                <em style={{ color: "#d69c2b", fontStyle: "normal" }}>Kirtan Safari Place</em>
+              </h2>
+              <p
+                style={{
+                  fontFamily: "var(--font-inter, sans-serif)",
+                  color: "rgba(255,255,255,0.62)",
+                  lineHeight: 1.8,
+                  fontSize: "0.95rem",
+                  marginBottom: "1rem",
+                }}
+              >
+                Share your details so the team can plan prasadam, seating, updates, and festival care. Entry is free, and donations are welcome.
+              </p>
+              <p
+                style={{
+                  fontFamily: "var(--font-cormorant, serif)",
+                  color: "rgba(246,226,177,0.7)",
+                  fontSize: "1.1rem",
+                  fontStyle: "italic",
+                  lineHeight: 1.6,
+                }}
+              >
+                &ldquo;Every word a song, every step a dance.&rdquo;
+              </p>
+            </div>
+
+            <KirtanSafariRegistrationForm />
           </div>
         </div>
       </section>
@@ -1297,9 +1367,7 @@ export default function KirtanSafariPage() {
             </p>
           </div>
           <a
-            href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#registration"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -1385,6 +1453,11 @@ export default function KirtanSafariPage() {
           .kirtan-safari-page .ks-adhivas-card {
             grid-template-columns: 1fr !important;
             gap: 0 !important;
+          }
+
+          .kirtan-safari-page .ks-registration-layout {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
           }
 
           .kirtan-safari-page div[style*="background-attachment: fixed"] {

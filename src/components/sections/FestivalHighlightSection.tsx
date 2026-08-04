@@ -337,9 +337,7 @@ export default function KirtanSafariSection() {
             style={{ display: "flex", flexWrap: "wrap", gap: "0.875rem" }}
           >
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/festivals/kirtan-safari#registration"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
@@ -499,9 +497,7 @@ export default function KirtanSafariSection() {
             style={{ display: "none", flexWrap: "wrap", gap: "0.875rem" }}
           >
             <a
-              href="https://docs.google.com/forms/d/e/1FAIpQLSchu7XdbUX1PkLjgMEgB8WhKXdYOGMqVvMLgIRTcXG9bwTKRw/viewform"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/festivals/kirtan-safari#registration"
               style={{
                 display: "inline-flex",
                 alignItems: "center",
