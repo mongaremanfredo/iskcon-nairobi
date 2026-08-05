@@ -1,4 +1,5 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
+import { Fraunces, Inter, Source_Serif_4 } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
@@ -7,6 +8,7 @@ import PwaRegistrar from "@/components/system/PwaRegistrar";
 import CalendarNotificationManager from "@/components/system/CalendarNotificationManager";
 import NoticeNotificationManager from "@/components/system/NoticeNotificationManager";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
+import InstallPromptBanner from "@/components/ui/InstallPromptBanner";
 import { templeInfo } from "@/data/site";
 import { safeJsonLd } from "@/lib/security";
 
@@ -16,6 +18,34 @@ const iconVersion = "v=pwa-full-logo-safe-2026-07-30";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
   "Visit ISKCON Nairobi, Sri Sri Radha Bankebihari Temple: daily darshan, kirtan, prasadam, spiritual education, festivals, cow protection, and service in East Africa.";
+
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  axes: ["opsz", "SOFT"],
+  variable: "--font-fraunces",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-site-inter",
+  display: "swap",
+});
+
+const sourceSerif4 = Source_Serif_4({
+  subsets: ["latin"],
+  axes: ["opsz"],
+  style: ["normal", "italic"],
+  variable: "--font-source-serif-4",
+  display: "swap",
+});
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+  themeColor: "#3a2a24",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -81,7 +111,7 @@ export const metadata: Metadata = {
     shortcut: [`/favicon.ico?${iconVersion}`],
   },
   other: {
-    "theme-color": "#3a2a24",
+    "apple-mobile-web-app-capable": "yes",
   },
 };
 
@@ -122,7 +152,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className={`${fraunces.variable} ${inter.variable} ${sourceSerif4.variable}`}
+    >
       <body className="bg-sand text-dusk antialiased">
         <script
           type="application/ld+json"
@@ -136,6 +169,7 @@ export default function RootLayout({
         <SavannaDivider tone="sand" className="h-[7vw] min-h-6 sm:h-24" />
         <Footer />
         <WhatsAppWidget />
+        <InstallPromptBanner />
       </body>
     </html>
   );

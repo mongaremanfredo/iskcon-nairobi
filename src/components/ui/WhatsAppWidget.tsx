@@ -25,7 +25,7 @@ export default function WhatsAppWidget() {
       rel="noopener noreferrer"
       aria-label="Chat with ISKCON Nairobi on WhatsApp"
       className={cn(
-        "group fixed bottom-5 right-5 z-[60] flex items-center gap-3 rounded-full border border-gold/25 bg-dusk py-1.5 pl-1.5 pr-1.5 shadow-card transition-all duration-500 hover:border-gold/50 hover:shadow-card-hover max-[900px]:bottom-4 max-[900px]:right-4",
+        "group fixed bottom-[calc(1.25rem+env(safe-area-inset-bottom))] right-5 z-[60] flex items-center gap-3 rounded-full border border-gold/25 bg-dusk py-1.5 pl-1.5 pr-1.5 shadow-card transition-all duration-500 hover:border-gold/50 hover:shadow-card-hover max-[900px]:bottom-[calc(1rem+env(safe-area-inset-bottom))] max-[900px]:right-4",
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
       )}
     >

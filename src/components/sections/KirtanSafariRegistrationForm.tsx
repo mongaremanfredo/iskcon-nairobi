@@ -276,7 +276,7 @@ export default function KirtanSafariRegistrationForm() {
           background: rgba(7, 28, 16, 0.74);
           color: #fff;
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.9rem;
+          font-size: 1rem;
           outline: none;
           padding: 0.85rem 0.9rem;
         }

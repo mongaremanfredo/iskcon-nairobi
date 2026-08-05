@@ -57,6 +57,15 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
   }, []);
 
   useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     if (!isOpen) {
       return;
     }

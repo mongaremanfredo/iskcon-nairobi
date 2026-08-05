@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import type { MouseEvent } from "react";
+import type { CSSProperties, MouseEvent } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { X, ChevronRight, Phone } from "lucide-react";
@@ -34,6 +34,15 @@ export default function Navigation() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen]);
 
   useEffect(() => {
     const header = headerRef.current;
@@ -89,6 +98,7 @@ export default function Navigation() {
     <>
       <header
         ref={headerRef}
+        style={{ "--site-nav-py": solidNav ? "0.5rem" : undefined } as CSSProperties}
         className={cn(
           "site-nav fixed top-0 left-0 right-0 z-50 border-b px-5 shadow-none transition-all duration-300 max-[900px]:px-0",
           solidNav
