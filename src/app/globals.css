@@ -26,6 +26,7 @@
 /* Base styles */
 :root {
   --site-header-height: 63px;
+  --site-solid-header-height: 63px;
   --site-chrome-height: 63px;
 }
 

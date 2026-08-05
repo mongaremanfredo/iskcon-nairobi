@@ -48,7 +48,22 @@ export default function Navigation() {
     const header = headerRef.current;
     if (!header) return;
 
+    // `--site-header-height` mirrors the header's live height so the noticeboard
+    // panel stays aligned with the header at any scroll position.
+    //
+    // `--site-solid-header-height` is the header's resting (solid) height. The
+    // sticky sub-nav and temple status bar pin to this constant value so they
+    // never chase the header while it animates smaller on scroll. If they tracked
+    // the live height, the CSS var lags the painted header during the transition
+    // (rAF reads before this frame's interpolation is applied), so a pinned
+    // sub-nav lands a few pixels below the header and then snaps up as the var
+    // catches up. Pinning to a constant offset instead means a sub-nav pinned
+    // mid-transition sits behind the opaque header and emerges flush as the
+    // header finishes shrinking.
     let lastHeight = "";
+    let lastStable = -1;
+    let stableFrames = 0;
+    const STABLE_FRAMES_NEEDED = 3;
 
     const syncHeaderHeight = () => {
       const height = header.getBoundingClientRect().height;
@@ -57,11 +72,28 @@ export default function Navigation() {
         lastHeight = value;
         document.documentElement.style.setProperty("--site-header-height", value);
       }
+
+      // Only commit the solid height once the measurement stops changing, so
+      // the value never animates through the header transition.
+      const rounded = Math.round(height * 10) / 10;
+      if (rounded !== lastStable) {
+        lastStable = rounded;
+        stableFrames = 0;
+        return;
+      }
+      stableFrames += 1;
+      if (stableFrames === STABLE_FRAMES_NEEDED && solidNav) {
+        const solid = `${rounded}px`;
+        const currentSolid = document.documentElement.style.getPropertyValue("--site-solid-header-height");
+        if (solid !== currentSolid) {
+          document.documentElement.style.setProperty("--site-solid-header-height", solid);
+        }
+      }
     };
 
     syncHeaderHeight();
 
-    // Keep the header height continuously in sync. A rAF loop (instead of
+    // Keep the header heights continuously in sync. A rAF loop (instead of
     // ResizeObserver/offsetHeight) guarantees the value tracks CSS transitions,
     // the landscape media query, and device rotation without stale reads.
     let rafId = 0;

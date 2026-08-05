@@ -124,8 +124,12 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
     if (!bar) return;
 
     const syncChromeHeight = () => {
-      const headerHeight = parseFloat(
-        getComputedStyle(document.documentElement).getPropertyValue("--site-header-height")
+      const cs = getComputedStyle(document.documentElement);
+      const live = parseFloat(cs.getPropertyValue("--site-header-height"));
+      const solid = parseFloat(cs.getPropertyValue("--site-solid-header-height"));
+      const headerHeight = Math.min(
+        Number.isFinite(live) ? live : Infinity,
+        Number.isFinite(solid) ? solid : Infinity
       );
       const totalHeight =
         (Number.isFinite(headerHeight) ? headerHeight : bar.offsetTop) +
@@ -164,7 +168,7 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
         "fixed left-0 right-0 z-[49] border-b border-gold/30 bg-[#f4dfad]/95 text-ink shadow-[0_10px_28px_rgba(64,34,17,0.13)] backdrop-blur-[14px] transition-all duration-300",
         visible ? "translate-y-0 opacity-100" : "-translate-y-3 opacity-0 pointer-events-none"
       )}
-      style={{ top: "var(--site-header-height, 63px)" }}
+      style={{ top: "min(var(--site-header-height, 63px), var(--site-solid-header-height, 63px))" }}
       aria-hidden={!visible}
     >
       <div className="content-width section-padding">
