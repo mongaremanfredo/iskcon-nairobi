@@ -30,6 +30,22 @@
   --site-chrome-height: 63px;
 }
 
+/* Resting solid header heights per breakpoint, mirroring Navigation.tsx. The
+   sticky sub-nav and status bar pin to this constant so they never chase the
+   header while it animates smaller on scroll. Defaults must match the actual
+   solid header (logo/py/border) or the live-height fallback kicks in and the
+   pinned elements creep after the animating header. */
+@media (max-width: 900px) {
+  :root {
+    --site-solid-header-height: 61px;
+  }
+}
+@media (max-height: 520px) and (orientation: landscape) {
+  :root {
+    --site-solid-header-height: 51.2px;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
