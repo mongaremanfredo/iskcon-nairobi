@@ -52,7 +52,7 @@ export const metadata: Metadata = {
   applicationName: "ISKCON Nairobi",
   title: {
     default: siteTitle,
-    template: "%s | ISKCON Nairobi",
+    template: "%s",
   },
   description: siteDescription,
   keywords: ["ISKCON Nairobi", "Hare Krishna Kenya", "Krishna Consciousness", "HKTC", "Kirtan Safari", "Food For Life Kenya"],
