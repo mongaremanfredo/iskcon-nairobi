@@ -3,6 +3,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { BellRing, CalendarDays, ShieldCheck } from "lucide-react";
 import { calendarNotificationEvents } from "@/lib/calendarNotifications";
+import {
+  disablePushOnDevice,
+  enablePushOnDevice,
+  keepDevicePushSubscribed,
+} from "@/lib/pushClient";
 
 const OPT_IN_KEY = "iskcon-calendar-notifications";
 
@@ -31,6 +36,24 @@ export default function CalendarNotificationOptIn() {
     setEnabled(window.localStorage.getItem(OPT_IN_KEY) === "enabled");
   }, []);
 
+  useEffect(() => {
+    if (!enabled || permission !== "granted") {
+      return undefined;
+    }
+
+    let cancelled = false;
+
+    void navigator.serviceWorker.ready.then((registration) => {
+      if (!cancelled) {
+        void enablePushOnDevice(registration);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [enabled, permission]);
+
   const enableReminders = async () => {
     if (!("Notification" in window) || !("serviceWorker" in navigator)) {
       setPermission("unsupported");
@@ -54,8 +77,9 @@ export default function CalendarNotificationOptIn() {
         window.dispatchEvent(new Event("iskcon-calendar-notifications-changed"));
 
         const registration = await navigator.serviceWorker.ready;
+        await enablePushOnDevice(registration);
         await registration.showNotification("Calendar reminders enabled", {
-          body: "You will receive local reminders for Ekadashi and major ISKCON Nairobi festivals while this app can run them.",
+          body: "You will receive reminders for Ekadashi and major ISKCON Nairobi festivals on this device.",
           tag: "iskcon-calendar-reminders-enabled",
           icon: "/brand/icon-192.png",
           badge: "/brand/icon-192.png",
@@ -69,10 +93,15 @@ export default function CalendarNotificationOptIn() {
     }
   };
 
-  const disableReminders = () => {
+  const disableReminders = async () => {
     window.localStorage.removeItem(OPT_IN_KEY);
     setEnabled(false);
     window.dispatchEvent(new Event("iskcon-calendar-notifications-changed"));
+
+    if (!keepDevicePushSubscribed(OPT_IN_KEY)) {
+      const registration = await navigator.serviceWorker.getRegistration();
+      await disablePushOnDevice(registration ?? null);
+    }
   };
 
   const buttonLabel = (() => {
@@ -108,7 +137,7 @@ export default function CalendarNotificationOptIn() {
           </div>
 
           <p className="max-w-2xl font-inter text-sm leading-relaxed text-ink/65">
-            Install the site as an app and enable reminders to receive local notifications for Ekadashi and major ISKCON Nairobi festivals. Browser reminders work best when the app is installed and opened regularly.
+            Enable reminders to receive push notifications for Ekadashi and major ISKCON Nairobi festivals — delivered to this device even when the app is closed.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">
@@ -158,7 +187,7 @@ export default function CalendarNotificationOptIn() {
           </div>
           <div className="mt-4 flex gap-2 font-inter text-[11px] leading-relaxed text-ink/50">
             <ShieldCheck size={14} className="mt-0.5 shrink-0 text-gold" />
-            <span>No account is created. The preference is stored on this device only.</span>
+            <span>No account is created. You can turn reminders off here any time.</span>
           </div>
         </div>
       </div>

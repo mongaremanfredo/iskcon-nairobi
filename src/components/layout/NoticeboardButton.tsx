@@ -6,6 +6,11 @@ import { Bell, BellRing, CalendarDays, Check, ChevronRight, X } from "lucide-rea
 import { siteNotices } from "@/data/notices";
 import { cn } from "@/lib/utils";
 import { markCurrentNoticesAsSent } from "@/components/system/NoticeNotificationManager";
+import {
+  disablePushOnDevice,
+  enablePushOnDevice,
+  keepDevicePushSubscribed,
+} from "@/lib/pushClient";
 
 const OPT_IN_KEY = "iskcon-noticeboard-notifications";
 const READ_KEY = "iskcon-noticeboard-read";
@@ -55,6 +60,24 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
     const read = readMap(READ_KEY);
     setHasUnread(siteNotices.some((notice) => !read[notice.id]));
   }, []);
+
+  useEffect(() => {
+    if (!enabled || permission !== "granted") {
+      return undefined;
+    }
+
+    let cancelled = false;
+
+    void navigator.serviceWorker.ready.then((registration) => {
+      if (!cancelled) {
+        void enablePushOnDevice(registration);
+      }
+    });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [enabled, permission]);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -125,8 +148,9 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
         window.dispatchEvent(new Event("iskcon-noticeboard-notifications-changed"));
 
         const registration = await navigator.serviceWorker.ready;
+        await enablePushOnDevice(registration);
         await registration.showNotification("Noticeboard alerts enabled", {
-          body: "New ISKCON Nairobi notices will appear here and can notify this device.",
+          body: "New ISKCON Nairobi notices will notify this device.",
           tag: "iskcon-noticeboard-enabled",
           icon: "/brand/icon-192.png",
           badge: "/brand/icon-192.png",
@@ -140,10 +164,15 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
     }
   };
 
-  const disableAlerts = () => {
+  const disableAlerts = async () => {
     window.localStorage.removeItem(OPT_IN_KEY);
     setEnabled(false);
     window.dispatchEvent(new Event("iskcon-noticeboard-notifications-changed"));
+
+    if (!keepDevicePushSubscribed(OPT_IN_KEY)) {
+      const registration = await navigator.serviceWorker.getRegistration();
+      await disablePushOnDevice(registration ?? null);
+    }
   };
 
   const alertLabel = (() => {
@@ -249,7 +278,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
                 <div className="font-inter text-[11px] leading-relaxed text-ink/55">
                   {permission === "denied"
                     ? "Notifications are blocked in this browser. Use site settings to allow them."
-                    : "Enable alerts to be notified when new notices are added."}
+                    : "Enable alerts to receive push notifications when new notices are added."}
                 </div>
                 <button
                   type="button"
@@ -264,7 +293,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
 
               <div className="mt-3 flex items-center gap-2 font-inter text-[10px] uppercase tracking-[0.13em] text-ink/42">
                 <CalendarDays size={12} className="text-gold" />
-                Notices are stored on this device only
+                You can turn alerts off here any time
               </div>
             </div>
           </div>

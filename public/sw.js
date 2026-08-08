@@ -1,5 +1,27 @@
 const CACHE_VERSION = "iskcon-nairobi-v2";
 const DEFAULT_NOTIFICATION_URL = "/";
+const PUSH_VAPID_PUBLIC_KEY =
+  "BPgPEE6PLUqf6M27TuN7hvlg1sMKrpDeM1RK5I_basFwH11J5FGcvGQ0h93Ci2Z3jk-gv3PAqWvYqKUVzmxSnTE";
+
+function urlBase64ToUint8Array(base64String) {
+  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
+  const rawData = atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
+  }
+
+  return outputArray;
+}
+
+function subscriptionKeyToBase64Url(key) {
+  return btoa(String.fromCharCode.apply(null, new Uint8Array(key)))
+    .replace(/\+/g, "-")
+    .replace(/\//g, "_")
+    .replace(/=+$/, "");
+}
 
 self.addEventListener("install", () => {
   self.skipWaiting();
@@ -57,6 +79,32 @@ self.addEventListener("push", (event) => {
         url: payload.url || DEFAULT_NOTIFICATION_URL,
       },
     })
+  );
+});
+
+self.addEventListener("pushsubscriptionchange", (event) => {
+  event.waitUntil(
+    self.registration.pushManager
+      .subscribe({
+        userVisibleOnly: true,
+        applicationServerKey: urlBase64ToUint8Array(PUSH_VAPID_PUBLIC_KEY),
+      })
+      .then((subscription) =>
+        fetch("/api/subscribe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            subscription: {
+              endpoint: subscription.endpoint,
+              keys: {
+                p256dh: subscriptionKeyToBase64Url(subscription.getKey("p256dh")),
+                auth: subscriptionKeyToBase64Url(subscription.getKey("auth")),
+              },
+            },
+          }),
+        })
+      )
+      .catch(() => undefined)
   );
 });
 
