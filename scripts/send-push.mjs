@@ -41,7 +41,7 @@ async function main() {
 
   if (!title || !body) {
     console.error(
-      'Usage: npm run send-push -- --title "..." --body "..." [--url /festivals] [--tag reminder] [--renotify true] [--icon ...] [--badge ...] [--ttl 86400]'
+      'Usage: npm run send-push -- --confirm --title "..." --body "..." [--url /festivals] [--tag reminder] [--renotify true] [--icon ...] [--badge ...] [--ttl 86400]\nPreview with: npm run send-push -- --dry-run --title "..." --body "..."'
     );
     process.exit(2);
   }
@@ -49,10 +49,9 @@ async function main() {
   const vapidPublicKey = process.env.VAPID_PUBLIC_KEY;
   const vapidPrivateKey = process.env.VAPID_PRIVATE_KEY;
   const vapidSubject = process.env.VAPID_SUBJECT;
-  const spreadsheetId =
-    process.env.PUSH_SUBSCRIPTIONS_SHEET_ID ||
-    process.env.CONTACT_SHEET_ID ||
-    process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.PUSH_SUBSCRIPTIONS_SHEET_ID || process.env.CONTACT_SHEET_ID;
+  const confirmed = process.argv.includes("--confirm");
+  const dryRun = process.argv.includes("--dry-run");
 
   if (!vapidPublicKey || !vapidPrivateKey || !vapidSubject) {
     console.error(
@@ -63,8 +62,13 @@ async function main() {
 
   if (!spreadsheetId) {
     console.error(
-      "Missing PUSH_SUBSCRIPTIONS_SHEET_ID (or GOOGLE_SHEET_ID). Check your env file."
+      "Missing PUSH_SUBSCRIPTIONS_SHEET_ID or CONTACT_SHEET_ID. Check your env file."
     );
+    process.exit(2);
+  }
+
+  if (!confirmed && !dryRun) {
+    console.error("Refusing to broadcast without --confirm. Use --dry-run to preview.");
     process.exit(2);
   }
 
@@ -80,7 +84,7 @@ async function main() {
   const payload = {
     title,
     body,
-    url: arg("url") || "/",
+    url: normalizeNotificationPath(arg("url") || "/"),
     tag: arg("tag") || "iskcon-nairobi-reminder",
     renotify: arg("renotify") === "true",
   };
@@ -134,7 +138,9 @@ async function main() {
   const rows = response.data.values ?? [];
   let sent = 0;
   let pruned = 0;
+  let skippedDuplicate = 0;
   const failed = [];
+  const seenEndpoints = new Set();
 
   for (let i = 0; i < rows.length; i += 1) {
     const [, endpoint, p256dh, authKey] = rows[i];
@@ -148,12 +154,23 @@ async function main() {
       continue;
     }
 
+    if (seenEndpoints.has(endpoint)) {
+      skippedDuplicate += 1;
+      continue;
+    }
+    seenEndpoints.add(endpoint);
+
     const subscription = {
       endpoint,
       keys: { p256dh, auth: authKey },
     };
 
     try {
+      if (dryRun) {
+        console.log(`dry run ${i + 1}/${rows.length}: ${endpoint.slice(0, 60)}...`);
+        continue;
+      }
+
       await webpush.sendNotification(subscription, JSON.stringify(payload), {
         TTL: ttl,
       });
@@ -191,12 +208,21 @@ async function main() {
   }
 
   console.log(
-    `\nSummary: ${sent} sent, ${failed.length} failed, ${pruned} pruned, ${rows.length} rows checked.`
+    `\nSummary: ${sent} sent, ${failed.length} failed, ${pruned} pruned, ${skippedDuplicate} duplicates skipped, ${rows.length} rows checked.`
   );
 
   if (failed.length > 0) {
     console.error(JSON.stringify(failed, null, 2));
     process.exitCode = 1;
+  }
+}
+
+function normalizeNotificationPath(value) {
+  try {
+    const url = new URL(value, "https://iskconnairobi.esthrema.com");
+    return `${url.pathname}${url.search}${url.hash}` || "/";
+  } catch {
+    return "/";
   }
 }
 

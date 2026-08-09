@@ -1,5 +1,7 @@
 import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
+import { validatePublicJsonRequest } from "@/lib/apiSecurity";
+import { asPlainText, asSheetText, quoteSheetName } from "@/lib/security";
 
 export const runtime = "nodejs";
 
@@ -12,19 +14,6 @@ type ContactPayload = {
   message?: unknown;
   website?: unknown;
 };
-
-function asText(value: unknown, maxLength: number) {
-  if (typeof value !== "string") return "";
-  return value.replace(/[<>]/g, "").replace(/\s+/g, " ").trim().slice(0, maxLength);
-}
-
-function asSheetText(value: string) {
-  return /^[=+\-@]/.test(value) ? `'${value}` : value;
-}
-
-function quoteSheetName(title: string) {
-  return `'${title.replace(/'/g, "''")}'!A:Z`;
-}
 
 function getGoogleClient() {
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
@@ -45,23 +34,26 @@ function getGoogleClient() {
 
 export async function POST(request: NextRequest) {
   try {
-    const contentType = request.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-      return NextResponse.json({ message: "Unsupported request type." }, { status: 415 });
-    }
+    const blocked = validatePublicJsonRequest(request, {
+      key: "contact",
+      limit: 8,
+      windowMs: 10 * 60 * 1000,
+      maxBytes: 16 * 1024,
+    });
+    if (blocked) return blocked;
 
     const payload = (await request.json()) as ContactPayload;
 
-    if (asText(payload.website, 200)) {
+    if (asPlainText(payload.website, 200)) {
       return NextResponse.json({ ok: true });
     }
 
-    const firstName = asText(payload.firstName, 60);
-    const lastName = asText(payload.lastName, 60);
-    const email = asText(payload.email, 120);
-    const phone = asText(payload.phone, 40);
-    const subject = asText(payload.subject, 80);
-    const message = asText(payload.message, 1200);
+    const firstName = asPlainText(payload.firstName, 60);
+    const lastName = asPlainText(payload.lastName, 60);
+    const email = asPlainText(payload.email, 120);
+    const phone = asPlainText(payload.phone, 40);
+    const subject = asPlainText(payload.subject, 80);
+    const message = asPlainText(payload.message, 1200);
 
     if (!firstName || !email || !subject || !message) {
       return NextResponse.json(

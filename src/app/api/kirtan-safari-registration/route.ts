@@ -1,5 +1,7 @@
 import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
+import { validatePublicJsonRequest } from "@/lib/apiSecurity";
+import { asPlainText, asSheetText, quoteSheetName } from "@/lib/security";
 
 export const runtime = "nodejs";
 
@@ -21,19 +23,6 @@ const attendanceDays = new Set([
   "Sunday 30 August",
 ]);
 
-function asText(value: unknown, maxLength: number) {
-  if (typeof value !== "string") return "";
-  return value.replace(/[<>]/g, "").replace(/\s+/g, " ").trim().slice(0, maxLength);
-}
-
-function asSheetText(value: string) {
-  return /^[=+\-@]/.test(value) ? `'${value}` : value;
-}
-
-function quoteSheetName(title: string) {
-  return `'${title.replace(/'/g, "''")}'!A:Z`;
-}
-
 function getGoogleClient() {
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
@@ -53,22 +42,25 @@ function getGoogleClient() {
 
 export async function POST(request: NextRequest) {
   try {
-    const contentType = request.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-      return NextResponse.json({ message: "Unsupported request type." }, { status: 415 });
-    }
+    const blocked = validatePublicJsonRequest(request, {
+      key: "kirtan-registration",
+      limit: 6,
+      windowMs: 10 * 60 * 1000,
+      maxBytes: 12 * 1024,
+    });
+    if (blocked) return blocked;
 
     const payload = (await request.json()) as RegistrationPayload;
 
-    if (asText(payload.website, 200)) {
+    if (asPlainText(payload.website, 200)) {
       return NextResponse.json({ ok: true });
     }
 
-    const fullName = asText(payload.fullName, 120);
-    const email = asText(payload.email, 160);
-    const phone = asText(payload.phone, 40);
-    const peopleCountText = asText(payload.peopleCount, 3);
-    const hearAbout = asText(payload.hearAbout, 80);
+    const fullName = asPlainText(payload.fullName, 120);
+    const email = asPlainText(payload.email, 160);
+    const phone = asPlainText(payload.phone, 40);
+    const peopleCountText = asPlainText(payload.peopleCount, 3);
+    const hearAbout = asPlainText(payload.hearAbout, 80);
     const wantsUpdates = payload.wantsUpdates === "Yes" || payload.wantsUpdates === true ? "Yes" : "No";
     const selectedDays = Array.isArray(payload.days)
       ? payload.days
@@ -90,6 +82,10 @@ export async function POST(request: NextRequest) {
 
     if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       return NextResponse.json({ message: "Please enter a valid email address." }, { status: 400 });
+    }
+
+    if (!/^[+0-9 ()-]{7,24}$/.test(phone)) {
+      return NextResponse.json({ message: "Please enter a valid phone number." }, { status: 400 });
     }
 
     const auth = getGoogleClient();

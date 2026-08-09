@@ -1,5 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
+  rateLimit,
+  rejectCrossOrigin,
+  requireBearerToken,
+  validatePublicJsonRequest,
+} from "@/lib/apiSecurity";
+import { asPlainText } from "@/lib/security";
+import {
   countPushSubscriptions,
   ensurePushSheet,
   upsertPushSubscription,
@@ -7,12 +14,43 @@ import {
 
 export const runtime = "nodejs";
 
+const allowedPushHosts = [
+  "fcm.googleapis.com",
+  "updates.push.services.mozilla.com",
+  "web.push.apple.com",
+  "wns2-",
+  "notify.windows.com",
+];
+
+function isValidPushEndpoint(endpoint: string) {
+  if (endpoint.length > 500) return false;
+
+  try {
+    const url = new URL(endpoint);
+    if (url.protocol !== "https:") return false;
+    return allowedPushHosts.some((host) =>
+      host.endsWith("-")
+        ? url.hostname.startsWith(host)
+        : url.hostname === host || url.hostname.endsWith(`.${host}`)
+    );
+  } catch {
+    return false;
+  }
+}
+
+function isValidSubscriptionKey(value: string, maxLength: number) {
+  return value.length > 0 && value.length <= maxLength && /^[A-Za-z0-9_-]+$/.test(value);
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const contentType = request.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-      return NextResponse.json({ message: "Unsupported request type." }, { status: 415 });
-    }
+    const blocked = validatePublicJsonRequest(request, {
+      key: "push-subscribe",
+      limit: 10,
+      windowMs: 10 * 60 * 1000,
+      maxBytes: 8 * 1024,
+    });
+    if (blocked) return blocked;
 
     const payload = (await request.json()) as {
       subscription?: {
@@ -36,10 +74,14 @@ export async function POST(request: NextRequest) {
         : "";
     const userAgent =
       typeof payload.userAgent === "string"
-        ? payload.userAgent.slice(0, 200)
+        ? asPlainText(payload.userAgent, 200)
         : "";
 
-    if (!endpoint.startsWith("https://") || !p256dh || !auth) {
+    if (
+      !isValidPushEndpoint(endpoint) ||
+      !isValidSubscriptionKey(p256dh, 120) ||
+      !isValidSubscriptionKey(auth, 64)
+    ) {
       return NextResponse.json({ message: "Invalid push subscription." }, { status: 400 });
     }
 
@@ -56,8 +98,14 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(request: NextRequest) {
   try {
+    const blocked =
+      rejectCrossOrigin(request) ||
+      rateLimit(request, "push-count", { limit: 20, windowMs: 10 * 60 * 1000 }) ||
+      requireBearerToken(request, process.env.PUSH_SUBSCRIBER_COUNT_TOKEN);
+    if (blocked) return blocked;
+
     await ensurePushSheet();
     const count = await countPushSubscriptions();
     return NextResponse.json({ count });

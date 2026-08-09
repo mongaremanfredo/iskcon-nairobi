@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validatePublicJsonRequest } from "@/lib/apiSecurity";
 import {
   ensurePushSheet,
   removePushSubscription,
@@ -6,17 +7,30 @@ import {
 
 export const runtime = "nodejs";
 
+function isValidPushEndpoint(endpoint: string) {
+  if (endpoint.length > 500) return false;
+  try {
+    const url = new URL(endpoint);
+    return url.protocol === "https:";
+  } catch {
+    return false;
+  }
+}
+
 export async function POST(request: NextRequest) {
   try {
-    const contentType = request.headers.get("content-type") || "";
-    if (!contentType.includes("application/json")) {
-      return NextResponse.json({ message: "Unsupported request type." }, { status: 415 });
-    }
+    const blocked = validatePublicJsonRequest(request, {
+      key: "push-unsubscribe",
+      limit: 10,
+      windowMs: 10 * 60 * 1000,
+      maxBytes: 4 * 1024,
+    });
+    if (blocked) return blocked;
 
     const payload = (await request.json()) as { endpoint?: unknown };
     const endpoint = typeof payload.endpoint === "string" ? payload.endpoint : "";
 
-    if (!endpoint.startsWith("https://")) {
+    if (!isValidPushEndpoint(endpoint)) {
       return NextResponse.json({ message: "Invalid endpoint." }, { status: 400 });
     }
 

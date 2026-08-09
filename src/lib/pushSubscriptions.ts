@@ -1,6 +1,9 @@
 import { google } from "googleapis";
+import { createHash } from "crypto";
+import { asSheetText } from "@/lib/security";
 
 export const PUSH_SHEET_NAME = "PushSubscriptions";
+const pushEndpointLocks = new Set<string>();
 
 export type PushSubscriptionRecord = {
   createdAt: string;
@@ -35,7 +38,6 @@ function getSpreadsheetId() {
   return (
     process.env.PUSH_SUBSCRIPTIONS_SHEET_ID ||
     process.env.CONTACT_SHEET_ID ||
-    process.env.GOOGLE_SHEET_ID ||
     ""
   );
 }
@@ -136,33 +138,51 @@ export async function upsertPushSubscription(input: {
   auth: string;
   userAgent: string;
 }): Promise<boolean> {
-  const records = await listPushSubscriptions();
-
-  if (records.some(({ record }) => record.endpoint === input.endpoint)) {
+  const lockKey = createHash("sha256").update(input.endpoint).digest("hex");
+  if (pushEndpointLocks.has(lockKey)) {
     return false;
   }
 
-  const { spreadsheetId } = await ensurePushSheet();
-  const sheets = getSheets();
+  pushEndpointLocks.add(lockKey);
+  try {
+    const records = await listPushSubscriptions();
+    const existing = records.find(({ record }) => record.endpoint === input.endpoint);
 
-  await sheets.spreadsheets.values.append({
-    spreadsheetId,
-    range: `${PUSH_SHEET_NAME}!A:E`,
-    valueInputOption: "USER_ENTERED",
-    requestBody: {
-      values: [
-        [
-          new Date().toISOString(),
-          input.endpoint,
-          input.p256dh,
-          input.auth,
-          input.userAgent,
+    const { spreadsheetId } = await ensurePushSheet();
+    const sheets = getSheets();
+    const values = [
+      new Date().toISOString(),
+      input.endpoint,
+      input.p256dh,
+      input.auth,
+      asSheetText(input.userAgent),
+    ];
+
+    if (existing) {
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: `${PUSH_SHEET_NAME}!A${existing.rowNumber}:E${existing.rowNumber}`,
+        valueInputOption: "USER_ENTERED",
+        requestBody: { values: [values] },
+      });
+      return false;
+    }
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: `${PUSH_SHEET_NAME}!A:E`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values: [
+          values,
         ],
-      ],
-    },
-  });
+      },
+    });
 
-  return true;
+    return true;
+  } finally {
+    pushEndpointLocks.delete(lockKey);
+  }
 }
 
 export async function removePushSubscription(endpoint: string): Promise<boolean> {

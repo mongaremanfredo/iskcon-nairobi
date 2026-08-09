@@ -208,4 +208,43 @@ img[src*="images.unsplash.com"] {
   h1, h2, h3, h4, p, a, span, button {
     overflow-wrap: anywhere;
   }
+
+  .festival-page-hero {
+    height: auto !important;
+    min-height: max(560px, 76svh) !important;
+    max-height: none !important;
+  }
+
+  .festival-page-hero > .relative.z-10 {
+    min-height: max(560px, 76svh);
+    padding-top: calc(var(--site-chrome-height, 63px) + 5.75rem) !important;
+    padding-bottom: 2.25rem !important;
+  }
+
+  .festival-page-hero h1 {
+    font-size: clamp(2rem, 10.5vw, 3.35rem) !important;
+    line-height: 1.02 !important;
+    max-width: 11ch;
+  }
+
+  .festival-page-hero p {
+    max-width: 30rem;
+    font-size: 0.88rem !important;
+    line-height: 1.55 !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .festival-page-hero {
+    min-height: max(590px, 82svh) !important;
+  }
+
+  .festival-page-hero > .relative.z-10 {
+    min-height: max(590px, 82svh);
+    padding-top: calc(var(--site-chrome-height, 63px) + 6.25rem) !important;
+  }
+
+  .festival-page-hero h1 {
+    font-size: clamp(1.85rem, 10vw, 3rem) !important;
+  }
 }

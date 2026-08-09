@@ -66,6 +66,7 @@ export default function GuestHouseEnquiryForm() {
       email: cleanText(form.email),
       subject: "Guest House Booking",
       message: [details, cleanText(form.message)].filter(Boolean).join("\n\n"),
+      website: cleanText(form.website),
     };
 
     try {

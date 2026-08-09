@@ -7,13 +7,16 @@ const contentSecurityPolicy = [
   "frame-ancestors 'none'",
   "object-src 'none'",
   "script-src 'self' 'unsafe-inline'",
+  "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline'",
+  "style-src-attr 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self' data:",
   "connect-src 'self'",
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   "media-src 'self'",
+  "frame-src 'none'",
   "upgrade-insecure-requests",
 ].join("; ");
 
@@ -57,6 +60,14 @@ const securityHeaders = [
   {
     key: "X-DNS-Prefetch-Control",
     value: "off",
+  },
+  {
+    key: "X-Download-Options",
+    value: "noopen",
+  },
+  {
+    key: "X-Permitted-Cross-Domain-Policies",
+    value: "none",
   },
 ];
 
