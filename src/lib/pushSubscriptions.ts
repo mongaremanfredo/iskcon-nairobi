@@ -33,7 +33,10 @@ function getAuth() {
 
 function getSpreadsheetId() {
   return (
-    process.env.PUSH_SUBSCRIPTIONS_SHEET_ID || process.env.GOOGLE_SHEET_ID || ""
+    process.env.PUSH_SUBSCRIPTIONS_SHEET_ID ||
+    process.env.CONTACT_SHEET_ID ||
+    process.env.GOOGLE_SHEET_ID ||
+    ""
   );
 }
 
