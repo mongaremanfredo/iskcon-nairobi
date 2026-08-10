@@ -1,3 +1,4 @@
+import { timingSafeEqual } from "crypto";
 import { NextRequest, NextResponse } from "next/server";
 
 type RateLimitOptions = {
@@ -11,6 +12,16 @@ type Bucket = {
 };
 
 const buckets = new Map<string, Bucket>();
+const maxBuckets = 5_000;
+
+class PublicApiError extends Error {
+  constructor(
+    public readonly status: number,
+    message: string
+  ) {
+    super(message);
+  }
+}
 
 function getClientIp(request: NextRequest) {
   const forwardedFor = request.headers.get("x-forwarded-for");
@@ -65,6 +76,13 @@ export function rateLimit(request: NextRequest, key: string, options: RateLimitO
   const clientKey = `${key}:${getClientIp(request)}`;
   const bucket = buckets.get(clientKey);
 
+  if (buckets.size > maxBuckets) {
+    for (const [bucketKey, value] of buckets) {
+      if (value.resetAt <= now) buckets.delete(bucketKey);
+      if (buckets.size <= maxBuckets) break;
+    }
+  }
+
   if (!bucket || bucket.resetAt <= now) {
     buckets.set(clientKey, { count: 1, resetAt: now + options.windowMs });
     return null;
@@ -85,6 +103,56 @@ export function rateLimit(request: NextRequest, key: string, options: RateLimitO
 
   bucket.count += 1;
   return null;
+}
+
+export async function readLimitedJson<T>(request: NextRequest, maxBytes: number): Promise<T> {
+  if (!request.body) {
+    throw new PublicApiError(400, "Request body is required.");
+  }
+
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let totalBytes = 0;
+
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+
+    totalBytes += value.byteLength;
+    if (totalBytes > maxBytes) {
+      throw new PublicApiError(413, "Request is too large.");
+    }
+
+    chunks.push(value);
+  }
+
+  const body = new TextDecoder("utf-8", { fatal: false }).decode(concatChunks(chunks, totalBytes));
+
+  try {
+    return JSON.parse(body) as T;
+  } catch {
+    throw new PublicApiError(400, "Invalid JSON payload.");
+  }
+}
+
+export function publicApiErrorResponse(error: unknown) {
+  if (error instanceof PublicApiError) {
+    return NextResponse.json({ message: error.message }, { status: error.status });
+  }
+
+  return null;
+}
+
+function concatChunks(chunks: Uint8Array[], totalBytes: number) {
+  const output = new Uint8Array(totalBytes);
+  let offset = 0;
+
+  for (const chunk of chunks) {
+    output.set(chunk, offset);
+    offset += chunk.byteLength;
+  }
+
+  return output;
 }
 
 export function validatePublicJsonRequest(
@@ -109,9 +177,18 @@ export function requireBearerToken(request: NextRequest, token: string | undefin
     ? authorization.slice("Bearer ".length).trim()
     : "";
 
-  if (suppliedToken !== token) {
+  if (!constantTimeEquals(suppliedToken, token)) {
     return NextResponse.json({ message: "Unauthorized." }, { status: 401 });
   }
 
   return null;
+}
+
+function constantTimeEquals(left: string, right: string) {
+  const leftBuffer = Buffer.from(left);
+  const rightBuffer = Buffer.from(right);
+
+  if (leftBuffer.length !== rightBuffer.length) return false;
+
+  return timingSafeEqual(leftBuffer, rightBuffer);
 }

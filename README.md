@@ -1,158 +1,98 @@
-# ISKCON Nairobi — World Class Digital Platform
+# ISKCON Nairobi Website
 
-> Production Next.js website for ISKCON Nairobi / East Africa HQ  
-> 19 routes · TypeScript · Tailwind v4 · Sanity CMS schemas · Vercel-ready
+Production Next.js website for ISKCON Nairobi / Sri Sri Radha Bankebihari Temple.
 
----
+## Stack
 
-## Tech Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | Next.js 16 (App Router, SSG) |
-| Language | TypeScript |
-| Styling | Tailwind CSS v4 |
-| Animations | Framer Motion (installed) |
-| CMS | Sanity (13 schemas ready) |
-| Deployment | Vercel |
-
----
-
-## Project Structure
-
-```
-src/
-├── app/                  # 19 routes (all static)
-│   ├── page.tsx          # Homepage (11 sections)
-│   ├── about/
-│   ├── visit/
-│   ├── learn/
-│   ├── serve/
-│   ├── contact/
-│   ├── donate/
-│   ├── media/
-│   ├── shop/
-│   ├── guest-house/
-│   ├── projects/
-│   │   ├── hktc-nairobi/
-│   │   ├── hktc-juja/
-│   │   ├── thika-farm/
-│   │   └── food-for-life/
-│   └── festivals/
-│       ├── kirtan-safari/
-│       ├── rath-yatra/
-│       ├── janmashtami/
-│       └── gaura-purnima/
-├── components/
-│   ├── layout/           Navigation.tsx · Footer.tsx
-│   ├── sections/         11 homepage section components
-│   └── ui/               PageHero.tsx (reusable inner-page hero)
-├── data/
-│   └── site.ts           All dummy content (replace with Sanity)
-└── lib/
-    └── utils.ts
-
-sanity/schemas/           13 CMS content type schemas
-```
-
----
-
-## Design System
-
-### Colors (in `globals.css @theme`)
-- `--color-gold: #C79A3B` — Primary brand, CTAs
-- `--color-temple-brown: #5E3B1F` — Dark sections
-- `--color-temple-cream: #F8F2E8` — Light backgrounds
-- `--color-forest: #3E5F46` — Nature/farm accent
-- `--color-saffron: #D86C24` — Tertiary accent
-
-### Typography
-- **Headings**: Playfair Display
-- **Body**: Inter
-- **Quotes**: Cormorant Garamond italic
-
----
+- Next.js App Router
+- TypeScript
+- Tailwind CSS
+- Google Sheets API for contact, festival registration, and notification subscriptions
+- Web Push / PWA support
+- Vercel deployment
 
 ## Local Development
 
 ```bash
 npm install
-npm run dev        # http://localhost:3000
-npm run build      # Production build (19 static routes)
+npm run dev
+npm run build
 ```
 
----
+The local dev server runs at `http://localhost:3000`.
 
-## Deployment — Vercel
+## Environment Variables
 
-```bash
-# 1. Push to GitHub
-git init && git add . && git commit -m "feat: ISKCON Nairobi v1"
-git remote add origin https://github.com/YOUR_ORG/iskcon-nairobi.git
-git push -u origin main
+Never commit real secrets to the repository. Keep local values in `.env.local` and production values in the Vercel dashboard.
 
-# 2. vercel.com → New Project → Import repo → Deploy
-# Framework auto-detected as Next.js
-```
+Required server-side variables:
 
-### Environment Variables (add in Vercel dashboard)
 ```env
-NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
-NEXT_PUBLIC_SANITY_DATASET=production
-SANITY_API_TOKEN=your_read_token
-NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+GOOGLE_SERVICE_ACCOUNT_EMAIL=
+GOOGLE_PRIVATE_KEY=
+GOOGLE_SHEET_ID=
+CONTACT_SHEET_ID=
+PUSH_SUBSCRIBER_COUNT_TOKEN=
+VAPID_PUBLIC_KEY=
+VAPID_PRIVATE_KEY=
+VAPID_SUBJECT=
 ```
 
----
+Optional variable:
 
-## Connecting Sanity CMS
+```env
+PUSH_SUBSCRIPTIONS_SHEET_ID=
+```
+
+If `PUSH_SUBSCRIPTIONS_SHEET_ID` is not set, push subscriptions are stored in a `PushSubscriptions` tab inside the contact spreadsheet. This is intentional for the current setup.
+
+Public client variable:
+
+```env
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=
+```
+
+Only values prefixed with `NEXT_PUBLIC_` are exposed to browser code. Do not place private API keys, service account keys, tokens, or passwords in any `NEXT_PUBLIC_` variable.
+
+## Security Notes
+
+- `.env*`, `.vercel`, PEM files, logs, and generated build output are ignored by git.
+- Public API routes reject cross-origin JSON requests, enforce request size limits, apply rate limiting, and validate input server-side.
+- Google Sheet writes escape formula-leading characters before using `USER_ENTERED`.
+- Production responses return generic errors to users while detailed errors stay in server logs.
+- The service account should only be shared with the exact spreadsheets this site needs.
+
+## Push Notifications
+
+Broadcasts are sent from the local script:
 
 ```bash
-npm install next-sanity @sanity/image-url
-npx sanity@latest init --env .env.local
+npm run send-push -- --dry-run --title "Preview" --body "Message"
+npm run send-push -- --confirm --title "Notice" --body "Message" --url /festivals
 ```
 
-Register schemas in `sanity.config.ts`:
-```typescript
-import { defineConfig } from 'sanity'
-import { structureTool } from 'sanity/structure'
-import * as schemas from './sanity/schemas'
+The script refuses to send a live broadcast unless `--confirm` is supplied.
 
-export default defineConfig({
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
-  dataset: 'production',
-  plugins: [structureTool()],
-  schema: { types: Object.values(schemas) },
-})
+## Deployment
+
+The site is deployed on Vercel from the GitHub repository. Production canonical URLs use:
+
+```text
+https://iskconnairobi.esthrema.com
 ```
 
-Replace static data: each export in `src/data/site.ts` maps 1:1 to a schema.
-Use GROQ queries via `sanity.fetch()` in server components.
+After changing SEO routes, robots, sitemap, metadata, or API behavior, run:
 
----
+```bash
+npm run build
+```
 
-## M-PESA Integration
+Then push to GitHub and deploy through Vercel.
 
-Schemas include `mpesaPaybill` + `mpesaAccount` fields on `donationCampaign`.
+## Operational Checklist
 
-For live payments use **IntaSend** or **Pesapal** (both support M-PESA + card).
-Handle callbacks at `src/app/api/mpesa/callback/route.ts`.
-
----
-
-## Next Development Priorities
-
-1. Sanity CMS live data connection
-2. Donation flow — IntaSend/Pesapal integration
-3. Festival registration forms (API routes + email)
-4. Blog section (CMS-driven, category filtered)
-5. Google Maps embeds (temple, farm, distribution points)
-6. Guest house booking calendar
-7. Kirtan Safari multi-step registration
-8. Livestream YouTube embed on festival pages
-9. WhatsApp floating CTA widget
-10. PWA for low-connectivity visitors
-
----
-
-*Built by Esthrema — esthrema.com*
+- Keep Vercel environment variables current.
+- Rotate any key that is accidentally pasted into git, chat, logs, screenshots, or public tools.
+- Keep Google Sheets private and share them only with the service account and trusted administrators.
+- Review `npm audit` before major releases.
+- Prefer a durable rate limiter such as Redis or Vercel KV if spam volume increases.

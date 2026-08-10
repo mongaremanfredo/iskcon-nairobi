@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import {
+  publicApiErrorResponse,
   rateLimit,
+  readLimitedJson,
   rejectCrossOrigin,
   requireBearerToken,
   validatePublicJsonRequest,
@@ -13,6 +15,7 @@ import {
 } from "@/lib/pushSubscriptions";
 
 export const runtime = "nodejs";
+const maxRequestBytes = 8 * 1024;
 
 const allowedPushHosts = [
   "fcm.googleapis.com",
@@ -48,17 +51,17 @@ export async function POST(request: NextRequest) {
       key: "push-subscribe",
       limit: 10,
       windowMs: 10 * 60 * 1000,
-      maxBytes: 8 * 1024,
+      maxBytes: maxRequestBytes,
     });
     if (blocked) return blocked;
 
-    const payload = (await request.json()) as {
+    const payload = await readLimitedJson<{
       subscription?: {
         endpoint?: unknown;
         keys?: { p256dh?: unknown; auth?: unknown };
       };
       userAgent?: unknown;
-    };
+    }>(request, maxRequestBytes);
 
     const endpoint =
       typeof payload.subscription?.endpoint === "string"
@@ -90,6 +93,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (error) {
+    const publicError = publicApiErrorResponse(error);
+    if (publicError) return publicError;
+
     console.error("Push subscription failed", error);
     return NextResponse.json(
       { message: "Could not save the push subscription. Please try again shortly." },

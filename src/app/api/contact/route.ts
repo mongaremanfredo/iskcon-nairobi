@@ -1,9 +1,14 @@
 import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
-import { validatePublicJsonRequest } from "@/lib/apiSecurity";
+import {
+  publicApiErrorResponse,
+  readLimitedJson,
+  validatePublicJsonRequest,
+} from "@/lib/apiSecurity";
 import { asPlainText, asSheetText, quoteSheetName } from "@/lib/security";
 
 export const runtime = "nodejs";
+const maxRequestBytes = 16 * 1024;
 
 type ContactPayload = {
   firstName?: unknown;
@@ -38,11 +43,11 @@ export async function POST(request: NextRequest) {
       key: "contact",
       limit: 8,
       windowMs: 10 * 60 * 1000,
-      maxBytes: 16 * 1024,
+      maxBytes: maxRequestBytes,
     });
     if (blocked) return blocked;
 
-    const payload = (await request.json()) as ContactPayload;
+    const payload = await readLimitedJson<ContactPayload>(request, maxRequestBytes);
 
     if (asPlainText(payload.website, 200)) {
       return NextResponse.json({ ok: true });
@@ -101,6 +106,9 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({ ok: true });
   } catch (error) {
+    const publicError = publicApiErrorResponse(error);
+    if (publicError) return publicError;
+
     console.error("Contact form submission failed", error);
     return NextResponse.json(
       { message: "Your message could not be sent. Please try again shortly." },
