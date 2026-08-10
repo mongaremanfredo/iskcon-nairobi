@@ -42,8 +42,8 @@ export const metadata: Metadata = {
 };
 
 const introParagraphs = [
-  "Before a mahotsava begins, before the mridangas are lifted and the nagar-kirtan procession takes to the streets, there is a quieter evening. Devotees gather, articles for worship are arranged, and one specific song is sung — not a prayer of praise, but an invitation. This is adhivasa: the ceremony that prepares a place, and the hearts within it, for what is coming the next day.",
-  "The song is the work of Vrindavana Dasa Thakura (1507-1589), best known as the author of the Chaitanya Bhagavata, the first full biography of Sri Chaitanya Mahaprabhu, written in Bengali on the order of his initiating guru, Lord Nityananda. Tradition holds him to be Vyasadeva returned: just as Vyasa gave the world Krishna's pastimes in the Srimad-Bhagavatam, Vrindavana Dasa gave it Gaura's pastimes in his own great work. This shorter song, sung rather than read, has carried a separate life of its own — it remains a standard adhivasa-kirtana at Gaudiya festivals.",
+  "Before a mahotsava begins, before the mridangas are lifted and the nagar-kirtan procession takes to the streets, there is a quieter evening. Devotees gather, articles for worship are arranged, and one specific song is sung - not a prayer of praise, but an invitation. This is adhivasa: the ceremony that prepares a place, and the hearts within it, for what is coming the next day.",
+  "The song is the work of Vrindavana Dasa Thakura (1507-1589), best known as the author of the Chaitanya Bhagavata, the first full biography of Sri Chaitanya Mahaprabhu, written in Bengali on the order of his initiating guru, Lord Nityananda. Tradition holds him to be Vyasadeva returned: just as Vyasa gave the world Krishna's pastimes in the Srimad-Bhagavatam, Vrindavana Dasa gave it Gaura's pastimes in his own great work. This shorter song, sung rather than read, has carried a separate life of its own - it remains a standard adhivasa-kirtana at Gaudiya festivals.",
   "Its structure mirrors the ceremony itself. The poet describes preparing the offering, then turns to the assembled Vaishnavas and asks them, humbly, to complete the occasion by their presence. Only in the fourth verse does the song turn: tomorrow, it says, there will be a festival. Everything before that line is invitation; everything after it is promise.",
 ];
 
@@ -58,7 +58,7 @@ const verses = [
     roman: "II",
     original: "tomāra vaiṣṇava gaṇa, mora ei nivedana,\ndṛṣṭi kari kara samāpana ||",
     translation:
-      "You are all Vaishnava devotees of the Lord — I humbly pray that you complete this ceremony with your merciful glance.",
+      "You are all Vaishnava devotees of the Lord - I humbly pray that you complete this ceremony with your merciful glance.",
   },
   {
     roman: "III",
@@ -70,7 +70,7 @@ const verses = [
     roman: "IV",
     original: "aneka bhāgyera phale, vaiṣṇava, āsiyā mile,\nkāli habe mahotsava vilāsa ||",
     translation:
-      "Only by great fortune does one get the association of such an assembly of Vaishnavas — tomorrow there will be a great festival.",
+      "Only by great fortune does one get the association of such an assembly of Vaishnavas - tomorrow there will be a great festival.",
   },
   {
     roman: "V",
@@ -131,7 +131,7 @@ export default function AdhivasaBlogPage() {
         title="The Invitation"
         titleAccent="Before the Festival"
         subtitle="Temple Journal"
-        description="Sri Nama Sankirtana Adhivasa — Vrindavana Dasa Thakura's evening summons to the Vaishnavas, sung on the eve of every great kirtana."
+        description="Sri Nama Sankirtana Adhivasa - Vrindavana Dasa Thakura's evening summons to the Vaishnavas, sung on the eve of every great kirtana."
         image={heroImage}
         height="md"
         className="sm:min-h-[500px]"

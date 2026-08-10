@@ -21,6 +21,13 @@ npm run build
 
 The local dev server runs at `http://localhost:3000`.
 
+## Handoff Documentation
+
+- `PROJECT_GUIDELINES.md` is the contributor entry point.
+- `docs/DESIGN_SYSTEM.md` records the visual language, spacing rhythm, page hero rules, and mobile-first layout decisions.
+- `docs/CONTENT_GUIDE.md` explains where to add pages, festivals, notices, blog posts, images, and sheet-backed forms.
+- `docs/ASSET_SOURCES.md` records non-temple library assets that should be reviewed or replaced when final photography is available.
+
 ## Environment Variables
 
 Never commit real secrets to the repository. Keep local values in `.env.local` and production values in the Vercel dashboard.

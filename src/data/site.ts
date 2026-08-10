@@ -1,3 +1,6 @@
+// Central content registry for shared temple information, navigation,
+// homepage cards, and cross-page summaries. Prefer editing copy and image
+// choices here when a change is reused in more than one page or section.
 export const templeInfo = {
   name: "ISKCON Nairobi",
   legalName: "Sri Sri Radha Bankebihari Temple",
@@ -100,7 +103,7 @@ export const festivals = [
     date: "Annual procession",
     location: "Nairobi",
     description: "The Festival of Chariots, a public celebration of Lord Jagannath with kirtan, procession, dance, and prasadam distribution.",
-    image: "/images/placeholders/iskcon-ratha-yatra.jpg",
+    image: "/images/festivals/ratha-yatra-procession.jpg",
     href: "/festivals/rath-yatra",
     featured: false,
   },
@@ -127,7 +130,7 @@ export const festivals = [
     date: "Annual appearance day",
     location: templeInfo.legalName,
     description: "The appearance day of Sri Chaitanya Mahaprabhu, celebrated with kirtan, fasting, abhishek, class, and evening feast.",
-    image: "/images/placeholders/iskcon-temple-bangalore.jpg",
+    image: "/images/community/iskcon-temple-architecture.jpg",
     href: "/festivals/gaura-purnima",
     featured: false,
   },

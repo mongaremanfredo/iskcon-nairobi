@@ -364,7 +364,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      {/* TIMELINE — NEW */}
+      {/* Timeline section */}
       <section id="timeline" className="scroll-mt-32 bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-2xl">
@@ -381,7 +381,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      {/* GALLERY — NEW */}
+      {/* Gallery section */}
       <section id="gallery" className="scroll-mt-32 bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-2xl">
@@ -441,7 +441,7 @@ export default function HKTCNairobiPage() {
         </div>
       </section>
 
-      {/* FAQ — NEW */}
+      {/* FAQ section */}
       <section id="faq" className="scroll-mt-32 bg-temple-cream py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-2xl">

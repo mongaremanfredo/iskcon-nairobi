@@ -50,7 +50,7 @@ export default function InstallPromptBanner() {
         <div className="min-w-0">
           <p className="font-playfair text-sm font-semibold leading-tight">Install ISKCON Nairobi</p>
           <p className="mt-0.5 text-xs leading-snug text-sand/70">
-            Darshan times, kirtan &amp; news — right on your home screen.
+            Darshan times, kirtan &amp; news - right on your home screen.
           </p>
         </div>
         <button

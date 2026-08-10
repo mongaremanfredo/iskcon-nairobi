@@ -29,7 +29,7 @@ const monthNumbers: Record<string, string> = {
 function eventSlug(value: string) {
   return value
     .toLowerCase()
-    .replace(/['’]/g, "")
+    .replace(/['\u2019]/g, "")
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
 }

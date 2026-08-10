@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Drum, Globe2, GraduationCap, HeartHandshake, Users } from "lucide-react";
+import { ArrowRight, HeartHandshake, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { leadershipDepartments, leadershipProfiles } from "@/data/site";
 
@@ -9,29 +9,6 @@ export const metadata: Metadata = {
   description:
     "Meet key leaders and service coordinators guiding ISKCON Nairobi through a departmental service structure rooted in Srila Prabhupada's vision for Africa.",
 };
-
-const categoryIntro = [
-  {
-    icon: Globe2,
-    title: "Spiritual Guidance",
-    text: "Senior Vaishnava guidance keeps Nairobi connected to Srila Prabhupada's standards, preaching mood, and East Africa mission.",
-  },
-  {
-    icon: GraduationCap,
-    title: "Regional & Educational Leadership",
-    text: "Training, study, and student formation are central to Nairobi's service through the Hare Krishna Training Centre.",
-  },
-  {
-    icon: Drum,
-    title: "Temple Coordination",
-    text: "Kirtan, festivals, worship, and practical temple operations are coordinated through shared departmental responsibility.",
-  },
-  {
-    icon: BookOpen,
-    title: "Resident Teaching",
-    text: "Resident teachers and brahmacharis hold the daily culture of classes, mentorship, sadhana, and devotional practice.",
-  },
-];
 
 export default function LeadershipPage() {
   const featured = leadershipProfiles.find((profile) => profile.emphasis);

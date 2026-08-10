@@ -27,7 +27,7 @@ export default function ProjectsSection() {
 
         {/* Projects Grid */}
         <div className="projects-grid grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project, i) => (
+          {projects.map((project) => (
             <Link
               key={project.id}
               href={project.href}

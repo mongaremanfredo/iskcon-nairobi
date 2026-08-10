@@ -17,7 +17,7 @@ export default function GauraPurnimaPage() {
         titleAccent="Appearance of Sri Chaitanya"
         subtitle={templeInfo.legalName}
         description={description}
-        image="/images/placeholders/iskcon-temple-bangalore.jpg"
+        image="/images/community/iskcon-temple-architecture.jpg"
         height="lg"
       />
       <section className="py-section bg-temple-bg">

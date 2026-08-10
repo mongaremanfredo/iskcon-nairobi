@@ -16,7 +16,7 @@ export default function HktcApplyPage() {
         titleAccent="Application"
         subtitle="Study Interest"
         description="Tell the education team which course or study pathway you are interested in."
-        image="/images/placeholders/hare-krishna-harinam.jpg"
+        image="/images/community/harinam-kirtan-devotees.jpg"
         height="sm"
       />
       <section className="py-section bg-temple-bg">

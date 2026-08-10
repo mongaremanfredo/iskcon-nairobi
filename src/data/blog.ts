@@ -1,3 +1,7 @@
+// Blog index metadata. Article pages should keep the same editorial pattern:
+// a quiet sacred-art hero, visible source/reference links where needed, a
+// readable single-column story body, and a contextual CTA that sits below the
+// text on both desktop and mobile.
 export const blogPosts = [
   {
     slug: "jharikhanda-forest-kirtan-safari",

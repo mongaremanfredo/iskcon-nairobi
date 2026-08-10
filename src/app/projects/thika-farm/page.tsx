@@ -35,7 +35,7 @@ export default function ThikaFarmPage() {
             <div className="grid grid-cols-2 gap-4">
               {[
                 "/images/thika-farm/thika-farm-visit-gate.jpg",
-                "/images/placeholders/cows-pasture-pixabay.jpg",
+                "/images/thika-farm/goshala-cows-pasture.jpg",
               ].map((src, i) => (
                 <img key={i} src={src} alt="Farm" className={`w-full object-cover ${i === 1 ? "mt-8" : ""}`} style={{ aspectRatio: "3/4" }} />
               ))}

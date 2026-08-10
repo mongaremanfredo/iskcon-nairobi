@@ -162,6 +162,10 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
         />
+        {/* Global browser systems live above the visible chrome: PWA install,
+            privacy-conscious analytics, calendar/notice notifications, then
+            the navigation shell. Keep user-facing layout changes below
+            Navigation unless they truly belong to every page. */}
         <PwaRegistrar />
         <AnalyticsTracker />
         <CalendarNotificationManager />

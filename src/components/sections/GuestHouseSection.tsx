@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, Wifi, Wind, Coffee, Star } from "lucide-react";
+import { ArrowRight, Wind, Coffee, Star } from "lucide-react";
 import { guestRooms } from "@/data/site";
 
 const amenityIcons: Record<string, React.ReactNode> = {

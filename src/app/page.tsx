@@ -21,6 +21,12 @@ export const metadata: Metadata = {
 export default function HomePage() {
   return (
     <>
+      {/* Homepage narrative order:
+          welcome -> routes into temple life -> featured festival -> service
+          work -> impact -> founder/leadership vision -> community voices ->
+          calendar -> donation -> visual world -> guest hospitality.
+          Keep this sequence unless the whole landing-page story is being
+          redesigned; section spacing is tuned around this rhythm. */}
       <HeroSection />
       <SavannaDivider className="h-[7vw] min-h-6 sm:h-24" />
       <QuickNavSection />

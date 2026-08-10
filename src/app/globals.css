@@ -1,6 +1,13 @@
 @import "tailwindcss";
 @config "../../tailwind.config.ts";
 
+/* Brand foundation
+   ----------------
+   The palette intentionally balances temple warmth with East African greens:
+   rust red anchors the ISKCON mark, saffron/gold carries festival energy,
+   acacia green supports the Nairobi/Kirtan Safari visual language, and sand
+   keeps long content pages calm. Reuse these tokens before adding page-local
+   colors so future sections continue to feel like one site. */
 @theme {
   --font-playfair: var(--font-fraunces), Georgia, serif;
   --font-inter: var(--font-site-inter), system-ui, sans-serif;
@@ -23,7 +30,6 @@
   --color-ink: var(--color-dusk);
 }
 
-/* Base styles */
 :root {
   --site-header-height: 63px;
   --site-solid-header-height: 63px;
@@ -165,9 +171,6 @@ img, video, canvas, svg { max-width: 100%; }
 ::-webkit-scrollbar-track { background: var(--color-temple-cream); }
 ::-webkit-scrollbar-thumb { background: var(--color-gold); border-radius: 3px; }
 img { transition: opacity 0.3s ease; }
-img[src*="images.unsplash.com"] {
-  filter: saturate(0.92) sepia(0.08) contrast(0.98);
-}
 
 @media (max-width: 639px) {
   .section-padding {

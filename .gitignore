@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.next-locked-*/
 /out/
 
 # production
@@ -25,12 +26,16 @@
 *.pem
 
 # debug
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 server.log
 server.err.log
+
+# local workspace tooling
+.agents/
 
 # env files (can opt-in for committing if needed)
 .env*

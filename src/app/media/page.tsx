@@ -24,7 +24,7 @@ export default function MediaPage() {
         titleAccent="& Video Gallery"
         subtitle="Media Library"
         description="Life at ISKCON Nairobi through the lens - festivals, farm, temple worship, and the beauty of devotional community in East Africa."
-        image="/images/placeholders/hare-krishna-harinam.jpg"
+        image="/images/community/harinam-kirtan-devotees.jpg"
         height="md"
         className="sm:min-h-[500px]"
       />
