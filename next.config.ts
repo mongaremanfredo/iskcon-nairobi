@@ -73,6 +73,150 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/calendar",
+        destination: "/festivals",
+        permanent: true,
+      },
+      {
+        source: "/events",
+        destination: "/festivals",
+        permanent: true,
+      },
+      {
+        source: "/gallery",
+        destination: "/media",
+        permanent: true,
+      },
+      {
+        source: "/guesthouse",
+        destination: "/guest-house",
+        permanent: true,
+      },
+      {
+        source: "/accommodation",
+        destination: "/guest-house",
+        permanent: true,
+      },
+      {
+        source: "/accomodation",
+        destination: "/guest-house",
+        permanent: true,
+      },
+      {
+        source: "/stay",
+        destination: "/guest-house",
+        permanent: true,
+      },
+      {
+        source: "/volunteer",
+        destination: "/serve",
+        permanent: true,
+      },
+      {
+        source: "/donations",
+        destination: "/donate",
+        permanent: true,
+      },
+      {
+        source: "/services",
+        destination: "/projects",
+        permanent: true,
+      },
+      {
+        source: "/hktc",
+        destination: "/projects/hktc-nairobi",
+        permanent: true,
+      },
+      {
+        source: "/projects/hktc",
+        destination: "/projects/hktc-nairobi",
+        permanent: true,
+      },
+      {
+        source: "/founder",
+        destination: "/srila-prabhupada",
+        permanent: true,
+      },
+      {
+        source: "/founder-acharya",
+        destination: "/srila-prabhupada",
+        permanent: true,
+      },
+      {
+        source: "/prabhupad",
+        destination: "/srila-prabhupada",
+        permanent: true,
+      },
+      {
+        source: "/prabhupada",
+        destination: "/srila-prabhupada",
+        permanent: true,
+      },
+      {
+        source: "/terms-and-conditions",
+        destination: "/terms",
+        permanent: true,
+      },
+      {
+        source: "/privacy-policy",
+        destination: "/privacy",
+        permanent: true,
+      },
+      {
+        source: "/festivals/kirtan-safari/register",
+        destination: "/festivals/kirtan-safari",
+        permanent: true,
+      },
+      {
+        source: "/festivals/janmastami",
+        destination: "/festivals/janmashtami",
+        permanent: true,
+      },
+      {
+        source: "/festivals/janmashtami-2026",
+        destination: "/festivals/janmashtami",
+        permanent: true,
+      },
+      {
+        source: "/festivals/radhastami",
+        destination: "/festivals/radhashtami",
+        permanent: true,
+      },
+      {
+        source: "/festivals/radha-ashtami",
+        destination: "/festivals/radhashtami",
+        permanent: true,
+      },
+      {
+        source: "/festivals/radhaastami",
+        destination: "/festivals/radhashtami",
+        permanent: true,
+      },
+      {
+        source: "/festivals/gaur-purnima",
+        destination: "/festivals/gaura-purnima",
+        permanent: true,
+      },
+      {
+        source: "/festivals/gauranga-purnima",
+        destination: "/festivals/gaura-purnima",
+        permanent: true,
+      },
+      {
+        source: "/festivals/rathayatra",
+        destination: "/festivals/rath-yatra",
+        permanent: true,
+      },
+      {
+        source: "/festivals/ratha-yatra",
+        destination: "/festivals/rath-yatra",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {

@@ -12,7 +12,7 @@ import InstallPromptBanner from "@/components/ui/InstallPromptBanner";
 import { templeInfo } from "@/data/site";
 import { safeJsonLd } from "@/lib/security";
 
-const siteUrl = "https://iskcon-nairobi.vercel.app";
+const siteUrl = "https://iskconnairobi.esthrema.com";
 const previewImage = "/brand/og-image.jpg";
 const iconVersion = "v=pwa-full-logo-safe-2026-08-06";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog";
 import { donationPaths, festivals, projects } from "@/data/site";
 
-const siteUrl = "https://iskcon-nairobi.vercel.app";
+const siteUrl = "https://iskconnairobi.esthrema.com";
 
 type RouteEntry = {
   path: string;
