@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
+import { trackAnalyticsEvent } from "@/components/system/AnalyticsTracker";
 
 type BeforeInstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -39,6 +40,9 @@ export function useInstallPrompt() {
     await deferredPrompt.prompt();
     const choice = await deferredPrompt.userChoice;
     setDeferredPrompt(null);
+    trackAnalyticsEvent(
+      choice.outcome === "accepted" ? "install_prompt_accepted" : "install_prompt_dismissed"
+    );
 
     if (choice.outcome === "accepted") {
       setIsInstalled(true);

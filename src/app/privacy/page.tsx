@@ -49,7 +49,7 @@ const dataCategories = [
   ["Engagement data", "Event RSVPs, course applications, volunteer sign-ups, newsletter subscriptions, and programme interests.", "Provided directly by you."],
   ["Communications", "Messages, prayer requests, testimonials, support queries, and contact-form submissions.", "Provided directly by you."],
   ["Media data", "Photographs, video, livestream footage, audio recordings, testimonials, and public event images.", "Captured at Temple programmes or submitted by you."],
-  ["Technical data", "IP address, browser type, device information, cookie data, and usage or analytics data.", "Collected automatically when you browse."],
+  ["Technical data", "Page-view data and approximate city from hosting network headers where available.", "Collected automatically when you browse."],
   ["Children's data", "Parent or guardian contact details, emergency contacts, age/date of birth where needed, programme attendance, and relevant medical or allergy notes.", "Provided by a parent, guardian, or authorized programme contact."],
   ["Sensitive data", "Religious interest inherent to the website's purpose and, only where voluntarily provided, dietary, allergy, health, prayer, pastoral, or safeguarding information relevant to a service request.", "Provided directly by you or by a parent/guardian with consent."],
 ];
@@ -84,7 +84,7 @@ const privacySections = [
       "We collect data directly from you when you submit forms, register interest, make an enquiry, request prayer or blessings, sign up to volunteer, subscribe to updates, book an event, apply for a course, or contact us.",
       "We may collect data from a parent or guardian where a child is enrolled in a youth programme, class, festival service, retreat, or other supervised activity.",
       "We may collect photographs, video, audio, and livestream footage during Temple programmes, festivals, kirtans, classes, processions, community service, and other public events.",
-      "We may collect limited technical data automatically through cookies, analytics, logs, and similar technologies when you browse the website.",
+      "We may collect limited technical data automatically through cookies, analytics, logs, and similar technologies when you browse the website, open a page, or install the website as an app.",
       "We may receive confirmation data from third parties such as payment processors, registration forms, email tools, messaging platforms, or social media services when you choose to use those services.",
     ],
   },

@@ -5,6 +5,7 @@ import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
 import SavannaDivider from "@/components/ui/SavannaDivider";
 import PwaRegistrar from "@/components/system/PwaRegistrar";
+import AnalyticsTracker from "@/components/system/AnalyticsTracker";
 import CalendarNotificationManager from "@/components/system/CalendarNotificationManager";
 import NoticeNotificationManager from "@/components/system/NoticeNotificationManager";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
@@ -162,6 +163,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
         />
         <PwaRegistrar />
+        <AnalyticsTracker />
         <CalendarNotificationManager />
         <NoticeNotificationManager />
         <Navigation />

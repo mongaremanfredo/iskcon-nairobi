@@ -32,6 +32,7 @@ GOOGLE_SERVICE_ACCOUNT_EMAIL=
 GOOGLE_PRIVATE_KEY=
 GOOGLE_SHEET_ID=
 CONTACT_SHEET_ID=
+ANALYTICS_SHEET_ID=
 PUSH_SUBSCRIBER_COUNT_TOKEN=
 VAPID_PUBLIC_KEY=
 VAPID_PRIVATE_KEY=
@@ -42,9 +43,12 @@ Optional variable:
 
 ```env
 PUSH_SUBSCRIPTIONS_SHEET_ID=
+ANALYTICS_SHEET_ID=
 ```
 
 If `PUSH_SUBSCRIPTIONS_SHEET_ID` is not set, push subscriptions are stored in a `PushSubscriptions` tab inside the contact spreadsheet. This is intentional for the current setup.
+
+If `ANALYTICS_SHEET_ID` is not set, page-open and app-install analytics are stored in a `WebsiteAnalytics` tab inside the contact spreadsheet.
 
 Public client variable:
 
