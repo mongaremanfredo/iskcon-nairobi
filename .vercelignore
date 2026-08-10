@@ -1,0 +1,10 @@
+.git
+.next
+.next-locked-*
+.vercel
+node_modules
+server.log
+server.err.log
+*.log
+*.tsbuildinfo
+.agents
