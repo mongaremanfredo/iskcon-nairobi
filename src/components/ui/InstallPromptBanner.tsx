@@ -28,7 +28,7 @@ export default function InstallPromptBanner() {
       role="dialog"
       aria-label="Install ISKCON Nairobi app"
       className={cn(
-        "fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-1/2 z-[70] w-[min(92vw,26rem)] -translate-x-1/2 rounded-2xl border border-gold/30 bg-dusk p-3.5 text-sand shadow-card-hover transition-all duration-500 max-[900px]:bottom-[calc(0.75rem+env(safe-area-inset-bottom))] max-[900px]:w-[min(94vw,24rem)]",
+        "fixed bottom-[calc(1rem_+_env(safe-area-inset-bottom))] left-1/2 z-[70] w-[min(92vw,26rem)] -translate-x-1/2 rounded-2xl border border-gold/30 bg-dusk p-3.5 text-sand shadow-card-hover transition-all duration-500 max-[900px]:bottom-[calc(0.75rem_+_env(safe-area-inset-bottom))] max-[900px]:w-[min(94vw,24rem)]",
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-6 opacity-0"
       )}
     >
