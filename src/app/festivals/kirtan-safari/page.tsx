@@ -757,7 +757,7 @@ export default function KirtanSafariPage() {
             }}
           >
             <div className="ks-guests-center" aria-hidden="true">
-              <strong>One forest, one song, one holy name.</strong>
+              <strong>One forest, one song, one holy{"\u00a0\u00a0\u00a0"}name.</strong>
             </div>
             {guestKirtaniyas.map((guest, index) => (
               <article
@@ -1614,12 +1614,13 @@ export default function KirtanSafariPage() {
           font-family: var(--font-inter, sans-serif);
         }
 
-          .kirtan-safari-page .ks-guests-center strong {
-          max-width: 13.5rem;
+        .kirtan-safari-page .ks-guests-center strong {
+          max-width: 12.75rem;
           font-family: var(--font-playfair, serif);
-          font-size: clamp(1.2rem, 1.9vw, 1.78rem);
-          line-height: 1.05;
+          font-size: clamp(1.12rem, 1.72vw, 1.62rem);
+          line-height: 1.12;
           color: #fff;
+          text-wrap: balance;
         }
 
         .kirtan-safari-page .ks-guest-card {
@@ -1843,9 +1844,9 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-guests-center strong {
-            max-width: 9.75rem !important;
-            font-size: 1.12rem !important;
-            line-height: 1.08 !important;
+            max-width: 9.2rem !important;
+            font-size: 1.04rem !important;
+            line-height: 1.12 !important;
           }
 
           .kirtan-safari-page .ks-guests-track {
