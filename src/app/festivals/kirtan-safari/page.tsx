@@ -1865,13 +1865,15 @@ export default function KirtanSafariPage() {
             gap: 0.95rem !important;
             overflow-x: auto !important;
             margin-inline: -1.125rem !important;
-            padding: 0.45rem 1.125rem 1.2rem !important;
+            padding: 1.05rem 1.125rem 1.55rem !important;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
-            min-height: 18.9rem !important;
+            min-height: 20.2rem !important;
             border-radius: 0 !important;
             align-items: flex-start !important;
+            position: relative !important;
+            isolation: isolate;
           }
 
           .kirtan-safari-page .ks-guests-track::-webkit-scrollbar {
@@ -1880,37 +1882,89 @@ export default function KirtanSafariPage() {
 
           .kirtan-safari-page .ks-guests-track::before,
           .kirtan-safari-page .ks-guests-track::after {
-            display: none;
+            display: block;
+            content: "";
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+          }
+
+          .kirtan-safari-page .ks-guests-track::before {
+            inset: 0.7rem 0.85rem 1.45rem;
+            border-radius: 41% 59% 47% 53% / 58% 38% 62% 42%;
+            background:
+              radial-gradient(circle at 12% 72%, rgba(214,156,43,0.2), transparent 6rem),
+              radial-gradient(circle at 86% 22%, rgba(246,226,177,0.12), transparent 7rem),
+              linear-gradient(116deg, transparent 0 18%, rgba(214,156,43,0.17) 18.2% 18.55%, transparent 18.8% 48%, rgba(246,226,177,0.12) 48.2% 48.5%, transparent 48.8%);
+            opacity: 0.82;
+            transform: rotate(-1.6deg);
+          }
+
+          .kirtan-safari-page .ks-guests-track::after {
+            left: 1.25rem;
+            right: 1.25rem;
+            top: 9.25rem;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(214,156,43,0.5), rgba(246,226,177,0.18), transparent);
+            opacity: 0.75;
+            transform: rotate(2.4deg);
           }
 
           .kirtan-safari-page .ks-guest-card {
             min-width: 9.8rem !important;
             max-width: 9.8rem !important;
             width: 9.8rem !important;
-            min-height: 15.5rem !important;
+            min-height: 16.2rem !important;
             justify-content: flex-start !important;
             scroll-snap-align: start;
-            padding-top: 0.65rem;
+            padding-top: 0.7rem;
             text-align: center !important;
             transform: none !important;
+            position: relative !important;
+            z-index: 2;
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(3n) {
-            transform: translateY(0.55rem) rotate(1deg) !important;
+            transform: translateY(-0.35rem) rotate(1.15deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(4n) {
-            transform: translateY(1.15rem) rotate(-1.4deg) !important;
+            transform: translateY(1.45rem) rotate(-1.6deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(5n) {
-            transform: translateY(0.25rem) rotate(1.6deg) !important;
+            transform: translateY(0.45rem) rotate(1.8deg) !important;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(6n) {
+            transform: translateY(2rem) rotate(-0.8deg) !important;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(7n) {
+            transform: translateY(-0.75rem) rotate(0.9deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-frame {
             padding: 0.48rem !important;
             border-color: rgba(214,156,43,0.5) !important;
             box-shadow: 0 26px 70px rgba(0,0,0,0.35) !important;
+            animation: ksGuestPulse 6.5s ease-in-out infinite;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(3n) .ks-guest-frame {
+            animation-delay: -1.1s;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(4n) .ks-guest-frame {
+            animation-delay: -2.2s;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(5n) .ks-guest-frame {
+            animation-delay: -3.3s;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(6n) .ks-guest-frame {
+            animation-delay: -4.4s;
           }
 
           .kirtan-safari-page .ks-guest-frame > div:first-child {
@@ -1938,6 +1992,21 @@ export default function KirtanSafariPage() {
             font-size: 0.68rem !important;
             letter-spacing: 0.05em !important;
             line-height: 1.25 !important;
+          }
+
+          @keyframes ksGuestPulse {
+            0%, 100% {
+              box-shadow: 0 24px 62px rgba(0,0,0,0.34), 0 0 0 rgba(214,156,43,0);
+            }
+            50% {
+              box-shadow: 0 30px 76px rgba(0,0,0,0.42), 0 0 24px rgba(214,156,43,0.12);
+            }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .kirtan-safari-page .ks-guest-frame {
+              animation: none !important;
+            }
           }
         }
       `}</style>
