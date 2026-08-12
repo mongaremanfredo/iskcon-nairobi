@@ -732,6 +732,22 @@ export default function KirtanSafariPage() {
             </p>
           </div>
 
+          <p
+            className="ks-guests-mobile-cue"
+            style={{
+              display: "none",
+              fontFamily: "var(--font-inter, sans-serif)",
+              color: "rgba(214,156,43,0.8)",
+              fontSize: "0.62rem",
+              fontWeight: 800,
+              letterSpacing: "0.18em",
+              textTransform: "uppercase",
+              margin: "0 0 1rem",
+            }}
+          >
+            Swipe the lineup
+          </p>
+
           <div
             className="ks-guests-track"
             style={{
@@ -752,7 +768,16 @@ export default function KirtanSafariPage() {
                   justifyContent: index % 2 === 0 ? "flex-start" : "flex-end",
                 }}
               >
+                <span
+                  className="ks-guest-number"
+                  style={{
+                    display: "none",
+                  }}
+                >
+                  {String(index + 1).padStart(2, "0")}
+                </span>
                 <div
+                  className="ks-guest-frame"
                   style={{
                     position: "relative",
                     background:
@@ -792,7 +817,18 @@ export default function KirtanSafariPage() {
                     />
                   </div>
                 </div>
-                <div style={{ marginTop: "0.85rem", minHeight: "3.2rem" }}>
+                <div
+                  className="ks-guest-nameplate"
+                  style={{ marginTop: "0.85rem", minHeight: "3.2rem" }}
+                >
+                  <span
+                    className="ks-guest-mobile-role"
+                    style={{
+                      display: "none",
+                    }}
+                  >
+                    Guest Kirtaniya
+                  </span>
                   <p
                     style={{
                       fontFamily: "var(--font-inter, sans-serif)",
@@ -1621,17 +1657,21 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-guests {
-            padding: 3rem 0 3.2rem !important;
+            padding: 3.05rem 0 3.35rem !important;
+            background:
+              radial-gradient(circle at 50% 0%, rgba(214,156,43,0.16), transparent 32%),
+              linear-gradient(180deg, #071c10 0%, #12301b 52%, #071c10 100%) !important;
           }
 
           .kirtan-safari-page .ks-guests-header {
             grid-template-columns: 1fr !important;
-            gap: 0.9rem !important;
-            margin-bottom: 1.45rem !important;
+            gap: 0.75rem !important;
+            margin-bottom: 1rem !important;
           }
 
           .kirtan-safari-page .ks-guests-header h2 {
             font-size: clamp(1.85rem, 9vw, 2.45rem) !important;
+            max-width: 20rem !important;
           }
 
           .kirtan-safari-page .ks-guests-header p:last-child {
@@ -1639,14 +1679,19 @@ export default function KirtanSafariPage() {
             line-height: 1.55 !important;
           }
 
+          .kirtan-safari-page .ks-guests-mobile-cue {
+            display: block !important;
+          }
+
           .kirtan-safari-page .ks-guests-track {
             display: flex !important;
-            gap: 0.85rem !important;
+            gap: 1rem !important;
             overflow-x: auto !important;
-            margin-inline: -1rem !important;
-            padding: 0.35rem 1rem 0.9rem !important;
+            margin-inline: -1.125rem !important;
+            padding: 0.5rem 1.125rem 1rem !important;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
           }
 
           .kirtan-safari-page .ks-guests-track::-webkit-scrollbar {
@@ -1654,17 +1699,75 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-guest-card {
-            min-width: 42vw !important;
-            max-width: 42vw !important;
-            min-height: auto !important;
+            min-width: min(76vw, 19rem) !important;
+            max-width: min(76vw, 19rem) !important;
+            min-height: 23.5rem !important;
             justify-content: flex-start !important;
             scroll-snap-align: start;
+            padding-top: 0.55rem;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(even) {
+            transform: translateY(0.85rem);
+          }
+
+          .kirtan-safari-page .ks-guest-number {
+            display: inline-flex !important;
+            position: absolute;
+            z-index: 3;
+            top: 0;
+            left: 0.75rem;
+            width: 2.45rem;
+            height: 2.45rem;
+            align-items: center;
+            justify-content: center;
+            background: #d69c2b;
+            color: #071c10;
+            border: 1px solid rgba(246,226,177,0.65);
+            font-family: var(--font-inter, sans-serif);
+            font-size: 0.72rem;
+            font-weight: 900;
+            letter-spacing: 0.08em;
+            box-shadow: 0 16px 35px rgba(0,0,0,0.28);
+          }
+
+          .kirtan-safari-page .ks-guest-frame {
+            padding: 0.68rem !important;
+            border-color: rgba(214,156,43,0.5) !important;
+            box-shadow: 0 26px 70px rgba(0,0,0,0.35) !important;
+          }
+
+          .kirtan-safari-page .ks-guest-frame > div:last-child {
+            aspect-ratio: 1 / 1.18 !important;
+          }
+
+          .kirtan-safari-page .ks-guest-nameplate {
+            position: relative;
+            z-index: 4;
+            margin: -2.9rem 0.72rem 0 !important;
+            min-height: 4.6rem !important;
+            padding: 0.85rem 0.85rem 0.78rem;
+            background: rgba(7,28,16,0.86);
+            border: 1px solid rgba(214,156,43,0.42);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 18px 45px rgba(0,0,0,0.32);
+          }
+
+          .kirtan-safari-page .ks-guest-mobile-role {
+            display: block !important;
+            color: rgba(214,156,43,0.82);
+            font-family: var(--font-inter, sans-serif);
+            font-size: 0.52rem;
+            font-weight: 800;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            margin-bottom: 0.34rem;
           }
 
           .kirtan-safari-page .ks-guest-card p {
-            font-size: 0.64rem !important;
-            letter-spacing: 0.05em !important;
-            line-height: 1.28 !important;
+            font-size: 0.82rem !important;
+            letter-spacing: 0.055em !important;
+            line-height: 1.22 !important;
           }
         }
       `}</style>
