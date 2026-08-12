@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
   BookOpen,
+  Camera,
   MapPin,
   Phone,
   Mail,
@@ -84,24 +85,72 @@ const adhivasEvent = {
   image: "/images/kirtan-safari-2026-adhivas.png",
 };
 
+function YouTubeIcon({
+  size = 13,
+  color = "#d69c2b",
+}: {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+}) {
+  return (
+    <svg
+      width={size + 2}
+      height={size}
+      viewBox="0 0 24 18"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block", flexShrink: 0 }}
+    >
+      <path
+        d="M23.5 3.1c-.27-1.02-1.08-1.82-2.08-2.09C19.59.5 12 .5 12 .5S4.41.5 2.58 1.01C1.58 1.28.77 2.08.5 3.1.01 4.94.01 8.76.01 8.76s0 3.82.49 5.66c.27 1.02 1.08 1.78 2.08 2.05 1.83.52 9.42.52 9.42.52s7.59 0 9.42-.52c1-.27 1.81-1.03 2.08-2.05.49-1.84.49-5.66.49-5.66s0-3.82-.49-5.66Z"
+        fill={color}
+      />
+      <path d="M9.6 12.36V5.16l6.28 3.6-6.28 3.6Z" fill="#071c10" />
+    </svg>
+  );
+}
+
+function TikTokIcon({
+  size = 13,
+  color = "#d69c2b",
+}: {
+  size?: number;
+  color?: string;
+  strokeWidth?: number;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      aria-hidden="true"
+      focusable="false"
+      style={{ display: "block", flexShrink: 0 }}
+    >
+      <path
+        d="M15.45 2.75c.26 2.34 1.59 3.73 3.85 3.88v3.25a7.12 7.12 0 0 1-3.74-1.11v6.68c0 3.38-2.1 5.8-5.38 5.8-3.05 0-5.48-2.05-5.48-5.08 0-3.39 2.61-5.36 5.96-5.08v3.34c-1.48-.2-2.57.42-2.57 1.65 0 1.04.86 1.72 1.95 1.72 1.28 0 2.08-.76 2.08-2.42V2.75h3.33Z"
+        fill={color}
+      />
+    </svg>
+  );
+}
+
 const socials = [
   {
     label: "Instagram",
-    handle: "@kirtansafari",
     href: "https://www.instagram.com/kirtansafari",
-    icon: ExternalLink,
+    icon: Camera,
   },
   {
     label: "YouTube",
-    handle: "@kirtan_safari",
     href: "https://www.youtube.com/@kirtan_safari",
-    icon: ExternalLink,
+    icon: YouTubeIcon,
   },
   {
     label: "TikTok",
-    handle: "@kirtan.safari",
     href: "https://www.tiktok.com/@kirtan.safari",
-    icon: ExternalLink,
+    icon: TikTokIcon,
   },
 ];
 
@@ -1498,50 +1547,32 @@ export default function KirtanSafariPage() {
               </h3>
             </div>
 
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
-              {socials.map(({ label, handle, href, icon: Icon }) => (
+            <div style={{ display: "flex", flexWrap: "wrap", gap: "0.75rem" }}>
+              {socials.map(({ label, href, icon: Icon }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="ks-social-chip"
                   style={{
-                    display: "flex",
+                    fontFamily: "var(--font-inter, sans-serif)",
+                    display: "inline-flex",
                     alignItems: "center",
-                    gap: "0.625rem",
-                    background: "rgba(255,255,255,0.04)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    padding: "0.75rem 1.25rem",
+                    gap: "0.4rem",
+                    color: "rgba(246,226,177,0.74)",
+                    fontSize: "0.65rem",
+                    letterSpacing: "0.1em",
+                    textTransform: "uppercase",
                     textDecoration: "none",
-                    transition: "border-color 0.3s",
+                    border: "1px solid rgba(214,156,43,0.24)",
+                    background: "rgba(214,156,43,0.08)",
+                    padding: "0.4rem 0.55rem",
+                    transition: "color 0.2s, border-color 0.2s, background 0.2s",
                   }}
                 >
-                  <Icon size={14} color="#d69c2b" />
-                  <div>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-inter, sans-serif)",
-                        color: "rgba(255,255,255,0.4)",
-                        fontSize: "0.55rem",
-                        letterSpacing: "0.12em",
-                        textTransform: "uppercase",
-                        margin: "0 0 0.1rem",
-                      }}
-                    >
-                      {label}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: "var(--font-inter, sans-serif)",
-                        color: "#fff",
-                        fontSize: "0.8rem",
-                        fontWeight: 600,
-                        margin: 0,
-                      }}
-                    >
-                      {handle}
-                    </p>
-                  </div>
+                  <Icon size={13} color="#d69c2b" strokeWidth={1.8} />
+                  {label}
                 </a>
               ))}
             </div>
@@ -1791,6 +1822,12 @@ export default function KirtanSafariPage() {
             linear-gradient(135deg, rgba(7,28,16,0.86), rgba(214,156,43,0.1)) !important;
         }
 
+        .kirtan-safari-page .ks-social-chip:hover {
+          color: #f6e2b1 !important;
+          border-color: rgba(214,156,43,0.48) !important;
+          background: rgba(214,156,43,0.14) !important;
+        }
+
         @media (max-width: 640px) {
           .kirtan-safari-page {
             max-width: 100vw;
@@ -1876,6 +1913,12 @@ export default function KirtanSafariPage() {
             justify-content: center !important;
             padding: 0.9rem 1rem !important;
             text-align: center !important;
+          }
+
+          .kirtan-safari-page .ks-social-chip {
+            width: auto !important;
+            padding: 0.45rem 0.58rem !important;
+            justify-content: flex-start !important;
           }
 
           .kirtan-safari-page div[style*="display: flex"][style*="justify-content: space-between"] {
