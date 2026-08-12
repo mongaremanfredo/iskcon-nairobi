@@ -1865,11 +1865,11 @@ export default function KirtanSafariPage() {
             gap: 0.95rem !important;
             overflow-x: auto !important;
             margin-inline: -1.125rem !important;
-            padding: 1.05rem 1.125rem 1.55rem !important;
+            padding: 0.45rem 1.125rem 0.85rem !important;
             scroll-snap-type: x mandatory;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
-            min-height: 20.2rem !important;
+            min-height: 18.2rem !important;
             border-radius: 0 !important;
             align-items: flex-start !important;
             position: relative !important;
@@ -1890,7 +1890,7 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-guests-track::before {
-            inset: 0.7rem 0.85rem 1.45rem;
+            inset: 0.1rem 0.85rem 0.45rem;
             border-radius: 41% 59% 47% 53% / 58% 38% 62% 42%;
             background:
               radial-gradient(circle at 12% 72%, rgba(214,156,43,0.2), transparent 6rem),
@@ -1903,7 +1903,7 @@ export default function KirtanSafariPage() {
           .kirtan-safari-page .ks-guests-track::after {
             left: 1.25rem;
             right: 1.25rem;
-            top: 9.25rem;
+            top: 8.65rem;
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(214,156,43,0.5), rgba(246,226,177,0.18), transparent);
             opacity: 0.75;
@@ -1914,10 +1914,10 @@ export default function KirtanSafariPage() {
             min-width: 9.8rem !important;
             max-width: 9.8rem !important;
             width: 9.8rem !important;
-            min-height: 16.2rem !important;
+            min-height: 14.6rem !important;
             justify-content: flex-start !important;
             scroll-snap-align: start;
-            padding-top: 0.7rem;
+            padding-top: 0.35rem;
             text-align: center !important;
             transform: none !important;
             position: relative !important;
@@ -1925,23 +1925,27 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(3n) {
-            transform: translateY(-0.35rem) rotate(1.15deg) !important;
+            transform: translateY(-0.25rem) rotate(1.15deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(4n) {
-            transform: translateY(1.45rem) rotate(-1.6deg) !important;
+            transform: translateY(2.35rem) rotate(-1.6deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(5n) {
-            transform: translateY(0.45rem) rotate(1.8deg) !important;
+            transform: translateY(1.05rem) rotate(1.8deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(6n) {
-            transform: translateY(2rem) rotate(-0.8deg) !important;
+            transform: translateY(3.05rem) rotate(-0.8deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-card:nth-child(7n) {
-            transform: translateY(-0.75rem) rotate(0.9deg) !important;
+            transform: translateY(0.15rem) rotate(0.9deg) !important;
+          }
+
+          .kirtan-safari-page .ks-guest-card:nth-child(8n) {
+            transform: translateY(2.75rem) rotate(1.25deg) !important;
           }
 
           .kirtan-safari-page .ks-guest-frame {
@@ -1979,8 +1983,8 @@ export default function KirtanSafariPage() {
           .kirtan-safari-page .ks-guest-nameplate {
             position: relative;
             z-index: 4;
-            margin: 0.75rem 0 0 !important;
-            min-height: 3.8rem !important;
+            margin: 0.55rem 0 0 !important;
+            min-height: 2.75rem !important;
             padding: 0 !important;
             background: transparent !important;
             border: 0 !important;
