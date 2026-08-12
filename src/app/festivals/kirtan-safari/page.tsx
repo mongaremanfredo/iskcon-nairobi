@@ -757,9 +757,7 @@ export default function KirtanSafariPage() {
             }}
           >
             <div className="ks-guests-center" aria-hidden="true">
-              <span>Forest Mood</span>
-              <strong>Many voices, one maha-mantra</strong>
-              <span>Hare Krishna Temple Nairobi</span>
+              <strong>One forest, one song, one holy name.</strong>
             </div>
             {guestKirtaniyas.map((guest, index) => (
               <article
@@ -773,14 +771,6 @@ export default function KirtanSafariPage() {
                   justifyContent: index % 2 === 0 ? "flex-start" : "flex-end",
                 }}
               >
-                <span
-                  className="ks-guest-number"
-                  style={{
-                    display: "none",
-                  }}
-                >
-                  {String(index + 1).padStart(2, "0")}
-                </span>
                 <div
                   className="ks-guest-frame"
                   style={{
@@ -826,14 +816,6 @@ export default function KirtanSafariPage() {
                   className="ks-guest-nameplate"
                   style={{ marginTop: "0.85rem", minHeight: "3.2rem" }}
                 >
-                  <span
-                    className="ks-guest-mobile-role"
-                    style={{
-                      display: "none",
-                    }}
-                  >
-                    Guest Kirtaniya
-                  </span>
                   <p
                     style={{
                       fontFamily: "var(--font-inter, sans-serif)",
@@ -1632,19 +1614,11 @@ export default function KirtanSafariPage() {
           font-family: var(--font-inter, sans-serif);
         }
 
-        .kirtan-safari-page .ks-guests-center span {
-          font-size: 0.62rem;
-          font-weight: 800;
-          letter-spacing: 0.18em;
-          text-transform: uppercase;
-          color: rgba(214,156,43,0.88);
-        }
-
-        .kirtan-safari-page .ks-guests-center strong {
-          max-width: 12rem;
+          .kirtan-safari-page .ks-guests-center strong {
+          max-width: 13.5rem;
           font-family: var(--font-playfair, serif);
-          font-size: clamp(1.35rem, 2.4vw, 2.15rem);
-          line-height: 0.98;
+          font-size: clamp(1.2rem, 1.9vw, 1.78rem);
+          line-height: 1.05;
           color: #fff;
         }
 
@@ -1869,9 +1843,9 @@ export default function KirtanSafariPage() {
           }
 
           .kirtan-safari-page .ks-guests-center strong {
-            max-width: 9.5rem !important;
-            font-size: 1.18rem !important;
-            line-height: 1.04 !important;
+            max-width: 9.75rem !important;
+            font-size: 1.12rem !important;
+            line-height: 1.08 !important;
           }
 
           .kirtan-safari-page .ks-guests-track {
@@ -1921,27 +1895,6 @@ export default function KirtanSafariPage() {
             transform: translateY(0.25rem) rotate(1.6deg) !important;
           }
 
-          .kirtan-safari-page .ks-guest-number {
-            display: inline-flex !important;
-            position: absolute;
-            z-index: 3;
-            top: 0;
-            left: 0.75rem;
-            width: 2.45rem;
-            height: 2.45rem;
-            align-items: center;
-            justify-content: center;
-            background: #d69c2b;
-            color: #071c10;
-            border: 1px solid rgba(246,226,177,0.65);
-            font-family: var(--font-inter, sans-serif);
-            font-size: 0.72rem;
-            font-weight: 900;
-            letter-spacing: 0.08em;
-            box-shadow: 0 16px 35px rgba(0,0,0,0.28);
-            border-radius: 999px;
-          }
-
           .kirtan-safari-page .ks-guest-frame {
             padding: 0.48rem !important;
             border-color: rgba(214,156,43,0.5) !important;
@@ -1967,17 +1920,6 @@ export default function KirtanSafariPage() {
             border: 0 !important;
             backdrop-filter: none !important;
             box-shadow: none !important;
-          }
-
-          .kirtan-safari-page .ks-guest-mobile-role {
-            display: block !important;
-            color: rgba(214,156,43,0.82);
-            font-family: var(--font-inter, sans-serif);
-            font-size: 0.52rem;
-            font-weight: 800;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            margin-bottom: 0.34rem;
           }
 
           .kirtan-safari-page .ks-guest-card p {
