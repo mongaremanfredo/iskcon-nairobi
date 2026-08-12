@@ -950,6 +950,65 @@ export default function KirtanSafariPage() {
                 <span><strong style={{ color: "#f6e2b1" }}>Venue:</strong> {adhivasEvent.location}</span>
                 <span><strong style={{ color: "#f6e2b1" }}>Prasad:</strong> {adhivasEvent.prasadam}</span>
               </div>
+              <a
+                className="ks-adhivas-story-link"
+                href="/blog/sri-nama-sankirtana-adhivasa"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "auto minmax(0, 1fr) auto",
+                  gap: "0.85rem",
+                  alignItems: "center",
+                  marginTop: "1.35rem",
+                  padding: "1rem",
+                  textDecoration: "none",
+                  background:
+                    "linear-gradient(135deg, rgba(7,28,16,0.72), rgba(7,28,16,0.36))",
+                  border: "1px solid rgba(214,156,43,0.32)",
+                  boxShadow: "0 18px 50px rgba(0,0,0,0.18)",
+                }}
+              >
+                <span
+                  style={{
+                    width: "2.35rem",
+                    height: "2.35rem",
+                    display: "inline-flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "#071c10",
+                    background: "#d69c2b",
+                    borderRadius: "42% 58% 47% 53% / 55% 40% 60% 45%",
+                  }}
+                >
+                  <BookOpen size={16} strokeWidth={2} />
+                </span>
+                <span style={{ display: "grid", gap: "0.25rem", minWidth: 0 }}>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-inter, sans-serif)",
+                      color: "rgba(214,156,43,0.9)",
+                      fontSize: "0.58rem",
+                      fontWeight: 800,
+                      letterSpacing: "0.16em",
+                      textTransform: "uppercase",
+                    }}
+                  >
+                    Before the Safari
+                  </span>
+                  <span
+                    style={{
+                      fontFamily: "var(--font-playfair, serif)",
+                      color: "#fff",
+                      fontSize: "1.05rem",
+                      lineHeight: 1.15,
+                    }}
+                  >
+                    Read why Adivas opens the kirtan mood
+                  </span>
+                </span>
+                <ExternalLink size={16} color="#d69c2b" strokeWidth={1.8} />
+              </a>
             </div>
           </div>
 
@@ -1721,6 +1780,17 @@ export default function KirtanSafariPage() {
           min-height: 3.4rem !important;
         }
 
+        .kirtan-safari-page .ks-adhivas-story-link {
+          transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+        }
+
+        .kirtan-safari-page .ks-adhivas-story-link:hover {
+          transform: translateY(-2px);
+          border-color: rgba(214,156,43,0.56) !important;
+          background:
+            linear-gradient(135deg, rgba(7,28,16,0.86), rgba(214,156,43,0.1)) !important;
+        }
+
         @media (max-width: 640px) {
           .kirtan-safari-page {
             max-width: 100vw;
@@ -1784,6 +1854,16 @@ export default function KirtanSafariPage() {
           .kirtan-safari-page .ks-adhivas-card {
             grid-template-columns: 1fr !important;
             gap: 0 !important;
+          }
+
+          .kirtan-safari-page .ks-adhivas-story-link {
+            grid-template-columns: auto minmax(0, 1fr) !important;
+            padding: 0.9rem !important;
+            margin-top: 1rem !important;
+          }
+
+          .kirtan-safari-page .ks-adhivas-story-link > svg {
+            display: none !important;
           }
 
           .kirtan-safari-page div[style*="background-attachment: fixed"] {
