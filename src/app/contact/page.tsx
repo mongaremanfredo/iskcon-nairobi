@@ -23,7 +23,7 @@ export default function ContactPage() {
         title="Get in"
         titleAccent="Touch"
         subtitle="Contact Us"
-        image="/images/kirtan-safari-2026-forest-bg.jpg"
+        image="/images/sunset-route.png"
         height="md"
         className="sm:min-h-[500px]"
       />
