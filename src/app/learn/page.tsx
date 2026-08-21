@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Bell, BookOpen, CalendarDays, Clock, GraduationCap, Home, LibraryBig, MessageCircle, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
+import GitaCourseRegistrationModal, {
+  GitaCourseRegistrationButton,
+} from "@/components/sections/GitaCourseRegistrationModal";
 
 export const metadata: Metadata = {
   title: "Learn",
@@ -33,6 +36,21 @@ const learningPaths = [
     timing: "After the 12:00 P.M. arati",
     description:
       "The Sunday festival includes a temple class for the whole community, followed by kirtan, association, and prasadam.",
+  },
+];
+
+const beginnersGitaOptions = [
+  {
+    title: "In Person",
+    timing: "Thursdays, 7:00-8:30 P.M.",
+    start: "Starts 24 September 2026",
+    venue: "Hare Krishna Temple Nairobi",
+  },
+  {
+    title: "Online",
+    timing: "Thursdays, 7:30 P.M.",
+    start: "Starts 10 September 2026",
+    venue: "Live online class",
   },
 ];
 
@@ -86,6 +104,7 @@ const communityLearning = [
 export default function LearnPage() {
   return (
     <>
+      <GitaCourseRegistrationModal />
       <PageHero
         title="Learn"
         titleAccent="& Study"
@@ -94,6 +113,58 @@ export default function LearnPage() {
         image="/images/krishna-student.jpeg"
         className="sm:min-h-[500px]"
       />
+
+      <section id="beginners-gita-course" className="bg-dusk pt-section-sm pb-section text-sand">
+        <div className="content-width section-padding">
+          <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch">
+            <div className="flex flex-col justify-center border border-gold/18 bg-white/[0.05] p-6 sm:p-8">
+              <span className="eyebrow mb-3 block text-gold/80">New Course</span>
+              <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
+                Beginners
+                <br />
+                <em className="text-gold not-italic font-normal">Bhagavad Gita Course</em>
+              </h2>
+              <p className="mt-5 font-inter text-sm leading-relaxed text-sand/64 sm:text-base">
+                A weekly six-week introduction to Bhagavad Gita for newcomers and returning students. Each class is designed to be approachable, practical, and rooted in Srila Prabhupada's presentation of Krishna's teachings.
+              </p>
+              <div className="mt-6 border-l border-gold/35 pl-4 font-inter text-sm leading-relaxed text-sand/70">
+                Contact Aisvarya Lila:{" "}
+                <a href="tel:+254748276446" className="font-bold text-gold no-underline">
+                  +254 748 276446
+                </a>
+              </div>
+              <GitaCourseRegistrationButton className="btn-primary mt-7 justify-center sm:self-start">
+                Register Interest
+              </GitaCourseRegistrationButton>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {beginnersGitaOptions.map((option) => (
+                <article key={option.title} className="flex min-h-[17rem] flex-col justify-between border border-gold/16 bg-temple-brown/70 p-6 shadow-card">
+                  <div>
+                    <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/12 text-gold">
+                      <BookOpen size={19} />
+                    </div>
+                    <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                      Choose This Option
+                    </p>
+                    <h3 className="mt-2 font-playfair text-3xl font-semibold leading-tight text-white">
+                      {option.title}
+                    </h3>
+                    <p className="mt-4 font-inter text-xs font-semibold uppercase tracking-[0.13em] text-sand/54">
+                      {option.start}
+                    </p>
+                  </div>
+                  <div className="mt-7 border-t border-gold/16 pt-5">
+                    <p className="font-inter text-sm font-semibold text-sand">{option.timing}</p>
+                    <p className="mt-2 font-inter text-sm text-sand/58">{option.venue}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
       <section className="bg-temple-bg pt-section-sm pb-section">
         <div className="content-width section-padding">

@@ -28,6 +28,15 @@ export const siteNotices: SiteNotice[] = [
     priority: "high",
   },
   {
+    id: "beginners-bhagavad-gita-course-2026",
+    title: "Beginners Bhagavad Gita course",
+    body: "A weekly six-week beginners course is opening with in-person and online options. Register your interest through the Learn page.",
+    dateLabel: "Sep 2026",
+    tag: "Learn",
+    href: "/learn#beginners-gita-course",
+    priority: "high",
+  },
+  {
     id: "kirtan-safari-2026-registration",
     title: "Kirtan Safari 2026 registration is open",
     body: "Reserve your place for the four-day Kirtan Safari celebration at ISKCON Nairobi, beginning with Adivas on 27 August.",

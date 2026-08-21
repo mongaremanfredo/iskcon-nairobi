@@ -16,7 +16,7 @@ const navCards = [
   {
     icon: BookOpen,
     title: "Learn",
-    description: "Philosophy courses, Bhakti-sastri programmes, and weekly classes.",
+    description: "New 6-week Bhagavad Gita course, philosophy programmes, and weekly classes.",
     href: "/learn",
     color: "bg-gold",
     accent: "text-gold",
