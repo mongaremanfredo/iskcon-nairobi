@@ -8,21 +8,59 @@ import { cn } from "@/lib/utils";
 
 const heroImages = [
   {
+    src: "/images/home-kirtan-safari-illustration-hero.png",
+    alt: "Illustration of devotees performing kirtan outdoors in Nairobi at sunset",
+    position: "center center",
+    mobilePosition: "58% center",
+    eyebrow: "Kirtan Safari 2026",
+    tagline: "Every word a song, every step a dance.",
+    description:
+      "Join the four-day Kirtan Safari celebration at Hare Krishna Temple Nairobi, beginning with Adivas on 27 August.",
+    ctas: [
+      { href: "/festivals/kirtan-safari", label: "Register Free", variant: "primary" },
+      { href: "/blog/sri-nama-sankirtana-adhivasa", label: "Begin the Mood", variant: "ghost" },
+    ],
+  },
+  {
     src: "/images/iskcon-nairobi-aerial.jpg",
     alt: "Aerial view of ISKCON Nairobi temple with the Nairobi skyline",
     position: "center 58%",
+    eyebrow: "Sri Sri Radha Bankebihari Temple",
+    tagline: "Faith.\u2002Community.\u2002Service.",
+    description:
+      "Discover Krishna Consciousness in Nairobi through worship, kirtan, prasadam, education, and service.",
+    ctas: [
+      { href: "/visit", label: "Visit Temple", variant: "ghost" },
+      { href: "/donate", label: "Support Our Mission", variant: "primary" },
+    ],
   },
   {
     src: "/images/hero-ratha-yatra-kenya.jpg",
     alt: "Ratha Yatra devotees in Nairobi carrying a Hare Krishna sign",
     position: "center 48%",
     mobilePosition: "62% center",
+    eyebrow: "Sri Sri Radha Bankebihari Temple",
+    tagline: "Faith.\u2002Community.\u2002Service.",
+    description:
+      "Discover Krishna Consciousness in Nairobi through worship, kirtan, prasadam, education, and service.",
+    ctas: [
+      { href: "/visit", label: "Visit Temple", variant: "ghost" },
+      { href: "/donate", label: "Support Our Mission", variant: "primary" },
+    ],
   },
   {
     src: "/images/kirtan-safari-daily-darshan-2026.jpg",
     alt: "Daily darshan of Sri Sri Radha Bankebihari in red festival attire",
     position: "center top",
     mobilePosition: "center top",
+    eyebrow: "Sri Sri Radha Bankebihari Temple",
+    tagline: "Faith.\u2002Community.\u2002Service.",
+    description:
+      "Discover Krishna Consciousness in Nairobi through worship, kirtan, prasadam, education, and service.",
+    ctas: [
+      { href: "/visit", label: "Visit Temple", variant: "ghost" },
+      { href: "/donate", label: "Support Our Mission", variant: "primary" },
+    ],
   },
 ];
 
@@ -41,6 +79,8 @@ export default function HeroSection() {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);
+
+  const currentHero = heroImages[currentImage];
 
   return (
     <section className="home-hero relative w-full h-[100svh] min-h-[620px] max-h-[1000px] overflow-hidden sm:h-screen sm:min-h-[600px]">
@@ -85,7 +125,7 @@ export default function HeroSection() {
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
-              <span className="eyebrow text-gold">Sri Sri Radha Bankebihari Temple</span>
+              <span className="eyebrow text-gold">{currentHero.eyebrow}</span>
             </div>
 
             {/* Animated gold rule */}
@@ -105,10 +145,10 @@ export default function HeroSection() {
               )}
             >
               <p className="font-cormorant text-temple-cream/90 text-shadow" style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.25rem)", lineHeight: 1.3, fontStyle: "italic" }}>
-                Faith.&ensp;Community.&ensp;Service.
+                {currentHero.tagline}
               </p>
               <p className="font-inter text-white/70 mt-4 text-sm sm:text-base tracking-wide max-w-md leading-relaxed">
-                Discover Krishna Consciousness in Nairobi through worship, kirtan, prasadam, education, and service.
+                {currentHero.description}
               </p>
             </div>
 
@@ -119,12 +159,15 @@ export default function HeroSection() {
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
-              <Link href="/visit" className="btn-ghost">
-                Visit Temple
-              </Link>
-              <Link href="/donate" className="btn-primary">
-                Support Our Mission
-              </Link>
+              {currentHero.ctas.map((cta) => (
+                <Link
+                  key={cta.href}
+                  href={cta.href}
+                  className={cta.variant === "primary" ? "btn-primary" : "btn-ghost"}
+                >
+                  {cta.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>
