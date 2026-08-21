@@ -39,10 +39,10 @@ function sheetRange(range: string) {
 function getGoogleClient() {
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
-  const spreadsheetId = process.env.CONTACT_SHEET_ID || process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.CONTACT_SHEET_ID;
 
   if (!clientEmail || !rawPrivateKey || !spreadsheetId) {
-    throw new Error("Google Sheets Bhagavad Gita course backend is not configured.");
+    throw new Error("Google Sheets contact submissions backend is not configured.");
   }
 
   const privateKey = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n");
