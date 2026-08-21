@@ -255,7 +255,7 @@ export const vaishnavaCalendar2026 = [
     events: [
       { date: "Aug 7", day: "Fri", event: "Incorporation of ISKCON in New York (1966)" },
       { date: "Aug 9", day: "Sun", event: "Kamika Ekadashi", type: "Ekadashi" },
-      { date: "Aug 23", day: "Sun", event: "Radha Govinda Jhulana Yatra begins" },
+      { date: "Aug 23", day: "Sun", event: "Radha Govinda Jhulan Yatra begins - 23-28 August, ending Friday", type: "Major" },
       { date: "Aug 24", day: "Mon", event: "Pavitropana Ekadashi", type: "Ekadashi" },
       { date: "Aug 27", day: "Thu", event: "Last day of 1st Chaturmasya / Kirtan Safari Adivas", type: "Major" },
       { date: "Aug 28", day: "Fri", event: "Lord Balarama Appearance / Kirtan Safari", type: "Major" },

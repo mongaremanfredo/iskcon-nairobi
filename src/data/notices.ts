@@ -19,6 +19,15 @@ export const siteNotices: SiteNotice[] = [
     priority: "high",
   },
   {
+    id: "jhulan-yatra-2026",
+    title: "Jhulan Yatra at ISKCON Nairobi",
+    body: "Join the Radha Govinda Jhulan Yatra celebrations from Sunday 23 August to Friday 28 August at Hare Krishna Temple Nairobi.",
+    dateLabel: "23-28 Aug 2026",
+    tag: "Festival",
+    href: "/festivals",
+    priority: "high",
+  },
+  {
     id: "kirtan-safari-2026-registration",
     title: "Kirtan Safari 2026 registration is open",
     body: "Reserve your place for the four-day Kirtan Safari celebration at ISKCON Nairobi, beginning with Adivas on 27 August.",
