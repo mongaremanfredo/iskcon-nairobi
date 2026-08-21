@@ -54,19 +54,6 @@ const heroImages: HeroImage[] = [
     durationMs: 15000,
   },
   {
-    src: "/images/iskcon-nairobi-aerial.jpg",
-    alt: "Aerial view of ISKCON Nairobi temple with the Nairobi skyline",
-    position: "center 58%",
-    eyebrow: "Sri Sri Radha Bankebihari Temple",
-    tagline: "Faith.\u2002Community.\u2002Service.",
-    description:
-      "Discover Krishna Consciousness in Nairobi through worship, kirtan, prasadam, education, and service.",
-    ctas: [
-      { href: "/visit", label: "Visit Temple", variant: "ghost" },
-      { href: "/donate", label: "Support Our Mission", variant: "primary" },
-    ],
-  },
-  {
     src: "/images/hero-ratha-yatra-kenya.jpg",
     alt: "Ratha Yatra devotees in Nairobi carrying a Hare Krishna sign",
     position: "center 48%",
