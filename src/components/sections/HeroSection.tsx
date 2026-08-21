@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 const heroImages = [
   {
     src: "/images/home-kirtan-safari-illustration-hero.png",
+    mobileSrc: "/images/home-kirtan-safari-illustration-hero-mobile.png",
     alt: "Illustration of devotees performing kirtan outdoors in Nairobi at sunset",
     position: "center center",
-    mobilePosition: "58% center",
+    mobilePosition: "center center",
     eyebrow: "Kirtan Safari 2026",
     tagline: "Every word a song, every step a dance.",
     description:
@@ -102,15 +103,18 @@ export default function HeroSection() {
             i === currentImage ? "opacity-100" : "opacity-0"
           )}
         >
-          <img
-            src={image.src}
-            alt={image.alt}
-            className="hero-bg-image w-full h-full object-cover"
-            style={{
-              objectPosition: image.position,
-              "--hero-mobile-position": image.mobilePosition ?? image.position,
-            } as CSSProperties}
-          />
+          <picture className="contents">
+            {image.mobileSrc ? <source media="(max-width: 900px)" srcSet={image.mobileSrc} /> : null}
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="hero-bg-image w-full h-full object-cover"
+              style={{
+                objectPosition: image.position,
+                "--hero-mobile-position": image.mobilePosition ?? image.position,
+              } as CSSProperties}
+            />
+          </picture>
         </div>
       ))}
 
