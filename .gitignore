@@ -15,6 +15,7 @@
 
 # next.js
 /.next/
+/.next.locked-*/
 /.next-locked-*/
 /out/
 
