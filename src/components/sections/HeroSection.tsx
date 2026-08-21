@@ -20,6 +20,7 @@ const heroImages = [
       { href: "/festivals/kirtan-safari", label: "Register Free", variant: "primary" },
       { href: "/blog/sri-nama-sankirtana-adhivasa", label: "Begin the Mood", variant: "ghost" },
     ],
+    durationMs: 8000,
   },
   {
     src: "/images/iskcon-nairobi-aerial.jpg",
@@ -67,18 +68,26 @@ const heroImages = [
 export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [loaded, setLoaded] = useState(false);
-  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const rotationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100);
-    intervalRef.current = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
-    }, 6000);
     return () => {
       clearTimeout(timer);
-      if (intervalRef.current) clearInterval(intervalRef.current);
     };
   }, []);
+
+  useEffect(() => {
+    if (rotationRef.current) clearTimeout(rotationRef.current);
+
+    rotationRef.current = setTimeout(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, heroImages[currentImage].durationMs ?? 6000);
+
+    return () => {
+      if (rotationRef.current) clearTimeout(rotationRef.current);
+    };
+  }, [currentImage]);
 
   const currentHero = heroImages[currentImage];
 
