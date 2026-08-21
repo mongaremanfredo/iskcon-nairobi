@@ -1,4 +1,3 @@
-import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
 import {
   publicApiErrorResponse,
@@ -6,6 +5,7 @@ import {
   validatePublicJsonRequest,
 } from "@/lib/apiSecurity";
 import { asPlainText, asSheetText, quoteSheetName } from "@/lib/security";
+import { createSheetsClient, ensureSheetWithHeader } from "@/lib/googleSheets";
 
 export const runtime = "nodejs";
 const maxRequestBytes = 10 * 1024;
@@ -32,82 +32,13 @@ const courseOptions = new Set([
   "Online - Thursday 10 September 2026, 7:30 pm",
 ]);
 
-function sheetRange(range: string) {
-  return `'${sheetName.replace(/'/g, "''")}'!${range}`;
-}
-
-function getGoogleClient() {
-  const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
-  const spreadsheetId = process.env.CONTACT_SHEET_ID;
-
-  if (!clientEmail || !rawPrivateKey || !spreadsheetId) {
-    throw new Error("Google Sheets contact submissions backend is not configured.");
-  }
-
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n");
-
-  return {
-    spreadsheetId,
-    auth: new google.auth.JWT({
-      email: clientEmail,
-      key: privateKey,
-      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-    }),
-  };
-}
-
-async function ensureSheet(
-  sheets: ReturnType<typeof google.sheets>,
-  spreadsheetId: string
-) {
-  const metadata = await sheets.spreadsheets.get({
-    spreadsheetId,
-    fields: "sheets.properties.sheetId,sheets.properties.title",
-  });
-
-  const existing = metadata.data.sheets?.find((sheet) => sheet.properties?.title === sheetName);
-  if (!existing) {
-    await sheets.spreadsheets.batchUpdate({
-      spreadsheetId,
-      requestBody: {
-        requests: [
-          {
-            addSheet: {
-              properties: {
-                title: sheetName,
-              },
-            },
-          },
-        ],
-      },
-    });
-  }
-
-  const header = await sheets.spreadsheets.values.get({
-    spreadsheetId,
-    range: sheetRange("1:1"),
-  });
-
-  if (!header.data.values?.length) {
-    await sheets.spreadsheets.values.update({
-      spreadsheetId,
-      range: sheetRange("1:1"),
-      valueInputOption: "USER_ENTERED",
-      requestBody: {
-        values: [
-          [
-            "Timestamp",
-            "Name",
-            "WhatsApp Number",
-            "How They Heard About This Course",
-            "Chosen Option",
-          ],
-        ],
-      },
-    });
-  }
-}
+const registrationHeader = [
+  "Timestamp",
+  "Name",
+  "WhatsApp Number",
+  "How They Heard About This Course",
+  "Chosen Option",
+];
 
 export async function POST(request: NextRequest) {
   try {
@@ -149,10 +80,17 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Please choose one course option." }, { status: 400 });
     }
 
-    const { auth, spreadsheetId } = getGoogleClient();
-    const sheets = google.sheets({ version: "v4", auth });
+    const { sheets, spreadsheetId } = createSheetsClient({
+      spreadsheetId: process.env.CONTACT_SHEET_ID,
+      missingMessage: "Google Sheets contact submissions backend is not configured.",
+    });
 
-    await ensureSheet(sheets, spreadsheetId);
+    await ensureSheetWithHeader({
+      sheets,
+      spreadsheetId,
+      sheetName,
+      header: registrationHeader,
+    });
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,

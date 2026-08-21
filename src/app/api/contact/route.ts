@@ -1,4 +1,3 @@
-import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
 import {
   publicApiErrorResponse,
@@ -6,6 +5,7 @@ import {
   validatePublicJsonRequest,
 } from "@/lib/apiSecurity";
 import { asPlainText, asSheetText, quoteSheetName } from "@/lib/security";
+import { createSheetsClient, ensureSheetWithHeader } from "@/lib/googleSheets";
 
 export const runtime = "nodejs";
 const maxRequestBytes = 16 * 1024;
@@ -17,24 +17,26 @@ type ContactPayload = {
   phone?: unknown;
   subject?: unknown;
   message?: unknown;
+  formType?: unknown;
   website?: unknown;
 };
 
-function getGoogleClient() {
-  const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
+const contactHeader = [
+  "Timestamp",
+  "First Name",
+  "Last Name",
+  "Email",
+  "Phone",
+  "Subject",
+  "Message",
+];
 
-  if (!clientEmail || !rawPrivateKey || !process.env.CONTACT_SHEET_ID) {
-    throw new Error("Google Sheets contact backend is not configured.");
+function sheetNameForContact(formType: string, subject: string) {
+  if (formType === "guest-house-enquiry" || subject === "Guest House Booking") {
+    return "Guest House Enquiries";
   }
 
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n");
-
-  return new google.auth.JWT({
-    email: clientEmail,
-    key: privateKey,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
+  return "Contact Us";
 }
 
 export async function POST(request: NextRequest) {
@@ -59,6 +61,7 @@ export async function POST(request: NextRequest) {
     const phone = asPlainText(payload.phone, 40);
     const subject = asPlainText(payload.subject, 80);
     const message = asPlainText(payload.message, 1200);
+    const formType = asPlainText(payload.formType, 80);
 
     if (!firstName || !email || !subject || !message) {
       return NextResponse.json(
@@ -75,19 +78,22 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Please enter a valid phone number." }, { status: 400 });
     }
 
-    const auth = getGoogleClient();
-    const sheets = google.sheets({ version: "v4", auth });
-    const spreadsheetId = process.env.CONTACT_SHEET_ID!;
-
-    const metadata = await sheets.spreadsheets.get({
-      spreadsheetId,
-      fields: "sheets.properties.title",
+    const { sheets, spreadsheetId } = createSheetsClient({
+      spreadsheetId: process.env.CONTACT_SHEET_ID,
+      missingMessage: "Google Sheets contact backend is not configured.",
     });
-    const firstSheetTitle = metadata.data.sheets?.[0]?.properties?.title || "Sheet1";
+    const sheetName = sheetNameForContact(formType, subject);
+
+    await ensureSheetWithHeader({
+      sheets,
+      spreadsheetId,
+      sheetName,
+      header: contactHeader,
+    });
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: quoteSheetName(firstSheetTitle),
+      range: quoteSheetName(sheetName),
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [

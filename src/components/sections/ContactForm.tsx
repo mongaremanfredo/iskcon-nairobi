@@ -73,6 +73,7 @@ export default function ContactForm() {
       phone: cleanText(form.phone),
       subject: cleanText(form.subject),
       message: cleanText(form.message),
+      formType: "contact-us",
     };
 
     try {

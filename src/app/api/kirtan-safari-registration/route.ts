@@ -1,4 +1,3 @@
-import { google } from "googleapis";
 import { NextRequest, NextResponse } from "next/server";
 import {
   publicApiErrorResponse,
@@ -6,9 +5,11 @@ import {
   validatePublicJsonRequest,
 } from "@/lib/apiSecurity";
 import { asPlainText, asSheetText, quoteSheetName } from "@/lib/security";
+import { createSheetsClient, ensureSheetWithHeader } from "@/lib/googleSheets";
 
 export const runtime = "nodejs";
 const maxRequestBytes = 12 * 1024;
+const sheetName = "Kirtan Safari Registrations";
 
 type RegistrationPayload = {
   fullName?: unknown;
@@ -28,22 +29,16 @@ const attendanceDays = new Set([
   "Sunday 30 August",
 ]);
 
-function getGoogleClient() {
-  const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
-  const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
-
-  if (!clientEmail || !rawPrivateKey || !process.env.GOOGLE_SHEET_ID) {
-    throw new Error("Google Sheets registration backend is not configured.");
-  }
-
-  const privateKey = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n");
-
-  return new google.auth.JWT({
-    email: clientEmail,
-    key: privateKey,
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
-}
+const registrationHeader = [
+  "Timestamp",
+  "Full Name",
+  "Email",
+  "Phone Number",
+  "Days Attending",
+  "No. of People",
+  "How They Heard About Us",
+  "Wants Future Updates",
+];
 
 export async function POST(request: NextRequest) {
   try {
@@ -93,19 +88,21 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ message: "Please enter a valid phone number." }, { status: 400 });
     }
 
-    const auth = getGoogleClient();
-    const sheets = google.sheets({ version: "v4", auth });
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID!;
-
-    const metadata = await sheets.spreadsheets.get({
-      spreadsheetId,
-      fields: "sheets.properties.title",
+    const { sheets, spreadsheetId } = createSheetsClient({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      missingMessage: "Google Sheets registration backend is not configured.",
     });
-    const firstSheetTitle = metadata.data.sheets?.[0]?.properties?.title || "Sheet1";
+
+    await ensureSheetWithHeader({
+      sheets,
+      spreadsheetId,
+      sheetName,
+      header: registrationHeader,
+    });
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: quoteSheetName(firstSheetTitle),
+      range: quoteSheetName(sheetName),
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
