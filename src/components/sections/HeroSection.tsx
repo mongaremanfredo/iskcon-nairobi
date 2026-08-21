@@ -21,7 +21,7 @@ const heroImages = [
       { href: "/festivals/kirtan-safari", label: "Register Free", variant: "primary" },
       { href: "/blog/sri-nama-sankirtana-adhivasa", label: "Begin the Mood", variant: "ghost" },
     ],
-    durationMs: 8000,
+    durationMs: 15000,
   },
   {
     src: "/images/iskcon-nairobi-aerial.jpg",
