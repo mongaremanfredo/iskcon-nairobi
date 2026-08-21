@@ -5,8 +5,38 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import KirtanSafariRegistrationModal, {
+  openKirtanSafariRegistration,
+} from "./KirtanSafariRegistrationModal";
 
-const heroImages = [
+type HeroCta =
+  | {
+      label: string;
+      variant: "primary" | "ghost";
+      href: string;
+      action?: never;
+    }
+  | {
+      label: string;
+      variant: "primary" | "ghost";
+      action: "kirtanRegistration";
+      href?: never;
+    };
+
+type HeroImage = {
+  src: string;
+  mobileSrc?: string;
+  alt: string;
+  position: string;
+  mobilePosition?: string;
+  eyebrow: string;
+  tagline: string;
+  description: string;
+  ctas: HeroCta[];
+  durationMs?: number;
+};
+
+const heroImages: HeroImage[] = [
   {
     src: "/images/home-kirtan-safari-illustration-hero.png",
     mobileSrc: "/images/home-kirtan-safari-illustration-hero-mobile.png",
@@ -18,7 +48,7 @@ const heroImages = [
     description:
       "Join the four-day Kirtan Safari celebration at Hare Krishna Temple Nairobi, beginning with Adivas on 27 August.",
     ctas: [
-      { href: "/festivals/kirtan-safari", label: "Register Free", variant: "primary" },
+      { label: "Register Free", variant: "primary", action: "kirtanRegistration" },
       { href: "/blog/sri-nama-sankirtana-adhivasa", label: "Begin the Mood", variant: "ghost" },
     ],
     durationMs: 15000,
@@ -94,6 +124,7 @@ export default function HeroSection() {
 
   return (
     <section className="home-hero relative w-full h-[100svh] min-h-[620px] max-h-[1000px] overflow-hidden sm:h-screen sm:min-h-[600px]">
+      <KirtanSafariRegistrationModal />
       {/* Background Images */}
       {heroImages.map((image, i) => (
         <div
@@ -172,15 +203,26 @@ export default function HeroSection() {
                 loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
               )}
             >
-              {currentHero.ctas.map((cta) => (
-                <Link
-                  key={cta.href}
-                  href={cta.href}
-                  className={cta.variant === "primary" ? "btn-primary" : "btn-ghost"}
-                >
-                  {cta.label}
-                </Link>
-              ))}
+              {currentHero.ctas.map((cta) =>
+                cta.action === "kirtanRegistration" ? (
+                  <button
+                    key={cta.label}
+                    type="button"
+                    className={cta.variant === "primary" ? "btn-primary" : "btn-ghost"}
+                    onClick={openKirtanSafariRegistration}
+                  >
+                    {cta.label}
+                  </button>
+                ) : (
+                  <Link
+                    key={cta.href}
+                    href={cta.href}
+                    className={cta.variant === "primary" ? "btn-primary" : "btn-ghost"}
+                  >
+                    {cta.label}
+                  </Link>
+                )
+              )}
             </div>
           </div>
         </div>
