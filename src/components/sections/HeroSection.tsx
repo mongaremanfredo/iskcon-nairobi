@@ -51,7 +51,7 @@ const heroImages: HeroImage[] = [
       { label: "Register Free", variant: "primary", action: "kirtanRegistration" },
       { href: "/blog/sri-nama-sankirtana-adhivasa", label: "Begin the Mood", variant: "ghost" },
     ],
-    durationMs: 15000,
+    durationMs: 10000,
   },
   {
     src: "/images/hero-ratha-yatra-kenya.jpg",
