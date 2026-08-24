@@ -15,7 +15,7 @@ import { safeJsonLd } from "@/lib/security";
 
 const siteUrl = "https://iskconnairobi.esthrema.com";
 const previewImage = "/brand/og-image.jpg";
-const iconVersion = "v=pwa-full-logo-safe-2026-08-06";
+const iconVersion = "v=pwa-resilient-2026-08-24";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
   "Visit ISKCON Nairobi, Sri Sri Radha Bankebihari Temple: daily darshan, kirtan, prasadam, spiritual education, festivals, cow protection, and service in East Africa.";

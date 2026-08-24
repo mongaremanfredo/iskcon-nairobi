@@ -17,6 +17,7 @@ Production Next.js website for ISKCON Nairobi / Sri Sri Radha Bankebihari Temple
 npm install
 npm run dev
 npm run build
+npm run verify:pwa
 ```
 
 The local dev server runs at `http://localhost:3000`.
@@ -27,6 +28,7 @@ The local dev server runs at `http://localhost:3000`.
 - `docs/DESIGN_SYSTEM.md` records the visual language, spacing rhythm, page hero rules, and mobile-first layout decisions.
 - `docs/CONTENT_GUIDE.md` explains where to add pages, festivals, notices, blog posts, images, and sheet-backed forms.
 - `docs/ASSET_SOURCES.md` records non-temple library assets that should be reviewed or replaced when final photography is available.
+- `docs/PWA_GUIDE.md` records offline caching, update behavior, Android icon rules, notification links, and the mobile verification checklist.
 
 ## Environment Variables
 

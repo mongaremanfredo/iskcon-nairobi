@@ -14,6 +14,8 @@ assets traceable, spacing intentional, and public integrations secure.
   new pages, festivals, blog posts, notices, and images.
 - `docs/ASSET_SOURCES.md` records externally sourced library assets that still
   need periodic review or replacement with final temple photography.
+- `docs/PWA_GUIDE.md` is required reading before changing the manifest,
+  service worker, install icons, offline behavior, or notification deep links.
 
 ## Development Principles
 
