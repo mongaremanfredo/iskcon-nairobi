@@ -13,7 +13,11 @@ const languages: { id: Language; label: string; nativeLabel: string }[] = [
 const verses = [
   {
     roman: "I",
-    original: "nānā dravya āyojana, kari kare nimantraṇa,\nkṛpā kari kara āgamana |",
+    lyrics: {
+      english: "nānā dravya āyojana, kari kare nimantraṇa,\nkṛpā kari kara āgamana |",
+      hindi: "नाना द्रव्य आयोजन, करि करे निमन्त्रण,\nकृपा करि कर आगमन।",
+      gujarati: "નાના દ્રવ્ય આયોજન, કરિ કરે નિમંત્રણ,\nકૃપા કરિ કર આગમન।",
+    },
     translations: {
       english:
         "Having collected and arranged all kinds of articles and invited everyone, I pray you mercifully come.",
@@ -25,7 +29,11 @@ const verses = [
   },
   {
     roman: "II",
-    original: "tomāra vaiṣṇava gaṇa, mora ei nivedana,\ndṛṣṭi kari kara samāpana ||",
+    lyrics: {
+      english: "tomāra vaiṣṇava gaṇa, mora ei nivedana,\ndṛṣṭi kari kara samāpana ||",
+      hindi: "तोमार वैष्णव गण, मोर एइ निवेदन,\nदृष्टि करि कर समापन॥",
+      gujarati: "તોમાર વૈષ્ણવ ગણ, મોર એઇ નિવેદન,\nદૃષ્ટિ કરિ કર સમાપન॥",
+    },
     translations: {
       english:
         "You are all Vaishnava devotees of the Lord - I humbly pray that you complete this ceremony with your merciful glance.",
@@ -37,7 +45,11 @@ const verses = [
   },
   {
     roman: "III",
-    original: "kari ata nivedana, ānilā mahanta-gaṇa,\nkīrtanera kare adhivāsa |",
+    lyrics: {
+      english: "kari ata nivedana, ānilā mahanta-gaṇa,\nkīrtanera kare adhivāsa |",
+      hindi: "करि अत निवेदन, आनिला महन्त गण,\nकीर्तनेर करे अधिवास।",
+      gujarati: "કરિ અત નિવેદન, આનિલા મહંત ગણ,\nકીર્તનેર કરે અધિવાસ।",
+    },
     translations: {
       english:
         "Thus humbly praying, having brought the assembled mahanta devotees, we hold the adhivasa of the congregational chanting of the holy names.",
@@ -49,7 +61,11 @@ const verses = [
   },
   {
     roman: "IV",
-    original: "aneka bhāgyera phale, vaiṣṇava, āsiyā mile,\nkāli habe mahotsava vilāsa ||",
+    lyrics: {
+      english: "aneka bhāgyera phale, vaiṣṇava, āsiyā mile,\nkāli habe mahotsava vilāsa ||",
+      hindi: "अनेक भाग्येर फले, वैष्णव आसिया मिले,\nकालि हबे महोत्सव विलास॥",
+      gujarati: "અનેક ભાગ્યેર ફલે, વૈષ્ણવ આસિયા મિલે,\nકાલિ હબે મહોત્સવ વિલાસ॥",
+    },
     translations: {
       english:
         "Only by great fortune does one get the association of such an assembly of Vaishnavas - tomorrow there will be a great festival.",
@@ -61,7 +77,11 @@ const verses = [
   },
   {
     roman: "V",
-    original: "Śrī kṛṣṇera līlā-gaṇa, karibena āsvādana,\npūribe sabāra abhilāṣa |",
+    lyrics: {
+      english: "Śrī kṛṣṇera līlā-gaṇa, karibena āsvādana,\npūribe sabāra abhilāṣa |",
+      hindi: "श्री कृष्णेर लीला गण, करिबेन आस्वादन,\nपूरिबे सबार अभिलाष।",
+      gujarati: "શ્રી કૃષ્ણેર લીલા ગણ, કરિબેન આસ્વાદન,\nપૂરિબે સબાર અભિલાષ।",
+    },
     translations: {
       english:
         "There you will all relish the sweet pastimes of Sri Krishna, and all your desires will be fulfilled.",
@@ -73,7 +93,11 @@ const verses = [
   },
   {
     roman: "VI",
-    original: "Śrī Kṛṣṇa Caitanya Candra, sakala bhakata-vṛnda,\nguṇa gāya Vṛndāvana dāsa ||",
+    lyrics: {
+      english: "Śrī Kṛṣṇa Caitanya Candra, sakala bhakata-vṛnda,\nguṇa gāya Vṛndāvana dāsa ||",
+      hindi: "श्री कृष्ण चैतन्य चन्द्र, सकल भक्त वृन्द,\nगुण गाय वृन्दावन दास॥",
+      gujarati: "શ્રી કૃષ્ણ ચૈતન્ય ચન્દ્ર, સકલ ભક્ત વૃંદ,\nગુણ ગાય વૃંદાવન દાસ॥",
+    },
     translations: {
       english:
         "Thus Vrindavana Dasa glorifies the moonlike Lord Sri Krishna Chaitanya and all His devotees.",
@@ -87,12 +111,12 @@ const verses = [
 
 function VerseCard({
   roman,
-  original,
+  lyrics,
   translation,
   language,
 }: {
   roman: string;
-  original: string;
+  lyrics: string;
   translation: string;
   language: Language;
 }) {
@@ -106,8 +130,14 @@ function VerseCard({
         </span>
       </div>
       <div className="grid flex-1 gap-0 overflow-hidden border border-temple-sand bg-white shadow-card sm:grid-cols-2">
-        <div className="whitespace-pre-line border-b border-dashed border-temple-sand p-5 font-playfair text-[1.05rem] italic leading-relaxed text-ink sm:border-b-0 sm:border-r sm:p-6">
-          {original}
+        <div
+          lang={language === "hindi" ? "hi" : language === "gujarati" ? "gu" : "en"}
+          className="whitespace-pre-line border-b border-dashed border-temple-sand p-5 font-playfair text-[1.05rem] italic leading-relaxed text-ink sm:border-b-0 sm:border-r sm:p-6"
+        >
+          <p className="mb-2 font-inter text-[0.6rem] font-semibold not-italic uppercase tracking-[0.14em] text-ink/40">
+            Lyrics
+          </p>
+          {lyrics}
         </div>
         <div className="bg-temple-cream/50 p-5 sm:p-6">
           <p className="font-inter text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-ink/40">
@@ -132,7 +162,7 @@ export default function AdhivasaLyrics() {
     <VerseCard
       key={verse.roman}
       roman={verse.roman}
-      original={verse.original}
+      lyrics={verse.lyrics[language]}
       translation={verse.translations[language]}
       language={language}
     />
@@ -151,7 +181,7 @@ export default function AdhivasaLyrics() {
         </div>
         <div
           role="tablist"
-          aria-label="Choose translation language"
+          aria-label="Choose lyrics and translation language"
           className="mt-4 grid grid-cols-3 border border-temple-sand bg-temple-cream/60 p-1 sm:mt-0 sm:min-w-[19rem]"
         >
           {languages.map((item) => {
@@ -181,10 +211,14 @@ export default function AdhivasaLyrics() {
 
         <div className="my-8 border border-gold/30 bg-dusk px-6 py-8 text-center sm:px-10">
           <p className="font-playfair text-xl italic leading-snug text-white sm:text-2xl">
-            &ldquo;kāli habe mahotsava vilāsa&rdquo;
+            &ldquo;{verses[3].lyrics[language].split("\n")[1].replace(/[।॥|]/g, "")}&rdquo;
           </p>
           <p className="mt-3 font-inter text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-gold">
-            Tomorrow, the festival begins
+            {language === "hindi"
+              ? "कल महोत्सव आरम्भ होगा"
+              : language === "gujarati"
+                ? "આવતીકાલે મહોત્સવ શરૂ થશે"
+                : "Tomorrow, the festival begins"}
           </p>
         </div>
 
