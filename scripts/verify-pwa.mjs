@@ -33,17 +33,24 @@ await Promise.all([
   "src/app/offline/page.tsx",
   "src/app/manifest.ts",
   "docs/PWA_GUIDE.md",
+  "docs/APP_VERSIONS.md",
+  "public/app-version.json",
 ].map(requireFile));
 await Promise.all([
   requirePngSize("public/brand/maskable-icon-192.png", 192),
   requirePngSize("public/brand/maskable-icon-512.png", 512),
 ]);
 
-const [manifest, worker, config] = await Promise.all([
+const [manifest, worker, config, packageSource, releaseSource] = await Promise.all([
   readFile(path.join(root, "src/app/manifest.ts"), "utf8"),
   readFile(path.join(root, "public/sw.js"), "utf8"),
   readFile(path.join(root, "next.config.ts"), "utf8"),
+  readFile(path.join(root, "package.json"), "utf8"),
+  readFile(path.join(root, "public/app-version.json"), "utf8"),
 ]);
+
+const packageMetadata = JSON.parse(packageSource);
+const releaseMetadata = JSON.parse(releaseSource);
 
 const assertions = [
   [!manifest.includes("orientation:"), "manifest must allow portrait and landscape rotation"],
@@ -54,6 +61,17 @@ const assertions = [
   [worker.includes('request.method !== "GET"'), "worker must bypass non-GET requests"],
   [worker.includes('type === "SKIP_WAITING"'), "worker must support explicit updates"],
   [worker.includes("self.skipWaiting()"), "worker updates must activate automatically"],
+  [worker.includes('const UPDATE_MODE = "silent"') || worker.includes('const UPDATE_MODE = "prompt"'), "worker must declare its release update mode"],
+  [config.includes('source: "/app-version.json"') && config.includes("must-revalidate"), "release manifest must be revalidated by browsers"],
+  [packageMetadata.version === releaseMetadata.version, "package and public release versions must match"],
+  [
+    worker.includes(`const UPDATE_MODE = "${releaseMetadata.updateMode}"`),
+    "worker and public release update modes must match",
+  ],
+  [
+    ["silent", "prompt"].includes(releaseMetadata.updateMode),
+    "release update mode must be silent or prompt",
+  ],
   [worker.includes('self.addEventListener("notificationclick"'), "worker must handle notification deep links"],
   [config.includes('source: "/sw.js"') && config.includes("must-revalidate"), "worker must be revalidated by browsers"],
 ];

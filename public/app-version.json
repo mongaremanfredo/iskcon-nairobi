@@ -1,0 +1,12 @@
+{
+  "version": "1.0.0",
+  "name": "First Complete Release",
+  "publishedAt": "2026-08-25",
+  "updateMode": "silent",
+  "summary": "The first complete production release of the ISKCON Nairobi website app.",
+  "highlights": [
+    "Installable Android, Apple and desktop experience",
+    "Offline access with live-first navigation",
+    "Temple calendar, notices, registrations and devotional resources"
+  ]
+}

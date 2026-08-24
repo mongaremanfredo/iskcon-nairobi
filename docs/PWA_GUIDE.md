@@ -11,6 +11,7 @@ This is the maintenance contract for ISKCON Nairobi's installable web app. Prese
 - A compact notice appears for offline, data-saver, 2G, or slow-2G conditions. Keep it small and non-blocking.
 - A new worker activates silently. The app reloads once when it is safe, deferring while a visitor is typing so form input is not lost.
 - Online navigations remain network-first. Saved pages are fallbacks for failed or timed-out requests, not the default online response.
+- Routine releases update silently. Releases marked `prompt` in both `public/app-version.json` and `public/sw.js` show a version panel and wait for the visitor to choose **Update now**. Follow `docs/APP_VERSIONS.md` for every release.
 
 ## Cache Policy
 
@@ -50,7 +51,7 @@ Never cache forms, analytics, subscriptions, payment flows, or admin responses. 
 6. Navigate Home -> internal page -> Android Back and confirm history works.
 7. Open an external social link and confirm it leaves safely in a new browser context.
 8. Test a nested notification link while the app is closed, backgrounded, and foregrounded.
-9. Deploy a worker version bump and confirm an older installed app offers Refresh.
+9. Deploy a prompted worker version bump and confirm an older installed app offers **Later** and **Update now**.
 10. Rotate phone and tablet; check navigation, modals, carousels, and forms for overlap.
 
 ## Future Editor Notes

@@ -10,6 +10,7 @@
  * See docs/PWA_GUIDE.md before editing this file.
  */
 const CACHE_VERSION = "iskcon-nairobi-v4";
+const UPDATE_MODE = "silent";
 const CACHE_PREFIX = "iskcon-nairobi-";
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
 const ASSET_CACHE = `${CACHE_VERSION}-assets`;
@@ -156,7 +157,7 @@ self.addEventListener("install", (event) => {
           cache.add(new Request(url, { cache: "reload" })).catch(() => undefined)
         )
       )
-    ).then(() => self.skipWaiting())
+    ).then(() => (UPDATE_MODE === "silent" ? self.skipWaiting() : undefined))
   );
 });
 
