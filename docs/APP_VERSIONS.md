@@ -22,7 +22,8 @@ This ledger records public app releases. Update it whenever a release version ch
 
 ## 1.0.0 - First Complete Release
 
-**Released:** 25 August 2026  
+**Released:** 25 August 2026
+
 **Update mode:** Silent baseline activation
 
 The first complete production version of the ISKCON Nairobi website app.
@@ -34,4 +35,3 @@ The first complete production version of the ISKCON Nairobi website app.
 - Responsive temple website covering visits, festivals, calendar, projects, learning, leadership, donations, hospitality, media, and devotional articles.
 - Noticeboard, push-notification foundations, forms, Google Sheets integrations, and security controls.
 - Versioned service worker, maskable icons, splash configuration, network-status handling, and controlled updates.
-
