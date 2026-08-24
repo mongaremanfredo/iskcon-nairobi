@@ -9,6 +9,7 @@ import {
   Music2,
 } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
+import AdhivasaLyrics from "@/components/blog/AdhivasaLyrics";
 
 const heroImage = "/images/blog/chaitanya-dances-with-followers.jpg";
 const jharikhandaImage = "/images/blog/jharikhanda-mahaprabhu-animals.jpeg";
@@ -47,82 +48,12 @@ const introParagraphs = [
   "Its structure mirrors the ceremony itself. The poet describes preparing the offering, then turns to the assembled Vaishnavas and asks them, humbly, to complete the occasion by their presence. Only in the fourth verse does the song turn: tomorrow, it says, there will be a festival. Everything before that line is invitation; everything after it is promise.",
 ];
 
-const verses = [
-  {
-    roman: "I",
-    original: "nānā dravya āyojana, kari kare nimantraṇa,\nkṛpā kari kara āgamana |",
-    translation:
-      "Having collected and arranged all kinds of articles and invited everyone, I pray you mercifully come.",
-  },
-  {
-    roman: "II",
-    original: "tomāra vaiṣṇava gaṇa, mora ei nivedana,\ndṛṣṭi kari kara samāpana ||",
-    translation:
-      "You are all Vaishnava devotees of the Lord - I humbly pray that you complete this ceremony with your merciful glance.",
-  },
-  {
-    roman: "III",
-    original: "kari ata nivedana, ānilā mahanta-gaṇa,\nkīrtanera kare adhivāsa |",
-    translation:
-      "Thus humbly praying, having brought the assembled mahanta devotees, we hold the adhivasa of the congregational chanting of the holy names.",
-  },
-  {
-    roman: "IV",
-    original: "aneka bhāgyera phale, vaiṣṇava, āsiyā mile,\nkāli habe mahotsava vilāsa ||",
-    translation:
-      "Only by great fortune does one get the association of such an assembly of Vaishnavas - tomorrow there will be a great festival.",
-  },
-  {
-    roman: "V",
-    original: "Śrī kṛṣṇera līlā-gaṇa, karibena āsvādana,\npūribe sabāra abhilāṣa |",
-    translation:
-      "There you will all relish the sweet pastimes of Sri Krishna, and all your desires will be fulfilled.",
-  },
-  {
-    roman: "VI",
-    original: "Śrī Kṛṣṇa Caitanya Candra, sakala bhakata-vṛnda,\nguṇa gāya Vṛndāvana dāsa ||",
-    translation:
-      "Thus Vrindavana Dasa glorifies the moonlike Lord Sri Krishna Chaitanya and all His devotees.",
-  },
-];
-
 const articleGuide = [
   { icon: BookOpen, label: "Ceremony", value: "Adhivasa, the evening invocation before a mahotsava" },
   { icon: Music2, label: "Form", value: "Bengali padavali kirtana" },
   { icon: CalendarDays, label: "Traditionally sung", value: "The night before an akhanda-kirtana or festival" },
   { icon: Leaf, label: "Author", value: "Vrindavana Dasa Thakura (1507-1589)" },
 ];
-
-function VerseCard({
-  roman,
-  original,
-  translation,
-}: {
-  roman: string;
-  original: string;
-  translation: string;
-}) {
-  return (
-    <div className="flex gap-4">
-      <div className="flex shrink-0 items-start pt-1">
-        <span className="flex h-8 w-8 items-center justify-center border border-gold/40 font-inter text-[0.68rem] font-semibold text-gold">
-          {roman}
-        </span>
-      </div>
-      <div className="grid flex-1 gap-0 overflow-hidden border border-temple-sand bg-white shadow-card sm:grid-cols-2">
-        <div className="whitespace-pre-line border-b border-dashed border-temple-sand p-5 font-playfair text-[1.05rem] italic leading-relaxed text-ink sm:border-b-0 sm:border-r sm:p-6">
-          {original}
-        </div>
-        <div className="bg-temple-cream/50 p-5 sm:p-6">
-          <p className="font-inter text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-ink/40">
-            Translation
-          </p>
-          <p className="mt-2 font-inter text-sm leading-relaxed text-ink/68">{translation}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function AdhivasaBlogPage() {
   return (
@@ -155,24 +86,7 @@ export default function AdhivasaBlogPage() {
                 ))}
               </div>
 
-              <div className="mt-12 space-y-5">
-                {verses.slice(0, 3).map((verse) => (
-                  <VerseCard key={verse.roman} {...verse} />
-                ))}
-
-                <div className="my-8 border border-gold/30 bg-dusk px-6 py-8 text-center sm:px-10">
-                  <p className="font-playfair text-xl italic leading-snug text-white sm:text-2xl">
-                    &ldquo;kāli habe mahotsava vilāsa&rdquo;
-                  </p>
-                  <p className="mt-3 font-inter text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-gold">
-                    Tomorrow, the festival begins
-                  </p>
-                </div>
-
-                {verses.slice(3).map((verse) => (
-                  <VerseCard key={verse.roman} {...verse} />
-                ))}
-              </div>
+              <AdhivasaLyrics />
 
               <div className="mt-12 flex flex-col items-start gap-4 border border-gold/30 bg-dusk p-6 text-sand sm:p-8">
                 <div>

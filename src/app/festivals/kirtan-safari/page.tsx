@@ -1043,7 +1043,7 @@ export default function KirtanSafariPage() {
                       textTransform: "uppercase",
                     }}
                   >
-                    Before the Safari
+                    Join the Adhivas Bhajan
                   </span>
                   <span
                     style={{
@@ -1053,7 +1053,7 @@ export default function KirtanSafariPage() {
                       lineHeight: 1.15,
                     }}
                   >
-                    Read why Adivas opens the kirtan mood
+                    Sing along with the lyrics that welcome the festival mood.
                   </span>
                 </span>
                 <ExternalLink size={16} color="#d69c2b" strokeWidth={1.8} />
