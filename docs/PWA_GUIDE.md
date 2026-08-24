@@ -9,7 +9,8 @@ This is the maintenance contract for ISKCON Nairobi's installable web app. Prese
 - Essential shell assets are saved on the first successful visit. Public pages are saved selectively as visitors open them.
 - A saved page is used offline when available; otherwise `/offline` explains the connection state.
 - A compact notice appears for offline, data-saver, 2G, or slow-2G conditions. Keep it small and non-blocking.
-- A new worker waits until the visitor accepts the update notice, then reloads once into the new release.
+- A new worker activates silently. The app reloads once when it is safe, deferring while a visitor is typing so form input is not lost.
+- Online navigations remain network-first. Saved pages are fallbacks for failed or timed-out requests, not the default online response.
 
 ## Cache Policy
 

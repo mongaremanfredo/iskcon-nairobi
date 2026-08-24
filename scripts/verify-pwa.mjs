@@ -53,6 +53,7 @@ const assertions = [
   [worker.includes('requestUrl.pathname.startsWith("/api/")'), "worker must bypass APIs"],
   [worker.includes('request.method !== "GET"'), "worker must bypass non-GET requests"],
   [worker.includes('type === "SKIP_WAITING"'), "worker must support explicit updates"],
+  [worker.includes("self.skipWaiting()"), "worker updates must activate automatically"],
   [worker.includes('self.addEventListener("notificationclick"'), "worker must handle notification deep links"],
   [config.includes('source: "/sw.js"') && config.includes("must-revalidate"), "worker must be revalidated by browsers"],
 ];

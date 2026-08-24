@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { RefreshCw, WifiOff, X } from "lucide-react";
+import { WifiOff, X } from "lucide-react";
 
 type NetworkInformation = EventTarget & {
   effectiveType?: string;
@@ -23,8 +23,8 @@ export default function PwaRegistrar() {
   const [isOffline, setIsOffline] = useState(false);
   const [isSlow, setIsSlow] = useState(false);
   const [showSlowNotice, setShowSlowNotice] = useState(true);
-  const [waitingWorker, setWaitingWorker] = useState<ServiceWorker | null>(null);
   const refreshing = useRef(false);
+  const refreshPending = useRef(false);
 
   useEffect(() => {
     setIsOffline(!navigator.onLine);
@@ -61,15 +61,13 @@ export default function PwaRegistrar() {
     let updateTimer: number | undefined;
     let registration: ServiceWorkerRegistration | undefined;
 
-    const surfaceWaitingWorker = (worker: ServiceWorker | null) => {
-      if (worker && navigator.serviceWorker.controller) {
-        setWaitingWorker(worker);
-      }
+    const activateWaitingWorker = (worker: ServiceWorker | null) => {
+      worker?.postMessage({ type: "SKIP_WAITING" });
     };
 
     const watchRegistration = (nextRegistration: ServiceWorkerRegistration) => {
       registration = nextRegistration;
-      surfaceWaitingWorker(nextRegistration.waiting);
+      activateWaitingWorker(nextRegistration.waiting);
 
       nextRegistration.addEventListener("updatefound", () => {
         const installing = nextRegistration.installing;
@@ -79,7 +77,7 @@ export default function PwaRegistrar() {
 
         installing.addEventListener("statechange", () => {
           if (installing.state === "installed") {
-            surfaceWaitingWorker(nextRegistration.waiting || installing);
+            activateWaitingWorker(nextRegistration.waiting || installing);
           }
         });
       });
@@ -100,22 +98,42 @@ export default function PwaRegistrar() {
         });
     };
 
-    const checkWhenVisible = () => {
-      if (document.visibilityState === "visible" && navigator.onLine) {
-        void registration?.update();
-      }
+    const isEditing = () => {
+      const activeElement = document.activeElement;
+      return Boolean(
+        activeElement?.matches("input, textarea, select, [contenteditable='true']")
+      );
     };
 
-    const reloadForNewController = () => {
+    const reloadWhenSafe = () => {
       if (refreshing.current) {
         return;
       }
+
+      if (document.visibilityState !== "visible" || isEditing()) {
+        refreshPending.current = true;
+        return;
+      }
+
       refreshing.current = true;
       window.location.reload();
     };
 
+    const checkWhenVisible = () => {
+      if (document.visibilityState !== "visible" || !navigator.onLine) {
+        return;
+      }
+
+      if (refreshPending.current) {
+        reloadWhenSafe();
+        return;
+      }
+
+      void registration?.update();
+    };
+
     document.addEventListener("visibilitychange", checkWhenVisible);
-    navigator.serviceWorker.addEventListener("controllerchange", reloadForNewController);
+    navigator.serviceWorker.addEventListener("controllerchange", reloadWhenSafe);
 
     if (document.readyState === "complete") {
       registerServiceWorker();
@@ -128,44 +146,10 @@ export default function PwaRegistrar() {
         window.clearInterval(updateTimer);
       }
       document.removeEventListener("visibilitychange", checkWhenVisible);
-      navigator.serviceWorker.removeEventListener("controllerchange", reloadForNewController);
+      navigator.serviceWorker.removeEventListener("controllerchange", reloadWhenSafe);
       window.removeEventListener("load", registerServiceWorker);
     };
   }, []);
-
-  const activateUpdate = () => {
-    waitingWorker?.postMessage({ type: "SKIP_WAITING" });
-  };
-
-  if (waitingWorker) {
-    return (
-      <div
-        role="status"
-        aria-live="polite"
-        className="fixed left-1/2 top-[calc(env(safe-area-inset-top)+5.25rem)] z-[90] flex w-[min(92vw,28rem)] -translate-x-1/2 items-center gap-3 border border-gold/35 bg-dusk px-4 py-3 text-sand shadow-card-hover"
-      >
-        <RefreshCw className="h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
-        <p className="min-w-0 flex-1 font-inter text-xs leading-snug">
-          A new version is ready.
-        </p>
-        <button
-          type="button"
-          onClick={activateUpdate}
-          className="shrink-0 font-inter text-[0.68rem] font-bold uppercase tracking-[0.12em] text-gold transition-colors hover:text-gold-light"
-        >
-          Refresh
-        </button>
-        <button
-          type="button"
-          onClick={() => setWaitingWorker(null)}
-          aria-label="Dismiss update notice"
-          className="flex h-8 w-8 shrink-0 items-center justify-center text-sand/55 transition-colors hover:text-sand"
-        >
-          <X className="h-4 w-4" aria-hidden="true" />
-        </button>
-      </div>
-    );
-  }
 
   if (isOffline || (isSlow && showSlowNotice)) {
     return (
