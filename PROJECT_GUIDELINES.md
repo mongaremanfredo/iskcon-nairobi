@@ -16,6 +16,8 @@ assets traceable, spacing intentional, and public integrations secure.
   need periodic review or replacement with final temple photography.
 - `docs/PWA_GUIDE.md` is required reading before changing the manifest,
   service worker, install icons, offline behavior, or notification deep links.
+- `docs/APP_VERSIONS.md` is the authority for release names, version numbers,
+  update modes, and the visitor-controlled major-update experience.
 
 ## Development Principles
 
@@ -31,3 +33,30 @@ assets traceable, spacing intentional, and public integrations secure.
   belong in Vercel environment variables.
 - After changing routes, metadata, API handlers, PWA files, or shared layout,
   run `npm run build` before deploying.
+
+## Release Decisions For Editors
+
+These instructions apply to every contributor, including AI-assisted and
+automated code editors.
+
+- Version `1.x.x` is the active release family while the app uses its present
+  domain. Do not create version `2.0.0` until the owner explicitly confirms
+  that the official-domain migration is ready.
+- The editor may choose the next version 1 number using the impact rules in
+  `docs/APP_VERSIONS.md`. Explain the choice in the release ledger.
+- Default to a patch increment for corrections, content and image updates,
+  routine security work, and small visual refinements.
+- Use a minor increment for a meaningful visitor-facing capability, a new page
+  family, an important integration, or a substantial PWA/navigation change.
+- Do not increment the public version for documentation-only changes, build
+  housekeeping, comments, or an unsuccessful deployment.
+- Silent updates are the default. Use a prompted update only when a release is
+  substantial enough that visitors will notice and enjoy discovering it, or
+  when the owner explicitly asks to announce it.
+- Never mark a release as prompted merely to advertise a copy correction. The
+  update panel must remain special rather than becoming routine noise.
+- Before publishing a prompted release, update every version source and test
+  both **Later** and **Update now** on an installation running the previous
+  release. Never claim this test passed unless it was actually performed.
+- Keep release summaries visitor-facing. Describe what became better without
+  exposing implementation details, security internals, or repository jargon.
