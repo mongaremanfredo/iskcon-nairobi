@@ -381,7 +381,7 @@ export const leadershipProfiles = [
     category: "Regional & Educational Leadership",
     image: "/images/leadership/govinda-prem-prabhu-web.jpg",
     summary: "Regional Secretary and key leader of the Hare Krishna Training Centre.",
-    details: "Govinda Prem Prabhu supports regional coordination and runs HKTC, helping shape serious Vaishnava education, student training, and devotional formation in Nairobi.",
+    details: "Govinda Prem Prabhu serves as Regional Secretary and leads HKTC, guiding student education, devotional training, and regional coordination.",
   },
   {
     name: "Mukund Morari Prabhu",
@@ -389,7 +389,7 @@ export const leadershipProfiles = [
     category: "Temple Coordination",
     image: "/images/leadership/mukund-morari-prabhu-web.jpg",
     summary: "One of the vice presidents and a world-class mrdanga player.",
-    details: "Mukund Morari Prabhu coordinates kirtans at the temple and supports Nairobi's devotional music culture through training, festival service, and regular programmes.",
+    details: "Mukund Morari Prabhu serves as Vice President and coordinates temple kirtans, musician training, festivals, and Nairobi's devotional music culture.",
   },
   {
     name: "Rukma Prabhu",
@@ -397,7 +397,7 @@ export const leadershipProfiles = [
     category: "Community Guidance",
     image: "/images/leadership/rukma-prabhu.jpg",
     summary: "One of the vice presidents, a respected community elder, teacher, and trusted source of pastoral guidance.",
-    details: "Rukma Prabhu leads community devotee care and Namahatta programmes. A respected teacher of sastra and a trusted elder and adviser, he supports devotees through personal guidance, conducts yajnas, and helps the community remain spiritually connected and cared for.",
+    details: "Rukma Prabhu serves as Vice President, guiding devotee care and Namahatta while teaching sastra, conducting yajnas, and advising the community.",
   },
   {
     name: "Sri Gauranga Prabhu",
@@ -405,7 +405,7 @@ export const leadershipProfiles = [
     category: "Resident Teaching",
     image: "/images/leadership/sri-gauranga-prabhu-web.jpg",
     summary: "The senior-most resident brahmachari and a respected teacher.",
-    details: "Sri Gauranga Prabhu supports daily temple culture through teaching, resident training, mentorship, and steady brahmachari service.",
+    details: "Sri Gauranga Prabhu is the senior resident brahmachari, supporting temple life through teaching, mentorship, resident training, and daily service.",
   },
 ];
 
