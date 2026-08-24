@@ -92,7 +92,7 @@ export default function LeadershipPage() {
             </h2>
           </div>
 
-          <div className="grid gap-6 md:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {others.map((profile) => (
               <article key={profile.name} className="group border border-temple-sand bg-white shadow-card transition-shadow hover:shadow-card-hover">
                 <div className="relative h-72 overflow-hidden">

@@ -392,6 +392,14 @@ export const leadershipProfiles = [
     details: "Mukund Morari Prabhu coordinates kirtans at the temple and supports Nairobi's devotional music culture through training, festival service, and regular programmes.",
   },
   {
+    name: "Rukma Prabhu",
+    role: "Vice President, Community Devotee Care",
+    category: "Community Guidance",
+    image: "/images/leadership/rukma-prabhu.jpg",
+    summary: "One of the vice presidents, a respected community elder, teacher, and trusted source of pastoral guidance.",
+    details: "Rukma Prabhu leads community devotee care and Namahatta programmes. A respected teacher of sastra and a trusted elder and adviser, he supports devotees through personal guidance, conducts yajnas, and helps the community remain spiritually connected and cared for.",
+  },
+  {
     name: "Sri Gauranga Prabhu",
     role: "Senior Resident Brahmachari, Teacher",
     category: "Resident Teaching",
