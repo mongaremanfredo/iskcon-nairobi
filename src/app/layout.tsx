@@ -14,7 +14,7 @@ import { templeInfo } from "@/data/site";
 import { safeJsonLd } from "@/lib/security";
 
 const siteUrl = "https://iskconnairobi.esthrema.com";
-const previewImage = "/brand/og-image.jpg";
+const previewImage = "/brand/og-image.jpg?v=20260825";
 const iconVersion = "v=pwa-resilient-2026-08-24";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
