@@ -1,10 +1,20 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { homepageFestivalPreview } from "@/data/site";
+import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 export default function FestivalCalendarSection() {
+  const festivalState = useKirtanSafariState();
+  const visibleFestivals =
+    festivalState.phase === "concluded"
+      ? homepageFestivalPreview.filter(
+          (festival) => festival.href !== "/festivals/kirtan-safari"
+        )
+      : homepageFestivalPreview;
+
   return (
     <section className="pt-10 pb-section bg-temple-cream sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
       <div className="content-width section-padding">
@@ -21,7 +31,7 @@ export default function FestivalCalendarSection() {
 
         {/* Festival Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {homepageFestivalPreview.map((festival) => (
+          {visibleFestivals.map((festival) => (
             <Link
               key={festival.href}
               href={festival.href}
@@ -29,10 +39,12 @@ export default function FestivalCalendarSection() {
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
-                <img
+                <Image
                   src={festival.image}
                   alt={festival.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                 {/* Date badge */}

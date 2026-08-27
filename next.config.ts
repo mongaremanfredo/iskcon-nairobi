@@ -1,12 +1,15 @@
 import type { NextConfig } from "next";
 
+const developmentScriptPolicy =
+  process.env.NODE_ENV === "development" ? " 'unsafe-eval'" : "";
+
 const contentSecurityPolicy = [
   "default-src 'self'",
   "base-uri 'self'",
   "form-action 'self' mailto:",
   "frame-ancestors 'none'",
   "object-src 'none'",
-  "script-src 'self' 'unsafe-inline'",
+  `script-src 'self' 'unsafe-inline'${developmentScriptPolicy}`,
   "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline'",
   "style-src-attr 'unsafe-inline'",
@@ -16,7 +19,7 @@ const contentSecurityPolicy = [
   "worker-src 'self' blob:",
   "manifest-src 'self'",
   "media-src 'self'",
-  "frame-src 'none'",
+  "frame-src 'self' https://www.youtube-nocookie.com",
   "upgrade-insecure-requests",
 ].join("; ");
 

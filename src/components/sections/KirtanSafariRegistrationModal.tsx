@@ -1,8 +1,9 @@
 "use client";
 
-import { CSSProperties, ReactNode, useEffect, useState } from "react";
+import { CSSProperties, ReactNode, useCallback, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import KirtanSafariRegistrationForm from "./KirtanSafariRegistrationForm";
+import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 const OPEN_EVENT = "open-kirtan-safari-registration";
 
@@ -19,6 +20,14 @@ export function KirtanSafariRegistrationButton({
   className?: string;
   style?: CSSProperties;
 }) {
+  const festivalState = useKirtanSafariState();
+  const label =
+    festivalState.phase === "live"
+      ? "Join Us Today"
+      : festivalState.phase === "between-days"
+        ? "Join Us Tomorrow"
+        : children;
+
   return (
     <button
       type="button"
@@ -26,16 +35,26 @@ export function KirtanSafariRegistrationButton({
       style={style}
       onClick={openKirtanSafariRegistration}
     >
-      {children}
+      {label}
     </button>
   );
 }
 
 export default function KirtanSafariRegistrationModal() {
   const [isOpen, setIsOpen] = useState(false);
+  const panelRef = useRef<HTMLElement>(null);
+  const previouslyFocusedRef = useRef<HTMLElement | null>(null);
+
+  const close = useCallback(() => {
+    setIsOpen(false);
+    window.setTimeout(() => previouslyFocusedRef.current?.focus(), 0);
+  }, []);
 
   useEffect(() => {
-    const open = () => setIsOpen(true);
+    const open = () => {
+      previouslyFocusedRef.current = document.activeElement as HTMLElement | null;
+      setIsOpen(true);
+    };
     window.addEventListener(OPEN_EVENT, open);
     return () => window.removeEventListener(OPEN_EVENT, open);
   }, []);
@@ -46,18 +65,41 @@ export default function KirtanSafariRegistrationModal() {
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
 
+    const focusableSelector =
+      'button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), a[href], [tabindex]:not([tabindex="-1"])';
+
     const closeOnEscape = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
-        setIsOpen(false);
+        close();
+        return;
+      }
+
+      if (event.key === "Tab") {
+        const focusable = Array.from(
+          panelRef.current?.querySelectorAll<HTMLElement>(focusableSelector) ?? []
+        ).filter((element) => element.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault();
+          last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault();
+          first.focus();
+        }
       }
     };
 
     window.addEventListener("keydown", closeOnEscape);
+    window.setTimeout(() => {
+      panelRef.current?.querySelector<HTMLElement>(focusableSelector)?.focus();
+    }, 0);
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", closeOnEscape);
     };
-  }, [isOpen]);
+  }, [close, isOpen]);
 
   if (!isOpen) return null;
 
@@ -67,11 +109,12 @@ export default function KirtanSafariRegistrationModal() {
       role="presentation"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) {
-          setIsOpen(false);
+          close();
         }
       }}
     >
       <section
+        ref={panelRef}
         className="ks-modal-panel"
         role="dialog"
         aria-modal="true"
@@ -81,7 +124,7 @@ export default function KirtanSafariRegistrationModal() {
           type="button"
           className="ks-modal-close"
           aria-label="Close registration form"
-          onClick={() => setIsOpen(false)}
+          onClick={close}
         >
           <X size={18} strokeWidth={1.8} />
         </button>

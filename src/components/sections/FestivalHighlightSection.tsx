@@ -1,22 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useEffect } from "react";
-import { BookOpen, Camera, Ticket } from "lucide-react";
+import { BookOpen, Camera, Radio, Ticket } from "lucide-react";
 import KirtanSafariRegistrationModal, {
   KirtanSafariRegistrationButton,
 } from "./KirtanSafariRegistrationModal";
+import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
+import { formatFestivalTime } from "@/lib/kirtanSafariState";
 
-/* Countdown hook */
-function useCountdown(target: Date) {
-  const [diff, setDiff] = useState(0);
-  useEffect(() => {
-    const update = () => setDiff(Math.max(0, target.getTime() - Date.now()));
-    update();
-    const id = setInterval(update, 1000);
-    return () => clearInterval(id);
-  }, [target]);
-  const s = Math.floor(diff / 1000);
+function countdownParts(milliseconds: number) {
+  const s = Math.floor(Math.max(0, milliseconds) / 1000);
   return {
     days: Math.floor(s / 86400),
     hours: Math.floor((s % 86400) / 3600),
@@ -132,6 +125,7 @@ function CountdownPanel({
         ].map(({ value, label }) => (
           <div key={label}>
             <div
+              suppressHydrationWarning
               style={{
                 fontFamily: "var(--font-playfair, serif)",
                 color: "#d69c2b",
@@ -161,10 +155,43 @@ function CountdownPanel({
   );
 }
 
+function HomeLivePanel({
+  phase,
+  dayLabel,
+  nowLabel,
+  nextLabel,
+}: {
+  phase: "live" | "between-days";
+  dayLabel: string;
+  nowLabel: string;
+  nextLabel: string;
+}) {
+  return (
+    <div className="ks-home-live-panel">
+      <p><Radio size={13} aria-hidden="true" />{phase === "live" ? "Festival live" : "Festival continues"}</p>
+      <h3>{dayLabel}</h3>
+      <div><span>Now</span><strong>{nowLabel}</strong></div>
+      <div><span>Coming next</span><strong>{nextLabel}</strong></div>
+      <Link href="/festivals/kirtan-safari#live">Open Live Programme</Link>
+    </div>
+  );
+}
+
 /* Component */
 export default function KirtanSafariSection() {
-  const target = new Date("2026-08-27T18:00:00+03:00");
-  const { days, hours, minutes, seconds } = useCountdown(target);
+  const festivalState = useKirtanSafariState();
+  const { days, hours, minutes, seconds } = countdownParts(festivalState.startsInMs);
+
+  if (festivalState.phase === "concluded") return null;
+
+  const active = festivalState.phase === "live" || festivalState.phase === "between-days";
+  const activeDay = festivalState.currentDay ?? festivalState.nextDay;
+  const homeNow = festivalState.phase === "between-days"
+    ? "Between festival days"
+    : festivalState.currentItem?.title ?? "Follow the programme at the temple";
+  const homeNext = festivalState.nextItem?.title
+    ?? festivalState.currentDay?.fallbackNext
+    ?? (festivalState.nextDay ? `${festivalState.nextDay.theme} at ${formatFestivalTime(festivalState.nextDay.startsAt)}` : "Festival programme continues");
 
   return (
     <section
@@ -328,13 +355,13 @@ export default function KirtanSafariSection() {
           >
             A Kirtan Journey Through Jarikhand Forest
           </p>
-          <CountdownPanel
-            days={days}
-            hours={hours}
-            minutes={minutes}
-            seconds={seconds}
-            className="ks-countdown-mobile"
-          />
+          {active ? (
+            <div className="ks-countdown-mobile">
+              <HomeLivePanel phase={festivalState.phase as "live" | "between-days"} dayLabel={activeDay?.label ?? "Kirtan Safari 2026"} nowLabel={homeNow} nextLabel={homeNext} />
+            </div>
+          ) : (
+            <CountdownPanel days={days} hours={hours} minutes={minutes} seconds={seconds} className="ks-countdown-mobile" />
+          )}
           {/* CTA Buttons */}
           <div
             className="ks-cta-desktop"
@@ -377,7 +404,7 @@ export default function KirtanSafariSection() {
                 textDecoration: "none",
               }}
             >
-              Full Details
+              {active ? "Live Programme" : "Full Details"}
             </Link>
             <Link
               href="/blog/jharikhanda-forest-kirtan-safari"
@@ -408,13 +435,13 @@ export default function KirtanSafariSection() {
         {/* Right - countdown + quick schedule */}
         <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           {/* Countdown */}
-          <CountdownPanel
-            days={days}
-            hours={hours}
-            minutes={minutes}
-            seconds={seconds}
-            className="ks-countdown-desktop"
-          />
+          {active ? (
+            <div className="ks-countdown-desktop">
+              <HomeLivePanel phase={festivalState.phase as "live" | "between-days"} dayLabel={activeDay?.label ?? "Kirtan Safari 2026"} nowLabel={homeNow} nextLabel={homeNext} />
+            </div>
+          ) : (
+            <CountdownPanel days={days} hours={hours} minutes={minutes} seconds={seconds} className="ks-countdown-desktop" />
+          )}
 
           {/* Quick schedule */}
           <div
@@ -538,7 +565,7 @@ export default function KirtanSafariSection() {
                 textDecoration: "none",
               }}
             >
-              Full Details
+              {active ? "Live Programme" : "Full Details"}
             </Link>
             <Link
               href="/blog/jharikhanda-forest-kirtan-safari"
@@ -610,6 +637,58 @@ export default function KirtanSafariSection() {
 
         .ks-countdown-mobile {
           display: none;
+        }
+
+        .ks-home-live-panel {
+          background: rgba(7, 28, 16, 0.78);
+          border: 1px solid rgba(214, 156, 43, 0.34);
+          padding: 1.25rem;
+        }
+
+        .ks-home-live-panel > p {
+          align-items: center;
+          color: #d69c2b;
+          display: flex;
+          font: 800 0.58rem/1 var(--font-inter, sans-serif);
+          gap: 0.45rem;
+          letter-spacing: 0.16em;
+          margin: 0 0 0.65rem;
+          text-transform: uppercase;
+        }
+
+        .ks-home-live-panel h3 {
+          color: #fff;
+          font: 700 1.35rem/1.15 var(--font-playfair, serif);
+          margin: 0 0 0.85rem;
+        }
+
+        .ks-home-live-panel > div {
+          border-top: 1px solid rgba(255, 255, 255, 0.08);
+          display: grid;
+          gap: 0.18rem;
+          padding: 0.6rem 0;
+        }
+
+        .ks-home-live-panel span {
+          color: rgba(246, 226, 177, 0.58);
+          font: 800 0.52rem/1 var(--font-inter, sans-serif);
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+        }
+
+        .ks-home-live-panel strong {
+          color: rgba(255, 255, 255, 0.84);
+          font: 600 0.78rem/1.35 var(--font-inter, sans-serif);
+        }
+
+        .ks-home-live-panel a {
+          color: #d69c2b;
+          display: inline-block;
+          font: 800 0.58rem/1 var(--font-inter, sans-serif);
+          letter-spacing: 0.12em;
+          margin-top: 0.7rem;
+          text-decoration: none;
+          text-transform: uppercase;
         }
 
         @media (max-width: 640px) {

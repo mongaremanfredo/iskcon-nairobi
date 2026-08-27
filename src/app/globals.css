@@ -251,3 +251,136 @@ img { transition: opacity 0.3s ease; }
     font-size: clamp(1.85rem, 10vw, 3rem) !important;
   }
 }
+/* Kirtan Safari live controls cross a component boundary into the shared
+   registration modal, so this one button style intentionally lives globally. */
+.ks-live-hub .ks-live-primary {
+  align-items: center;
+  background: #d69c2b;
+  border: 0;
+  color: #071c10;
+  cursor: pointer;
+  display: inline-flex;
+  font: 800 0.65rem/1 var(--font-inter, sans-serif);
+  justify-content: center;
+  letter-spacing: 0.13em;
+  min-height: 44px;
+  padding: 0.85rem 1.15rem;
+  text-transform: uppercase;
+}
+
+.ks-live-hub .ks-live-countdown {
+  display: grid;
+  flex: 0 0 min(440px, 42%);
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.ks-live-hub .ks-live-countdown > div {
+  border-left: 1px solid rgba(214, 156, 43, 0.24);
+  padding: 0.65rem 0.85rem;
+  text-align: center;
+}
+
+.ks-live-hub .ks-live-countdown strong {
+  color: #d69c2b;
+  display: block;
+  font: 700 clamp(1.45rem, 3vw, 2.4rem)/1 var(--font-playfair, serif);
+}
+
+.ks-live-hub .ks-live-countdown span {
+  color: rgba(255, 255, 255, 0.42);
+  font: 700 0.52rem/1 var(--font-inter, sans-serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.ks-live-hub .ks-stream-panel {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.ks-live-hub .ks-stream-frame {
+  aspect-ratio: 16 / 9;
+  background: #030b07;
+  border: 1px solid rgba(214, 156, 43, 0.28);
+  overflow: hidden;
+  width: 100%;
+}
+
+.ks-live-hub .ks-stream-frame iframe {
+  border: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.ks-live-hub .ks-stream-placeholder {
+  align-items: center;
+  background: radial-gradient(circle at 68% 35%, rgba(214, 156, 43, 0.15), transparent 34%), linear-gradient(135deg, #0e2b18, #05120a);
+  display: flex;
+  gap: 1.25rem;
+  height: 100%;
+  justify-content: center;
+  padding: clamp(1.2rem, 5vw, 3rem);
+  text-align: left;
+}
+
+.ks-live-hub .ks-stream-placeholder > svg {
+  color: #d69c2b;
+  height: clamp(2.5rem, 6vw, 5rem);
+  width: clamp(2.5rem, 6vw, 5rem);
+}
+
+.ks-live-hub .ks-stream-placeholder p {
+  color: #d69c2b;
+  font: 800 0.6rem/1 var(--font-inter, sans-serif);
+  letter-spacing: 0.16em;
+  margin: 0 0 0.55rem;
+  text-transform: uppercase;
+}
+
+.ks-live-hub .ks-stream-placeholder h3 {
+  color: white;
+  font: 700 clamp(1.4rem, 3vw, 2.4rem)/1.1 var(--font-playfair, serif);
+  margin: 0 0 0.55rem;
+}
+
+.ks-live-hub .ks-stream-placeholder span {
+  color: rgba(255, 255, 255, 0.56);
+  font: 400 0.82rem/1.55 var(--font-inter, sans-serif);
+}
+
+.ks-live-hub .ks-stream-panel .ks-inline-action {
+  align-items: center;
+  color: #d69c2b;
+  display: inline-flex;
+  font: 700 0.7rem/1.4 var(--font-inter, sans-serif);
+  gap: 0.4rem;
+  justify-self: start;
+  text-decoration: none;
+}
+
+@media (max-width: 800px) {
+  .ks-live-hub .ks-live-primary {
+    flex: 1 1 calc(50% - 0.4rem);
+  }
+
+  .ks-live-hub .ks-live-countdown {
+    flex: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 430px) {
+  .ks-live-hub .ks-live-primary {
+    flex-basis: 100%;
+  }
+
+  .ks-live-hub .ks-live-countdown > div {
+    padding: 0.55rem 0.2rem;
+  }
+
+  .ks-live-hub .ks-stream-placeholder {
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
