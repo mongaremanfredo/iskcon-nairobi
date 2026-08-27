@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import CalendarNotificationOptIn from "@/components/ui/CalendarNotificationOptIn";
 import { homepageFestivalPreview, vaishnavaCalendar2026 } from "@/data/site";
 import { Calendar, MapPin, ArrowRight, Sparkles } from "lucide-react";
+import { getKirtanSafariState } from "@/lib/kirtanSafariState";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Festivals",
@@ -11,6 +15,19 @@ export const metadata: Metadata = {
 };
 
 export default function FestivalsPage() {
+  const kirtanSafariState = getKirtanSafariState(new Date());
+  const festivalPreview = homepageFestivalPreview.map((festival) =>
+    festival.href === "/festivals/kirtan-safari" && kirtanSafariState.phase === "concluded"
+      ? {
+          ...festival,
+          date: "2026 festival archive",
+          description:
+            "Relive four days of the holy name, guest kirtaniyas, Harinam, prasadam, and devotional community, and receive news of the next edition.",
+          tag: "Annual Festival",
+        }
+      : festival
+  );
+
   return (
     <>
       <PageHero
@@ -41,14 +58,20 @@ export default function FestivalsPage() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {homepageFestivalPreview.map((festival) => (
+            {festivalPreview.map((festival) => (
               <Link
                 href={festival.href}
                 key={festival.href}
                 className="group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all overflow-hidden"
               >
                 <div className="relative h-56 overflow-hidden image-grade">
-                  <img src={festival.image} alt={festival.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image
+                    src={festival.image}
+                    alt={festival.title}
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/75 to-transparent" />
                   <div className="absolute left-4 top-4 bg-gold px-2.5 py-1">
                     <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-white">{festival.tag}</span>

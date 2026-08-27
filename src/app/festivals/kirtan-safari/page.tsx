@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import {
   BookOpen,
   Camera,
@@ -10,6 +11,12 @@ import {
 import KirtanSafariRegistrationModal, {
   KirtanSafariRegistrationButton,
 } from "@/components/sections/KirtanSafariRegistrationModal";
+import KirtanSafariLiveHub from "@/components/festivals/KirtanSafariLiveHub";
+import KirtanSafariArchive from "@/components/festivals/KirtanSafariArchive";
+import { getKirtanSafariState } from "@/lib/kirtanSafariState";
+import { kirtanSafariGuestKirtaniyas } from "@/data/kirtanSafari";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Kirtan Safari 2026",
@@ -155,43 +162,24 @@ const socials = [
 ];
 
 /* ─── page ──────────────────────────────────────────────── */
-const guestKirtaniyas = [
-  {
-    name: "Sandip Pattni",
-    image: "/images/festivals/guest-kirtaniyas/sandip-pattni.jpg",
-  },
-  {
-    name: "H.G. Gourangi Gandharvika Devi Dasi",
-    image:
-      "/images/festivals/guest-kirtaniyas/hg-gourangi-gandharvika-devi-dasi.jpg",
-  },
-  {
-    name: "H.G. Madhurika Dasi",
-    image: "/images/festivals/guest-kirtaniyas/hg-madhurika-dasi.jpg",
-  },
-  {
-    name: "H.G. Sharad Bihari Das",
-    image: "/images/festivals/guest-kirtaniyas/hg-sharad-bihari-das.jpg",
-  },
-  {
-    name: "H.G. Smita Krishna Das",
-    image: "/images/festivals/guest-kirtaniyas/hg-smita-krishna-das.jpg",
-  },
-  {
-    name: "H.G. Gaura Kirtan Das",
-    image: "/images/festivals/guest-kirtaniyas/hg-gaura-kirtan-das.jpg",
-  },
-  {
-    name: "H.G. Giriraj Das",
-    image: "/images/festivals/guest-kirtaniyas/hg-giriraj-das.jpg",
-  },
-  {
-    name: "H.G. Kamika Ekadashi Das",
-    image: "/images/festivals/guest-kirtaniyas/hg-kamika-ekadashi-das.jpg",
-  },
-];
+type KirtanSafariPageProps = {
+  searchParams: Promise<{ festivalTime?: string }>;
+};
 
-export default function KirtanSafariPage() {
+export default async function KirtanSafariPage({ searchParams }: KirtanSafariPageProps) {
+  const params = await searchParams;
+  const simulatedTime =
+    process.env.NODE_ENV !== "production" && params.festivalTime
+      ? new Date(params.festivalTime)
+      : null;
+  const initialFestivalState = getKirtanSafariState(
+    simulatedTime && !Number.isNaN(simulatedTime.getTime()) ? simulatedTime : new Date()
+  );
+
+  if (initialFestivalState.phase === "concluded") {
+    return <KirtanSafariArchive />;
+  }
+
   return (
     <div className="kirtan-safari-page">
       <KirtanSafariRegistrationModal />
@@ -534,6 +522,8 @@ export default function KirtanSafariPage() {
         </div>
       </section>
 
+      <KirtanSafariLiveHub />
+
       {/* ═══════════════════════════════════════
           2. INTRO / ABOUT THE EVENT
       ═══════════════════════════════════════ */}
@@ -812,7 +802,7 @@ export default function KirtanSafariPage() {
                 <span>one holy name.</span>
               </strong>
             </div>
-            {guestKirtaniyas.map((guest, index) => (
+            {kirtanSafariGuestKirtaniyas.map((guest, index) => (
               <article
                 className="ks-guest-card"
                 key={guest.name}
@@ -850,16 +840,14 @@ export default function KirtanSafariPage() {
                       background: "rgba(7,28,16,0.65)",
                     }}
                   >
-                    <img
+                    <Image
                       src={guest.image}
                       alt={`${guest.name}, guest kirtaniya for Kirtan Safari 2026`}
-                      loading="lazy"
+                      fill
+                      sizes="(max-width: 640px) 72vw, (max-width: 1024px) 34vw, 22vw"
                       style={{
-                        width: "100%",
-                        height: "100%",
                         objectFit: "cover",
                         objectPosition: "center top",
-                        display: "block",
                         filter: "saturate(1.06) contrast(1.04)",
                       }}
                     />

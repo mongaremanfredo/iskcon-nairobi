@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Offline | ISKCON Nairobi",
@@ -27,12 +28,12 @@ export default function OfflinePage() {
           notices, festival updates, and form confirmations.
         </p>
         <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 sm:flex-row sm:justify-center">
-          <a href="/" className="btn-primary">
+          <Link href="/" className="btn-primary">
             Try homepage
-          </a>
-          <a href="/festivals" className="btn-outline">
+          </Link>
+          <Link href="/festivals" className="btn-outline">
             Open calendar
-          </a>
+          </Link>
         </div>
       </div>
     </section>

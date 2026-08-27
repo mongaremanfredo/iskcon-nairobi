@@ -1,3 +1,5 @@
+import type { FestivalState } from "@/lib/kirtanSafariState";
+
 export type SiteNotice = {
   id: string;
   title: string;
@@ -54,3 +56,44 @@ export const siteNotices: SiteNotice[] = [
     href: "/festivals",
   },
 ];
+
+export function getSiteNotices(festivalState: FestivalState): SiteNotice[] {
+  return siteNotices.map((notice) => {
+    if (notice.id !== "kirtan-safari-2026-registration") return notice;
+
+    if (festivalState.phase === "live") {
+      return {
+        ...notice,
+        title: `Kirtan Safari is live: ${festivalState.currentDay?.theme ?? "Join the kirtan"}`,
+        body: "Join today's programme at Hare Krishna Temple Nairobi. Registration, directions, the live programme, and broadcast links are available on the festival page.",
+        dateLabel: festivalState.currentDay?.shortLabel ?? "Live now",
+        tag: "Live Festival",
+      };
+    }
+
+    if (festivalState.phase === "between-days") {
+      return {
+        ...notice,
+        title: "Kirtan Safari continues tomorrow",
+        body: festivalState.nextDay
+          ? `Today's programme has concluded. Join us tomorrow for ${festivalState.nextDay.theme} at Hare Krishna Temple Nairobi.`
+          : "Today's programme has concluded. Open the festival page for the next confirmed programme.",
+        dateLabel: festivalState.nextDay?.shortLabel ?? "Continues",
+        tag: "Festival Update",
+      };
+    }
+
+    if (festivalState.phase === "concluded") {
+      return {
+        ...notice,
+        title: "Kirtan Safari 2026 memories",
+        body: "Kirtan Safari 2026 has concluded. Relive the gathering, revisit its stories, and receive news of future editions.",
+        dateLabel: "2026 archive",
+        tag: "Festival Archive",
+        priority: "normal",
+      };
+    }
+
+    return notice;
+  });
+}

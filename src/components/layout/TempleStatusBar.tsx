@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { CalendarDays, Clock3 } from "lucide-react";
+import { CalendarDays, Clock3, Radio } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 type TempleStatus = {
   isOpen: boolean;
@@ -113,6 +114,11 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
   const barRef = useRef<HTMLDivElement>(null);
   const [now, setNow] = useState(() => new Date());
   const status = useMemo(() => getTempleStatus(now), [now]);
+  const festivalState = useKirtanSafariState();
+  const festivalActive = festivalState.phase === "live" || festivalState.phase === "between-days";
+  const festivalConcluded = festivalState.phase === "concluded";
+  const festivalHref = festivalConcluded ? "/festivals" : "/festivals/kirtan-safari#live";
+  const FestivalIcon = festivalActive ? Radio : CalendarDays;
 
   useEffect(() => {
     const timer = window.setInterval(() => setNow(new Date()), 60_000);
@@ -197,12 +203,22 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
               <span className="truncate">Next: {status.nextProgramme}</span>
             </span>
             <Link
-              href="/festivals/kirtan-safari"
+              href={festivalHref}
               className="inline-flex shrink-0 items-center gap-1.5 border border-sunset/35 bg-sunset/10 px-3 py-1.5 text-[0.68rem] font-semibold uppercase tracking-[0.13em] text-sunset transition-colors hover:border-sunset/60 hover:bg-sunset/15 max-[900px]:gap-1 max-[900px]:px-1.5 max-[900px]:py-1 max-[900px]:text-[0.54rem] max-[900px]:tracking-[0.06em]"
             >
-              <CalendarDays size={13} className="shrink-0 max-[900px]:h-3 max-[900px]:w-3" />
-              <span className="max-[900px]:hidden">Kirtan Safari 2026</span>
-              <span className="hidden max-[900px]:inline">Kirtan Safari</span>
+              <FestivalIcon size={13} className="shrink-0 max-[900px]:h-3 max-[900px]:w-3" />
+              <span className="max-[900px]:hidden">
+                {festivalConcluded
+                  ? "Temple Calendar"
+                  : festivalState.phase === "live"
+                    ? `Kirtan Safari Live · Day ${festivalState.currentDayIndex + 1}`
+                    : festivalState.phase === "between-days"
+                      ? "Kirtan Safari Continues"
+                      : "Kirtan Safari 2026"}
+              </span>
+              <span className="hidden max-[900px]:inline">
+                {festivalConcluded ? "Calendar" : festivalActive ? "Kirtan Safari Live" : "Kirtan Safari"}
+              </span>
             </Link>
           </div>
         </div>

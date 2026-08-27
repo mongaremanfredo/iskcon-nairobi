@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { BellRing, CalendarDays, ShieldCheck } from "lucide-react";
 import { calendarNotificationEvents } from "@/lib/calendarNotifications";
 import {
@@ -18,22 +18,27 @@ export default function CalendarNotificationOptIn() {
   const [enabled, setEnabled] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
-  const upcomingEvents = useMemo(() => {
-    const now = Date.now();
-
-    return calendarNotificationEvents
-      .filter((event) => Date.parse(event.startsAt) >= now)
-      .slice(0, 3);
-  }, []);
+  const [upcomingEvents, setUpcomingEvents] = useState(() =>
+    calendarNotificationEvents.slice(0, 3)
+  );
 
   useEffect(() => {
-    if (!("Notification" in window) || !("serviceWorker" in navigator)) {
-      setPermission("unsupported");
-      return;
-    }
+    queueMicrotask(() => {
+      const now = Date.now();
+      setUpcomingEvents(
+        calendarNotificationEvents
+          .filter((event) => Date.parse(event.startsAt) >= now)
+          .slice(0, 3)
+      );
 
-    setPermission(Notification.permission);
-    setEnabled(window.localStorage.getItem(OPT_IN_KEY) === "enabled");
+      if (!("Notification" in window) || !("serviceWorker" in navigator)) {
+        setPermission("unsupported");
+        return;
+      }
+
+      setPermission(Notification.permission);
+      setEnabled(window.localStorage.getItem(OPT_IN_KEY) === "enabled");
+    });
   }, []);
 
   useEffect(() => {

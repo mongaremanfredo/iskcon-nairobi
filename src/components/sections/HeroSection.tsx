@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import KirtanSafariRegistrationModal, {
   openKirtanSafariRegistration,
 } from "./KirtanSafariRegistrationModal";
+import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 type HeroCta =
   | {
@@ -36,7 +37,7 @@ type HeroImage = {
   durationMs?: number;
 };
 
-const heroImages: HeroImage[] = [
+const baseHeroImages: HeroImage[] = [
   {
     src: "/images/home-kirtan-safari-illustration-hero.png",
     mobileSrc: "/images/home-kirtan-safari-illustration-hero-mobile.png",
@@ -87,6 +88,70 @@ export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [loaded, setLoaded] = useState(false);
   const rotationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const festivalState = useKirtanSafariState();
+
+  const heroImages = useMemo(() => {
+    const original = baseHeroImages[0];
+    let festivalSlide: HeroImage = original;
+
+    if (festivalState.phase === "live") {
+      const dayNumber = festivalState.currentDayIndex + 1;
+      const dayCopy = [
+        {
+          tagline: "The festival mood begins with Adivas.",
+          description: "Join the opening kirtan and welcome four days centered on the holy name at Hare Krishna Temple Nairobi.",
+        },
+        {
+          tagline: "Balarama Purnima resounds in Nairobi.",
+          description: "Day two brings kirtan, worship, association, and prasadam. The festival is open, and you are welcome.",
+        },
+        {
+          tagline: "The holy name moves through the city.",
+          description: "Join day three for kirtan, special Harinam, devotee association, and prasadam.",
+        },
+        {
+          tagline: "One final day, one continuous kirtan.",
+          description: "Gather for the closing day of Kirtan Safari and carry the festival mood through the holy name.",
+        },
+      ][Math.max(0, Math.min(dayNumber - 1, 3))];
+      festivalSlide = {
+        ...original,
+        eyebrow: `Kirtan Safari Live · Day ${dayNumber} of 4`,
+        tagline: dayCopy.tagline,
+        description: dayCopy.description,
+        ctas: [
+          { label: "Join Us Today", variant: "primary", action: "kirtanRegistration" },
+          { label: "Live Programme", variant: "ghost", href: "/festivals/kirtan-safari#live" },
+        ],
+      };
+    } else if (festivalState.phase === "between-days") {
+      festivalSlide = {
+        ...original,
+        eyebrow: "Kirtan Safari Continues",
+        tagline: "The kirtan continues tomorrow.",
+        description: festivalState.nextDay
+          ? `Return for ${festivalState.nextDay.theme} at Hare Krishna Temple Nairobi.`
+          : "Return for the next Kirtan Safari programme at Hare Krishna Temple Nairobi.",
+        ctas: [
+          { label: "Join Us Tomorrow", variant: "primary", action: "kirtanRegistration" },
+          { label: "View Programme", variant: "ghost", href: "/festivals/kirtan-safari#live" },
+        ],
+      };
+    } else if (festivalState.phase === "concluded") {
+      festivalSlide = {
+        ...original,
+        eyebrow: "Kirtan Safari at ISKCON Nairobi",
+        tagline: "Four Days, One Holy Name",
+        description: "Relive the 2026 gathering and discover Kirtan Safari as a recurring celebration of kirtan, association, prasadam, and service.",
+        ctas: [
+          { label: "Relive Kirtan Safari 2026", variant: "primary", href: "/festivals/kirtan-safari" },
+          { label: "Explore Festivals", variant: "ghost", href: "/festivals" },
+        ],
+      };
+    }
+
+    return [festivalSlide, ...baseHeroImages.slice(1)];
+  }, [festivalState.currentDayIndex, festivalState.nextDay, festivalState.phase]);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100);
@@ -105,7 +170,7 @@ export default function HeroSection() {
     return () => {
       if (rotationRef.current) clearTimeout(rotationRef.current);
     };
-  }, [currentImage]);
+  }, [currentImage, heroImages]);
 
   const currentHero = heroImages[currentImage];
 

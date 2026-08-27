@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect } from "react";
-import { siteNotices } from "@/data/notices";
+import { useEffect, useMemo } from "react";
+import { getSiteNotices, type SiteNotice } from "@/data/notices";
+import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 const OPT_IN_KEY = "iskcon-noticeboard-notifications";
 const SENT_KEY = "iskcon-noticeboard-notifications-sent";
@@ -19,7 +20,7 @@ function writeSentNotices(sent: Record<string, string>) {
   window.localStorage.setItem(SENT_KEY, JSON.stringify(sent));
 }
 
-export function markCurrentNoticesAsSent() {
+export function markCurrentNoticesAsSent(notices: SiteNotice[]) {
   if (typeof window === "undefined") {
     return;
   }
@@ -27,14 +28,14 @@ export function markCurrentNoticesAsSent() {
   const sent = readSentNotices();
   const now = new Date().toISOString();
 
-  siteNotices.forEach((notice) => {
+  notices.forEach((notice) => {
     sent[notice.id] = sent[notice.id] ?? now;
   });
 
   writeSentNotices(sent);
 }
 
-async function showNoticeNotification(notice: (typeof siteNotices)[number]) {
+async function showNoticeNotification(notice: SiteNotice) {
   const registration = await navigator.serviceWorker.ready;
 
   await registration.showNotification(notice.title, {
@@ -49,6 +50,12 @@ async function showNoticeNotification(notice: (typeof siteNotices)[number]) {
 }
 
 export default function NoticeNotificationManager() {
+  const festivalState = useKirtanSafariState();
+  const notices = useMemo(
+    () => getSiteNotices(festivalState),
+    [festivalState]
+  );
+
   useEffect(() => {
     if (!("serviceWorker" in navigator) || !("Notification" in window)) {
       return;
@@ -63,7 +70,7 @@ export default function NoticeNotificationManager() {
       }
 
       const sent = readSentNotices();
-      const unsent = siteNotices.filter((notice) => !sent[notice.id]);
+      const unsent = notices.filter((notice) => !sent[notice.id]);
 
       if (unsent.length === 0) {
         return;
@@ -87,7 +94,7 @@ export default function NoticeNotificationManager() {
       document.removeEventListener("visibilitychange", notifyNewNotices);
       window.removeEventListener("iskcon-noticeboard-notifications-changed", notifyNewNotices);
     };
-  }, []);
+  }, [notices]);
 
   return null;
 }

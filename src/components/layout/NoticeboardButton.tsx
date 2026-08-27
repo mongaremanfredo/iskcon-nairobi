@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { Bell, BellRing, CalendarDays, Check, ChevronRight, X } from "lucide-react";
-import { siteNotices } from "@/data/notices";
+import { getSiteNotices, type SiteNotice } from "@/data/notices";
 import { cn } from "@/lib/utils";
 import { markCurrentNoticesAsSent } from "@/components/system/NoticeNotificationManager";
 import {
@@ -11,6 +11,7 @@ import {
   enablePushOnDevice,
   keepDevicePushSubscribed,
 } from "@/lib/pushClient";
+import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 const OPT_IN_KEY = "iskcon-noticeboard-notifications";
 const READ_KEY = "iskcon-noticeboard-read";
@@ -26,11 +27,11 @@ function readMap(key: string) {
   }
 }
 
-function markNoticesRead() {
+function markNoticesRead(notices: SiteNotice[]) {
   const read = readMap(READ_KEY);
   const now = new Date().toISOString();
 
-  siteNotices.forEach((notice) => {
+  notices.forEach((notice) => {
     read[notice.id] = read[notice.id] ?? now;
   });
 
@@ -42,6 +43,11 @@ type NoticeboardButtonProps = {
 };
 
 export default function NoticeboardButton({ statusBarVisible = false }: NoticeboardButtonProps) {
+  const festivalState = useKirtanSafariState();
+  const notices = useMemo(
+    () => getSiteNotices(festivalState),
+    [festivalState]
+  );
   const [isOpen, setIsOpen] = useState(false);
   const [permission, setPermission] = useState<PermissionState>("default");
   const [enabled, setEnabled] = useState(false);
@@ -50,16 +56,23 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!("Notification" in window) || !("serviceWorker" in navigator)) {
-      setPermission("unsupported");
-    } else {
-      setPermission(Notification.permission);
-      setEnabled(window.localStorage.getItem(OPT_IN_KEY) === "enabled");
-    }
+    let cancelled = false;
+    queueMicrotask(() => {
+      if (cancelled) return;
+      if (!("Notification" in window) || !("serviceWorker" in navigator)) {
+        setPermission("unsupported");
+      } else {
+        setPermission(Notification.permission);
+        setEnabled(window.localStorage.getItem(OPT_IN_KEY) === "enabled");
+      }
 
-    const read = readMap(READ_KEY);
-    setHasUnread(siteNotices.some((notice) => !read[notice.id]));
-  }, []);
+      const read = readMap(READ_KEY);
+      setHasUnread(notices.some((notice) => !read[notice.id]));
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [notices]);
 
   useEffect(() => {
     if (!enabled || permission !== "granted") {
@@ -119,7 +132,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
     setIsOpen(nextOpen);
 
     if (nextOpen) {
-      markNoticesRead();
+      markNoticesRead(notices);
       setHasUnread(false);
     }
   };
@@ -143,7 +156,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
 
       if (result === "granted") {
         window.localStorage.setItem(OPT_IN_KEY, "enabled");
-        markCurrentNoticesAsSent();
+        markCurrentNoticesAsSent(notices);
         setEnabled(true);
         window.dispatchEvent(new Event("iskcon-noticeboard-notifications-changed"));
 
@@ -242,7 +255,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
 
           <div className="max-h-[min(68vh,520px)] overflow-y-auto">
             <div className="space-y-3 p-4">
-              {siteNotices.map((notice) => (
+              {notices.map((notice) => (
                 <Link
                   key={notice.id}
                   href={notice.href}
