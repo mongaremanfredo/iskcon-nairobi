@@ -32,7 +32,7 @@ Open `/festivals/kirtan-safari?festivalTime=2026-08-27T18:00:01%2B03:00`.
 - Countdown is replaced by Live Festival Status without a blank state.
 - Thursday is highlighted.
 - `Now` does not invent a duration; `Coming Next` uses the next confirmed time.
-- The full programme shows `Follows the programme` for Adivas prasadam.
+- The full programme shows `After Adivas` for prasadam without inventing a time.
 - Registration, directions, Instagram, and YouTube remain available.
 
 ### Programme in progress

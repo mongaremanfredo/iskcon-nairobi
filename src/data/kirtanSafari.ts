@@ -97,7 +97,7 @@ export const kirtanSafariConfig = {
       endsAt: "2026-08-28T00:00:00+03:00",
       theme: "Adivas",
       fallbackNow: "Adivas begins from 6:00 PM onwards",
-      fallbackNext: "Prasadam follows the programme",
+      fallbackNext: "Prasadam will be served after Adivas",
       programme: [
         {
           id: "adhivas-kirtan",
@@ -109,7 +109,7 @@ export const kirtanSafariConfig = {
         {
           id: "adhivas-prasadam",
           title: "Prasadam",
-          timeLabel: "Follows the programme",
+          timeLabel: "After Adivas",
           detail: "Served after the Adivas programme",
         },
       ],
