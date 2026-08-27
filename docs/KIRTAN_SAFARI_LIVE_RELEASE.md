@@ -109,8 +109,8 @@ All live-event controls are in `src/data/kirtanSafari.ts`.
 
 - `phaseOverride`: keep `automatic` in normal operation. Use `countdown`, `live`,
   `between-days`, or `concluded` only for a documented operational exception.
-- `livestream.enabled`: keep `false` until organizers confirm an official live
-  broadcast. The complete player implementation stays dormant in the codebase.
+- `livestream.enabled`: set to `true` while the confirmed official broadcast is
+  available. Return it to `false` if the stream is withdrawn or unavailable.
 - `livestream.videoId`: paste only the YouTube video ID, not the full URL.
 - `livestream.status`: use `scheduled`, `live`, `offline`, or `ended`. The page
   never presents the player as live unless this value is `live`.
@@ -158,7 +158,7 @@ approval. Never create a fifth festival broadcast without a new content approval
 
 1. Complete `docs/KIRTAN_SAFARI_EVALUATION.md` locally or on a preview deployment.
 2. Confirm the programme, contact number, and directions. Confirm a stream ID,
-   status, and `livestream.enabled: true` only if an official broadcast exists.
+   status, and `livestream.enabled: true` only while an official broadcast exists.
 3. Confirm the Google service account can create/write the future-interest tab.
 4. Review the branch diff and exclude unrelated workspace changes.
 5. Merge `codex/kirtan-safari` into `main` only after visual approval.

@@ -23,7 +23,8 @@ Open `/festivals/kirtan-safari?festivalTime=2026-08-27T17:59:59%2B03:00`.
 
 - Countdown is legible and does not resize the page.
 - Registration opens in a modal and remains usable with keyboard and touch.
-- No livestream is described as live.
+- The confirmed official livestream is described as live and opens the supplied
+  Kirtan Safari broadcast.
 
 ### First minute live
 
@@ -95,8 +96,8 @@ phone once because browser chrome changes the usable viewport.
 - Restore connectivity and confirm the live panel recovers without a reload.
 - Background the tab across a simulated boundary, return, and confirm it refreshes.
 - Enable reduced motion and confirm pulsing or sliding motion is removed.
-- Confirm the ordinary YouTube channel link works and no livestream panel is
-  visible while `livestream.enabled` remains `false`.
+- Confirm the embedded livestream and its direct YouTube link both open the
+  official Kirtan Safari broadcast while `livestream.enabled` is `true`.
 - If an official stream is later supplied, test scheduled, live, offline, and
   ended statuses on a development branch before enabling it.
 

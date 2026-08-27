@@ -250,8 +250,8 @@ export default function KirtanSafariLiveHub() {
           </p>
         ) : null}
 
-        {/* Livestream support is preserved but deliberately dormant until the
-            organizers supply and confirm an official broadcast URL. */}
+        {/* The player is controlled from kirtanSafariConfig so future festival
+            broadcasts can be activated or retired without changing this layout. */}
         {kirtanSafariConfig.livestream.enabled ? <StreamPanel isOnline={isOnline} /> : null}
 
         <div className="ks-day-tabs" aria-label="Kirtan Safari programme days">
