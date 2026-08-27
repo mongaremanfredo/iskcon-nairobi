@@ -109,11 +109,18 @@ All live-event controls are in `src/data/kirtanSafari.ts`.
 
 - `phaseOverride`: keep `automatic` in normal operation. Use `countdown`, `live`,
   `between-days`, or `concluded` only for a documented operational exception.
+- `livestream.enabled`: keep `false` until organizers confirm an official live
+  broadcast. The complete player implementation stays dormant in the codebase.
 - `livestream.videoId`: paste only the YouTube video ID, not the full URL.
 - `livestream.status`: use `scheduled`, `live`, `offline`, or `ended`. The page
   never presents the player as live unless this value is `live`.
 - `links.gallery` and `links.recordings`: remain `null` until the URLs are public.
 - `days[].programme`: edit confirmed times here; retain explicit `+03:00` offsets.
+  A start-only listing must not receive an estimated `endsAt`. Use `timeLabel`
+  for wording such as `From 6:00 PM onwards` or `Follows the programme`.
+
+The day-level midnight boundaries are technical calendar transitions in Nairobi
+time. They are not public claims that the programme closes at midnight.
 
 After changing an operational input, run:
 
@@ -132,7 +139,7 @@ production. Start the local server, then test these representative states:
 /festivals/kirtan-safari?festivalTime=2026-08-27T18:00:01%2B03:00
 /festivals/kirtan-safari?festivalTime=2026-08-28T19:45:00%2B03:00
 /festivals/kirtan-safari?festivalTime=2026-08-28T23:00:00%2B03:00
-/festivals/kirtan-safari?festivalTime=2026-08-30T21:30:01%2B03:00
+/festivals/kirtan-safari?festivalTime=2026-08-31T00:00:01%2B03:00
 ```
 
 The homepage accepts the same development-only query. Verify that its festival
@@ -150,7 +157,8 @@ approval. Never create a fifth festival broadcast without a new content approval
 ## Merge and release gate
 
 1. Complete `docs/KIRTAN_SAFARI_EVALUATION.md` locally or on a preview deployment.
-2. Confirm the programme, stream ID/status, contact number, and directions.
+2. Confirm the programme, contact number, and directions. Confirm a stream ID,
+   status, and `livestream.enabled: true` only if an official broadcast exists.
 3. Confirm the Google service account can create/write the future-interest tab.
 4. Review the branch diff and exclude unrelated workspace changes.
 5. Merge `codex/kirtan-safari` into `main` only after visual approval.

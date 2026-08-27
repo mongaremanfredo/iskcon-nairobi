@@ -31,7 +31,8 @@ Open `/festivals/kirtan-safari?festivalTime=2026-08-27T18:00:01%2B03:00`.
 
 - Countdown is replaced by Live Festival Status without a blank state.
 - Thursday is highlighted.
-- `Now`, `Coming Next`, and the full programme agree with the schedule.
+- `Now` does not invent a duration; `Coming Next` uses the next confirmed time.
+- The full programme shows `Follows the programme` for Adivas prasadam.
 - Registration, directions, Instagram, and YouTube remain available.
 
 ### Programme in progress
@@ -39,7 +40,8 @@ Open `/festivals/kirtan-safari?festivalTime=2026-08-27T18:00:01%2B03:00`.
 Open `/festivals/kirtan-safari?festivalTime=2026-08-28T19:45:00%2B03:00`.
 
 - Friday and Balarama Purnima are highlighted.
-- Current and next programme items are truthful.
+- The page does not claim a start-only programme item is currently running.
+- The next programme item uses the supplied poster time.
 - Guest kirtaniyas appear after the live programme.
 
 ### Between days
@@ -51,7 +53,7 @@ Open `/festivals/kirtan-safari?festivalTime=2026-08-28T23:00:00%2B03:00`.
 
 ### Festival concluded
 
-Open `/festivals/kirtan-safari?festivalTime=2026-08-30T21:30:01%2B03:00`.
+Open `/festivals/kirtan-safari?festivalTime=2026-08-31T00:00:01%2B03:00`.
 
 - The green campaign page becomes a neutral archive.
 - Registration is replaced by future-update interest.
@@ -89,13 +91,14 @@ phone once because browser chrome changes the usable viewport.
 - Tab through day tabs, social links, programme actions, registration, and modal
   controls. Focus must remain visible.
 - Open registration, select multiple days, submit test data, and close with Escape.
-- Switch the browser offline. Existing content remains readable and the stream
-  shows a connection message rather than an empty frame.
+- Switch the browser offline. Existing content remains readable.
 - Restore connectivity and confirm the live panel recovers without a reload.
 - Background the tab across a simulated boundary, return, and confirm it refreshes.
 - Enable reduced motion and confirm pulsing or sliding motion is removed.
-- Test the YouTube channel fallback before a video ID is supplied.
-- With a test video ID, verify scheduled, live, offline, and ended statuses.
+- Confirm the ordinary YouTube channel link works and no livestream panel is
+  visible while `livestream.enabled` remains `false`.
+- If an official stream is later supplied, test scheduled, live, offline, and
+  ended statuses on a development branch before enabling it.
 
 ## 6. Data and operations
 

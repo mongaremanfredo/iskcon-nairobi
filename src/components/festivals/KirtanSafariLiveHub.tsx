@@ -14,7 +14,7 @@ import {
   Utensils,
   Video,
 } from "lucide-react";
-import { kirtanSafariConfig } from "@/data/kirtanSafari";
+import { kirtanSafariConfig, type FestivalDay } from "@/data/kirtanSafari";
 import {
   formatFestivalDate,
   formatFestivalTime,
@@ -139,9 +139,9 @@ export default function KirtanSafariLiveHub() {
     selectionTouched || state.currentDayIndex < 0
       ? selectedDayIndex
       : state.currentDayIndex;
-  const selectedDay = kirtanSafariConfig.days[effectiveSelectedDayIndex];
+  const selectedDay = kirtanSafariConfig.days[effectiveSelectedDayIndex] as FestivalDay;
   const isCurrentSelection = state.currentDay?.id === selectedDay.id;
-  const nowLabel = state.currentItem?.title ?? state.currentDay?.fallbackNow ?? "Programme details will be announced from the stage";
+  const nowLabel = state.currentItem?.title ?? "Follow the programme and announcements at the temple";
   const nextLabel =
     state.nextItem?.title ??
     state.currentDay?.fallbackNext ??
@@ -165,7 +165,7 @@ export default function KirtanSafariLiveHub() {
         eyebrow: "Festival continues",
         title: "Today’s Programme Has Concluded",
         detail: state.nextDay
-          ? `We continue with ${state.nextDay.theme} at ${formatFestivalTime(state.nextDay.startsAt)}.`
+          ? `The next listed programme is ${state.nextDay.theme} at ${formatFestivalTime(state.nextDay.startsAt)}.`
           : "Return for the next programme update.",
       };
     }
@@ -197,7 +197,7 @@ export default function KirtanSafariLiveHub() {
           <div className="ks-status-grid" aria-label="Current festival status">
             <article className="ks-status-primary">
               <span>Now</span>
-              <strong>{isBetweenDays ? "Resting between festival days" : nowLabel}</strong>
+              <strong>{isBetweenDays ? "Between festival days" : nowLabel}</strong>
               {!isBetweenDays && state.currentItem?.detail ? <p>{state.currentItem.detail}</p> : null}
             </article>
             <article>
@@ -210,14 +210,14 @@ export default function KirtanSafariLiveHub() {
               {later.length ? (
                 <ul>
                   {later.map((item) => (
-                    <li key={item.id}>{formatFestivalTime(item.startsAt)} · {item.title}</li>
+                    <li key={item.id}>{item.startsAt ? formatFestivalTime(item.startsAt) : item.timeLabel} · {item.title}</li>
                   ))}
                 </ul>
               ) : (
                 <p>
                   {isBetweenDays
                     ? "Today’s programme has concluded. We continue tomorrow."
-                    : state.currentDay?.fallbackNext ?? "Updates will be announced from the stage."}
+                    : state.currentDay?.fallbackNext ?? "Follow temple announcements for any additional details."}
                 </p>
               )}
             </article>
@@ -237,7 +237,7 @@ export default function KirtanSafariLiveHub() {
           <a href={kirtanSafariConfig.links.youtube} target="_blank" rel="noopener noreferrer" className="ks-live-icon">
             <Video size={17} aria-hidden="true" /> YouTube
           </a>
-          {kirtanSafariConfig.livestream.videoId && kirtanSafariConfig.livestream.status === "live" ? (
+          {kirtanSafariConfig.livestream.enabled && kirtanSafariConfig.livestream.videoId && kirtanSafariConfig.livestream.status === "live" ? (
             <a href="#kirtan-stream" className="ks-live-icon">
               <Radio size={17} aria-hidden="true" /> Watch Live
             </a>
@@ -250,7 +250,9 @@ export default function KirtanSafariLiveHub() {
           </p>
         ) : null}
 
-        <StreamPanel isOnline={isOnline} />
+        {/* Livestream support is preserved but deliberately dormant until the
+            organizers supply and confirm an official broadcast URL. */}
+        {kirtanSafariConfig.livestream.enabled ? <StreamPanel isOnline={isOnline} /> : null}
 
         <div className="ks-day-tabs" aria-label="Kirtan Safari programme days">
           {kirtanSafariConfig.days.map((day, index) => {
@@ -283,7 +285,7 @@ export default function KirtanSafariLiveHub() {
           <ol>
             {selectedDay.programme.map((item) => (
               <li key={item.id}>
-                <time dateTime={item.startsAt}>{formatFestivalTime(item.startsAt)}</time>
+                <time dateTime={item.startsAt}>{item.timeLabel ?? (item.startsAt ? formatFestivalTime(item.startsAt) : "Time to be announced")}</time>
                 <span>{item.title}</span>
               </li>
             ))}

@@ -10,8 +10,9 @@ export type StreamStatus = "scheduled" | "live" | "offline" | "ended";
 export type FestivalProgrammeItem = {
   id: string;
   title: string;
-  startsAt: string;
+  startsAt?: string;
   endsAt?: string;
+  timeLabel?: string;
   detail?: string;
   priority?: number;
 };
@@ -51,10 +52,13 @@ export const kirtanSafariConfig = {
   recurringName: "Kirtan Safari at ISKCON Nairobi",
   timezone: "Africa/Nairobi",
   startsAt: "2026-08-27T18:00:00+03:00",
-  endsAt: "2026-08-30T21:30:00+03:00",
+  // The archive begins after the final festival calendar day. This is an
+  // application boundary, not a published claim about Sunday's closing time.
+  endsAt: "2026-08-31T00:00:00+03:00",
   phaseOverride: "automatic" as FestivalPhaseOverride,
   registrationEnabledDuringEvent: true,
   livestream: {
+    enabled: false,
     videoId: null as string | null,
     status: "scheduled" as StreamStatus,
     channelUrl: youtubeChannelUrl,
@@ -90,23 +94,22 @@ export const kirtanSafariConfig = {
       shortLabel: "Thu 27",
       dateLabel: "27 August 2026",
       startsAt: "2026-08-27T18:00:00+03:00",
-      endsAt: "2026-08-27T22:00:00+03:00",
+      endsAt: "2026-08-28T00:00:00+03:00",
       theme: "Adivas",
-      fallbackNow: "Adivas celebrations are underway",
+      fallbackNow: "Adivas begins from 6:00 PM onwards",
       fallbackNext: "Prasadam follows the programme",
       programme: [
         {
           id: "adhivas-kirtan",
           title: "Adivas Kirtan",
           startsAt: "2026-08-27T18:00:00+03:00",
-          endsAt: "2026-08-27T21:00:00+03:00",
+          timeLabel: "From 6:00 PM onwards",
           detail: "Welcoming the festival mood together",
         },
         {
           id: "adhivas-prasadam",
           title: "Prasadam",
-          startsAt: "2026-08-27T21:00:00+03:00",
-          endsAt: "2026-08-27T22:00:00+03:00",
+          timeLabel: "Follows the programme",
           detail: "Served after the Adivas programme",
         },
       ],
@@ -117,7 +120,7 @@ export const kirtanSafariConfig = {
       shortLabel: "Fri 28",
       dateLabel: "28 August 2026",
       startsAt: "2026-08-28T10:00:00+03:00",
-      endsAt: "2026-08-28T21:30:00+03:00",
+      endsAt: "2026-08-29T00:00:00+03:00",
       theme: "Balarama Purnima",
       fallbackNow: "The Friday festival programme is underway",
       programme: [
@@ -125,31 +128,26 @@ export const kirtanSafariConfig = {
           id: "friday-kirtan",
           title: "Balarama Purnima Kirtan",
           startsAt: "2026-08-28T10:00:00+03:00",
-          endsAt: "2026-08-28T13:00:00+03:00",
         },
         {
           id: "friday-prasadam-lunch",
           title: "Prasadam",
           startsAt: "2026-08-28T13:00:00+03:00",
-          endsAt: "2026-08-28T14:00:00+03:00",
         },
         {
           id: "friday-abhishek",
           title: "Abhishek and Talk",
           startsAt: "2026-08-28T18:00:00+03:00",
-          endsAt: "2026-08-28T19:30:00+03:00",
         },
         {
           id: "friday-evening-kirtan",
           title: "Evening Kirtan",
           startsAt: "2026-08-28T19:30:00+03:00",
-          endsAt: "2026-08-28T21:00:00+03:00",
         },
         {
           id: "friday-prasadam-evening",
           title: "Prasadam",
           startsAt: "2026-08-28T21:00:00+03:00",
-          endsAt: "2026-08-28T21:30:00+03:00",
         },
       ],
     },
@@ -159,7 +157,7 @@ export const kirtanSafariConfig = {
       shortLabel: "Sat 29",
       dateLabel: "29 August 2026",
       startsAt: "2026-08-29T10:00:00+03:00",
-      endsAt: "2026-08-29T21:30:00+03:00",
+      endsAt: "2026-08-30T00:00:00+03:00",
       theme: "Kirtan and Harinam",
       fallbackNow: "The Saturday festival programme is underway",
       programme: [
@@ -167,31 +165,26 @@ export const kirtanSafariConfig = {
           id: "saturday-kirtan",
           title: "Kirtan",
           startsAt: "2026-08-29T10:00:00+03:00",
-          endsAt: "2026-08-29T13:00:00+03:00",
         },
         {
           id: "saturday-prasadam-lunch",
           title: "Prasadam",
           startsAt: "2026-08-29T13:00:00+03:00",
-          endsAt: "2026-08-29T14:00:00+03:00",
         },
         {
           id: "saturday-harinam",
           title: "Special Harinam",
           startsAt: "2026-08-29T14:30:00+03:00",
-          endsAt: "2026-08-29T17:00:00+03:00",
         },
         {
           id: "saturday-evening-kirtan",
           title: "Evening Kirtan",
           startsAt: "2026-08-29T17:00:00+03:00",
-          endsAt: "2026-08-29T21:00:00+03:00",
         },
         {
           id: "saturday-prasadam-evening",
           title: "Prasadam",
           startsAt: "2026-08-29T21:00:00+03:00",
-          endsAt: "2026-08-29T21:30:00+03:00",
         },
       ],
     },
@@ -201,7 +194,7 @@ export const kirtanSafariConfig = {
       shortLabel: "Sun 30",
       dateLabel: "30 August 2026",
       startsAt: "2026-08-30T10:00:00+03:00",
-      endsAt: "2026-08-30T21:30:00+03:00",
+      endsAt: "2026-08-31T00:00:00+03:00",
       theme: "Continuous Kirtan",
       fallbackNow: "Continuous kirtan is underway",
       programme: [
@@ -216,14 +209,12 @@ export const kirtanSafariConfig = {
           id: "sunday-prasadam-lunch",
           title: "Prasadam",
           startsAt: "2026-08-30T13:00:00+03:00",
-          endsAt: "2026-08-30T14:00:00+03:00",
           priority: 2,
         },
         {
           id: "sunday-prasadam-evening",
-          title: "Closing Prasadam",
+          title: "Prasadam",
           startsAt: "2026-08-30T21:00:00+03:00",
-          endsAt: "2026-08-30T21:30:00+03:00",
           priority: 2,
         },
       ],

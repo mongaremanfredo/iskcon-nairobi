@@ -31,10 +31,9 @@ function isDuring(nowMs: number, start: string, end: string) {
 function findCurrentItem(day: FestivalDay, nowMs: number) {
   return (
     day.programme
-      .filter((item) => {
-        const endAt = item.endsAt ?? day.endsAt;
-        return isDuring(nowMs, item.startsAt, endAt);
-      })
+      // A programme item is called current only when both boundaries were
+      // explicitly confirmed. Start-only listings must never imply duration.
+      .filter((item) => item.startsAt && item.endsAt && isDuring(nowMs, item.startsAt, item.endsAt))
       .sort((a, b) => (b.priority ?? 0) - (a.priority ?? 0))[0] ?? null
   );
 }
@@ -42,8 +41,8 @@ function findCurrentItem(day: FestivalDay, nowMs: number) {
 function findNextItem(day: FestivalDay, nowMs: number) {
   return (
     day.programme
-      .filter((item) => instant(item.startsAt) > nowMs)
-      .sort((a, b) => instant(a.startsAt) - instant(b.startsAt))[0] ?? null
+      .filter((item) => item.startsAt && instant(item.startsAt) > nowMs)
+      .sort((a, b) => instant(a.startsAt!) - instant(b.startsAt!))[0] ?? null
   );
 }
 
@@ -80,14 +79,14 @@ export function getKirtanSafariState(
   const nextItem = currentDay ? findNextItem(currentDay, nowMs) : null;
   const laterItems = currentDay
     ? currentDay.programme
-        .filter((item) => nextItem && instant(item.startsAt) > instant(nextItem.startsAt))
-        .sort((a, b) => instant(a.startsAt) - instant(b.startsAt))
+        .filter((item) => item.startsAt && nextItem?.startsAt && instant(item.startsAt) > instant(nextItem.startsAt))
+        .sort((a, b) => instant(a.startsAt!) - instant(b.startsAt!))
     : [];
 
   const transitionCandidates = [
     phase === "countdown" ? startMs : null,
     currentItem?.endsAt ? instant(currentItem.endsAt) : null,
-    nextItem ? instant(nextItem.startsAt) : null,
+    nextItem?.startsAt ? instant(nextItem.startsAt) : null,
     currentDay ? instant(currentDay.endsAt) : null,
     nextDay ? instant(nextDay.startsAt) : null,
     phase !== "concluded" ? endMs : null,

@@ -187,8 +187,8 @@ export default function KirtanSafariSection() {
   const active = festivalState.phase === "live" || festivalState.phase === "between-days";
   const activeDay = festivalState.currentDay ?? festivalState.nextDay;
   const homeNow = festivalState.phase === "between-days"
-    ? "Today’s programme has concluded"
-    : festivalState.currentItem?.title ?? festivalState.currentDay?.fallbackNow ?? "Programme underway";
+    ? "Between festival days"
+    : festivalState.currentItem?.title ?? "Follow the programme at the temple";
   const homeNext = festivalState.nextItem?.title
     ?? festivalState.currentDay?.fallbackNext
     ?? (festivalState.nextDay ? `${festivalState.nextDay.theme} at ${formatFestivalTime(festivalState.nextDay.startsAt)}` : "Festival programme continues");

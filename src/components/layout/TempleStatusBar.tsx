@@ -210,10 +210,8 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
               <span className="max-[900px]:hidden">
                 {festivalConcluded
                   ? "Temple Calendar"
-                  : festivalState.phase === "live"
-                    ? `Kirtan Safari Live · Day ${festivalState.currentDayIndex + 1}`
-                    : festivalState.phase === "between-days"
-                      ? "Kirtan Safari Continues"
+                  : festivalActive
+                    ? "Kirtan Safari Live"
                       : "Kirtan Safari 2026"}
               </span>
               <span className="hidden max-[900px]:inline">

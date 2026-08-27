@@ -18,17 +18,17 @@ describe("Kirtan Safari lifecycle in Nairobi time", () => {
     const state = at("2026-08-27T18:00:00+03:00");
     expect(state.phase).toBe("live");
     expect(state.currentDay?.id).toBe("adhivas");
-    expect(state.currentItem?.id).toBe("adhivas-kirtan");
+    expect(state.currentItem).toBeNull();
   });
 
-  it("shows the next item during a live programme", () => {
-    const state = at("2026-08-27T20:30:00+03:00");
-    expect(state.currentItem?.title).toBe("Adivas Kirtan");
+  it("does not invent a duration for a start-only programme item", () => {
+    const state = at("2026-08-28T11:00:00+03:00");
+    expect(state.currentItem).toBeNull();
     expect(state.nextItem?.title).toBe("Prasadam");
   });
 
-  it("enters the between-days state after a daily close", () => {
-    const state = at("2026-08-27T22:00:00+03:00");
+  it("enters the between-days state at the next Nairobi calendar day", () => {
+    const state = at("2026-08-28T00:00:00+03:00");
     expect(state.phase).toBe("between-days");
     expect(state.nextDay?.id).toBe("day-two");
   });
@@ -39,14 +39,14 @@ describe("Kirtan Safari lifecycle in Nairobi time", () => {
     expect(state.currentDay?.id).toBe("day-two");
   });
 
-  it("uses priority for overlapping Sunday programme items", () => {
+  it("keeps the explicitly timed continuous Sunday kirtan current", () => {
     const state = at("2026-08-30T13:30:00+03:00");
-    expect(state.currentItem?.id).toBe("sunday-prasadam-lunch");
+    expect(state.currentItem?.id).toBe("sunday-continuous-kirtan");
   });
 
   it("concludes at the exact final boundary", () => {
-    expect(at("2026-08-30T21:29:59+03:00").phase).toBe("live");
-    expect(at("2026-08-30T21:30:00+03:00").phase).toBe("concluded");
+    expect(at("2026-08-30T23:59:59+03:00").phase).toBe("live");
+    expect(at("2026-08-31T00:00:00+03:00").phase).toBe("concluded");
   });
 
   it("supports an explicit emergency override", () => {
@@ -67,7 +67,7 @@ describe("Kirtan Safari lifecycle in Nairobi time", () => {
   });
 
   it("turns the noticeboard item into an archive after the final boundary", () => {
-    const notices = getSiteNotices(at("2026-08-30T21:30:00+03:00"));
+    const notices = getSiteNotices(at("2026-08-31T00:00:00+03:00"));
     const festivalNotice = notices.find(
       (notice) => notice.id === "kirtan-safari-2026-registration"
     );
