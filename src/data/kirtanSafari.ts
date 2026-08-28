@@ -31,7 +31,6 @@ export type FestivalDay = {
 };
 
 const youtubeChannelUrl = "https://www.youtube.com/@kirtan_safari";
-const youtubeLiveUrl = "https://www.youtube.com/live/-U-eh0cLlFQ";
 
 export const kirtanSafariGuestKirtaniyas = [
   { name: "Sandip Pattni", image: "/images/festivals/guest-kirtaniyas/sandip-pattni.jpg" },
@@ -59,10 +58,10 @@ export const kirtanSafariConfig = {
   phaseOverride: "automatic" as FestivalPhaseOverride,
   registrationEnabledDuringEvent: true,
   livestream: {
-    enabled: true,
-    videoId: "-U-eh0cLlFQ" as string | null,
-    status: "live" as StreamStatus,
-    channelUrl: youtubeLiveUrl,
+    enabled: false,
+    videoId: null as string | null,
+    status: "scheduled" as StreamStatus,
+    channelUrl: youtubeChannelUrl,
   },
   links: {
     directions:

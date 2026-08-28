@@ -109,8 +109,8 @@ All live-event controls are in `src/data/kirtanSafari.ts`.
 
 - `phaseOverride`: keep `automatic` in normal operation. Use `countdown`, `live`,
   `between-days`, or `concluded` only for a documented operational exception.
-- `livestream.enabled`: set to `true` while the confirmed official broadcast is
-  available. Return it to `false` if the stream is withdrawn or unavailable.
+- `livestream.enabled`: keep `false` unless organizers confirm a stable official
+  broadcast. The complete player remains available in the codebase.
 - `livestream.videoId`: paste only the YouTube video ID, not the full URL.
 - `livestream.status`: use `scheduled`, `live`, `offline`, or `ended`. The page
   never presents the player as live unless this value is `live`.
