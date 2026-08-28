@@ -834,7 +834,9 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                     }}
                   />
                   <div
+                    className="ks-guest-image"
                     style={{
+                      position: "relative",
                       aspectRatio: "1 / 1.28",
                       overflow: "hidden",
                       background: "rgba(7,28,16,0.65)",
@@ -1789,9 +1791,10 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
           border-radius: 48% 52% 40% 60% / 52% 44% 56% 48%;
         }
 
-        .kirtan-safari-page .ks-guest-frame > div:last-child {
+        .kirtan-safari-page .ks-guest-image {
           aspect-ratio: 1 !important;
           border-radius: 42% 58% 46% 54% / 55% 42% 58% 45%;
+          overflow: hidden;
         }
 
         .kirtan-safari-page .ks-guest-nameplate {
@@ -2086,9 +2089,10 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
             border-radius: 46% 54% 39% 61% / 58% 38% 62% 42% !important;
           }
 
-          .kirtan-safari-page .ks-guest-frame > div:last-child {
+          .kirtan-safari-page .ks-guest-image {
             aspect-ratio: 1 !important;
             border-radius: 46% 54% 39% 61% / 58% 38% 62% 42% !important;
+            overflow: hidden;
           }
 
           .kirtan-safari-page .ks-guest-nameplate {
