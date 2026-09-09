@@ -150,7 +150,9 @@ export default function HeroSection() {
       };
     }
 
-    return [festivalSlide, ...baseHeroImages.slice(1)];
+    return festivalState.phase === "concluded"
+      ? [...baseHeroImages.slice(1), festivalSlide]
+      : [festivalSlide, ...baseHeroImages.slice(1)];
   }, [festivalState.currentDayIndex, festivalState.nextDay, festivalState.phase]);
 
   useEffect(() => {

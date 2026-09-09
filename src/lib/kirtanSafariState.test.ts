@@ -66,13 +66,12 @@ describe("Kirtan Safari lifecycle in Nairobi time", () => {
     expect(festivalNotice?.tag).toBe("Live Festival");
   });
 
-  it("turns the noticeboard item into an archive after the final boundary", () => {
+  it("removes the time-sensitive noticeboard item after the final boundary", () => {
     const notices = getSiteNotices(at("2026-08-31T00:00:00+03:00"));
     const festivalNotice = notices.find(
       (notice) => notice.id === "kirtan-safari-2026-registration"
     );
-    expect(festivalNotice?.title).toBe("Kirtan Safari 2026 memories");
-    expect(festivalNotice?.tag).toBe("Festival Archive");
+    expect(festivalNotice).toBeUndefined();
   });
 
   it("keeps the approved festival broadcast list to one notification per day", () => {

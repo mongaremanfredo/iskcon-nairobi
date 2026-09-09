@@ -27,6 +27,13 @@ export default function FestivalsPage() {
         }
       : festival
   );
+  const now = Date.now();
+  const upcomingFestivals = festivalPreview.filter(
+    (festival) => new Date(festival.endsAt).getTime() >= now
+  );
+  const archivedFestivals = festivalPreview.filter(
+    (festival) => new Date(festival.endsAt).getTime() < now
+  );
 
   return (
     <>
@@ -58,7 +65,7 @@ export default function FestivalsPage() {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-3">
-            {festivalPreview.map((festival) => (
+            {upcomingFestivals.map((festival) => (
               <Link
                 href={festival.href}
                 key={festival.href}
@@ -97,6 +104,50 @@ export default function FestivalsPage() {
               </Link>
             ))}
           </div>
+
+          {archivedFestivals.length > 0 && (
+            <section className="mt-16 border-t border-gold/20 pt-10">
+              <div className="mb-7 max-w-2xl">
+                <span className="eyebrow mb-3 block">2026 Festival Archive</span>
+                <h2 className="font-playfair text-3xl font-semibold text-ink sm:text-4xl">
+                  Celebrations from this year
+                </h2>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/60">
+                  Revisit festival stories, photographs, teachings, and memories from the temple community.
+                </p>
+              </div>
+              <div className="grid gap-5 sm:grid-cols-2">
+                {archivedFestivals.map((festival) => (
+                  <Link
+                    href={festival.href}
+                    key={festival.href}
+                    className="group grid min-h-44 grid-cols-[minmax(7.5rem,0.85fr)_1.15fr] overflow-hidden border border-temple-sand bg-white transition-all hover:border-primary/40 hover:shadow-card-hover"
+                  >
+                    <div className="relative image-grade">
+                      <Image
+                        src={festival.image}
+                        alt={festival.title}
+                        fill
+                        sizes="(max-width: 640px) 40vw, 280px"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-center p-5">
+                      <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-gold">
+                        {festival.date}
+                      </span>
+                      <h3 className="mt-2 font-playfair text-xl font-semibold leading-tight text-ink group-hover:text-primary">
+                        {festival.title}
+                      </h3>
+                      <span className="mt-4 inline-flex items-center gap-2 font-inter text-[10px] font-semibold uppercase tracking-widest text-primary">
+                        Revisit <ArrowRight size={11} />
+                      </span>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
 
           <div className="mt-16 rounded-none border border-gold/20 bg-white/70 p-5 sm:p-7">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

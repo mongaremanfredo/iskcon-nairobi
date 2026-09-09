@@ -147,6 +147,7 @@ export const homepageFestivalPreview = [
     image: "/images/calendar-kirtan-safari-bg.png",
     href: "/festivals/kirtan-safari",
     tag: "Featured",
+    endsAt: "2026-08-30T23:59:59+03:00",
   },
   {
     title: "Sri Krishna Janmashtami",
@@ -158,6 +159,7 @@ export const homepageFestivalPreview = [
     image: "/images/calendar-janmashtami-krishna.jpeg",
     href: "/festivals/janmashtami",
     tag: "",
+    endsAt: "2026-09-04T23:59:59+03:00",
   },
   {
     title: "Radhashtami",
@@ -169,6 +171,7 @@ export const homepageFestivalPreview = [
     image: "/images/calendar-radhashtami-sakhis.jpeg",
     href: "/festivals/radhashtami",
     tag: "",
+    endsAt: "2026-09-19T23:59:59+03:00",
   },
 ];
 

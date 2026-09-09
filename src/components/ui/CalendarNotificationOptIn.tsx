@@ -142,7 +142,7 @@ export default function CalendarNotificationOptIn() {
           </div>
 
           <p className="max-w-2xl font-inter text-sm leading-relaxed text-ink/65">
-            Enable reminders to receive push notifications for Ekadashi and major ISKCON Nairobi festivals - delivered to this device even when the app is closed.
+            Enable reminders to receive push notifications for Ekadashi and major ISKCON Nairobi festivals.
           </p>
 
           <div className="mt-5 flex flex-wrap gap-3">

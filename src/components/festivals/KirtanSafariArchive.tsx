@@ -1,4 +1,5 @@
 import { Camera, History, Video } from "lucide-react";
+import Image from "next/image";
 import { kirtanSafariConfig } from "@/data/kirtanSafari";
 import KirtanSafariFutureInterestForm from "./KirtanSafariFutureInterestForm";
 
@@ -36,6 +37,21 @@ export default function KirtanSafariArchive() {
             <h2>A Festival Memory, Kept With Gratitude</h2>
             <span>Kirtan Safari remains a recurring gathering at ISKCON Nairobi, bringing devotees together through the holy name, association, prasadam, and service.</span>
           </div>
+          <figure className="mt-[clamp(2rem,5vw,4rem)]">
+            <div className="relative aspect-[4/3] overflow-hidden sm:aspect-[16/9]">
+              <Image
+                src="/images/kirtan-safari/kirtan-safari-2026-temple-memory.jpg"
+                alt="Devotees gathered in kirtan before the altar at ISKCON Nairobi"
+                fill
+                sizes="(max-width: 900px) 100vw, 1100px"
+                className="object-cover"
+              />
+            </div>
+            <figcaption className="flex flex-col items-start gap-1 border-b border-ink/15 py-3 font-inter text-xs leading-relaxed text-[#67544a] sm:flex-row sm:items-baseline sm:gap-3">
+              <span className="shrink-0 text-[0.6rem] font-extrabold uppercase tracking-[0.14em] text-[#a23d31]">2026 memory</span>
+              Devotees gather in kirtan before Sri Sri Radha Bankebihari during Kirtan Safari 2026.
+            </figcaption>
+          </figure>
           <div className="ks-archive-days">
             {days.map((day, index) => (
               <article key={day.id}><span>Day {index + 1}</span><h3>{day.theme}</h3><p>{day.dateLabel}</p><ul>{day.programme.map((item) => <li key={item.id}>{item.title}</li>)}</ul></article>

@@ -178,8 +178,8 @@ export default function JanmashtamiPage() {
                 <Link href="/donate/festivals" className="btn-primary">
                   Support this Festival <ArrowRight size={14} />
                 </Link>
-                <Link href="/contact" className="btn-outline border-gold text-gold hover:bg-gold hover:text-white">
-                  Register Interest
+                <Link href="/festivals" className="btn-outline border-gold text-gold hover:bg-gold hover:text-white">
+                  Explore Festival Calendar
                 </Link>
               </div>
             </div>

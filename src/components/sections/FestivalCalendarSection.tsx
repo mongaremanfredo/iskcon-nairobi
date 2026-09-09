@@ -8,12 +8,11 @@ import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 export default function FestivalCalendarSection() {
   const festivalState = useKirtanSafariState();
-  const visibleFestivals =
-    festivalState.phase === "concluded"
-      ? homepageFestivalPreview.filter(
-          (festival) => festival.href !== "/festivals/kirtan-safari"
-        )
-      : homepageFestivalPreview;
+  const now = Date.now();
+  const visibleFestivals = homepageFestivalPreview.filter((festival) => {
+    if (new Date(festival.endsAt).getTime() < now) return false;
+    return festivalState.phase !== "concluded" || festival.href !== "/festivals/kirtan-safari";
+  });
 
   return (
     <section className="pt-10 pb-section bg-temple-cream sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">

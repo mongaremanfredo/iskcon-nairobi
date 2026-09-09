@@ -21,12 +21,12 @@ export const siteNotices: SiteNotice[] = [
     priority: "high",
   },
   {
-    id: "jhulan-yatra-2026",
-    title: "Jhulan Yatra at ISKCON Nairobi",
-    body: "Join the Radha Govinda Jhulan Yatra celebrations from Sunday 23 August to Friday 28 August at Hare Krishna Temple Nairobi.",
-    dateLabel: "23-28 Aug 2026",
+    id: "radhastami-2026",
+    title: "Radhastami at ISKCON Nairobi",
+    body: "Join us in celebrating the appearance of Srimati Radharani with kirtan, class, special worship, offerings, service, and prasadam.",
+    dateLabel: "19 Sep 2026",
     tag: "Festival",
-    href: "/festivals",
+    href: "/festivals/radhastami",
     priority: "high",
   },
   {
@@ -58,7 +58,11 @@ export const siteNotices: SiteNotice[] = [
 ];
 
 export function getSiteNotices(festivalState: FestivalState): SiteNotice[] {
-  return siteNotices.map((notice) => {
+  const currentNotices = festivalState.phase === "concluded"
+    ? siteNotices.filter((notice) => notice.id !== "kirtan-safari-2026-registration")
+    : siteNotices;
+
+  return currentNotices.map((notice) => {
     if (notice.id !== "kirtan-safari-2026-registration") return notice;
 
     if (festivalState.phase === "live") {
@@ -80,17 +84,6 @@ export function getSiteNotices(festivalState: FestivalState): SiteNotice[] {
           : "Today's programme has concluded. Open the festival page for the next confirmed programme.",
         dateLabel: festivalState.nextDay?.shortLabel ?? "Continues",
         tag: "Festival Update",
-      };
-    }
-
-    if (festivalState.phase === "concluded") {
-      return {
-        ...notice,
-        title: "Kirtan Safari 2026 memories",
-        body: "Kirtan Safari 2026 has concluded. Relive the gathering, revisit its stories, and receive news of future editions.",
-        dateLabel: "2026 archive",
-        tag: "Festival Archive",
-        priority: "normal",
       };
     }
 

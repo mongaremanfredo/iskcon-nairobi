@@ -21,11 +21,11 @@ export const dynamic = "force-dynamic";
 export const metadata: Metadata = {
   title: "Kirtan Safari 2026",
   description:
-    "Join us August 27 - 30, 2026 at Hare Krishna Temple Nairobi for Kirtan Safari - Adivas followed by three days of devotional music, prasadam, and kirtan in the wild. ISKCON Nairobi 60th Anniversary.",
+    "Relive Kirtan Safari 2026 at ISKCON Nairobi: four days of the holy name, guest kirtaniyas, Harinam, prasadam, service, and devotional community.",
   openGraph: {
     title: "Kirtan Safari 2026 | ISKCON Nairobi",
     description:
-      "Every word a song, every step a dance. Adivas on August 27 followed by a three-day kirtan journey through Jarikhand Forest.",
+      "Four Days, One Holy Name. Revisit the 2026 Kirtan Safari gathering at ISKCON Nairobi and receive news of future editions.",
     images: [
       {
         url: "/images/kirtan-safari-2026-hero-bg.jpg",
