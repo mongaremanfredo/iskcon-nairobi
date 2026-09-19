@@ -8,6 +8,7 @@ export type SiteNotice = {
   tag: string;
   href: string;
   priority?: "high" | "normal";
+  expiresAt?: string;
 };
 
 export const siteNotices: SiteNotice[] = [
@@ -28,6 +29,7 @@ export const siteNotices: SiteNotice[] = [
     tag: "Festival",
     href: "/festivals/radhastami",
     priority: "high",
+    expiresAt: "2026-09-20T00:00:00+03:00",
   },
   {
     id: "beginners-bhagavad-gita-course-2026",
@@ -58,9 +60,13 @@ export const siteNotices: SiteNotice[] = [
 ];
 
 export function getSiteNotices(festivalState: FestivalState): SiteNotice[] {
+  const now = Date.now();
+  const unexpiredNotices = siteNotices.filter(
+    (notice) => !notice.expiresAt || new Date(notice.expiresAt).getTime() > now
+  );
   const currentNotices = festivalState.phase === "concluded"
-    ? siteNotices.filter((notice) => notice.id !== "kirtan-safari-2026-registration")
-    : siteNotices;
+    ? unexpiredNotices.filter((notice) => notice.id !== "kirtan-safari-2026-registration")
+    : unexpiredNotices;
 
   return currentNotices.map((notice) => {
     if (notice.id !== "kirtan-safari-2026-registration") return notice;

@@ -10,7 +10,7 @@ export default function FestivalCalendarSection() {
   const festivalState = useKirtanSafariState();
   const now = Date.now();
   const visibleFestivals = homepageFestivalPreview.filter((festival) => {
-    if (new Date(festival.endsAt).getTime() < now) return false;
+    if (new Date(festival.endsAt).getTime() <= now) return false;
     return festivalState.phase !== "concluded" || festival.href !== "/festivals/kirtan-safari";
   });
 
