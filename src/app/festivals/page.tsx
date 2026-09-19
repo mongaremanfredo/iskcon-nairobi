@@ -29,7 +29,7 @@ export default function FestivalsPage() {
   );
   const now = Date.now();
   const upcomingFestivals = festivalPreview.filter(
-    (festival) => new Date(festival.endsAt).getTime() >= now
+    (festival) => new Date(festival.endsAt).getTime() > now
   );
   const archivedFestivals = festivalPreview.filter(
     (festival) => new Date(festival.endsAt).getTime() < now
