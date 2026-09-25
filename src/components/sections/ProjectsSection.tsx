@@ -1,165 +1,189 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/site";
 
-const tagClasses: Record<string, string> = {
+const tagChip: Record<string, string> = {
   Education: "bg-gold/95 text-dusk",
   Agriculture: "bg-acacia/95 text-white",
   "Community Service": "bg-sunset/95 text-white",
 };
 
+const pinTone: Record<string, string> = {
+  Education: "text-gold border-gold/60",
+  Agriculture: "text-acacia border-acacia/60",
+  "Community Service": "text-sunset border-sunset/60",
+};
+
 export default function ProjectsSection() {
   return (
-    <section className="projects-section py-section bg-temple-bg bg-temple-texture sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
-      <div className="content-width section-padding">
+    <section id="our-work" className="projects-scene relative overflow-hidden bg-temple-bg bg-temple-texture scroll-mt-24">
+      <div className="content-width section-padding py-section">
         {/* Header */}
-        <div className="projects-header flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+        <div className="grid items-end gap-7 border-t-2 border-gold/35 pt-7 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>
             <span className="eyebrow block mb-3">Our Work</span>
             <h2 className="section-title">
-              Where Devotion<br />
+              Where Devotion
+              <br />
               <em className="text-gold not-italic font-normal">Meets Action</em>
             </h2>
           </div>
-        </div>
-
-        {/* Projects Grid */}
-        <div className="projects-grid grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-          {projects.map((project) => (
+          <div className="lg:pb-1">
+            <p className="max-w-md font-cormorant text-lg italic leading-relaxed text-ink/70 sm:text-xl">
+              Four ways the temple&rsquo;s mission takes shape on the ground &mdash;
+              classrooms, farms, kitchens, and communities you can step into and serve.
+            </p>
             <Link
-              key={project.id}
-              href={project.href}
-              className="project-card group relative overflow-hidden block"
+              href="/projects"
+              className="projects-explain mt-5 inline-flex items-center gap-2 font-inter text-[0.7rem] font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
             >
-              {/* Image */}
-              <div className="project-image relative aspect-card overflow-hidden image-grade">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
-
-                {/* Tag */}
-                <div className="project-tag absolute top-4 left-4">
-                  <span className={`font-inter text-[10px] font-semibold tracking-[0.15em] uppercase px-3 py-1 ${tagClasses[project.tag] ?? "bg-primary/95 text-white"}`}>
-                    {project.tag}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="project-content absolute bottom-0 left-0 right-0 p-6">
-                  <p className="project-subtitle font-inter text-white/60 text-xs tracking-widest uppercase mb-1">
-                    {project.subtitle}
-                  </p>
-                  <h3 className="project-title font-playfair text-white text-2xl font-semibold mb-2 text-shadow">
-                    {project.title}
-                  </h3>
-                  <p className="project-description font-inter text-white/70 text-sm leading-relaxed max-w-xs line-clamp-2 mb-4">
-                    {project.description}
-                  </p>
-                  <div className="flex items-center gap-2 font-inter text-gold text-xs font-semibold tracking-widest uppercase transform translate-y-2 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    Learn More <ArrowRight size={12} />
-                  </div>
-                </div>
-
-                {/* Gold corner accent */}
-                <div className="absolute top-0 right-0 w-16 h-16 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute top-0 right-0 w-full h-full border-t-2 border-r-2 border-gold" />
-                </div>
-              </div>
+              Explore all projects <ArrowRight size={14} aria-hidden="true" />
             </Link>
-          ))}
+          </div>
         </div>
 
-        <div className="projects-cta mt-8 flex justify-start sm:mt-10">
+        {/* Route / field-notes strip */}
+        <div className="projects-route relative mt-12 lg:mt-16">
+          <ol className="relative grid list-none grid-cols-1 gap-y-12 p-0 sm:p-0 lg:grid-cols-12 lg:gap-x-8 lg:gap-y-16">
+            {projects.map((project, index) => {
+              const chip = tagChip[project.tag] ?? "bg-primary/95 text-white";
+              const tone = pinTone[project.tag] ?? "text-primary border-primary/60";
+              const stagger =
+                index % 2 === 1
+                  ? "lg:col-start-7 lg:translate-y-10"
+                  : "lg:col-start-1 lg:translate-y-0";
+              const number = String(index + 1).padStart(2, "0");
+
+              return (
+                <li
+                  key={project.id}
+                  className={`projects-stop relative pl-12 lg:col-span-6 lg:pl-0 ${stagger}`}
+                >
+                  {/* Route marker */}
+                  <span
+                    aria-hidden="true"
+                    className={`projects-pin absolute left-0 top-1 grid h-9 w-9 place-items-center rounded-full border bg-temple-cream font-playfair text-sm font-bold lg:static lg:mb-4 lg:inline-grid ${tone}`}
+                  >
+                    {number}
+                  </span>
+
+                  <article className="group">
+                    {/* Photo */}
+                    <Link href={project.href} className="block" aria-label={`Visit ${project.title}`}>
+                      <div className="projects-photo relative aspect-[16/11] overflow-hidden border border-temple-sand bg-white">
+                        <Image
+                          src={project.image}
+                          alt={project.title}
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 520px"
+                          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                        />
+                        <span className="absolute inset-0 bg-gradient-to-t from-dusk/35 via-transparent to-transparent" />
+                        <span className="progress-chase absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                        <span className="absolute bottom-3 right-3 grid h-10 w-10 place-items-center bg-temple-bg text-primary transition-colors duration-300 group-hover:bg-gold group-hover:text-dusk">
+                          <ArrowUpRight size={18} aria-hidden="true" />
+                        </span>
+                      </div>
+                    </Link>
+
+                    {/* Caption / field note */}
+                    <div className="relative mt-4 border-l-2 border-gold/60 pl-4 sm:pl-5">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className={`font-inter text-[0.6rem] font-bold uppercase tracking-[0.16em] px-2.5 py-1 ${chip}`}>
+                          {project.tag}
+                        </span>
+                        <span className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/40">
+                          {project.subtitle}
+                        </span>
+                      </div>
+                      <h3 className="mt-2 font-playfair text-2xl font-semibold leading-tight text-ink sm:text-[1.7rem]">
+                        <Link href={project.href} className="transition-colors hover:text-primary">
+                          {project.title}
+                        </Link>
+                      </h3>
+                      <p className="mt-2 max-w-md font-inter text-sm leading-6 text-ink/60 line-clamp-2">
+                        {project.description}
+                      </p>
+                      <Link
+                        href={project.href}
+                        className="mt-3 inline-flex items-center gap-1.5 font-inter text-[0.66rem] font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
+                      >
+                        Visit this work <ArrowRight size={12} aria-hidden="true" />
+                      </Link>
+                    </div>
+                  </article>
+                </li>
+              );
+            })}
+          </ol>
+        </div>
+
+        <div className="mt-12 border-t border-temple-sand pt-5 lg:hidden">
           <Link
             href="/projects"
-            className="flex items-center gap-2 font-inter text-xs text-gold font-semibold tracking-widest uppercase hover:gap-3 transition-all"
+            className="inline-flex items-center gap-2 font-inter text-[0.7rem] font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
           >
-            All Projects <ArrowRight size={12} />
+            Explore all projects <ArrowRight size={14} aria-hidden="true" />
           </Link>
         </div>
       </div>
+
       <style jsx>{`
-        @media (max-width: 640px) {
-          .projects-section {
-            padding-top: 2.5rem !important;
-            padding-bottom: calc(var(--space-section, 6rem) / 2) !important;
+        /* Soft east-african route backdrop (desktop only) */
+        .projects-scene::before {
+          content: "";
+          position: absolute;
+          left: 6%;
+          right: 6%;
+          top: 58%;
+          height: 1px;
+          background: linear-gradient(to right, rgba(217, 164, 65, 0), rgba(217, 164, 65, 0.35), rgba(217, 164, 65, 0));
+          display: none;
+          pointer-events: none;
+        }
+
+        .progress-chase {
+          background: linear-gradient(115deg, rgba(217, 164, 65, 0.12), rgba(224, 138, 60, 0.06));
+          mix-blend-mode: multiply;
+        }
+
+        /* Mobile + tablet: continuous dashed trail joining the numbered stops */
+        @media (max-width: 1023px) {
+          .projects-route::before {
+            content: "";
+            position: absolute;
+            left: 1.0625rem;
+            top: 1.25rem;
+            bottom: 1.25rem;
+            width: 1px;
+            background: repeating-linear-gradient(
+              to bottom,
+              rgba(183, 66, 51, 0.45) 0px,
+              rgba(183, 66, 51, 0.45) 5px,
+              transparent 5px,
+              transparent 10px
+            );
           }
 
-          .projects-section :global(.section-padding) {
-            padding-top: 0 !important;
-            padding-bottom: 0 !important;
+          .projects-stop:not(:first-child) {
+            margin-top: 0.5rem;
           }
 
-          .projects-header {
-            gap: 0.7rem !important;
-            margin-bottom: 1.35rem !important;
+          .projects-pin {
+            z-index: 1;
+            box-shadow: 0 0 0 6px var(--color-temple-bg);
           }
+        }
 
-          .projects-header :global(.eyebrow) {
-            margin-bottom: 0.45rem !important;
+        @media (min-width: 1024px) {
+          .projects-scene::before {
+            display: block;
           }
-
-          .projects-header :global(.section-title) {
-            font-size: clamp(1.8rem, 9vw, 2.35rem) !important;
-            line-height: 0.95 !important;
-          }
-
-          .projects-header :global(a) {
-            font-size: 0.62rem !important;
-            margin-top: -0.15rem !important;
-          }
-
-          .projects-cta {
-            margin-top: 1.05rem !important;
-          }
-
-          .projects-grid {
-            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-            gap: 0.55rem !important;
-          }
-
-          .project-image {
-            aspect-ratio: 0.92 / 1 !important;
-          }
-
-          .project-tag {
-            top: 0.45rem !important;
-            left: 0.45rem !important;
-          }
-
-          .project-tag span {
-            font-size: 0.45rem !important;
-            letter-spacing: 0.08em !important;
-            padding: 0.18rem 0.34rem !important;
-          }
-
-          .project-content {
-            padding: 0.58rem !important;
-          }
-
-          .project-subtitle {
-            font-size: 0.48rem !important;
-            letter-spacing: 0.08em !important;
-            margin-bottom: 0.08rem !important;
-            line-height: 1.15 !important;
-          }
-
-          .project-title {
-            font-size: clamp(0.95rem, 4.5vw, 1.15rem) !important;
-            line-height: 1.02 !important;
-            margin-bottom: 0 !important;
-          }
-
-          .project-description,
-          .project-content > div {
-            display: none !important;
+          .projects-pin {
+            margin-left: 0;
           }
         }
       `}</style>
