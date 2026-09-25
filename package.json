@@ -10,6 +10,7 @@
     "lint": "eslint",
     "test:festival": "vitest run src/lib/kirtanSafariState.test.ts",
     "verify:pwa": "node scripts/verify-pwa.mjs",
+    "check:release": "npm run lint && npm run test:festival && npm run verify:pwa && npm run build",
     "send-push": "node --env-file=.env.local scripts/send-push.mjs"
   },
   "dependencies": {
