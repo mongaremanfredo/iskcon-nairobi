@@ -54,32 +54,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               ))}
-
-              <div className="border-t border-temple-sand pt-6">
-                <p className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/40 mb-3">Common Enquiries</p>
-                <div className="rounded-sm border border-temple-sand bg-temple-cream/70 p-4">
-                  <p className="font-inter text-xs leading-relaxed text-ink/55">
-                    For temple office, guest house, Food For Life, and donation enquiries, write to:
-                  </p>
-                  <a
-                    href={`mailto:${templeInfo.email}`}
-                    className="mt-2 inline-flex items-center gap-2 font-inter text-sm font-semibold text-primary transition-colors hover:text-gold hover:underline"
-                  >
-                    <Mail size={14} />
-                    {templeInfo.email}
-                  </a>
-                  <div className="mt-4 flex flex-wrap gap-2">
-                    {["Temple Office", "Guest House", "Food For Life", "Donations"].map((dept) => (
-                      <span
-                        key={dept}
-                        className="border border-gold/25 bg-white/60 px-2.5 py-1 font-inter text-[11px] font-semibold uppercase tracking-[0.08em] text-ink/55"
-                      >
-                        {dept}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
             </div>
 
             <div className="lg:col-span-2 bg-temple-cream border border-temple-sand p-8 lg:p-10">
