@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { Heart, ArrowRight } from "lucide-react";
 import { donationPaths } from "@/data/site";
 
@@ -17,10 +18,12 @@ export default function DonationSection() {
     <section className="relative overflow-hidden pt-10 pb-16 sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
       {/* Background */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/images/donate/main-altar-offering.jpg"
           alt=""
-          className="w-full h-full object-cover"
+          fill
+          sizes="100vw"
+          className="object-cover"
         />
         <div className="absolute inset-0 bg-temple-bg/96" />
       </div>
@@ -53,10 +56,12 @@ export default function DonationSection() {
             >
               {/* Image */}
               <div className="relative h-40 overflow-hidden image-grade">
-                <img
+                <Image
                   src={path.image}
                   alt={path.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  fill
+                  sizes="(max-width: 640px) 78vw, (max-width: 1024px) 50vw, 20vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
                 <div className={`absolute top-3 left-3 border px-2 py-1 text-2xl ${donationAccent(path.title)}`}>{path.icon}</div>

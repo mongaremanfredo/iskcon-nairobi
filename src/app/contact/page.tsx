@@ -8,7 +8,7 @@ export const metadata = createPageMetadata({
   title: "Contact ISKCON Nairobi",
   description: "Get in touch with ISKCON Nairobi. Temple address, phone, email, and enquiry form.",
   path: "/contact",
-  image: "/images/sunset-route.png",
+  image: "/images/sunset-route.jpg",
 });
 
 export default function ContactPage() {
@@ -25,7 +25,7 @@ export default function ContactPage() {
         title="Get in"
         titleAccent="Touch"
         subtitle="Contact Us"
-        image="/images/sunset-route.png"
+        image="/images/sunset-route.jpg"
         height="md"
         className="sm:min-h-[500px]"
       />

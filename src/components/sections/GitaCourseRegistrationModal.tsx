@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 import { X } from "lucide-react";
 import GitaCourseRegistrationForm from "./GitaCourseRegistrationForm";
 
@@ -26,9 +26,15 @@ export function GitaCourseRegistrationButton({
 
 export default function GitaCourseRegistrationModal() {
   const [open, setOpen] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    const handleOpen = () => setOpen(true);
+    const handleOpen = () => {
+      returnFocusRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      setOpen(true);
+    };
     window.addEventListener(OPEN_EVENT, handleOpen);
     return () => window.removeEventListener(OPEN_EVENT, handleOpen);
   }, []);
@@ -38,9 +44,30 @@ export default function GitaCourseRegistrationModal() {
 
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = "hidden";
+    closeButtonRef.current?.focus();
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setOpen(false);
+      if (event.key === "Escape") {
+        setOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab" || !panelRef.current) return;
+      const focusable = Array.from(
+        panelRef.current.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
     };
 
     window.addEventListener("keydown", handleKeyDown);
@@ -48,6 +75,7 @@ export default function GitaCourseRegistrationModal() {
     return () => {
       document.body.style.overflow = previousOverflow;
       window.removeEventListener("keydown", handleKeyDown);
+      returnFocusRef.current?.focus();
     };
   }, [open]);
 
@@ -57,8 +85,8 @@ export default function GitaCourseRegistrationModal() {
     <div className="gita-modal" role="dialog" aria-modal="true" aria-labelledby="gita-modal-title">
       <button className="gita-modal-backdrop" type="button" onClick={() => setOpen(false)} aria-label="Close registration form" />
 
-      <div className="gita-modal-panel">
-        <button className="gita-modal-close" type="button" onClick={() => setOpen(false)} aria-label="Close registration form">
+      <div ref={panelRef} className="gita-modal-panel">
+        <button ref={closeButtonRef} className="gita-modal-close" type="button" onClick={() => setOpen(false)} aria-label="Close registration form">
           <X size={18} />
         </button>
 

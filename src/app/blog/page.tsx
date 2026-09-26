@@ -1,4 +1,5 @@
 import { createPageMetadata } from "@/lib/metadata";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Clock, Leaf, Music2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -40,10 +41,12 @@ export default function BlogPage() {
               href={featured.href}
               className="group relative min-h-[24rem] overflow-hidden border border-gold/25 bg-dusk shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-card-hover sm:min-h-[30rem]"
             >
-              <img
+              <Image
                 src={featured.image}
                 alt=""
-                className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                sizes="(max-width: 1024px) 100vw, 58vw"
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dusk via-dusk/22 to-transparent" />
               <div className="absolute left-5 top-5 flex flex-wrap gap-2">
@@ -136,10 +139,12 @@ export default function BlogPage() {
                       className="group flex flex-col overflow-hidden border border-temple-sand bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover"
                     >
                       <div className="relative h-44 overflow-hidden">
-                        <img
+                        <Image
                           src={post.image}
                           alt=""
-                          className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          fill
+                          sizes="(max-width: 640px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                          className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-dusk/45 via-transparent to-transparent" />
                         <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 bg-white/92 px-2.5 py-1 font-inter text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-dusk">

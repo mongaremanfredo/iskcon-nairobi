@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Camera } from "lucide-react";
 
 const galleryImages = [
@@ -19,7 +20,7 @@ const galleryImages = [
     imageClass: "h-[170px] sm:h-[240px] lg:h-full",
   },
   {
-    src: "/images/kirtan-safari-2026-page-hero.png",
+    src: "/images/kirtan-safari-2026-page-hero.webp",
     caption: "Kirtan Safari - dawn session on the savanna",
     tone: "Kirtan",
     className: "lg:col-span-4",
@@ -80,10 +81,12 @@ export default function GallerySection() {
                   isLead || isWide ? "col-span-2" : ""
                 } ${img.className}`}
               >
-                <img
+                <Image
                   src={img.src}
                   alt={img.caption}
-                  className={`h-full w-full object-cover image-grade transition-transform duration-700 group-hover:scale-105 ${img.imageClass}`}
+                  fill
+                  sizes={isLead ? "(max-width: 1024px) 100vw, 42vw" : isWide ? "100vw" : "(max-width: 1024px) 50vw, 33vw"}
+                  className={`object-cover image-grade transition-transform duration-700 group-hover:scale-105 ${img.imageClass}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dusk/92 via-dusk/18 to-transparent" />
                 <div className="absolute inset-0 bg-gold/0 transition-colors duration-300 group-hover:bg-gold/10" />

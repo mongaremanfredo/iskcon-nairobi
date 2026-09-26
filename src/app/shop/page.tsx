@@ -1,6 +1,7 @@
 import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+import Image from "next/image";
 import { ShoppingBag, Star } from "lucide-react";
 
 export const metadata = createPageMetadata({
@@ -56,7 +57,7 @@ export default function ShopPage() {
             {products.map((product) => (
               <div key={product.name} className="group bg-white border border-temple-sand hover:shadow-card-hover hover:border-gold/30 transition-all overflow-hidden">
                 <div className="relative h-52 overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute top-3 left-3">
                     <span className="font-inter text-[10px] font-bold tracking-widest uppercase bg-gold text-white px-3 py-1">{product.tag}</span>
                   </div>

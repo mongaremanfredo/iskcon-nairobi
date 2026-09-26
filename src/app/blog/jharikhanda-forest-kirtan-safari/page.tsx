@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BookOpen,
@@ -209,9 +210,12 @@ export default function JharikhandaBlogPage() {
 
                       {scene.id === "the-tiger" && (
                         <figure className="my-12 overflow-hidden border border-temple-sand bg-white shadow-card">
-                          <img
+                          <Image
                             src={heroImage}
                             alt="Sri Chaitanya Mahaprabhu dancing with animals in Jharikhanda Forest"
+                            width={1200}
+                            height={1600}
+                            sizes="(max-width: 1024px) 100vw, 760px"
                             className="h-auto w-full object-cover"
                           />
                           <figcaption className="border-t border-temple-sand px-5 py-3 font-inter text-xs leading-relaxed text-ink/48">

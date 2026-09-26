@@ -1,4 +1,5 @@
 import { createPageMetadata } from "@/lib/metadata";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import GuestHouseEnquiryForm from "@/components/sections/GuestHouseEnquiryForm";
 import { guestRooms, templeInfo } from "@/data/site";
@@ -69,7 +70,7 @@ export default function GuestHousePage() {
             {guestRooms.map((room) => (
               <div key={room.name} className="bg-white border border-temple-sand hover:shadow-card-hover hover:border-gold/30 transition-all overflow-hidden group">
                 <div className="relative h-56 overflow-hidden">
-                  <img src={room.image} alt={room.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={room.image} alt={room.name} fill sizes="(max-width: 1024px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute top-4 right-4 bg-white/95 px-3 py-2 text-center shadow-sm">
                     <p className="font-playfair text-gold font-bold text-lg leading-none">{room.price}</p>
                     <p className="font-inter text-ink/40 text-[10px] mt-0.5">confirm with office</p>

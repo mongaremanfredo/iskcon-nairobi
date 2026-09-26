@@ -39,8 +39,8 @@ type HeroImage = {
 
 const baseHeroImages: HeroImage[] = [
   {
-    src: "/images/home-kirtan-safari-illustration-hero.png",
-    mobileSrc: "/images/home-kirtan-safari-illustration-hero-mobile.png",
+    src: "/images/home-kirtan-safari-illustration-hero.webp",
+    mobileSrc: "/images/home-kirtan-safari-illustration-hero-mobile.webp",
     alt: "Illustration of devotees performing kirtan outdoors in Nairobi at sunset",
     position: "center center",
     mobilePosition: "center center",

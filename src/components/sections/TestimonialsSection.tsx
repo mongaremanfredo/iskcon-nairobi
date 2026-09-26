@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { testimonials } from "@/data/site";
 import { cn } from "@/lib/utils";
@@ -77,10 +78,12 @@ export default function TestimonialsSection() {
                 <ChevronLeft size={16} />
               </button>
               <div className="testimonials-portrait relative h-64 w-64 overflow-hidden border-4 border-sand/20 shadow-card sm:h-72 sm:w-72">
-              <img
+              <Image
                 key={current.image}
                 src={current.image}
                 alt={current.name}
+                fill
+                sizes="(max-width: 640px) 12rem, 18rem"
                 className="testimonial-slide-panel h-full w-full object-cover grayscale transition-all duration-500 group-hover:scale-105 group-hover:grayscale-0"
               />
                 <div className="absolute inset-0 border-2 border-gold/0 transition-colors duration-300 group-hover:border-gold/70" />

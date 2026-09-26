@@ -14,7 +14,14 @@ export default function KirtanSafariArchive() {
   return (
     <main className="ks-archive">
       <section className="ks-archive-hero">
-        <div className="ks-archive-hero-image" aria-hidden="true" />
+        <Image
+          src="/images/kirtan-safari-2026-page-hero.webp"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center saturate-[.72]"
+        />
         <div className="ks-archive-overlay" aria-hidden="true" />
         <div className="content-width section-padding ks-archive-hero-copy">
           <p>{archive.eyebrow}</p>

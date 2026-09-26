@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function NotFound() {
   return (
     <section className="relative isolate min-h-[72vh] overflow-hidden bg-dusk px-6 pb-20 pt-40 text-temple-cream sm:pt-48">
-      <div className="absolute inset-0 -z-20 bg-[url('/images/sunset-route.png')] bg-cover bg-center opacity-30" />
+      <div className="absolute inset-0 -z-20 bg-[url('/images/sunset-route.jpg')] bg-cover bg-center opacity-30" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-b from-dusk/70 via-dusk/90 to-dusk" />
       <div className="mx-auto max-w-3xl text-center">
         <p className="eyebrow mb-5 text-gold">404 · Path Not Found</p>

@@ -9,7 +9,7 @@
  * Bump CACHE_VERSION whenever this policy or the precache list changes.
  * See docs/PWA_GUIDE.md before editing this file.
  */
-const CACHE_VERSION = "iskcon-nairobi-v5";
+const CACHE_VERSION = "iskcon-nairobi-v6";
 const UPDATE_MODE = "silent";
 const CACHE_PREFIX = "iskcon-nairobi-";
 const PAGE_CACHE = `${CACHE_VERSION}-pages`;
@@ -30,8 +30,8 @@ const PRECACHE_URLS = [
   "/brand/maskable-icon-192.png",
   "/brand/maskable-icon-512.png",
   "/brand/iskcon-logo.svg",
-  "/images/home-kirtan-safari-illustration-hero.png",
-  "/images/home-kirtan-safari-illustration-hero-mobile.png",
+  "/images/home-kirtan-safari-illustration-hero.webp",
+  "/images/home-kirtan-safari-illustration-hero-mobile.webp",
   "/images/calendar-kirtan-safari-bg.png",
   "/images/kirtan-safari-2026-adhivas.png",
 ];

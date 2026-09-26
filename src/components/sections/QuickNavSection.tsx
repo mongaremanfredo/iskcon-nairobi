@@ -47,7 +47,7 @@ export default function QuickNavSection() {
     <section className="pt-9 pb-10 bg-temple-cream sm:pt-[clamp(1.7rem,3.35vw,3.35rem)] sm:pb-section-sm">
       <div className="content-width px-3 sm:px-6 lg:px-8">
         <div className="text-center mb-6 sm:mb-10">
-          <span className="eyebrow">Find Your Path</span>
+          <h2 className="eyebrow">Find Your Path</h2>
         </div>
 
         <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4 lg:gap-6">

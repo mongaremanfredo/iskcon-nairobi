@@ -1,5 +1,6 @@
 import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
 import {
@@ -183,15 +184,21 @@ export default function AboutPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <img
+              <Image
                 src="/images/iskcon-nairobi-main-altar-wide.jpg"
                 alt="Main altar at ISKCON Nairobi"
+                width={1200}
+                height={1500}
+                sizes="(max-width: 640px) 100vw, 50vw"
                 className="aspect-[4/5] w-full object-cover shadow-card"
               />
               <div className="grid gap-4">
-                <img
+                <Image
                   src="/images/prabhupada/srila-prabhupada-seated-smiling.jpg"
                   alt="Srila Prabhupada"
+                  width={736}
+                  height={937}
+                  sizes="(max-width: 640px) 100vw, 50vw"
                   className="aspect-[4/5] w-full object-cover object-top shadow-card sm:mt-10"
                 />
                 <div className="border border-gold/25 bg-gold/10 p-5">
@@ -299,9 +306,12 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <img
+            <Image
               src="/images/hero-ratha-yatra-kenya.jpg"
               alt="ISKCON Nairobi public festival procession"
+              width={1200}
+              height={900}
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="aspect-[4/3] w-full object-cover shadow-card-hover"
             />
           </div>

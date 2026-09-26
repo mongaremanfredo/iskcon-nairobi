@@ -1,13 +1,16 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, BookOpen, Globe2, HeartHandshake } from "lucide-react";
 
 export default function LeadershipSection() {
   return (
     <section id="guidance-vision" className="relative scroll-mt-24 overflow-hidden bg-temple-brown pt-10 pb-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/images/prabhupada/prabhupada-golden-gate-kirtan.jpg"
           alt=""
+          fill
+          sizes="100vw"
           className="h-full w-full object-cover opacity-[0.26]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-dusk via-dusk/92 to-dusk/64" />
@@ -24,9 +27,12 @@ export default function LeadershipSection() {
             </h2>
             <div className="relative mt-6 lg:hidden">
               <div className="relative overflow-hidden border border-gold/20 bg-dusk/92 p-3 shadow-card-hover">
-                <img
+                <Image
                   src="/images/prabhupada/srila-prabhupada-seated-smiling.jpg"
                   alt="Srila Prabhupada"
+                  width={736}
+                  height={937}
+                  sizes="(max-width: 1024px) 100vw, 40vw"
                   className="mx-auto aspect-[736/937] max-h-[520px] w-full object-contain opacity-95"
                 />
                 <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk/78 via-transparent to-transparent" />
@@ -79,9 +85,12 @@ export default function LeadershipSection() {
           <div className="relative max-lg:hidden">
             <div className="absolute -inset-4 border border-gold/20 max-sm:hidden" />
             <div className="relative overflow-hidden border border-gold/20 bg-dusk/92 p-4 shadow-card-hover">
-              <img
+              <Image
                 src="/images/prabhupada/srila-prabhupada-seated-smiling.jpg"
                 alt="Srila Prabhupada"
+                width={736}
+                height={937}
+                sizes="40vw"
                 className="mx-auto aspect-[736/937] max-h-[720px] w-full object-contain opacity-95"
               />
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-dusk/78 via-transparent to-transparent" />

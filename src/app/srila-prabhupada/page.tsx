@@ -1,5 +1,6 @@
 import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   BookOpen,
@@ -110,10 +111,13 @@ export default function SrilaPrabhupadaPage() {
   return (
     <main className="bg-temple-bg">
       <section className="relative min-h-[92vh] overflow-hidden bg-dusk text-sand">
-        <img
+        <Image
           src="/images/prabhupada/prabhupada-golden-gate-kirtan.jpg"
           alt="Srila Prabhupada leading public kirtan"
-          className="absolute inset-0 h-full w-full object-cover object-center opacity-70"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-70"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-dusk via-dusk/82 to-dusk/28" />
         <div className="absolute inset-0 bg-gradient-to-t from-dusk via-transparent to-black/20" />
@@ -229,9 +233,12 @@ export default function SrilaPrabhupadaPage() {
 
             <figure className="relative">
               <div className="absolute -inset-4 border border-gold/20" />
-              <img
+              <Image
                 src="/images/prabhupada/swami-prabhupada-classic.jpg"
                 alt="Srila Prabhupada"
+                width={1200}
+                height={900}
+                sizes="(max-width: 1024px) 100vw, 50vw"
                 className="relative aspect-[4/3] w-full object-cover object-[center_30%] shadow-card-hover"
               />
               <figcaption className="relative mt-4 border-l border-gold/40 pl-4 font-inter text-xs leading-relaxed text-sand/55">

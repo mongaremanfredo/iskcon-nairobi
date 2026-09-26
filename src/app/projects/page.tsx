@@ -1,4 +1,5 @@
 import { createPageMetadata } from "@/lib/metadata";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { projects } from "@/data/site";
@@ -40,7 +41,7 @@ export default function ProjectsPage() {
                 className="group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all overflow-hidden"
               >
                 <div className="relative aspect-card overflow-hidden image-grade">
-                  <img src={project.image} alt={project.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image src={project.image} alt={project.title} fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/70 to-transparent" />
                   <span className={`absolute left-5 top-5 border px-3 py-1 font-inter text-[10px] font-semibold uppercase tracking-[0.15em] ${tagClasses[project.tag] ?? "bg-primary/10 text-primary border-primary/30"}`}>
                     {project.tag}

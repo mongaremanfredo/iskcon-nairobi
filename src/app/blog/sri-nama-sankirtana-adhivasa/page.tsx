@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -115,10 +116,12 @@ export default function AdhivasaBlogPage() {
                 className="group mt-5 block overflow-hidden border border-temple-sand bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover"
               >
                 <div className="relative h-32 overflow-hidden">
-                  <img
+                  <Image
                     src={jharikhandaImage}
                     alt=""
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    fill
+                    sizes="18rem"
+                    className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/55 via-transparent to-transparent" />
                 </div>

@@ -1,4 +1,5 @@
 import { createPageMetadata } from "@/lib/metadata";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { socialLinks } from "@/data/site";
 
@@ -87,10 +88,13 @@ export default function MediaPage() {
           <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
             {images.map((img, i) => (
               <div key={i} className="group relative overflow-hidden break-inside-avoid mb-3 cursor-pointer image-grade">
-                <img
+                <Image
                   src={img.src}
                   alt={img.caption}
-                  className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  width={900}
+                  height={600}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="h-auto w-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">

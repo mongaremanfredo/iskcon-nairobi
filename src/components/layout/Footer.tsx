@@ -56,7 +56,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-inter text-white font-semibold text-xs tracking-[0.15em] uppercase mb-5">Explore</h4>
+            <h2 className="font-inter text-white font-semibold text-xs tracking-[0.15em] uppercase mb-5">Explore</h2>
             <ul className="space-y-2.5">
               {navigation.map((item) => (
                 <li key={item.href}>
@@ -72,9 +72,9 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-inter text-white font-semibold text-xs tracking-[0.15em] uppercase mb-5">
+            <h2 className="font-inter text-white font-semibold text-xs tracking-[0.15em] uppercase mb-5">
               Daily Programme
-            </h4>
+            </h2>
             <ul className="space-y-4">
               {templeScheduleGroups.map((group) => (
                 <li key={group.title}>
@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-inter text-white font-semibold text-xs tracking-[0.15em] uppercase mb-5">Contact</h4>
+            <h2 className="font-inter text-white font-semibold text-xs tracking-[0.15em] uppercase mb-5">Contact</h2>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-gold mt-0.5 flex-shrink-0" />

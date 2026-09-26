@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 interface PageHeroProps {
   title: string;
   titleAccent?: string;
@@ -30,7 +32,14 @@ export default function PageHero({
   return (
     <section className={`relative overflow-hidden ${heights[height]} ${className}`}>
       {/* Background */}
-      <img src={image} alt={title} className="absolute inset-0 w-full h-full object-cover" />
+      <Image
+        src={image}
+        alt=""
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover"
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
       {align === "left" && (
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />

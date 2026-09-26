@@ -1,5 +1,6 @@
 import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import StickySubNav from "@/components/hktc/StickySubNav";
 import Timeline from "@/components/hktc/Timeline";
@@ -189,11 +190,13 @@ export default function HKTCNairobiPage() {
             </div>
 
             <div className="grid gap-4">
-              <div className="overflow-hidden border border-temple-sand bg-white shadow-card">
-                <img
+              <div className="relative min-h-[22rem] overflow-hidden border border-temple-sand bg-white shadow-card">
+                <Image
                   src="/images/hktc/hktc-nairobi-kirtan-class.jpg"
                   alt="HKTC Nairobi students leading kirtan and class"
-                  className="h-full w-full object-cover"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
                 />
               </div>
               <div className="border border-gold/25 bg-gold/10 p-5">
@@ -324,9 +327,12 @@ export default function HKTCNairobiPage() {
 
             <div className="space-y-5">
               <aside className="overflow-hidden border border-temple-sand bg-white shadow-card">
-                <img
+                <Image
                   src="/images/hktc/hktc-nairobi-prabhupada-book-study.jpg"
                   alt="HKTC Nairobi students studying Srila Prabhupada's books"
+                  width={1600}
+                  height={1000}
+                  sizes="(max-width: 1024px) 100vw, 36vw"
                   className="aspect-[16/10] w-full object-cover"
                 />
                 <div className="border-t border-temple-sand p-6">
@@ -340,9 +346,12 @@ export default function HKTCNairobiPage() {
               </aside>
 
               <aside className="border border-gold/25 bg-temple-brown p-6 text-sand shadow-card">
-                <img
+                <Image
                   src="/images/hktc/hktc-nairobi-graduation-certificates.jpg"
                   alt="HKTC Nairobi students after graduation with certificates"
+                  width={1600}
+                  height={900}
+                  sizes="(max-width: 1024px) 100vw, 36vw"
                   className="mb-6 aspect-[16/9] w-full object-cover"
                 />
                 <GraduationCap className="mb-5 text-gold" size={30} />

@@ -1,5 +1,6 @@
 import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, HeartHandshake, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { leadershipDepartments, leadershipProfiles } from "@/data/site";
@@ -57,9 +58,12 @@ export default function LeadershipPage() {
             <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
               <div className="relative">
                 <div className="absolute -inset-4 border border-gold/20 max-sm:hidden" />
-                <img
+                <Image
                   src={featured.image}
                   alt={featured.name}
+                  width={900}
+                  height={1125}
+                  sizes="(max-width: 1024px) 100vw, 40vw"
                   className="relative aspect-[4/5] w-full object-cover object-[center_30%] shadow-card-hover"
                 />
               </div>
@@ -98,9 +102,11 @@ export default function LeadershipPage() {
             {others.map((profile) => (
               <article key={profile.name} className="group border border-temple-sand bg-white shadow-card transition-shadow hover:shadow-card-hover">
                 <div className="relative h-72 overflow-hidden">
-                  <img
+                  <Image
                     src={profile.image}
                     alt={profile.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
                     className="h-full w-full object-cover object-[center_28%] transition-transform duration-700 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />

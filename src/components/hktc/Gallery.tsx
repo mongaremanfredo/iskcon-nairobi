@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { X } from "lucide-react";
 
 type GalleryImage = {
@@ -37,10 +38,12 @@ export default function Gallery() {
             onClick={() => setActiveIndex(index)}
             className="group relative aspect-square overflow-hidden border border-temple-sand bg-temple-cream"
           >
-            <img
+            <Image
               src={image.src}
               alt={image.alt}
-              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+              fill
+              sizes="(max-width: 640px) 50vw, 33vw"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
           </button>
         ))}
@@ -62,9 +65,12 @@ export default function Gallery() {
             <X size={28} />
           </button>
 
-          <img
+          <Image
             src={images[activeIndex].src}
             alt={images[activeIndex].alt}
+            width={1800}
+            height={1200}
+            sizes="100vw"
             className="max-h-[80vh] max-w-full object-contain"
             onClick={(e) => e.stopPropagation()}
           />

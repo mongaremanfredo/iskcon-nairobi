@@ -1,4 +1,5 @@
 import { createPageMetadata } from "@/lib/metadata";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { donationPaths } from "@/data/site";
 import Link from "next/link";
@@ -48,7 +49,7 @@ export default function DonatePage() {
             {donationPaths.map((path) => (
               <div key={path.title} className="bg-white border border-temple-sand hover:shadow-card-hover hover:border-gold/40 transition-all overflow-hidden group">
                 <div className="relative h-52 overflow-hidden">
-                  <img src={path.image} alt={path.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image src={path.image} alt={path.title} fill sizes="(max-width: 768px) 100vw, 50vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                   <div className="absolute top-4 left-4 text-3xl">{path.icon}</div>
                 </div>

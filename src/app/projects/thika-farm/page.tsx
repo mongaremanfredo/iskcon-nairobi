@@ -1,6 +1,7 @@
 import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = createPageMetadata({
   title: "Thika Farm and Goshala",
@@ -39,7 +40,9 @@ export default function ThikaFarmPage() {
                 "/images/thika-farm/thika-farm-visit-gate.jpg",
                 "/images/thika-farm/goshala-cows-pasture.jpg",
               ].map((src, i) => (
-                <img key={i} src={src} alt="Farm" className={`w-full object-cover ${i === 1 ? "mt-8" : ""}`} style={{ aspectRatio: "3/4" }} />
+                <div key={src} className={`relative aspect-[3/4] overflow-hidden ${i === 1 ? "mt-8" : ""}`}>
+                  <Image src={src} alt={i === 0 ? "Entrance to Thika Farm" : "Protected cows at the Thika goshala"} fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
+                </div>
               ))}
             </div>
           </div>

@@ -1,6 +1,7 @@
 import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+import Image from "next/image";
 
 export const metadata = createPageMetadata({
   title: "Food For Life Nairobi",
@@ -57,8 +58,8 @@ export default function FoodForLifePage() {
                 Fund a Meal Programme
               </Link>
             </div>
-            <div>
-              <img src="/images/food-for-life/prasadam-students.jpg" alt="Food distribution" className="w-full aspect-card object-cover" />
+            <div className="relative aspect-card overflow-hidden">
+              <Image src="/images/food-for-life/prasadam-students.jpg" alt="Food distribution" fill sizes="(max-width: 1024px) 100vw, 50vw" className="object-cover" />
             </div>
           </div>
         </div>

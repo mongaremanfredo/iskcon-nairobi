@@ -36,6 +36,31 @@
   --site-chrome-height: 63px;
 }
 
+/* Keep keyboard navigation visible across custom buttons, links, and form controls. */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid #d69c2b;
+  outline-offset: 3px;
+}
+
+:where(input, select, textarea):focus-visible {
+  outline-offset: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 /* Resting solid header heights per breakpoint, mirroring Navigation.tsx. The
    sticky sub-nav and status bar pin to this constant so they never chase the
    header while it animates smaller on scroll. Defaults must match the actual
@@ -127,7 +152,7 @@ img, video, canvas, svg { max-width: 100%; }
 /* Typography helpers */
 .eyebrow {
   font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--color-sunset);
+  text-transform: uppercase; color: var(--color-primary);
 }
 .section-title {
   font-family: var(--font-playfair); line-height: 1.15;

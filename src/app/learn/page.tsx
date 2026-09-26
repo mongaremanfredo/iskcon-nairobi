@@ -1,5 +1,6 @@
 import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Bell, BookOpen, CalendarDays, Clock, GraduationCap, Home, LibraryBig, MessageCircle, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import GitaCourseRegistrationModal, {
@@ -211,10 +212,12 @@ export default function LearnPage() {
             <article className="overflow-hidden border border-temple-sand bg-white shadow-card">
               <div className="grid h-full gap-0 sm:grid-cols-[0.76fr_1fr]">
                 <div className="relative min-h-[14rem] overflow-hidden bg-dusk">
-                  <img
+                  <Image
                     src="/images/learn/krishna-guru-study.jpeg"
                     alt="Lord Krishna learning from His guru"
-                    className="h-full w-full object-cover opacity-90"
+                    fill
+                    sizes="(max-width: 640px) 100vw, 45vw"
+                    className="object-cover opacity-90"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/40 to-transparent" />
                 </div>
