@@ -19,7 +19,7 @@ release path reproducible. It does not promote code beyond `development`.
 - GitHub Actions are pinned to immutable commit revisions.
 - Pull requests must follow `feature|fix|chore|docs|security -> development ->
   staging -> release -> main`.
-- Node 22 is the repository and CI baseline.
+- Node 24 is the repository, CI, and configured Vercel runtime baseline.
 
 ## Necessary external services
 
