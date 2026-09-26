@@ -37,7 +37,6 @@ export default function Gallery() {
             onClick={() => setActiveIndex(index)}
             className="group relative aspect-square overflow-hidden border border-temple-sand bg-temple-cream"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={image.src}
               alt={image.alt}
@@ -63,7 +62,6 @@ export default function Gallery() {
             <X size={28} />
           </button>
 
-          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={images[activeIndex].src}
             alt={images[activeIndex].alt}

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/data/blog";
 import { donationPaths, festivals, projects } from "@/data/site";
 
-const siteUrl = "https://iskconnairobi.esthrema.com";
+const siteUrl = "https://iskconnairobi.com";
 
 type RouteEntry = {
   path: string;

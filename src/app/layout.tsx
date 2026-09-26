@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Inter, Source_Serif_4 } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
@@ -13,32 +13,45 @@ import InstallPromptBanner from "@/components/ui/InstallPromptBanner";
 import { templeInfo } from "@/data/site";
 import { safeJsonLd } from "@/lib/security";
 
-const siteUrl = "https://iskconnairobi.esthrema.com";
+const siteUrl = "https://iskconnairobi.com";
 const previewImage = "/brand/og-image.jpg?v=20260825";
 const iconVersion = "v=pwa-resilient-2026-08-24";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
   "Visit ISKCON Nairobi, Sri Sri Radha Bankebihari Temple: daily darshan, kirtan, prasadam, spiritual education, festivals, cow protection, and service in East Africa.";
 
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  axes: ["opsz", "SOFT"],
+const fraunces = localFont({
+  src: "../../public/fonts/fraunces-latin-variable.woff2",
+  weight: "100 900",
   variable: "--font-fraunces",
   display: "swap",
+  fallback: ["Georgia", "serif"],
 });
 
-const inter = Inter({
-  subsets: ["latin"],
+const inter = localFont({
+  src: "../../public/fonts/inter-latin-variable.woff2",
+  weight: "100 900",
   variable: "--font-site-inter",
   display: "swap",
+  fallback: ["Arial", "sans-serif"],
 });
 
-const sourceSerif4 = Source_Serif_4({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  style: ["normal", "italic"],
+const sourceSerif4 = localFont({
+  src: [
+    {
+      path: "../../public/fonts/source-serif-4-latin-variable.woff2",
+      weight: "200 900",
+      style: "normal",
+    },
+    {
+      path: "../../public/fonts/source-serif-4-latin-variable-italic.woff2",
+      weight: "200 900",
+      style: "italic",
+    },
+  ],
   variable: "--font-source-serif-4",
   display: "swap",
+  fallback: ["Georgia", "serif"],
 });
 
 export const viewport: Viewport = {

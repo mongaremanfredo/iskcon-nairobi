@@ -91,7 +91,7 @@ The script refuses to send a live broadcast unless `--confirm` is supplied.
 The site is deployed on Vercel from the GitHub repository. Production canonical URLs use:
 
 ```text
-https://iskconnairobi.esthrema.com
+https://iskconnairobi.com
 ```
 
 After changing SEO routes, robots, sitemap, metadata, or API behavior, run:

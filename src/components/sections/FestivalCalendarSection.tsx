@@ -8,7 +8,7 @@ import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
 export default function FestivalCalendarSection() {
   const festivalState = useKirtanSafariState();
-  const now = Date.now();
+  const now = festivalState.now.getTime();
   const visibleFestivals = homepageFestivalPreview.filter((festival) => {
     if (new Date(festival.endsAt).getTime() <= now) return false;
     return festivalState.phase !== "concluded" || festival.href !== "/festivals/kirtan-safari";

@@ -8,7 +8,10 @@ const eslintConfig = defineConfig([
   {
     rules: {
       "react/no-unescaped-entities": "off",
-      "react-hooks/purity": "warn",
+      // Repository-owned images intentionally use native img elements so page
+      // rendering does not depend on an image optimization service at runtime.
+      "@next/next/no-img-element": "off",
+      "react-hooks/purity": "error",
       "react-hooks/set-state-in-effect": "warn",
     },
   },

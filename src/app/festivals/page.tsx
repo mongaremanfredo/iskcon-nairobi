@@ -27,7 +27,7 @@ export default function FestivalsPage() {
         }
       : festival
   );
-  const now = Date.now();
+  const now = kirtanSafariState.now.getTime();
   const upcomingFestivals = festivalPreview.filter(
     (festival) => new Date(festival.endsAt).getTime() > now
   );
