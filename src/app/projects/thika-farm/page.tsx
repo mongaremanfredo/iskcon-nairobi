@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Thika Farm & Goshala",
+export const metadata = createPageMetadata({
+  title: "Thika Farm and Goshala",
   description: "Forty acres of sacred land where cow protection, organic farming, and devotional community life come together in the Kenyan highlands.",
-};
+  path: "/projects/thika-farm",
+  image: "/images/thika-farm/thika-farm-visit-gate.jpg",
+});
 
 export default function ThikaFarmPage() {
   return (

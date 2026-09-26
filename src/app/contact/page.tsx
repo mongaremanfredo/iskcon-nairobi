@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import ContactForm from "@/components/sections/ContactForm";
 import { MapPin, Phone, Mail, Clock, MessageSquare } from "lucide-react";
 import { templeInfo } from "@/data/site";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Contact",
+export const metadata = createPageMetadata({
+  title: "Contact ISKCON Nairobi",
   description: "Get in touch with ISKCON Nairobi. Temple address, phone, email, and enquiry form.",
-};
+  path: "/contact",
+  image: "/images/sunset-route.png",
+});
 
 export default function ContactPage() {
   const contactItems = [

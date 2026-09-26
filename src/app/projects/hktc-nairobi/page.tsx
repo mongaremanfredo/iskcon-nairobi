@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import StickySubNav from "@/components/hktc/StickySubNav";
@@ -20,11 +20,13 @@ import {
   Users,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "HKTC Nairobi",
+export const metadata = createPageMetadata({
+  title: "Hare Krishna Training Centre Nairobi",
   description:
     "Hare Krishna Training Centre Nairobi serves university students with Prabhupada-centered study, daily classes, accommodation, prasadam, and devotional mentorship.",
-};
+  path: "/projects/hktc-nairobi",
+  image: "/images/hktc/hktc-nairobi-hero-class.jpg",
+});
 
 const stats = [
   { value: "10,000+", label: "Students Reached" },

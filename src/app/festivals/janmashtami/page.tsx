@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
@@ -13,11 +13,13 @@ import {
   Utensils,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Krishna Janmashtami",
   description:
     "Celebrate Sri Krishna Janmashtami, the biggest festival of the year at ISKCON Nairobi, with kirtan, midnight arati, abhishek, classes, offerings, drama, seva, and prasadam.",
-};
+  path: "/festivals/janmashtami",
+  image: "/images/calendar-janmashtami-krishna.jpeg",
+});
 
 const story = [
   {

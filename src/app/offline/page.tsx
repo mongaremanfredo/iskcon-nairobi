@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Offline | ISKCON Nairobi",
+export const metadata = createPageMetadata({
+  title: "Offline",
   description: "ISKCON Nairobi offline connection page.",
-  robots: { index: false, follow: false },
-};
+  path: "/offline",
+  noIndex: true,
+});
 
 export default function OfflinePage() {
   return (

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
@@ -9,10 +9,12 @@ import { getKirtanSafariState } from "@/lib/kirtanSafariState";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
-  title: "Festivals",
+export const metadata = createPageMetadata({
+  title: "Festivals and Vaishnava Calendar",
   description: "ISKCON Nairobi festival calendar including Ratha Yatra, Janmashtami, Gaura Purnima, and Kirtan Safari.",
-};
+  path: "/festivals",
+  image: "/images/hero-ratha-yatra-kenya.jpg",
+});
 
 export default function FestivalsPage() {
   const kirtanSafariState = getKirtanSafariState(new Date());

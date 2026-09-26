@@ -3,6 +3,7 @@ import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { donationPaths, templeInfo } from "@/data/site";
 import { Heart, Mail, Phone } from "lucide-react";
+import { createPageMetadata } from "@/lib/metadata";
 
 type Props = {
   params: Promise<{ fund: string }>;
@@ -21,11 +22,14 @@ function getFund(slug: string) {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const fund = getFund((await params).fund);
-  return {
-    title: `Donate - ${fund.title}`,
+  const slug = (await params).fund;
+  const fund = getFund(slug);
+  return createPageMetadata({
+    title: `Donate to ${fund.title}`,
     description: fund.description,
-  };
+    path: `/donate/${slug}`,
+    image: fund.image,
+  });
 }
 
 export default async function DonateFundPage({ params }: Props) {

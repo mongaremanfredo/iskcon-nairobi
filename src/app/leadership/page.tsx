@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { ArrowRight, HeartHandshake, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { leadershipDepartments, leadershipProfiles } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Leadership and Service Structure",
+export const metadata = createPageMetadata({
+  title: "ISKCON Nairobi Leadership",
   description:
     "Meet key leaders and service coordinators guiding ISKCON Nairobi through a departmental service structure rooted in Srila Prabhupada's vision for Africa.",
-};
+  path: "/leadership",
+  image: "/images/leadership/prabhupad-initiation.jpg",
+});
 
 export default function LeadershipPage() {
   const featured = leadershipProfiles.find((profile) => profile.emphasis);

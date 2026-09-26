@@ -1,10 +1,11 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import { templeInfo } from "@/data/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Terms and Conditions",
   description: "Terms and conditions for using the ISKCON Nairobi website.",
-};
+  path: "/terms",
+});
 
 const lastUpdated = "July 27, 2026";
 const platformUrl = "https://iskconnairobi.com";

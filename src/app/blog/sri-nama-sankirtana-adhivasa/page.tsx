@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,37 +9,19 @@ import {
 } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import AdhivasaLyrics from "@/components/blog/AdhivasaLyrics";
+import { createPageMetadata } from "@/lib/metadata";
 
 const heroImage = "/images/blog/chaitanya-dances-with-followers.jpg";
 const jharikhandaImage = "/images/blog/jharikhanda-mahaprabhu-animals.jpeg";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "The Invitation Before the Festival",
   description:
     "A verse-by-verse translation of Sri Nama Sankirtana Adhivasa, Vrindavana Dasa Thakura's traditional summons sung the evening before every great kirtana festival.",
-  alternates: {
-    canonical: "/blog/sri-nama-sankirtana-adhivasa",
-  },
-  openGraph: {
-    title: "The Invitation Before the Festival | ISKCON Nairobi",
-    description:
-      "A verse-by-verse translation of Sri Nama Sankirtana Adhivasa, Vrindavana Dasa Thakura's traditional summons sung the evening before every great kirtana festival.",
-    images: [
-      {
-        url: heroImage,
-        width: 736,
-        height: 981,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Invitation Before the Festival | ISKCON Nairobi",
-    description:
-      "A verse-by-verse translation of Sri Nama Sankirtana Adhivasa, Vrindavana Dasa Thakura's traditional summons sung the evening before every great kirtana festival.",
-    images: [heroImage],
-  },
-};
+  path: "/blog/sri-nama-sankirtana-adhivasa",
+  image: heroImage,
+  imageAlt: "Sri Chaitanya Mahaprabhu dancing with devotees in kirtan",
+});
 
 const introParagraphs = [
   "Before a mahotsava begins, before the mridangas are lifted and the nagar-kirtan procession takes to the streets, there is a quieter evening. Devotees gather, articles for worship are arranged, and one specific song is sung - not a prayer of praise, but an invitation. This is adhivasa: the ceremony that prepares a place, and the hearts within it, for what is coming the next day.",

@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Apply - HKTC Nairobi",
+export const metadata = createPageMetadata({
+  title: "Apply to HKTC Nairobi",
   description: "Express interest in Hare Krishna Training Centre programmes connected with ISKCON Nairobi.",
-};
+  path: "/projects/hktc-nairobi/apply",
+  noIndex: true,
+});
 
 export default function HktcApplyPage() {
   return (

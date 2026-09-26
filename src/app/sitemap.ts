@@ -8,7 +8,13 @@ type RouteEntry = {
   path: string;
   priority: number;
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
+  lastModified?: string;
 };
+
+// Update this only when public content changes. Build time is not a content
+// modification date and must not make every URL look newly edited to crawlers.
+const CONTENT_UPDATED = "2026-09-27T00:00:00+03:00";
+const LEGAL_UPDATED = "2026-07-27T00:00:00+03:00";
 
 const staticRoutes: RouteEntry[] = [
   { path: "/", priority: 1, changeFrequency: "weekly" },
@@ -25,8 +31,8 @@ const staticRoutes: RouteEntry[] = [
   { path: "/serve", priority: 0.7, changeFrequency: "monthly" },
   { path: "/donate", priority: 0.8, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/privacy", priority: 0.4, changeFrequency: "yearly" },
-  { path: "/terms", priority: 0.4, changeFrequency: "yearly" },
+  { path: "/privacy", priority: 0.4, changeFrequency: "yearly", lastModified: LEGAL_UPDATED },
+  { path: "/terms", priority: 0.4, changeFrequency: "yearly", lastModified: LEGAL_UPDATED },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -60,7 +66,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return Array.from(uniqueRoutes.values()).map((route) => ({
     url: new URL(route.path, siteUrl).toString(),
-    lastModified: new Date(),
+    lastModified: new Date(route.lastModified ?? CONTENT_UPDATED),
     changeFrequency: route.changeFrequency,
     priority: route.priority,
   }));

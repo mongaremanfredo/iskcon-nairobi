@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import { donationPaths } from "@/data/site";
 import Link from "next/link";
 import { Heart, Shield, Phone } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Donate",
+export const metadata = createPageMetadata({
+  title: "Donate to ISKCON Nairobi",
   description: "Support ISKCON Nairobi's temple, Food For Life, cow protection, student sponsorship, and festival programmes. M-PESA and card accepted.",
-};
+  path: "/donate",
+  image: "/images/donate/main-altar-offering.jpg",
+});
 
 export default function DonatePage() {
   return (

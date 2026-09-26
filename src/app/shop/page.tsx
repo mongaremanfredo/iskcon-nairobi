@@ -1,12 +1,15 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 import { ShoppingBag, Star } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Prasadam Sweet Shop",
   description: "Artisanal Vaishnava sweets and prasadam products from ISKCON Nairobi's kitchen. Festival specials, gift packs, and bulk orders.",
-};
+  path: "/shop",
+  image: "/images/food-for-life/khichdi-prasadam.jpg",
+  noIndex: true,
+});
 
 const products = [
   { name: "Laddhu (Box of 12)", price: "KES 950", desc: "Classic saffron-infused gram flour laddhu prepared with pure ghee. The original prasadam sweet.", tag: "Bestseller", image: "/images/food-for-life/khichdi-prasadam.jpg" },

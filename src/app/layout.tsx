@@ -12,9 +12,10 @@ import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import InstallPromptBanner from "@/components/ui/InstallPromptBanner";
 import { templeInfo } from "@/data/site";
 import { safeJsonLd } from "@/lib/security";
+import { DEFAULT_SOCIAL_IMAGE, SITE_URL } from "@/lib/metadata";
 
-const siteUrl = "https://iskconnairobi.com";
-const previewImage = "/brand/og-image.jpg?v=20260825";
+const siteUrl = SITE_URL;
+const previewImage = DEFAULT_SOCIAL_IMAGE;
 const iconVersion = "v=pwa-resilient-2026-08-24";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
@@ -66,7 +67,7 @@ export const metadata: Metadata = {
   applicationName: "ISKCON Nairobi",
   title: {
     default: siteTitle,
-    template: "%s",
+    template: "%s | ISKCON Nairobi",
   },
   description: siteDescription,
   keywords: ["ISKCON Nairobi", "Hare Krishna Kenya", "Krishna Consciousness", "HKTC", "Kirtan Safari", "Food For Life Kenya"],
@@ -74,9 +75,6 @@ export const metadata: Metadata = {
   creator: "ISKCON Nairobi",
   publisher: "ISKCON Nairobi",
   category: "religion",
-  alternates: {
-    canonical: "/",
-  },
   formatDetection: {
     telephone: true,
     email: true,
@@ -90,7 +88,7 @@ export const metadata: Metadata = {
   manifest: `/manifest.webmanifest?${iconVersion}`,
   openGraph: {
     type: "website",
-    locale: "en_US",
+    locale: "en_KE",
     url: siteUrl,
     siteName: "ISKCON Nairobi",
     title: siteTitle,

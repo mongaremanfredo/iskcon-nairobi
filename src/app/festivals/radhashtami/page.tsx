@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
@@ -13,11 +13,13 @@ import {
   Users,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Radhashtami",
   description:
     "Celebrate Radhashtami, the appearance day of Srimati Radharani, at ISKCON Nairobi with kirtan, class, worship, offerings, seva, and prasadam.",
-};
+  path: "/festivals/radhashtami",
+  image: "/images/calendar-radhashtami-sakhis.jpeg",
+});
 
 const story = [
   {

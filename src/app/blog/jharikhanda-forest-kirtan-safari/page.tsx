@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -14,38 +13,20 @@ import {
   TreePine,
 } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
+import { createPageMetadata } from "@/lib/metadata";
 
 const sourceUrl = "https://vedabase.io/en/library/cc/madhya/17/";
 const creditUrl = "https://pin.it/1DvGSgZr7";
 const heroImage = "/images/blog/jharikhanda-mahaprabhu-animals.jpeg";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "The Forest That Learned to Chant",
   description:
     "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
-  alternates: {
-    canonical: "/blog/jharikhanda-forest-kirtan-safari",
-  },
-  openGraph: {
-    title: "The Forest That Learned to Chant | ISKCON Nairobi",
-    description:
-      "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
-    images: [
-      {
-        url: heroImage,
-        width: 736,
-        height: 981,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "The Forest That Learned to Chant | ISKCON Nairobi",
-    description:
-      "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
-    images: [heroImage],
-  },
-};
+  path: "/blog/jharikhanda-forest-kirtan-safari",
+  image: heroImage,
+  imageAlt: "Sri Chaitanya Mahaprabhu chanting with the animals of Jharikhanda",
+});
 
 /* ---------- Prologue: the invocation lines before the story begins ---------- */
 const prologue = {

@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import { socialLinks } from "@/data/site";
 
-export const metadata: Metadata = {
-  title: "Media Gallery",
+export const metadata = createPageMetadata({
+  title: "ISKCON Nairobi Photo and Video Gallery",
   description: "Photos and videos from ISKCON Nairobi - temple life, festivals, community service, and the beauty of Krishna consciousness in East Africa.",
-};
+  path: "/media",
+  image: "/images/community/harinam-kirtan-devotees.jpg",
+});
 
 const categories = ["All", "Temple Life", "Festivals", "Farm & Goshala", "Food For Life", "HKTC", "Kirtan Safari"];
 

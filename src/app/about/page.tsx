@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
@@ -14,11 +14,13 @@ import {
   Users,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata = createPageMetadata({
+  title: "About ISKCON Nairobi",
   description:
     "Learn the story, beliefs, worship, community programmes, and Nairobi mission of Sri Sri Radha Bankebihari Temple, ISKCON Nairobi.",
-};
+  path: "/about",
+  image: "/images/iskcon-nairobi-aerial.jpg",
+});
 
 const storyMilestones = [
   {

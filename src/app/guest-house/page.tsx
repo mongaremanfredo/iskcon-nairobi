@@ -1,14 +1,16 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import GuestHouseEnquiryForm from "@/components/sections/GuestHouseEnquiryForm";
 import { guestRooms, templeInfo } from "@/data/site";
 import Link from "next/link";
 import { Wifi, Shield, Coffee, MapPin, Phone, Mail } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Guest House",
+export const metadata = createPageMetadata({
+  title: "ISKCON Nairobi Guest House",
   description: "Stay at ISKCON Nairobi's on-campus guest house. Serene, affordable accommodation with access to all temple programmes.",
-};
+  path: "/guest-house",
+  image: "/images/iskcon-thika-farm-2022.jpg",
+});
 
 const facilities = [
   { icon: <Wifi size={18} />, label: "Free WiFi", desc: "High-speed internet across the campus" },

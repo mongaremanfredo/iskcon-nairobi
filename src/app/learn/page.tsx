@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { ArrowRight, Bell, BookOpen, CalendarDays, Clock, GraduationCap, Home, LibraryBig, MessageCircle, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
@@ -6,11 +6,13 @@ import GitaCourseRegistrationModal, {
   GitaCourseRegistrationButton,
 } from "@/components/sections/GitaCourseRegistrationModal";
 
-export const metadata: Metadata = {
-  title: "Learn",
+export const metadata = createPageMetadata({
+  title: "Spiritual Education and Classes",
   description:
     "Daily Srimad-Bhagavatam classes, Bhagavad-gita study, HKTC philosophy classes, Sunday festival classes, Bhakti Vriksha, seminars, and personal guidance at ISKCON Nairobi.",
-};
+  path: "/learn",
+  image: "/images/krishna-student.jpeg",
+});
 
 const learningPaths = [
   {

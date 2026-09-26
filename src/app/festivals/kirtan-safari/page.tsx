@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Image from "next/image";
 import {
   BookOpen,
@@ -18,23 +18,14 @@ import { kirtanSafariGuestKirtaniyas } from "@/data/kirtanSafari";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Kirtan Safari 2026",
   description:
     "Relive Kirtan Safari 2026 at ISKCON Nairobi: four days of the holy name, guest kirtaniyas, Harinam, prasadam, service, and devotional community.",
-  openGraph: {
-    title: "Kirtan Safari 2026 | ISKCON Nairobi",
-    description:
-      "Four Days, One Holy Name. Revisit the 2026 Kirtan Safari gathering at ISKCON Nairobi and receive news of future editions.",
-    images: [
-      {
-        url: "/images/kirtan-safari-2026-hero-bg.jpg",
-        width: 612,
-        height: 367,
-      },
-    ],
-  },
-};
+  path: "/festivals/kirtan-safari",
+  image: "/images/kirtan-safari-2026-hero-bg.jpg",
+  imageAlt: "Kirtan Safari 2026 at ISKCON Nairobi",
+});
 
 /* ─── schedule data ─────────────────────────────────────── */
 const days = [

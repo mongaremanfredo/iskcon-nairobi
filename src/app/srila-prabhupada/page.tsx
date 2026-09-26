@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -11,11 +11,13 @@ import {
   Utensils,
 } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Srila Prabhupada",
+export const metadata = createPageMetadata({
+  title: "Srila Prabhupada and ISKCON Nairobi",
   description:
     "A tribute to His Divine Grace A.C. Bhaktivedanta Swami Prabhupada, Founder-Acarya of ISKCON, and his personal connection with Nairobi and East Africa.",
-};
+  path: "/srila-prabhupada",
+  image: "/images/prabhupada/prabhupada-golden-gate-kirtan.jpg",
+});
 
 const timeline = [
   {

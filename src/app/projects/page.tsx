@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { projects } from "@/data/site";
 import { ArrowRight } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Projects",
+export const metadata = createPageMetadata({
+  title: "Temple Projects and Community Service",
   description: "Explore ISKCON Nairobi projects in education, Food For Life, cow protection, farm service, festivals, and youth outreach.",
-};
+  path: "/projects",
+  image: "/images/iskcon-nairobi-aerial.jpg",
+});
 
 const tagClasses: Record<string, string> = {
   Education: "bg-gold/15 text-dusk border-gold/40",

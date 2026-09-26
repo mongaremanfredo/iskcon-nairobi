@@ -216,6 +216,15 @@ export default function HeroSection() {
         {/* Main Content */}
         <div className="hero-main flex-1 flex items-end pb-4 section-padding content-width sm:pb-10 lg:pb-14">
           <div className="hero-copy max-w-3xl">
+            <h1
+              className={cn(
+                "font-playfair text-white text-shadow leading-[0.94] mb-5 transition-all duration-1000",
+                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              )}
+              style={{ color: "#ffffff", fontSize: "clamp(2.65rem, 7vw, 5.5rem)" }}
+            >
+              ISKCON Nairobi
+            </h1>
             {/* Eyebrow */}
             <div
               className={cn(

@@ -1,11 +1,13 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 
-export const metadata: Metadata = {
-  title: "Food For Life",
+export const metadata = createPageMetadata({
+  title: "Food For Life Nairobi",
   description: "Distributing thousands of free prasādam meals monthly to students, street children, and vulnerable families across Nairobi.",
-};
+  path: "/projects/food-for-life",
+  image: "/images/food-for-life/prasadam-students.jpg",
+});
 
 export default function FoodForLifePage() {
   return (

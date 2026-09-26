@@ -1,13 +1,15 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo, templeScheduleGroups } from "@/data/site";
 import { MapPin, Clock, Phone, AlertCircle } from "lucide-react";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: "Visit the Temple",
+export const metadata = createPageMetadata({
+  title: "Visit ISKCON Nairobi Temple",
   description: "Plan your visit to ISKCON Nairobi. Temple timings, location, what to expect, and how to reach us.",
-};
+  path: "/visit",
+  image: "/images/iskcon-nairobi-aerial.jpg",
+});
 
 export default function VisitPage() {
   return (

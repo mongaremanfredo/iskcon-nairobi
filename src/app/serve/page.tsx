@@ -1,8 +1,13 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = { title: "Serve" };
+export const metadata = createPageMetadata({
+  title: "Volunteer at ISKCON Nairobi",
+  description: "Explore volunteer service in prasadam distribution, festivals, education, media, cow protection, and daily temple care.",
+  path: "/serve",
+  image: "/images/serve/krishna-balarama-service.jpeg",
+});
 
 const opportunities = [
   { emoji: "🍛", title: "Food For Life", desc: "Cook, pack, and distribute prasādam meals. Daily and weekend shifts available.", commitment: "Flexible" },

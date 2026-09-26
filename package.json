@@ -18,8 +18,9 @@
     "verify:pwa": "node scripts/verify-pwa.mjs",
     "verify:security": "node scripts/verify-security-config.mjs",
     "verify:assets": "node scripts/verify-repository-assets.mjs",
+    "verify:seo": "node scripts/verify-seo.mjs",
     "verify:promotion": "node scripts/verify-promotion.mjs",
-    "check:release": "npm run audit:dependencies && npm run lint && npm run test:festival && npm run verify:pwa && npm run verify:security && npm run verify:assets && npm run build",
+    "check:release": "npm run audit:dependencies && npm run lint && npm run test:festival && npm run verify:pwa && npm run verify:security && npm run verify:assets && npm run verify:seo && npm run build",
     "send-push": "node --env-file=.env.local scripts/send-push.mjs"
   },
   "dependencies": {

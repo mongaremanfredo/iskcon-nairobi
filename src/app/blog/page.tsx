@@ -1,15 +1,17 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Clock, Leaf, Music2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { blogPosts } from "@/data/blog";
 
-export const metadata: Metadata = {
-  title: "Blog",
+export const metadata = createPageMetadata({
+  title: "Stories and Teachings",
   description:
     "Devotional essays, festival stories, and scriptural reflections from ISKCON Nairobi.",
-};
+  path: "/blog",
+  image: "/images/blog/jharikhanda-mahaprabhu-animals.jpeg",
+});
 
 const categoryIcons: Record<string, LucideIcon> = {
   "Scriptural Reflection": BookOpen,

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import HeroSection from "@/components/sections/HeroSection";
 import QuickNavSection from "@/components/sections/QuickNavSection";
 import FestivalHighlightSection from "@/components/sections/FestivalHighlightSection";
@@ -11,12 +10,16 @@ import DonationSection from "@/components/sections/DonationSection";
 import GallerySection from "@/components/sections/GallerySection";
 import GuestHouseSection from "@/components/sections/GuestHouseSection";
 import SavannaDivider from "@/components/ui/SavannaDivider";
+import { createPageMetadata } from "@/lib/metadata";
 
-export const metadata: Metadata = {
-  title: {
-    absolute: "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple",
-  },
-};
+export const metadata = createPageMetadata({
+  title: "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple",
+  description:
+    "Visit ISKCON Nairobi for daily darshan, kirtan, prasadam, spiritual education, festivals, cow protection, and service in East Africa.",
+  path: "/",
+  image: "/brand/og-image.jpg?v=20260825",
+  imageAlt: "ISKCON Nairobi, Sri Sri Radha Bankebihari Temple",
+});
 
 export default function HomePage() {
   return (

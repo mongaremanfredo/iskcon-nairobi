@@ -1,12 +1,14 @@
-import type { Metadata } from "next";
+import { createPageMetadata } from "@/lib/metadata";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 import { templeInfo } from "@/data/site";
 
-export const metadata: Metadata = {
+export const metadata = createPageMetadata({
   title: "Gaura Purnima",
   description: "Celebrate Sri Chaitanya Mahaprabhu's appearance day at ISKCON Nairobi with kirtan, abhishek, class, and prasadam.",
-};
+  path: "/festivals/gaura-purnima",
+  image: "/images/community/iskcon-temple-architecture.jpg",
+});
 
 export default function GauraPurnimaPage() {
   const description = "Gaura Purnima is the appearance day of Sri Chaitanya Mahaprabhu, celebrated with fasting, kirtan, abhishek, class, and an evening feast.";
