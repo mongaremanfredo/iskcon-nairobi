@@ -1,85 +1,104 @@
 "use client";
 
 import Link from "next/link";
-import { BookOpen, Heart, MapPin, HandHeart } from "lucide-react";
+import { ArrowUpRight, BookOpen, HandHeart, Heart, MapPin } from "lucide-react";
 
 const navCards = [
   {
     icon: MapPin,
     title: "Visit Temple",
-    description: "Temple timings, location, and what to expect on your first visit.",
+    description: "Temple timings, directions, and what to expect on your first visit.",
     href: "/visit",
-    color: "bg-primary",
-    accent: "text-primary",
-    bg: "hover:bg-primary/5",
+    accent: "text-[#f09a6f]",
+    line: "bg-primary",
+    hover: "hover:bg-primary/35",
+    motif: "-right-16 top-20 -rotate-[28deg]",
   },
   {
     icon: BookOpen,
     title: "Learn",
-    description: "New 6-week Bhagavad Gita course, philosophy programmes, and weekly classes.",
+    description: "Bhagavad Gita, philosophy programmes, and weekly classes.",
     href: "/learn",
-    color: "bg-gold",
-    accent: "text-gold",
-    bg: "hover:bg-gold/5",
+    accent: "text-gold-light",
+    line: "bg-gold",
+    hover: "hover:bg-gold-dark/35",
+    motif: "-right-20 top-12 rotate-[34deg]",
   },
   {
     icon: HandHeart,
     title: "Serve",
     description: "Volunteer with Food For Life, the farm, festivals, and more.",
     href: "/serve",
-    color: "bg-sunset",
-    accent: "text-sunset",
-    bg: "hover:bg-sunset/5",
+    accent: "text-[#9fc092]",
+    line: "bg-acacia",
+    hover: "hover:bg-acacia/35",
+    motif: "-right-12 top-24 -rotate-[18deg]",
   },
   {
     icon: Heart,
     title: "Donate",
     description: "Support temple worship, cow protection, students, and prasadam.",
     href: "/donate",
-    color: "bg-primary",
-    accent: "text-primary",
-    bg: "hover:bg-primary/5",
+    accent: "text-[#f09a6f]",
+    line: "bg-sunset",
+    hover: "hover:bg-sunset/35",
+    motif: "-right-20 top-16 rotate-[24deg]",
   },
 ];
 
 export default function QuickNavSection() {
   return (
-    <section className="pt-9 pb-10 bg-temple-cream sm:pt-[clamp(1.7rem,3.35vw,3.35rem)] sm:pb-section-sm">
-      <div className="content-width px-3 sm:px-6 lg:px-8">
-        <div className="text-center mb-6 sm:mb-10">
-          <span className="eyebrow">Find Your Path</span>
+    <section className="bg-temple-cream pb-7 pt-9 sm:pb-10 sm:pt-12">
+      <div className="content-width section-padding">
+        <div className="mb-5 flex items-center gap-5 sm:mb-7">
+          <span className="eyebrow shrink-0">Find Your Path</span>
+          <span className="h-px flex-1 bg-gold/35" aria-hidden="true" />
         </div>
 
-        <div className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4 lg:gap-6">
-          {navCards.map((card) => {
+        <nav
+          aria-label="Explore ISKCON Nairobi"
+          className="grid grid-cols-2 overflow-hidden border border-dusk/20 bg-dusk lg:grid-cols-4"
+        >
+          {navCards.map((card, index) => {
             const Icon = card.icon;
+            const mobileRightBorder = index % 2 === 0 ? "border-r" : "";
+            const mobileBottomBorder = index < 2 ? "border-b" : "";
+
             return (
               <Link
                 key={card.href}
                 href={card.href}
-                className={`group relative flex min-h-[164px] flex-col items-start bg-white border border-temple-sand p-3.5 transition-all duration-300 sm:min-h-0 sm:p-6 lg:p-8 ${card.bg} hover:shadow-card-hover hover:-translate-y-1`}
+                className={`group relative flex min-h-[224px] flex-col overflow-hidden border-white/15 p-4 text-white transition-colors duration-300 sm:min-h-[250px] sm:p-6 lg:min-h-[285px] lg:border-b-0 lg:border-r lg:p-7 lg:last:border-r-0 ${mobileRightBorder} ${mobileBottomBorder} ${card.hover}`}
               >
-                <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full ${card.color} flex items-center justify-center mb-3 sm:mb-5 flex-shrink-0`}>
-                  <Icon size={16} className="text-white sm:size-[18px]" />
+                <span className={`absolute inset-x-0 top-0 h-1 transition-colors duration-300 group-hover:bg-white/55 ${card.line}`} aria-hidden="true" />
+                <span className={`absolute h-28 w-64 border-y border-white/[0.07] transition-all duration-500 group-hover:border-white/[0.14] ${card.motif}`} aria-hidden="true" />
+                <span className="absolute -right-20 top-1/2 h-px w-72 -rotate-[42deg] bg-white/[0.06] transition-all duration-500 group-hover:bg-white/[0.13]" aria-hidden="true" />
+                <span
+                  className="absolute left-0 top-14 h-px w-12 bg-white/75 transition-all duration-500 group-hover:w-20 group-focus-visible:w-20 sm:top-16"
+                  aria-hidden="true"
+                >
+                  <span className={`block h-full w-full ${card.line} transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0`} />
+                </span>
+
+                <div className="relative z-10 flex h-11 w-11 items-center justify-center border border-white/20 bg-white/[0.035] sm:h-12 sm:w-12">
+                  <Icon size={20} className={`${card.accent} transition-colors group-hover:text-white`} aria-hidden="true" />
                 </div>
 
-                <h3 className="font-playfair text-lg sm:text-xl font-semibold text-ink mb-1.5 sm:mb-2 leading-tight transition-colors group-hover:text-primary">
-                  {card.title}
-                </h3>
-                <p className="font-inter text-[0.72rem] sm:text-body-sm text-ink/60 leading-relaxed">
-                  {card.description}
-                </p>
-
-                <div className={`mt-auto pt-4 flex items-center gap-1 font-inter text-[0.62rem] sm:text-xs font-semibold tracking-widest uppercase ${card.accent} opacity-70 sm:opacity-0 group-hover:opacity-100 transition-opacity`}>
-                  <span>Explore</span>
-                  <span>→</span>
+                <div className="relative z-10 mt-auto pt-8 sm:pt-10">
+                  <h3 className="font-playfair text-xl font-semibold leading-tight text-white sm:text-2xl">
+                    {card.title}
+                  </h3>
+                  <p className="mt-2 font-inter text-[0.72rem] leading-relaxed text-white/58 transition-colors group-hover:text-white/80 sm:text-sm">
+                    {card.description}
+                  </p>
+                  <span className="mt-5 inline-flex items-center gap-2 font-inter text-[0.62rem] font-bold uppercase tracking-[0.14em] text-white/70 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
+                    Explore <ArrowUpRight size={14} aria-hidden="true" />
+                  </span>
                 </div>
-
-                <div className={`absolute bottom-0 left-0 right-0 h-0.5 ${card.color} scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left`} />
               </Link>
             );
           })}
-        </div>
+        </nav>
       </div>
     </section>
   );

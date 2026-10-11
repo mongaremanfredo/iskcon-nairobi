@@ -10,6 +10,7 @@ import {
   disablePushOnDevice,
   enablePushOnDevice,
   keepDevicePushSubscribed,
+  syncPushPreferences,
 } from "@/lib/pushClient";
 import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
@@ -185,6 +186,9 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
     if (!keepDevicePushSubscribed(OPT_IN_KEY)) {
       const registration = await navigator.serviceWorker.getRegistration();
       await disablePushOnDevice(registration ?? null);
+    } else {
+      const registration = await navigator.serviceWorker.getRegistration();
+      await syncPushPreferences(registration ?? null);
     }
   };
 

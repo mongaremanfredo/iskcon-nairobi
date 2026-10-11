@@ -9,6 +9,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:festival": "vitest run src/lib/kirtanSafariState.test.ts",
+    "test:calendar-push": "vitest run src/lib/calendarPushSchedule.test.ts",
     "verify:pwa": "node scripts/verify-pwa.mjs",
     "send-push": "node --env-file=.env.local scripts/send-push.mjs"
   },
@@ -30,6 +31,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/web-push": "^3.6.4",
     "eslint": "^9.39.4",
     "eslint-config-next": "^16.2.12",
     "tailwindcss": "^4.3.3",

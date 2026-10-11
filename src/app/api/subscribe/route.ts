@@ -61,6 +61,10 @@ export async function POST(request: NextRequest) {
         keys?: { p256dh?: unknown; auth?: unknown };
       };
       userAgent?: unknown;
+      preferences?: {
+        calendar?: unknown;
+        noticeboard?: unknown;
+      };
     }>(request, maxRequestBytes);
 
     const endpoint =
@@ -79,6 +83,14 @@ export async function POST(request: NextRequest) {
       typeof payload.userAgent === "string"
         ? asPlainText(payload.userAgent, 200)
         : "";
+    const calendarEnabled =
+      typeof payload.preferences?.calendar === "boolean"
+        ? payload.preferences.calendar
+        : undefined;
+    const noticeboardEnabled =
+      typeof payload.preferences?.noticeboard === "boolean"
+        ? payload.preferences.noticeboard
+        : undefined;
 
     if (
       !isValidPushEndpoint(endpoint) ||
@@ -89,7 +101,14 @@ export async function POST(request: NextRequest) {
     }
 
     await ensurePushSheet();
-    await upsertPushSubscription({ endpoint, p256dh, auth, userAgent });
+    await upsertPushSubscription({
+      endpoint,
+      p256dh,
+      auth,
+      userAgent,
+      calendarEnabled,
+      noticeboardEnabled,
+    });
 
     return NextResponse.json({ ok: true });
   } catch (error) {

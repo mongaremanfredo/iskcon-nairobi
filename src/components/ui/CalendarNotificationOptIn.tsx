@@ -7,6 +7,7 @@ import {
   disablePushOnDevice,
   enablePushOnDevice,
   keepDevicePushSubscribed,
+  syncPushPreferences,
 } from "@/lib/pushClient";
 
 const OPT_IN_KEY = "iskcon-calendar-notifications";
@@ -106,6 +107,9 @@ export default function CalendarNotificationOptIn() {
     if (!keepDevicePushSubscribed(OPT_IN_KEY)) {
       const registration = await navigator.serviceWorker.getRegistration();
       await disablePushOnDevice(registration ?? null);
+    } else {
+      const registration = await navigator.serviceWorker.getRegistration();
+      await syncPushPreferences(registration ?? null);
     }
   };
 

@@ -162,8 +162,8 @@ export default function AboutPage() {
                 </p>
                 <p>
                   ISKCON Nairobi is one of the oldest ISKCON centres in Africa. It carries the personal imprint of
-                  Srila A.C. Bhaktivedanta Swami Prabhupada, who wanted Krishna consciousness shared with all of
-                  Kenya, not only with one community.
+                  Srila A.C. Bhaktivedanta Swami Prabhupada, whose vision continues to inspire a welcoming
+                  spiritual community serving people throughout Kenya.
                 </p>
               </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">

@@ -20,7 +20,7 @@ const pinTone: Record<string, string> = {
 export default function ProjectsSection() {
   return (
     <section id="our-work" className="projects-scene relative overflow-hidden bg-temple-bg bg-temple-texture scroll-mt-24">
-      <div className="content-width section-padding py-section">
+      <div className="content-width section-padding pb-section pt-8 sm:pt-10">
         {/* Header */}
         <div className="grid items-end gap-7 border-t-2 border-gold/35 pt-7 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>

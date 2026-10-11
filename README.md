@@ -57,6 +57,8 @@ ANALYTICS_SHEET_ID=
 
 If `PUSH_SUBSCRIPTIONS_SHEET_ID` is not set, push subscriptions are stored in a `PushSubscriptions` tab inside the contact spreadsheet. This is intentional for the current setup.
 
+Calendar reminders are sent by the protected Vercel Cron route at 07:00 Africa/Nairobi time. Set `CRON_SECRET` in Vercel; Vercel sends it to `/api/cron/calendar-reminders` as a bearer token. The route sends only to subscriptions with calendar reminders enabled and records completed event deliveries in the `PushDeliveryLog` tab to prevent duplicate broadcasts. Browser timers must not be used for scheduled reminders because mobile operating systems suspend closed apps.
+
 If `ANALYTICS_SHEET_ID` is not set, page-open and app-install analytics are stored in a `WebsiteAnalytics` tab inside the contact spreadsheet.
 
 Public client variable:

@@ -84,12 +84,29 @@ async function registerWithServer(subscription: PushSubscription): Promise<boole
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         subscription: subscriptionToJson(subscription),
+        preferences: {
+          calendar:
+            window.localStorage.getItem("iskcon-calendar-notifications") === "enabled",
+          noticeboard:
+            window.localStorage.getItem("iskcon-noticeboard-notifications") === "enabled",
+        },
       }),
     });
 
     return response.ok;
   } catch {
     return false;
+  }
+}
+
+export async function syncPushPreferences(
+  registration: ServiceWorkerRegistration | null
+): Promise<void> {
+  if (!registration) return;
+
+  const subscription = await currentSubscription(registration);
+  if (subscription) {
+    await registerWithServer(subscription);
   }
 }
 

@@ -41,7 +41,7 @@ const timeline = [
   {
     year: "1971-72",
     title: "Nairobi blessed",
-    text: "He visited Kenya, preached in Nairobi, directed outreach to African people, and personally installed Sri Sri Radha Bankebihari in 1972.",
+    text: "He visited Kenya, preached in Nairobi, encouraged broad outreach across the country, and personally installed Sri Sri Radha Bankebihari in 1972.",
   },
   {
     year: "1977",
@@ -203,7 +203,7 @@ export default function SrilaPrabhupadaPage() {
                   ISKCON's early Kenyan work began remarkably soon after the society was founded. Srila Prabhupada came to Nairobi in 1971, giving darshan, leading kirtan, lecturing in the evenings, and encouraging the devotees who were trying to establish Krishna consciousness in East Africa.
                 </p>
                 <p>
-                  Nairobi was not peripheral to him. He instructed his leaders that Kenya was an African country and that Krishna consciousness should be shared with African people, not only with the resident Indian community. That instruction still shapes the heart of ISKCON Nairobi's outreach, education, Food For Life, and student work.
+                  Nairobi held a meaningful place in his East African mission. He encouraged the devotees to share Krishna consciousness widely throughout Kenya. That spirit of welcome and service continues to shape ISKCON Nairobi's outreach, education, Food For Life, and student work.
                 </p>
                 <p>
                   In 1972, Srila Prabhupada personally installed Sri Sri Radha Bankebihari in Nairobi. The worship, kirtan, prasadam, and hospitality offered today at Hare Krishna Close stand in continuity with that personal blessing.

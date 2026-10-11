@@ -10,6 +10,8 @@ export type PushSubscriptionRecord = {
   endpoint: string;
   keys: { p256dh: string; auth: string };
   userAgent: string;
+  calendarEnabled: boolean;
+  noticeboardEnabled: boolean;
 };
 
 type PushSheetRef = {
@@ -95,14 +97,14 @@ export async function listPushSubscriptions(): Promise<
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${PUSH_SHEET_NAME}!A:E`,
+    range: `${PUSH_SHEET_NAME}!A:G`,
   });
 
   const rows = response.data.values ?? [];
   const records: { record: PushSubscriptionRecord; rowNumber: number }[] = [];
 
   rows.forEach((row, index) => {
-    const [createdAt, endpoint, p256dh, auth, userAgent] = row;
+    const [createdAt, endpoint, p256dh, auth, userAgent, calendarEnabled, noticeboardEnabled] = row;
 
     if (
       typeof endpoint === "string" &&
@@ -118,6 +120,8 @@ export async function listPushSubscriptions(): Promise<
           endpoint,
           keys: { p256dh, auth },
           userAgent: typeof userAgent === "string" ? userAgent : "",
+          calendarEnabled: calendarEnabled === true || calendarEnabled === "TRUE",
+          noticeboardEnabled: noticeboardEnabled === true || noticeboardEnabled === "TRUE",
         },
         rowNumber: index + 1,
       });
@@ -137,6 +141,8 @@ export async function upsertPushSubscription(input: {
   p256dh: string;
   auth: string;
   userAgent: string;
+  calendarEnabled?: boolean;
+  noticeboardEnabled?: boolean;
 }): Promise<boolean> {
   const lockKey = createHash("sha256").update(input.endpoint).digest("hex");
   if (pushEndpointLocks.has(lockKey)) {
@@ -156,12 +162,14 @@ export async function upsertPushSubscription(input: {
       input.p256dh,
       input.auth,
       asSheetText(input.userAgent),
+      input.calendarEnabled ?? existing?.record.calendarEnabled ?? false,
+      input.noticeboardEnabled ?? existing?.record.noticeboardEnabled ?? false,
     ];
 
     if (existing) {
       await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: `${PUSH_SHEET_NAME}!A${existing.rowNumber}:E${existing.rowNumber}`,
+        range: `${PUSH_SHEET_NAME}!A${existing.rowNumber}:G${existing.rowNumber}`,
         valueInputOption: "USER_ENTERED",
         requestBody: { values: [values] },
       });
@@ -170,7 +178,7 @@ export async function upsertPushSubscription(input: {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: `${PUSH_SHEET_NAME}!A:E`,
+      range: `${PUSH_SHEET_NAME}!A:G`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [
