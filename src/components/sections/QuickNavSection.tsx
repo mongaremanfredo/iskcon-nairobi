@@ -9,40 +9,36 @@ const navCards = [
     title: "Visit Temple",
     description: "Temple timings, directions, and what to expect on your first visit.",
     href: "/visit",
-    accent: "text-[#f09a6f]",
+    accent: "text-primary",
     line: "bg-primary",
-    hover: "hover:bg-primary/35",
-    motif: "-right-16 top-20 -rotate-[28deg]",
+    hover: "hover:border-primary/35",
   },
   {
     icon: BookOpen,
     title: "Learn",
     description: "Bhagavad Gita, philosophy programmes, and weekly classes.",
     href: "/learn",
-    accent: "text-gold-light",
+    accent: "text-gold-dark",
     line: "bg-gold",
-    hover: "hover:bg-gold-dark/35",
-    motif: "-right-20 top-12 rotate-[34deg]",
+    hover: "hover:border-gold/50",
   },
   {
     icon: HandHeart,
     title: "Serve",
     description: "Volunteer with Food For Life, the farm, festivals, and more.",
     href: "/serve",
-    accent: "text-[#9fc092]",
+    accent: "text-acacia",
     line: "bg-acacia",
-    hover: "hover:bg-acacia/35",
-    motif: "-right-12 top-24 -rotate-[18deg]",
+    hover: "hover:border-acacia/45",
   },
   {
     icon: Heart,
     title: "Donate",
     description: "Support temple worship, cow protection, students, and prasadam.",
     href: "/donate",
-    accent: "text-[#f09a6f]",
+    accent: "text-sunset",
     line: "bg-sunset",
-    hover: "hover:bg-sunset/35",
-    motif: "-right-20 top-16 rotate-[24deg]",
+    hover: "hover:border-sunset/45",
   },
 ];
 
@@ -50,48 +46,38 @@ export default function QuickNavSection() {
   return (
     <section className="bg-temple-cream pb-7 pt-9 sm:pb-10 sm:pt-12">
       <div className="content-width section-padding">
-        <div className="mb-5 flex items-center gap-5 sm:mb-7">
-          <span className="eyebrow shrink-0">Find Your Path</span>
-          <span className="h-px flex-1 bg-gold/35" aria-hidden="true" />
+        <div className="mb-5 text-center sm:mb-7 sm:flex sm:items-center sm:gap-5 sm:text-left">
+          <span className="eyebrow sm:shrink-0">Find Your Path</span>
+          <span className="hidden h-px flex-1 bg-gold/35 sm:block" aria-hidden="true" />
         </div>
 
         <nav
           aria-label="Explore ISKCON Nairobi"
-          className="grid grid-cols-2 overflow-hidden border border-dusk/20 bg-dusk lg:grid-cols-4"
+          className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4 lg:gap-5"
         >
-          {navCards.map((card, index) => {
+          {navCards.map((card) => {
             const Icon = card.icon;
-            const mobileRightBorder = index % 2 === 0 ? "border-r" : "";
-            const mobileBottomBorder = index < 2 ? "border-b" : "";
 
             return (
               <Link
                 key={card.href}
                 href={card.href}
-                className={`group relative flex min-h-[224px] flex-col overflow-hidden border-white/15 p-4 text-white transition-colors duration-300 sm:min-h-[250px] sm:p-6 lg:min-h-[285px] lg:border-b-0 lg:border-r lg:p-7 lg:last:border-r-0 ${mobileRightBorder} ${mobileBottomBorder} ${card.hover}`}
+                className={`group relative flex min-h-[168px] flex-col border border-temple-sand bg-white p-3.5 text-ink shadow-sm transition-all duration-300 sm:min-h-[210px] sm:p-6 lg:min-h-[238px] lg:p-7 ${card.hover} hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:-translate-y-0.5 focus-visible:shadow-card-hover`}
               >
-                <span className={`absolute inset-x-0 top-0 h-1 transition-colors duration-300 group-hover:bg-white/55 ${card.line}`} aria-hidden="true" />
-                <span className={`absolute h-28 w-64 border-y border-white/[0.07] transition-all duration-500 group-hover:border-white/[0.14] ${card.motif}`} aria-hidden="true" />
-                <span className="absolute -right-20 top-1/2 h-px w-72 -rotate-[42deg] bg-white/[0.06] transition-all duration-500 group-hover:bg-white/[0.13]" aria-hidden="true" />
-                <span
-                  className="absolute left-0 top-14 h-px w-12 bg-white/75 transition-all duration-500 group-hover:w-20 group-focus-visible:w-20 sm:top-16"
-                  aria-hidden="true"
-                >
-                  <span className={`block h-full w-full ${card.line} transition-opacity duration-300 group-hover:opacity-0 group-focus-visible:opacity-0`} />
-                </span>
+                <span className={`absolute inset-x-0 top-0 h-0.5 ${card.line}`} aria-hidden="true" />
 
-                <div className="relative z-10 flex h-11 w-11 items-center justify-center border border-white/20 bg-white/[0.035] sm:h-12 sm:w-12">
-                  <Icon size={20} className={`${card.accent} transition-colors group-hover:text-white`} aria-hidden="true" />
+                <div className="flex h-9 w-9 items-center justify-center border border-temple-sand bg-temple-cream/55 sm:h-11 sm:w-11">
+                  <Icon size={18} className={card.accent} aria-hidden="true" />
                 </div>
 
-                <div className="relative z-10 mt-auto pt-8 sm:pt-10">
-                  <h3 className="font-playfair text-xl font-semibold leading-tight text-white sm:text-2xl">
+                <div className="mt-auto pt-4 sm:pt-7">
+                  <h3 className="font-playfair text-lg font-semibold leading-tight text-ink sm:text-2xl">
                     {card.title}
                   </h3>
-                  <p className="mt-2 font-inter text-[0.72rem] leading-relaxed text-white/58 transition-colors group-hover:text-white/80 sm:text-sm">
+                  <p className="mt-1.5 font-inter text-[0.7rem] leading-relaxed text-ink/60 sm:mt-2 sm:text-sm">
                     {card.description}
                   </p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-inter text-[0.62rem] font-bold uppercase tracking-[0.14em] text-white/70 transition-all duration-300 lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
+                  <span className="mt-5 hidden items-center gap-2 font-inter text-[0.62rem] font-bold uppercase tracking-[0.14em] text-primary transition-all duration-300 lg:inline-flex lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
                     Explore <ArrowUpRight size={14} aria-hidden="true" />
                   </span>
                 </div>
