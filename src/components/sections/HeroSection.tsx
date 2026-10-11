@@ -177,7 +177,7 @@ export default function HeroSection() {
   const currentHero = heroImages[currentImage];
 
   return (
-    <section className="home-hero relative w-full h-[100svh] min-h-[620px] max-h-[1000px] overflow-hidden sm:h-screen sm:min-h-[600px]">
+    <section className="home-hero relative w-full h-[88svh] min-h-[620px] max-h-[1000px] overflow-hidden sm:h-screen sm:min-h-[600px]">
       <KirtanSafariRegistrationModal />
       {/* Background Images */}
       {heroImages.map((image, i) => (
