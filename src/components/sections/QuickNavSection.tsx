@@ -66,15 +66,17 @@ export default function QuickNavSection() {
               >
                 <span className={`absolute inset-x-0 top-0 h-0.5 ${card.line}`} aria-hidden="true" />
 
-                <div className="flex h-9 w-9 items-center justify-center border border-temple-sand bg-temple-cream/55 sm:h-11 sm:w-11">
-                  <Icon size={18} className={card.accent} aria-hidden="true" />
+                <div className="relative flex h-9 w-full items-center sm:h-11">
+                  <span
+                    className={`absolute -left-3.5 top-1/2 z-20 h-px w-16 -translate-y-1/2 ${card.line} transition-all duration-300 group-hover:w-24 group-focus-visible:w-24 sm:-left-6 sm:w-20`}
+                    aria-hidden="true"
+                  />
+                  <div className="relative flex h-9 w-9 items-center justify-center border border-temple-sand bg-white/75 sm:h-11 sm:w-11">
+                    <Icon size={18} className={`relative z-30 ${card.accent}`} aria-hidden="true" />
+                  </div>
                 </div>
-                <span
-                  className={`mt-3 h-0.5 w-8 origin-left ${card.line} transition-all duration-300 group-hover:w-12 group-focus-visible:w-12`}
-                  aria-hidden="true"
-                />
 
-                <div className="mt-auto pt-3 sm:pt-5">
+                <div className="mt-auto pt-4 sm:pt-6">
                   <h3 className="font-playfair text-lg font-semibold leading-tight text-ink sm:text-2xl">
                     {card.title}
                   </h3>
