@@ -54,6 +54,7 @@ export default function QuickNavSection() {
         <nav
           aria-label="Explore ISKCON Nairobi"
           className="grid grid-cols-2 gap-2.5 sm:gap-4 lg:grid-cols-4 lg:gap-5"
+          style={{ gridAutoRows: "1fr" }}
         >
           {navCards.map((card) => {
             const Icon = card.icon;
@@ -66,13 +67,16 @@ export default function QuickNavSection() {
               >
                 <span className={`absolute inset-x-0 top-0 h-0.5 ${card.line}`} aria-hidden="true" />
 
-                <div className="relative flex h-9 w-full items-center sm:h-11">
+                <div className="relative flex h-12 w-full items-center">
                   <span
-                    className={`absolute -left-3.5 top-1/2 z-20 h-px w-16 -translate-y-1/2 ${card.line} transition-all duration-300 group-hover:w-24 group-focus-visible:w-24 sm:-left-6 sm:w-20`}
+                    className={`absolute -left-3.5 z-20 h-px w-8 ${card.line} transition-all duration-300 group-hover:w-16 group-focus-visible:w-16 sm:-left-6 sm:w-[2.875rem] sm:group-hover:w-20 sm:group-focus-visible:w-20 lg:-left-7 lg:w-[3.125rem] lg:group-hover:w-20 lg:group-focus-visible:w-20`}
+                    style={{ top: "75%" }}
                     aria-hidden="true"
                   />
-                  <div className="relative flex h-9 w-9 items-center justify-center border border-temple-sand bg-white/75 sm:h-11 sm:w-11">
-                    <Icon size={18} className={`relative z-30 ${card.accent}`} aria-hidden="true" />
+                  <div className="relative z-10 flex h-12 w-12 items-center justify-center border border-temple-sand bg-white/35">
+                    <span className="relative z-30 flex h-7 w-7 items-center justify-center bg-white">
+                      <Icon size={20} className={card.accent} aria-hidden="true" />
+                    </span>
                   </div>
                 </div>
 

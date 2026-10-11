@@ -80,6 +80,16 @@ export default function PwaRegistrar() {
   useEffect(() => {
     if (!("serviceWorker" in navigator)) return;
 
+    // Development must always render the current source instead of a cached PWA shell.
+    if (process.env.NODE_ENV !== "production") {
+      void navigator.serviceWorker
+        .getRegistrations()
+        .then((registrations) =>
+          Promise.all(registrations.map((registration) => registration.unregister()))
+        );
+      return;
+    }
+
     const canRegister =
       window.location.protocol === "https:" || window.location.hostname === "localhost";
     if (!canRegister) return;
