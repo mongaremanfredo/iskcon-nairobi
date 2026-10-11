@@ -11,7 +11,7 @@ const navCards = [
     href: "/visit",
     accent: "text-primary",
     line: "bg-primary",
-    hover: "hover:border-primary/35",
+    hover: "hover:border-primary/35 hover:bg-primary/[0.055]",
   },
   {
     icon: BookOpen,
@@ -20,7 +20,7 @@ const navCards = [
     href: "/learn",
     accent: "text-gold-dark",
     line: "bg-gold",
-    hover: "hover:border-gold/50",
+    hover: "hover:border-gold/50 hover:bg-gold/[0.07]",
   },
   {
     icon: HandHeart,
@@ -29,7 +29,7 @@ const navCards = [
     href: "/serve",
     accent: "text-acacia",
     line: "bg-acacia",
-    hover: "hover:border-acacia/45",
+    hover: "hover:border-acacia/45 hover:bg-acacia/[0.065]",
   },
   {
     icon: Heart,
@@ -38,7 +38,7 @@ const navCards = [
     href: "/donate",
     accent: "text-sunset",
     line: "bg-sunset",
-    hover: "hover:border-sunset/45",
+    hover: "hover:border-sunset/45 hover:bg-sunset/[0.06]",
   },
 ];
 
@@ -69,8 +69,12 @@ export default function QuickNavSection() {
                 <div className="flex h-9 w-9 items-center justify-center border border-temple-sand bg-temple-cream/55 sm:h-11 sm:w-11">
                   <Icon size={18} className={card.accent} aria-hidden="true" />
                 </div>
+                <span
+                  className={`mt-3 h-0.5 w-8 origin-left ${card.line} transition-all duration-300 group-hover:w-12 group-focus-visible:w-12`}
+                  aria-hidden="true"
+                />
 
-                <div className="mt-auto pt-4 sm:pt-7">
+                <div className="mt-auto pt-3 sm:pt-5">
                   <h3 className="font-playfair text-lg font-semibold leading-tight text-ink sm:text-2xl">
                     {card.title}
                   </h3>
