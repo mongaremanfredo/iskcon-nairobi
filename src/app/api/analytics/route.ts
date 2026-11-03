@@ -97,7 +97,17 @@ function decodedHeaderText(request: NextRequest, name: string, maxLength: number
   }
 }
 
+// Local development and automated test runs share the production credentials in
+// .env.local, so they must never append to the visitor analytics sheet.
+function isAnalyticsWriteEnabled() {
+  return process.env.NODE_ENV === "production" && process.env.ANALYTICS_DISABLED !== "true";
+}
+
 export async function POST(request: NextRequest) {
+  if (!isAnalyticsWriteEnabled()) {
+    return NextResponse.json({ ok: true });
+  }
+
   try {
     const blocked = validatePublicJsonRequest(request, {
       key: "analytics",

@@ -48,3 +48,8 @@ server.err.log
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# playwright
+/test-results/
+/playwright-report/
+/tests/e2e/__screenshots__/

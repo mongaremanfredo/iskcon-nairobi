@@ -1,0 +1,191 @@
+{
+  "desktop /": {
+    "color-contrast": 1
+  },
+  "desktop /about": {
+    "color-contrast": 4
+  },
+  "desktop /blog": {
+    "color-contrast": 1
+  },
+  "desktop /blog/jharikhanda-forest-kirtan-safari": {
+    "color-contrast": 3,
+    "link-in-text-block": 1
+  },
+  "desktop /blog/sri-nama-sankirtana-adhivasa": {
+    "color-contrast": 3
+  },
+  "desktop /contact": {
+    "color-contrast": 1
+  },
+  "desktop /donate": {
+    "color-contrast": 1
+  },
+  "desktop /donate/general": {
+    "color-contrast": 1
+  },
+  "desktop /festivals": {
+    "color-contrast": 1
+  },
+  "desktop /festivals/gaura-purnima": {
+    "color-contrast": 1
+  },
+  "desktop /festivals/janmashtami": {
+    "color-contrast": 1
+  },
+  "desktop /festivals/kirtan-safari": {
+    "color-contrast": 3
+  },
+  "desktop /festivals/radhashtami": {
+    "color-contrast": 1
+  },
+  "desktop /festivals/rath-yatra": {
+    "color-contrast": 1
+  },
+  "desktop /guest-house": {
+    "color-contrast": 1
+  },
+  "desktop /leadership": {
+    "color-contrast": 1
+  },
+  "desktop /learn": {
+    "color-contrast": 8
+  },
+  "desktop /media": {
+    "color-contrast": 1
+  },
+  "desktop /offline": {
+    "color-contrast": 1
+  },
+  "desktop /privacy": {
+    "color-contrast": 1
+  },
+  "desktop /projects": {
+    "color-contrast": 1
+  },
+  "desktop /projects/food-for-life": {
+    "color-contrast": 1
+  },
+  "desktop /projects/hktc-juja": {
+    "color-contrast": 1
+  },
+  "desktop /projects/hktc-nairobi": {
+    "color-contrast": 5
+  },
+  "desktop /projects/hktc-nairobi/apply": {
+    "color-contrast": 1
+  },
+  "desktop /projects/thika-farm": {
+    "color-contrast": 1
+  },
+  "desktop /serve": {
+    "color-contrast": 1
+  },
+  "desktop /shop": {
+    "color-contrast": 1
+  },
+  "desktop /srila-prabhupada": {
+    "color-contrast": 1
+  },
+  "desktop /terms": {
+    "color-contrast": 1
+  },
+  "desktop /visit": {
+    "color-contrast": 1
+  },
+  "mobile /": {
+    "color-contrast": 1
+  },
+  "mobile /about": {
+    "color-contrast": 4
+  },
+  "mobile /blog": {
+    "color-contrast": 1
+  },
+  "mobile /blog/jharikhanda-forest-kirtan-safari": {
+    "color-contrast": 3,
+    "link-in-text-block": 1
+  },
+  "mobile /blog/sri-nama-sankirtana-adhivasa": {
+    "color-contrast": 3
+  },
+  "mobile /contact": {
+    "color-contrast": 1
+  },
+  "mobile /donate": {
+    "color-contrast": 1
+  },
+  "mobile /donate/general": {
+    "color-contrast": 1
+  },
+  "mobile /festivals": {
+    "color-contrast": 1
+  },
+  "mobile /festivals/gaura-purnima": {
+    "color-contrast": 1
+  },
+  "mobile /festivals/janmashtami": {
+    "color-contrast": 1
+  },
+  "mobile /festivals/kirtan-safari": {
+    "color-contrast": 3
+  },
+  "mobile /festivals/radhashtami": {
+    "color-contrast": 1
+  },
+  "mobile /festivals/rath-yatra": {
+    "color-contrast": 1
+  },
+  "mobile /guest-house": {
+    "color-contrast": 1
+  },
+  "mobile /leadership": {
+    "color-contrast": 1
+  },
+  "mobile /learn": {
+    "color-contrast": 8
+  },
+  "mobile /media": {
+    "color-contrast": 1
+  },
+  "mobile /offline": {
+    "color-contrast": 1
+  },
+  "mobile /privacy": {
+    "color-contrast": 1,
+    "scrollable-region-focusable": 2
+  },
+  "mobile /projects": {
+    "color-contrast": 1
+  },
+  "mobile /projects/food-for-life": {
+    "color-contrast": 1
+  },
+  "mobile /projects/hktc-juja": {
+    "color-contrast": 1
+  },
+  "mobile /projects/hktc-nairobi": {
+    "color-contrast": 5
+  },
+  "mobile /projects/hktc-nairobi/apply": {
+    "color-contrast": 1
+  },
+  "mobile /projects/thika-farm": {
+    "color-contrast": 1
+  },
+  "mobile /serve": {
+    "color-contrast": 1
+  },
+  "mobile /shop": {
+    "color-contrast": 1
+  },
+  "mobile /srila-prabhupada": {
+    "color-contrast": 1
+  },
+  "mobile /terms": {
+    "color-contrast": 1
+  },
+  "mobile /visit": {
+    "color-contrast": 1
+  }
+}

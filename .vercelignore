@@ -8,3 +8,5 @@ server.err.log
 *.log
 *.tsbuildinfo
 .agents
+tests
+playwright.config.ts
