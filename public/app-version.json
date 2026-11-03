@@ -1,12 +1,11 @@
 {
-  "version": "1.1.1",
-  "name": "Clearer Forms and Wording",
-  "publishedAt": "2026-11-03",
+  "version": "1.1.2",
+  "name": "Status Bar Correction",
+  "publishedAt": "2026-11-04",
   "updateMode": "silent",
-  "summary": "Forms now behave the same way across the site, festival wording is consistent, and a few visual details are corrected.",
+  "summary": "The temple status bar sits directly under the navigation again while scrolling.",
   "highlights": [
-    "Forms explain mistakes clearly and mark optional fields",
-    "Festival links and labels use one name",
-    "Small visual fixes on phones and a shorter homepage"
+    "Temple status bar stays attached to the navigation",
+    "HKTC page section links stay attached to the navigation"
   ]
 }

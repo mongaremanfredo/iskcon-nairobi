@@ -7,10 +7,12 @@ import { usePathname } from "next/navigation";
 import { X, ChevronRight, Phone } from "lucide-react";
 import { cn } from "@/lib/utils";
 import BrandLogo from "@/components/ui/BrandLogo";
-import TempleStatusBar from "@/components/layout/TempleStatusBar";
+import TempleStatusBar, { HEADER_SETTLED_EVENT } from "@/components/layout/TempleStatusBar";
 import NoticeboardButton from "@/components/layout/NoticeboardButton";
 import { templeInfo } from "@/data/site";
 import "./Navigation.css";
+
+const SETTLE_DELAY_MS = 120;
 
 const primaryNavigation = [
   { label: "Home", href: "/" },
@@ -76,6 +78,8 @@ export default function Navigation() {
     // only once the height has stopped changing, so it never takes a mid-transition
     // value. ResizeObserver fires on every frame the header actually changes size
     // during a transition and stays idle otherwise, which saves battery on phones.
+    // It must watch the border box: the header also shrinks through its padding, and
+    // the default content box would stop reporting before that animation has finished.
     let settleTimer = 0;
 
     const syncHeaderHeight = () => {
@@ -83,17 +87,26 @@ export default function Navigation() {
       document.documentElement.style.setProperty("--site-header-height", `${height}px`);
 
       window.clearTimeout(settleTimer);
-      settleTimer = window.setTimeout(() => {
-        if (!solidNav) return;
-        const settled = Math.round(header.getBoundingClientRect().height * 10) / 10;
-        document.documentElement.style.setProperty("--site-solid-header-height", `${settled}px`);
-      }, 120);
+      settleTimer = window.setTimeout(commitRestingHeight, SETTLE_DELAY_MS);
+    };
+
+    // A busy phone can drop frames, so a quiet moment does not prove the shrink has
+    // finished. Saving a height mid-animation would leave a gap under the header.
+    const commitRestingHeight = () => {
+      if (header.getAnimations({ subtree: true }).some((animation) => animation.playState === "running")) {
+        settleTimer = window.setTimeout(commitRestingHeight, SETTLE_DELAY_MS);
+        return;
+      }
+      if (!solidNav) return;
+      const settled = Math.round(header.getBoundingClientRect().height * 10) / 10;
+      document.documentElement.style.setProperty("--site-solid-header-height", `${settled}px`);
+      window.dispatchEvent(new Event(HEADER_SETTLED_EVENT));
     };
 
     syncHeaderHeight();
 
     const observer = new ResizeObserver(syncHeaderHeight);
-    observer.observe(header);
+    observer.observe(header, { box: "border-box" });
 
     return () => {
       window.clearTimeout(settleTimer);

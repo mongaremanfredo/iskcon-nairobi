@@ -7,6 +7,9 @@ import { cn } from "@/lib/utils";
 import { getTempleStatus } from "@/lib/templeStatus";
 import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 
+/** Fired once the header has finished animating and its resting height is saved. */
+export const HEADER_SETTLED_EVENT = "site-header-settled";
+
 interface TempleStatusBarProps {
   visible: boolean;
 }
@@ -52,11 +55,16 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
     syncChromeHeight();
 
     // Runs only when the header or this bar changes size, instead of on every frame.
+    // Border boxes, because the header also shrinks through its padding.
     const observer = new ResizeObserver(syncChromeHeight);
-    observer.observe(bar);
-    if (header) observer.observe(header);
+    observer.observe(bar, { box: "border-box" });
+    if (header) observer.observe(header, { box: "border-box" });
+    window.addEventListener(HEADER_SETTLED_EVENT, syncChromeHeight);
 
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      window.removeEventListener(HEADER_SETTLED_EVENT, syncChromeHeight);
+    };
   }, [visible, status]);
 
   return (
