@@ -1,7 +1,8 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 import {
   ArrowRight,
   BookOpen,
@@ -14,11 +15,11 @@ import {
   Users,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "About",
   description:
     "Learn the story, beliefs, worship, community programmes, and Nairobi mission of Sri Sri Radha Bankebihari Temple, ISKCON Nairobi.",
-};
+}, "/about");
 
 const storyMilestones = [
   {
@@ -154,7 +155,7 @@ export default function AboutPage() {
                 <br />
                 <em className="text-gold not-italic font-normal">Radha Bankebihari Mandir</em>
               </h2>
-              <div className="mt-6 space-y-4 font-inter text-sm leading-relaxed text-ink/68 sm:text-base">
+              <div className="mt-6 space-y-4 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 <p>
                   For over 50 years, Sri Sri Radha Bankebihari Mandir has stood as a place of worship, learning,
                   and welcome in Nairobi. Whether you grew up within this tradition, are curious about Eastern
@@ -172,7 +173,7 @@ export default function AboutPage() {
                 </Link>
                 <Link
                   href="/srila-prabhupada"
-                  className="inline-flex items-center justify-center gap-2 border border-gold/40 px-5 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-white"
+                  className="min-h-11 inline-flex items-center justify-center gap-2 border border-gold/40 px-5 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-white"
                 >
                   Nairobi and Prabhupada
                   <ArrowRight size={14} />
@@ -181,19 +182,19 @@ export default function AboutPage() {
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
-              <img
+              <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                 src="/images/iskcon-nairobi-main-altar-wide.jpg"
                 alt="Main altar at ISKCON Nairobi"
                 className="aspect-[4/5] w-full object-cover shadow-card"
               />
               <div className="grid gap-4">
-                <img
+                <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                   src="/images/prabhupada/srila-prabhupada-seated-smiling.jpg"
                   alt="Srila Prabhupada"
                   className="aspect-[4/5] w-full object-cover object-top shadow-card sm:mt-10"
                 />
                 <div className="border border-gold/25 bg-gold/10 p-5">
-                  <p className="font-inter text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                     Founder-Acarya
                   </p>
                   <p className="mt-2 font-playfair text-xl leading-tight text-ink">
@@ -209,13 +210,13 @@ export default function AboutPage() {
       <section className="bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-3xl">
-            <span className="eyebrow mb-3 block text-gold/75">Our Story</span>
+            <span className="eyebrow mb-3 block text-gold">Our Story</span>
             <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
               Nairobi was never meant
               <br />
               <em className="text-gold not-italic font-normal">to be a closed temple</em>
             </h2>
-            <p className="mt-5 font-inter text-sm leading-relaxed text-sand/65 sm:text-base">
+            <p className="mt-5 font-inter text-sm leading-relaxed text-sand/75 sm:text-base">
               Srila Prabhupada's instruction shaped the temple from the beginning: the mission here was not to serve
               only people already familiar with the tradition. It was to make Krishna consciousness accessible to
               Nairobi and to Kenya.
@@ -225,11 +226,11 @@ export default function AboutPage() {
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             {storyMilestones.map((item) => (
               <article key={item.year} className="border border-gold/15 bg-white/[0.06] p-5">
-                <p className="font-inter text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   {item.year}
                 </p>
                 <h3 className="mt-3 font-playfair text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-sand/58">{item.text}</p>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-sand/75">{item.text}</p>
               </article>
             ))}
           </div>
@@ -246,7 +247,7 @@ export default function AboutPage() {
                 <br />
                 <em className="text-gold not-italic font-normal">Living Practice</em>
               </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/62 sm:text-base">
+              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 ISKCON belongs to the Gaudiya Vaishnava tradition, a devotional path within the broader Vedic
                 tradition that traces its lineage to Sri Chaitanya Mahaprabhu. Its central teaching is simple:
                 every living being is spiritual, and our deepest relationship is with Krishna.
@@ -260,7 +261,7 @@ export default function AboutPage() {
                     <item.icon size={20} />
                   </div>
                   <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/60">{item.text}</p>
+                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
                 </article>
               ))}
             </div>
@@ -278,13 +279,13 @@ export default function AboutPage() {
                 <br />
                 <em className="text-gold not-italic font-normal">Service and Community</em>
               </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/64 sm:text-base">
+              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 The temple's rhythm is made of darshan, arati, kirtan, scriptural study, prasadam, festivals,
                 service projects, family gatherings, youth education, and public outreach.
               </p>
 
               <div className="mt-8 border border-temple-sand bg-white p-5 shadow-card">
-                <p className="font-inter text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   Presiding Deities
                 </p>
                 <div className="mt-4 grid gap-3 sm:grid-cols-3">
@@ -297,7 +298,7 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <img
+            <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
               src="/images/hero-ratha-yatra-kenya.jpg"
               alt="ISKCON Nairobi public festival procession"
               className="aspect-[4/3] w-full object-cover shadow-card-hover"
@@ -315,8 +316,8 @@ export default function AboutPage() {
                 <h3 className="font-playfair text-xl font-semibold text-ink transition-colors group-hover:text-gold">
                   {item.title}
                 </h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/60">{item.text}</p>
-                <div className="mt-5 inline-flex items-center gap-2 font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold">
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
+                <div className="mt-5 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink">
                   Explore
                   <ArrowRight size={13} />
                 </div>
@@ -330,13 +331,13 @@ export default function AboutPage() {
         <div className="content-width section-padding">
           <div className="grid gap-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
-              <span className="eyebrow mb-3 block text-gold/75">Visit Us</span>
+              <span className="eyebrow mb-3 block text-gold">Visit Us</span>
               <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
                 Come for darshan,
                 <br />
                 <em className="text-gold not-italic font-normal">prasadam or a quiet moment</em>
               </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-sand/65 sm:text-base">
+              <p className="mt-5 font-inter text-sm leading-relaxed text-sand/75 sm:text-base">
                 No prior experience with the tradition is required. Come with an open mind, respectful dress, and a
                 willingness to experience temple life.
               </p>
@@ -345,10 +346,10 @@ export default function AboutPage() {
             <div className="grid gap-3">
               {visitCards.map((item) => (
                 <div key={item.label} className="border border-gold/15 bg-white/[0.06] p-4">
-                  <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold/80">
+                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                     {item.label}
                   </p>
-                  <p className="mt-2 font-inter text-sm leading-relaxed text-sand/70">{item.value}</p>
+                  <p className="mt-2 font-inter text-sm leading-relaxed text-sand/75">{item.value}</p>
                 </div>
               ))}
               <Link href="/visit" className="btn-primary mt-2 justify-center">

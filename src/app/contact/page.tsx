@@ -1,13 +1,13 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import ContactForm from "@/components/sections/ContactForm";
 import { MapPin, Phone, Mail, Clock, MessageSquare } from "lucide-react";
 import { templeInfo } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Contact",
   description: "Get in touch with ISKCON Nairobi. Temple address, phone, email, and enquiry form.",
-};
+}, "/contact");
 
 export default function ContactPage() {
   const contactItems = [
@@ -40,16 +40,16 @@ export default function ContactPage() {
                 <div key={item.label} className="flex gap-4">
                   <div className="text-gold mt-0.5 flex-shrink-0">{item.icon}</div>
                   <div>
-                    <p className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/40 mb-0.5">{item.label}</p>
+                    <p className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 mb-0.5">{item.label}</p>
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="block font-inter text-ink/70 text-sm whitespace-pre-line leading-relaxed transition-colors hover:text-primary hover:underline"
+                        className="tap-target block font-inter text-ink/75 text-sm whitespace-pre-line leading-relaxed transition-colors hover:text-primary hover:underline"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <p className="font-inter text-ink/70 text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
+                      <p className="font-inter text-ink/75 text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
                     )}
                   </div>
                 </div>

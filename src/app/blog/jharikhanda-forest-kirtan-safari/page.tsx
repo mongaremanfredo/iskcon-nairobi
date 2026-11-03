@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -14,12 +14,13 @@ import {
   TreePine,
 } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
+import { withSeo } from "@/lib/seo";
 
 const sourceUrl = "https://vedabase.io/en/library/cc/madhya/17/";
 const creditUrl = "https://pin.it/1DvGSgZr7";
 const heroImage = "/images/blog/jharikhanda-mahaprabhu-animals.jpeg";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "The Forest That Learned to Chant",
   description:
     "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
       "Sri Chaitanya Mahaprabhu and the animals of Jharikhanda, retold from Chaitanya-caritamrita, Madhya-lila 17.",
     images: [heroImage],
   },
-};
+}, "/blog/jharikhanda-forest-kirtan-safari");
 
 /* ---------- Prologue: the invocation lines before the story begins ---------- */
 const prologue = {
@@ -156,10 +157,10 @@ const articleGuide = [
 function WitnessNote({ text }: { text: string }) {
   return (
     <aside className="my-7 border-l-2 border-gold/50 pl-4">
-      <p className="font-inter text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-gold/80">
+      <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">
         Balabhadra witnesses
       </p>
-      <p className="mt-1 font-inter text-sm italic leading-relaxed text-ink/55">{text}</p>
+      <p className="mt-1 font-inter text-sm italic leading-relaxed text-ink/75">{text}</p>
     </aside>
   );
 }
@@ -187,7 +188,7 @@ export default function JharikhandaBlogPage() {
 
       <section className="bg-temple-bg py-[clamp(2.7rem,12vw,3.8rem)] sm:py-[clamp(3.5rem,5vw,5.5rem)]">
         <div className="content-width section-padding">
-          <div className="mb-12 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/55">
+          <div className="mb-12 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/75">
             <span>July 2026</span>
             <span className="h-1 w-1 self-center rounded-full bg-gold" />
             <span>12 min read</span>
@@ -202,7 +203,7 @@ export default function JharikhandaBlogPage() {
                 <p className="font-playfair text-xl italic leading-relaxed text-ink/80 sm:text-2xl">
                   {prologue.overture}
                 </p>
-                <p className="mt-6 font-inter text-xs uppercase tracking-[0.2em] text-gold">
+                <p className="mt-6 font-inter text-xs uppercase tracking-[0.2em] text-gold-ink">
                   {prologue.refrain}
                 </p>
               </div>
@@ -215,12 +216,12 @@ export default function JharikhandaBlogPage() {
                     <section key={scene.id} id={scene.id} className="scroll-mt-28">
                       <div className="mb-6 flex items-center gap-3 border-b border-temple-sand pb-3">
                         <Icon size={16} className="shrink-0 text-gold" />
-                        <p className="font-inter text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-ink/50">
+                        <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-ink/75">
                           {scene.label}
                         </p>
                       </div>
 
-                      <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
+                      <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/75">
                         {scene.paragraphs.map((paragraph) => (
                           <p key={paragraph}>{paragraph}</p>
                         ))}
@@ -228,12 +229,12 @@ export default function JharikhandaBlogPage() {
 
                       {scene.id === "the-tiger" && (
                         <figure className="my-12 overflow-hidden border border-temple-sand bg-white shadow-card">
-                          <img
+                          <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 720px"
                             src={heroImage}
                             alt="Sri Chaitanya Mahaprabhu dancing with animals in Jharikhanda Forest"
                             className="h-auto w-full object-cover"
                           />
-                          <figcaption className="border-t border-temple-sand px-5 py-3 font-inter text-xs leading-relaxed text-ink/48">
+                          <figcaption className="border-t border-temple-sand px-5 py-3 font-inter text-xs leading-relaxed text-ink/75">
                             Mahaprabhu chants with the animals of Jharikanda.
                           </figcaption>
                         </figure>
@@ -243,7 +244,7 @@ export default function JharikhandaBlogPage() {
                       {scene.witness && <WitnessNote text={scene.witness} />}
 
                       {scene.trailingParagraphs && (
-                        <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
+                        <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/75">
                           {scene.trailingParagraphs.map((paragraph) => (
                             <p key={paragraph}>{paragraph}</p>
                           ))}
@@ -256,7 +257,7 @@ export default function JharikhandaBlogPage() {
 
               <div className="mt-12 flex flex-col items-start gap-4 border border-gold/30 bg-dusk p-6 text-sand sm:p-8">
                 <div>
-                  <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                     Kirtan Safari 2026
                   </p>
                   <p className="mt-2 font-playfair text-2xl font-semibold text-white">
@@ -265,7 +266,7 @@ export default function JharikhandaBlogPage() {
                 </div>
                 <Link
                   href="/festivals/kirtan-safari"
-                  className="inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-sand"
+                  className="tap-target inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-sand"
                 >
                   Festival details <ArrowRight size={12} />
                 </Link>
@@ -274,7 +275,7 @@ export default function JharikhandaBlogPage() {
 
             <aside className="lg:sticky lg:top-28">
               <div className="border border-temple-sand bg-white p-6 shadow-card">
-                <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   In this story
                 </p>
                 <nav className="mt-4 space-y-2">
@@ -282,9 +283,9 @@ export default function JharikhandaBlogPage() {
                     <a
                       key={scene.id}
                       href={`#${scene.id}`}
-                      className="flex items-center gap-2 font-inter text-sm text-ink/60 transition-colors hover:text-gold"
+                      className="tap-target flex items-center gap-2 font-inter text-sm text-ink/75 transition-colors hover:text-gold"
                     >
-                      <scene.icon size={13} className="shrink-0 text-gold/70" />
+                      <scene.icon size={13} className="shrink-0 text-gold" />
                       {scene.label}
                     </a>
                   ))}
@@ -292,7 +293,7 @@ export default function JharikhandaBlogPage() {
               </div>
 
               <div className="mt-5 border border-temple-sand bg-white p-6 shadow-card">
-                <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   Article guide
                 </p>
                 <div className="mt-5 space-y-4">
@@ -302,10 +303,10 @@ export default function JharikhandaBlogPage() {
                       <div key={item.label} className="flex gap-3 border-t border-temple-sand pt-4 first:border-t-0 first:pt-0">
                         <Icon size={18} className="mt-1 shrink-0 text-gold" />
                         <div>
-                          <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/42">
+                          <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                             {item.label}
                           </p>
-                          <p className="mt-1 font-inter text-sm leading-relaxed text-ink/66">{item.value}</p>
+                          <p className="mt-1 font-inter text-sm leading-relaxed text-ink/75">{item.value}</p>
                         </div>
                       </div>
                     );
@@ -314,29 +315,29 @@ export default function JharikhandaBlogPage() {
               </div>
 
               <div className="mt-5 border border-gold/25 bg-temple-cream p-5">
-                <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/45">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                   Read source
                 </p>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">
                   Read the full chapter in Chaitanya-caritamrita, Madhya-lila 17.
                 </p>
                 <a
                   href={sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
+                  className="tap-target mt-4 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all hover:gap-3"
                 >
                   Open Vedabase <ExternalLink size={12} />
                 </a>
               </div>
 
               <div className="mt-5 border border-temple-sand bg-white p-5">
-                <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/45">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                   Image credits
                 </p>
-                <p className="mt-3 font-inter text-xs leading-relaxed text-ink/55">
+                <p className="mt-3 font-inter text-xs leading-relaxed text-ink/75">
                   Artwork credited to Mayapur Institute via{" "}
-                  <a className="text-gold hover:underline" href={creditUrl} target="_blank" rel="noopener noreferrer">
+                  <a className="text-gold-ink hover:underline" href={creditUrl} target="_blank" rel="noopener noreferrer">
                     Pinterest
                   </a>.
                 </p>

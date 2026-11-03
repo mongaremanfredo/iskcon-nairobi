@@ -1,6 +1,22 @@
 // Central content registry for shared temple information, navigation,
 // homepage cards, and cross-page summaries. Prefer editing copy and image
 // choices here when a change is reused in more than one page or section.
+
+// The single source for opening hours, in 24-hour Nairobi time. The status bar,
+// schedule, footer, and search listing data all read from these values.
+export const templeHours = {
+  morning: { opens: "04:30", closes: "12:45" },
+  evening: { opens: "16:30", closes: "20:45" },
+};
+
+function formatHour(time: string) {
+  const [hour, minute] = time.split(":").map(Number);
+  return `${hour % 12 || 12}:${String(minute).padStart(2, "0")} ${hour >= 12 ? "P.M." : "A.M."}`;
+}
+
+const morningHours = `${formatHour(templeHours.morning.opens)} - ${formatHour(templeHours.morning.closes)}`;
+const eveningHours = `${formatHour(templeHours.evening.opens)} - ${formatHour(templeHours.evening.closes)}`;
+
 export const templeInfo = {
   name: "ISKCON Nairobi",
   legalName: "Sri Sri Radha Bankebihari Temple",
@@ -15,7 +31,7 @@ export const templeInfo = {
   phoneHref: "+254722815039",
   email: "iskconnairobi@gmail.com",
   mapUrl: "https://www.google.com/maps/search/?api=1&query=ISKCON%20Nairobi%20Hare%20Krishna%20Close%20Nairobi%20Kenya",
-  hours: "Morning: 4:30 A.M. - 12:45 P.M. | Evening: 4:30 P.M. - 8:45 P.M.",
+  hours: `Morning: ${morningHours} | Evening: ${eveningHours}`,
   note: "Programme timings can vary on festival days. Contact the temple before travelling for major celebrations.",
 };
 
@@ -34,6 +50,7 @@ export const navigation = [
   { label: "Visit", href: "/visit" },
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },
+  { label: "Serve", href: "/serve" },
   { label: "Festivals", href: "/festivals" },
   { label: "Blog", href: "/blog" },
   { label: "Guest House", href: "/guest-house" },
@@ -498,7 +515,7 @@ export const guestRooms = [
 export const templeScheduleGroups = [
   {
     title: "Morning Aarti & Darshan Timings",
-    timeRange: "4:30 A.M. - 12:45 P.M.",
+    timeRange: morningHours,
     items: [
       { time: "4:30 A.M.", event: "Mangala Arati in the Main Temple" },
       { time: "5:00 A.M.", event: "Sri Tulasi Arati" },
@@ -515,7 +532,7 @@ export const templeScheduleGroups = [
   },
   {
     title: "Evening Aarti & Darshan Timings",
-    timeRange: "4:30 P.M. - 8:45 P.M.",
+    timeRange: eveningHours,
     items: [
       { time: "4:10 P.M.", event: "Utthapan Bhoga" },
       { time: "4:30 P.M.", event: "Uthapan Arati" },

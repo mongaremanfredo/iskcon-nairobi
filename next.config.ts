@@ -76,6 +76,9 @@ const securityHeaders = [
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
+  images: {
+    minimumCacheTTL: 604800,
+  },
   async redirects() {
     return [
       {

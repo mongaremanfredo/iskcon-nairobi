@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Camera } from "lucide-react";
 
@@ -20,7 +21,8 @@ const galleryImages = [
   },
   {
     src: "/images/kirtan-safari-2026-page-hero.png",
-    caption: "Kirtan Safari - dawn session on the savanna",
+    caption: "Kirtan Safari 2026",
+    alt: "Kirtan Safari artwork of devotees singing beneath an acacia tree, with giraffes and a setting sun",
     tone: "Kirtan",
     className: "lg:col-span-4",
     imageClass: "h-[170px] sm:h-[240px] lg:h-full",
@@ -43,7 +45,8 @@ const galleryImages = [
   },
   {
     src: "/images/hero-ratha-yatra-kenya.jpg",
-    caption: "East African landscape at golden hour",
+    caption: "Ratha Yatra devotees in Nairobi",
+    alt: "Ratha Yatra devotees in Nairobi carrying a Hare Krishna sign",
     tone: "Festival Mood",
     className: "lg:col-span-12",
     imageClass: "h-[240px] sm:h-[300px] lg:h-full",
@@ -78,11 +81,11 @@ export default function GallerySection() {
                 rel={img.external ? "noopener noreferrer" : undefined}
                 className={`group relative overflow-hidden border border-temple-sand bg-dusk shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover ${
                   isLead || isWide ? "col-span-2" : ""
-                } ${img.className}`}
+                } ${i === 3 || i === 4 ? "max-sm:hidden" : ""} ${img.className}`}
               >
-                <img
+                <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                   src={img.src}
-                  alt={img.caption}
+                  alt={img.alt ?? img.caption}
                   className={`h-full w-full object-cover image-grade transition-transform duration-700 group-hover:scale-105 ${img.imageClass}`}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-dusk/92 via-dusk/18 to-transparent" />
@@ -90,7 +93,7 @@ export default function GallerySection() {
 
                 <div className="absolute left-3 top-3 flex items-center gap-1.5 border border-white/15 bg-dusk/62 px-2 py-1 backdrop-blur-sm sm:left-4 sm:top-4">
                   <Camera size={isLead ? 13 : 11} className="text-gold" />
-                  <span className="font-inter text-[0.58rem] font-semibold uppercase tracking-[0.14em] text-sand/78 sm:text-[0.62rem]">
+                  <span className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-sand/78 sm:text-xs">
                     {img.tone}
                   </span>
                 </div>
@@ -107,7 +110,7 @@ export default function GallerySection() {
                   >
                     {img.caption}
                   </p>
-                  <div className={`mt-2 items-center gap-2 font-inter text-[0.6rem] font-semibold uppercase tracking-[0.16em] text-gold/85 opacity-90 transition-opacity group-hover:opacity-100 ${isLead || isWide ? "flex" : "hidden sm:flex"}`}>
+                  <div className={`mt-2 items-center gap-2 font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold opacity-90 transition-opacity group-hover:opacity-100 ${isLead || isWide ? "flex" : "hidden sm:flex"}`}>
                     View Story <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
@@ -121,7 +124,7 @@ export default function GallerySection() {
         <div className="mt-8 flex justify-start sm:mt-10">
           <Link
             href="/media"
-            className="flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
+            className="tap-target flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all hover:gap-3"
           >
             Full Gallery <ArrowRight size={12} />
           </Link>

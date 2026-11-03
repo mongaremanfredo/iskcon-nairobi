@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Apply - HKTC Nairobi",
   description: "Express interest in Hare Krishna Training Centre programmes connected with ISKCON Nairobi.",
-};
+}, "/projects/hktc-nairobi/apply");
 
 export default function HktcApplyPage() {
   return (
@@ -23,7 +23,7 @@ export default function HktcApplyPage() {
         <div className="content-width section-padding max-w-3xl">
           <div className="bg-white border border-temple-sand p-8 lg:p-10">
             <h2 className="section-title mb-4">Request Admissions Guidance</h2>
-            <p className="font-inter text-ink/65 leading-relaxed mb-8">
+            <p className="font-inter text-ink/75 leading-relaxed mb-8">
               Email the temple office with your name, contact number, location, and the study area you are interested in. The education team can confirm the next available intake and requirements.
             </p>
             <div className="flex flex-wrap gap-4">

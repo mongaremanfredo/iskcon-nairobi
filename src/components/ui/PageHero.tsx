@@ -1,9 +1,13 @@
+import Image from "next/image";
+
 interface PageHeroProps {
   title: string;
   titleAccent?: string;
   subtitle?: string;
   description?: string;
   image: string;
+  /** Describe the photo only when it adds meaning beyond the heading over it. */
+  imageAlt?: string;
   height?: "sm" | "md" | "lg";
   align?: "left" | "center";
   className?: string;
@@ -16,6 +20,7 @@ export default function PageHero({
   subtitle,
   description,
   image,
+  imageAlt = "",
   height = "md",
   align = "left",
   className = "",
@@ -30,7 +35,7 @@ export default function PageHero({
   return (
     <section className={`relative overflow-hidden ${heights[height]} ${className}`}>
       {/* Background */}
-      <img src={image} alt={title} className="absolute inset-0 w-full h-full object-cover" />
+      <Image src={image} alt={imageAlt} fill sizes="100vw" loading="eager" fetchPriority="high" className="object-cover" />
       <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/40 to-black/70" />
       {align === "left" && (
         <div className="absolute inset-0 bg-gradient-to-r from-black/40 to-transparent" />
@@ -42,7 +47,7 @@ export default function PageHero({
       {/* Content */}
       <div className={`relative z-10 h-full flex flex-col justify-end pt-32 pb-10 sm:pt-36 sm:pb-14 section-padding content-width ${contentClassName} ${align === "center" ? "items-center text-center" : ""}`}>
         {subtitle && (
-          <span className="eyebrow text-gold/80 block mb-3">{subtitle}</span>
+          <span className="eyebrow text-gold block mb-3">{subtitle}</span>
         )}
 
         <h1 className="font-playfair text-white text-shadow leading-tight" style={{ fontSize: "clamp(2.25rem, 12vw, 4.5rem)" }}>

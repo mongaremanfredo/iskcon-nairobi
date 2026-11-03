@@ -1,14 +1,15 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import GuestHouseEnquiryForm from "@/components/sections/GuestHouseEnquiryForm";
 import { guestRooms, templeInfo } from "@/data/site";
 import Link from "next/link";
 import { Wifi, Shield, Coffee, MapPin, Phone, Mail } from "lucide-react";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Guest House",
   description: "Stay at ISKCON Nairobi's on-campus guest house. Serene, affordable accommodation with access to all temple programmes.",
-};
+}, "/guest-house");
 
 const facilities = [
   { icon: <Wifi size={18} />, label: "Free WiFi", desc: "High-speed internet across the campus" },
@@ -37,7 +38,7 @@ export default function GuestHousePage() {
             <div>
               <span className="eyebrow block mb-4">Why Stay With Us</span>
               <h2 className="section-title mb-6">A Temple Stay<br /><em className="text-gold not-italic font-normal">Unlike Any Other</em></h2>
-              <div className="space-y-4 font-inter text-ink/70 leading-relaxed">
+              <div className="space-y-4 font-inter text-ink/75 leading-relaxed">
                 <p>Staying at ISKCON Nairobi's guest house means waking to the sound of conches and bells at 4:30 A.M., attending Mangala Arati as the city sleeps, and experiencing the full rhythm of a devotional community.</p>
                 <p>Whether you are a visiting devotee, a spiritual seeker, or a researcher interested in Vaishnava life, the guest house offers a rare opportunity to experience authentic Krishna conscious community living.</p>
                 <p>All rooms include access to the temple, prasadam timings, temple access, and retreat arrangements before travelling.</p>
@@ -48,7 +49,7 @@ export default function GuestHousePage() {
                 <div key={f.label} className="bg-temple-cream p-6 border border-temple-sand hover:border-gold/30 transition-colors">
                   <div className="text-gold mb-3">{f.icon}</div>
                   <h4 className="font-playfair text-ink font-semibold mb-1">{f.label}</h4>
-                  <p className="font-inter text-ink/60 text-xs leading-relaxed">{f.desc}</p>
+                  <p className="font-inter text-ink/75 text-xs leading-relaxed">{f.desc}</p>
                 </div>
               ))}
             </div>
@@ -67,26 +68,26 @@ export default function GuestHousePage() {
             {guestRooms.map((room) => (
               <div key={room.name} className="bg-white border border-temple-sand hover:shadow-card-hover hover:border-gold/30 transition-all overflow-hidden group">
                 <div className="relative h-56 overflow-hidden">
-                  <img src={room.image} alt={room.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" src={room.image} alt={room.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute top-4 right-4 bg-white/95 px-3 py-2 text-center shadow-sm">
                     <p className="font-playfair text-gold font-bold text-lg leading-none">{room.price}</p>
-                    <p className="font-inter text-ink/40 text-[10px] mt-0.5">confirm with office</p>
+                    <p className="font-inter text-ink/75 text-xs mt-0.5">confirm with office</p>
                   </div>
                 </div>
                 <div className="p-7">
                   <div className="flex items-start justify-between mb-1">
                     <h3 className="font-playfair text-xl font-semibold text-ink">{room.name}</h3>
                   </div>
-                  <p className="font-inter text-ink/40 text-xs mb-3">{room.capacity}</p>
-                  <p className="font-inter text-ink/60 text-sm leading-relaxed mb-5">{room.description}</p>
+                  <p className="font-inter text-ink/75 text-xs mb-3">{room.capacity}</p>
+                  <p className="font-inter text-ink/75 text-sm leading-relaxed mb-5">{room.description}</p>
                   <div className="flex flex-wrap gap-2 mb-6">
                     {room.amenities.map((a) => (
-                      <span key={a} className="font-inter text-[10px] text-gold bg-gold/10 px-2 py-1">{a}</span>
+                      <span key={a} className="font-inter text-xs text-gold-ink bg-gold/10 px-2 py-1">{a}</span>
                     ))}
                   </div>
                   <Link
                     href={`/contact?room=${encodeURIComponent(room.name)}`}
-                    className="block text-center bg-temple-brown text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold transition-colors"
+                    className="min-h-11 block text-center bg-temple-brown text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold hover:text-ink transition-colors"
                   >
                     Book This Room
                   </Link>
@@ -102,7 +103,7 @@ export default function GuestHousePage() {
         <div className="content-width section-padding">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="eyebrow text-gold/70 block mb-4">Book Your Stay</span>
+              <span className="eyebrow text-gold block mb-4">Book Your Stay</span>
               <h2 className="font-playfair text-display-md text-temple-cream mb-4">
                 Enquire About<br /><em className="text-gold not-italic font-normal">Availability</em>
               </h2>
@@ -112,11 +113,11 @@ export default function GuestHousePage() {
               <div className="space-y-3">
                 <div className="flex items-center gap-3">
                   <Phone size={14} className="text-gold" />
-                  <a href={`tel:${templeInfo.phoneHref}`} className="font-inter text-white/60 text-sm hover:text-gold transition-colors">{templeInfo.phoneDisplay}</a>
+                  <a href={`tel:${templeInfo.phoneHref}`} className="tap-target font-inter text-white/60 text-sm hover:text-gold transition-colors">{templeInfo.phoneDisplay}</a>
                 </div>
                 <div className="flex items-center gap-3">
                   <Mail size={14} className="text-gold" />
-                  <a href={`mailto:${templeInfo.email}?subject=Guest%20House%20Enquiry`} className="font-inter text-white/60 text-sm hover:text-gold transition-colors">{templeInfo.email}</a>
+                  <a href={`mailto:${templeInfo.email}?subject=Guest%20House%20Enquiry`} className="tap-target font-inter text-white/60 text-sm hover:text-gold transition-colors">{templeInfo.email}</a>
                 </div>
               </div>
             </div>

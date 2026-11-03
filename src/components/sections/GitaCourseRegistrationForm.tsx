@@ -203,7 +203,7 @@ export default function GitaCourseRegistrationForm() {
         .gita-field span {
           color: rgba(246, 226, 177, 0.78);
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.68rem;
+          font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.13em;
           text-transform: uppercase;
@@ -286,7 +286,7 @@ export default function GitaCourseRegistrationForm() {
           cursor: pointer;
           display: inline-flex;
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.7rem;
+          font-size: 0.75rem;
           font-weight: 800;
           justify-content: center;
           letter-spacing: 0.18em;

@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
 import { ShoppingBag, Star } from "lucide-react";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Prasadam Sweet Shop",
   description: "Artisanal Vaishnava sweets and prasadam products from ISKCON Nairobi's kitchen. Festival specials, gift packs, and bulk orders.",
-};
+}, "/shop");
 
 const products = [
   { name: "Laddhu (Box of 12)", price: "KES 950", desc: "Classic saffron-infused gram flour laddhu prepared with pure ghee. The original prasadam sweet.", tag: "Bestseller", image: "/images/food-for-life/khichdi-prasadam.jpg" },
@@ -35,7 +36,7 @@ export default function ShopPage() {
           {["Pure Ghee", "No Preservatives", "Temple Prepared", "Made Fresh to Order", "Nairobi Delivery"].map(tag => (
             <div key={tag} className="flex items-center gap-2">
               <Star size={10} className="text-white" />
-              <span className="font-inter text-white text-xs font-medium tracking-wider">{tag}</span>
+              <span className="font-inter text-ink text-xs font-medium tracking-wider">{tag}</span>
             </div>
           ))}
         </div>
@@ -53,18 +54,18 @@ export default function ShopPage() {
             {products.map((product) => (
               <div key={product.name} className="group bg-white border border-temple-sand hover:shadow-card-hover hover:border-gold/30 transition-all overflow-hidden">
                 <div className="relative h-52 overflow-hidden">
-                  <img src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute top-3 left-3">
-                    <span className="font-inter text-[10px] font-bold tracking-widest uppercase bg-gold text-white px-3 py-1">{product.tag}</span>
+                    <span className="font-inter text-xs font-bold tracking-widest uppercase bg-gold text-ink px-3 py-1">{product.tag}</span>
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-playfair text-lg font-semibold text-ink">{product.name}</h3>
-                    <span className="font-playfair text-gold font-bold text-lg flex-shrink-0 ml-2">{product.price}</span>
+                    <span className="font-playfair text-gold-ink font-bold text-lg flex-shrink-0 ml-2">{product.price}</span>
                   </div>
-                  <p className="font-inter text-ink/60 text-sm leading-relaxed mb-5">{product.desc}</p>
-                  <button className="w-full flex items-center justify-center gap-2 bg-temple-brown text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold transition-colors">
+                  <p className="font-inter text-ink/75 text-sm leading-relaxed mb-5">{product.desc}</p>
+                  <button className="min-h-11 w-full flex items-center justify-center gap-2 bg-temple-brown text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold hover:text-ink transition-colors">
                     <ShoppingBag size={12} />
                     Order Now
                   </button>
@@ -83,7 +84,7 @@ export default function ShopPage() {
               <div key={item.title}>
                 <h4 className="font-playfair text-lg font-semibold text-ink mb-2">{item.title}</h4>
                 <div className="w-5 h-px bg-gold/40 mb-3" />
-                <p className="font-inter text-ink/60 text-sm leading-relaxed">{item.desc}</p>
+                <p className="font-inter text-ink/75 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>

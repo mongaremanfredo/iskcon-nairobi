@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { Heart, ArrowRight } from "lucide-react";
 import { donationPaths } from "@/data/site";
@@ -17,7 +18,7 @@ export default function DonationSection() {
     <section className="relative overflow-hidden pt-10 pb-16 sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
       {/* Background */}
       <div className="absolute inset-0">
-        <img
+        <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 20vw"
           src="/images/donate/main-altar-offering.jpg"
           alt=""
           className="w-full h-full object-cover"
@@ -32,20 +33,23 @@ export default function DonationSection() {
           <h2 className="section-title">
             Support the Mission
           </h2>
-          <p className="font-inter text-ink/60 text-body-md mt-4 max-w-lg mx-auto">
+          <p className="font-inter text-ink/75 text-body-md mt-4 max-w-lg mx-auto">
             Every contribution - large or small - directly funds real programmes that serve thousands of people across East Africa.
           </p>
-          {/* MPESA note */}
+          {/* List specific payment methods here once the temple confirms the details. */}
           <div className="inline-flex items-center gap-2 mt-5 bg-forest/10 border border-forest/20 px-4 py-2">
             <span className="w-2 h-2 rounded-full bg-forest flex-shrink-0" />
             <span className="font-inter text-forest text-xs font-medium">
-              M-PESA, card, and bank transfer accepted
+              Give by contacting the temple office
             </span>
           </div>
         </div>
 
         {/* Donation Paths */}
-        <div className="donation-paths-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
+        <div tabIndex={0}
+          role="group"
+          aria-label="Causes you can support"
+          className="donation-paths-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-5">
           {donationPaths.map((path) => (
             <div
               key={path.title}
@@ -53,7 +57,7 @@ export default function DonationSection() {
             >
               {/* Image */}
               <div className="relative h-40 overflow-hidden image-grade">
-                <img
+                <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1280px) 33vw, 20vw"
                   src={path.image}
                   alt={path.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -65,13 +69,13 @@ export default function DonationSection() {
               {/* Content */}
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="font-playfair text-base font-semibold text-ink mb-2">{path.title}</h3>
-                <p className="font-inter text-ink/55 text-xs leading-relaxed flex-1">{path.description}</p>
+                <p className="font-inter text-ink/75 text-xs leading-relaxed flex-1">{path.description}</p>
                 <Link
                   href={path.href}
-                  className="mt-5 flex items-center justify-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-sunset transition-colors"
+                  className="min-h-11 mt-5 flex items-center justify-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-primary-dark transition-colors"
                 >
                   <Heart size={12} />
-                  Donate
+                  Give to {path.title}
                 </Link>
               </div>
             </div>
@@ -82,7 +86,7 @@ export default function DonationSection() {
         <div className="mt-12 text-center">
           <Link
             href="/donate"
-            className="inline-flex items-center gap-3 font-inter text-sm text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-1 hover:border-primary transition-colors"
+            className="tap-target inline-flex items-center gap-3 font-inter text-sm text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-1 hover:border-primary transition-colors"
           >
             Explore all giving options <ArrowRight size={14} />
           </Link>

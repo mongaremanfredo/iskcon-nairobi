@@ -37,9 +37,9 @@ export default function Timeline() {
       {entries.map((entry) => (
         <li key={entry.year} className="relative">
           <span className="absolute -left-[calc(2rem+5px)] top-1 flex h-3 w-3 -translate-x-1/2 items-center justify-center rounded-full bg-gold ring-4 ring-temple-bg sm:-left-[calc(2.5rem+5px)]" />
-          <span className="eyebrow mb-1 block">{entry.year}</span>
+          <span className="eyebrow mb-1 block text-gold">{entry.year}</span>
           <h3 className="font-playfair text-xl font-semibold text-ink">{entry.title}</h3>
-          <p className="mt-2 max-w-2xl font-inter text-sm leading-relaxed text-ink/62">
+          <p className="mt-2 max-w-2xl font-inter text-sm leading-relaxed text-ink/75">
             {entry.detail}
           </p>
         </li>

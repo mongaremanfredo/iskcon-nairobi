@@ -32,6 +32,21 @@ announce. Full decision rules are maintained in `PROJECT_GUIDELINES.md`.
 6. Deploy and verify that an installation on the previous version shows the release panel.
 7. Test **Later** and **Update now**. Later must leave the waiting worker inactive; Update now must activate and reload once.
 
+## 1.1.0 - Faster, Clearer, Easier to Use
+
+**Released:** 3 November 2026
+
+**Update mode:** Silent. A minor release, because it adds visitor-facing improvements across the whole site without fundamentally changing the app. `CACHE_VERSION` moved to v6 because large images left the precache list.
+
+### Highlights
+
+- Pages download far less data on mobile connections.
+- Temple status now matches the published opening hours.
+- Upcoming festival dates always show the next dates on the calendar.
+- Donation pages explain how giving works today.
+- Text, colours, and controls are easier to read and use by touch, keyboard, and screen reader.
+- Visit and Festivals pages lead with what visitors need first, and Serve joins the main menu.
+
 ## 1.0.0 - First Complete Release
 
 **Released:** 25 August 2026

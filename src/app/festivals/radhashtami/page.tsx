@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 import {
   ArrowRight,
   BookOpen,
@@ -13,11 +13,11 @@ import {
   Users,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Radhashtami",
   description:
     "Celebrate Radhashtami, the appearance day of Srimati Radharani, at ISKCON Nairobi with kirtan, class, worship, offerings, seva, and prasadam.",
-};
+}, "/festivals/radhashtami");
 
 const story = [
   {
@@ -75,7 +75,7 @@ export default function RadhashtamiPage() {
               <h2 className="section-title max-w-3xl">
                 The day devotees pray to enter Krishna's service
               </h2>
-              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/68 sm:text-base">
+              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 Radhashtami celebrates the divine appearance of Srimati Radharani, the topmost devotee and eternal companion of Lord Krishna. In the Gaudiya Vaishnava tradition, She is honoured as the personification of pure devotion, the tender heart of Vraja, and the one whose mercy makes love for Krishna accessible.
               </p>
             </div>
@@ -112,7 +112,7 @@ export default function RadhashtamiPage() {
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">{item.text}</p>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
               </article>
             ))}
           </div>
@@ -163,13 +163,13 @@ export default function RadhashtamiPage() {
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="flex gap-3 border border-temple-sand bg-temple-cream/60 p-4">
                   <CalendarDays className="mt-0.5 shrink-0 text-gold" size={18} />
-                  <p className="font-inter text-sm leading-relaxed text-ink/66">
+                  <p className="font-inter text-sm leading-relaxed text-ink/75">
                     The detailed yearly programme is announced closer to the date through the temple noticeboard and official channels.
                   </p>
                 </div>
                 <div className="flex gap-3 border border-temple-sand bg-temple-cream/60 p-4">
                   <HeartHandshake className="mt-0.5 shrink-0 text-gold" size={18} />
-                  <p className="font-inter text-sm leading-relaxed text-ink/66">
+                  <p className="font-inter text-sm leading-relaxed text-ink/75">
                     Sponsorship and volunteer service help support flowers, offerings, prasadam, and guest care.
                   </p>
                 </div>

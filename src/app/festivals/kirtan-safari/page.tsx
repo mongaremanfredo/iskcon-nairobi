@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import {
   BookOpen,
@@ -15,10 +14,11 @@ import KirtanSafariLiveHub from "@/components/festivals/KirtanSafariLiveHub";
 import KirtanSafariArchive from "@/components/festivals/KirtanSafariArchive";
 import { getKirtanSafariState } from "@/lib/kirtanSafariState";
 import { kirtanSafariGuestKirtaniyas } from "@/data/kirtanSafari";
+import { withSeo } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Kirtan Safari 2026",
   description:
     "Relive Kirtan Safari 2026 at ISKCON Nairobi: four days of the holy name, guest kirtaniyas, Harinam, prasadam, service, and devotional community.",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
       },
     ],
   },
-};
+}, "/festivals/kirtan-safari");
 
 /* ─── schedule data ─────────────────────────────────────── */
 const days = [
@@ -247,7 +247,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
               color: "#3A2A24",
-              fontSize: "0.6rem",
+              fontSize: "0.75rem",
               fontWeight: 700,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
@@ -272,7 +272,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
               color: "rgba(58,42,36,0.72)",
-              fontSize: "0.55rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.15em",
               margin: 0,
             }}
@@ -305,7 +305,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
               color: "rgba(255,255,255,0.5)",
-              fontSize: "0.65rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.25em",
               textTransform: "uppercase",
               marginBottom: "0.75rem",
@@ -367,7 +367,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
                 color: "rgba(246,226,177,0.9)",
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 margin: 0,
@@ -430,7 +430,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 color: "#fff",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 700,
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "1rem 2rem",
@@ -452,7 +452,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 color: "#fff",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "1rem 2rem",
@@ -474,7 +474,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 color: "rgba(246,226,177,0.92)",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
-                fontSize: "0.7rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "1rem 2rem",
@@ -503,7 +503,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
             style={{
               fontFamily: "var(--font-inter, sans-serif)",
               color: "rgba(255,255,255,0.3)",
-              fontSize: "0.55rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.2em",
               textTransform: "uppercase",
               margin: 0,
@@ -548,7 +548,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
                   color: "#d69c2b",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   marginBottom: "1rem",
@@ -666,7 +666,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                     style={{
                       fontFamily: "var(--font-inter, sans-serif)",
                       color: "rgba(255,255,255,0.35)",
-                      fontSize: "0.7rem",
+                      fontSize: "0.75rem",
                       margin: 0,
                     }}
                   >
@@ -734,7 +734,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
                   color: "#d69c2b",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   marginBottom: "0.85rem",
@@ -777,7 +777,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
               display: "none",
               fontFamily: "var(--font-inter, sans-serif)",
               color: "rgba(214,156,43,0.8)",
-              fontSize: "0.62rem",
+              fontSize: "0.75rem",
               fontWeight: 800,
               letterSpacing: "0.18em",
               textTransform: "uppercase",
@@ -895,7 +895,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
                 color: "#d69c2b",
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 marginBottom: "0.75rem",
@@ -943,7 +943,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
                   color: "#d69c2b",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   fontWeight: 700,
@@ -1027,7 +1027,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                     style={{
                       fontFamily: "var(--font-inter, sans-serif)",
                       color: "rgba(214,156,43,0.9)",
-                      fontSize: "0.58rem",
+                      fontSize: "0.75rem",
                       fontWeight: 800,
                       letterSpacing: "0.16em",
                       textTransform: "uppercase",
@@ -1105,7 +1105,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                     style={{
                       fontFamily: "var(--font-inter, sans-serif)",
                       color: "rgba(255,255,255,0.5)",
-                      fontSize: "0.65rem",
+                      fontSize: "0.75rem",
                       letterSpacing: "0.2em",
                       textTransform: "uppercase",
                       margin: "0.25rem 0 0",
@@ -1127,7 +1127,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                         style={{
                           fontFamily: "var(--font-inter, sans-serif)",
                           color: "#f6e2b1",
-                          fontSize: "0.6rem",
+                          fontSize: "0.75rem",
                           letterSpacing: "0.12em",
                           textTransform: "uppercase",
                           fontWeight: 600,
@@ -1159,7 +1159,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                         style={{
                           fontFamily: "var(--font-inter, sans-serif)",
                           color: "#d69c2b",
-                          fontSize: "0.72rem",
+                          fontSize: "0.75rem",
                           fontWeight: 600,
                           minWidth: "6rem",
                           flexShrink: 0,
@@ -1259,7 +1259,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
                   color: "#d69c2b",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   marginBottom: "1rem",
@@ -1320,7 +1320,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
                   color: "#d69c2b",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   marginBottom: "1rem",
@@ -1359,7 +1359,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                     style={{
                       fontFamily: "var(--font-inter, sans-serif)",
                       color: "rgba(255,255,255,0.5)",
-                      fontSize: "0.7rem",
+                      fontSize: "0.75rem",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                     }}
@@ -1396,7 +1396,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                     style={{
                       fontFamily: "var(--font-inter, sans-serif)",
                       color: "rgba(255,255,255,0.5)",
-                      fontSize: "0.7rem",
+                      fontSize: "0.75rem",
                       letterSpacing: "0.1em",
                       textTransform: "uppercase",
                     }}
@@ -1435,7 +1435,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
                   color: "#d69c2b",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   marginBottom: "1rem",
@@ -1476,7 +1476,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                   color: "#fff",
                   fontFamily: "var(--font-inter, sans-serif)",
                   fontWeight: 700,
-                  fontSize: "0.7rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.18em",
                   textTransform: "uppercase",
                   padding: "1rem 2rem",
@@ -1517,7 +1517,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                 style={{
                   fontFamily: "var(--font-inter, sans-serif)",
                   color: "#d69c2b",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.2em",
                   textTransform: "uppercase",
                   marginBottom: "0.5rem",
@@ -1551,7 +1551,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
                     alignItems: "center",
                     gap: "0.4rem",
                     color: "rgba(246,226,177,0.74)",
-                    fontSize: "0.65rem",
+                    fontSize: "0.75rem",
                     letterSpacing: "0.1em",
                     textTransform: "uppercase",
                     textDecoration: "none",
@@ -1621,7 +1621,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
               color: "#071c10",
               fontFamily: "var(--font-inter, sans-serif)",
               fontWeight: 800,
-              fontSize: "0.7rem",
+              fontSize: "0.75rem",
               letterSpacing: "0.18em",
               textTransform: "uppercase",
               padding: "1rem 2rem",
@@ -2108,7 +2108,7 @@ export default async function KirtanSafariPage({ searchParams }: KirtanSafariPag
           }
 
           .kirtan-safari-page .ks-guest-card p {
-            font-size: 0.68rem !important;
+            font-size: 0.75rem !important;
             letter-spacing: 0.05em !important;
             line-height: 1.25 !important;
           }

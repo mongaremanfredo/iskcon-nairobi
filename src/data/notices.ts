@@ -27,7 +27,7 @@ export const siteNotices: SiteNotice[] = [
     body: "Join us in celebrating the appearance of Srimati Radharani with kirtan, class, special worship, offerings, service, and prasadam.",
     dateLabel: "19 Sep 2026",
     tag: "Festival",
-    href: "/festivals/radhastami",
+    href: "/festivals/radhashtami",
     priority: "high",
     expiresAt: "2026-09-20T00:00:00+03:00",
   },

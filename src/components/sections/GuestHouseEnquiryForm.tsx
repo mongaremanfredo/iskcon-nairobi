@@ -25,7 +25,7 @@ function cleanText(value: string) {
 }
 
 const inputClass =
-  "w-full bg-white/10 border border-white/15 text-white placeholder-white/30 font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold";
+  "w-full bg-white/10 border border-white/15 text-white placeholder-white/30 font-inter text-sm px-4 py-3 focus:border-gold";
 
 export default function GuestHouseEnquiryForm() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -100,8 +100,8 @@ export default function GuestHouseEnquiryForm() {
   return (
     <form onSubmit={submitEnquiry} className="bg-white/5 border border-white/10 p-8 space-y-4" noValidate>
       <div>
-        <label className="font-inter text-white/50 text-xs uppercase tracking-wider block mb-1.5">Full Name</label>
-        <input
+        <label htmlFor="guest-house-field-1" className="font-inter text-white/70 text-xs uppercase tracking-wider block mb-1.5">Full Name</label>
+        <input id="guest-house-field-1"
           value={form.fullName}
           onChange={(event) => updateField("fullName", event.target.value)}
           type="text"
@@ -115,8 +115,8 @@ export default function GuestHouseEnquiryForm() {
         />
       </div>
       <div>
-        <label className="font-inter text-white/50 text-xs uppercase tracking-wider block mb-1.5">Email Address</label>
-        <input
+        <label htmlFor="guest-house-field-2" className="font-inter text-white/70 text-xs uppercase tracking-wider block mb-1.5">Email Address</label>
+        <input id="guest-house-field-2"
           value={form.email}
           onChange={(event) => updateField("email", event.target.value)}
           type="email"
@@ -129,8 +129,8 @@ export default function GuestHouseEnquiryForm() {
       </div>
       <div className="grid sm:grid-cols-2 gap-4">
         <div>
-          <label className="font-inter text-white/50 text-xs uppercase tracking-wider block mb-1.5">Arrival Date</label>
-          <input
+          <label htmlFor="guest-house-field-3" className="font-inter text-white/70 text-xs uppercase tracking-wider block mb-1.5">Arrival Date</label>
+          <input id="guest-house-field-3"
             value={form.arrival}
             onChange={(event) => updateField("arrival", event.target.value)}
             type="date"
@@ -139,8 +139,8 @@ export default function GuestHouseEnquiryForm() {
           />
         </div>
         <div>
-          <label className="font-inter text-white/50 text-xs uppercase tracking-wider block mb-1.5">Departure Date</label>
-          <input
+          <label htmlFor="guest-house-field-4" className="font-inter text-white/70 text-xs uppercase tracking-wider block mb-1.5">Departure Date</label>
+          <input id="guest-house-field-4"
             value={form.departure}
             onChange={(event) => updateField("departure", event.target.value)}
             type="date"
@@ -150,8 +150,8 @@ export default function GuestHouseEnquiryForm() {
         </div>
       </div>
       <div>
-        <label className="font-inter text-white/50 text-xs uppercase tracking-wider block mb-1.5">Message</label>
-        <textarea
+        <label htmlFor="guest-house-field-5" className="font-inter text-white/70 text-xs uppercase tracking-wider block mb-1.5">Message</label>
+        <textarea id="guest-house-field-5"
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
           rows={3}
@@ -177,7 +177,7 @@ export default function GuestHouseEnquiryForm() {
       {message && (
         <p
           className={`font-inter text-sm ${status === "error" ? "text-sunset" : "text-emerald-300"}`}
-          role="status"
+          role={status === "error" ? "alert" : "status"}
         >
           {message}
         </p>

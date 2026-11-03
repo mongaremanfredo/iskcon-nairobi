@@ -10,11 +10,11 @@ import CalendarNotificationManager from "@/components/system/CalendarNotificatio
 import NoticeNotificationManager from "@/components/system/NoticeNotificationManager";
 import WhatsAppWidget from "@/components/ui/WhatsAppWidget";
 import InstallPromptBanner from "@/components/ui/InstallPromptBanner";
-import { templeInfo } from "@/data/site";
+import { templeHours, templeInfo } from "@/data/site";
 import { safeJsonLd } from "@/lib/security";
+import { previewImage, SITE_NAME } from "@/lib/seo";
 
 const siteUrl = "https://iskconnairobi.esthrema.com";
-const previewImage = "/brand/og-image.jpg?v=20260825";
 const iconVersion = "v=pwa-resilient-2026-08-24";
 const siteTitle = "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple";
 const siteDescription =
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   applicationName: "ISKCON Nairobi",
   title: {
     default: siteTitle,
-    template: "%s",
+    template: `%s | ${SITE_NAME}`,
   },
   description: siteDescription,
   keywords: ["ISKCON Nairobi", "Hare Krishna Kenya", "Krishna Consciousness", "HKTC", "Kirtan Safari", "Food For Life Kenya"],
@@ -61,9 +61,6 @@ export const metadata: Metadata = {
   creator: "ISKCON Nairobi",
   publisher: "ISKCON Nairobi",
   category: "religion",
-  alternates: {
-    canonical: "/",
-  },
   formatDetection: {
     telephone: true,
     email: true,
@@ -134,14 +131,14 @@ const structuredData = {
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "04:30",
-      closes: "12:45",
+      opens: templeHours.morning.opens,
+      closes: templeHours.morning.closes,
     },
     {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-      opens: "16:30",
-      closes: "20:45",
+      opens: templeHours.evening.opens,
+      closes: templeHours.evening.closes,
     },
   ],
   image: `${siteUrl}${previewImage}`,
@@ -158,6 +155,9 @@ export default function RootLayout({
       className={`${fraunces.variable} ${inter.variable} ${sourceSerif4.variable}`}
     >
       <body className="bg-sand text-dusk antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: safeJsonLd(structuredData) }}
@@ -171,7 +171,7 @@ export default function RootLayout({
         <CalendarNotificationManager />
         <NoticeNotificationManager />
         <Navigation />
-        <main>{children}</main>
+        <main id="main-content" tabIndex={-1}>{children}</main>
         <SavannaDivider tone="sand" className="h-[7vw] min-h-6 sm:h-24" />
         <Footer />
         <WhatsAppWidget />

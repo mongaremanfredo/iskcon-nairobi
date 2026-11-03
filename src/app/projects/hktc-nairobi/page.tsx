@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import StickySubNav from "@/components/hktc/StickySubNav";
@@ -6,6 +6,7 @@ import Timeline from "@/components/hktc/Timeline";
 import Gallery from "@/components/hktc/Gallery";
 import FAQAccordion from "@/components/hktc/FAQAccordion";
 import { templeInfo } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 import {
   ArrowRight,
   BookOpen,
@@ -20,11 +21,11 @@ import {
   Users,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "HKTC Nairobi",
   description:
     "Hare Krishna Training Centre Nairobi serves university students with Prabhupada-centered study, daily classes, accommodation, prasadam, and devotional mentorship.",
-};
+}, "/projects/hktc-nairobi");
 
 const stats = [
   { value: "10,000+", label: "Students Reached" },
@@ -158,7 +159,7 @@ export default function HKTCNairobiPage() {
                 <br />
                 <em className="text-gold not-italic font-normal">Rooted in Bhakti</em>
               </h2>
-              <div className="mt-6 space-y-4 font-inter text-sm leading-relaxed text-ink/68 sm:text-base">
+              <div className="mt-6 space-y-4 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 <p>
                   The Hare Krishna Training Centre serves mostly university students, giving them a serious
                   spiritual foundation while they continue their academic and professional development in Nairobi.
@@ -177,8 +178,8 @@ export default function HKTCNairobiPage() {
               <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {stats.map((stat) => (
                   <div key={stat.label} className="border border-temple-sand bg-white p-4">
-                    <p className="font-playfair text-2xl font-semibold text-gold sm:text-3xl">{stat.value}</p>
-                    <p className="mt-1 font-inter text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-ink/48">
+                    <p className="font-playfair text-2xl font-semibold text-gold-ink sm:text-3xl">{stat.value}</p>
+                    <p className="mt-1 font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                       {stat.label}
                     </p>
                   </div>
@@ -188,7 +189,7 @@ export default function HKTCNairobiPage() {
 
             <div className="grid gap-4">
               <div className="overflow-hidden border border-temple-sand bg-white shadow-card">
-                <img
+                <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                   src="/images/hktc/hktc-nairobi-kirtan-class.jpg"
                   alt="HKTC Nairobi students leading kirtan and class"
                   className="h-full w-full object-cover"
@@ -199,14 +200,14 @@ export default function HKTCNairobiPage() {
                   <CheckCircle className="mt-1 shrink-0 text-gold" size={20} />
                   <div>
                     <h3 className="font-playfair text-xl font-semibold text-ink">Four Regulative Principles</h3>
-                    <p className="mt-2 font-inter text-sm leading-relaxed text-ink/62">
+                    <p className="mt-2 font-inter text-sm leading-relaxed text-ink/75">
                       Students are trained in disciplined devotional life through the four regulative principles:
                     </p>
                     <div className="mt-4 grid grid-cols-2 gap-2">
                       {principles.map((principle) => (
                         <span
                           key={principle}
-                          className="border border-gold/25 bg-white px-3 py-2 font-inter text-xs font-semibold uppercase tracking-[0.08em] text-ink/70"
+                          className="border border-gold/25 bg-white px-3 py-2 font-inter text-xs font-semibold uppercase tracking-[0.08em] text-ink/75"
                         >
                           {principle}
                         </span>
@@ -225,18 +226,18 @@ export default function HKTCNairobiPage() {
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
-              <span className="eyebrow mb-3 block text-gold/75">Life as a Student</span>
+              <span className="eyebrow mb-3 block text-gold">Life as a Student</span>
               <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
                 A Living Introduction
                 <br />
                 <em className="text-gold not-italic font-normal">to Vedic Culture</em>
               </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-sand/68 sm:text-base">
+              <p className="mt-5 font-inter text-sm leading-relaxed text-sand/75 sm:text-base">
                 Life at HKTC is a fascinating introduction to Vedic culture: its food, philosophy, attire, music,
                 discipline, service mood, and community life. Students are not forced into an artificial pace. They
                 explore, ask questions, practice, and grow under expert guidance.
               </p>
-              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/58 sm:text-base">
+              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/75 sm:text-base">
                 Public articles about the centre describe a rhythm of simple living and high thinking, with students
                 rising early, attending temple programmes, chanting, studying, serving, cooking, taking prasadam, and
                 building character through Srila Prabhupada's books.
@@ -247,7 +248,7 @@ export default function HKTCNairobiPage() {
               {studentLife.map((item) => (
                 <article key={item.title} className="border border-gold/15 bg-white/[0.06] p-5">
                   <h3 className="font-playfair text-xl font-semibold text-white">{item.title}</h3>
-                  <p className="mt-3 font-inter text-sm leading-relaxed text-sand/60">{item.text}</p>
+                  <p className="mt-3 font-inter text-sm leading-relaxed text-sand/75">{item.text}</p>
                 </article>
               ))}
             </div>
@@ -265,7 +266,7 @@ export default function HKTCNairobiPage() {
               <br />
               <em className="text-gold not-italic font-normal">Study and Prasadam</em>
             </h2>
-            <p className="mt-5 font-inter text-sm leading-relaxed text-ink/62 sm:text-base">
+            <p className="mt-5 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
               HKTC follows the same Prabhupada-centered learning culture described on the Learn page. Bhagavad-gita
               and Srimad-Bhagavatam are studied verse by verse, with attention to Srila Prabhupada's purports and
               the teachings of the Goswamis.
@@ -278,9 +279,9 @@ export default function HKTCNairobiPage() {
                 <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
                   <div>
                     <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                    <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">{item.detail}</p>
+                    <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.detail}</p>
                   </div>
-                  <div className="flex w-fit shrink-0 items-center gap-2 bg-temple-brown px-4 py-2 font-inter text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-sand">
+                  <div className="flex w-fit shrink-0 items-center gap-2 bg-temple-brown px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.12em] text-sand">
                     <CalendarDays size={13} className="text-gold" />
                     {item.time}
                   </div>
@@ -302,7 +303,7 @@ export default function HKTCNairobiPage() {
                 <br />
                 <em className="text-gold not-italic font-normal">Srila Prabhupada's Books</em>
               </h2>
-              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/64 sm:text-base">
+              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 Students move through Srila Prabhupada's books in sequence, growing from introductory philosophy to
                 deeper scriptural study. The year culminates in examinations and an annual graduation ceremony for
                 those who complete the prescribed study.
@@ -311,10 +312,10 @@ export default function HKTCNairobiPage() {
               <div className="mt-8 grid gap-3 sm:grid-cols-2">
                 {studySequence.map((book, index) => (
                   <div key={book} className="flex items-center gap-3 border border-temple-sand bg-white p-3">
-                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/10 font-inter text-xs font-bold text-gold">
+                    <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gold/10 font-inter text-xs font-bold text-gold-ink">
                       {String(index + 1).padStart(2, "0")}
                     </span>
-                    <span className="font-inter text-sm font-medium text-ink/72">{book}</span>
+                    <span className="font-inter text-sm font-medium text-ink/75">{book}</span>
                   </div>
                 ))}
               </div>
@@ -322,7 +323,7 @@ export default function HKTCNairobiPage() {
 
             <div className="space-y-5">
               <aside className="overflow-hidden border border-temple-sand bg-white shadow-card">
-                <img
+                <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                   src="/images/hktc/hktc-nairobi-prabhupada-book-study.jpg"
                   alt="HKTC Nairobi students studying Srila Prabhupada's books"
                   className="aspect-[16/10] w-full object-cover"
@@ -330,7 +331,7 @@ export default function HKTCNairobiPage() {
                 <div className="border-t border-temple-sand p-6">
                   <BookOpen className="mb-4 text-gold" size={28} />
                   <h3 className="font-playfair text-2xl font-semibold text-ink">Prabhupada Book Study</h3>
-                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">
+                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">
                     Students study directly from Srila Prabhupada's books, with reading, written work, discussion,
                     and examinations woven into the yearly programme.
                   </p>
@@ -338,14 +339,14 @@ export default function HKTCNairobiPage() {
               </aside>
 
               <aside className="border border-gold/25 bg-temple-brown p-6 text-sand shadow-card">
-                <img
+                <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                   src="/images/hktc/hktc-nairobi-graduation-certificates.jpg"
                   alt="HKTC Nairobi students after graduation with certificates"
                   className="mb-6 aspect-[16/9] w-full object-cover"
                 />
                 <GraduationCap className="mb-5 text-gold" size={30} />
                 <h3 className="font-playfair text-2xl font-semibold text-white">Graduation Ceremony</h3>
-                <p className="mt-4 font-inter text-sm leading-relaxed text-sand/68">
+                <p className="mt-4 font-inter text-sm leading-relaxed text-sand/75">
                   The graduation ceremony is held every year after students complete the book sequence and sit for
                   examinations. The full HKTC graduation album is hosted externally so the website stays fast.
                 </p>
@@ -353,7 +354,7 @@ export default function HKTCNairobiPage() {
                   href="https://photos.app.goo.gl/MIZfuQWWgNPvBuG43"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-6 inline-flex items-center gap-2 border-b border-gold/50 pb-1 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-white"
+                  className="tap-target mt-6 inline-flex items-center gap-2 border-b border-gold/50 pb-1 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-white"
                 >
                   View Graduation Album
                   <ExternalLink size={13} />
@@ -368,7 +369,7 @@ export default function HKTCNairobiPage() {
       <section id="timeline" className="scroll-mt-32 bg-temple-brown py-section text-sand sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-10 max-w-2xl">
-            <span className="eyebrow mb-3 block text-gold/75">Our Story</span>
+            <span className="eyebrow mb-3 block text-gold">Our Story</span>
             <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
               A Decade of
               <br />
@@ -391,7 +392,7 @@ export default function HKTCNairobiPage() {
               <br />
               <em className="text-gold not-italic font-normal">Pictures</em>
             </h2>
-            <p className="mt-5 font-inter text-sm leading-relaxed text-ink/62 sm:text-base">
+            <p className="mt-5 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
               A glimpse into daily life at HKTC Nairobi. Tap any photo to see it full size.
             </p>
           </div>
@@ -400,7 +401,7 @@ export default function HKTCNairobiPage() {
             href="https://www.instagram.com/hktc.africa?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold hover:text-ink"
+            className="tap-target mt-6 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink hover:text-ink"
           >
             <Camera size={14} />
             More on Instagram @hktc.africa
@@ -420,7 +421,7 @@ export default function HKTCNairobiPage() {
                 <br />
                 <em className="text-gold not-italic font-normal">Meals and Guidance</em>
               </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/62 sm:text-base">
+              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 HKTC is more than a classroom. It supports a protected devotional environment where students can
                 learn, live, serve, eat prasadam, and receive guidance in Krishna consciousness.
               </p>
@@ -433,7 +434,7 @@ export default function HKTCNairobiPage() {
                     <item.icon size={20} />
                   </div>
                   <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/60">{item.text}</p>
+                  <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
                 </article>
               ))}
             </div>
@@ -461,13 +462,13 @@ export default function HKTCNairobiPage() {
         <div className="content-width section-padding">
           <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
             <div>
-              <span className="eyebrow mb-3 block text-gold/75">Support HKTC</span>
+              <span className="eyebrow mb-3 block text-gold">Support HKTC</span>
               <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
                 Help Sponsor
                 <br />
                 <em className="text-gold not-italic font-normal">Student Formation</em>
               </h2>
-              <p className="mt-5 max-w-2xl font-inter text-sm leading-relaxed text-sand/68 sm:text-base">
+              <p className="mt-5 max-w-2xl font-inter text-sm leading-relaxed text-sand/75 sm:text-base">
                 Support can help provide study materials, prasadam, student accommodation, retreats, examinations,
                 visiting speakers, and the daily service that keeps the centre running.
               </p>
@@ -477,7 +478,7 @@ export default function HKTCNairobiPage() {
                 </Link>
                 <Link
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 border border-gold/40 px-5 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-white"
+                  className="min-h-11 inline-flex items-center justify-center gap-2 border border-gold/40 px-5 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-white"
                 >
                   Speak to the Temple
                   <ArrowRight size={14} />
@@ -496,7 +497,7 @@ export default function HKTCNairobiPage() {
                   <Camera className="text-gold" size={24} />
                   <div>
                     <p className="font-playfair text-xl font-semibold text-white">Follow HKTC Africa</p>
-                    <p className="mt-1 font-inter text-xs uppercase tracking-[0.14em] text-sand/45">
+                    <p className="mt-1 font-inter text-xs uppercase tracking-[0.14em] text-sand/75">
                       Classes, students, and updates
                     </p>
                   </div>
@@ -509,7 +510,7 @@ export default function HKTCNairobiPage() {
                 <h3 className="font-playfair text-xl font-semibold text-white">Notes from public reports</h3>
                 <div className="mt-3 space-y-2">
                   {sourceNotes.map((note) => (
-                    <p key={note} className="font-inter text-xs leading-relaxed text-sand/58">
+                    <p key={note} className="font-inter text-xs leading-relaxed text-sand/75">
                       {note}
                     </p>
                   ))}
@@ -519,7 +520,7 @@ export default function HKTCNairobiPage() {
                     href="https://peopledaily.digital/lifestyle/young-hare-krishna-monks-revive-simple-way-of-living"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                    className="tap-target font-inter text-xs font-semibold uppercase tracking-widest text-gold"
                   >
                     People Daily
                   </a>
@@ -527,7 +528,7 @@ export default function HKTCNairobiPage() {
                     href="https://iskconnews.org/kenyas-hare-krishna-training-centre-gives-students-ashram-experience/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                    className="tap-target font-inter text-xs font-semibold uppercase tracking-widest text-gold"
                   >
                     Ashram Experience
                   </a>
@@ -535,7 +536,7 @@ export default function HKTCNairobiPage() {
                     href="https://iskconnews.org/students-join-nairobi-hare-krishna-training-centre/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                    className="tap-target font-inter text-xs font-semibold uppercase tracking-widest text-gold"
                   >
                     ISKCON News
                   </a>
@@ -543,7 +544,7 @@ export default function HKTCNairobiPage() {
                     href="https://www.dandavats.com/?p=56815"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                    className="tap-target font-inter text-xs font-semibold uppercase tracking-widest text-gold"
                   >
                     Dandavats Report
                   </a>
@@ -551,7 +552,7 @@ export default function HKTCNairobiPage() {
                     href="https://www.dandavats.com/?p=26003"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="font-inter text-[0.68rem] font-semibold uppercase tracking-widest text-gold"
+                    className="tap-target font-inter text-xs font-semibold uppercase tracking-widest text-gold"
                   >
                     Dandavats HKTC
                   </a>
@@ -560,7 +561,7 @@ export default function HKTCNairobiPage() {
 
               <div className="border border-gold/15 bg-white/[0.05] p-5">
                 <HeartHandshake className="mb-4 text-gold" size={24} />
-                <p className="font-inter text-sm leading-relaxed text-sand/64">
+                <p className="font-inter text-sm leading-relaxed text-sand/75">
                   For visits, sponsorship, class enquiries, or student support, contact {templeInfo.name} through
                   the temple office.
                 </p>

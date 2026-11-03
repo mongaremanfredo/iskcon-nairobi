@@ -20,7 +20,7 @@ function SocialIcon({ name, label }: { name: string; label: string }) {
     return <span className="font-inter text-base font-black leading-none">f</span>;
   }
 
-  return <span className="font-inter text-[10px] font-bold">{label}</span>;
+  return <span className="font-inter text-xs font-bold">{label}</span>;
 }
 
 export default function Footer() {
@@ -34,7 +34,7 @@ export default function Footer() {
             <Link href="/" className="mb-6 block w-fit pr-6 text-sand transition-colors hover:text-white">
               <BrandLogo className="h-16 w-[172px]" />
             </Link>
-            <p className="font-inter text-white/40 text-sm leading-relaxed mb-6 max-w-xs">
+            <p className="font-inter text-white/70 text-sm leading-relaxed mb-6 max-w-xs">
               The digital headquarters for ISKCON East Africa - where devotion, education, community service, and the beauty of the African landscape come together.
             </p>
             <div className="flex items-center gap-3">
@@ -46,7 +46,7 @@ export default function Footer() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={name}
-                    className="flex h-9 w-9 items-center justify-center border border-white/10 text-white/35 transition-colors hover:border-primary/50 hover:text-primary"
+                    className="flex h-11 w-11 items-center justify-center border border-white/10 text-white/70 transition-colors hover:border-primary/50 hover:text-gold-light"
                   >
                     <SocialIcon name={name} label={label} />
                   </a>
@@ -62,7 +62,7 @@ export default function Footer() {
                 <li key={item.href}>
                   <Link
                     href={item.href}
-                    className="font-inter text-white/40 text-sm hover:text-primary transition-colors"
+                    className="tap-target font-inter text-white/70 text-sm hover:text-gold-light transition-colors"
                   >
                     {item.label}
                   </Link>
@@ -78,15 +78,15 @@ export default function Footer() {
             <ul className="space-y-4">
               {templeScheduleGroups.map((group) => (
                 <li key={group.title}>
-                  <p className="font-inter text-gold/80 text-[0.65rem] font-semibold uppercase tracking-[0.14em]">
+                  <p className="font-inter text-gold text-xs font-semibold uppercase tracking-[0.14em]">
                     {group.title}
                   </p>
-                  <p className="font-inter text-white/30 text-xs mt-1 mb-2">{group.timeRange}</p>
+                  <p className="font-inter text-white/70 text-xs mt-1 mb-2">{group.timeRange}</p>
                   <ul className="space-y-2">
                     {group.items.map((item) => (
                       <li key={`${group.title}-${item.time}-${item.event}`} className="flex items-start gap-3">
                         <span className="font-inter text-gold text-xs w-20 flex-shrink-0 pt-0.5">{item.time}</span>
-                        <span className="font-inter text-white/40 text-sm">{item.event}</span>
+                        <span className="font-inter text-white/70 text-sm">{item.event}</span>
                       </li>
                     ))}
                   </ul>
@@ -100,7 +100,7 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin size={14} className="text-gold mt-0.5 flex-shrink-0" />
-                <span className="font-inter text-white/40 text-sm leading-relaxed">
+                <span className="font-inter text-white/70 text-sm leading-relaxed">
                   {templeInfo.addressLines.map((line) => (
                     <span key={line}>{line}<br /></span>
                   ))}
@@ -108,27 +108,27 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={14} className="text-gold flex-shrink-0" />
-                <a href={`tel:${templeInfo.phoneHref}`} className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
+                <a href={`tel:${templeInfo.phoneHref}`} className="tap-target font-inter text-white/70 text-sm hover:text-gold-light transition-colors">
                   {templeInfo.phoneDisplay}
                 </a>
               </li>
               {whatsappLink && (
                 <li className="flex items-center gap-3">
                   <MessageCircle size={14} className="text-gold flex-shrink-0" />
-                  <a href={whatsappLink.href} target="_blank" rel="noopener noreferrer" className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
+                  <a href={whatsappLink.href} target="_blank" rel="noopener noreferrer" className="tap-target font-inter text-white/70 text-sm hover:text-gold-light transition-colors">
                     WhatsApp +254 721 667 181
                   </a>
                 </li>
               )}
               <li className="flex items-center gap-3">
                 <Mail size={14} className="text-gold flex-shrink-0" />
-                <a href={`mailto:${templeInfo.email}`} className="font-inter text-white/40 text-sm hover:text-primary transition-colors">
+                <a href={`mailto:${templeInfo.email}`} className="tap-target font-inter text-white/70 text-sm hover:text-gold-light transition-colors">
                   {templeInfo.email}
                 </a>
               </li>
               <li className="flex items-start gap-3">
                 <Clock size={14} className="text-gold mt-0.5 flex-shrink-0" />
-                <span className="font-inter text-white/40 text-sm leading-relaxed">
+                <span className="font-inter text-white/70 text-sm leading-relaxed">
                   Temple open daily<br />{templeInfo.hours.replace("Daily: ", "")}
                 </span>
               </li>
@@ -138,7 +138,7 @@ export default function Footer() {
               href={templeInfo.mapUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-5 font-inter text-xs text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-0.5 hover:border-primary transition-colors"
+              className="tap-target inline-flex items-center gap-2 mt-5 font-inter text-xs text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-0.5 hover:border-primary transition-colors"
             >
               Get Directions
             </a>
@@ -150,17 +150,17 @@ export default function Footer() {
 
       <div className="content-width section-padding py-5">
         <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-center font-inter text-white/20 text-xs sm:text-left">
+          <p className="text-center font-inter text-white/70 text-xs sm:text-left">
             © {new Date().getFullYear()} ISKCON Nairobi. All rights reserved.
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-end">
-            <Link href="/privacy" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="font-inter text-white/20 text-xs hover:text-white/40 transition-colors">Terms and Conditions</Link>
+            <Link href="/privacy" className="tap-target font-inter text-white/70 text-xs hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="tap-target font-inter text-white/70 text-xs hover:text-white transition-colors">Terms and Conditions</Link>
             <a
               href="https://esthrema.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 border-l border-white/10 pl-4 font-inter text-white/20 text-xs transition-colors hover:text-white/50"
+              className="tap-target group inline-flex items-center gap-2 border-l border-white/10 pl-4 font-inter text-white/70 text-xs transition-colors hover:text-white"
               aria-label="Powered by Esthrema"
             >
               <span>Powered by</span>

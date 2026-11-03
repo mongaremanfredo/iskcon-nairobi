@@ -263,7 +263,7 @@ export default function KirtanSafariRegistrationForm() {
         .ks-updates span {
           color: rgba(246, 226, 177, 0.78);
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.68rem;
+          font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.14em;
           text-transform: uppercase;
@@ -318,7 +318,7 @@ export default function KirtanSafariRegistrationForm() {
           color: rgba(255, 255, 255, 0.74);
           display: block;
           flex: 1 1 auto;
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           letter-spacing: 0.04em;
           line-height: 1.35;
           text-transform: none;
@@ -353,7 +353,7 @@ export default function KirtanSafariRegistrationForm() {
           cursor: pointer;
           display: inline-flex;
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.7rem;
+          font-size: 0.75rem;
           font-weight: 800;
           justify-content: center;
           letter-spacing: 0.18em;

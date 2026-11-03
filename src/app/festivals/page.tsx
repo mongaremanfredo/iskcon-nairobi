@@ -1,18 +1,54 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import CalendarNotificationOptIn from "@/components/ui/CalendarNotificationOptIn";
-import { homepageFestivalPreview, vaishnavaCalendar2026 } from "@/data/site";
+import { homepageFestivalPreview, templeInfo, vaishnavaCalendar2026 } from "@/data/site";
 import { Calendar, MapPin, ArrowRight, Sparkles } from "lucide-react";
 import { getKirtanSafariState } from "@/lib/kirtanSafariState";
+import { getUpcomingCalendarDates } from "@/lib/calendarDates";
+import { safeJsonLd } from "@/lib/security";
+import { withSeo } from "@/lib/seo";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Festivals",
   description: "ISKCON Nairobi festival calendar including Ratha Yatra, Janmashtami, Gaura Purnima, and Kirtan Safari.",
-};
+}, "/festivals");
+
+function CalendarMonth({ month }: { month: (typeof vaishnavaCalendar2026)[number] }) {
+  return (
+    <section className="border border-temple-sand bg-white">
+        <div className="flex items-center justify-between border-b border-temple-sand bg-temple-cream px-4 py-3">
+          <h3 className="font-playfair text-xl font-semibold text-ink">{month.month}</h3>
+          <span className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">
+            {month.events.length} dates
+          </span>
+        </div>
+        <div className="divide-y divide-temple-sand/70">
+          {month.events.map((item) => (
+            <div key={`${month.month}-${item.date}-${item.event}`} className="grid grid-cols-[4.8rem_1fr] gap-3 px-4 py-3">
+              <div>
+                <p className="font-inter text-xs font-bold uppercase tracking-[0.08em] text-primary">{item.date}</p>
+                <p className="font-inter text-xs uppercase tracking-[0.14em] text-ink/75">{item.day}</p>
+              </div>
+              <div className="min-w-0">
+                <div className="flex flex-wrap items-center gap-2">
+                  <p className="font-inter text-sm leading-snug text-ink/75">{item.event}</p>
+                  {item.type && (
+                    <span className="inline-flex items-center gap-1 bg-gold/10 px-2 py-0.5 font-inter text-xs font-bold uppercase tracking-[0.12em] text-gold-ink">
+                      {item.type === "Major" && <Sparkles size={10} />}
+                      {item.type}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+  );
+}
 
 export default function FestivalsPage() {
   const kirtanSafariState = getKirtanSafariState(new Date());
@@ -27,7 +63,27 @@ export default function FestivalsPage() {
         }
       : festival
   );
-  const now = Date.now();
+  const today = new Date();
+  const now = today.getTime();
+  const nextDates = getUpcomingCalendarDates(today, 6);
+  const remaining = new Set(getUpcomingCalendarDates(today).map((item) => item.event));
+  const isPastMonth = (events: { event: string }[]) => !events.some((item) => remaining.has(item.event));
+  const pastMonths = vaishnavaCalendar2026.filter((month) => isPastMonth(month.events));
+  const currentMonths = vaishnavaCalendar2026.filter((month) => !isPastMonth(month.events));
+  const eventData = getUpcomingCalendarDates(today)
+    .filter((item) => item.type === "Major")
+    .map((item) => ({
+      "@context": "https://schema.org",
+      "@type": "Event",
+      name: item.event,
+      startDate: item.isoDate,
+      eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+      location: {
+        "@type": "Place",
+        name: templeInfo.legalName,
+        address: { "@type": "PostalAddress", streetAddress: templeInfo.shortAddress, addressCountry: "KE" },
+      },
+    }));
   const upcomingFestivals = festivalPreview.filter(
     (festival) => new Date(festival.endsAt).getTime() > now
   );
@@ -37,6 +93,9 @@ export default function FestivalsPage() {
 
   return (
     <>
+      {eventData.length > 0 && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: safeJsonLd(eventData) }} />
+      )}
       <PageHero
         title="Sacred"
         titleAccent="Festivals"
@@ -49,8 +108,35 @@ export default function FestivalsPage() {
 
       <section className="pt-section-sm pb-section bg-temple-bg">
         <div className="content-width section-padding">
+          <div className="mb-8 max-w-2xl">
+            <span className="eyebrow block mb-3">Coming Up</span>
+            <h2 className="section-title">
+              Next Dates at<br />
+              <em className="text-gold not-italic font-normal">the Temple</em>
+            </h2>
+          </div>
+          {nextDates.length > 0 ? (
+            <ul className="mb-12 grid gap-px border border-temple-sand bg-temple-sand sm:grid-cols-2 lg:grid-cols-3">
+              {nextDates.map((item) => (
+                <li key={`${item.isoDate}-${item.event}`} className="flex items-baseline gap-4 bg-white p-5">
+                  <span className="shrink-0">
+                    <span className="block font-inter text-sm font-bold uppercase tracking-wide text-primary">{item.label}</span>
+                    <span className="block font-inter text-xs uppercase tracking-[0.14em] text-ink/75">{item.day}</span>
+                  </span>
+                  <span className="font-playfair text-lg leading-snug text-ink">{item.event}</span>
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="mb-12 font-inter text-sm leading-relaxed text-ink/75">
+              The next temple calendar is being prepared. Contact the temple office for upcoming dates.
+            </p>
+          )}
+
           <CalendarNotificationOptIn />
 
+          {upcomingFestivals.length > 0 && (
+          <>
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
               <span className="eyebrow block mb-3">Next Temple Programmes</span>
@@ -59,7 +145,7 @@ export default function FestivalsPage() {
                 <em className="text-gold not-italic font-normal">Highlights</em>
               </h2>
             </div>
-            <p className="max-w-xl font-inter text-sm leading-relaxed text-ink/60">
+            <p className="max-w-xl font-inter text-sm leading-relaxed text-ink/75">
               Key public events from the ISKCON Nairobi 2026 Vaishnava calendar. Dates may be confirmed again closer to each festival.
             </p>
           </div>
@@ -81,22 +167,22 @@ export default function FestivalsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/75 to-transparent" />
                   <div className="absolute left-4 top-4 bg-gold px-2.5 py-1">
-                    <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-white">{festival.tag}</span>
+                    <span className="font-inter text-xs font-bold uppercase tracking-[0.14em] text-ink">{festival.tag}</span>
                   </div>
                   <div className="absolute bottom-4 left-4 right-4">
                     <h2 className="font-playfair text-white text-xl font-semibold text-shadow">{festival.title}</h2>
                   </div>
                 </div>
                 <div className="p-5">
-                  <div className="flex items-center gap-2 text-ink/50 mb-2">
+                  <div className="flex items-center gap-2 text-ink/75 mb-2">
                     <Calendar size={12} className="text-gold" />
                     <span className="font-inter text-xs">{festival.date}</span>
                   </div>
-                  <div className="flex items-center gap-2 text-ink/50 mb-4">
+                  <div className="flex items-center gap-2 text-ink/75 mb-4">
                     <MapPin size={12} className="text-gold" />
                     <span className="font-inter text-xs">{festival.location}</span>
                   </div>
-                  <p className="font-inter text-ink/60 text-sm leading-relaxed line-clamp-3">{festival.description}</p>
+                  <p className="font-inter text-ink/75 text-sm leading-relaxed line-clamp-3">{festival.description}</p>
                   <div className="mt-5 flex items-center gap-2 font-inter text-xs font-semibold tracking-widest uppercase text-primary">
                     Details <ArrowRight size={12} />
                   </div>
@@ -104,6 +190,8 @@ export default function FestivalsPage() {
               </Link>
             ))}
           </div>
+          </>
+          )}
 
           {archivedFestivals.length > 0 && (
             <section className="mt-16 border-t border-gold/20 pt-10">
@@ -112,7 +200,7 @@ export default function FestivalsPage() {
                 <h2 className="font-playfair text-3xl font-semibold text-ink sm:text-4xl">
                   Celebrations from this year
                 </h2>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/60">
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">
                   Revisit festival stories, photographs, teachings, and memories from the temple community.
                 </p>
               </div>
@@ -133,13 +221,13 @@ export default function FestivalsPage() {
                       />
                     </div>
                     <div className="flex flex-col justify-center p-5">
-                      <span className="font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-gold">
+                      <span className="font-inter text-xs font-bold uppercase tracking-[0.14em] text-gold-ink">
                         {festival.date}
                       </span>
                       <h3 className="mt-2 font-playfair text-xl font-semibold leading-tight text-ink group-hover:text-primary">
                         {festival.title}
                       </h3>
-                      <span className="mt-4 inline-flex items-center gap-2 font-inter text-[10px] font-semibold uppercase tracking-widest text-primary">
+                      <span className="mt-4 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-primary">
                         Revisit <ArrowRight size={11} />
                       </span>
                     </div>
@@ -161,38 +249,23 @@ export default function FestivalsPage() {
           </div>
 
           <div className="mt-8 grid gap-5 lg:grid-cols-2">
-            {vaishnavaCalendar2026.map((month) => (
-              <section key={month.month} className="border border-temple-sand bg-white">
-                <div className="flex items-center justify-between border-b border-temple-sand bg-temple-cream px-4 py-3">
-                  <h3 className="font-playfair text-xl font-semibold text-ink">{month.month}</h3>
-                  <span className="font-inter text-[10px] font-semibold uppercase tracking-[0.14em] text-gold">
-                    {month.events.length} dates
-                  </span>
-                </div>
-                <div className="divide-y divide-temple-sand/70">
-                  {month.events.map((item) => (
-                    <div key={`${month.month}-${item.date}-${item.event}`} className="grid grid-cols-[4.8rem_1fr] gap-3 px-4 py-3">
-                      <div>
-                        <p className="font-inter text-xs font-bold uppercase tracking-[0.08em] text-primary">{item.date}</p>
-                        <p className="font-inter text-[10px] uppercase tracking-[0.14em] text-ink/40">{item.day}</p>
-                      </div>
-                      <div className="min-w-0">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <p className="font-inter text-sm leading-snug text-ink/75">{item.event}</p>
-                          {item.type && (
-                            <span className="inline-flex items-center gap-1 bg-gold/10 px-2 py-0.5 font-inter text-[9px] font-bold uppercase tracking-[0.12em] text-gold">
-                              {item.type === "Major" && <Sparkles size={10} />}
-                              {item.type}
-                            </span>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </section>
+            {currentMonths.map((month) => (
+              <CalendarMonth key={month.month} month={month} />
             ))}
           </div>
+
+          {pastMonths.length > 0 && (
+            <details className="mt-8 border border-temple-sand bg-white/70">
+              <summary className="flex min-h-11 cursor-pointer items-center px-5 py-3 font-inter text-sm font-semibold text-ink">
+                Earlier in 2026 ({pastMonths.length} months)
+              </summary>
+              <div className="grid gap-5 p-5 lg:grid-cols-2">
+                {pastMonths.map((month) => (
+                  <CalendarMonth key={month.month} month={month} />
+                ))}
+              </div>
+            </details>
+          )}
         </div>
       </section>
     </>

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 import {
   ArrowRight,
   BookOpen,
@@ -13,11 +13,11 @@ import {
   Utensils,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Krishna Janmashtami",
   description:
     "Celebrate Sri Krishna Janmashtami, the biggest festival of the year at ISKCON Nairobi, with kirtan, midnight arati, abhishek, classes, offerings, drama, seva, and prasadam.",
-};
+}, "/festivals/janmashtami");
 
 const story = [
   {
@@ -75,7 +75,7 @@ export default function JanmashtamiPage() {
               <h2 className="section-title max-w-3xl">
                 The night when hope entered the prison of Mathura
               </h2>
-              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/68 sm:text-base">
+              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
                 Janmashtami remembers the moment Lord Krishna appeared to protect the devotees and draw the world back to love of God. In the Srimad-Bhagavatam, His birth is not an ordinary event. It is a divine appearance, filled with purpose, compassion, and the promise that dharma can be restored even in the darkest hour.
               </p>
             </div>
@@ -112,7 +112,7 @@ export default function JanmashtamiPage() {
                   {String(index + 1).padStart(2, "0")}
                 </div>
                 <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/62">{item.text}</p>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
               </article>
             ))}
           </div>
@@ -163,13 +163,13 @@ export default function JanmashtamiPage() {
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="flex gap-3 border border-temple-sand bg-temple-cream/60 p-4">
                   <CalendarDays className="mt-0.5 shrink-0 text-gold" size={18} />
-                  <p className="font-inter text-sm leading-relaxed text-ink/66">
+                  <p className="font-inter text-sm leading-relaxed text-ink/75">
                     The detailed yearly programme is announced closer to the date through the temple noticeboard and official channels.
                   </p>
                 </div>
                 <div className="flex gap-3 border border-temple-sand bg-temple-cream/60 p-4">
                   <HeartHandshake className="mt-0.5 shrink-0 text-gold" size={18} />
-                  <p className="font-inter text-sm leading-relaxed text-ink/66">
+                  <p className="font-inter text-sm leading-relaxed text-ink/75">
                     Festival sponsorship and volunteer service help welcome every guest with care and prasadam.
                   </p>
                 </div>

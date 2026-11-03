@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
 import { templeInfo } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Terms and Conditions",
   description: "Terms and conditions for using the ISKCON Nairobi website.",
-};
+}, "/terms");
 
 const lastUpdated = "July 27, 2026";
 const platformUrl = "https://iskconnairobi.com";
@@ -264,9 +264,9 @@ export default function TermsPage() {
             </header>
 
             <div className="mb-10 border border-gold/20 bg-white p-6 shadow-sm">
-              <p className="font-inter text-xs font-semibold uppercase tracking-[0.22em] text-gold">Last Updated</p>
+              <p className="font-inter text-xs font-semibold uppercase tracking-[0.22em] text-gold-ink">Last Updated</p>
               <p className="mt-2 font-playfair text-2xl text-ink">{lastUpdated}</p>
-              <p className="mt-4 font-inter text-sm leading-relaxed text-ink/60">
+              <p className="mt-4 font-inter text-sm leading-relaxed text-ink/75">
                 These Terms apply to the ISKCON Nairobi website and related digital services. Please also read our{" "}
                 <a href="/privacy" className="text-primary underline">Privacy Policy</a>.
               </p>
@@ -279,7 +279,7 @@ export default function TermsPage() {
                   <a
                     key={section.title}
                     href={`#${sectionId(section.title)}`}
-                    className="font-inter text-sm leading-relaxed text-ink/70 underline decoration-gold/30 underline-offset-4 transition-colors hover:text-primary"
+                    className="tap-target font-inter text-sm leading-relaxed text-ink/75 underline decoration-gold/30 underline-offset-4 transition-colors hover:text-primary"
                   >
                     {section.title}
                   </a>
@@ -291,7 +291,7 @@ export default function TermsPage() {
               {termsSections.map((section) => (
                 <section key={section.title} className="border-b border-temple-sand pb-8 last:border-b-0">
                   <h2 id={sectionId(section.title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{section.title}</h2>
-                  <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/70">
+                  <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/75">
                     {section.items.map((item, index) => (
                       <p key={item} id={subClauseId(section.title, index)} className="scroll-mt-32">
                         <span className="font-semibold text-ink">{subClauseNumber(section.title, index)} </span>
@@ -305,7 +305,7 @@ export default function TermsPage() {
 
             <div className="mt-10 border border-temple-sand bg-temple-cream p-6">
               <h2 className="font-playfair text-xl font-semibold text-ink">Contact</h2>
-              <p className="mt-3 font-inter text-sm leading-relaxed text-ink/70">
+              <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">
                 Questions about these Terms should be directed to{" "}
                 <a href={`mailto:${templeInfo.email}`} className="text-primary underline">{templeInfo.email}</a>,{" "}
                 <a href={`tel:${templeInfo.phoneHref}`} className="text-primary underline">{templeInfo.phoneDisplay}</a>, or {templeAddress}.

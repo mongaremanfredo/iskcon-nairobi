@@ -1,12 +1,12 @@
 {
-  "version": "1.0.0",
-  "name": "First Complete Release",
-  "publishedAt": "2026-08-25",
+  "version": "1.1.0",
+  "name": "Faster, Clearer, Easier to Use",
+  "publishedAt": "2026-11-03",
   "updateMode": "silent",
-  "summary": "The first complete production release of the ISKCON Nairobi website app.",
+  "summary": "Pages load much faster on phones, text is easier to read, and temple hours, festival dates, and donation information are clearer.",
   "highlights": [
-    "Installable Android, Apple and desktop experience",
-    "Offline access with live-first navigation",
-    "Temple calendar, notices, registrations and devotional resources"
+    "Pages download far less data on mobile connections",
+    "Upcoming festival dates always show the next dates on the calendar",
+    "Easier to read and to use by touch, keyboard, and screen reader"
   ]
 }

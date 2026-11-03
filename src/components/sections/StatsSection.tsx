@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { stats } from "@/data/site";
 
@@ -52,7 +53,7 @@ function StatItem({ value, suffix, label, description, index, active }: {
       <div className="stat-rule w-8 h-px bg-gold/40 mb-3" />
 
       {/* Description */}
-      <p className="stat-description font-inter text-white/50 text-sm leading-relaxed max-w-[180px]">
+      <p className="stat-description font-inter text-white/70 text-sm leading-relaxed max-w-[180px] max-sm:hidden">
         {description}
       </p>
     </div>
@@ -83,7 +84,7 @@ export default function StatsSection() {
       <div className="absolute inset-0">
         <picture className="block h-full w-full">
           <source media="(min-width: 641px)" srcSet="/images/impact-africa-desktop.jpeg" />
-          <img
+          <Image width={1600} height={1200} sizes="100vw"
             src="/images/impact-africa-mobile-giraffes.jpeg"
             alt="African landscape"
             className="stats-bg-image w-full h-full object-cover object-center"
@@ -98,7 +99,7 @@ export default function StatsSection() {
       <div className="relative z-10 content-width section-padding">
         {/* Header */}
         <div className="stats-header text-center mb-16">
-          <span className="eyebrow text-gold/70 block mb-3">Our Impact</span>
+          <span className="eyebrow text-gold block mb-3">Our Impact</span>
           <h2 className="section-title-light">
             <span>Krishna Consciousness</span><br />
             <em className="text-gold not-italic font-normal">Across East Africa</em>
@@ -122,7 +123,7 @@ export default function StatsSection() {
           <p className="font-cormorant text-temple-cream/70 text-2xl italic leading-relaxed">
             "The welfare of all living beings is the highest act of devotion."
           </p>
-          <p className="font-inter text-gold/50 text-xs tracking-[0.15em] uppercase mt-4">
+          <p className="font-inter text-gold text-xs tracking-[0.15em] uppercase mt-4">
             Śrīla Prabhupāda
           </p>
         </div>
@@ -188,7 +189,7 @@ export default function StatsSection() {
           }
 
           .stat-description {
-            font-size: 0.58rem !important;
+            font-size: 0.75rem !important;
             line-height: 1.25 !important;
             max-width: 7rem !important;
           }
@@ -204,7 +205,7 @@ export default function StatsSection() {
 
           .stats-quote p:last-child {
             margin-top: 0.55rem !important;
-            font-size: 0.55rem !important;
+            font-size: 0.75rem !important;
           }
         }
       `}</style>

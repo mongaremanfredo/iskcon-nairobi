@@ -14,7 +14,13 @@
   --font-cormorant: var(--font-source-serif-4), Georgia, serif;
 
   --color-primary: #B74233;
+  --color-primary-dark: #9A3528;
   --color-sunset: #E08A3C;
+  /* Gold, saffron and acacia are too light for text on sand or white. Use these
+     "ink" shades there, and keep the brighter originals for dark backgrounds. */
+  --color-gold-ink: #745510;
+  --color-sunset-ink: #964410;
+  --color-acacia-ink: #466140;
   --color-gold: #D9A441;
   --color-gold-light: #E6B85C;
   --color-gold-dark: #B78626;
@@ -87,6 +93,52 @@ input, select, textarea {
   }
 }
 ::selection { background-color: var(--color-primary); color: white; }
+
+/* Keyboard focus. The two-tone ring stays visible on every background, including
+   photographs and the dark sections. */
+:focus-visible {
+  outline: 2px solid var(--color-dusk);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 2px var(--color-sand), 0 0 0 6px var(--color-dusk);
+}
+main:focus { outline: none; box-shadow: none; }
+
+.skip-link {
+  position: fixed;
+  top: 0.5rem;
+  left: 0.5rem;
+  z-index: 100;
+  background-color: var(--color-dusk);
+  color: var(--color-sand);
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  transform: translateY(-200%);
+}
+.skip-link:focus { transform: translateY(0); }
+
+/* Extends the tappable area of a small text link to 44px without moving anything. */
+.tap-target { position: relative; }
+.tap-target::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: max(100%, 44px);
+  height: max(100%, 44px);
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 * { box-sizing: border-box; }
 img, video, canvas, svg { max-width: 100%; }
 
@@ -105,7 +157,7 @@ img, video, canvas, svg { max-width: 100%; }
   padding: 1rem 2rem; transition: all 0.3s;
   min-height: 44px; text-align: center; justify-content: center;
 }
-.btn-primary:hover { background-color: var(--color-sunset); }
+.btn-primary:hover { background-color: var(--color-primary-dark); }
 
 .btn-outline {
   display: inline-flex; align-items: center; gap: 0.5rem;
@@ -125,14 +177,18 @@ img, video, canvas, svg { max-width: 100%; }
 .btn-ghost:hover { border-color: var(--color-sand); background-color: rgba(244,236,225,0.12); }
 
 /* Typography helpers */
-.eyebrow {
-  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--color-sunset);
+/* In the components layer so a text colour utility can override it on dark sections. */
+@layer components {
+  .eyebrow {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--color-sunset-ink);
+  }
 }
 .section-title {
   font-family: var(--font-playfair); line-height: 1.15;
   color: var(--color-ink); font-size: clamp(1.5rem, 3.5vw, 2.75rem);
 }
+.section-title em { color: var(--color-gold-ink); }
 .section-title-light {
   font-family: var(--font-playfair); line-height: 1.15;
   color: var(--color-temple-cream); font-size: clamp(1.5rem, 3.5vw, 2.75rem);
@@ -187,13 +243,12 @@ img { transition: opacity 0.3s ease; }
   .btn-ghost {
     width: 100%;
     padding: 0.875rem 1rem;
-    font-size: 0.68rem;
+    font-size: 0.75rem;
     letter-spacing: 0.08em;
     white-space: normal;
   }
 
   .eyebrow {
-    font-size: 0.62rem;
     letter-spacing: 0.12em;
     line-height: 1.4;
   }
@@ -260,7 +315,7 @@ img { transition: opacity 0.3s ease; }
   color: #071c10;
   cursor: pointer;
   display: inline-flex;
-  font: 800 0.65rem/1 var(--font-inter, sans-serif);
+  font: 800 0.75rem/1 var(--font-inter, sans-serif);
   justify-content: center;
   letter-spacing: 0.13em;
   min-height: 44px;
@@ -288,7 +343,7 @@ img { transition: opacity 0.3s ease; }
 
 .ks-live-hub .ks-live-countdown span {
   color: rgba(255, 255, 255, 0.42);
-  font: 700 0.52rem/1 var(--font-inter, sans-serif);
+  font: 700 0.75rem/1 var(--font-inter, sans-serif);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -331,7 +386,7 @@ img { transition: opacity 0.3s ease; }
 
 .ks-live-hub .ks-stream-placeholder p {
   color: #d69c2b;
-  font: 800 0.6rem/1 var(--font-inter, sans-serif);
+  font: 800 0.75rem/1 var(--font-inter, sans-serif);
   letter-spacing: 0.16em;
   margin: 0 0 0.55rem;
   text-transform: uppercase;
@@ -352,7 +407,7 @@ img { transition: opacity 0.3s ease; }
   align-items: center;
   color: #d69c2b;
   display: inline-flex;
-  font: 700 0.7rem/1.4 var(--font-inter, sans-serif);
+  font: 700 0.75rem/1.4 var(--font-inter, sans-serif);
   gap: 0.4rem;
   justify-self: start;
   text-decoration: none;

@@ -51,14 +51,14 @@ export default function KirtanSafariFutureInterestForm() {
       <style jsx>{`
         .ks-interest-fields { display:grid; gap:.8rem; grid-template-columns:repeat(2,minmax(0,1fr)); }
         label { display:grid; gap:.4rem; }
-        label>span { color:#67544a; font:800 .59rem/1 var(--font-inter,sans-serif); letter-spacing:.12em; text-transform:uppercase; }
+        label>span { color:#67544a; font:800 0.75rem/1 var(--font-inter,sans-serif); letter-spacing:.12em; text-transform:uppercase; }
         input { background:#fffdf8; border:1px solid rgba(67,48,39,.22); color:#30231d; font:500 .9rem/1.3 var(--font-inter,sans-serif); min-height:46px; padding:.75rem; width:100%; }
         input:focus { border-color:#a23d31; outline:2px solid rgba(162,61,49,.12); }
         .ks-interest-consent { align-items:flex-start; display:flex; gap:.65rem; grid-column:1/-1; }
         .ks-interest-consent input { accent-color:#a23d31; flex:none; min-height:0; width:1rem; }
-        .ks-interest-consent span { font-size:.68rem; line-height:1.45; text-transform:none; }
+        .ks-interest-consent span { font-size:0.75rem; line-height:1.45; text-transform:none; }
         .ks-interest-honeypot { left:-9999px; position:absolute; }
-        button { background:#a23d31; border:0; color:white; cursor:pointer; font:800 .67rem/1 var(--font-inter,sans-serif); letter-spacing:.13em; margin-top:1rem; min-height:46px; padding:.9rem 1.2rem; text-transform:uppercase; }
+        button { background:#a23d31; border:0; color:white; cursor:pointer; font:800 0.75rem/1 var(--font-inter,sans-serif); letter-spacing:.13em; margin-top:1rem; min-height:46px; padding:.9rem 1.2rem; text-transform:uppercase; }
         button:disabled { cursor:wait; opacity:.6; }
         .ks-interest-message { font:600 .76rem/1.5 var(--font-inter,sans-serif); margin:.8rem 0 0; }
         .ks-interest-message.is-success { color:#275f42; }

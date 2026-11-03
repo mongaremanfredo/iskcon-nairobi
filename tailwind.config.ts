@@ -9,15 +9,25 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        primary: "var(--color-primary)",
-        sunset: "var(--color-sunset)",
-        acacia: "var(--color-acacia)",
+        primary: {
+          DEFAULT: "var(--color-primary)",
+          dark: "var(--color-primary-dark)",
+        },
+        sunset: {
+          DEFAULT: "var(--color-sunset)",
+          ink: "var(--color-sunset-ink)",
+        },
+        acacia: {
+          DEFAULT: "var(--color-acacia)",
+          ink: "var(--color-acacia-ink)",
+        },
         dusk: "var(--color-dusk)",
         sand: "var(--color-sand)",
         gold: {
           DEFAULT: "var(--color-gold)",
           light: "var(--color-gold-light)",
           dark: "var(--color-gold-dark)",
+          ink: "var(--color-gold-ink)",
         },
         temple: {
           brown: "var(--color-dusk)",

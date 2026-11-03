@@ -16,6 +16,7 @@ export const metadata: Metadata = {
   title: {
     absolute: "ISKCON Nairobi | Sri Sri Radha Bankebihari Temple",
   },
+  alternates: { canonical: "/" },
 };
 
 export default function HomePage() {

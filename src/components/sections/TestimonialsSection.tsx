@@ -1,13 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Pause, Play } from "lucide-react";
 import { testimonials } from "@/data/site";
 import { cn } from "@/lib/utils";
 
 export default function TestimonialsSection() {
   const [active, setActive] = useState(0);
   const [direction, setDirection] = useState<"next" | "prev">("next");
+  const [paused, setPaused] = useState(false);
 
   const prev = () => {
     setDirection("prev");
@@ -26,13 +28,21 @@ export default function TestimonialsSection() {
   const current = testimonials[active];
 
   useEffect(() => {
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setTimeout(() => setPaused(true), 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    if (paused) return;
+
     const timer = window.setInterval(() => {
       setDirection("next");
       setActive((a) => (a + 1) % testimonials.length);
     }, 10000);
 
     return () => window.clearInterval(timer);
-  }, []);
+  }, [paused]);
 
   return (
     <section className="testimonials-section py-section bg-temple-bg sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]" data-direction={direction}>
@@ -49,17 +59,17 @@ export default function TestimonialsSection() {
           <div className="testimonials-header-controls flex items-center gap-3">
             <button
               onClick={prev}
-              className="w-10 h-10 border border-temple-sand hover:border-gold flex items-center justify-center transition-colors group"
-              aria-label="Previous"
+              className="w-11 h-11 border border-temple-sand hover:border-gold flex items-center justify-center transition-colors group"
+              aria-label="Previous testimonial"
             >
-              <ChevronLeft size={16} className="text-ink/40 group-hover:text-gold transition-colors" />
+              <ChevronLeft size={16} className="text-ink/75 group-hover:text-gold-ink transition-colors" />
             </button>
             <button
               onClick={next}
-              className="w-10 h-10 border border-temple-sand hover:border-gold flex items-center justify-center transition-colors group"
-              aria-label="Next"
+              className="w-11 h-11 border border-temple-sand hover:border-gold flex items-center justify-center transition-colors group"
+              aria-label="Next testimonial"
             >
-              <ChevronRight size={16} className="text-ink/40 group-hover:text-gold transition-colors" />
+              <ChevronRight size={16} className="text-ink/75 group-hover:text-gold-ink transition-colors" />
             </button>
           </div>
         </div>
@@ -77,7 +87,7 @@ export default function TestimonialsSection() {
                 <ChevronLeft size={16} />
               </button>
               <div className="testimonials-portrait relative h-64 w-64 overflow-hidden border-4 border-sand/20 shadow-card sm:h-72 sm:w-72">
-              <img
+              <Image width={1600} height={1200} sizes="320px"
                 key={current.image}
                 src={current.image}
                 alt={current.name}
@@ -104,18 +114,32 @@ export default function TestimonialsSection() {
           {/* Right - Quote */}
           <div className="testimonials-quote-col bg-temple-cream p-8 lg:p-14 flex flex-col justify-between">
             {/* Tab indicators */}
-            <div className="testimonials-tabs flex gap-2 mb-10">
+            <div className="testimonials-tabs flex items-center mb-6">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
+                  type="button"
                   onClick={() => selectTestimonial(i)}
-                  className={cn(
-                    "h-0.5 transition-all duration-300",
-                    i === active ? "w-12 bg-gold" : "w-4 bg-temple-sand hover:bg-gold/40"
-                  )}
-                  aria-label={`Testimonial ${i + 1}`}
-                />
+                  className="group flex h-11 w-11 items-center justify-center"
+                  aria-label={`Show testimonial ${i + 1}`}
+                  aria-current={i === active ? "true" : undefined}
+                >
+                  <span
+                    className={cn(
+                      "h-1 transition-all duration-300",
+                      i === active ? "w-9 bg-gold-dark" : "w-4 bg-ink/40 group-hover:bg-gold-dark"
+                    )}
+                  />
+                </button>
               ))}
+              <button
+                type="button"
+                onClick={() => setPaused((value) => !value)}
+                className="flex h-11 w-11 items-center justify-center text-ink/75 transition-colors hover:text-gold-ink"
+                aria-label={paused ? "Play testimonials" : "Pause testimonials"}
+              >
+                {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+              </button>
             </div>
 
             {/* Quote */}
@@ -132,10 +156,10 @@ export default function TestimonialsSection() {
             {/* Attribution */}
             <div key={current.name} className="testimonial-slide-panel testimonials-attribution border-t border-temple-sand pt-6">
               <p className="font-inter font-semibold text-ink text-sm">{current.name}</p>
-              <p className="font-inter text-ink/50 text-sm mt-0.5">{current.role}</p>
+              <p className="font-inter text-ink/75 text-sm mt-0.5">{current.role}</p>
               <div className="flex items-center gap-2 mt-2">
                 <span className="gold-dot scale-75" />
-                <p className="font-inter text-gold text-xs tracking-wide">{current.origin}</p>
+                <p className="font-inter text-gold-ink text-xs tracking-wide">{current.origin}</p>
               </div>
             </div>
           </div>
@@ -198,7 +222,7 @@ export default function TestimonialsSection() {
           }
           .testimonials-header .eyebrow {
             margin-bottom: 0.45rem !important;
-            font-size: 0.66rem !important;
+            font-size: 0.75rem !important;
             letter-spacing: 0.18em !important;
           }
           .testimonials-header .section-title {
@@ -301,9 +325,6 @@ export default function TestimonialsSection() {
             justify-content: center !important;
             gap: 0.34rem !important;
           }
-          .testimonials-tabs button {
-            height: 0.18rem !important;
-          }
           .testimonials-quote-body {
             width: 100% !important;
             min-height: 7.2rem !important;
@@ -330,7 +351,7 @@ export default function TestimonialsSection() {
             line-height: 1.15 !important;
           }
           .testimonials-attribution p:nth-child(2) {
-            font-size: 0.72rem !important;
+            font-size: 0.75rem !important;
             margin-top: 0.18rem !important;
             line-height: 1.2 !important;
           }
@@ -343,7 +364,7 @@ export default function TestimonialsSection() {
             transform: scale(0.62) !important;
           }
           .testimonials-attribution p:last-child {
-            font-size: 0.66rem !important;
+            font-size: 0.75rem !important;
             line-height: 1.15 !important;
           }
         }

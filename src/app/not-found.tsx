@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   return (
-    <main className="relative isolate flex min-h-[78svh] overflow-hidden bg-dusk text-temple-cream">
+    <div className="relative isolate flex min-h-[78svh] overflow-hidden bg-dusk text-temple-cream">
       <div
         className="absolute inset-0 -z-30 bg-cover bg-center"
         style={{ backgroundImage: "url('/images/sunset-route.png')" }}
@@ -59,13 +59,13 @@ export default function NotFound() {
 
           <div className="hidden border-l border-gold/35 pl-6 text-right lg:block" aria-hidden="true">
             <p className="font-playfair text-xl italic text-temple-cream/80">Hare Krishna Temple</p>
-            <p className="mt-2 font-inter text-[0.68rem] uppercase tracking-[0.16em] text-gold">
+            <p className="mt-2 font-inter text-xs uppercase tracking-[0.16em] text-gold">
               Sri Sri Radha Bankebihari
             </p>
-            <p className="mt-1 font-inter text-xs text-white/50">Nairobi, Kenya</p>
+            <p className="mt-1 font-inter text-xs text-white/70">Nairobi, Kenya</p>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

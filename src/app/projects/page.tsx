@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { projects } from "@/data/site";
 import { ArrowRight } from "lucide-react";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Projects",
   description: "Explore ISKCON Nairobi projects in education, Food For Life, cow protection, farm service, festivals, and youth outreach.",
-};
+}, "/projects");
 
 const tagClasses: Record<string, string> = {
   Education: "bg-gold/15 text-dusk border-gold/40",
@@ -38,16 +39,16 @@ export default function ProjectsPage() {
                 className="group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all overflow-hidden"
               >
                 <div className="relative aspect-card overflow-hidden image-grade">
-                  <img src={project.image} alt={project.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                  <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw" src={project.image} alt={project.title} className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/70 to-transparent" />
-                  <span className={`absolute left-5 top-5 border px-3 py-1 font-inter text-[10px] font-semibold uppercase tracking-[0.15em] ${tagClasses[project.tag] ?? "bg-primary/10 text-primary border-primary/30"}`}>
+                  <span className={`absolute left-5 top-5 border px-3 py-1 font-inter text-xs font-semibold uppercase tracking-[0.15em] ${tagClasses[project.tag] ?? "bg-primary/10 text-primary border-primary/30"}`}>
                     {project.tag}
                   </span>
                 </div>
                 <div className="p-7">
-                  <p className="font-inter text-ink/45 text-xs uppercase tracking-widest mb-2">{project.subtitle}</p>
+                  <p className="font-inter text-ink/75 text-xs uppercase tracking-widest mb-2">{project.subtitle}</p>
                   <h2 className="font-playfair text-2xl font-semibold text-ink group-hover:text-primary transition-colors">{project.title}</h2>
-                  <p className="font-inter text-ink/60 text-sm leading-relaxed mt-3">{project.description}</p>
+                  <p className="font-inter text-ink/75 text-sm leading-relaxed mt-3">{project.description}</p>
                   <div className="mt-6 flex items-center gap-2 font-inter text-xs font-semibold tracking-widest uppercase text-primary">
                     Learn More <ArrowRight size={13} />
                   </div>

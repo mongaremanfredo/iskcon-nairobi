@@ -137,7 +137,7 @@ export default function GitaCourseRegistrationModal() {
         .gita-modal-header p {
           color: #d69c2b;
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.65rem;
+          font-size: 0.75rem;
           font-weight: 800;
           letter-spacing: 0.2em;
           margin: 0 0 0.7rem;
@@ -171,7 +171,7 @@ export default function GitaCourseRegistrationModal() {
           border: 1px solid rgba(214, 156, 43, 0.28);
           color: rgba(246, 226, 177, 0.76);
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.68rem;
+          font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.1em;
           padding: 0.46rem 0.62rem;

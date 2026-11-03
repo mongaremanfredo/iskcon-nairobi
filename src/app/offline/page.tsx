@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Offline | ISKCON Nairobi",
+  title: "Offline",
   description: "ISKCON Nairobi offline connection page.",
   robots: { index: false, follow: false },
 };
@@ -23,7 +23,7 @@ export default function OfflinePage() {
         <h1 className="mt-3 font-playfair text-4xl leading-tight text-dusk sm:text-5xl">
           You are offline
         </h1>
-        <p className="mx-auto mt-5 max-w-md font-inter text-sm leading-relaxed text-dusk/65 sm:text-base">
+        <p className="mx-auto mt-5 max-w-md font-inter text-sm leading-relaxed text-dusk/75 sm:text-base">
           Pages you opened earlier may still be available. Reconnect to receive current temple
           notices, festival updates, and form confirmations.
         </p>

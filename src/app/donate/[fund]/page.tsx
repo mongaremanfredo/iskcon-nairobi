@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import PageHero from "@/components/ui/PageHero";
-import { donationPaths, templeInfo } from "@/data/site";
-import { Heart, Mail, Phone } from "lucide-react";
+import { withSeo } from "@/lib/seo";
+import { donationPaths, socialLinks, templeInfo } from "@/data/site";
+import { Heart, Mail, MessageCircle, Phone } from "lucide-react";
 
 type Props = {
   params: Promise<{ fund: string }>;
@@ -17,19 +19,20 @@ const generalFund = {
 };
 
 function getFund(slug: string) {
-  return donationPaths.find((path) => path.href.endsWith(`/${slug}`)) ?? generalFund;
+  const fund = [...donationPaths, generalFund].find((path) => path.href.endsWith(`/${slug}`));
+  if (!fund) notFound();
+  return fund;
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const fund = getFund((await params).fund);
-  return {
-    title: `Donate - ${fund.title}`,
-    description: fund.description,
-  };
+  const slug = (await params).fund;
+  const fund = getFund(slug);
+  return withSeo({ title: `Donate - ${fund.title}`, description: fund.description }, `/donate/${slug}`);
 }
 
 export default async function DonateFundPage({ params }: Props) {
   const fund = getFund((await params).fund);
+  const whatsapp = socialLinks.find((link) => link.name === "WhatsApp");
 
   return (
     <>
@@ -49,7 +52,7 @@ export default async function DonateFundPage({ params }: Props) {
             <div className="bg-white border border-temple-sand p-8 lg:p-10">
               <div className="text-4xl mb-5">{fund.icon}</div>
               <h2 className="font-playfair text-3xl font-semibold text-ink mb-4">How to Give</h2>
-              <p className="font-inter text-ink/65 leading-relaxed mb-8">
+              <p className="font-inter text-ink/75 leading-relaxed mb-8">
                 Online payment integration is being finalized. For now, contact the temple office and mention "{fund.title}" so your donation can be directed correctly.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -61,6 +64,12 @@ export default async function DonateFundPage({ params }: Props) {
                   <Mail size={14} />
                   Email Office
                 </a>
+                {whatsapp && (
+                  <a href={whatsapp.href} target="_blank" rel="noopener noreferrer" className="btn-outline justify-center sm:col-span-2">
+                    <MessageCircle size={14} />
+                    WhatsApp the Temple
+                  </a>
+                )}
               </div>
             </div>
 
@@ -70,7 +79,7 @@ export default async function DonateFundPage({ params }: Props) {
               <p className="font-inter text-white/60 text-sm leading-relaxed">
                 ISKCON Nairobi welcomes designated giving for worship, prasadam, cow protection, student outreach, and festivals. Please request a receipt when you contact the temple office.
               </p>
-              <Link href="/donate" className="mt-7 inline-flex font-inter text-xs font-semibold tracking-widest uppercase text-gold border-b border-gold/40 pb-1">
+              <Link href="/donate" className="tap-target mt-7 inline-flex font-inter text-xs font-semibold tracking-widest uppercase text-gold border-b border-gold/40 pb-1">
                 View all funds
               </Link>
             </aside>

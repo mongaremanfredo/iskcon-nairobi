@@ -216,7 +216,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
         aria-expanded={isOpen}
         aria-label="Open temple noticeboard"
         className={cn(
-          "relative inline-flex h-11 w-11 items-center justify-center rounded-full border-0 bg-transparent text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all hover:scale-105 hover:text-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold max-[900px]:h-10 max-[900px]:w-10",
+          "relative inline-flex h-11 w-11 items-center justify-center rounded-full border-0 bg-transparent text-gold drop-shadow-[0_2px_8px_rgba(0,0,0,0.45)] transition-all hover:scale-105 hover:text-sand focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold",
           isOpen && "text-sand"
         )}
       >
@@ -242,14 +242,14 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
                   <BellRing size={18} />
                 </span>
                 <div>
-                  <p className="font-inter text-[10px] font-bold uppercase tracking-[0.18em] text-gold">Temple noticeboard</p>
+                  <p className="font-inter text-xs font-bold uppercase tracking-[0.18em] text-gold">Temple noticeboard</p>
                   <h2 className="mt-1 font-playfair text-xl font-semibold leading-tight">Latest visitor updates</h2>
                 </div>
               </div>
               <button
                 type="button"
                 onClick={() => setIsOpen(false)}
-                className="text-sand/60 transition hover:text-white"
+                className="text-sand/75 transition hover:text-white"
                 aria-label="Close noticeboard"
               >
                 <X size={18} />
@@ -269,20 +269,20 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
                   <div className="mb-2 flex items-center justify-between gap-3">
                     <span
                       className={cn(
-                        "font-inter text-[9px] font-bold uppercase tracking-[0.15em]",
+                        "font-inter text-xs font-bold uppercase tracking-[0.15em]",
                         notice.priority === "high" ? "text-sunset" : "text-gold"
                       )}
                     >
                       {notice.tag}
                     </span>
-                    <span className="font-inter text-[10px] font-semibold uppercase tracking-[0.11em] text-ink/45">
+                    <span className="font-inter text-xs font-semibold uppercase tracking-[0.11em] text-ink/75">
                       {notice.dateLabel}
                     </span>
                   </div>
                   <div className="flex gap-3">
                     <div className="min-w-0">
                       <h3 className="font-playfair text-lg font-semibold leading-snug text-ink">{notice.title}</h3>
-                      <p className="mt-2 font-inter text-xs leading-relaxed text-ink/62">{notice.body}</p>
+                      <p className="mt-2 font-inter text-xs leading-relaxed text-ink/75">{notice.body}</p>
                     </div>
                     <ChevronRight size={16} className="mt-1 shrink-0 text-gold transition group-hover:translate-x-0.5" />
                   </div>
@@ -292,7 +292,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
 
             <div className="border-t border-temple-sand bg-temple-cream/70 p-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="font-inter text-[11px] leading-relaxed text-ink/55">
+                <div className="font-inter text-xs leading-relaxed text-ink/75">
                   {permission === "denied"
                     ? "Notifications are blocked in this browser. Use site settings to allow them."
                     : "Enable alerts to receive push notifications when new notices are added."}
@@ -301,14 +301,14 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
                   type="button"
                   onClick={enabled ? disableAlerts : enableAlerts}
                   disabled={isSaving || permission === "unsupported" || permission === "denied"}
-                  className="inline-flex min-h-10 shrink-0 items-center justify-center gap-2 bg-primary px-4 py-2.5 font-inter text-[10px] font-bold uppercase tracking-[0.14em] text-white transition hover:bg-sunset disabled:cursor-not-allowed disabled:bg-ink/30"
+                  className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 bg-primary px-4 py-2.5 font-inter text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-ink/30"
                 >
                   {enabled ? <Check size={13} /> : <BellRing size={13} />}
                   {alertLabel}
                 </button>
               </div>
 
-              <div className="mt-3 flex items-center gap-2 font-inter text-[10px] uppercase tracking-[0.13em] text-ink/42">
+              <div className="mt-3 flex items-center gap-2 font-inter text-xs uppercase tracking-[0.13em] text-ink/75">
                 <CalendarDays size={12} className="text-gold" />
                 You can turn alerts off here any time
               </div>

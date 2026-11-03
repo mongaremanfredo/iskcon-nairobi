@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
+import { withSeo } from "@/lib/seo";
 import {
   ArrowRight,
   BookOpen,
@@ -11,11 +12,11 @@ import {
   Utensils,
 } from "lucide-react";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Srila Prabhupada",
   description:
     "A tribute to His Divine Grace A.C. Bhaktivedanta Swami Prabhupada, Founder-Acarya of ISKCON, and his personal connection with Nairobi and East Africa.",
-};
+}, "/srila-prabhupada");
 
 const timeline = [
   {
@@ -106,9 +107,9 @@ const sourceLinks = [
 
 export default function SrilaPrabhupadaPage() {
   return (
-    <main className="bg-temple-bg">
+    <div className="bg-temple-bg">
       <section className="relative min-h-[92vh] overflow-hidden bg-dusk text-sand">
-        <img
+        <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
           src="/images/prabhupada/prabhupada-golden-gate-kirtan.jpg"
           alt="Srila Prabhupada leading public kirtan"
           className="absolute inset-0 h-full w-full object-cover object-center opacity-70"
@@ -119,7 +120,7 @@ export default function SrilaPrabhupadaPage() {
         <div className="relative z-10 flex min-h-[92vh] items-end">
           <div className="content-width section-padding pb-12 pt-36 sm:pb-20">
             <div className="max-w-3xl">
-              <span className="eyebrow mb-5 block text-gold/85">Founder-Acarya of ISKCON</span>
+              <span className="eyebrow mb-5 block text-gold">Founder-Acarya of ISKCON</span>
               <h1 className="font-playfair text-[clamp(3rem,10vw,7rem)] leading-[0.95] text-white text-shadow">
                 Srila
                 <br />
@@ -151,12 +152,12 @@ export default function SrilaPrabhupadaPage() {
                 <br />
                 <em className="not-italic text-gold">a world awakened</em>
               </h2>
-              <p className="mt-6 font-inter text-body-md text-ink/70">
+              <p className="mt-6 font-inter text-body-md text-ink/75">
                 At an age when most people retire, Srila Prabhupada began the work that would define the modern global Hare Krishna movement.
               </p>
             </div>
 
-            <div className="space-y-5 font-inter text-body-md leading-relaxed text-ink/72">
+            <div className="space-y-5 font-inter text-body-md leading-relaxed text-ink/75">
               <p>
                 Born Abhay Charan De in Calcutta in 1896, Srila Prabhupada was raised with devotion to Krishna from childhood. As a young man he studied, worked, and lived a responsible family life, but the central instruction of his life came in 1922 when he met Srila Bhaktisiddhanta Sarasvati Thakura: take the teachings of Sri Caitanya Mahaprabhu to the English-speaking world.
               </p>
@@ -181,7 +182,7 @@ export default function SrilaPrabhupadaPage() {
                   <span className="h-px flex-1 bg-gold/30" />
                 </div>
                 <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/65">{item.text}</p>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
               </div>
             ))}
           </div>
@@ -192,13 +193,13 @@ export default function SrilaPrabhupadaPage() {
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <div>
-              <span className="eyebrow mb-4 block text-gold/75">Kenya and East Africa</span>
+              <span className="eyebrow mb-4 block text-gold">Kenya and East Africa</span>
               <h2 className="section-title-light">
                 He did not send only a movement.
                 <br />
                 <em className="not-italic text-gold">He came in person.</em>
               </h2>
-              <div className="mt-7 space-y-5 font-inter text-body-md leading-relaxed text-sand/72">
+              <div className="mt-7 space-y-5 font-inter text-body-md leading-relaxed text-sand/75">
                 <p>
                   ISKCON's early Kenyan work began remarkably soon after the society was founded. Srila Prabhupada came to Nairobi in 1971, giving darshan, leading kirtan, lecturing in the evenings, and encouraging the devotees who were trying to establish Krishna consciousness in East Africa.
                 </p>
@@ -219,7 +220,7 @@ export default function SrilaPrabhupadaPage() {
                   <div key={stat.label} className="border border-gold/15 bg-white/5 p-4">
                     <stat.icon className="mb-3 text-gold" size={20} />
                     <p className="font-playfair text-xl text-white">{stat.value}</p>
-                    <p className="mt-1 font-inter text-[0.62rem] uppercase tracking-[0.14em] text-sand/50">{stat.label}</p>
+                    <p className="mt-1 font-inter text-xs uppercase tracking-[0.14em] text-sand/75">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -227,12 +228,12 @@ export default function SrilaPrabhupadaPage() {
 
             <figure className="relative">
               <div className="absolute -inset-4 border border-gold/20" />
-              <img
+              <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                 src="/images/prabhupada/swami-prabhupada-classic.jpg"
                 alt="Srila Prabhupada"
                 className="relative aspect-[4/3] w-full object-cover object-[center_30%] shadow-card-hover"
               />
-              <figcaption className="relative mt-4 border-l border-gold/40 pl-4 font-inter text-xs leading-relaxed text-sand/55">
+              <figcaption className="relative mt-4 border-l border-gold/40 pl-4 font-inter text-xs leading-relaxed text-sand/75">
                 I found references to Nairobi photos of Srila Prabhupada, but did not download them because the available copies did not show a clear reuse license.
               </figcaption>
             </figure>
@@ -256,7 +257,7 @@ export default function SrilaPrabhupadaPage() {
               <div key={item.title} className="border border-temple-sand bg-white p-6 shadow-card">
                 <item.icon className="mb-5 text-primary" size={24} />
                 <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/65">{item.text}</p>
+                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
               </div>
             ))}
           </div>
@@ -277,7 +278,7 @@ export default function SrilaPrabhupadaPage() {
             <div>
               <Ship className="mb-5 text-gold" size={28} />
               <h2 className="font-playfair text-display-md text-white">Sources and image notes</h2>
-              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/60">
+              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/75">
                 This page combines your supplied text with public references. The downloaded images are from Wikimedia Commons pages with reuse/license information. Nairobi-specific Prabhupada photos were found online, but not used as site assets because the license status was not clear enough.
               </p>
             </div>
@@ -288,7 +289,7 @@ export default function SrilaPrabhupadaPage() {
                   href={source.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center justify-between gap-4 border border-white/10 bg-white/5 px-4 py-3 font-inter text-xs text-sand/70 transition-colors hover:border-gold/40 hover:text-white"
+                  className="min-h-11 group flex items-center justify-between gap-4 border border-white/10 bg-white/5 px-4 py-3 font-inter text-xs text-sand/75 transition-colors hover:border-gold/40 hover:text-white"
                 >
                   {source.label}
                   <ArrowRight size={13} className="text-gold transition-transform group-hover:translate-x-1" />
@@ -301,7 +302,7 @@ export default function SrilaPrabhupadaPage() {
 
       <section className="bg-primary py-14 text-center text-white">
         <div className="content-width section-padding">
-          <span className="eyebrow mb-4 block text-white/70">Visit, chant, take part</span>
+          <span className="eyebrow mb-4 block text-white">Visit, chant, take part</span>
           <h2 className="font-playfair text-display-md">The doors he asked us to keep open are still open.</h2>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
             <Link href="/visit" className="btn-ghost">
@@ -313,6 +314,6 @@ export default function SrilaPrabhupadaPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

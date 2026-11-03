@@ -228,17 +228,17 @@ export default function PwaRegistrar() {
             <Sparkles className="h-5 w-5" aria-hidden="true" />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="font-inter text-[0.62rem] font-bold uppercase tracking-[0.16em] text-gold">
+            <p className="font-inter text-xs font-bold uppercase tracking-[0.16em] text-gold">
               Version {promptedUpdate.release.version}
             </p>
             <h2 id="app-update-title" className="mt-1 font-playfair text-xl font-semibold text-white">
               {promptedUpdate.release.name}
             </h2>
-            <p id="app-update-summary" className="mt-2 font-inter text-sm leading-relaxed text-sand/72">
+            <p id="app-update-summary" className="mt-2 font-inter text-sm leading-relaxed text-sand/75">
               {promptedUpdate.release.summary}
             </p>
             {promptedUpdate.release.highlights.length > 0 && (
-              <ul className="mt-3 space-y-1 font-inter text-xs leading-relaxed text-sand/62">
+              <ul className="mt-3 space-y-1 font-inter text-xs leading-relaxed text-sand/75">
                 {promptedUpdate.release.highlights.slice(0, 3).map((highlight) => (
                   <li key={highlight}>• {highlight}</li>
                 ))}
@@ -285,7 +285,7 @@ export default function PwaRegistrar() {
             type="button"
             onClick={() => setShowSlowNotice(false)}
             aria-label="Dismiss connection notice"
-            className="flex h-8 w-8 shrink-0 items-center justify-center text-sand/55 transition-colors hover:text-sand"
+            className="flex h-8 w-8 shrink-0 items-center justify-center text-sand/75 transition-colors hover:text-sand"
           >
             <X className="h-4 w-4" aria-hidden="true" />
           </button>

@@ -145,7 +145,7 @@ export default function CalendarNotificationOptIn() {
             </div>
           </div>
 
-          <p className="max-w-2xl font-inter text-sm leading-relaxed text-ink/65">
+          <p className="max-w-2xl font-inter text-sm leading-relaxed text-ink/75">
             Enable reminders to receive push notifications for Ekadashi and major ISKCON Nairobi festivals.
           </p>
 
@@ -179,7 +179,7 @@ export default function CalendarNotificationOptIn() {
         </div>
 
         <div className="border-t border-temple-sand bg-temple-cream/70 p-5 sm:p-7 lg:border-l lg:border-t-0">
-          <div className="mb-4 flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.16em] text-gold">
+          <div className="mb-4 flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.16em] text-gold-ink">
             <CalendarDays size={14} />
             Next reminders
           </div>
@@ -188,13 +188,13 @@ export default function CalendarNotificationOptIn() {
               <div key={event.id} className="flex gap-3 border border-temple-sand bg-white p-3">
                 <div className="min-w-14 text-center">
                   <p className="font-inter text-xs font-bold uppercase tracking-[0.08em] text-primary">{event.dateLabel}</p>
-                  <p className="font-inter text-[9px] font-bold uppercase tracking-[0.12em] text-gold">{event.type}</p>
+                  <p className="font-inter text-xs font-bold uppercase tracking-[0.12em] text-gold-ink">{event.type}</p>
                 </div>
-                <p className="font-inter text-xs leading-relaxed text-ink/70">{event.event}</p>
+                <p className="font-inter text-xs leading-relaxed text-ink/75">{event.event}</p>
               </div>
             ))}
           </div>
-          <div className="mt-4 flex gap-2 font-inter text-[11px] leading-relaxed text-ink/50">
+          <div className="mt-4 flex gap-2 font-inter text-xs leading-relaxed text-ink/75">
             <ShieldCheck size={14} className="mt-0.5 shrink-0 text-gold" />
             <span>No account is created. You can turn reminders off here any time.</span>
           </div>

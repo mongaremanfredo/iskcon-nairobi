@@ -193,7 +193,7 @@ export default function KirtanSafariRegistrationModal() {
         .ks-modal-eyebrow {
           color: #d69c2b;
           font-family: var(--font-inter, sans-serif);
-          font-size: 0.65rem;
+          font-size: 0.75rem;
           font-weight: 800;
           letter-spacing: 0.2em;
           margin: 0 0 0.7rem;

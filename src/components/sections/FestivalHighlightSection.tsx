@@ -100,7 +100,7 @@ function CountdownPanel({
         style={{
           fontFamily: "var(--font-inter, sans-serif)",
           color: "rgba(246,226,177,0.82)",
-          fontSize: "0.6rem",
+          fontSize: "0.75rem",
           letterSpacing: "0.2em",
           textTransform: "uppercase",
           marginBottom: "1.25rem",
@@ -141,7 +141,7 @@ function CountdownPanel({
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
                 color: "rgba(255,255,255,0.35)",
-                fontSize: "0.55rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.15em",
                 textTransform: "uppercase",
               }}
@@ -288,7 +288,7 @@ export default function KirtanSafariSection() {
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
                 color: "#f3c86a",
-                fontSize: "0.6rem",
+                fontSize: "0.75rem",
                 fontWeight: 700,
                 letterSpacing: "0.16em",
                 textTransform: "uppercase",
@@ -376,7 +376,7 @@ export default function KirtanSafariSection() {
                 color: "#fff",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 700,
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
@@ -397,7 +397,7 @@ export default function KirtanSafariSection() {
                 color: "rgba(255,255,255,0.8)",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
@@ -419,7 +419,7 @@ export default function KirtanSafariSection() {
                 color: "rgba(246,226,177,0.92)",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
@@ -456,7 +456,7 @@ export default function KirtanSafariSection() {
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
                 color: "rgba(255,255,255,0.4)",
-                fontSize: "0.6rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
                 marginBottom: "1rem",
@@ -483,7 +483,7 @@ export default function KirtanSafariSection() {
                   style={{
                     fontFamily: "var(--font-inter, sans-serif)",
                     color: "#d69c2b",
-                    fontSize: "0.7rem",
+                    fontSize: "0.75rem",
                     fontWeight: 600,
                     minWidth: "6.5rem",
                     flexShrink: 0,
@@ -506,7 +506,7 @@ export default function KirtanSafariSection() {
               style={{
                 fontFamily: "var(--font-inter, sans-serif)",
                 color: "#f6e2b1",
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 fontWeight: 700,
                 letterSpacing: "0.14em",
                 marginTop: "0.85rem",
@@ -537,7 +537,7 @@ export default function KirtanSafariSection() {
                 color: "#fff",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 700,
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
@@ -558,7 +558,7 @@ export default function KirtanSafariSection() {
                 color: "rgba(255,255,255,0.8)",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
@@ -580,7 +580,7 @@ export default function KirtanSafariSection() {
                 color: "rgba(246,226,177,0.92)",
                 fontFamily: "var(--font-inter, sans-serif)",
                 fontWeight: 600,
-                fontSize: "0.65rem",
+                fontSize: "0.75rem",
                 letterSpacing: "0.18em",
                 textTransform: "uppercase",
                 padding: "0.875rem 1.75rem",
@@ -610,7 +610,7 @@ export default function KirtanSafariSection() {
                   alignItems: "center",
                   gap: "0.4rem",
                   color: "rgba(246,226,177,0.74)",
-                  fontSize: "0.65rem",
+                  fontSize: "0.75rem",
                   letterSpacing: "0.1em",
                   textTransform: "uppercase",
                   textDecoration: "none",
@@ -649,7 +649,7 @@ export default function KirtanSafariSection() {
           align-items: center;
           color: #d69c2b;
           display: flex;
-          font: 800 0.58rem/1 var(--font-inter, sans-serif);
+          font: 800 0.75rem/1 var(--font-inter, sans-serif);
           gap: 0.45rem;
           letter-spacing: 0.16em;
           margin: 0 0 0.65rem;
@@ -671,7 +671,7 @@ export default function KirtanSafariSection() {
 
         .ks-home-live-panel span {
           color: rgba(246, 226, 177, 0.58);
-          font: 800 0.52rem/1 var(--font-inter, sans-serif);
+          font: 800 0.75rem/1 var(--font-inter, sans-serif);
           letter-spacing: 0.12em;
           text-transform: uppercase;
         }
@@ -684,7 +684,7 @@ export default function KirtanSafariSection() {
         .ks-home-live-panel a {
           color: #d69c2b;
           display: inline-block;
-          font: 800 0.58rem/1 var(--font-inter, sans-serif);
+          font: 800 0.75rem/1 var(--font-inter, sans-serif);
           letter-spacing: 0.12em;
           margin-top: 0.7rem;
           text-decoration: none;
@@ -712,7 +712,7 @@ export default function KirtanSafariSection() {
 
           .ks-countdown-mobile p {
             margin-bottom: 0.55rem !important;
-            font-size: 0.52rem !important;
+            font-size: 0.75rem !important;
             letter-spacing: 0.14em !important;
           }
 
@@ -725,7 +725,7 @@ export default function KirtanSafariSection() {
           }
 
           .ks-countdown-mobile span {
-            font-size: 0.46rem !important;
+            font-size: 0.75rem !important;
           }
 
           .ks-countdown-desktop {

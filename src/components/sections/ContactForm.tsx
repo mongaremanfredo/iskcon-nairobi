@@ -37,7 +37,7 @@ function cleanText(value: string) {
 }
 
 const inputClass =
-  "w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:outline-none focus:border-gold text-ink placeholder-ink/30";
+  "w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:border-gold text-ink placeholder-ink/30";
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -111,8 +111,8 @@ export default function ContactForm() {
           { label: "Last Name", name: "lastName", type: "text", placeholder: "Last name", autoComplete: "family-name" },
         ].map((f) => (
           <div key={f.name}>
-            <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">{f.label}</label>
-            <input
+            <label htmlFor={`contact-${f.name}`} className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">{f.label}</label>
+            <input id={`contact-${f.name}`}
               value={form[f.name as "firstName" | "lastName"]}
               onChange={(event) => updateField(f.name as "firstName" | "lastName", event.target.value)}
               type={f.type}
@@ -131,8 +131,8 @@ export default function ContactForm() {
         { label: "Phone Number (optional)", name: "phone", type: "tel", placeholder: "+254 ...", autoComplete: "tel", inputMode: "tel", required: false },
       ].map((f) => (
         <div key={f.name}>
-          <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">{f.label}</label>
-          <input
+          <label htmlFor={`contact-${f.name}`} className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">{f.label}</label>
+          <input id={`contact-${f.name}`}
             value={form[f.name as "email" | "phone"]}
             onChange={(event) => updateField(f.name as "email" | "phone", event.target.value)}
             type={f.type}
@@ -148,12 +148,12 @@ export default function ContactForm() {
         </div>
       ))}
       <div>
-        <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">Subject</label>
-        <select
+        <label htmlFor="contact-field-1" className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">Subject</label>
+        <select id="contact-field-1"
           value={form.subject}
           onChange={(event) => updateField("subject", event.target.value)}
           required
-          className={`${inputClass} text-ink/70`}
+          className={`${inputClass} text-ink/75`}
         >
           {subjects.map((option) => (
             <option key={option}>{option}</option>
@@ -161,8 +161,8 @@ export default function ContactForm() {
         </select>
       </div>
       <div>
-        <label className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/50 block mb-1.5">Message</label>
-        <textarea
+        <label htmlFor="contact-field-2" className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">Message</label>
+        <textarea id="contact-field-2"
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
           rows={5}
@@ -189,9 +189,9 @@ export default function ContactForm() {
       {message && (
         <p
           className={`font-inter text-sm ${
-            status === "error" ? "text-sunset" : "text-emerald-700"
+            status === "error" ? "text-primary-dark" : "text-emerald-700"
           }`}
-          role="status"
+          role={status === "error" ? "alert" : "status"}
         >
           {message}
         </p>

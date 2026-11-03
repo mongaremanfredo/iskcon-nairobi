@@ -26,6 +26,13 @@ Global colors and fonts are defined in `src/app/globals.css` and
 - `acacia` / `#5C7A52`: Nairobi, nature, Kirtan Safari, farm, and calmer bands.
 - `dusk` / `#3A2A24`: text, dark navigation, grounded contrast.
 - `sand` / `#F4ECE1`: main page background for long reading comfort.
+- `gold-ink`, `sunset-ink`, `acacia-ink`: darker shades for text on sand or white. The brighter originals are for dark backgrounds only.
+- `primary-dark` / `#9A3528`: hover state for red buttons.
+
+Text is never smaller than 12px, interactive controls are at least 44px tall on
+phones (use `.tap-target` for small text links), and text must reach 4.5:1
+contrast. `npm run test:e2e` fails if a page gets worse than
+`tests/e2e/a11y-baseline.json`.
 
 Use Fraunces for display headings, Inter for interface text, and Source Serif 4
 for long-form sacred/editorial writing.

@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Food For Life",
   description: "Distributing thousands of free prasādam meals monthly to students, street children, and vulnerable families across Nairobi.",
-};
+}, "/projects/food-for-life");
 
 export default function FoodForLifePage() {
   return (
@@ -32,7 +33,7 @@ export default function FoodForLifePage() {
             ].map(s => (
               <div key={s.l}>
                 <p className="font-playfair text-gold text-4xl font-bold">{s.v}</p>
-                <p className="font-inter text-white/50 text-xs uppercase tracking-widest mt-2">{s.l}</p>
+                <p className="font-inter text-white/70 text-xs uppercase tracking-widest mt-2">{s.l}</p>
               </div>
             ))}
           </div>
@@ -46,7 +47,7 @@ export default function FoodForLifePage() {
             <div>
               <span className="eyebrow block mb-4">The Mission</span>
               <h2 className="section-title mb-6">No One Should<br /><em className="text-gold not-italic font-normal">Go Hungry</em></h2>
-              <div className="space-y-4 font-inter text-ink/70 leading-relaxed">
+              <div className="space-y-4 font-inter text-ink/75 leading-relaxed">
                 <p>Food For Life began with a simple principle from Śrīla Prabhupāda: "No one within ten miles of a temple should go hungry." In Nairobi, we take that mandate seriously.</p>
                 <p>Every day, our volunteers prepare fresh vegetarian prasādam in the temple kitchen and distribute it to street children, school students, and families in Kibera, Mathare, and beyond.</p>
                 <p>The food is more than nutrition - it is sanctified, prepared with devotion, and offered to the Lord before distribution. Recipients receive not just sustenance but the mercy of prasādam.</p>
@@ -56,7 +57,7 @@ export default function FoodForLifePage() {
               </Link>
             </div>
             <div>
-              <img src="/images/food-for-life/prasadam-students.jpg" alt="Food distribution" className="w-full aspect-card object-cover" />
+              <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw" src="/images/food-for-life/prasadam-students.jpg" alt="Food distribution" className="w-full aspect-card object-cover" />
             </div>
           </div>
         </div>
@@ -73,7 +74,7 @@ export default function FoodForLifePage() {
             {["Kibera", "Mathare", "Korogocho", "Mukuru", "City Centre", "Juja", "Thika", "Westlands", "South B", "South C", "Karen", "Eastleigh"].map((area) => (
               <div key={area} className="flex items-center gap-3 bg-white p-4 border border-temple-sand">
                 <span className="gold-dot flex-shrink-0" />
-                <span className="font-inter text-ink/70 text-sm">{area}</span>
+                <span className="font-inter text-ink/75 text-sm">{area}</span>
               </div>
             ))}
           </div>
@@ -81,7 +82,7 @@ export default function FoodForLifePage() {
       </section>
 
       {/* Volunteer CTA */}
-      <section className="py-16 bg-saffron text-center section-padding">
+      <section className="py-16 bg-primary-dark text-center section-padding">
         <h2 className="font-playfair text-display-md text-white mb-4">Volunteer With Us</h2>
         <p className="font-inter text-white/80 mb-8 max-w-md mx-auto">Join our Food For Life team - cooking, distributing, fundraising, or driving. Every hour of service makes a direct impact.</p>
         <Link href="/contact" className="btn-ghost">Become a Volunteer</Link>

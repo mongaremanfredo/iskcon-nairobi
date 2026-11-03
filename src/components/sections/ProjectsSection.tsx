@@ -32,13 +32,13 @@ export default function ProjectsSection() {
             </h2>
           </div>
           <div className="lg:pb-1">
-            <p className="max-w-md font-cormorant text-lg italic leading-relaxed text-ink/70 sm:text-xl">
+            <p className="max-w-md font-cormorant text-lg italic leading-relaxed text-ink/75 sm:text-xl">
               Four ways the temple&rsquo;s mission takes shape on the ground &mdash;
               classrooms, farms, kitchens, and communities you can step into and serve.
             </p>
             <Link
               href="/projects"
-              className="projects-explain mt-5 inline-flex items-center gap-2 font-inter text-[0.7rem] font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
+              className="tap-target projects-explain mt-5 inline-flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
             >
               Explore all projects <ArrowRight size={14} aria-hidden="true" />
             </Link>
@@ -73,7 +73,7 @@ export default function ProjectsSection() {
                   <article className="group">
                     {/* Photo */}
                     <Link href={project.href} className="block" aria-label={`Visit ${project.title}`}>
-                      <div className="projects-photo relative aspect-[16/11] overflow-hidden border border-temple-sand bg-white">
+                      <div className="projects-photo relative aspect-[16/8] sm:aspect-[16/11] overflow-hidden border border-temple-sand bg-white">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -92,10 +92,10 @@ export default function ProjectsSection() {
                     {/* Caption / field note */}
                     <div className="relative mt-4 border-l-2 border-gold/60 pl-4 sm:pl-5">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className={`font-inter text-[0.6rem] font-bold uppercase tracking-[0.16em] px-2.5 py-1 ${chip}`}>
+                        <span className={`font-inter text-xs font-bold uppercase tracking-[0.16em] px-2.5 py-1 ${chip}`}>
                           {project.tag}
                         </span>
-                        <span className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/40">
+                        <span className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75 max-sm:hidden">
                           {project.subtitle}
                         </span>
                       </div>
@@ -104,12 +104,12 @@ export default function ProjectsSection() {
                           {project.title}
                         </Link>
                       </h3>
-                      <p className="mt-2 max-w-md font-inter text-sm leading-6 text-ink/60 line-clamp-2">
+                      <p className="mt-2 max-w-md font-inter text-sm leading-6 text-ink/75 line-clamp-2 max-sm:hidden">
                         {project.description}
                       </p>
                       <Link
                         href={project.href}
-                        className="mt-3 inline-flex items-center gap-1.5 font-inter text-[0.66rem] font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
+                        className="tap-target mt-3 inline-flex items-center gap-1.5 font-inter text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
                       >
                         Visit this work <ArrowRight size={12} aria-hidden="true" />
                       </Link>
@@ -124,7 +124,7 @@ export default function ProjectsSection() {
         <div className="mt-12 border-t border-temple-sand pt-5 lg:hidden">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 font-inter text-[0.7rem] font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
+            className="tap-target inline-flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
           >
             Explore all projects <ArrowRight size={14} aria-hidden="true" />
           </Link>

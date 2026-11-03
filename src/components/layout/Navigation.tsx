@@ -17,7 +17,8 @@ const primaryNavigation = [
   { label: "Visit", href: "/visit" },
   { label: "Learn", href: "/learn" },
   { label: "Projects", href: "/projects" },
-  { label: "Calendar", href: "/festivals" },
+  { label: "Serve", href: "/serve" },
+  { label: "Festivals", href: "/festivals" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
@@ -26,6 +27,8 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
+  const menuToggleRef = useRef<HTMLButtonElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   const pathname = usePathname();
   const forceSolidNav = pathname === "/privacy" || pathname === "/terms";
   const solidNav = scrolled || forceSolidNav;
@@ -46,6 +49,20 @@ export default function Navigation() {
   }, [isOpen]);
 
   useEffect(() => {
+    if (!isOpen) return;
+    const toggle = menuToggleRef.current;
+    closeButtonRef.current?.focus();
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", closeOnEscape);
+    return () => {
+      window.removeEventListener("keydown", closeOnEscape);
+      toggle?.focus();
+    };
+  }, [isOpen]);
+
+  useEffect(() => {
     const header = headerRef.current;
     if (!header) return;
 
@@ -54,67 +71,32 @@ export default function Navigation() {
     //
     // `--site-solid-header-height` is the header's resting (solid) height. The
     // sticky sub-nav and temple status bar pin to this constant value so they
-    // never chase the header while it animates smaller on scroll. If they tracked
-    // the live height, the CSS var lags the painted header during the transition
-    // (rAF reads before this frame's interpolation is applied), so a pinned
-    // sub-nav lands a few pixels below the header and then snaps up as the var
-    // catches up. Pinning to a constant offset instead means a sub-nav pinned
-    // mid-transition sits behind the opaque header and emerges flush as the
-    // header finishes shrinking.
-    let lastHeight = "";
-    let lastStable = -1;
-    let stableFrames = 0;
-    const STABLE_FRAMES_NEEDED = 3;
+    // never chase the header while it animates smaller on scroll. It is committed
+    // only once the height has stopped changing, so it never takes a mid-transition
+    // value. ResizeObserver fires on every frame the header actually changes size
+    // during a transition and stays idle otherwise, which saves battery on phones.
+    let settleTimer = 0;
 
     const syncHeaderHeight = () => {
       const height = header.getBoundingClientRect().height;
-      const value = `${height}px`;
-      if (value !== lastHeight) {
-        lastHeight = value;
-        document.documentElement.style.setProperty("--site-header-height", value);
-      }
+      document.documentElement.style.setProperty("--site-header-height", `${height}px`);
 
-      // Only commit the solid height once the measurement stops changing, so
-      // the value never animates through the header transition.
-      const rounded = Math.round(height * 10) / 10;
-      if (rounded !== lastStable) {
-        lastStable = rounded;
-        stableFrames = 0;
-        return;
-      }
-      stableFrames += 1;
-      if (stableFrames === STABLE_FRAMES_NEEDED && solidNav) {
-        const solid = `${rounded}px`;
-        const currentSolid = document.documentElement.style.getPropertyValue("--site-solid-header-height");
-        if (solid !== currentSolid) {
-          document.documentElement.style.setProperty("--site-solid-header-height", solid);
-        }
-      }
+      window.clearTimeout(settleTimer);
+      settleTimer = window.setTimeout(() => {
+        if (!solidNav) return;
+        const settled = Math.round(header.getBoundingClientRect().height * 10) / 10;
+        document.documentElement.style.setProperty("--site-solid-header-height", `${settled}px`);
+      }, 120);
     };
 
     syncHeaderHeight();
 
-    // Keep the header heights continuously in sync. A rAF loop (instead of
-    // ResizeObserver/offsetHeight) guarantees the value tracks CSS transitions,
-    // the landscape media query, and device rotation without stale reads.
-    let rafId = 0;
-    const loop = () => {
-      syncHeaderHeight();
-      rafId = requestAnimationFrame(loop);
-    };
-    rafId = requestAnimationFrame(loop);
-
-    const handleOrientationChange = () => {
-      requestAnimationFrame(() => requestAnimationFrame(syncHeaderHeight));
-    };
-
-    window.addEventListener("orientationchange", handleOrientationChange);
-    window.addEventListener("resize", syncHeaderHeight);
+    const observer = new ResizeObserver(syncHeaderHeight);
+    observer.observe(header);
 
     return () => {
-      cancelAnimationFrame(rafId);
-      window.removeEventListener("orientationchange", handleOrientationChange);
-      window.removeEventListener("resize", syncHeaderHeight);
+      window.clearTimeout(settleTimer);
+      observer.disconnect();
     };
   }, [solidNav, isOpen]);
 
@@ -166,7 +148,7 @@ export default function Navigation() {
                 </span>
                 <span
                   className={cn(
-                    "nav-brand-expansion font-inter text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:text-[0.47rem]",
+                    "nav-brand-expansion font-inter text-xs font-medium leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:hidden",
                     solidNav ? "opacity-80" : "opacity-95"
                   )}
                 >
@@ -177,7 +159,12 @@ export default function Navigation() {
 
             <div className="hidden xl:flex items-center gap-6">
               {primaryNavigation.map((item) => (
-                <Link key={item.href} href={item.href} className="nav-link text-xs tracking-wider uppercase">
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  aria-current={pathname === item.href ? "page" : undefined}
+                  className="nav-link text-xs tracking-wider uppercase aria-[current=page]:text-gold-light"
+                >
                   {item.label}
                 </Link>
               ))}
@@ -187,11 +174,12 @@ export default function Navigation() {
               <NoticeboardButton statusBarVisible={scrolled && !isOpen} />
               <Link
                 href="/donate"
-                className="hidden sm:inline-flex max-[900px]:hidden items-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-sunset"
+                className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap [overflow-wrap:normal] bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-primary-dark max-[900px]:px-2.5 max-[900px]:tracking-wider max-[359px]:hidden"
               >
                 Donate
               </Link>
               <button
+                ref={menuToggleRef}
                 onClick={() => setIsOpen(!isOpen)}
                 className={cn(
                   "inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-gold/60 bg-dusk/45 p-0 text-gold shadow-[0_8px_24px_rgba(0,0,0,0.22)] backdrop-blur-sm transition-colors hover:border-gold/80 hover:bg-dusk/65 xl:hidden",
@@ -229,6 +217,10 @@ export default function Navigation() {
       <TempleStatusBar visible={scrolled && !isOpen} />
 
       <div
+        inert={!isOpen}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site menu"
         className={cn(
           "xl:hidden fixed inset-0 z-[70] transition-all duration-500",
           isOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
@@ -248,8 +240,9 @@ export default function Navigation() {
           <div className="flex items-center justify-between p-6 border-b border-white/10">
             <BrandLogo className="h-14 w-[150px] text-sand" />
             <button
+              ref={closeButtonRef}
               onClick={() => setIsOpen(false)}
-              className="text-white/60 hover:text-white transition-colors"
+              className="-mr-3 flex h-11 w-11 items-center justify-center text-white/80 hover:text-white transition-colors"
               aria-label="Close menu"
             >
               <X size={20} />
@@ -275,7 +268,7 @@ export default function Navigation() {
             <a
               href={`tel:${templeInfo.phoneHref}`}
               onClick={() => setIsOpen(false)}
-              className="mb-3 flex w-full items-center justify-center gap-2 border border-gold/40 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-white/5"
+              className="mb-3 flex min-h-11 w-full items-center justify-center gap-2 border border-gold/40 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-white/5"
             >
               <Phone size={13} />
               Call Temple
@@ -312,14 +305,14 @@ export default function Navigation() {
           }
 
           .site-nav .nav-brand-expansion {
-            font-size: 0.42rem !important;
+            font-size: 0.75rem !important;
             max-width: 12rem !important;
             white-space: nowrap !important;
           }
 
           .site-nav button[aria-label] {
-            width: 2.35rem !important;
-            height: 2.35rem !important;
+            width: 2.75rem !important;
+            height: 2.75rem !important;
           }
         }
       `}</style>

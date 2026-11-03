@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -10,11 +10,12 @@ import {
 } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import AdhivasaLyrics from "@/components/blog/AdhivasaLyrics";
+import { withSeo } from "@/lib/seo";
 
 const heroImage = "/images/blog/chaitanya-dances-with-followers.jpg";
 const jharikhandaImage = "/images/blog/jharikhanda-mahaprabhu-animals.jpeg";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "The Invitation Before the Festival",
   description:
     "A verse-by-verse translation of Sri Nama Sankirtana Adhivasa, Vrindavana Dasa Thakura's traditional summons sung the evening before every great kirtana festival.",
@@ -40,7 +41,7 @@ export const metadata: Metadata = {
       "A verse-by-verse translation of Sri Nama Sankirtana Adhivasa, Vrindavana Dasa Thakura's traditional summons sung the evening before every great kirtana festival.",
     images: [heroImage],
   },
-};
+}, "/blog/sri-nama-sankirtana-adhivasa");
 
 const introParagraphs = [
   "Before a mahotsava begins, before the mridangas are lifted and the nagar-kirtan procession takes to the streets, there is a quieter evening. Devotees gather, articles for worship are arranged, and one specific song is sung - not a prayer of praise, but an invitation. This is adhivasa: the ceremony that prepares a place, and the hearts within it, for what is coming the next day.",
@@ -70,7 +71,7 @@ export default function AdhivasaBlogPage() {
 
       <section className="bg-temple-bg py-[clamp(2.7rem,12vw,3.8rem)] sm:py-[clamp(3.5rem,5vw,5.5rem)]">
         <div className="content-width section-padding">
-          <div className="mb-12 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/55">
+          <div className="mb-12 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/75">
             <span>July 2026</span>
             <span className="h-1 w-1 self-center rounded-full bg-gold" />
             <span>4 min read</span>
@@ -80,7 +81,7 @@ export default function AdhivasaBlogPage() {
 
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.68fr)_minmax(300px,0.32fr)] lg:items-start">
             <article className="mx-auto max-w-3xl">
-              <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/72">
+              <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/75">
                 {introParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -90,7 +91,7 @@ export default function AdhivasaBlogPage() {
 
               <div className="mt-12 flex flex-col items-start gap-4 border border-gold/30 bg-dusk p-6 text-sand sm:p-8">
                 <div>
-                  <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                     Temple Journal
                   </p>
                   <p className="mt-2 font-playfair text-2xl font-semibold text-white">
@@ -99,7 +100,7 @@ export default function AdhivasaBlogPage() {
                 </div>
                 <Link
                   href="/blog"
-                  className="inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-sand"
+                  className="tap-target inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-sand"
                 >
                   More devotional stories <ArrowRight size={12} />
                 </Link>
@@ -108,7 +109,7 @@ export default function AdhivasaBlogPage() {
 
             <aside className="lg:sticky lg:top-28">
               <div className="border border-temple-sand bg-white p-6 shadow-card">
-                <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-gold">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   Article guide
                 </p>
                 <div className="mt-5 space-y-4">
@@ -118,10 +119,10 @@ export default function AdhivasaBlogPage() {
                       <div key={item.label} className="flex gap-3 border-t border-temple-sand pt-4 first:border-t-0 first:pt-0">
                         <Icon size={18} className="mt-1 shrink-0 text-gold" />
                         <div>
-                          <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/42">
+                          <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                             {item.label}
                           </p>
-                          <p className="mt-1 font-inter text-sm leading-relaxed text-ink/66">{item.value}</p>
+                          <p className="mt-1 font-inter text-sm leading-relaxed text-ink/75">{item.value}</p>
                         </div>
                       </div>
                     );
@@ -134,7 +135,7 @@ export default function AdhivasaBlogPage() {
                 className="group mt-5 block overflow-hidden border border-temple-sand bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover"
               >
                 <div className="relative h-32 overflow-hidden">
-                  <img
+                  <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                     src={jharikhandaImage}
                     alt=""
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -142,7 +143,7 @@ export default function AdhivasaBlogPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/55 via-transparent to-transparent" />
                 </div>
                 <div className="p-5">
-                  <p className="font-inter text-[0.6rem] font-semibold uppercase tracking-[0.14em] text-ink/42">
+                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                     More from the Journal
                   </p>
                   <p className="mt-2 flex items-center gap-1.5 font-playfair text-base font-semibold leading-snug text-ink">

@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = { title: "Serve" };
+export const metadata = withSeo({ title: "Serve" }, "/serve");
 
 const opportunities = [
   { emoji: "🍛", title: "Food For Life", desc: "Cook, pack, and distribute prasādam meals. Daily and weekend shifts available.", commitment: "Flexible" },
@@ -35,9 +35,9 @@ export default function ServePage() {
               <div key={op.title} className="bg-white border border-temple-sand p-7 hover:shadow-card-hover hover:border-gold/30 transition-all">
                 <div className="text-3xl mb-4">{op.emoji}</div>
                 <h3 className="font-playfair text-xl font-semibold text-ink mb-1">{op.title}</h3>
-                <p className="font-inter text-gold text-xs tracking-wider mb-3">{op.commitment}</p>
+                <p className="font-inter text-gold-ink text-xs tracking-wider mb-3">{op.commitment}</p>
                 <div className="w-5 h-px bg-gold/30 mb-3" />
-                <p className="font-inter text-ink/60 text-sm leading-relaxed">{op.desc}</p>
+                <p className="font-inter text-ink/75 text-sm leading-relaxed">{op.desc}</p>
               </div>
             ))}
           </div>

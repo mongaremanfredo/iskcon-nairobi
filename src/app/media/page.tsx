@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import { socialLinks } from "@/data/site";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Media Gallery",
   description: "Photos and videos from ISKCON Nairobi - temple life, festivals, community service, and the beauty of Krishna consciousness in East Africa.",
-};
+}, "/media");
 
 const categories = ["All", "Temple Life", "Festivals", "Farm & Goshala", "Food For Life", "HKTC", "Kirtan Safari"];
 
@@ -35,7 +36,7 @@ export default function MediaPage() {
             <div>
               <span className="eyebrow block mb-2">HKTC Nairobi</span>
               <h2 className="font-playfair text-2xl font-semibold text-ink">Graduation Ceremony Album</h2>
-              <p className="font-inter text-ink/60 text-sm mt-2 max-w-2xl">
+              <p className="font-inter text-ink/75 text-sm mt-2 max-w-2xl">
                 Enjoy the full gallery from the HKTC Graduation Ceremony on Google Photos.
               </p>
             </div>
@@ -53,7 +54,7 @@ export default function MediaPage() {
             <div>
               <span className="eyebrow block mb-2">Thika Farm & Goshala</span>
               <h2 className="font-playfair text-2xl font-semibold text-ink">Farm Visit Album</h2>
-              <p className="font-inter text-ink/60 text-sm mt-2 max-w-2xl">
+              <p className="font-inter text-ink/75 text-sm mt-2 max-w-2xl">
                 View the complete Farm Visit photo collection on Google Drive.
               </p>
             </div>
@@ -71,10 +72,10 @@ export default function MediaPage() {
             {categories.map((cat, i) => (
               <button
                 key={cat}
-                className={`font-inter text-xs font-semibold tracking-widest uppercase px-4 py-2 border transition-colors ${
+                className={`min-h-11 font-inter text-xs font-semibold tracking-widest uppercase px-4 py-2 border transition-colors ${
                   i === 0
-                    ? "bg-gold text-white border-gold"
-                    : "border-temple-sand text-ink/50 hover:border-gold hover:text-gold"
+                    ? "bg-gold text-ink border-gold"
+                    : "border-temple-sand text-ink/75 hover:border-gold hover:text-gold-ink"
                 }`}
               >
                 {cat}
@@ -85,7 +86,7 @@ export default function MediaPage() {
           <div className="columns-1 sm:columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
             {images.map((img, i) => (
               <div key={i} className="group relative overflow-hidden break-inside-avoid mb-3 cursor-pointer image-grade">
-                <img
+                <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   src={img.src}
                   alt={img.caption}
                   className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -93,17 +94,17 @@ export default function MediaPage() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/50 transition-colors duration-300" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="font-inter text-white text-xs leading-tight">{img.caption}</p>
-                  <p className="font-inter text-gold text-[10px] mt-1 uppercase tracking-wider">{img.category}</p>
+                  <p className="font-inter text-gold text-xs mt-1 uppercase tracking-wider">{img.category}</p>
                 </div>
               </div>
             ))}
           </div>
 
           <div className="mt-10 text-center">
-            <p className="font-inter text-ink/40 text-sm">More photos and videos are shared on ISKCON Nairobi social channels.</p>
+            <p className="font-inter text-ink/75 text-sm">More photos and videos are shared on ISKCON Nairobi social channels.</p>
             <div className="flex flex-wrap gap-4 justify-center mt-4">
               {mediaSocials.map((platform) => (
-                <a key={platform.name} href={platform.href} target="_blank" rel="noopener noreferrer" className="font-inter text-xs font-semibold text-gold tracking-widest uppercase border-b border-gold/30 pb-0.5 hover:border-gold transition-colors">
+                <a key={platform.name} href={platform.href} target="_blank" rel="noopener noreferrer" className="tap-target font-inter text-xs font-semibold text-gold-ink tracking-widest uppercase border-b border-gold/30 pb-0.5 hover:border-gold transition-colors">
                   {platform.name} →
                 </a>
               ))}

@@ -67,7 +67,7 @@ export default function FAQAccordion() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 font-inter text-sm leading-relaxed text-ink/62 sm:px-6">
+                <p className="px-5 pb-5 font-inter text-sm leading-relaxed text-ink/75 sm:px-6">
                   {faq.answer}
                 </p>
               </div>

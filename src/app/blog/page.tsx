@@ -1,15 +1,16 @@
-import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, BookOpen, Clock, Leaf, Music2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { blogPosts } from "@/data/blog";
+import { withSeo } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = withSeo({
   title: "Blog",
   description:
     "Devotional essays, festival stories, and scriptural reflections from ISKCON Nairobi.",
-};
+}, "/blog");
 
 const categoryIcons: Record<string, LucideIcon> = {
   "Scriptural Reflection": BookOpen,
@@ -38,22 +39,22 @@ export default function BlogPage() {
               href={featured.href}
               className="group relative min-h-[24rem] overflow-hidden border border-gold/25 bg-dusk shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/60 hover:shadow-card-hover sm:min-h-[30rem]"
             >
-              <img
+              <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                 src={featured.image}
                 alt=""
                 className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-dusk via-dusk/22 to-transparent" />
               <div className="absolute left-5 top-5 flex flex-wrap gap-2">
-                <span className="bg-gold px-3 py-1 font-inter text-[0.62rem] font-bold uppercase tracking-[0.14em] text-white">
+                <span className="bg-gold px-3 py-1 font-inter text-xs font-bold uppercase tracking-[0.14em] text-ink">
                   Featured
                 </span>
-                <span className="bg-dusk/72 px-3 py-1 font-inter text-[0.62rem] font-bold uppercase tracking-[0.14em] text-temple-cream">
+                <span className="bg-dusk/72 px-3 py-1 font-inter text-xs font-bold uppercase tracking-[0.14em] text-temple-cream">
                   {featured.category}
                 </span>
               </div>
               <div className="absolute bottom-0 left-0 right-0 p-6 sm:p-8 lg:p-10">
-                <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-gold">
+                <p className="font-inter text-xs font-semibold uppercase tracking-[0.18em] text-gold">
                   {featured.date}
                 </p>
                 <h2 className="mt-3 max-w-2xl font-playfair text-3xl font-semibold leading-tight text-white text-shadow sm:text-5xl">
@@ -64,7 +65,7 @@ export default function BlogPage() {
 
             <article className="flex flex-col justify-between border border-temple-sand bg-white p-6 shadow-card sm:p-8 lg:p-10">
               <div>
-                <div className="mb-5 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/45">
+                <div className="mb-5 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/75">
                   <span>{featured.date}</span>
                   <span className="h-1 w-1 rounded-full bg-gold" />
                   <span className="inline-flex items-center gap-1.5">
@@ -75,7 +76,7 @@ export default function BlogPage() {
                 <h2 className="font-playfair text-3xl font-semibold leading-tight text-ink sm:text-4xl">
                   {featured.subtitle}
                 </h2>
-                <p className="mt-5 font-inter text-base leading-relaxed text-ink/65">
+                <p className="mt-5 font-inter text-base leading-relaxed text-ink/75">
                   {featured.excerpt}
                 </p>
 
@@ -89,7 +90,7 @@ export default function BlogPage() {
                     return (
                       <div key={item.label} className="border border-temple-sand bg-temple-cream/60 p-4">
                         <Icon className="text-gold" size={18} />
-                        <p className="mt-3 font-inter text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-ink/42">
+                        <p className="mt-3 font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                           {item.label}
                         </p>
                         <p className="mt-1 font-inter text-sm font-semibold text-ink">{item.value}</p>
@@ -101,7 +102,7 @@ export default function BlogPage() {
 
               <Link
                 href={featured.href}
-                className="mt-8 inline-flex items-center gap-2 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all hover:gap-3"
+                className="tap-target mt-8 inline-flex items-center gap-2 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all hover:gap-3"
               >
                 Read the full story <ArrowRight size={12} />
               </Link>
@@ -112,14 +113,14 @@ export default function BlogPage() {
             <div className="mt-16 sm:mt-20">
               <div className="mb-8 flex flex-wrap items-end justify-between gap-4 border-b border-temple-sand pb-4">
                 <div>
-                  <p className="font-inter text-[0.62rem] font-semibold uppercase tracking-[0.18em] text-gold">
+                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.18em] text-gold">
                     Temple Journal
                   </p>
                   <h3 className="mt-2 font-playfair text-2xl font-semibold text-ink sm:text-3xl">
                     More from the Journal
                   </h3>
                 </div>
-                <p className="font-inter text-xs uppercase tracking-[0.14em] text-ink/45">
+                <p className="font-inter text-xs uppercase tracking-[0.14em] text-ink/75">
                   {rest.length} {rest.length === 1 ? "story" : "stories"}
                 </p>
               </div>
@@ -134,20 +135,20 @@ export default function BlogPage() {
                       className="group flex flex-col overflow-hidden border border-temple-sand bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover"
                     >
                       <div className="relative h-44 overflow-hidden">
-                        <img
+                        <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
                           src={post.image}
                           alt=""
                           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-dusk/45 via-transparent to-transparent" />
-                        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 bg-white/92 px-2.5 py-1 font-inter text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-dusk">
+                        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 bg-white/92 px-2.5 py-1 font-inter text-xs font-semibold uppercase tracking-[0.12em] text-dusk">
                           <Icon size={12} className="text-gold" />
                           {post.category}
                         </span>
                       </div>
 
                       <div className="flex flex-1 flex-col p-6">
-                        <div className="flex items-center gap-3 font-inter text-[0.68rem] uppercase tracking-[0.12em] text-ink/45">
+                        <div className="flex items-center gap-3 font-inter text-xs uppercase tracking-[0.12em] text-ink/75">
                           <span>{post.date}</span>
                           <span className="h-1 w-1 rounded-full bg-gold" />
                           <span>{post.readTime}</span>
@@ -155,13 +156,13 @@ export default function BlogPage() {
                         <h4 className="mt-3 font-playfair text-xl font-semibold leading-snug text-ink">
                           {post.title}
                         </h4>
-                        <p className="mt-2 font-inter text-sm leading-relaxed text-ink/60">
+                        <p className="mt-2 font-inter text-sm leading-relaxed text-ink/75">
                           {post.subtitle}
                         </p>
-                        <p className="mt-3 flex-1 font-inter text-sm leading-relaxed text-ink/55">
+                        <p className="mt-3 flex-1 font-inter text-sm leading-relaxed text-ink/75">
                           {post.excerpt}
                         </p>
-                        <span className="mt-5 inline-flex items-center gap-1.5 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-all group-hover:gap-2.5">
+                        <span className="mt-5 inline-flex items-center gap-1.5 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all group-hover:gap-2.5">
                           Read the story <ArrowUpRight size={12} />
                         </span>
                       </div>

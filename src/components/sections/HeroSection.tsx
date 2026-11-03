@@ -2,8 +2,9 @@
 
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
+import Image, { getImageProps } from "next/image";
 import Link from "next/link";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Pause, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 import KirtanSafariRegistrationModal, {
   openKirtanSafariRegistration,
@@ -84,9 +85,36 @@ const baseHeroImages: HeroImage[] = [
   },
 ];
 
+function HeroPicture({ image, isFirst }: { image: HeroImage; isFirst: boolean }) {
+  const style = {
+    objectPosition: image.position,
+    "--hero-mobile-position": image.mobilePosition ?? image.position,
+  } as CSSProperties;
+  const className = "hero-bg-image object-cover";
+
+  if (!image.mobileSrc) {
+    return <Image src={image.src} alt={image.alt} fill sizes="100vw" loading="eager" fetchPriority={isFirst ? "high" : "auto"} className={className} style={style} />;
+  }
+
+  // Art direction: phones get a separately composed crop of this illustration.
+  const common = { alt: image.alt, fill: true, sizes: "100vw" };
+  const { props: desktop } = getImageProps({ ...common, src: image.src });
+  const { props: mobile } = getImageProps({ ...common, src: image.mobileSrc });
+
+  return (
+    <picture className="contents">
+      <source media="(max-width: 900px)" srcSet={mobile.srcSet} sizes="100vw" />
+      <img {...desktop} alt={image.alt} className={className} style={{ ...desktop.style, ...style }} />
+    </picture>
+  );
+}
+
 export default function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
-  const [loaded, setLoaded] = useState(false);
+  const [paused, setPaused] = useState(false);
+  // Only the first slide downloads with the page. Each later slide is fetched
+  // shortly before it appears, so a visitor who leaves early never pays for it.
+  const [readySlides, setReadySlides] = useState(() => new Set([0]));
   const rotationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const festivalState = useKirtanSafariState();
 
@@ -156,14 +184,15 @@ export default function HeroSection() {
   }, [festivalState.currentDayIndex, festivalState.nextDay, festivalState.phase]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoaded(true), 100);
-    return () => {
-      clearTimeout(timer);
-    };
+    const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches && !connection?.saveData) return;
+    const timer = setTimeout(() => setPaused(true), 0);
+    return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
     if (rotationRef.current) clearTimeout(rotationRef.current);
+    if (paused) return;
 
     rotationRef.current = setTimeout(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
@@ -172,13 +201,30 @@ export default function HeroSection() {
     return () => {
       if (rotationRef.current) clearTimeout(rotationRef.current);
     };
-  }, [currentImage, heroImages]);
+  }, [currentImage, heroImages, paused]);
+
+  useEffect(() => {
+    if (paused) return;
+    const nextSlide = (currentImage + 1) % heroImages.length;
+    const timer = setTimeout(() => {
+      setReadySlides((ready) => (ready.has(nextSlide) ? ready : new Set(ready).add(nextSlide)));
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [currentImage, heroImages.length, paused]);
+
+  const showSlide = (index: number) => {
+    setReadySlides((ready) => (ready.has(index) ? ready : new Set(ready).add(index)));
+    setCurrentImage(index);
+  };
 
   const currentHero = heroImages[currentImage];
 
   return (
     <section className="home-hero relative w-full h-[88svh] min-h-[620px] max-h-[1000px] overflow-hidden sm:h-screen sm:min-h-[600px]">
       <KirtanSafariRegistrationModal />
+      {/* The visible tagline rotates with each slide, so the page heading stays
+          fixed for search engines and screen readers. */}
+      <h1 className="sr-only">ISKCON Nairobi: Sri Sri Radha Bankebihari Temple</h1>
       {/* Background Images */}
       {heroImages.map((image, i) => (
         <div
@@ -188,18 +234,7 @@ export default function HeroSection() {
             i === currentImage ? "opacity-100" : "opacity-0"
           )}
         >
-          <picture className="contents">
-            {image.mobileSrc ? <source media="(max-width: 900px)" srcSet={image.mobileSrc} /> : null}
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="hero-bg-image w-full h-full object-cover"
-              style={{
-                objectPosition: image.position,
-                "--hero-mobile-position": image.mobilePosition ?? image.position,
-              } as CSSProperties}
-            />
-          </picture>
+          {readySlides.has(i) ? <HeroPicture image={image} isFirst={i === 0} /> : null}
         </div>
       ))}
 
@@ -216,32 +251,19 @@ export default function HeroSection() {
         {/* Main Content */}
         <div className="hero-main flex-1 flex items-end pb-4 section-padding content-width sm:pb-10 lg:pb-14">
           <div className="hero-copy max-w-3xl">
+            {/* Entrances use CSS only, so this copy shows without waiting for JavaScript. */}
             {/* Eyebrow */}
-            <div
-              className={cn(
-                "hero-eyebrow flex items-center gap-3 mb-4 transition-all duration-1000 delay-300",
-                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              )}
-            >
+            <div className="hero-eyebrow flex items-center gap-3 mb-4 motion-safe:animate-fade-up [animation-fill-mode:both]">
               <span className="eyebrow text-gold">{currentHero.eyebrow}</span>
             </div>
 
-            {/* Animated gold rule */}
+            {/* Gold rule */}
             <div
-              className={cn(
-                "hero-rule my-6 h-px bg-gradient-to-r from-gold via-gold/60 to-transparent origin-left transition-all duration-1000 delay-700",
-                loaded ? "opacity-100 scale-x-100 w-64" : "opacity-0 scale-x-0 w-64"
-              )}
-              style={{ transformOrigin: "left" }}
+              className="hero-rule my-6 h-px w-64 bg-gradient-to-r from-gold via-gold/60 to-transparent motion-safe:animate-fade-in [animation-fill-mode:both]"
             />
 
             {/* Tagline - the signature element */}
-            <div
-              className={cn(
-                "hero-tagline transition-all duration-1000 delay-700",
-                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              )}
-            >
+            <div className="hero-tagline motion-safe:animate-fade-up [animation-delay:150ms] [animation-fill-mode:both]">
               <p className="font-cormorant text-temple-cream/90 text-shadow" style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.25rem)", lineHeight: 1.3, fontStyle: "italic" }}>
                 {currentHero.tagline}
               </p>
@@ -251,12 +273,7 @@ export default function HeroSection() {
             </div>
 
             {/* CTA Buttons */}
-            <div
-              className={cn(
-                "hero-ctas flex flex-col gap-3 mt-8 transition-all duration-1000 delay-[900ms] sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4",
-                loaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-              )}
-            >
+            <div className="hero-ctas flex flex-col gap-3 mt-8 motion-safe:animate-fade-up [animation-delay:300ms] [animation-fill-mode:both] sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
               {currentHero.ctas.map((cta) =>
                 cta.action === "kirtanRegistration" ? (
                   <button
@@ -285,25 +302,37 @@ export default function HeroSection() {
         <div className="hero-bottom section-padding content-width pb-5 sm:pb-8">
           <div className="flex items-end justify-between">
             {/* Image Dots */}
-            <div className="flex items-center gap-2">
+            <div className="-ml-2.5 flex items-center">
               {heroImages.map((_, i) => (
                 <button
                   key={i}
-                  onClick={() => setCurrentImage(i)}
-                  className={cn(
-                    "transition-all duration-300",
-                    i === currentImage
-                      ? "w-8 h-1 bg-gold"
-                      : "w-2 h-1 bg-white/40 hover:bg-white/60"
-                  )}
-                  aria-label={`Image ${i + 1}`}
-                />
+                  type="button"
+                  onClick={() => showSlide(i)}
+                  className="group flex h-11 w-11 items-center justify-center"
+                  aria-label={`Show slide ${i + 1}`}
+                  aria-current={i === currentImage ? "true" : undefined}
+                >
+                  <span
+                    className={cn(
+                      "h-1 transition-all duration-300",
+                      i === currentImage ? "w-8 bg-gold" : "w-2 bg-white/60 group-hover:bg-white/80"
+                    )}
+                  />
+                </button>
               ))}
+              <button
+                type="button"
+                onClick={() => setPaused((value) => !value)}
+                className="flex h-11 w-11 items-center justify-center text-white/80 transition-colors hover:text-white"
+                aria-label={paused ? "Play slideshow" : "Pause slideshow"}
+              >
+                {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
+              </button>
             </div>
 
             {/* Scroll hint */}
-            <div className="flex flex-col items-center gap-2 text-white/50">
-              <span className="font-inter text-[10px] tracking-[0.15em] uppercase">Scroll</span>
+            <div className="flex flex-col items-center gap-2 text-white/70">
+              <span className="font-inter text-xs tracking-[0.15em] uppercase">Scroll</span>
               <ArrowDown size={14} className="animate-bounce" />
             </div>
           </div>
@@ -312,11 +341,11 @@ export default function HeroSection() {
 
       {/* Temple schedule ticker */}
       <div className="absolute top-20 right-0 hidden lg:flex flex-col items-end gap-1 pr-8 pt-8">
-        <span className="eyebrow text-gold/70 text-[9px]">Today&apos;s Programmes</span>
-        <div className="text-right">
-          <p className="font-inter text-white/60 text-xs">4:30 A.M. - Mangala Arati</p>
-          <p className="font-inter text-white/60 text-xs">7:15 A.M. - Shringar Darshan</p>
-          <p className="font-inter text-white/60 text-xs">7:00 P.M. - Sandhya - Gaur Arati</p>
+        <span className="eyebrow text-gold text-shadow">Today&apos;s Programmes</span>
+        <div className="text-right text-shadow">
+          <p className="font-inter text-white/90 text-xs">4:30 A.M. - Mangala Arati</p>
+          <p className="font-inter text-white/90 text-xs">7:15 A.M. - Shringar Darshan</p>
+          <p className="font-inter text-white/90 text-xs">7:00 P.M. - Sandhya - Gaur Arati</p>
         </div>
       </div>
       <style>{`
@@ -348,7 +377,7 @@ export default function HeroSection() {
           }
 
           .home-hero .hero-eyebrow .eyebrow {
-            font-size: 0.52rem !important;
+            font-size: 0.75rem !important;
             line-height: 1.2 !important;
           }
 
@@ -370,7 +399,7 @@ export default function HeroSection() {
           .home-hero .hero-tagline p:last-child {
             margin-top: 0.45rem !important;
             max-width: 28rem !important;
-            font-size: 0.68rem !important;
+            font-size: 0.75rem !important;
             line-height: 1.35 !important;
           }
 
@@ -384,7 +413,7 @@ export default function HeroSection() {
             width: auto !important;
             min-height: 36px !important;
             padding: 0.55rem 0.85rem !important;
-            font-size: 0.58rem !important;
+            font-size: 0.75rem !important;
             letter-spacing: 0.07em !important;
             white-space: nowrap !important;
           }

@@ -84,10 +84,10 @@ export default function QuickNavSection() {
                   <h3 className="font-playfair text-lg font-semibold leading-tight text-ink sm:text-2xl">
                     {card.title}
                   </h3>
-                  <p className="mt-1.5 font-inter text-[0.7rem] leading-relaxed text-ink/60 sm:mt-2 sm:text-sm">
+                  <p className="mt-1.5 font-inter text-xs leading-relaxed text-ink/75 sm:mt-2 sm:text-sm">
                     {card.description}
                   </p>
-                  <span className="mt-5 hidden items-center gap-2 font-inter text-[0.62rem] font-bold uppercase tracking-[0.14em] text-primary transition-all duration-300 lg:inline-flex lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
+                  <span className="mt-5 hidden items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.14em] text-primary transition-all duration-300 lg:inline-flex lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
                     Explore <ArrowUpRight size={14} aria-hidden="true" />
                   </span>
                 </div>

@@ -112,7 +112,7 @@ export default function InstallPromptBanner() {
         type="button"
         onClick={dismissForCooldown}
         aria-label="Dismiss install prompt"
-        className="absolute right-2.5 top-2.5 flex h-7 w-7 items-center justify-center rounded-full text-sand/50 transition-colors hover:bg-white/10 hover:text-sand"
+        className="absolute right-2.5 top-2.5 flex h-7 w-7 items-center justify-center rounded-full text-sand/75 transition-colors hover:bg-white/10 hover:text-sand"
       >
         <X className="h-4 w-4" aria-hidden="true" />
       </button>
@@ -127,7 +127,7 @@ export default function InstallPromptBanner() {
         />
         <div className="min-w-0">
           <p className="font-playfair text-sm font-semibold leading-tight">Install ISKCON Nairobi</p>
-          <p className="mt-0.5 text-xs leading-snug text-sand/70">
+          <p className="mt-0.5 text-xs leading-snug text-sand/75">
             Darshan times, kirtan &amp; news - right on your home screen.
           </p>
         </div>
