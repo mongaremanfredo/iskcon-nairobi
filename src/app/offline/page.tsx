@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata: Metadata = {
   title: "Offline",
@@ -20,20 +20,20 @@ export default function OfflinePage() {
           className="mx-auto h-24 w-24 object-contain sm:h-28 sm:w-28"
         />
         <span className="eyebrow mt-8 block">Connection paused</span>
-        <h1 className="mt-3 font-playfair text-4xl leading-tight text-dusk sm:text-5xl">
+        <h1 className="mt-3 font-display text-4xl leading-tight text-dusk sm:text-5xl">
           You are offline
         </h1>
-        <p className="mx-auto mt-5 max-w-md font-inter text-sm leading-relaxed text-dusk/75 sm:text-base">
+        <p className="mx-auto mt-5 max-w-md font-body text-sm leading-relaxed text-dusk/75 sm:text-base">
           Pages you opened earlier may still be available. Reconnect to receive current temple
           notices, festival updates, and form confirmations.
         </p>
         <div className="mx-auto mt-8 flex max-w-sm flex-col gap-3 sm:flex-row sm:justify-center">
-          <Link href="/" className="btn-primary">
+          <ButtonLink variant="primary" href="/">
             Try homepage
-          </Link>
-          <Link href="/festivals" className="btn-outline">
+          </ButtonLink>
+          <ButtonLink variant="outline" href="/festivals">
             Open calendar
-          </Link>
+          </ButtonLink>
         </div>
       </div>
     </section>

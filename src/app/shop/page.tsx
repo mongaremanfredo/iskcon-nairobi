@@ -1,8 +1,9 @@
 import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
-import Link from "next/link";
 import { ShoppingBag, Star } from "lucide-react";
 import { withSeo } from "@/lib/seo";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Prasadam Sweet Shop",
@@ -36,7 +37,7 @@ export default function ShopPage() {
           {["Pure Ghee", "No Preservatives", "Temple Prepared", "Made Fresh to Order", "Nairobi Delivery"].map(tag => (
             <div key={tag} className="flex items-center gap-2">
               <Star size={10} className="text-white" />
-              <span className="font-inter text-ink text-xs font-medium tracking-wider">{tag}</span>
+              <span className="font-body text-ink text-xs font-medium tracking-wider">{tag}</span>
             </div>
           ))}
         </div>
@@ -46,26 +47,25 @@ export default function ShopPage() {
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
-            <span className="eyebrow block mb-3">Our Products</span>
-            <h2 className="section-title">Temple Sweets<br /><em className="text-gold not-italic font-normal">& Prasadam</em></h2>
+            <SectionHeading eyebrow="Our Products" title="Temple Sweets" accent="& Prasadam" />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {products.map((product) => (
-              <div key={product.name} className="group bg-white border border-temple-sand hover:shadow-card-hover hover:border-gold/30 transition-all overflow-hidden">
+              <div key={product.name} className="group card-surface hover:shadow-card-hover hover:border-gold/30 transition-all overflow-hidden">
                 <div className="relative h-52 overflow-hidden">
                   <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" src={product.image} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                   <div className="absolute top-3 left-3">
-                    <span className="font-inter text-xs font-bold tracking-widest uppercase bg-gold text-ink px-3 py-1">{product.tag}</span>
+                    <span className="font-body text-xs font-bold tracking-widest uppercase bg-gold text-ink px-3 py-1">{product.tag}</span>
                   </div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-start justify-between mb-2">
-                    <h3 className="font-playfair text-lg font-semibold text-ink">{product.name}</h3>
-                    <span className="font-playfair text-gold-ink font-bold text-lg flex-shrink-0 ml-2">{product.price}</span>
+                    <h3 className="font-display text-lg font-semibold text-ink">{product.name}</h3>
+                    <span className="font-display text-gold-ink font-bold text-lg flex-shrink-0 ml-2">{product.price}</span>
                   </div>
-                  <p className="font-inter text-ink/75 text-sm leading-relaxed mb-5">{product.desc}</p>
-                  <button className="min-h-11 w-full flex items-center justify-center gap-2 bg-temple-brown text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold hover:text-ink transition-colors">
+                  <p className="font-body text-ink/75 text-sm leading-relaxed mb-5">{product.desc}</p>
+                  <button className="min-h-11 w-full flex items-center justify-center gap-2 bg-temple-brown text-white font-body text-xs font-semibold tracking-widest uppercase py-3 hover:bg-gold hover:text-ink transition-colors">
                     <ShoppingBag size={12} />
                     Order Now
                   </button>
@@ -82,15 +82,15 @@ export default function ShopPage() {
               { title: "Bulk & Events", desc: "Special pricing for orders over 2kg. Ideal for weddings, corporate events, and festival distribution." },
             ].map((item) => (
               <div key={item.title}>
-                <h4 className="font-playfair text-lg font-semibold text-ink mb-2">{item.title}</h4>
+                <h4 className="font-display text-lg font-semibold text-ink mb-2">{item.title}</h4>
                 <div className="w-5 h-px bg-gold/40 mb-3" />
-                <p className="font-inter text-ink/75 text-sm leading-relaxed">{item.desc}</p>
+                <p className="font-body text-ink/75 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
 
           <div className="mt-8 text-center">
-            <Link href="/contact" className="btn-primary">Place a Custom Order</Link>
+            <ButtonLink variant="primary" href="/contact">Place a Custom Order</ButtonLink>
           </div>
         </div>
       </section>

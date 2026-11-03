@@ -126,7 +126,7 @@ export default function InstallPromptBanner() {
           className="h-12 w-12 shrink-0 rounded-xl border border-gold/30 object-cover"
         />
         <div className="min-w-0">
-          <p className="font-playfair text-sm font-semibold leading-tight">Install ISKCON Nairobi</p>
+          <p className="font-display text-sm font-semibold leading-tight">Install ISKCON Nairobi</p>
           <p className="mt-0.5 text-xs leading-snug text-sand/75">
             Darshan times, kirtan &amp; news - right on your home screen.
           </p>
@@ -144,7 +144,7 @@ export default function InstallPromptBanner() {
               });
             }
           }}
-          className="ml-auto flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-4 py-2.5 font-inter text-xs font-bold uppercase tracking-widest text-dusk transition-colors hover:bg-gold-light"
+          className="ml-auto flex shrink-0 items-center gap-1.5 rounded-full bg-gold px-4 py-2.5 font-body text-xs font-bold uppercase tracking-widest text-dusk transition-colors hover:bg-gold-light"
         >
           <Download className="h-3.5 w-3.5" aria-hidden="true" />
           Install

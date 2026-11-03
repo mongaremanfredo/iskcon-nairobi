@@ -35,6 +35,17 @@ export default defineConfig({
       name: "desktop",
       use: { viewport: { width: 1440, height: 900 } },
     },
+    // Screenshot-only sizes, because much of the site's CSS targets these widths.
+    {
+      name: "tablet",
+      grep: /@visual/,
+      use: { viewport: { width: 768, height: 1024 }, isMobile: true, hasTouch: true },
+    },
+    {
+      name: "landscape",
+      grep: /@visual/,
+      use: { viewport: { width: 812, height: 375 }, isMobile: true, hasTouch: true },
+    },
   ],
   webServer: {
     // Tests run the production build, so analytics must be switched off explicitly.

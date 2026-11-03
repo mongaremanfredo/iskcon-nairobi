@@ -125,27 +125,27 @@ function VerseCard({
   return (
     <div className="flex gap-4">
       <div className="flex shrink-0 items-start pt-1">
-        <span className="flex h-8 w-8 items-center justify-center border border-gold/40 font-inter text-xs font-semibold text-gold-ink">
+        <span className="flex h-8 w-8 items-center justify-center border border-gold/40 font-body text-xs font-semibold text-gold-ink">
           {roman}
         </span>
       </div>
-      <div className="grid flex-1 gap-0 overflow-hidden border border-temple-sand bg-white shadow-card sm:grid-cols-2">
+      <div className="grid flex-1 gap-0 overflow-hidden card-surface shadow-card sm:grid-cols-2">
         <div
           lang={language === "hindi" ? "hi" : language === "gujarati" ? "gu" : "en"}
-          className="whitespace-pre-line border-b border-dashed border-temple-sand p-5 font-playfair text-[1.05rem] italic leading-relaxed text-ink sm:border-b-0 sm:border-r sm:p-6"
+          className="whitespace-pre-line border-b border-dashed border-temple-sand p-5 font-display text-[1.05rem] italic leading-relaxed text-ink sm:border-b-0 sm:border-r sm:p-6"
         >
-          <p className="mb-2 font-inter text-xs font-semibold not-italic uppercase tracking-[0.14em] text-ink/75">
+          <p className="mb-2 font-body text-xs font-semibold not-italic uppercase tracking-[0.14em] text-ink/75">
             Lyrics
           </p>
           {lyrics}
         </div>
         <div className="bg-temple-cream/50 p-5 sm:p-6">
-          <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
             {languageLabel} translation
           </p>
           <p
             lang={language === "hindi" ? "hi" : language === "gujarati" ? "gu" : "en"}
-            className="mt-2 font-inter text-sm leading-relaxed text-ink/75"
+            className="mt-2 font-body text-sm leading-relaxed text-ink/75"
           >
             {translation}
           </p>
@@ -172,10 +172,10 @@ export default function AdhivasaLyrics() {
     <div className="mt-12">
       <div className="mb-6 border border-gold/25 bg-white p-4 shadow-card sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-5">
         <div>
-          <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+          <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
             Lyrics and translation
           </p>
-          <p className="mt-1 font-playfair text-lg font-semibold text-ink">
+          <p className="mt-1 font-display text-lg font-semibold text-ink">
             Choose your reading language
           </p>
         </div>
@@ -193,7 +193,7 @@ export default function AdhivasaLyrics() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setLanguage(item.id)}
-                className={`min-h-11 px-3 font-inter text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
+                className={`min-h-11 px-3 font-body text-xs font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold ${
                   isActive
                     ? "bg-dusk text-white shadow-sm"
                     : "text-ink/75 hover:bg-white hover:text-ink"
@@ -210,10 +210,10 @@ export default function AdhivasaLyrics() {
         {verses.slice(0, 3).map(renderVerse)}
 
         <div className="my-8 border border-gold/30 bg-dusk px-6 py-8 text-center sm:px-10">
-          <p className="font-playfair text-xl italic leading-snug text-white sm:text-2xl">
+          <p className="font-display text-xl italic leading-snug text-white sm:text-2xl">
             &ldquo;{verses[3].lyrics[language].split("\n")[1].replace(/[।॥|]/g, "")}&rdquo;
           </p>
-          <p className="mt-3 font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+          <p className="mt-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
             {language === "hindi"
               ? "कल महोत्सव आरम्भ होगा"
               : language === "gujarati"

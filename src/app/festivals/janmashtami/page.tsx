@@ -1,4 +1,3 @@
-import Link from "next/link";
 import PageHero from "@/components/ui/PageHero";
 import { templeInfo } from "@/data/site";
 import { withSeo } from "@/lib/seo";
@@ -12,6 +11,8 @@ import {
   Users,
   Utensils,
 } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Krishna Janmashtami",
@@ -71,22 +72,19 @@ export default function JanmashtamiPage() {
         <div className="content-width section-padding">
           <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
             <div>
-              <span className="eyebrow block mb-3">Festival of Krishna's appearance</span>
-              <h2 className="section-title max-w-3xl">
-                The night when hope entered the prison of Mathura
-              </h2>
-              <p className="mt-5 max-w-3xl font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
+              <SectionHeading eyebrow="Festival of Krishna's appearance" title="The night when hope entered the prison of Mathura" titleClassName="section-title max-w-3xl" />
+              <p className="mt-5 max-w-3xl font-body text-sm leading-relaxed text-ink/75 sm:text-base">
                 Janmashtami remembers the moment Lord Krishna appeared to protect the devotees and draw the world back to love of God. In the Srimad-Bhagavatam, His birth is not an ordinary event. It is a divine appearance, filled with purpose, compassion, and the promise that dharma can be restored even in the darkest hour.
               </p>
             </div>
             <div className="border border-gold/25 bg-white/75 p-5 shadow-sm sm:p-6">
-              <p className="font-playfair text-2xl leading-tight text-ink sm:text-3xl">
+              <p className="font-display text-2xl leading-tight text-ink sm:text-3xl">
                 Biggest celebration of the year
               </p>
               <div className="mt-5 grid grid-cols-2 gap-3">
                 {quickNotes.map((note) => (
                   <div key={note} className="border border-temple-sand bg-temple-cream/70 px-3 py-3">
-                    <p className="font-inter text-xs font-semibold uppercase leading-snug tracking-[0.08em] text-primary">
+                    <p className="font-body text-xs font-semibold uppercase leading-snug tracking-[0.08em] text-primary">
                       {note}
                     </p>
                   </div>
@@ -100,19 +98,16 @@ export default function JanmashtamiPage() {
       <section className="festival-story bg-white py-[clamp(2.4rem,12vw,3.25rem)] sm:py-[clamp(3rem,5vw,5rem)]">
         <div className="content-width section-padding">
           <div className="mb-8 max-w-3xl sm:mb-10">
-            <span className="eyebrow block mb-3">Backstory</span>
-            <h2 className="section-title">
-              From Kamsa's fear to Vrindavan's joy
-            </h2>
+            <SectionHeading eyebrow="Backstory" title="From Kamsa's fear to Vrindavan's joy" />
           </div>
           <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {story.map((item, index) => (
               <article key={item.title} className="border border-temple-sand bg-temple-bg p-5 sm:p-6">
-                <div className="mb-5 flex h-10 w-10 items-center justify-center bg-primary font-inter text-sm font-bold text-white">
+                <div className="mb-5 flex h-10 w-10 items-center justify-center bg-primary font-body text-sm font-bold text-white">
                   {String(index + 1).padStart(2, "0")}
                 </div>
-                <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
+                <h3 className="font-display text-xl font-semibold text-ink">{item.title}</h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-ink/75">{item.text}</p>
               </article>
             ))}
           </div>
@@ -123,12 +118,9 @@ export default function JanmashtamiPage() {
         <div className="content-width section-padding">
           <div className="mb-8 flex flex-col gap-4 lg:mb-10 lg:flex-row lg:items-end lg:justify-between">
             <div>
-              <span className="eyebrow block mb-3 text-gold">Devotional engagement</span>
-              <h2 className="section-title-light max-w-3xl">
-                A festival that involves the whole community
-              </h2>
+              <SectionHeading eyebrow="Devotional engagement" title="A festival that involves the whole community" eyebrowClassName="eyebrow block mb-3 text-gold" titleClassName="section-title-light max-w-3xl" />
             </div>
-            <p className="max-w-xl font-inter text-sm leading-relaxed text-temple-cream/64">
+            <p className="max-w-xl font-body text-sm leading-relaxed text-temple-cream/64">
               Janmashtami is designed for participation. Devotees do not simply watch the festival; they sing, serve, decorate, cook, welcome guests, sponsor offerings, and bring family and friends into Krishna's celebration.
             </p>
           </div>
@@ -141,8 +133,8 @@ export default function JanmashtamiPage() {
                   <div className="mb-4 flex h-11 w-11 items-center justify-center border border-gold/35 text-gold">
                     <Icon size={19} />
                   </div>
-                  <h3 className="font-playfair text-xl font-semibold text-white">{item.title}</h3>
-                  <p className="mt-3 font-inter text-sm leading-relaxed text-temple-cream/62">{item.text}</p>
+                  <h3 className="font-display text-xl font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 font-body text-sm leading-relaxed text-temple-cream/62">{item.text}</p>
                 </article>
               );
             })}
@@ -155,7 +147,7 @@ export default function JanmashtamiPage() {
           <div className="grid gap-6 border border-gold/25 bg-white p-5 sm:p-7 lg:grid-cols-[0.85fr_1.15fr] lg:items-center">
             <div>
               <span className="eyebrow block mb-3">Plan around the festival</span>
-              <h2 className="font-playfair text-3xl font-semibold leading-tight text-ink sm:text-4xl">
+              <h2 className="font-display text-3xl font-semibold leading-tight text-ink sm:text-4xl">
                 Come early, serve deeply, stay for the midnight celebration
               </h2>
             </div>
@@ -163,24 +155,24 @@ export default function JanmashtamiPage() {
               <div className="grid gap-3 sm:grid-cols-2">
                 <div className="flex gap-3 border border-temple-sand bg-temple-cream/60 p-4">
                   <CalendarDays className="mt-0.5 shrink-0 text-gold" size={18} />
-                  <p className="font-inter text-sm leading-relaxed text-ink/75">
+                  <p className="font-body text-sm leading-relaxed text-ink/75">
                     The detailed yearly programme is announced closer to the date through the temple noticeboard and official channels.
                   </p>
                 </div>
                 <div className="flex gap-3 border border-temple-sand bg-temple-cream/60 p-4">
                   <HeartHandshake className="mt-0.5 shrink-0 text-gold" size={18} />
-                  <p className="font-inter text-sm leading-relaxed text-ink/75">
+                  <p className="font-body text-sm leading-relaxed text-ink/75">
                     Festival sponsorship and volunteer service help welcome every guest with care and prasadam.
                   </p>
                 </div>
               </div>
               <div className="mt-5 flex flex-wrap gap-3">
-                <Link href="/donate/festivals" className="btn-primary">
+                <ButtonLink variant="primary" href="/donate/festivals">
                   Support this Festival <ArrowRight size={14} />
-                </Link>
-                <Link href="/festivals" className="btn-outline border-gold text-gold hover:bg-gold hover:text-white">
-                  Explore Festival Calendar
-                </Link>
+                </ButtonLink>
+                <ButtonLink variant="outline" href="/festivals" className="border-gold text-gold hover:bg-gold hover:text-white">
+                  Explore All Festivals
+                </ButtonLink>
               </div>
             </div>
           </div>

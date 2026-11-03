@@ -34,8 +34,19 @@ phones (use `.tap-target` for small text links), and text must reach 4.5:1
 contrast. `npm run test:e2e` fails if a page gets worse than
 `tests/e2e/a11y-baseline.json`.
 
-Use Fraunces for display headings, Inter for interface text, and Source Serif 4
-for long-form sacred/editorial writing.
+Use `font-display` (Fraunces) for headings, `font-body` (Inter) for interface text,
+and `font-editorial` (Source Serif 4) for long-form sacred writing.
+
+The `festival-gold`, `festival-cream`, `festival-ink`, and `festival-red` tokens hold
+the Kirtan Safari palette. Use them instead of repeating hex values.
+
+## Shared Components
+
+- `SectionHeading` (`components/ui`): eyebrow plus heading, with an optional accent line.
+- `ButtonLink` (`components/ui`): an internal link using the `.btn-*` classes.
+- `.card-surface` (`globals.css`): the white bordered card background.
+- The live Kirtan Safari page is split into one file per section in
+  `components/festivals/kirtan-safari`, with its content in `content.tsx`.
 
 ## Spacing Rhythm
 
@@ -44,7 +55,7 @@ order is:
 
 1. Hero
 2. Find Your Path
-3. Kirtan Safari
+3. Kirtan Safari (shown only until the festival ends)
 4. Our Work
 5. Our Impact
 6. Guidance and Vision

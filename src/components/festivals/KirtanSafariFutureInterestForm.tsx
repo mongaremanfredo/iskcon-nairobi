@@ -1,5 +1,7 @@
 "use client";
 
+import FormMessage from "@/components/ui/FormMessage";
+import { isValidEmail } from "@/lib/formValidation";
 import { FormEvent, useState } from "react";
 
 type Fields = { fullName: string; email: string; phone: string; city: string; consent: boolean; website: string };
@@ -15,6 +17,11 @@ export default function KirtanSafariFutureInterestForm() {
     if (!fields.fullName.trim() || !fields.email.trim() || !fields.phone.trim() || !fields.city.trim() || !fields.consent) {
       setStatus("error");
       setMessage("Please complete every field and confirm that you would like future festival updates.");
+      return;
+    }
+    if (!isValidEmail(fields.email)) {
+      setStatus("error");
+      setMessage("Please check your email address.");
       return;
     }
     setStatus("submitting");
@@ -46,23 +53,19 @@ export default function KirtanSafariFutureInterestForm() {
         <label className="ks-interest-consent"><input type="checkbox" checked={fields.consent} onChange={(event) => setFields({ ...fields, consent: event.target.checked })} /><span>I would like to receive news about future Kirtan Safari editions.</span></label>
         <label className="ks-interest-honeypot" aria-hidden="true">Website<input tabIndex={-1} autoComplete="off" value={fields.website} onChange={(event) => setFields({ ...fields, website: event.target.value })} /></label>
       </div>
-      {message ? <p className={`ks-interest-message is-${status}`} role="status">{message}</p> : null}
+      <FormMessage status={status} message={message} className="mt-3" />
       <button type="submit" disabled={status === "submitting"}>{status === "submitting" ? "Submitting..." : "Receive Future Updates"}</button>
       <style jsx>{`
         .ks-interest-fields { display:grid; gap:.8rem; grid-template-columns:repeat(2,minmax(0,1fr)); }
         label { display:grid; gap:.4rem; }
-        label>span { color:#67544a; font:800 0.75rem/1 var(--font-inter,sans-serif); letter-spacing:.12em; text-transform:uppercase; }
-        input { background:#fffdf8; border:1px solid rgba(67,48,39,.22); color:#30231d; font:500 .9rem/1.3 var(--font-inter,sans-serif); min-height:46px; padding:.75rem; width:100%; }
-        input:focus { border-color:#a23d31; outline:2px solid rgba(162,61,49,.12); }
+        label>span { color:#67544a; font:800 0.75rem/1 var(--font-body,sans-serif); letter-spacing:.12em; text-transform:uppercase; }
+        input { background:#fffdf8; border:1px solid rgba(67,48,39,.22); color:#30231d; font:500 .9rem/1.3 var(--font-body,sans-serif); min-height:46px; padding:.75rem; width:100%; }
         .ks-interest-consent { align-items:flex-start; display:flex; gap:.65rem; grid-column:1/-1; }
-        .ks-interest-consent input { accent-color:#a23d31; flex:none; min-height:0; width:1rem; }
+        .ks-interest-consent input { accent-color:var(--color-festival-red); flex:none; min-height:0; width:1rem; }
         .ks-interest-consent span { font-size:0.75rem; line-height:1.45; text-transform:none; }
         .ks-interest-honeypot { left:-9999px; position:absolute; }
-        button { background:#a23d31; border:0; color:white; cursor:pointer; font:800 0.75rem/1 var(--font-inter,sans-serif); letter-spacing:.13em; margin-top:1rem; min-height:46px; padding:.9rem 1.2rem; text-transform:uppercase; }
+        button { background:var(--color-festival-red); border:0; color:white; cursor:pointer; font:800 0.75rem/1 var(--font-body,sans-serif); letter-spacing:.13em; margin-top:1rem; min-height:46px; padding:.9rem 1.2rem; text-transform:uppercase; }
         button:disabled { cursor:wait; opacity:.6; }
-        .ks-interest-message { font:600 .76rem/1.5 var(--font-inter,sans-serif); margin:.8rem 0 0; }
-        .ks-interest-message.is-success { color:#275f42; }
-        .ks-interest-message.is-error { color:#9f3029; }
         @media(max-width:640px){ .ks-interest-fields{grid-template-columns:1fr;} }
       `}</style>
     </form>

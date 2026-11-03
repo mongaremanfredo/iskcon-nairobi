@@ -71,7 +71,7 @@ export default function AdhivasaBlogPage() {
 
       <section className="bg-temple-bg py-[clamp(2.7rem,12vw,3.8rem)] sm:py-[clamp(3.5rem,5vw,5.5rem)]">
         <div className="content-width section-padding">
-          <div className="mb-12 flex flex-wrap items-center gap-3 font-inter text-xs uppercase tracking-[0.14em] text-ink/75">
+          <div className="mb-12 flex flex-wrap items-center gap-3 font-body text-xs uppercase tracking-[0.14em] text-ink/75">
             <span>July 2026</span>
             <span className="h-1 w-1 self-center rounded-full bg-gold" />
             <span>4 min read</span>
@@ -81,7 +81,7 @@ export default function AdhivasaBlogPage() {
 
           <div className="grid gap-10 lg:grid-cols-[minmax(0,0.68fr)_minmax(300px,0.32fr)] lg:items-start">
             <article className="mx-auto max-w-3xl">
-              <div className="space-y-6 font-inter text-[1.02rem] leading-[1.85] text-ink/75">
+              <div className="space-y-6 font-body text-[1.02rem] leading-[1.85] text-ink/75">
                 {introParagraphs.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
@@ -91,16 +91,16 @@ export default function AdhivasaBlogPage() {
 
               <div className="mt-12 flex flex-col items-start gap-4 border border-gold/30 bg-dusk p-6 text-sand sm:p-8">
                 <div>
-                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                  <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                     Temple Journal
                   </p>
-                  <p className="mt-2 font-playfair text-2xl font-semibold text-white">
+                  <p className="mt-2 font-display text-2xl font-semibold text-white">
                     Continue exploring the Temple Journal
                   </p>
                 </div>
                 <Link
                   href="/blog"
-                  className="tap-target inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-sand"
+                  className="tap-target inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:text-sand"
                 >
                   More devotional stories <ArrowRight size={12} />
                 </Link>
@@ -108,8 +108,8 @@ export default function AdhivasaBlogPage() {
             </article>
 
             <aside className="lg:sticky lg:top-28">
-              <div className="border border-temple-sand bg-white p-6 shadow-card">
-                <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+              <div className="card-surface p-6 shadow-card">
+                <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   Article guide
                 </p>
                 <div className="mt-5 space-y-4">
@@ -119,10 +119,10 @@ export default function AdhivasaBlogPage() {
                       <div key={item.label} className="flex gap-3 border-t border-temple-sand pt-4 first:border-t-0 first:pt-0">
                         <Icon size={18} className="mt-1 shrink-0 text-gold" />
                         <div>
-                          <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
+                          <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                             {item.label}
                           </p>
-                          <p className="mt-1 font-inter text-sm leading-relaxed text-ink/75">{item.value}</p>
+                          <p className="mt-1 font-body text-sm leading-relaxed text-ink/75">{item.value}</p>
                         </div>
                       </div>
                     );
@@ -132,7 +132,7 @@ export default function AdhivasaBlogPage() {
 
               <Link
                 href="/blog/jharikhanda-forest-kirtan-safari"
-                className="group mt-5 block overflow-hidden border border-temple-sand bg-white shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover"
+                className="group mt-5 block overflow-hidden card-surface shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-gold/50 hover:shadow-card-hover"
               >
                 <div className="relative h-32 overflow-hidden">
                   <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
@@ -143,10 +143,10 @@ export default function AdhivasaBlogPage() {
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/55 via-transparent to-transparent" />
                 </div>
                 <div className="p-5">
-                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
+                  <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-ink/75">
                     More from the Journal
                   </p>
-                  <p className="mt-2 flex items-center gap-1.5 font-playfair text-base font-semibold leading-snug text-ink">
+                  <p className="mt-2 flex items-center gap-1.5 font-display text-base font-semibold leading-snug text-ink">
                     The Forest That Learned to Chant
                     <ArrowUpRight size={14} className="shrink-0 text-gold" />
                   </p>

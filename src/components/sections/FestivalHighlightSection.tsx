@@ -24,7 +24,7 @@ function Pad({ n }: { n: number }) {
 
 function YouTubeIcon({
   size = 13,
-  color = "#d69c2b",
+  color = "var(--color-festival-gold)",
 }: {
   size?: number;
   color?: string;
@@ -43,14 +43,14 @@ function YouTubeIcon({
         d="M23.5 3.1c-.27-1.02-1.08-1.82-2.08-2.09C19.59.5 12 .5 12 .5S4.41.5 2.58 1.01C1.58 1.28.77 2.08.5 3.1.01 4.94.01 8.76.01 8.76s0 3.82.49 5.66c.27 1.02 1.08 1.78 2.08 2.05 1.83.52 9.42.52 9.42.52s7.59 0 9.42-.52c1-.27 1.81-1.03 2.08-2.05.49-1.84.49-5.66.49-5.66s0-3.82-.49-5.66Z"
         fill={color}
       />
-      <path d="M9.6 12.36V5.16l6.28 3.6-6.28 3.6Z" fill="#071c10" />
+      <path d="M9.6 12.36V5.16l6.28 3.6-6.28 3.6Z" fill="var(--color-festival-ink)" />
     </svg>
   );
 }
 
 function TikTokIcon({
   size = 13,
-  color = "#d69c2b",
+  color = "var(--color-festival-gold)",
 }: {
   size?: number;
   color?: string;
@@ -98,7 +98,7 @@ function CountdownPanel({
     >
       <p
         style={{
-          fontFamily: "var(--font-inter, sans-serif)",
+          fontFamily: "var(--font-body, sans-serif)",
           color: "rgba(246,226,177,0.82)",
           fontSize: "0.75rem",
           letterSpacing: "0.2em",
@@ -127,8 +127,8 @@ function CountdownPanel({
             <div
               suppressHydrationWarning
               style={{
-                fontFamily: "var(--font-playfair, serif)",
-                color: "#d69c2b",
+                fontFamily: "var(--font-display, serif)",
+                color: "var(--color-festival-gold)",
                 fontSize: "clamp(1.75rem, 5vw, 2.5rem)",
                 fontWeight: 700,
                 lineHeight: 1,
@@ -139,7 +139,7 @@ function CountdownPanel({
             </div>
             <div
               style={{
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 color: "rgba(255,255,255,0.35)",
                 fontSize: "0.75rem",
                 letterSpacing: "0.15em",
@@ -242,7 +242,7 @@ export default function KirtanSafariSection() {
           right: 0,
           height: "2px",
           background:
-            "linear-gradient(to right, #d69c2b, rgba(214,156,43,0.35), transparent)",
+            "linear-gradient(to right, var(--color-festival-gold), rgba(214,156,43,0.35), transparent)",
         }}
       />
 
@@ -279,14 +279,14 @@ export default function KirtanSafariSection() {
                 width: "6px",
                 height: "6px",
                 borderRadius: "50%",
-                background: "#d69c2b",
+                background: "var(--color-festival-gold)",
                 display: "inline-block",
                 animation: "ks-pulse 2s ease-in-out infinite",
               }}
             />
             <span
               style={{
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 color: "#f3c86a",
                 fontSize: "0.75rem",
                 fontWeight: 700,
@@ -302,7 +302,7 @@ export default function KirtanSafariSection() {
           {/* Title */}
           <h2
             style={{
-              fontFamily: "var(--font-playfair, serif)",
+              fontFamily: "var(--font-display, serif)",
               margin: "0 0 0.5rem",
               lineHeight: 0.95,
             }}
@@ -322,7 +322,7 @@ export default function KirtanSafariSection() {
             <span
               style={{
                 display: "block",
-                color: "#d69c2b",
+                color: "var(--color-festival-gold)",
                 fontSize: "clamp(2.8rem, 8vw, 5.5rem)",
                 fontWeight: 700,
                 letterSpacing: "0.06em",
@@ -338,7 +338,7 @@ export default function KirtanSafariSection() {
             style={{
               width: "4rem",
               height: "2px",
-              background: "linear-gradient(to right, #d69c2b, transparent)",
+              background: "linear-gradient(to right, var(--color-festival-gold), transparent)",
               margin: "1.25rem 0",
             }}
           />
@@ -346,7 +346,7 @@ export default function KirtanSafariSection() {
           {/* Sub-tagline */}
           <p
             style={{
-              fontFamily: "var(--font-cormorant, serif)",
+              fontFamily: "var(--font-editorial, serif)",
               color: "rgba(246,226,177,0.9)",
               fontSize: "clamp(1.1rem, 2.5vw, 1.4rem)",
               fontStyle: "italic",
@@ -372,9 +372,9 @@ export default function KirtanSafariSection() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "#d69c2b",
+                background: "var(--color-festival-gold)",
                 color: "#fff",
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 fontWeight: 700,
                 fontSize: "0.75rem",
                 letterSpacing: "0.18em",
@@ -395,7 +395,7 @@ export default function KirtanSafariSection() {
                 gap: "0.5rem",
                 border: "1px solid rgba(255,255,255,0.25)",
                 color: "rgba(255,255,255,0.8)",
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 fontWeight: 600,
                 fontSize: "0.75rem",
                 letterSpacing: "0.18em",
@@ -417,7 +417,7 @@ export default function KirtanSafariSection() {
                 border: "1px solid rgba(246,226,177,0.26)",
                 background: "rgba(246,226,177,0.08)",
                 color: "rgba(246,226,177,0.92)",
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 fontWeight: 600,
                 fontSize: "0.75rem",
                 letterSpacing: "0.18em",
@@ -454,7 +454,7 @@ export default function KirtanSafariSection() {
           >
             <p
               style={{
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 color: "rgba(255,255,255,0.4)",
                 fontSize: "0.75rem",
                 letterSpacing: "0.2em",
@@ -481,8 +481,8 @@ export default function KirtanSafariSection() {
               >
                 <span
                   style={{
-                    fontFamily: "var(--font-inter, sans-serif)",
-                    color: "#d69c2b",
+                    fontFamily: "var(--font-body, sans-serif)",
+                    color: "var(--color-festival-gold)",
                     fontSize: "0.75rem",
                     fontWeight: 600,
                     minWidth: "6.5rem",
@@ -493,7 +493,7 @@ export default function KirtanSafariSection() {
                 </span>
                 <span
                   style={{
-                    fontFamily: "var(--font-inter, sans-serif)",
+                    fontFamily: "var(--font-body, sans-serif)",
                     color: "rgba(255,255,255,0.65)",
                     fontSize: "0.75rem",
                   }}
@@ -504,8 +504,8 @@ export default function KirtanSafariSection() {
             ))}
             <p
               style={{
-                fontFamily: "var(--font-inter, sans-serif)",
-                color: "#f6e2b1",
+                fontFamily: "var(--font-body, sans-serif)",
+                color: "var(--color-festival-cream)",
                 fontSize: "0.75rem",
                 fontWeight: 700,
                 letterSpacing: "0.14em",
@@ -519,7 +519,7 @@ export default function KirtanSafariSection() {
                 width: "100%",
               }}
             >
-              <Ticket size={14} color="#f6e2b1" strokeWidth={1.8} />
+              <Ticket size={14} color="var(--color-festival-cream)" strokeWidth={1.8} />
               Free Entry
             </p>
           </div>
@@ -533,9 +533,9 @@ export default function KirtanSafariSection() {
                 display: "inline-flex",
                 alignItems: "center",
                 gap: "0.5rem",
-                background: "#d69c2b",
+                background: "var(--color-festival-gold)",
                 color: "#fff",
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 fontWeight: 700,
                 fontSize: "0.75rem",
                 letterSpacing: "0.18em",
@@ -556,7 +556,7 @@ export default function KirtanSafariSection() {
                 gap: "0.5rem",
                 border: "1px solid rgba(255,255,255,0.25)",
                 color: "rgba(255,255,255,0.8)",
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 fontWeight: 600,
                 fontSize: "0.75rem",
                 letterSpacing: "0.18em",
@@ -578,7 +578,7 @@ export default function KirtanSafariSection() {
                 border: "1px solid rgba(246,226,177,0.26)",
                 background: "rgba(246,226,177,0.08)",
                 color: "rgba(246,226,177,0.92)",
-                fontFamily: "var(--font-inter, sans-serif)",
+                fontFamily: "var(--font-body, sans-serif)",
                 fontWeight: 600,
                 fontSize: "0.75rem",
                 letterSpacing: "0.18em",
@@ -605,7 +605,7 @@ export default function KirtanSafariSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  fontFamily: "var(--font-inter, sans-serif)",
+                  fontFamily: "var(--font-body, sans-serif)",
                   display: "inline-flex",
                   alignItems: "center",
                   gap: "0.4rem",
@@ -620,7 +620,7 @@ export default function KirtanSafariSection() {
                   transition: "color 0.2s",
                 }}
               >
-                <Icon size={13} color="#d69c2b" strokeWidth={1.8} />
+                <Icon size={13} color="var(--color-festival-gold)" strokeWidth={1.8} />
                 {label}
               </a>
             ))}
@@ -647,9 +647,9 @@ export default function KirtanSafariSection() {
 
         .ks-home-live-panel > p {
           align-items: center;
-          color: #d69c2b;
+          color: var(--color-festival-gold);
           display: flex;
-          font: 800 0.75rem/1 var(--font-inter, sans-serif);
+          font: 800 0.75rem/1 var(--font-body, sans-serif);
           gap: 0.45rem;
           letter-spacing: 0.16em;
           margin: 0 0 0.65rem;
@@ -658,7 +658,7 @@ export default function KirtanSafariSection() {
 
         .ks-home-live-panel h3 {
           color: #fff;
-          font: 700 1.35rem/1.15 var(--font-playfair, serif);
+          font: 700 1.35rem/1.15 var(--font-display, serif);
           margin: 0 0 0.85rem;
         }
 
@@ -671,20 +671,20 @@ export default function KirtanSafariSection() {
 
         .ks-home-live-panel span {
           color: rgba(246, 226, 177, 0.58);
-          font: 800 0.75rem/1 var(--font-inter, sans-serif);
+          font: 800 0.75rem/1 var(--font-body, sans-serif);
           letter-spacing: 0.12em;
           text-transform: uppercase;
         }
 
         .ks-home-live-panel strong {
           color: rgba(255, 255, 255, 0.84);
-          font: 600 0.78rem/1.35 var(--font-inter, sans-serif);
+          font: 600 0.78rem/1.35 var(--font-body, sans-serif);
         }
 
         .ks-home-live-panel a {
-          color: #d69c2b;
+          color: var(--color-festival-gold);
           display: inline-block;
-          font: 800 0.75rem/1 var(--font-inter, sans-serif);
+          font: 800 0.75rem/1 var(--font-body, sans-serif);
           letter-spacing: 0.12em;
           margin-top: 0.7rem;
           text-decoration: none;

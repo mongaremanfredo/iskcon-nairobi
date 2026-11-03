@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { projects } from "@/data/site";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const tagChip: Record<string, string> = {
   Education: "bg-gold/95 text-dusk",
@@ -24,21 +25,16 @@ export default function ProjectsSection() {
         {/* Header */}
         <div className="grid items-end gap-7 border-t-2 border-gold/35 pt-7 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>
-            <span className="eyebrow block mb-3">Our Work</span>
-            <h2 className="section-title">
-              Where Devotion
-              <br />
-              <em className="text-gold not-italic font-normal">Meets Action</em>
-            </h2>
+            <SectionHeading eyebrow="Our Work" title="Where Devotion" accent="Meets Action" />
           </div>
           <div className="lg:pb-1">
-            <p className="max-w-md font-cormorant text-lg italic leading-relaxed text-ink/75 sm:text-xl">
+            <p className="max-w-md font-editorial text-lg italic leading-relaxed text-ink/75 sm:text-xl">
               Four ways the temple&rsquo;s mission takes shape on the ground &mdash;
               classrooms, farms, kitchens, and communities you can step into and serve.
             </p>
             <Link
               href="/projects"
-              className="tap-target projects-explain mt-5 inline-flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
+              className="tap-target projects-explain mt-5 inline-flex items-center gap-2 font-body text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
             >
               Explore all projects <ArrowRight size={14} aria-hidden="true" />
             </Link>
@@ -65,7 +61,7 @@ export default function ProjectsSection() {
                   {/* Route marker */}
                   <span
                     aria-hidden="true"
-                    className={`projects-pin absolute left-0 top-1 grid h-9 w-9 place-items-center rounded-full border bg-temple-cream font-playfair text-sm font-bold lg:static lg:mb-4 lg:inline-grid ${tone}`}
+                    className={`projects-pin absolute left-0 top-1 grid h-9 w-9 place-items-center rounded-full border bg-temple-cream font-display text-sm font-bold lg:static lg:mb-4 lg:inline-grid ${tone}`}
                   >
                     {number}
                   </span>
@@ -73,7 +69,7 @@ export default function ProjectsSection() {
                   <article className="group">
                     {/* Photo */}
                     <Link href={project.href} className="block" aria-label={`Visit ${project.title}`}>
-                      <div className="projects-photo relative aspect-[16/8] sm:aspect-[16/11] overflow-hidden border border-temple-sand bg-white">
+                      <div className="projects-photo relative aspect-[16/8] sm:aspect-[16/11] overflow-hidden card-surface">
                         <Image
                           src={project.image}
                           alt={project.title}
@@ -92,24 +88,24 @@ export default function ProjectsSection() {
                     {/* Caption / field note */}
                     <div className="relative mt-4 border-l-2 border-gold/60 pl-4 sm:pl-5">
                       <div className="flex flex-wrap items-center gap-2">
-                        <span className={`font-inter text-xs font-bold uppercase tracking-[0.16em] px-2.5 py-1 ${chip}`}>
+                        <span className={`font-body text-xs font-bold uppercase tracking-[0.16em] px-2.5 py-1 ${chip}`}>
                           {project.tag}
                         </span>
-                        <span className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-ink/75 max-sm:hidden">
+                        <span className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-ink/75 max-sm:hidden">
                           {project.subtitle}
                         </span>
                       </div>
-                      <h3 className="mt-2 font-playfair text-2xl font-semibold leading-tight text-ink sm:text-[1.7rem]">
+                      <h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-ink sm:text-[1.7rem]">
                         <Link href={project.href} className="transition-colors hover:text-primary">
                           {project.title}
                         </Link>
                       </h3>
-                      <p className="mt-2 max-w-md font-inter text-sm leading-6 text-ink/75 line-clamp-2 max-sm:hidden">
+                      <p className="mt-2 max-w-md font-body text-sm leading-6 text-ink/75 line-clamp-2 max-sm:hidden">
                         {project.description}
                       </p>
                       <Link
                         href={project.href}
-                        className="tap-target mt-3 inline-flex items-center gap-1.5 font-inter text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
+                        className="tap-target mt-3 inline-flex items-center gap-1.5 font-body text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
                       >
                         Visit this work <ArrowRight size={12} aria-hidden="true" />
                       </Link>
@@ -124,7 +120,7 @@ export default function ProjectsSection() {
         <div className="mt-12 border-t border-temple-sand pt-5 lg:hidden">
           <Link
             href="/projects"
-            className="tap-target inline-flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
+            className="tap-target inline-flex items-center gap-2 font-body text-xs font-bold uppercase tracking-[0.14em] text-sunset transition-colors hover:text-primary"
           >
             Explore all projects <ArrowRight size={14} aria-hidden="true" />
           </Link>

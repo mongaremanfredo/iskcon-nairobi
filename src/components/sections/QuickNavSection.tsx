@@ -63,7 +63,7 @@ export default function QuickNavSection() {
               <Link
                 key={card.href}
                 href={card.href}
-                className={`group relative flex min-h-[168px] flex-col border border-temple-sand bg-white p-3.5 text-ink shadow-sm transition-all duration-300 sm:min-h-[210px] sm:p-6 lg:min-h-[238px] lg:p-7 ${card.hover} hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:-translate-y-0.5 focus-visible:shadow-card-hover`}
+                className={`group relative flex min-h-[168px] flex-col card-surface p-3.5 text-ink shadow-sm transition-all duration-300 sm:min-h-[210px] sm:p-6 lg:min-h-[238px] lg:p-7 ${card.hover} hover:-translate-y-0.5 hover:shadow-card-hover focus-visible:-translate-y-0.5 focus-visible:shadow-card-hover`}
               >
                 <span className={`absolute inset-x-0 top-0 h-0.5 ${card.line}`} aria-hidden="true" />
 
@@ -81,13 +81,13 @@ export default function QuickNavSection() {
                 </div>
 
                 <div className="mt-auto pt-4 sm:pt-6">
-                  <h3 className="font-playfair text-lg font-semibold leading-tight text-ink sm:text-2xl">
+                  <h3 className="font-display text-lg font-semibold leading-tight text-ink sm:text-2xl">
                     {card.title}
                   </h3>
-                  <p className="mt-1.5 font-inter text-xs leading-relaxed text-ink/75 sm:mt-2 sm:text-sm">
+                  <p className="mt-1.5 font-body text-xs leading-relaxed text-ink/75 sm:mt-2 sm:text-sm">
                     {card.description}
                   </p>
-                  <span className="mt-5 hidden items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.14em] text-primary transition-all duration-300 lg:inline-flex lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
+                  <span className="mt-5 hidden items-center gap-2 font-body text-xs font-bold uppercase tracking-[0.14em] text-primary transition-all duration-300 lg:inline-flex lg:translate-y-2 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100 lg:group-focus-visible:translate-y-0 lg:group-focus-visible:opacity-100">
                     Explore <ArrowUpRight size={14} aria-hidden="true" />
                   </span>
                 </div>

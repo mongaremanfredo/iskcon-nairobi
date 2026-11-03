@@ -32,6 +32,18 @@ announce. Full decision rules are maintained in `PROJECT_GUIDELINES.md`.
 6. Deploy and verify that an installation on the previous version shows the release panel.
 7. Test **Later** and **Update now**. Later must leave the waiting worker inactive; Update now must activate and reload once.
 
+## 1.1.1 - Clearer Forms and Wording
+
+**Released:** 3 November 2026
+
+**Update mode:** Silent. A patch, because these are small corrections to existing pages. The cached shell is unchanged, so `CACHE_VERSION` stays at v6.
+
+### Highlights
+
+- Forms explain mistakes clearly, mark optional fields, and show visible keyboard focus.
+- Festival links and labels use one name.
+- Small visual fixes on phones and a shorter homepage.
+
 ## 1.1.0 - Faster, Clearer, Easier to Use
 
 **Released:** 3 November 2026

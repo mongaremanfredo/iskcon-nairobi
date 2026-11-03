@@ -40,7 +40,7 @@ export default function FAQAccordion() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
-    <div className="divide-y divide-temple-sand border border-temple-sand bg-white">
+    <div className="divide-y divide-temple-sand card-surface">
       {faqs.map((faq, index) => {
         const isOpen = openIndex === index;
         return (
@@ -51,7 +51,7 @@ export default function FAQAccordion() {
               aria-expanded={isOpen}
               className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left sm:px-6 sm:py-5"
             >
-              <span className="font-playfair text-base font-semibold text-ink sm:text-lg">
+              <span className="font-display text-base font-semibold text-ink sm:text-lg">
                 {faq.question}
               </span>
               <ChevronDown
@@ -67,7 +67,7 @@ export default function FAQAccordion() {
               }`}
             >
               <div className="overflow-hidden">
-                <p className="px-5 pb-5 font-inter text-sm leading-relaxed text-ink/75 sm:px-6">
+                <p className="px-5 pb-5 font-body text-sm leading-relaxed text-ink/75 sm:px-6">
                   {faq.answer}
                 </p>
               </div>

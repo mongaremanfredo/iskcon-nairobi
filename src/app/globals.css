@@ -9,9 +9,9 @@
    keeps long content pages calm. Reuse these tokens before adding page-local
    colors so future sections continue to feel like one site. */
 @theme {
-  --font-playfair: var(--font-fraunces), Georgia, serif;
-  --font-inter: var(--font-site-inter), system-ui, sans-serif;
-  --font-cormorant: var(--font-source-serif-4), Georgia, serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-body: var(--font-site-inter), system-ui, sans-serif;
+  --font-editorial: var(--font-source-serif-4), Georgia, serif;
 
   --color-primary: #B74233;
   --color-primary-dark: #9A3528;
@@ -21,6 +21,11 @@
   --color-gold-ink: #745510;
   --color-sunset-ink: #964410;
   --color-acacia-ink: #466140;
+  /* The Kirtan Safari festival's own palette. */
+  --color-festival-gold: #D69C2B;
+  --color-festival-cream: #F6E2B1;
+  --color-festival-ink: #071C10;
+  --color-festival-red: #A23D31;
   --color-gold: #D9A441;
   --color-gold-light: #E6B85C;
   --color-gold-dark: #B78626;
@@ -68,7 +73,7 @@ html {
 body {
   background-color: var(--color-sand);
   color: var(--color-dusk);
-  font-family: var(--font-inter);
+  font-family: var(--font-body);
   overflow-x: hidden;
   overscroll-behavior-x: none;
   width: 100%;
@@ -176,6 +181,15 @@ img, video, canvas, svg { max-width: 100%; }
 }
 .btn-ghost:hover { border-color: var(--color-sand); background-color: rgba(244,236,225,0.12); }
 
+/* The shared white card surface. In the components layer so a utility such as
+   hover:border-gold can still override it. */
+@layer components {
+  .card-surface {
+    background-color: white;
+    border: 1px solid var(--color-temple-sand);
+  }
+}
+
 /* Typography helpers */
 /* In the components layer so a text colour utility can override it on dark sections. */
 @layer components {
@@ -185,12 +199,12 @@ img, video, canvas, svg { max-width: 100%; }
   }
 }
 .section-title {
-  font-family: var(--font-playfair); line-height: 1.15;
+  font-family: var(--font-display); line-height: 1.15;
   color: var(--color-ink); font-size: clamp(1.5rem, 3.5vw, 2.75rem);
 }
 .section-title em { color: var(--color-gold-ink); }
 .section-title-light {
-  font-family: var(--font-playfair); line-height: 1.15;
+  font-family: var(--font-display); line-height: 1.15;
   color: var(--color-temple-cream); font-size: clamp(1.5rem, 3.5vw, 2.75rem);
 }
 .gold-dot {
@@ -310,12 +324,12 @@ img { transition: opacity 0.3s ease; }
    registration modal, so this one button style intentionally lives globally. */
 .ks-live-hub .ks-live-primary {
   align-items: center;
-  background: #d69c2b;
+  background: var(--color-festival-gold);
   border: 0;
-  color: #071c10;
+  color: var(--color-festival-ink);
   cursor: pointer;
   display: inline-flex;
-  font: 800 0.75rem/1 var(--font-inter, sans-serif);
+  font: 800 0.75rem/1 var(--font-body, sans-serif);
   justify-content: center;
   letter-spacing: 0.13em;
   min-height: 44px;
@@ -336,14 +350,14 @@ img { transition: opacity 0.3s ease; }
 }
 
 .ks-live-hub .ks-live-countdown strong {
-  color: #d69c2b;
+  color: var(--color-festival-gold);
   display: block;
-  font: 700 clamp(1.45rem, 3vw, 2.4rem)/1 var(--font-playfair, serif);
+  font: 700 clamp(1.45rem, 3vw, 2.4rem)/1 var(--font-display, serif);
 }
 
 .ks-live-hub .ks-live-countdown span {
   color: rgba(255, 255, 255, 0.42);
-  font: 700 0.75rem/1 var(--font-inter, sans-serif);
+  font: 700 0.75rem/1 var(--font-body, sans-serif);
   letter-spacing: 0.12em;
   text-transform: uppercase;
 }
@@ -379,14 +393,14 @@ img { transition: opacity 0.3s ease; }
 }
 
 .ks-live-hub .ks-stream-placeholder > svg {
-  color: #d69c2b;
+  color: var(--color-festival-gold);
   height: clamp(2.5rem, 6vw, 5rem);
   width: clamp(2.5rem, 6vw, 5rem);
 }
 
 .ks-live-hub .ks-stream-placeholder p {
-  color: #d69c2b;
-  font: 800 0.75rem/1 var(--font-inter, sans-serif);
+  color: var(--color-festival-gold);
+  font: 800 0.75rem/1 var(--font-body, sans-serif);
   letter-spacing: 0.16em;
   margin: 0 0 0.55rem;
   text-transform: uppercase;
@@ -394,20 +408,20 @@ img { transition: opacity 0.3s ease; }
 
 .ks-live-hub .ks-stream-placeholder h3 {
   color: white;
-  font: 700 clamp(1.4rem, 3vw, 2.4rem)/1.1 var(--font-playfair, serif);
+  font: 700 clamp(1.4rem, 3vw, 2.4rem)/1.1 var(--font-display, serif);
   margin: 0 0 0.55rem;
 }
 
 .ks-live-hub .ks-stream-placeholder span {
   color: rgba(255, 255, 255, 0.56);
-  font: 400 0.82rem/1.55 var(--font-inter, sans-serif);
+  font: 400 0.82rem/1.55 var(--font-body, sans-serif);
 }
 
 .ks-live-hub .ks-stream-panel .ks-inline-action {
   align-items: center;
-  color: #d69c2b;
+  color: var(--color-festival-gold);
   display: inline-flex;
-  font: 700 0.75rem/1.4 var(--font-inter, sans-serif);
+  font: 700 0.75rem/1.4 var(--font-body, sans-serif);
   gap: 0.4rem;
   justify-self: start;
   text-decoration: none;

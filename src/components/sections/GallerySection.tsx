@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Camera } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const galleryImages = [
   {
@@ -60,11 +61,7 @@ export default function GallerySection() {
       <div className="content-width section-padding">
         <div className="mb-10 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
-            <span className="eyebrow mb-3 block">Our World</span>
-            <h2 className="section-title">
-              Life at<br />
-              <em className="text-gold not-italic font-normal">ISKCON Nairobi</em>
-            </h2>
+            <SectionHeading eyebrow="Our World" title="Life at" accent="ISKCON Nairobi" eyebrowClassName="eyebrow mb-3 block" />
           </div>
         </div>
 
@@ -91,16 +88,16 @@ export default function GallerySection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-dusk/92 via-dusk/18 to-transparent" />
                 <div className="absolute inset-0 bg-gold/0 transition-colors duration-300 group-hover:bg-gold/10" />
 
-                <div className="absolute left-3 top-3 flex items-center gap-1.5 border border-white/15 bg-dusk/62 px-2 py-1 backdrop-blur-sm sm:left-4 sm:top-4">
+                <div className={`absolute left-3 top-3 items-center gap-1.5 border border-white/15 bg-dusk/62 px-2 py-1 backdrop-blur-sm sm:left-4 sm:top-4 ${isLead || isWide ? "flex" : "hidden sm:flex"}`}>
                   <Camera size={isLead ? 13 : 11} className="text-gold" />
-                  <span className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-sand/78 sm:text-xs">
+                  <span className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-sand/78 sm:text-xs">
                     {img.tone}
                   </span>
                 </div>
 
                 <div className={`absolute bottom-0 left-0 right-0 ${isLead ? "p-5 sm:p-7" : isWide ? "p-4 sm:p-5" : "p-3"}`}>
                   <p
-                    className={`font-playfair font-semibold leading-tight text-white ${
+                    className={`font-display font-semibold leading-tight text-white ${
                       isLead
                         ? "max-w-md text-2xl sm:text-4xl"
                         : isWide
@@ -110,7 +107,7 @@ export default function GallerySection() {
                   >
                     {img.caption}
                   </p>
-                  <div className={`mt-2 items-center gap-2 font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold opacity-90 transition-opacity group-hover:opacity-100 ${isLead || isWide ? "flex" : "hidden sm:flex"}`}>
+                  <div className={`mt-2 items-center gap-2 font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold opacity-90 transition-opacity group-hover:opacity-100 ${isLead || isWide ? "flex" : "hidden sm:flex"}`}>
                     View Story <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>
@@ -124,7 +121,7 @@ export default function GallerySection() {
         <div className="mt-8 flex justify-start sm:mt-10">
           <Link
             href="/media"
-            className="tap-target flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all hover:gap-3"
+            className="tap-target flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all hover:gap-3"
           >
             Full Gallery <ArrowRight size={12} />
           </Link>

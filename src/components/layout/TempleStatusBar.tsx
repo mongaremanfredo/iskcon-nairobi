@@ -72,7 +72,7 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
     >
       <div className="content-width section-padding">
         <div className="flex min-h-11 items-center justify-between gap-3 py-2 max-[900px]:min-h-9 max-[900px]:gap-2 max-[900px]:py-1">
-          <div className="flex min-w-0 items-center gap-3 font-inter text-xs max-[900px]:flex-1 max-[900px]:gap-1.5">
+          <div className="flex min-w-0 items-center gap-3 font-body text-xs max-[900px]:flex-1 max-[900px]:gap-1.5">
             <span
               className={cn(
                 "h-2.5 w-2.5 shrink-0 rounded-full shadow-[0_0_16px_currentColor] max-[900px]:h-2 max-[900px]:w-2",
@@ -90,7 +90,7 @@ export default function TempleStatusBar({ visible }: TempleStatusBarProps) {
             </span>
           </div>
 
-          <div className="flex min-w-0 items-center justify-end gap-3 font-inter text-xs max-[900px]:shrink-0 max-[900px]:gap-2">
+          <div className="flex min-w-0 items-center justify-end gap-3 font-body text-xs max-[900px]:shrink-0 max-[900px]:gap-2">
             <span className="hidden min-w-0 items-center gap-1.5 text-ink/75 lg:flex">
               <Clock3 size={13} className="shrink-0 text-sunset" />
               <span className="truncate">{status && `Next: ${status.nextProgramme}`}</span>

@@ -10,6 +10,7 @@ import KirtanSafariRegistrationModal, {
   openKirtanSafariRegistration,
 } from "./KirtanSafariRegistrationModal";
 import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
+import "./HeroSection.css";
 
 type HeroCta =
   | {
@@ -264,10 +265,10 @@ export default function HeroSection() {
 
             {/* Tagline - the signature element */}
             <div className="hero-tagline motion-safe:animate-fade-up [animation-delay:150ms] [animation-fill-mode:both]">
-              <p className="font-cormorant text-temple-cream/90 text-shadow" style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.25rem)", lineHeight: 1.3, fontStyle: "italic" }}>
+              <p className="font-editorial text-temple-cream/90 text-shadow" style={{ fontSize: "clamp(1.4rem, 3.5vw, 2.25rem)", lineHeight: 1.3, fontStyle: "italic" }}>
                 {currentHero.tagline}
               </p>
-              <p className="font-inter text-white/70 mt-4 text-sm sm:text-base tracking-wide max-w-md leading-relaxed">
+              <p className="font-body text-white/70 mt-4 text-sm sm:text-base tracking-wide max-w-md leading-relaxed">
                 {currentHero.description}
               </p>
             </div>
@@ -332,7 +333,7 @@ export default function HeroSection() {
 
             {/* Scroll hint */}
             <div className="flex flex-col items-center gap-2 text-white/70">
-              <span className="font-inter text-xs tracking-[0.15em] uppercase">Scroll</span>
+              <span className="font-body text-xs tracking-[0.15em] uppercase">Scroll</span>
               <ArrowDown size={14} className="animate-bounce" />
             </div>
           </div>
@@ -343,86 +344,11 @@ export default function HeroSection() {
       <div className="absolute top-20 right-0 hidden lg:flex flex-col items-end gap-1 pr-8 pt-8">
         <span className="eyebrow text-gold text-shadow">Today&apos;s Programmes</span>
         <div className="text-right text-shadow">
-          <p className="font-inter text-white/90 text-xs">4:30 A.M. - Mangala Arati</p>
-          <p className="font-inter text-white/90 text-xs">7:15 A.M. - Shringar Darshan</p>
-          <p className="font-inter text-white/90 text-xs">7:00 P.M. - Sandhya - Gaur Arati</p>
+          <p className="font-body text-white/90 text-xs">4:30 A.M. - Mangala Arati</p>
+          <p className="font-body text-white/90 text-xs">7:15 A.M. - Shringar Darshan</p>
+          <p className="font-body text-white/90 text-xs">7:00 P.M. - Sandhya - Gaur Arati</p>
         </div>
       </div>
-      <style>{`
-        @media (max-width: 640px) {
-          .home-hero .hero-bg-image {
-            object-position: var(--hero-mobile-position) !important;
-          }
-        }
-
-        @media (max-height: 520px) and (orientation: landscape) {
-          .home-hero {
-            min-height: 100svh !important;
-            max-height: none !important;
-          }
-
-          .home-hero .hero-main {
-            padding-bottom: 0.8rem !important;
-            padding-top: 4.6rem !important;
-            align-items: flex-end !important;
-          }
-
-          .home-hero .hero-copy {
-            max-width: min(34rem, 72vw) !important;
-          }
-
-          .home-hero .hero-eyebrow {
-            margin-bottom: 0.5rem !important;
-            gap: 0.45rem !important;
-          }
-
-          .home-hero .hero-eyebrow .eyebrow {
-            font-size: 0.75rem !important;
-            line-height: 1.2 !important;
-          }
-
-          .home-hero .hero-title h1 {
-            font-size: clamp(2rem, 9vh, 3.2rem) !important;
-          }
-
-          .home-hero .hero-rule {
-            margin-top: 0.65rem !important;
-            margin-bottom: 0.65rem !important;
-            width: 9rem !important;
-          }
-
-          .home-hero .hero-tagline p:first-child {
-            font-size: clamp(1rem, 4vh, 1.25rem) !important;
-            line-height: 1.15 !important;
-          }
-
-          .home-hero .hero-tagline p:last-child {
-            margin-top: 0.45rem !important;
-            max-width: 28rem !important;
-            font-size: 0.75rem !important;
-            line-height: 1.35 !important;
-          }
-
-          .home-hero .hero-ctas {
-            flex-direction: row !important;
-            gap: 0.55rem !important;
-            margin-top: 0.75rem !important;
-          }
-
-          .home-hero .hero-ctas a {
-            width: auto !important;
-            min-height: 36px !important;
-            padding: 0.55rem 0.85rem !important;
-            font-size: 0.75rem !important;
-            letter-spacing: 0.07em !important;
-            white-space: nowrap !important;
-          }
-
-          .home-hero .hero-bottom {
-            padding-bottom: 0.55rem !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

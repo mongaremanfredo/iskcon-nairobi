@@ -159,7 +159,7 @@ export default function KirtanSafariRegistrationModal() {
         .ks-modal-panel {
           background:
             linear-gradient(135deg, rgba(246, 226, 177, 0.08), rgba(7, 28, 16, 0.98)),
-            #071c10;
+            var(--color-festival-ink);
           border: 1px solid rgba(214, 156, 43, 0.34);
           box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
           max-height: min(88vh, 920px);
@@ -174,7 +174,7 @@ export default function KirtanSafariRegistrationModal() {
           align-items: center;
           background: rgba(246, 226, 177, 0.1);
           border: 1px solid rgba(246, 226, 177, 0.18);
-          color: #f6e2b1;
+          color: var(--color-festival-cream);
           cursor: pointer;
           display: inline-flex;
           height: 42px;
@@ -191,8 +191,8 @@ export default function KirtanSafariRegistrationModal() {
         }
 
         .ks-modal-eyebrow {
-          color: #d69c2b;
-          font-family: var(--font-inter, sans-serif);
+          color: var(--color-festival-gold);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.75rem;
           font-weight: 800;
           letter-spacing: 0.2em;
@@ -202,20 +202,20 @@ export default function KirtanSafariRegistrationModal() {
 
         .ks-modal-copy h2 {
           color: #fff;
-          font-family: var(--font-playfair, serif);
+          font-family: var(--font-display, serif);
           font-size: clamp(1.85rem, 4vw, 3rem);
           line-height: 1.05;
           margin: 0 0 0.85rem;
         }
 
         .ks-modal-copy h2 span {
-          color: #d69c2b;
+          color: var(--color-festival-gold);
           display: block;
         }
 
         .ks-modal-copy p:last-child {
           color: rgba(255, 255, 255, 0.64);
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.9rem;
           line-height: 1.7;
           margin: 0;

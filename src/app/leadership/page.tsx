@@ -1,9 +1,10 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ArrowRight, HeartHandshake, Users } from "lucide-react";
 import PageHero from "@/components/ui/PageHero";
 import { leadershipDepartments, leadershipProfiles } from "@/data/site";
 import { withSeo } from "@/lib/seo";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Leadership and Service Structure",
@@ -31,14 +32,9 @@ export default function LeadershipPage() {
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div>
-              <span className="eyebrow mb-4 block">How Nairobi Is Guided</span>
-              <h2 className="section-title">
-                A departmental model,
-                <br />
-                <em className="not-italic text-gold">rooted in Vaishnava guidance</em>
-              </h2>
+              <SectionHeading eyebrow="How Nairobi Is Guided" title="A departmental model," accent="rooted in Vaishnava guidance" eyebrowClassName="eyebrow mb-4 block" accentClassName="not-italic text-gold" />
             </div>
-            <div className="space-y-5 font-inter text-body-md leading-relaxed text-ink/75">
+            <div className="space-y-5 font-body text-body-md leading-relaxed text-ink/75">
               <p>
                 ISKCON Nairobi is not presented here as a single-person temple-president structure. The temple now functions through a departmental service setup, with responsibilities distributed across education, worship, kirtan, outreach, hospitality, festivals, administration, and community care.
               </p>
@@ -64,16 +60,16 @@ export default function LeadershipPage() {
               </div>
               <div>
                 <span className="eyebrow mb-4 block text-gold">{featured.category}</span>
-                <h2 className="font-playfair text-display-lg leading-tight text-white">
+                <h2 className="font-display text-display-lg leading-tight text-white">
                   {featured.name}
                 </h2>
-                <p className="mt-3 font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                <p className="mt-3 font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   {featured.role}
                 </p>
-                <p className="mt-6 font-cormorant text-2xl leading-relaxed text-sand/86 sm:text-3xl">
+                <p className="mt-6 font-editorial text-2xl leading-relaxed text-sand/86 sm:text-3xl">
                   {featured.summary}
                 </p>
-                <p className="mt-5 max-w-2xl font-inter text-sm leading-relaxed text-sand/75">
+                <p className="mt-5 max-w-2xl font-body text-sm leading-relaxed text-sand/75">
                   {featured.details}
                 </p>
               </div>
@@ -85,17 +81,12 @@ export default function LeadershipPage() {
       <section className="bg-sand py-section sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="mb-12 text-center">
-            <span className="eyebrow mb-3 block">Key Service Leaders</span>
-            <h2 className="section-title">
-              Departments carried by
-              <br />
-              <em className="not-italic text-gold">devotee leadership</em>
-            </h2>
+            <SectionHeading eyebrow="Key Service Leaders" title="Departments carried by" accent="devotee leadership" eyebrowClassName="eyebrow mb-3 block" accentClassName="not-italic text-gold" />
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {others.map((profile) => (
-              <article key={profile.name} className="group border border-temple-sand bg-white shadow-card transition-shadow hover:shadow-card-hover">
+              <article key={profile.name} className="group card-surface shadow-card transition-shadow hover:shadow-card-hover">
                 <div className="relative h-72 overflow-hidden">
                   <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     src={profile.image}
@@ -104,17 +95,17 @@ export default function LeadershipPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-transparent to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-5">
-                    <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                    <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                       {profile.category}
                     </p>
-                    <h3 className="mt-1 font-playfair text-2xl text-white">{profile.name}</h3>
+                    <h3 className="mt-1 font-display text-2xl text-white">{profile.name}</h3>
                   </div>
                 </div>
                 <div className="p-6">
-                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-primary">
+                  <p className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-primary">
                     {profile.role}
                   </p>
-                  <p className="mt-4 font-inter text-sm leading-relaxed text-ink/75">{profile.details}</p>
+                  <p className="mt-4 font-body text-sm leading-relaxed text-ink/75">{profile.details}</p>
                 </div>
               </article>
             ))}
@@ -127,21 +118,16 @@ export default function LeadershipPage() {
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
               <HeartHandshake className="mb-5 text-primary" size={28} />
-              <span className="eyebrow mb-4 block">Departmental Service</span>
-              <h2 className="section-title">
-                A structure ready
-                <br />
-                <em className="not-italic text-gold">for the full team</em>
-              </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/75">
+              <SectionHeading eyebrow="Departmental Service" title="A structure ready" accent="for the full team" eyebrowClassName="eyebrow mb-4 block" accentClassName="not-italic text-gold" />
+              <p className="mt-5 font-body text-sm leading-relaxed text-ink/75">
                 This section is intentionally built to expand when the full list is supplied. Additional photos and roles can be added without changing the page design.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
               {leadershipDepartments.map((department) => (
-                <div key={department} className="border border-temple-sand bg-white px-4 py-4 shadow-card">
+                <div key={department} className="card-surface px-4 py-4 shadow-card">
                   <Users className="mb-3 text-gold" size={17} />
-                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.08em] text-ink/75">
+                  <p className="font-body text-xs font-semibold uppercase tracking-[0.08em] text-ink/75">
                     {department}
                   </p>
                 </div>
@@ -154,11 +140,11 @@ export default function LeadershipPage() {
       <section className="bg-primary py-14 text-center text-white">
         <div className="content-width section-padding">
           <span className="eyebrow mb-4 block text-white">More names coming</span>
-          <h2 className="font-playfair text-display-md">The full service structure can grow from here.</h2>
+          <h2 className="font-display text-display-md">The full service structure can grow from here.</h2>
           <div className="mt-7 flex justify-center">
-            <Link href="/srila-prabhupada" className="btn-ghost">
+            <ButtonLink variant="ghost" href="/srila-prabhupada">
               Read About Srila Prabhupada <ArrowRight size={14} />
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </section>

@@ -49,10 +49,10 @@ export default async function DonateFundPage({ params }: Props) {
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="grid lg:grid-cols-[1.2fr_.8fr] gap-8 items-start">
-            <div className="bg-white border border-temple-sand p-8 lg:p-10">
+            <div className="card-surface p-8 lg:p-10">
               <div className="text-4xl mb-5">{fund.icon}</div>
-              <h2 className="font-playfair text-3xl font-semibold text-ink mb-4">How to Give</h2>
-              <p className="font-inter text-ink/75 leading-relaxed mb-8">
+              <h2 className="font-display text-3xl font-semibold text-ink mb-4">How to Give</h2>
+              <p className="font-body text-ink/75 leading-relaxed mb-8">
                 Online payment integration is being finalized. For now, contact the temple office and mention "{fund.title}" so your donation can be directed correctly.
               </p>
               <div className="grid sm:grid-cols-2 gap-4">
@@ -75,11 +75,11 @@ export default async function DonateFundPage({ params }: Props) {
 
             <aside className="bg-temple-brown p-8 border border-gold/20">
               <Heart className="text-gold mb-5" size={30} />
-              <h3 className="font-playfair text-2xl text-white font-semibold mb-3">Donation Note</h3>
-              <p className="font-inter text-white/60 text-sm leading-relaxed">
+              <h3 className="font-display text-2xl text-white font-semibold mb-3">Donation Note</h3>
+              <p className="font-body text-white/60 text-sm leading-relaxed">
                 ISKCON Nairobi welcomes designated giving for worship, prasadam, cow protection, student outreach, and festivals. Please request a receipt when you contact the temple office.
               </p>
-              <Link href="/donate" className="tap-target mt-7 inline-flex font-inter text-xs font-semibold tracking-widest uppercase text-gold border-b border-gold/40 pb-1">
+              <Link href="/donate" className="tap-target mt-7 inline-flex font-body text-xs font-semibold tracking-widest uppercase text-gold border-b border-gold/40 pb-1">
                 View all funds
               </Link>
             </aside>

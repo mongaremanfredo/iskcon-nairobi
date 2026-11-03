@@ -1,6 +1,6 @@
 import PageHero from "@/components/ui/PageHero";
-import Link from "next/link";
 import { withSeo } from "@/lib/seo";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Ratha Yatra",
@@ -21,11 +21,11 @@ export default function RathYatraPage() {
       />
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding max-w-3xl">
-          <p className="font-inter text-ink/75 leading-relaxed mb-8">{description}</p>
-          <p className="font-inter text-ink/75 leading-relaxed mb-8">Current procession dates and routes are announced by the temple as permits and logistics are confirmed.</p>
+          <p className="font-body text-ink/75 leading-relaxed mb-8">{description}</p>
+          <p className="font-body text-ink/75 leading-relaxed mb-8">Current procession dates and routes are announced by the temple as permits and logistics are confirmed.</p>
           <div className="flex flex-wrap gap-4">
-            <Link href="/donate/festivals" className="btn-primary">Support this Festival</Link>
-            <Link href="/contact" className="btn-outline border-gold text-gold hover:bg-gold hover:text-white">Register Interest</Link>
+            <ButtonLink variant="primary" href="/donate/festivals">Support this Festival</ButtonLink>
+            <ButtonLink variant="outline" href="/contact" className="border-gold text-gold hover:bg-gold hover:text-white">Register Interest</ButtonLink>
           </div>
         </div>
       </section>

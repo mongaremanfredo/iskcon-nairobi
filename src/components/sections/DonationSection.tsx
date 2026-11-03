@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Heart, ArrowRight } from "lucide-react";
 import { donationPaths } from "@/data/site";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 const donationAccent = (title: string) => {
   if (title.includes("Food")) return "border-sunset/30 bg-sunset/10 text-sunset";
@@ -29,17 +30,14 @@ export default function DonationSection() {
       <div className="relative z-10 content-width section-padding">
         {/* Header */}
         <div className="text-center mb-14">
-          <span className="eyebrow block mb-3">Make a Difference</span>
-          <h2 className="section-title">
-            Support the Mission
-          </h2>
-          <p className="font-inter text-ink/75 text-body-md mt-4 max-w-lg mx-auto">
+          <SectionHeading eyebrow="Make a Difference" title="Support the Mission" />
+          <p className="font-body text-ink/75 text-body-md mt-4 max-w-lg mx-auto">
             Every contribution - large or small - directly funds real programmes that serve thousands of people across East Africa.
           </p>
           {/* List specific payment methods here once the temple confirms the details. */}
           <div className="inline-flex items-center gap-2 mt-5 bg-forest/10 border border-forest/20 px-4 py-2">
             <span className="w-2 h-2 rounded-full bg-forest flex-shrink-0" />
-            <span className="font-inter text-forest text-xs font-medium">
+            <span className="font-body text-forest text-xs font-medium">
               Give by contacting the temple office
             </span>
           </div>
@@ -53,7 +51,7 @@ export default function DonationSection() {
           {donationPaths.map((path) => (
             <div
               key={path.title}
-              className="donation-path-card group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden"
+              className="donation-path-card group card-surface hover:border-primary/40 hover:shadow-card-hover transition-all duration-300 flex flex-col overflow-hidden"
             >
               {/* Image */}
               <div className="relative h-40 overflow-hidden image-grade">
@@ -68,11 +66,11 @@ export default function DonationSection() {
 
               {/* Content */}
               <div className="p-5 flex flex-col flex-1">
-                <h3 className="font-playfair text-base font-semibold text-ink mb-2">{path.title}</h3>
-                <p className="font-inter text-ink/75 text-xs leading-relaxed flex-1">{path.description}</p>
+                <h3 className="font-display text-base font-semibold text-ink mb-2">{path.title}</h3>
+                <p className="font-body text-ink/75 text-xs leading-relaxed flex-1">{path.description}</p>
                 <Link
                   href={path.href}
-                  className="min-h-11 mt-5 flex items-center justify-center gap-2 bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase py-3 hover:bg-primary-dark transition-colors"
+                  className="min-h-11 mt-5 flex items-center justify-center gap-2 bg-primary text-white font-body text-xs font-semibold tracking-widest uppercase py-3 hover:bg-primary-dark transition-colors"
                 >
                   <Heart size={12} />
                   Give to {path.title}
@@ -86,7 +84,7 @@ export default function DonationSection() {
         <div className="mt-12 text-center">
           <Link
             href="/donate"
-            className="tap-target inline-flex items-center gap-3 font-inter text-sm text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-1 hover:border-primary transition-colors"
+            className="tap-target inline-flex items-center gap-3 font-body text-sm text-primary font-semibold tracking-widest uppercase border-b border-primary/30 pb-1 hover:border-primary transition-colors"
           >
             Explore all giving options <ArrowRight size={14} />
           </Link>

@@ -102,10 +102,10 @@ export default function GitaCourseRegistrationModal() {
         .gita-modal-panel {
           background:
             radial-gradient(circle at 8% 0%, rgba(214, 156, 43, 0.22), transparent 34%),
-            linear-gradient(135deg, #071c10 0%, #102f1c 54%, #24170d 100%);
+            linear-gradient(135deg, var(--color-festival-ink) 0%, #102f1c 54%, #24170d 100%);
           border: 1px solid rgba(214, 156, 43, 0.32);
           box-shadow: 0 30px 90px rgba(0, 0, 0, 0.48);
-          color: #f6e2b1;
+          color: var(--color-festival-cream);
           max-height: min(92svh, 860px);
           max-width: 720px;
           overflow-y: auto;
@@ -118,7 +118,7 @@ export default function GitaCourseRegistrationModal() {
           align-items: center;
           background: rgba(255, 255, 255, 0.08);
           border: 1px solid rgba(246, 226, 177, 0.18);
-          color: #f6e2b1;
+          color: var(--color-festival-cream);
           cursor: pointer;
           display: inline-flex;
           height: 2.35rem;
@@ -135,8 +135,8 @@ export default function GitaCourseRegistrationModal() {
         }
 
         .gita-modal-header p {
-          color: #d69c2b;
-          font-family: var(--font-inter, sans-serif);
+          color: var(--color-festival-gold);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.75rem;
           font-weight: 800;
           letter-spacing: 0.2em;
@@ -146,7 +146,7 @@ export default function GitaCourseRegistrationModal() {
 
         .gita-modal-header h2 {
           color: #fff;
-          font-family: var(--font-playfair, serif);
+          font-family: var(--font-display, serif);
           font-size: clamp(2rem, 5vw, 3.1rem);
           font-weight: 650;
           line-height: 0.98;
@@ -154,7 +154,7 @@ export default function GitaCourseRegistrationModal() {
         }
 
         .gita-modal-header h2 span {
-          color: #d69c2b;
+          color: var(--color-festival-gold);
           display: block;
           font-style: italic;
           font-weight: 400;
@@ -170,7 +170,7 @@ export default function GitaCourseRegistrationModal() {
         .gita-modal-details span {
           border: 1px solid rgba(214, 156, 43, 0.28);
           color: rgba(246, 226, 177, 0.76);
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.1em;
@@ -180,14 +180,14 @@ export default function GitaCourseRegistrationModal() {
 
         .gita-modal-contact {
           color: rgba(246, 226, 177, 0.72);
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.78rem;
           line-height: 1.5;
           margin: 1rem 0 0;
         }
 
         .gita-modal-contact a {
-          color: #d69c2b;
+          color: var(--color-festival-gold);
           font-weight: 800;
           text-decoration: none;
         }

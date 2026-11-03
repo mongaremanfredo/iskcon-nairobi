@@ -1,5 +1,7 @@
 "use client";
 
+import FormMessage from "@/components/ui/FormMessage";
+import { isValidEmail } from "@/lib/formValidation";
 import { FormEvent, useMemo, useState } from "react";
 
 const attendanceDays = [
@@ -83,6 +85,12 @@ export default function KirtanSafariRegistrationForm() {
       return;
     }
 
+    if (form.email.trim() && !isValidEmail(form.email)) {
+      setStatus("error");
+      setMessage("Please check your email address.");
+      return;
+    }
+
     setStatus("submitting");
     setMessage("");
 
@@ -150,7 +158,7 @@ export default function KirtanSafariRegistrationForm() {
         </label>
 
         <label className="ks-field">
-          <span>Email</span>
+          <span>Email (optional)</span>
           <input
             value={form.email}
             onChange={(event) => updateField("email", event.target.value)}
@@ -162,7 +170,7 @@ export default function KirtanSafariRegistrationForm() {
         </label>
 
         <label className="ks-field">
-          <span>No. of People</span>
+          <span>Number of people (optional)</span>
           <input
             value={form.peopleCount}
             onChange={(event) => updateField("peopleCount", event.target.value)}
@@ -172,7 +180,7 @@ export default function KirtanSafariRegistrationForm() {
         </label>
 
         <label className="ks-field ks-field-wide">
-          <span>How They Heard About Us</span>
+          <span>How did you hear about us? (optional)</span>
           <select
             value={form.hearAbout}
             onChange={(event) => updateField("hearAbout", event.target.value)}
@@ -222,11 +230,7 @@ export default function KirtanSafariRegistrationForm() {
         </label>
       </div>
 
-      {message && (
-        <p className={`ks-form-message ks-form-message-${status}`} role="status">
-          {message}
-        </p>
-      )}
+      <FormMessage status={status} message={message} tone="dark" className="mt-4" />
 
       <button
         type="submit"
@@ -262,7 +266,7 @@ export default function KirtanSafariRegistrationForm() {
         .ks-field span,
         .ks-updates span {
           color: rgba(246, 226, 177, 0.78);
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.14em;
@@ -275,9 +279,8 @@ export default function KirtanSafariRegistrationForm() {
           border: 1px solid rgba(246, 226, 177, 0.18);
           background: rgba(7, 28, 16, 0.74);
           color: #fff;
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 1rem;
-          outline: none;
           padding: 0.85rem 0.9rem;
         }
 
@@ -305,7 +308,7 @@ export default function KirtanSafariRegistrationForm() {
 
         .ks-day-option input,
         .ks-updates input {
-          accent-color: #d69c2b;
+          accent-color: var(--color-festival-gold);
           flex: 0 0 auto;
           height: 1rem;
           margin: 0;
@@ -328,31 +331,14 @@ export default function KirtanSafariRegistrationForm() {
           display: none;
         }
 
-        .ks-form-message,
-        .ks-form-note {
-          font-family: var(--font-inter, sans-serif);
-          font-size: 0.78rem;
-          line-height: 1.55;
-          margin: 1rem 0 0;
-        }
-
-        .ks-form-message-success {
-          color: #f6e2b1;
-        }
-
-        .ks-form-message-error,
-        .ks-form-note {
-          color: rgba(255, 255, 255, 0.58);
-        }
-
         .ks-submit {
           align-items: center;
-          background: #d69c2b;
+          background: var(--color-festival-gold);
           border: 0;
-          color: #071c10;
+          color: var(--color-festival-ink);
           cursor: pointer;
           display: inline-flex;
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.75rem;
           font-weight: 800;
           justify-content: center;

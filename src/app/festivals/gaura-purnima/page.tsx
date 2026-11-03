@@ -1,7 +1,7 @@
 import PageHero from "@/components/ui/PageHero";
-import Link from "next/link";
 import { templeInfo } from "@/data/site";
 import { withSeo } from "@/lib/seo";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Gaura Purnima",
@@ -22,11 +22,11 @@ export default function GauraPurnimaPage() {
       />
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding max-w-3xl">
-          <p className="font-inter text-ink/75 leading-relaxed mb-8">{description}</p>
-          <p className="font-inter text-ink/75 leading-relaxed mb-8">Contact the temple for the current year's fasting, abhishek, and feast schedule.</p>
+          <p className="font-body text-ink/75 leading-relaxed mb-8">{description}</p>
+          <p className="font-body text-ink/75 leading-relaxed mb-8">Contact the temple for the current year's fasting, abhishek, and feast schedule.</p>
           <div className="flex flex-wrap gap-4">
-            <Link href="/donate/festivals" className="btn-primary">Support this Festival</Link>
-            <Link href="/contact" className="btn-outline border-gold text-gold hover:bg-gold hover:text-white">Register Interest</Link>
+            <ButtonLink variant="primary" href="/donate/festivals">Support this Festival</ButtonLink>
+            <ButtonLink variant="outline" href="/contact" className="border-gold text-gold hover:bg-gold hover:text-white">Register Interest</ButtonLink>
           </div>
         </div>
       </section>

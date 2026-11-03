@@ -1,5 +1,4 @@
 import Image from "next/image";
-import Link from "next/link";
 import { withSeo } from "@/lib/seo";
 import {
   ArrowRight,
@@ -11,6 +10,8 @@ import {
   Sparkles,
   Utensils,
 } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Srila Prabhupada",
@@ -121,21 +122,21 @@ export default function SrilaPrabhupadaPage() {
           <div className="content-width section-padding pb-12 pt-36 sm:pb-20">
             <div className="max-w-3xl">
               <span className="eyebrow mb-5 block text-gold">Founder-Acarya of ISKCON</span>
-              <h1 className="font-playfair text-[clamp(3rem,10vw,7rem)] leading-[0.95] text-white text-shadow">
+              <h1 className="font-display text-[clamp(3rem,10vw,7rem)] leading-[0.95] text-white text-shadow">
                 Srila
                 <br />
                 <em className="not-italic text-gold">Prabhupada</em>
               </h1>
-              <p className="mt-6 max-w-2xl font-cormorant text-2xl leading-relaxed text-sand/86 sm:text-3xl">
+              <p className="mt-6 max-w-2xl font-editorial text-2xl leading-relaxed text-sand/86 sm:text-3xl">
                 His Divine Grace A.C. Bhaktivedanta Swami Prabhupada carried Krishna consciousness across the world and personally planted its roots in Kenya.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link href="#nairobi" className="btn-primary">
+                <ButtonLink variant="primary" href="#nairobi">
                   His Nairobi Legacy <ArrowRight size={14} />
-                </Link>
-                <Link href="#life" className="btn-ghost">
+                </ButtonLink>
+                <ButtonLink variant="ghost" href="#life">
                   Read the Story
-                </Link>
+                </ButtonLink>
               </div>
             </div>
           </div>
@@ -146,18 +147,13 @@ export default function SrilaPrabhupadaPage() {
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
             <div className="lg:sticky lg:top-28">
-              <span className="eyebrow mb-4 block">An Ocean of Mercy</span>
-              <h2 className="section-title">
-                One life,
-                <br />
-                <em className="not-italic text-gold">a world awakened</em>
-              </h2>
-              <p className="mt-6 font-inter text-body-md text-ink/75">
+              <SectionHeading eyebrow="An Ocean of Mercy" title="One life," accent="a world awakened" eyebrowClassName="eyebrow mb-4 block" accentClassName="not-italic text-gold" />
+              <p className="mt-6 font-body text-body-md text-ink/75">
                 At an age when most people retire, Srila Prabhupada began the work that would define the modern global Hare Krishna movement.
               </p>
             </div>
 
-            <div className="space-y-5 font-inter text-body-md leading-relaxed text-ink/75">
+            <div className="space-y-5 font-body text-body-md leading-relaxed text-ink/75">
               <p>
                 Born Abhay Charan De in Calcutta in 1896, Srila Prabhupada was raised with devotion to Krishna from childhood. As a young man he studied, worked, and lived a responsible family life, but the central instruction of his life came in 1922 when he met Srila Bhaktisiddhanta Sarasvati Thakura: take the teachings of Sri Caitanya Mahaprabhu to the English-speaking world.
               </p>
@@ -176,13 +172,13 @@ export default function SrilaPrabhupadaPage() {
         <div className="content-width section-padding">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {timeline.map((item) => (
-              <div key={item.year} className="border border-temple-sand bg-white p-6 shadow-card">
+              <div key={item.year} className="card-surface p-6 shadow-card">
                 <div className="mb-4 flex items-center gap-3">
-                  <span className="font-playfair text-3xl font-semibold text-primary">{item.year}</span>
+                  <span className="font-display text-3xl font-semibold text-primary">{item.year}</span>
                   <span className="h-px flex-1 bg-gold/30" />
                 </div>
-                <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
+                <h3 className="font-display text-xl font-semibold text-ink">{item.title}</h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-ink/75">{item.text}</p>
               </div>
             ))}
           </div>
@@ -193,13 +189,8 @@ export default function SrilaPrabhupadaPage() {
         <div className="content-width section-padding">
           <div className="grid gap-12 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
             <div>
-              <span className="eyebrow mb-4 block text-gold">Kenya and East Africa</span>
-              <h2 className="section-title-light">
-                He did not send only a movement.
-                <br />
-                <em className="not-italic text-gold">He came in person.</em>
-              </h2>
-              <div className="mt-7 space-y-5 font-inter text-body-md leading-relaxed text-sand/75">
+              <SectionHeading eyebrow="Kenya and East Africa" title="He did not send only a movement." accent="He came in person." eyebrowClassName="eyebrow mb-4 block text-gold" titleClassName="section-title-light" accentClassName="not-italic text-gold" />
+              <div className="mt-7 space-y-5 font-body text-body-md leading-relaxed text-sand/75">
                 <p>
                   ISKCON's early Kenyan work began remarkably soon after the society was founded. Srila Prabhupada came to Nairobi in 1971, giving darshan, leading kirtan, lecturing in the evenings, and encouraging the devotees who were trying to establish Krishna consciousness in East Africa.
                 </p>
@@ -219,8 +210,8 @@ export default function SrilaPrabhupadaPage() {
                 ].map((stat) => (
                   <div key={stat.label} className="border border-gold/15 bg-white/5 p-4">
                     <stat.icon className="mb-3 text-gold" size={20} />
-                    <p className="font-playfair text-xl text-white">{stat.value}</p>
-                    <p className="mt-1 font-inter text-xs uppercase tracking-[0.14em] text-sand/75">{stat.label}</p>
+                    <p className="font-display text-xl text-white">{stat.value}</p>
+                    <p className="mt-1 font-body text-xs uppercase tracking-[0.14em] text-sand/75">{stat.label}</p>
                   </div>
                 ))}
               </div>
@@ -233,7 +224,7 @@ export default function SrilaPrabhupadaPage() {
                 alt="Srila Prabhupada"
                 className="relative aspect-[4/3] w-full object-cover object-[center_30%] shadow-card-hover"
               />
-              <figcaption className="relative mt-4 border-l border-gold/40 pl-4 font-inter text-xs leading-relaxed text-sand/75">
+              <figcaption className="relative mt-4 border-l border-gold/40 pl-4 font-body text-xs leading-relaxed text-sand/75">
                 I found references to Nairobi photos of Srila Prabhupada, but did not download them because the available copies did not show a clear reuse license.
               </figcaption>
             </figure>
@@ -244,26 +235,21 @@ export default function SrilaPrabhupadaPage() {
       <section className="py-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="mx-auto max-w-3xl text-center">
-            <span className="eyebrow mb-4 block">What He Gave</span>
-            <h2 className="section-title">
-              A practical path of
-              <br />
-              <em className="not-italic text-gold">hearing, chanting, serving</em>
-            </h2>
+            <SectionHeading eyebrow="What He Gave" title="A practical path of" accent="hearing, chanting, serving" eyebrowClassName="eyebrow mb-4 block" accentClassName="not-italic text-gold" />
           </div>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
             {teachings.map((item) => (
-              <div key={item.title} className="border border-temple-sand bg-white p-6 shadow-card">
+              <div key={item.title} className="card-surface p-6 shadow-card">
                 <item.icon className="mb-5 text-primary" size={24} />
-                <h3 className="font-playfair text-xl font-semibold text-ink">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">{item.text}</p>
+                <h3 className="font-display text-xl font-semibold text-ink">{item.title}</h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-ink/75">{item.text}</p>
               </div>
             ))}
           </div>
 
           <div className="mx-auto mt-14 max-w-3xl border-y border-gold/25 py-9 text-center">
-            <p className="font-cormorant text-2xl italic leading-relaxed text-ink/75 sm:text-3xl">
+            <p className="font-editorial text-2xl italic leading-relaxed text-ink/75 sm:text-3xl">
               Hare Krishna Hare Krishna, Krishna Krishna Hare Hare
               <br />
               Hare Rama Hare Rama, Rama Rama Hare Hare
@@ -277,8 +263,8 @@ export default function SrilaPrabhupadaPage() {
           <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
             <div>
               <Ship className="mb-5 text-gold" size={28} />
-              <h2 className="font-playfair text-display-md text-white">Sources and image notes</h2>
-              <p className="mt-4 font-inter text-sm leading-relaxed text-sand/75">
+              <h2 className="font-display text-display-md text-white">Sources and image notes</h2>
+              <p className="mt-4 font-body text-sm leading-relaxed text-sand/75">
                 This page combines your supplied text with public references. The downloaded images are from Wikimedia Commons pages with reuse/license information. Nairobi-specific Prabhupada photos were found online, but not used as site assets because the license status was not clear enough.
               </p>
             </div>
@@ -289,7 +275,7 @@ export default function SrilaPrabhupadaPage() {
                   href={source.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="min-h-11 group flex items-center justify-between gap-4 border border-white/10 bg-white/5 px-4 py-3 font-inter text-xs text-sand/75 transition-colors hover:border-gold/40 hover:text-white"
+                  className="min-h-11 group flex items-center justify-between gap-4 border border-white/10 bg-white/5 px-4 py-3 font-body text-xs text-sand/75 transition-colors hover:border-gold/40 hover:text-white"
                 >
                   {source.label}
                   <ArrowRight size={13} className="text-gold transition-transform group-hover:translate-x-1" />
@@ -303,14 +289,14 @@ export default function SrilaPrabhupadaPage() {
       <section className="bg-primary py-14 text-center text-white">
         <div className="content-width section-padding">
           <span className="eyebrow mb-4 block text-white">Visit, chant, take part</span>
-          <h2 className="font-playfair text-display-md">The doors he asked us to keep open are still open.</h2>
+          <h2 className="font-display text-display-md">The doors he asked us to keep open are still open.</h2>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <Link href="/visit" className="btn-ghost">
+            <ButtonLink variant="ghost" href="/visit">
               Plan Your Visit
-            </Link>
-            <Link href="/learn" className="btn-ghost">
+            </ButtonLink>
+            <ButtonLink variant="ghost" href="/learn">
               Study His Books
-            </Link>
+            </ButtonLink>
           </div>
         </div>
       </section>

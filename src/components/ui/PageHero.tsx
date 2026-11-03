@@ -50,7 +50,7 @@ export default function PageHero({
           <span className="eyebrow text-gold block mb-3">{subtitle}</span>
         )}
 
-        <h1 className="font-playfair text-white text-shadow leading-tight" style={{ fontSize: "clamp(2.25rem, 12vw, 4.5rem)" }}>
+        <h1 className="font-display text-white text-shadow leading-tight" style={{ fontSize: "clamp(2.25rem, 12vw, 4.5rem)" }}>
           {title}
           {titleAccent && (
             <>
@@ -61,7 +61,7 @@ export default function PageHero({
         </h1>
 
         {description && (
-          <p className="font-inter text-white/70 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
+          <p className="font-body text-white/70 text-sm sm:text-base mt-4 max-w-xl leading-relaxed">
             {description}
           </p>
         )}

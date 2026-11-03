@@ -6,6 +6,8 @@ import { withSeo } from "@/lib/seo";
 import GitaCourseRegistrationModal, {
   GitaCourseRegistrationButton,
 } from "@/components/sections/GitaCourseRegistrationModal";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Learn",
@@ -120,15 +122,15 @@ export default function LearnPage() {
           <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-stretch">
             <div className="flex flex-col justify-center border border-gold/18 bg-white/[0.05] p-6 sm:p-8">
               <span className="eyebrow mb-3 block text-gold">New Course</span>
-              <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
+              <h2 className="font-display text-display-sm font-semibold leading-tight text-white">
                 Beginners
                 <br />
                 <em className="text-gold not-italic font-normal">Bhagavad Gita Course</em>
               </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-sand/75 sm:text-base">
+              <p className="mt-5 font-body text-sm leading-relaxed text-sand/75 sm:text-base">
                 A weekly six-week introduction to Bhagavad Gita for newcomers and returning students. Each class is designed to be approachable, practical, and rooted in Srila Prabhupada's presentation of Krishna's teachings.
               </p>
-              <div className="mt-6 border-l border-gold/35 pl-4 font-inter text-sm leading-relaxed text-sand/75">
+              <div className="mt-6 border-l border-gold/35 pl-4 font-body text-sm leading-relaxed text-sand/75">
                 Contact Aisvarya Lila:{" "}
                 <a href="tel:+254748276446" className="font-bold text-gold no-underline">
                   +254 748 276446
@@ -146,19 +148,19 @@ export default function LearnPage() {
                     <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/12 text-gold">
                       <BookOpen size={19} />
                     </div>
-                    <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                    <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                       Choose This Option
                     </p>
-                    <h3 className="mt-2 font-playfair text-3xl font-semibold leading-tight text-white">
+                    <h3 className="mt-2 font-display text-3xl font-semibold leading-tight text-white">
                       {option.title}
                     </h3>
-                    <p className="mt-4 font-inter text-xs font-semibold uppercase tracking-[0.13em] text-sand/75">
+                    <p className="mt-4 font-body text-xs font-semibold uppercase tracking-[0.13em] text-sand/75">
                       {option.start}
                     </p>
                   </div>
                   <div className="mt-7 border-t border-gold/16 pt-5">
-                    <p className="font-inter text-sm font-semibold text-sand">{option.timing}</p>
-                    <p className="mt-2 font-inter text-sm text-sand/75">{option.venue}</p>
+                    <p className="font-body text-sm font-semibold text-sand">{option.timing}</p>
+                    <p className="mt-2 font-body text-sm text-sand/75">{option.venue}</p>
                   </div>
                 </article>
               ))}
@@ -170,13 +172,8 @@ export default function LearnPage() {
       <section className="bg-temple-bg pt-section-sm pb-section">
         <div className="content-width section-padding">
           <div className="mx-auto mb-12 max-w-3xl text-center">
-            <span className="eyebrow mb-3 block">Programmes & Classes</span>
-            <h2 className="section-title">
-              Study Through
-              <br />
-              <em className="text-gold not-italic font-normal">Hearing and Discussion</em>
-            </h2>
-            <p className="mx-auto mt-5 max-w-2xl font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
+            <SectionHeading eyebrow="Programmes & Classes" title="Study Through" accent="Hearing and Discussion" eyebrowClassName="eyebrow mb-3 block" />
+            <p className="mx-auto mt-5 max-w-2xl font-body text-sm leading-relaxed text-ink/75 sm:text-base">
               ISKCON Nairobi offers learning through daily temple classes, weekly HKTC philosophy sessions,
               Sunday festival classes, Bhakti Vriksha groups, and seminars with invited speakers.
             </p>
@@ -186,28 +183,28 @@ export default function LearnPage() {
             {learningPaths.map((path) => (
               <article
                 key={path.title}
-                className="group border border-temple-sand bg-white p-6 transition-all hover:-translate-y-1 hover:border-gold/40 hover:shadow-card-hover"
+                className="group card-surface p-6 transition-all hover:-translate-y-1 hover:border-gold/40 hover:shadow-card-hover"
               >
                 <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
                   <path.icon size={19} />
                 </div>
-                <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                   {path.eyebrow}
                 </p>
-                <h3 className="mt-2 font-playfair text-2xl font-semibold leading-tight text-ink transition-colors group-hover:text-gold">
+                <h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-ink transition-colors group-hover:text-gold">
                   {path.title}
                 </h3>
-                <div className="mt-4 flex items-center gap-2 border-y border-temple-sand py-3 font-inter text-xs font-semibold uppercase tracking-[0.12em] text-ink/75">
+                <div className="mt-4 flex items-center gap-2 border-y border-temple-sand py-3 font-body text-xs font-semibold uppercase tracking-[0.12em] text-ink/75">
                   <Clock size={13} className="text-gold" />
                   {path.timing}
                 </div>
-                <p className="mt-4 font-inter text-sm leading-relaxed text-ink/75">{path.description}</p>
+                <p className="mt-4 font-body text-sm leading-relaxed text-ink/75">{path.description}</p>
               </article>
             ))}
           </div>
 
           <div className="mt-10 grid gap-5 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
-            <article className="overflow-hidden border border-temple-sand bg-white shadow-card">
+            <article className="overflow-hidden card-surface shadow-card">
               <div className="grid h-full gap-0 sm:grid-cols-[0.76fr_1fr]">
                 <div className="relative min-h-[14rem] overflow-hidden bg-dusk">
                   <Image width={1600} height={1200} sizes="(max-width: 768px) 100vw, 50vw"
@@ -221,13 +218,13 @@ export default function LearnPage() {
                   <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
                     <LibraryBig size={19} />
                   </div>
-                  <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                  <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                     Srila Prabhupada's Books
                   </p>
-                  <h3 className="mt-2 font-playfair text-2xl font-semibold leading-tight text-ink">
+                  <h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-ink">
                     Books Available at the Temple
                   </h3>
-                  <p className="mt-4 font-inter text-sm leading-relaxed text-ink/75">
+                  <p className="mt-4 font-body text-sm leading-relaxed text-ink/75">
                     The temple stocks Srila Prabhupada's books through the office, gift shop, or on request by contacting the temple. Visitors and students are welcome to ask for guidance on where to begin.
                   </p>
                 </div>
@@ -241,18 +238,18 @@ export default function LearnPage() {
                     <div className="mb-5 flex h-11 w-11 items-center justify-center rounded-full bg-gold/10 text-gold">
                       <GraduationCap size={19} />
                     </div>
-                    <p className="font-inter text-xs font-semibold uppercase tracking-[0.16em] text-gold">
+                    <p className="font-body text-xs font-semibold uppercase tracking-[0.16em] text-gold">
                       Formal Study
                     </p>
-                    <h3 className="mt-2 font-playfair text-2xl font-semibold leading-tight text-ink">{track.title}</h3>
-                    <p className="mt-3 font-inter text-xs font-semibold uppercase tracking-[0.12em] text-ink/75">
+                    <h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-ink">{track.title}</h3>
+                    <p className="mt-3 font-body text-xs font-semibold uppercase tracking-[0.12em] text-ink/75">
                       {track.scope}
                     </p>
-                    <p className="mt-4 font-inter text-sm leading-relaxed text-ink/75">{track.description}</p>
+                    <p className="mt-4 font-body text-sm leading-relaxed text-ink/75">{track.description}</p>
                   </div>
                   <Link
                     href="/contact"
-                    className="tap-target mt-6 inline-flex items-center gap-2 self-start font-inter text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all hover:gap-3"
+                    className="tap-target mt-6 inline-flex items-center gap-2 self-start font-body text-xs font-semibold uppercase tracking-widest text-gold-ink transition-all hover:gap-3"
                   >
                     Inquire About This Course
                     <ArrowRight size={12} />
@@ -269,12 +266,12 @@ export default function LearnPage() {
           <div className="grid gap-10 lg:grid-cols-[0.84fr_1fr] lg:items-start">
             <div>
               <span className="eyebrow mb-3 block">HKTC Philosophy Classes</span>
-              <h2 className="font-playfair text-display-sm font-semibold leading-tight text-ink">
+              <h2 className="font-display text-display-sm font-semibold leading-tight text-ink">
                 Regular Evening
                 <br />
                 <em className="text-gold not-italic font-normal">Study at HKTC</em>
               </h2>
-              <p className="mt-5 font-inter text-sm leading-relaxed text-ink/75 sm:text-base">
+              <p className="mt-5 font-body text-sm leading-relaxed text-ink/75 sm:text-base">
                 The Hare Krishna Training Centre hosts philosophy classes through the week. Each class is one
                 hour, includes students from the wider community, and prasadam is served afterward.
               </p>
@@ -282,15 +279,15 @@ export default function LearnPage() {
 
             <div className="grid gap-4">
               {hktcSchedule.map((item) => (
-                <div key={item.days} className="border border-temple-sand bg-white p-5 shadow-card">
+                <div key={item.days} className="card-surface p-5 shadow-card">
                   <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <div>
-                      <p className="font-inter text-xs font-semibold uppercase tracking-[0.15em] text-gold-ink">
+                      <p className="font-body text-xs font-semibold uppercase tracking-[0.15em] text-gold-ink">
                         {item.note}
                       </p>
-                      <h3 className="mt-1 font-playfair text-xl font-semibold text-ink">{item.days}</h3>
+                      <h3 className="mt-1 font-display text-xl font-semibold text-ink">{item.days}</h3>
                     </div>
-                    <div className="flex w-fit items-center gap-2 bg-temple-brown px-4 py-2 font-inter text-xs font-semibold uppercase tracking-[0.12em] text-sand">
+                    <div className="flex w-fit items-center gap-2 bg-temple-brown px-4 py-2 font-body text-xs font-semibold uppercase tracking-[0.12em] text-sand">
                       <Clock size={13} className="text-gold" />
                       {item.time}
                     </div>
@@ -298,7 +295,7 @@ export default function LearnPage() {
                 </div>
               ))}
               <div className="border border-gold/30 bg-gold/10 p-5">
-                <p className="font-inter text-sm leading-relaxed text-ink/75">
+                <p className="font-body text-sm leading-relaxed text-ink/75">
                   Class topics may include Bhagavad-gita, Srimad-Bhagavatam, devotional practice, Vaishnava
                   philosophy, character formation, and practical service.
                 </p>
@@ -312,12 +309,12 @@ export default function LearnPage() {
         <div className="content-width section-padding">
           <div className="mb-10 max-w-2xl">
             <span className="eyebrow mb-3 block text-gold">Community Learning</span>
-            <h2 className="font-playfair text-display-sm font-semibold leading-tight text-white">
+            <h2 className="font-display text-display-sm font-semibold leading-tight text-white">
               Seminars, Sangas
               <br />
               <em className="text-gold not-italic font-normal">and Personal Guidance</em>
             </h2>
-            <p className="mt-5 font-inter text-sm leading-relaxed text-sand/75 sm:text-base">
+            <p className="mt-5 font-body text-sm leading-relaxed text-sand/75 sm:text-base">
               Learning also happens through association: small groups, visiting speakers, home programmes,
               and direct guidance from devotees.
             </p>
@@ -327,19 +324,19 @@ export default function LearnPage() {
             {communityLearning.map((item) => (
               <article key={item.title} className="border border-gold/15 bg-white/[0.06] p-5">
                 <item.icon className="mb-4 text-gold" size={21} />
-                <h3 className="font-playfair text-xl font-semibold text-white">{item.title}</h3>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-sand/75">{item.description}</p>
+                <h3 className="font-display text-xl font-semibold text-white">{item.title}</h3>
+                <p className="mt-3 font-body text-sm leading-relaxed text-sand/75">{item.description}</p>
               </article>
             ))}
           </div>
 
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <Link href="/contact" className="btn-primary justify-center">
+            <ButtonLink variant="primary" href="/contact" className="justify-center">
               Ask About Classes
-            </Link>
+            </ButtonLink>
             <Link
               href="/projects/hktc-nairobi"
-              className="min-h-11 inline-flex items-center justify-center gap-2 border border-gold/40 px-5 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-white"
+              className="min-h-11 inline-flex items-center justify-center gap-2 border border-gold/40 px-5 py-3 font-body text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-gold hover:text-white"
             >
               Explore HKTC Nairobi
               <ArrowRight size={14} />

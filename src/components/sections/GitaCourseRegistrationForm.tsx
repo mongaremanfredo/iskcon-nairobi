@@ -1,5 +1,6 @@
 "use client";
 
+import FormMessage from "@/components/ui/FormMessage";
 import { FormEvent, useState } from "react";
 
 const courseOptions = [
@@ -167,11 +168,7 @@ export default function GitaCourseRegistrationForm() {
         </label>
       </div>
 
-      {message && (
-        <p className={`gita-form-message gita-form-message-${status}`} role="status">
-          {message}
-        </p>
-      )}
+      <FormMessage status={status} message={message} tone="dark" className="mt-4" />
 
       <button type="submit" disabled={status === "submitting"} className="gita-submit">
         {status === "submitting" ? "Submitting..." : "Submit Registration"}
@@ -202,7 +199,7 @@ export default function GitaCourseRegistrationForm() {
 
         .gita-field span {
           color: rgba(246, 226, 177, 0.78);
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.75rem;
           font-weight: 700;
           letter-spacing: 0.13em;
@@ -215,9 +212,8 @@ export default function GitaCourseRegistrationForm() {
           border: 1px solid rgba(246, 226, 177, 0.18);
           background: rgba(7, 28, 16, 0.72);
           color: #fff;
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 1rem;
-          outline: none;
           padding: 0.85rem 0.9rem;
         }
 
@@ -242,7 +238,7 @@ export default function GitaCourseRegistrationForm() {
         }
 
         .gita-option input {
-          accent-color: #d69c2b;
+          accent-color: var(--color-festival-gold);
           flex: 0 0 auto;
           height: 1rem;
           margin-top: 0.08rem;
@@ -263,29 +259,14 @@ export default function GitaCourseRegistrationForm() {
           display: none;
         }
 
-        .gita-form-message {
-          font-family: var(--font-inter, sans-serif);
-          font-size: 0.78rem;
-          line-height: 1.55;
-          margin: 1rem 0 0;
-        }
-
-        .gita-form-message-success {
-          color: #f6e2b1;
-        }
-
-        .gita-form-message-error {
-          color: rgba(255, 255, 255, 0.66);
-        }
-
         .gita-submit {
           align-items: center;
-          background: #d69c2b;
+          background: var(--color-festival-gold);
           border: 0;
-          color: #071c10;
+          color: var(--color-festival-ink);
           cursor: pointer;
           display: inline-flex;
-          font-family: var(--font-inter, sans-serif);
+          font-family: var(--font-body, sans-serif);
           font-size: 0.75rem;
           font-weight: 800;
           justify-content: center;

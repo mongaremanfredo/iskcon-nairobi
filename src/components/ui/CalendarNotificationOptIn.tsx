@@ -139,13 +139,13 @@ export default function CalendarNotificationOptIn() {
             </span>
             <div>
               <span className="eyebrow block">Calendar reminders</span>
-              <h2 className="font-playfair text-2xl font-semibold text-ink sm:text-3xl">
+              <h2 className="font-display text-2xl font-semibold text-ink sm:text-3xl">
                 Ekadashi and festival notifications
               </h2>
             </div>
           </div>
 
-          <p className="max-w-2xl font-inter text-sm leading-relaxed text-ink/75">
+          <p className="max-w-2xl font-body text-sm leading-relaxed text-ink/75">
             Enable reminders to receive push notifications for Ekadashi and major ISKCON Nairobi festivals.
           </p>
 
@@ -154,7 +154,7 @@ export default function CalendarNotificationOptIn() {
               type="button"
               onClick={enableReminders}
               disabled={enabled || isSaving || permission === "unsupported" || permission === "denied"}
-              className="inline-flex min-h-11 items-center gap-2 bg-primary px-5 py-3 font-inter text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-ink/30"
+              className="inline-flex min-h-11 items-center gap-2 bg-primary px-5 py-3 font-body text-xs font-bold uppercase tracking-[0.16em] text-white transition hover:bg-primary/90 disabled:cursor-not-allowed disabled:bg-ink/30"
             >
               <BellRing size={15} />
               {buttonLabel}
@@ -164,7 +164,7 @@ export default function CalendarNotificationOptIn() {
               <button
                 type="button"
                 onClick={disableReminders}
-                className="inline-flex min-h-11 items-center gap-2 border border-temple-sand px-5 py-3 font-inter text-xs font-bold uppercase tracking-[0.16em] text-ink transition hover:border-primary/40"
+                className="inline-flex min-h-11 items-center gap-2 border border-temple-sand px-5 py-3 font-body text-xs font-bold uppercase tracking-[0.16em] text-ink transition hover:border-primary/40"
               >
                 Turn off
               </button>
@@ -172,29 +172,29 @@ export default function CalendarNotificationOptIn() {
           </div>
 
           {permission === "denied" && (
-            <p className="mt-3 font-inter text-xs leading-relaxed text-primary">
+            <p className="mt-3 font-body text-xs leading-relaxed text-primary">
               Notifications are blocked in this browser. Open the browser site settings for ISKCON Nairobi to allow notifications.
             </p>
           )}
         </div>
 
         <div className="border-t border-temple-sand bg-temple-cream/70 p-5 sm:p-7 lg:border-l lg:border-t-0">
-          <div className="mb-4 flex items-center gap-2 font-inter text-xs font-bold uppercase tracking-[0.16em] text-gold-ink">
+          <div className="mb-4 flex items-center gap-2 font-body text-xs font-bold uppercase tracking-[0.16em] text-gold-ink">
             <CalendarDays size={14} />
             Next reminders
           </div>
           <div className="space-y-3">
             {upcomingEvents.map((event) => (
-              <div key={event.id} className="flex gap-3 border border-temple-sand bg-white p-3">
+              <div key={event.id} className="flex gap-3 card-surface p-3">
                 <div className="min-w-14 text-center">
-                  <p className="font-inter text-xs font-bold uppercase tracking-[0.08em] text-primary">{event.dateLabel}</p>
-                  <p className="font-inter text-xs font-bold uppercase tracking-[0.12em] text-gold-ink">{event.type}</p>
+                  <p className="font-body text-xs font-bold uppercase tracking-[0.08em] text-primary">{event.dateLabel}</p>
+                  <p className="font-body text-xs font-bold uppercase tracking-[0.12em] text-gold-ink">{event.type}</p>
                 </div>
-                <p className="font-inter text-xs leading-relaxed text-ink/75">{event.event}</p>
+                <p className="font-body text-xs leading-relaxed text-ink/75">{event.event}</p>
               </div>
             ))}
           </div>
-          <div className="mt-4 flex gap-2 font-inter text-xs leading-relaxed text-ink/75">
+          <div className="mt-4 flex gap-2 font-body text-xs leading-relaxed text-ink/75">
             <ShieldCheck size={14} className="mt-0.5 shrink-0 text-gold" />
             <span>No account is created. You can turn reminders off here any time.</span>
           </div>

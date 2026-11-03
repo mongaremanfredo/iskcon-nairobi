@@ -1,0 +1,31 @@
+@media (max-height: 520px) and (orientation: landscape) {
+  .site-nav {
+    padding-top: 0.35rem !important;
+    padding-bottom: 0.35rem !important;
+  }
+
+  .site-nav .section-padding {
+    padding-left: 0.75rem !important;
+    padding-right: 0.75rem !important;
+  }
+
+  .site-nav .nav-brand-logo {
+    width: 42px !important;
+    height: 39px !important;
+  }
+
+  .site-nav .nav-brand-name {
+    font-size: 0.78rem !important;
+  }
+
+  .site-nav .nav-brand-expansion {
+    font-size: 0.75rem !important;
+    max-width: 12rem !important;
+    white-space: nowrap !important;
+  }
+
+  .site-nav button[aria-label] {
+    width: 2.75rem !important;
+    height: 2.75rem !important;
+  }
+}

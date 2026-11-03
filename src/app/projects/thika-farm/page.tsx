@@ -1,7 +1,8 @@
 import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
-import Link from "next/link";
 import { withSeo } from "@/lib/seo";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({
   title: "Thika Farm & Goshala",
@@ -26,9 +27,8 @@ export default function ThikaFarmPage() {
         <div className="content-width section-padding">
           <div className="grid lg:grid-cols-2 gap-16">
             <div>
-              <span className="eyebrow block mb-4">The Vision</span>
-              <h2 className="section-title mb-6">A Self-Sufficient<br /><em className="text-gold not-italic font-normal">Devotional Community</em></h2>
-              <div className="space-y-4 font-inter text-ink/75 leading-relaxed">
+              <SectionHeading eyebrow="The Vision" title="A Self-Sufficient" accent="Devotional Community" eyebrowClassName="eyebrow block mb-4" titleClassName="section-title mb-6" />
+              <div className="space-y-4 font-body text-ink/75 leading-relaxed">
                 <p>The Thika Farm represents ISKCON Nairobi's long-term vision of varnāśrama - a spiritually integrated community where devotees live close to the land, protect cows, grow their own food, and sustain a life centred on devotional practice.</p>
                 <p>The farm supplies fresh organic produce, milk, and ghee to the Nairobi temple kitchen and Food For Life programme. Visitors and volunteers are welcome throughout the year.</p>
               </div>
@@ -49,8 +49,7 @@ export default function ThikaFarmPage() {
       <section className="py-section bg-temple-cream sm:pt-[clamp(2rem,4vw,4rem)] sm:pb-[clamp(2rem,4vw,4rem)]">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
-            <span className="eyebrow block mb-3">What We Do</span>
-            <h2 className="section-title">Farm Activities</h2>
+            <SectionHeading eyebrow="What We Do" title="Farm Activities" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -63,8 +62,8 @@ export default function ThikaFarmPage() {
             ].map((item) => (
               <div key={item.title} className="bg-white p-7 border border-temple-sand hover:shadow-card hover:border-gold/20 transition-all">
                 <div className="text-3xl mb-4">{item.icon}</div>
-                <h3 className="font-playfair text-xl font-semibold text-ink mb-3">{item.title}</h3>
-                <p className="font-inter text-ink/75 text-sm leading-relaxed">{item.desc}</p>
+                <h3 className="font-display text-xl font-semibold text-ink mb-3">{item.title}</h3>
+                <p className="font-body text-ink/75 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -73,11 +72,11 @@ export default function ThikaFarmPage() {
 
       {/* CTA */}
       <section className="py-16 bg-acacia-ink text-center section-padding">
-        <h2 className="font-playfair text-display-md text-white mb-4">Visit the Farm</h2>
-        <p className="font-inter text-white mb-8 max-w-md mx-auto">Day visits, volunteering, and retreat stays available. Contact us to plan your trip to Thika.</p>
-        <Link href="/contact" className="btn-ghost">
+        <h2 className="font-display text-display-md text-white mb-4">Visit the Farm</h2>
+        <p className="font-body text-white mb-8 max-w-md mx-auto">Day visits, volunteering, and retreat stays available. Contact us to plan your trip to Thika.</p>
+        <ButtonLink variant="ghost" href="/contact">
           Enquire Now
-        </Link>
+        </ButtonLink>
       </section>
     </>
   );

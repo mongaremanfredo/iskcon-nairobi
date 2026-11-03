@@ -40,9 +40,9 @@ const config: Config = {
         ink: "var(--color-dusk)",
       },
       fontFamily: {
-        playfair: ["var(--font-playfair)", "Georgia", "serif"],
-        inter: ["var(--font-inter)", "system-ui", "sans-serif"],
-        cormorant: ["var(--font-cormorant)", "Georgia", "serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
+        body: ["var(--font-body)", "system-ui", "sans-serif"],
+        editorial: ["var(--font-editorial)", "Georgia", "serif"],
       },
       fontSize: {
         "display-xl": ["clamp(2.5rem, 7vw, 5.5rem)", { lineHeight: "1.05", letterSpacing: "0" }],

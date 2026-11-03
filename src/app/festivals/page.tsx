@@ -8,6 +8,7 @@ import { getKirtanSafariState } from "@/lib/kirtanSafariState";
 import { getUpcomingCalendarDates } from "@/lib/calendarDates";
 import { safeJsonLd } from "@/lib/security";
 import { withSeo } from "@/lib/seo";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export const dynamic = "force-dynamic";
 
@@ -18,10 +19,10 @@ export const metadata = withSeo({
 
 function CalendarMonth({ month }: { month: (typeof vaishnavaCalendar2026)[number] }) {
   return (
-    <section className="border border-temple-sand bg-white">
+    <section className="card-surface">
         <div className="flex items-center justify-between border-b border-temple-sand bg-temple-cream px-4 py-3">
-          <h3 className="font-playfair text-xl font-semibold text-ink">{month.month}</h3>
-          <span className="font-inter text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">
+          <h3 className="font-display text-xl font-semibold text-ink">{month.month}</h3>
+          <span className="font-body text-xs font-semibold uppercase tracking-[0.14em] text-gold-ink">
             {month.events.length} dates
           </span>
         </div>
@@ -29,14 +30,14 @@ function CalendarMonth({ month }: { month: (typeof vaishnavaCalendar2026)[number
           {month.events.map((item) => (
             <div key={`${month.month}-${item.date}-${item.event}`} className="grid grid-cols-[4.8rem_1fr] gap-3 px-4 py-3">
               <div>
-                <p className="font-inter text-xs font-bold uppercase tracking-[0.08em] text-primary">{item.date}</p>
-                <p className="font-inter text-xs uppercase tracking-[0.14em] text-ink/75">{item.day}</p>
+                <p className="font-body text-xs font-bold uppercase tracking-[0.08em] text-primary">{item.date}</p>
+                <p className="font-body text-xs uppercase tracking-[0.14em] text-ink/75">{item.day}</p>
               </div>
               <div className="min-w-0">
                 <div className="flex flex-wrap items-center gap-2">
-                  <p className="font-inter text-sm leading-snug text-ink/75">{item.event}</p>
+                  <p className="font-body text-sm leading-snug text-ink/75">{item.event}</p>
                   {item.type && (
-                    <span className="inline-flex items-center gap-1 bg-gold/10 px-2 py-0.5 font-inter text-xs font-bold uppercase tracking-[0.12em] text-gold-ink">
+                    <span className="inline-flex items-center gap-1 bg-gold/10 px-2 py-0.5 font-body text-xs font-bold uppercase tracking-[0.12em] text-gold-ink">
                       {item.type === "Major" && <Sparkles size={10} />}
                       {item.type}
                     </span>
@@ -99,7 +100,7 @@ export default function FestivalsPage() {
       <PageHero
         title="Sacred"
         titleAccent="Festivals"
-        subtitle="Temple Calendar"
+        subtitle="Temple Festivals"
         description="Celebrate Lord Krishna, Lord Jagannath, Sri Chaitanya Mahaprabhu, and the holy name with Nairobi's devotional community."
         image="/images/hero-ratha-yatra-kenya.jpg"
         height="sm"
@@ -109,26 +110,22 @@ export default function FestivalsPage() {
       <section className="pt-section-sm pb-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="mb-8 max-w-2xl">
-            <span className="eyebrow block mb-3">Coming Up</span>
-            <h2 className="section-title">
-              Next Dates at<br />
-              <em className="text-gold not-italic font-normal">the Temple</em>
-            </h2>
+            <SectionHeading eyebrow="Coming Up" title="Next Dates at" accent="the Temple" />
           </div>
           {nextDates.length > 0 ? (
             <ul className="mb-12 grid gap-px border border-temple-sand bg-temple-sand sm:grid-cols-2 lg:grid-cols-3">
               {nextDates.map((item) => (
                 <li key={`${item.isoDate}-${item.event}`} className="flex items-baseline gap-4 bg-white p-5">
                   <span className="shrink-0">
-                    <span className="block font-inter text-sm font-bold uppercase tracking-wide text-primary">{item.label}</span>
-                    <span className="block font-inter text-xs uppercase tracking-[0.14em] text-ink/75">{item.day}</span>
+                    <span className="block font-body text-sm font-bold uppercase tracking-wide text-primary">{item.label}</span>
+                    <span className="block font-body text-xs uppercase tracking-[0.14em] text-ink/75">{item.day}</span>
                   </span>
-                  <span className="font-playfair text-lg leading-snug text-ink">{item.event}</span>
+                  <span className="font-display text-lg leading-snug text-ink">{item.event}</span>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="mb-12 font-inter text-sm leading-relaxed text-ink/75">
+            <p className="mb-12 font-body text-sm leading-relaxed text-ink/75">
               The next temple calendar is being prepared. Contact the temple office for upcoming dates.
             </p>
           )}
@@ -139,13 +136,9 @@ export default function FestivalsPage() {
           <>
           <div className="mb-12 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <span className="eyebrow block mb-3">Next Temple Programmes</span>
-              <h2 className="section-title">
-                Upcoming<br />
-                <em className="text-gold not-italic font-normal">Highlights</em>
-              </h2>
+              <SectionHeading eyebrow="Next Temple Programmes" title="Upcoming" accent="Highlights" />
             </div>
-            <p className="max-w-xl font-inter text-sm leading-relaxed text-ink/75">
+            <p className="max-w-xl font-body text-sm leading-relaxed text-ink/75">
               Key public events from the ISKCON Nairobi 2026 Vaishnava calendar. Dates may be confirmed again closer to each festival.
             </p>
           </div>
@@ -155,7 +148,7 @@ export default function FestivalsPage() {
               <Link
                 href={festival.href}
                 key={festival.href}
-                className="group bg-white border border-temple-sand hover:border-primary/40 hover:shadow-card-hover transition-all overflow-hidden"
+                className="group card-surface hover:border-primary/40 hover:shadow-card-hover transition-all overflow-hidden"
               >
                 <div className="relative h-56 overflow-hidden image-grade">
                   <Image
@@ -167,23 +160,23 @@ export default function FestivalsPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dusk/75 to-transparent" />
                   <div className="absolute left-4 top-4 bg-gold px-2.5 py-1">
-                    <span className="font-inter text-xs font-bold uppercase tracking-[0.14em] text-ink">{festival.tag}</span>
+                    <span className="font-body text-xs font-bold uppercase tracking-[0.14em] text-ink">{festival.tag}</span>
                   </div>
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h2 className="font-playfair text-white text-xl font-semibold text-shadow">{festival.title}</h2>
+                    <h2 className="font-display text-white text-xl font-semibold text-shadow">{festival.title}</h2>
                   </div>
                 </div>
                 <div className="p-5">
                   <div className="flex items-center gap-2 text-ink/75 mb-2">
                     <Calendar size={12} className="text-gold" />
-                    <span className="font-inter text-xs">{festival.date}</span>
+                    <span className="font-body text-xs">{festival.date}</span>
                   </div>
                   <div className="flex items-center gap-2 text-ink/75 mb-4">
                     <MapPin size={12} className="text-gold" />
-                    <span className="font-inter text-xs">{festival.location}</span>
+                    <span className="font-body text-xs">{festival.location}</span>
                   </div>
-                  <p className="font-inter text-ink/75 text-sm leading-relaxed line-clamp-3">{festival.description}</p>
-                  <div className="mt-5 flex items-center gap-2 font-inter text-xs font-semibold tracking-widest uppercase text-primary">
+                  <p className="font-body text-ink/75 text-sm leading-relaxed line-clamp-3">{festival.description}</p>
+                  <div className="mt-5 flex items-center gap-2 font-body text-xs font-semibold tracking-widest uppercase text-primary">
                     Details <ArrowRight size={12} />
                   </div>
                 </div>
@@ -197,10 +190,10 @@ export default function FestivalsPage() {
             <section className="mt-16 border-t border-gold/20 pt-10">
               <div className="mb-7 max-w-2xl">
                 <span className="eyebrow mb-3 block">2026 Festival Archive</span>
-                <h2 className="font-playfair text-3xl font-semibold text-ink sm:text-4xl">
+                <h2 className="font-display text-3xl font-semibold text-ink sm:text-4xl">
                   Celebrations from this year
                 </h2>
-                <p className="mt-3 font-inter text-sm leading-relaxed text-ink/75">
+                <p className="mt-3 font-body text-sm leading-relaxed text-ink/75">
                   Revisit festival stories, photographs, teachings, and memories from the temple community.
                 </p>
               </div>
@@ -209,7 +202,7 @@ export default function FestivalsPage() {
                   <Link
                     href={festival.href}
                     key={festival.href}
-                    className="group grid min-h-44 grid-cols-[minmax(7.5rem,0.85fr)_1.15fr] overflow-hidden border border-temple-sand bg-white transition-all hover:border-primary/40 hover:shadow-card-hover"
+                    className="group grid min-h-44 grid-cols-[minmax(7.5rem,0.85fr)_1.15fr] overflow-hidden card-surface transition-all hover:border-primary/40 hover:shadow-card-hover"
                   >
                     <div className="relative image-grade">
                       <Image
@@ -221,13 +214,13 @@ export default function FestivalsPage() {
                       />
                     </div>
                     <div className="flex flex-col justify-center p-5">
-                      <span className="font-inter text-xs font-bold uppercase tracking-[0.14em] text-gold-ink">
+                      <span className="font-body text-xs font-bold uppercase tracking-[0.14em] text-gold-ink">
                         {festival.date}
                       </span>
-                      <h3 className="mt-2 font-playfair text-xl font-semibold leading-tight text-ink group-hover:text-primary">
+                      <h3 className="mt-2 font-display text-xl font-semibold leading-tight text-ink group-hover:text-primary">
                         {festival.title}
                       </h3>
-                      <span className="mt-4 inline-flex items-center gap-2 font-inter text-xs font-semibold uppercase tracking-widest text-primary">
+                      <span className="mt-4 inline-flex items-center gap-2 font-body text-xs font-semibold uppercase tracking-widest text-primary">
                         Revisit <ArrowRight size={11} />
                       </span>
                     </div>
@@ -241,7 +234,7 @@ export default function FestivalsPage() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <span className="eyebrow block mb-2">2026 Vaishnava Calendar</span>
-                <h2 className="font-playfair text-2xl font-semibold text-ink sm:text-3xl">
+                <h2 className="font-display text-2xl font-semibold text-ink sm:text-3xl">
                   Gaurabda 539-540
                 </h2>
               </div>
@@ -256,7 +249,7 @@ export default function FestivalsPage() {
 
           {pastMonths.length > 0 && (
             <details className="mt-8 border border-temple-sand bg-white/70">
-              <summary className="flex min-h-11 cursor-pointer items-center px-5 py-3 font-inter text-sm font-semibold text-ink">
+              <summary className="flex min-h-11 cursor-pointer items-center px-5 py-3 font-body text-sm font-semibold text-ink">
                 Earlier in 2026 ({pastMonths.length} months)
               </summary>
               <div className="grid gap-5 p-5 lg:grid-cols-2">

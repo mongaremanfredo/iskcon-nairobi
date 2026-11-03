@@ -228,17 +228,17 @@ export default function PwaRegistrar() {
             <Sparkles className="h-5 w-5" aria-hidden="true" />
           </span>
           <div className="min-w-0 flex-1">
-            <p className="font-inter text-xs font-bold uppercase tracking-[0.16em] text-gold">
+            <p className="font-body text-xs font-bold uppercase tracking-[0.16em] text-gold">
               Version {promptedUpdate.release.version}
             </p>
-            <h2 id="app-update-title" className="mt-1 font-playfair text-xl font-semibold text-white">
+            <h2 id="app-update-title" className="mt-1 font-display text-xl font-semibold text-white">
               {promptedUpdate.release.name}
             </h2>
-            <p id="app-update-summary" className="mt-2 font-inter text-sm leading-relaxed text-sand/75">
+            <p id="app-update-summary" className="mt-2 font-body text-sm leading-relaxed text-sand/75">
               {promptedUpdate.release.summary}
             </p>
             {promptedUpdate.release.highlights.length > 0 && (
-              <ul className="mt-3 space-y-1 font-inter text-xs leading-relaxed text-sand/75">
+              <ul className="mt-3 space-y-1 font-body text-xs leading-relaxed text-sand/75">
                 {promptedUpdate.release.highlights.slice(0, 3).map((highlight) => (
                   <li key={highlight}>• {highlight}</li>
                 ))}
@@ -250,14 +250,14 @@ export default function PwaRegistrar() {
           <button
             type="button"
             onClick={() => setPromptedUpdate(null)}
-            className="min-h-11 border border-sand/25 px-4 font-inter text-xs font-bold uppercase tracking-[0.12em] text-sand transition-colors hover:border-sand/50"
+            className="min-h-11 border border-sand/25 px-4 font-body text-xs font-bold uppercase tracking-[0.12em] text-sand transition-colors hover:border-sand/50"
           >
             Later
           </button>
           <button
             type="button"
             onClick={installPromptedUpdate}
-            className="flex min-h-11 items-center justify-center gap-2 bg-gold px-4 font-inter text-xs font-bold uppercase tracking-[0.12em] text-dusk transition-colors hover:bg-gold-light"
+            className="flex min-h-11 items-center justify-center gap-2 bg-gold px-4 font-body text-xs font-bold uppercase tracking-[0.12em] text-dusk transition-colors hover:bg-gold-light"
           >
             <RefreshCw className="h-4 w-4" aria-hidden="true" />
             Update now
@@ -275,7 +275,7 @@ export default function PwaRegistrar() {
         className="fixed left-1/2 top-[calc(env(safe-area-inset-top)+5.25rem)] z-[90] flex w-[min(92vw,30rem)] -translate-x-1/2 items-center gap-3 border border-acacia/40 bg-[#24382a] px-4 py-3 text-sand shadow-card-hover"
       >
         <WifiOff className="h-4 w-4 shrink-0 text-gold" aria-hidden="true" />
-        <p className="min-w-0 flex-1 font-inter text-xs leading-snug">
+        <p className="min-w-0 flex-1 font-body text-xs leading-snug">
           {isOffline
             ? "You are offline. Saved pages remain available."
             : "Connection is slow. Saved content will be used when available."}

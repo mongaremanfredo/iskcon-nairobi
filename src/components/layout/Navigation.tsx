@@ -10,6 +10,7 @@ import BrandLogo from "@/components/ui/BrandLogo";
 import TempleStatusBar from "@/components/layout/TempleStatusBar";
 import NoticeboardButton from "@/components/layout/NoticeboardButton";
 import { templeInfo } from "@/data/site";
+import "./Navigation.css";
 
 const primaryNavigation = [
   { label: "Home", href: "/" },
@@ -143,12 +144,12 @@ export default function Navigation() {
                   solidNav ? "translate-y-0" : "translate-y-0"
                 )}
               >
-                <span className="nav-brand-name font-inter text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
+                <span className="nav-brand-name font-body text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
                   ISKCON Nairobi
                 </span>
                 <span
                   className={cn(
-                    "nav-brand-expansion font-inter text-xs font-medium leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:hidden",
+                    "nav-brand-expansion font-body text-xs font-medium leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:hidden",
                     solidNav ? "opacity-80" : "opacity-95"
                   )}
                 >
@@ -174,7 +175,7 @@ export default function Navigation() {
               <NoticeboardButton statusBarVisible={scrolled && !isOpen} />
               <Link
                 href="/donate"
-                className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap [overflow-wrap:normal] bg-primary text-white font-inter text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-primary-dark max-[900px]:px-2.5 max-[900px]:tracking-wider max-[359px]:hidden"
+                className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap [overflow-wrap:normal] bg-primary text-white font-body text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-primary-dark max-[900px]:px-2.5 max-[900px]:tracking-wider max-[359px]:hidden"
               >
                 Donate
               </Link>
@@ -255,7 +256,7 @@ export default function Navigation() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setIsOpen(false)}
-                className="flex items-center justify-between px-6 py-3.5 font-inter text-sm text-white/80 hover:text-sunset hover:bg-white/5 transition-all border-b border-white/5"
+                className="flex items-center justify-between px-6 py-3.5 font-body text-sm text-white/80 hover:text-sunset hover:bg-white/5 transition-all border-b border-white/5"
                 style={{ animationDelay: `${i * 50}ms` }}
               >
                 {item.label}
@@ -268,7 +269,7 @@ export default function Navigation() {
             <a
               href={`tel:${templeInfo.phoneHref}`}
               onClick={() => setIsOpen(false)}
-              className="mb-3 flex min-h-11 w-full items-center justify-center gap-2 border border-gold/40 py-3 font-inter text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-white/5"
+              className="mb-3 flex min-h-11 w-full items-center justify-center gap-2 border border-gold/40 py-3 font-body text-xs font-semibold uppercase tracking-widest text-gold transition-colors hover:bg-white/5"
             >
               <Phone size={13} />
               Call Temple
@@ -283,39 +284,6 @@ export default function Navigation() {
           </div>
         </div>
       </div>
-      <style>{`
-        @media (max-height: 520px) and (orientation: landscape) {
-          .site-nav {
-            padding-top: 0.35rem !important;
-            padding-bottom: 0.35rem !important;
-          }
-
-          .site-nav .section-padding {
-            padding-left: 0.75rem !important;
-            padding-right: 0.75rem !important;
-          }
-
-          .site-nav .nav-brand-logo {
-            width: 42px !important;
-            height: 39px !important;
-          }
-
-          .site-nav .nav-brand-name {
-            font-size: 0.78rem !important;
-          }
-
-          .site-nav .nav-brand-expansion {
-            font-size: 0.75rem !important;
-            max-width: 12rem !important;
-            white-space: nowrap !important;
-          }
-
-          .site-nav button[aria-label] {
-            width: 2.75rem !important;
-            height: 2.75rem !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

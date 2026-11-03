@@ -1,12 +1,12 @@
 {
-  "version": "1.1.0",
-  "name": "Faster, Clearer, Easier to Use",
+  "version": "1.1.1",
+  "name": "Clearer Forms and Wording",
   "publishedAt": "2026-11-03",
   "updateMode": "silent",
-  "summary": "Pages load much faster on phones, text is easier to read, and temple hours, festival dates, and donation information are clearer.",
+  "summary": "Forms now behave the same way across the site, festival wording is consistent, and a few visual details are corrected.",
   "highlights": [
-    "Pages download far less data on mobile connections",
-    "Upcoming festival dates always show the next dates on the calendar",
-    "Easier to read and to use by touch, keyboard, and screen reader"
+    "Forms explain mistakes clearly and mark optional fields",
+    "Festival links and labels use one name",
+    "Small visual fixes on phones and a shorter homepage"
   ]
 }

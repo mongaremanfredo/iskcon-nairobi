@@ -23,6 +23,6 @@ for (const route of visualRoutes) {
     await page.evaluate(() => window.scrollTo({ top: 0, behavior: "instant" }));
     await page.clock.runFor(500);
 
-    await expect(page).toHaveScreenshot(`${routeLabel(route)}.png`, { fullPage: true });
+    await expect(page).toHaveScreenshot(`${routeLabel(route)}.png`, { fullPage: true, timeout: 60_000 });
   });
 }

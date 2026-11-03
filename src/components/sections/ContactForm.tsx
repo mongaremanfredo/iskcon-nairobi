@@ -1,5 +1,7 @@
 "use client";
 
+import FormMessage from "@/components/ui/FormMessage";
+import { isValidEmail } from "@/lib/formValidation";
 import { FormEvent, useState } from "react";
 
 type FormState = {
@@ -37,7 +39,7 @@ function cleanText(value: string) {
 }
 
 const inputClass =
-  "w-full bg-white border border-temple-sand font-inter text-sm px-4 py-3 focus:border-gold text-ink placeholder-ink/30";
+  "w-full card-surface font-body text-sm px-4 py-3 focus:border-gold text-ink placeholder-ink/30";
 
 export default function ContactForm() {
   const [form, setForm] = useState<FormState>(initialForm);
@@ -60,6 +62,12 @@ export default function ContactForm() {
     if (!form.firstName.trim() || !form.email.trim() || !form.message.trim()) {
       setStatus("error");
       setMessage("Please add your name, email address, and a message.");
+      return;
+    }
+
+    if (!isValidEmail(form.email)) {
+      setStatus("error");
+      setMessage("Please check your email address.");
       return;
     }
 
@@ -108,10 +116,10 @@ export default function ContactForm() {
       <div className="grid sm:grid-cols-2 gap-5">
         {[
           { label: "First Name", name: "firstName", type: "text", placeholder: "First name", autoComplete: "given-name" },
-          { label: "Last Name", name: "lastName", type: "text", placeholder: "Last name", autoComplete: "family-name" },
+          { label: "Last Name (optional)", name: "lastName", type: "text", placeholder: "Last name", autoComplete: "family-name" },
         ].map((f) => (
           <div key={f.name}>
-            <label htmlFor={`contact-${f.name}`} className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">{f.label}</label>
+            <label htmlFor={`contact-${f.name}`} className="font-body text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">{f.label}</label>
             <input id={`contact-${f.name}`}
               value={form[f.name as "firstName" | "lastName"]}
               onChange={(event) => updateField(f.name as "firstName" | "lastName", event.target.value)}
@@ -119,7 +127,7 @@ export default function ContactForm() {
               placeholder={f.placeholder}
               autoComplete={f.autoComplete}
               maxLength={60}
-              required
+              required={f.name === "firstName"}
               title="Please do not include code, angle brackets, or markup."
               className={inputClass}
             />
@@ -131,7 +139,7 @@ export default function ContactForm() {
         { label: "Phone Number (optional)", name: "phone", type: "tel", placeholder: "+254 ...", autoComplete: "tel", inputMode: "tel", required: false },
       ].map((f) => (
         <div key={f.name}>
-          <label htmlFor={`contact-${f.name}`} className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">{f.label}</label>
+          <label htmlFor={`contact-${f.name}`} className="font-body text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">{f.label}</label>
           <input id={`contact-${f.name}`}
             value={form[f.name as "email" | "phone"]}
             onChange={(event) => updateField(f.name as "email" | "phone", event.target.value)}
@@ -148,7 +156,7 @@ export default function ContactForm() {
         </div>
       ))}
       <div>
-        <label htmlFor="contact-field-1" className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">Subject</label>
+        <label htmlFor="contact-field-1" className="font-body text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">Subject</label>
         <select id="contact-field-1"
           value={form.subject}
           onChange={(event) => updateField("subject", event.target.value)}
@@ -161,7 +169,7 @@ export default function ContactForm() {
         </select>
       </div>
       <div>
-        <label htmlFor="contact-field-2" className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">Message</label>
+        <label htmlFor="contact-field-2" className="font-body text-xs font-semibold uppercase tracking-wider text-ink/75 block mb-1.5">Message</label>
         <textarea id="contact-field-2"
           value={form.message}
           onChange={(event) => updateField("message", event.target.value)}
@@ -186,16 +194,7 @@ export default function ContactForm() {
         </label>
       </div>
 
-      {message && (
-        <p
-          className={`font-inter text-sm ${
-            status === "error" ? "text-primary-dark" : "text-emerald-700"
-          }`}
-          role={status === "error" ? "alert" : "status"}
-        >
-          {message}
-        </p>
-      )}
+      <FormMessage status={status} message={message} />
 
       <button type="submit" disabled={status === "submitting"} className="btn-primary w-full justify-center">
         {status === "submitting" ? "Sending..." : "Send Message"}

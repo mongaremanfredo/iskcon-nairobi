@@ -40,16 +40,16 @@ export default function ContactPage() {
                 <div key={item.label} className="flex gap-4">
                   <div className="text-gold mt-0.5 flex-shrink-0">{item.icon}</div>
                   <div>
-                    <p className="font-inter text-xs font-semibold uppercase tracking-wider text-ink/75 mb-0.5">{item.label}</p>
+                    <p className="font-body text-xs font-semibold uppercase tracking-wider text-ink/75 mb-0.5">{item.label}</p>
                     {item.href ? (
                       <a
                         href={item.href}
-                        className="tap-target block font-inter text-ink/75 text-sm whitespace-pre-line leading-relaxed transition-colors hover:text-primary hover:underline"
+                        className="tap-target block font-body text-ink/75 text-sm whitespace-pre-line leading-relaxed transition-colors hover:text-primary hover:underline"
                       >
                         {item.value}
                       </a>
                     ) : (
-                      <p className="font-inter text-ink/75 text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
+                      <p className="font-body text-ink/75 text-sm whitespace-pre-line leading-relaxed">{item.value}</p>
                     )}
                   </div>
                 </div>
@@ -59,7 +59,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2 bg-temple-cream border border-temple-sand p-8 lg:p-10">
               <div className="flex items-center gap-3 mb-8">
                 <MessageSquare size={20} className="text-gold" />
-                <h3 className="font-playfair text-2xl font-semibold text-ink">Send a Message</h3>
+                <h3 className="font-display text-2xl font-semibold text-ink">Send a Message</h3>
               </div>
               <ContactForm />
             </div>

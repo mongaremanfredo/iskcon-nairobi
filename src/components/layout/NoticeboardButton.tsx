@@ -242,8 +242,8 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
                   <BellRing size={18} />
                 </span>
                 <div>
-                  <p className="font-inter text-xs font-bold uppercase tracking-[0.18em] text-gold">Temple noticeboard</p>
-                  <h2 className="mt-1 font-playfair text-xl font-semibold leading-tight">Latest visitor updates</h2>
+                  <p className="font-body text-xs font-bold uppercase tracking-[0.18em] text-gold">Temple noticeboard</p>
+                  <h2 className="mt-1 font-display text-xl font-semibold leading-tight">Latest visitor updates</h2>
                 </div>
               </div>
               <button
@@ -264,25 +264,25 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
                   key={notice.id}
                   href={notice.href}
                   onClick={() => setIsOpen(false)}
-                  className="group block border border-temple-sand bg-white p-4 transition hover:border-gold/45 hover:shadow-card"
+                  className="group block card-surface p-4 transition hover:border-gold/45 hover:shadow-card"
                 >
                   <div className="mb-2 flex items-center justify-between gap-3">
                     <span
                       className={cn(
-                        "font-inter text-xs font-bold uppercase tracking-[0.15em]",
+                        "font-body text-xs font-bold uppercase tracking-[0.15em]",
                         notice.priority === "high" ? "text-sunset" : "text-gold"
                       )}
                     >
                       {notice.tag}
                     </span>
-                    <span className="font-inter text-xs font-semibold uppercase tracking-[0.11em] text-ink/75">
+                    <span className="font-body text-xs font-semibold uppercase tracking-[0.11em] text-ink/75">
                       {notice.dateLabel}
                     </span>
                   </div>
                   <div className="flex gap-3">
                     <div className="min-w-0">
-                      <h3 className="font-playfair text-lg font-semibold leading-snug text-ink">{notice.title}</h3>
-                      <p className="mt-2 font-inter text-xs leading-relaxed text-ink/75">{notice.body}</p>
+                      <h3 className="font-display text-lg font-semibold leading-snug text-ink">{notice.title}</h3>
+                      <p className="mt-2 font-body text-xs leading-relaxed text-ink/75">{notice.body}</p>
                     </div>
                     <ChevronRight size={16} className="mt-1 shrink-0 text-gold transition group-hover:translate-x-0.5" />
                   </div>
@@ -292,7 +292,7 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
 
             <div className="border-t border-temple-sand bg-temple-cream/70 p-4">
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-                <div className="font-inter text-xs leading-relaxed text-ink/75">
+                <div className="font-body text-xs leading-relaxed text-ink/75">
                   {permission === "denied"
                     ? "Notifications are blocked in this browser. Use site settings to allow them."
                     : "Enable alerts to receive push notifications when new notices are added."}
@@ -301,14 +301,14 @@ export default function NoticeboardButton({ statusBarVisible = false }: Noticebo
                   type="button"
                   onClick={enabled ? disableAlerts : enableAlerts}
                   disabled={isSaving || permission === "unsupported" || permission === "denied"}
-                  className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 bg-primary px-4 py-2.5 font-inter text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-ink/30"
+                  className="inline-flex min-h-11 shrink-0 items-center justify-center gap-2 bg-primary px-4 py-2.5 font-body text-xs font-bold uppercase tracking-[0.14em] text-white transition hover:bg-primary-dark disabled:cursor-not-allowed disabled:bg-ink/30"
                 >
                   {enabled ? <Check size={13} /> : <BellRing size={13} />}
                   {alertLabel}
                 </button>
               </div>
 
-              <div className="mt-3 flex items-center gap-2 font-inter text-xs uppercase tracking-[0.13em] text-ink/75">
+              <div className="mt-3 flex items-center gap-2 font-body text-xs uppercase tracking-[0.13em] text-ink/75">
                 <CalendarDays size={12} className="text-gold" />
                 You can turn alerts off here any time
               </div>

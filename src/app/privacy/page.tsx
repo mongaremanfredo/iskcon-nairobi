@@ -198,21 +198,21 @@ export default function PrivacyPage() {
             </header>
 
             <div className="mb-10 border border-gold/20 bg-white p-6 shadow-sm">
-              <p className="font-inter text-xs font-semibold uppercase tracking-[0.22em] text-gold-ink">Last Updated</p>
-              <p className="mt-2 font-playfair text-2xl text-ink">{lastUpdated}</p>
-              <p className="mt-4 font-inter text-sm leading-relaxed text-ink/75">
+              <p className="font-body text-xs font-semibold uppercase tracking-[0.22em] text-gold-ink">Last Updated</p>
+              <p className="mt-2 font-display text-2xl text-ink">{lastUpdated}</p>
+              <p className="mt-4 font-body text-sm leading-relaxed text-ink/75">
                 This Privacy Policy explains how ISKCON Nairobi collects, uses, shares, and protects personal data through this website and related digital services.
               </p>
             </div>
 
             <nav aria-labelledby="privacy-table-of-contents" className="mb-10 border border-temple-sand bg-temple-cream p-6">
-              <h2 id="privacy-table-of-contents" className="font-playfair text-xl font-semibold text-ink">Table of Contents</h2>
+              <h2 id="privacy-table-of-contents" className="font-display text-xl font-semibold text-ink">Table of Contents</h2>
               <div className="mt-4 grid gap-2 sm:grid-cols-2">
                 {privacyToc.map((title) => (
                   <a
                     key={title}
                     href={`#${sectionId(title)}`}
-                    className="tap-target font-inter text-sm leading-relaxed text-ink/75 underline decoration-gold/30 underline-offset-4 transition-colors hover:text-primary"
+                    className="tap-target font-body text-sm leading-relaxed text-ink/75 underline decoration-gold/30 underline-offset-4 transition-colors hover:text-primary"
                   >
                     {title}
                   </a>
@@ -222,8 +222,8 @@ export default function PrivacyPage() {
 
             <article className="space-y-10">
               <section className="border-b border-temple-sand pb-8">
-                <h2 id={sectionId(privacySections[0].title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{privacySections[0].title}</h2>
-                <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/75">
+                <h2 id={sectionId(privacySections[0].title)} className="scroll-mt-32 font-display text-2xl font-semibold text-ink">{privacySections[0].title}</h2>
+                <div className="mt-4 space-y-3 font-body text-sm leading-relaxed text-ink/75">
                   {privacySections[0].content.map((item, index) => (
                     <p key={item} id={subClauseId(privacySections[0].title, index)} className="scroll-mt-32">
                       <span className="font-semibold text-ink">{subClauseNumber(privacySections[0].title, index)} </span>
@@ -234,9 +234,9 @@ export default function PrivacyPage() {
               </section>
 
               <section className="border-b border-temple-sand pb-8">
-                <h2 id={sectionId("2. Personal Data We Collect")} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">2. Personal Data We Collect</h2>
-                <div className="mt-5 overflow-x-auto border border-temple-sand bg-white">
-                  <table className="w-full min-w-[680px] border-collapse text-left font-inter text-xs text-ink/75">
+                <h2 id={sectionId("2. Personal Data We Collect")} className="scroll-mt-32 font-display text-2xl font-semibold text-ink">2. Personal Data We Collect</h2>
+                <div className="mt-5 overflow-x-auto card-surface">
+                  <table className="w-full min-w-[680px] border-collapse text-left font-body text-xs text-ink/75">
                     <thead className="bg-temple-cream text-ink">
                       <tr>
                         <th className="border-b border-temple-sand px-4 py-3 font-semibold">Category</th>
@@ -258,8 +258,8 @@ export default function PrivacyPage() {
               </section>
 
               <section className="border-b border-temple-sand pb-8">
-                <h2 id={sectionId(privacySections[1].title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{privacySections[1].title}</h2>
-                <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/75">
+                <h2 id={sectionId(privacySections[1].title)} className="scroll-mt-32 font-display text-2xl font-semibold text-ink">{privacySections[1].title}</h2>
+                <div className="mt-4 space-y-3 font-body text-sm leading-relaxed text-ink/75">
                   {privacySections[1].content.map((item, index) => (
                     <p key={item} id={subClauseId(privacySections[1].title, index)} className="scroll-mt-32">
                       <span className="font-semibold text-ink">{subClauseNumber(privacySections[1].title, index)} </span>
@@ -270,9 +270,9 @@ export default function PrivacyPage() {
               </section>
 
               <section className="border-b border-temple-sand pb-8">
-                <h2 id={sectionId("4. Legal Basis and Purpose of Processing")} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">4. Legal Basis and Purpose of Processing</h2>
-                <div className="mt-5 overflow-x-auto border border-temple-sand bg-white">
-                  <table className="w-full min-w-[620px] border-collapse text-left font-inter text-xs text-ink/75">
+                <h2 id={sectionId("4. Legal Basis and Purpose of Processing")} className="scroll-mt-32 font-display text-2xl font-semibold text-ink">4. Legal Basis and Purpose of Processing</h2>
+                <div className="mt-5 overflow-x-auto card-surface">
+                  <table className="w-full min-w-[620px] border-collapse text-left font-body text-xs text-ink/75">
                     <thead className="bg-temple-cream text-ink">
                       <tr>
                         <th className="border-b border-temple-sand px-4 py-3 font-semibold">Purpose</th>
@@ -293,8 +293,8 @@ export default function PrivacyPage() {
 
               {privacySections.slice(2).map((section) => (
                 <section key={section.title} className="border-b border-temple-sand pb-8 last:border-b-0">
-                  <h2 id={sectionId(section.title)} className="scroll-mt-32 font-playfair text-2xl font-semibold text-ink">{section.title}</h2>
-                  <div className="mt-4 space-y-3 font-inter text-sm leading-relaxed text-ink/75">
+                  <h2 id={sectionId(section.title)} className="scroll-mt-32 font-display text-2xl font-semibold text-ink">{section.title}</h2>
+                  <div className="mt-4 space-y-3 font-body text-sm leading-relaxed text-ink/75">
                     {section.content.map((item, index) => (
                       <p key={item} id={subClauseId(section.title, index)} className="scroll-mt-32">
                         <span className="font-semibold text-ink">{subClauseNumber(section.title, index)} </span>
@@ -307,8 +307,8 @@ export default function PrivacyPage() {
             </article>
 
             <div id={sectionId("15. Contact Us")} className="mt-10 scroll-mt-32 border border-temple-sand bg-temple-cream p-6">
-              <h2 className="font-playfair text-xl font-semibold text-ink">15. Contact Us</h2>
-              <div className="mt-3 space-y-2 font-inter text-sm leading-relaxed text-ink/75">
+              <h2 className="font-display text-xl font-semibold text-ink">15. Contact Us</h2>
+              <div className="mt-3 space-y-2 font-body text-sm leading-relaxed text-ink/75">
                 <p>{templeInfo.name}</p>
                 <p>{templeAddress}</p>
                 <p>

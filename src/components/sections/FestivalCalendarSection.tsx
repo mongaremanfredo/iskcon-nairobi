@@ -7,6 +7,7 @@ import { Calendar, MapPin, ArrowRight } from "lucide-react";
 import { homepageFestivalPreview } from "@/data/site";
 import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 import { getUpcomingCalendarDates } from "@/lib/calendarDates";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export default function FestivalCalendarSection() {
   const festivalState = useKirtanSafariState();
@@ -28,11 +29,7 @@ export default function FestivalCalendarSection() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
           <div>
-            <span className="eyebrow block mb-3">Calendar</span>
-            <h2 className="section-title">
-              Upcoming<br />
-              <em className="text-gold not-italic font-normal">Festivals & Events</em>
-            </h2>
+            <SectionHeading eyebrow="Festivals" title="Upcoming" accent="Festivals & Events" />
           </div>
         </div>
 
@@ -42,13 +39,13 @@ export default function FestivalCalendarSection() {
             <ul className="grid gap-px border border-temple-sand bg-temple-sand sm:grid-cols-2">
               {nextDates.map((item) => (
                 <li key={`${item.isoDate}-${item.event}`} className="flex items-baseline gap-4 bg-white p-5">
-                  <span className="w-16 shrink-0 font-inter text-sm font-bold uppercase tracking-wide text-primary">{item.label}</span>
-                  <span className="font-playfair text-lg leading-snug text-ink">{item.event}</span>
+                  <span className="w-16 shrink-0 font-body text-sm font-bold uppercase tracking-wide text-primary">{item.label}</span>
+                  <span className="font-display text-lg leading-snug text-ink">{item.event}</span>
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="font-inter text-sm leading-relaxed text-ink/75">
+            <p className="font-body text-sm leading-relaxed text-ink/75">
               The next temple calendar is being prepared. Contact the temple office for upcoming dates.
             </p>
           )
@@ -60,7 +57,7 @@ export default function FestivalCalendarSection() {
             <Link
               key={festival.href}
               href={festival.href}
-              className="group block bg-white border border-temple-sand hover:border-gold/40 transition-all duration-300 hover:shadow-card-hover overflow-hidden"
+              className="group block card-surface hover:border-gold/40 transition-all duration-300 hover:shadow-card-hover overflow-hidden"
             >
               {/* Image */}
               <div className="relative h-48 overflow-hidden">
@@ -76,12 +73,12 @@ export default function FestivalCalendarSection() {
                 <div className="absolute bottom-4 left-4 bg-temple-brown/90 backdrop-blur-sm px-3 py-1.5">
                   <div className="flex items-center gap-2">
                     <Calendar size={11} className="text-gold" />
-                    <span className="font-inter text-white text-xs">{festival.date}</span>
+                    <span className="font-body text-white text-xs">{festival.date}</span>
                   </div>
                 </div>
                 {festival.tag && (
                   <div className="absolute top-4 left-4 bg-gold px-2.5 py-1">
-                    <span className="font-inter text-xs font-bold uppercase tracking-[0.14em] text-ink">
+                    <span className="font-body text-xs font-bold uppercase tracking-[0.14em] text-ink">
                       {festival.tag}
                     </span>
                   </div>
@@ -90,17 +87,17 @@ export default function FestivalCalendarSection() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="font-playfair text-xl font-semibold text-ink mb-1 group-hover:text-gold-ink transition-colors">
+                <h3 className="font-display text-xl font-semibold text-ink mb-1 group-hover:text-gold-ink transition-colors">
                   {festival.title}
                 </h3>
                 <div className="flex items-center gap-1.5 mb-3">
                   <MapPin size={11} className="text-gold flex-shrink-0" />
-                  <span className="font-inter text-ink/75 text-xs">{festival.location}</span>
+                  <span className="font-body text-ink/75 text-xs">{festival.location}</span>
                 </div>
-                <p className="font-inter text-ink/75 text-sm leading-relaxed line-clamp-2">
+                <p className="font-body text-ink/75 text-sm leading-relaxed line-clamp-2">
                   {festival.description}
                 </p>
-                <div className="mt-4 flex items-center gap-1.5 font-inter text-xs font-semibold text-gold-ink tracking-widest uppercase">
+                <div className="mt-4 flex items-center gap-1.5 font-body text-xs font-semibold text-gold-ink tracking-widest uppercase">
                   Learn More <ArrowRight size={11} />
                 </div>
               </div>
@@ -111,23 +108,23 @@ export default function FestivalCalendarSection() {
         <div className="mt-8 flex justify-start sm:mt-10">
           <Link
             href="/festivals"
-            className="tap-target flex items-center gap-2 font-inter text-xs text-gold-ink font-semibold tracking-widest uppercase hover:gap-3 transition-all"
+            className="tap-target flex items-center gap-2 font-body text-xs text-gold-ink font-semibold tracking-widest uppercase hover:gap-3 transition-all"
           >
-            Full Calendar <ArrowRight size={12} />
+            All Festivals <ArrowRight size={12} />
           </Link>
         </div>
 
         {/* CTA Banner */}
-        <div className="mt-12 bg-temple-brown p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="mt-12 bg-temple-brown p-8 flex flex-col max-sm:hidden sm:flex-row items-center justify-between gap-6">
           <div>
-            <p className="font-playfair text-white text-xl mb-1">Never Miss a Festival</p>
-            <p className="font-inter text-white/60 text-sm">See the full 2026 Vaishnava calendar for ISKCON Nairobi.</p>
+            <p className="font-display text-white text-xl mb-1">Never Miss a Festival</p>
+            <p className="font-body text-white/60 text-sm">See the full 2026 Vaishnava calendar for ISKCON Nairobi.</p>
           </div>
           <Link
             href="/festivals"
-            className="min-h-11 bg-gold text-ink font-inter text-xs font-semibold tracking-widest uppercase px-6 py-3 hover:bg-gold-light transition-colors"
+            className="min-h-11 bg-gold text-ink font-body text-xs font-semibold tracking-widest uppercase px-6 py-3 hover:bg-gold-light transition-colors"
           >
-            Open Calendar
+            View Festivals
           </Link>
         </div>
       </div>

@@ -40,12 +40,12 @@ function StatItem({ value, suffix, label, description, index, active }: {
       <div className="hidden lg:block absolute right-0 top-1/4 bottom-1/4 w-px bg-gold/20" />
 
       {/* Number */}
-      <div className="stat-number font-playfair font-bold text-gold mb-2" style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", lineHeight: 1 }}>
+      <div className="stat-number font-display font-bold text-gold mb-2" style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", lineHeight: 1 }}>
         {count.toLocaleString()}{suffix}
       </div>
 
       {/* Label */}
-      <h3 className="stat-label font-playfair text-temple-cream text-xl font-medium mb-2">
+      <h3 className="stat-label font-display text-temple-cream text-xl font-medium mb-2">
         {label}
       </h3>
 
@@ -53,7 +53,7 @@ function StatItem({ value, suffix, label, description, index, active }: {
       <div className="stat-rule w-8 h-px bg-gold/40 mb-3" />
 
       {/* Description */}
-      <p className="stat-description font-inter text-white/70 text-sm leading-relaxed max-w-[180px] max-sm:hidden">
+      <p className="stat-description font-body text-white/70 text-sm leading-relaxed max-w-[180px] max-sm:hidden">
         {description}
       </p>
     </div>
@@ -120,10 +120,10 @@ export default function StatsSection() {
 
         {/* Bottom quote */}
         <div className="stats-quote mt-16 max-w-2xl mx-auto text-center">
-          <p className="font-cormorant text-temple-cream/70 text-2xl italic leading-relaxed">
+          <p className="font-editorial text-temple-cream/70 text-2xl italic leading-relaxed">
             "The welfare of all living beings is the highest act of devotion."
           </p>
-          <p className="font-inter text-gold text-xs tracking-[0.15em] uppercase mt-4">
+          <p className="font-body text-gold text-xs tracking-[0.15em] uppercase mt-4">
             Śrīla Prabhupāda
           </p>
         </div>

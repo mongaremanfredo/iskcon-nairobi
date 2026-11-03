@@ -1,6 +1,7 @@
 import PageHero from "@/components/ui/PageHero";
-import Link from "next/link";
 import { withSeo } from "@/lib/seo";
+import SectionHeading from "@/components/ui/SectionHeading";
+import ButtonLink from "@/components/ui/ButtonLink";
 
 export const metadata = withSeo({ title: "Serve" }, "/serve");
 
@@ -27,22 +28,21 @@ export default function ServePage() {
       <section className="pt-section-sm pb-section bg-temple-bg">
         <div className="content-width section-padding">
           <div className="text-center mb-12">
-            <span className="eyebrow block mb-3">Volunteer Opportunities</span>
-            <h2 className="section-title">Find Your<br /><em className="text-gold not-italic font-normal">Area of Service</em></h2>
+            <SectionHeading eyebrow="Volunteer Opportunities" title="Find Your" accent="Area of Service" />
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {opportunities.map((op) => (
-              <div key={op.title} className="bg-white border border-temple-sand p-7 hover:shadow-card-hover hover:border-gold/30 transition-all">
+              <div key={op.title} className="card-surface p-7 hover:shadow-card-hover hover:border-gold/30 transition-all">
                 <div className="text-3xl mb-4">{op.emoji}</div>
-                <h3 className="font-playfair text-xl font-semibold text-ink mb-1">{op.title}</h3>
-                <p className="font-inter text-gold-ink text-xs tracking-wider mb-3">{op.commitment}</p>
+                <h3 className="font-display text-xl font-semibold text-ink mb-1">{op.title}</h3>
+                <p className="font-body text-gold-ink text-xs tracking-wider mb-3">{op.commitment}</p>
                 <div className="w-5 h-px bg-gold/30 mb-3" />
-                <p className="font-inter text-ink/75 text-sm leading-relaxed">{op.desc}</p>
+                <p className="font-body text-ink/75 text-sm leading-relaxed">{op.desc}</p>
               </div>
             ))}
           </div>
           <div className="mt-12 text-center">
-            <Link href="/contact" className="btn-primary">Register as a Volunteer</Link>
+            <ButtonLink variant="primary" href="/contact">Register as a Volunteer</ButtonLink>
           </div>
         </div>
       </section>

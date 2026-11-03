@@ -78,7 +78,7 @@ export default function Gallery() {
               showPrev();
             }}
             aria-label="Previous image"
-            className="absolute left-3 top-1/2 -translate-y-1/2 px-3 py-6 font-playfair text-3xl text-sand hover:text-gold sm:left-6"
+            className="absolute left-3 top-1/2 -translate-y-1/2 px-3 py-6 font-display text-3xl text-sand hover:text-gold sm:left-6"
           >
             ‹
           </button>
@@ -89,7 +89,7 @@ export default function Gallery() {
               showNext();
             }}
             aria-label="Next image"
-            className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-6 font-playfair text-3xl text-sand hover:text-gold sm:right-6"
+            className="absolute right-3 top-1/2 -translate-y-1/2 px-3 py-6 font-display text-3xl text-sand hover:text-gold sm:right-6"
           >
             ›
           </button>
