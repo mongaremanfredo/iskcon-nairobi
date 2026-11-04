@@ -73,7 +73,7 @@ export default function DonationSection() {
                   className="min-h-11 mt-5 flex items-center justify-center gap-2 bg-primary text-white font-body text-xs font-semibold tracking-widest uppercase py-3 hover:bg-primary-dark transition-colors"
                 >
                   <Heart size={12} />
-                  Give to {path.title}
+                  Donate
                 </Link>
               </div>
             </div>

@@ -47,6 +47,56 @@ test.beforeEach(async ({ page }) => {
   await blockApiWrites(page);
 });
 
+test("the temple name stays on one line at every supported width", async ({ page }) => {
+  await page.goto("/", { waitUntil: "load" });
+
+  const brand = page.locator(".nav-brand-name");
+  const metrics = await brand.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return {
+      height: element.getBoundingClientRect().height,
+      lineHeight: Number.parseFloat(style.lineHeight),
+      whiteSpace: style.whiteSpace,
+    };
+  });
+
+  expect(metrics.whiteSpace).toBe("nowrap");
+  expect(metrics.height).toBeLessThanOrEqual(metrics.lineHeight + 1);
+});
+
+test("the desktop brand expansion stays on one line", async ({ page, isMobile }) => {
+  test.skip(isMobile, "The expansion is intentionally hidden in the mobile header.");
+  await page.goto("/", { waitUntil: "load" });
+
+  const expansion = page.locator(".nav-brand-expansion");
+  const metrics = await expansion.evaluate((element) => {
+    const style = getComputedStyle(element);
+    return {
+      height: element.getBoundingClientRect().height,
+      lineHeight: Number.parseFloat(style.lineHeight),
+      whiteSpace: style.whiteSpace,
+    };
+  });
+
+  expect(metrics.whiteSpace).toBe("nowrap");
+  expect(metrics.height).toBeLessThanOrEqual(metrics.lineHeight + 1);
+});
+
+test("the homepage donation actions keep an even height", async ({ page }) => {
+  await page.goto("/", { waitUntil: "load" });
+
+  const actions = await page.locator(".donation-path-card a").evaluateAll((links) =>
+    links.map((link) => ({
+      height: Math.round(link.getBoundingClientRect().height),
+      label: link.textContent?.trim(),
+    }))
+  );
+
+  expect(actions).toHaveLength(5);
+  expect(new Set(actions.map(({ height }) => height)).size).toBe(1);
+  expect(new Set(actions.map(({ label }) => label))).toEqual(new Set(["Donate"]));
+});
+
 for (const route of ["/", "/visit"]) {
   test(`${route}: the status bar stays attached to the header`, async ({ page }) => {
     await page.goto(route, { waitUntil: "load" });

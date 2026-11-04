@@ -32,6 +32,18 @@ announce. Full decision rules are maintained in `PROJECT_GUIDELINES.md`.
 6. Deploy and verify that an installation on the previous version shows the release panel.
 7. Test **Later** and **Update now**. Later must leave the waiting worker inactive; Update now must activate and reload once.
 
+## 1.1.4 - Responsive Layout Correction
+
+**Released:** 4 November 2026
+
+**Update mode:** Silent. A patch correcting shared navigation and donation-card rendering. `CACHE_VERSION` moved to v7 so installed devices replace the affected cached interface files automatically.
+
+### Highlights
+
+- The ISKCON Nairobi name remains on one line on phones, tablets, and desktop screens.
+- The full society name once again fits on one line in the desktop navigation.
+- Donation-card actions use a consistent label and height at every breakpoint.
+
 ## 1.1.3 - Navigation Refresh Correction
 
 **Released:** 4 November 2026

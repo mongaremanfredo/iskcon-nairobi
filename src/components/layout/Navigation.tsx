@@ -147,7 +147,7 @@ export default function Navigation() {
           <nav className="flex items-center justify-between gap-6 max-[900px]:gap-3">
             <Link
               href="/"
-              className="nav-brand flex min-w-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
+              className="nav-brand flex shrink-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
               onClick={handleBrandClick}
             >
               <BrandLogo
@@ -164,12 +164,12 @@ export default function Navigation() {
                   solidNav ? "translate-y-0" : "translate-y-0"
                 )}
               >
-                <span className="nav-brand-name font-body text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
+                <span className="nav-brand-name whitespace-nowrap font-body text-[0.95rem] font-extrabold leading-none tracking-[-0.01em] text-sand drop-shadow-sm max-[900px]:text-[0.9rem]">
                   ISKCON Nairobi
                 </span>
                 <span
                   className={cn(
-                    "nav-brand-expansion font-body text-xs font-medium leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:hidden",
+                    "nav-brand-expansion max-w-[13rem] whitespace-nowrap font-body text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:hidden",
                     solidNav ? "opacity-80" : "opacity-95"
                   )}
                 >
@@ -195,7 +195,7 @@ export default function Navigation() {
               <NoticeboardButton statusBarVisible={scrolled && !isOpen} />
               <Link
                 href="/donate"
-                className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap [overflow-wrap:normal] bg-primary text-white font-body text-xs font-semibold tracking-widest uppercase px-5 py-2.5 transition-all duration-300 hover:bg-primary-dark max-[900px]:px-2.5 max-[900px]:tracking-wider max-[359px]:hidden"
+                className="inline-flex min-h-11 shrink-0 items-center gap-2 whitespace-nowrap [overflow-wrap:normal] bg-primary px-5 py-2.5 font-body text-xs font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-primary-dark max-[900px]:px-2.5 max-[900px]:tracking-wider max-[420px]:hidden"
               >
                 Donate
               </Link>
