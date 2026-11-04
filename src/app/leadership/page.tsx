@@ -118,9 +118,9 @@ export default function LeadershipPage() {
           <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
             <div>
               <HeartHandshake className="mb-5 text-primary" size={28} />
-              <SectionHeading eyebrow="Departmental Service" title="A structure ready" accent="for the full team" eyebrowClassName="eyebrow mb-4 block" accentClassName="not-italic text-gold" />
+              <SectionHeading eyebrow="Departmental Service" title="Many services" accent="one shared purpose" eyebrowClassName="eyebrow mb-4 block" accentClassName="not-italic text-gold" />
               <p className="mt-5 font-body text-sm leading-relaxed text-ink/75">
-                This section is intentionally built to expand when the full list is supplied. Additional photos and roles can be added without changing the page design.
+                Temple life is sustained through teams serving worship, education, kirtan, hospitality, outreach, festivals, administration, and community care.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
@@ -139,8 +139,8 @@ export default function LeadershipPage() {
 
       <section className="bg-primary py-14 text-center text-white">
         <div className="content-width section-padding">
-          <span className="eyebrow mb-4 block text-white">More names coming</span>
-          <h2 className="font-display text-display-md">The full service structure can grow from here.</h2>
+          <span className="eyebrow mb-4 block text-white">Founder-Acarya</span>
+          <h2 className="font-display text-display-md">Discover the vision guiding ISKCON Nairobi.</h2>
           <div className="mt-7 flex justify-center">
             <ButtonLink variant="ghost" href="/srila-prabhupada">
               Read About Srila Prabhupada <ArrowRight size={14} />

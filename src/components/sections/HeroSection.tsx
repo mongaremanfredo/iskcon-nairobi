@@ -4,7 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
-import { ArrowDown, Pause, Play } from "lucide-react";
+import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import KirtanSafariRegistrationModal, {
   openKirtanSafariRegistration,
@@ -321,14 +321,6 @@ export default function HeroSection() {
                   />
                 </button>
               ))}
-              <button
-                type="button"
-                onClick={() => setPaused((value) => !value)}
-                className="flex h-11 w-11 items-center justify-center text-white/80 transition-colors hover:text-white"
-                aria-label={paused ? "Play slideshow" : "Pause slideshow"}
-              >
-                {paused ? <Play size={14} aria-hidden="true" /> : <Pause size={14} aria-hidden="true" />}
-              </button>
             </div>
 
             {/* Scroll hint */}

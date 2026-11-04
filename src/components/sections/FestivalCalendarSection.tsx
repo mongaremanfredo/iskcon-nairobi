@@ -115,7 +115,7 @@ export default function FestivalCalendarSection() {
         </div>
 
         {/* CTA Banner */}
-        <div className="mt-12 bg-temple-brown p-8 flex flex-col max-sm:hidden sm:flex-row items-center justify-between gap-6">
+        <div className="mt-12 bg-temple-brown p-8 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div>
             <p className="font-display text-white text-xl mb-1">Never Miss a Festival</p>
             <p className="font-body text-white/60 text-sm">See the full 2026 Vaishnava calendar for ISKCON Nairobi.</p>

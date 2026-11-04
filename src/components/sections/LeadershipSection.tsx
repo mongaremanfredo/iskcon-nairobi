@@ -36,7 +36,7 @@ export default function LeadershipSection() {
             <p className="font-editorial text-sand/86 text-2xl leading-relaxed mt-5 sm:text-3xl">
               Srila Prabhupada is not a historical footnote for ISKCON Nairobi. He is the source of its existence, its books, its kirtan, its Deities, and its Africa-facing mission.
             </p>
-            <p className="mt-5 font-body text-sm leading-relaxed text-sand/75 max-w-xl max-sm:hidden">
+            <p className="mt-5 font-body text-sm leading-relaxed text-sand/75 max-w-xl">
               Public histories of the African mission record that after recovering in Mombasa, Prabhupada returned to Nairobi and launched the African preaching campaign from here. His vision was for Nairobi to become a welcoming centre where people throughout Kenya could encounter Krishna consciousness through worship, learning, prasadam, and service.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -90,7 +90,7 @@ export default function LeadershipSection() {
           </div>
         </div>
 
-        <div className="mb-9 grid gap-3 max-sm:hidden sm:grid-cols-3">
+        <div className="mb-9 grid gap-3 sm:grid-cols-3">
           {[
             { icon: Globe2, label: "African mission", value: "Nairobi as the launch point for preaching across Africa" },
             { icon: BookOpen, label: "Living foundation", value: "His books as the standard for study and training" },

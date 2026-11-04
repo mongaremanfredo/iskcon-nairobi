@@ -98,7 +98,7 @@ export default function GuestHouseSection() {
         </div>
 
         {/* Facilities strip */}
-        <div className="mt-10 pt-8 border-t border-white/10 max-sm:hidden">
+        <div className="mt-10 pt-8 border-t border-white/10">
           <div className="flex flex-wrap gap-6 justify-center">
             {["Free WiFi", "Vegetarian Prasādam", "Morning Programme Access", "Temple Tours", "24hr Security", "Laundry Service"].map((f) => (
               <div key={f} className="flex items-center gap-2">

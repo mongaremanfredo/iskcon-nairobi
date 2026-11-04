@@ -86,7 +86,7 @@ export default function KirtanSafariVenueDonations() {
                 },
                 {
                   icon: <Mail size={14} color="var(--color-festival-gold)" />,
-                  text: "iskcon.nairobi@gmail.com",
+                  text: "iskconnairobi@gmail.com",
                 },
               ].map((item, i) => (
                 <div
