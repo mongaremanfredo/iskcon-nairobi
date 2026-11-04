@@ -1,6 +1,7 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "iskcon-nairobi",
+  "account_id": "02ed745b8420047b24a07f8dc1eb6a56",
   "main": ".open-next/worker.js",
   "compatibility_date": "2026-11-04",
   "compatibility_flags": ["nodejs_compat"],
