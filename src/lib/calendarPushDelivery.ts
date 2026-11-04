@@ -1,4 +1,4 @@
-import { google } from "googleapis";
+import { createGoogleSheetsApi } from "@/lib/googleSheets";
 
 const DELIVERY_SHEET_NAME = "PushDeliveryLog";
 
@@ -14,13 +14,7 @@ function getSheets() {
     throw new Error("Push delivery backend is not configured.");
   }
 
-  const auth = new google.auth.JWT({
-    email,
-    key: rawPrivateKey.replace(/\\n/g, "\n"),
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-  });
-
-  return google.sheets({ version: "v4", auth });
+  return createGoogleSheetsApi();
 }
 
 async function ensureDeliverySheet() {
