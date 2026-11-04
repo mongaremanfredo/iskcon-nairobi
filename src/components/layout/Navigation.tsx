@@ -39,7 +39,14 @@ export default function Navigation() {
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
     window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    // A refresh can restore the scroll position before this listener exists, and then
+    // no scroll event arrives. Without this check the header stays transparent and
+    // full height over the page content until the visitor scrolls again.
+    const initialCheck = window.setTimeout(handleScroll, 0);
+    return () => {
+      window.clearTimeout(initialCheck);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   useEffect(() => {

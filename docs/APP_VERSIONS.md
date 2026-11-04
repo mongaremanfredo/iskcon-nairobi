@@ -32,6 +32,17 @@ announce. Full decision rules are maintained in `PROJECT_GUIDELINES.md`.
 6. Deploy and verify that an installation on the previous version shows the release panel.
 7. Test **Later** and **Update now**. Later must leave the waiting worker inactive; Update now must activate and reload once.
 
+## 1.1.3 - Navigation Refresh Correction
+
+**Released:** 4 November 2026
+
+**Update mode:** Silent. A patch, because it corrects a visual fault in the navigation. The cached shell is unchanged, so `CACHE_VERSION` stays at v6.
+
+### Highlights
+
+- Navigation no longer overlaps page content when a page is refreshed partway down.
+- The temple status bar returns straight away after a refresh.
+
 ## 1.1.2 - Status Bar Correction
 
 **Released:** 4 November 2026

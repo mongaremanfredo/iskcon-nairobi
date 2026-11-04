@@ -119,3 +119,39 @@ test("the noticeboard opens directly under the status bar on phones", async ({ p
   });
   expect(Math.abs(offset)).toBeLessThanOrEqual(TOLERANCE);
 });
+
+// The browser can restore the scroll position before the page's JavaScript is ready,
+// so no scroll event arrives for the header to react to. Slowing the scripts makes
+// that order happen every time.
+for (const route of ["/", "/visit"]) {
+  test(`${route}: refreshing mid-scroll keeps the compact header`, async ({ page }) => {
+    await page.goto(route, { waitUntil: "load" });
+    await page.waitForTimeout(1000);
+    await scrollTo(page, 1200);
+    await page.waitForTimeout(800);
+
+    await page.route("**/_next/static/chunks/**/*.js", async (route) => {
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await route.continue();
+    });
+    await page.reload({ waitUntil: "load" });
+    await page.waitForFunction(() => window.scrollY > 40);
+    await page.waitForTimeout(1500);
+
+    const state = await page.evaluate(() => {
+      const header = document.querySelector(".site-nav")!;
+      const bar = [...document.querySelectorAll<HTMLElement>("div.fixed")].find((element) =>
+        element.style.top.includes("site-header-height")
+      )!;
+      return {
+        background: getComputedStyle(header).backgroundColor,
+        barOpacity: getComputedStyle(bar).opacity,
+        gap: bar.getBoundingClientRect().top - header.getBoundingClientRect().bottom,
+      };
+    });
+
+    expect(state.background, "header background").not.toBe("rgba(0, 0, 0, 0)");
+    expect(state.barOpacity, "status bar shown").toBe("1");
+    expect(Math.abs(state.gap), "status bar attached").toBeLessThanOrEqual(TOLERANCE);
+  });
+}
