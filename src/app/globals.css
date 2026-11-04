@@ -99,12 +99,12 @@ input, select, textarea {
 }
 ::selection { background-color: var(--color-primary); color: white; }
 
-/* Keyboard focus. The two-tone ring stays visible on every background, including
-   photographs and the dark sections. */
+/* Keyboard focus. A restrained gold outline remains readable on light, dark,
+   and photographic surfaces without competing with the surrounding design. */
 :focus-visible {
-  outline: 2px solid var(--color-dusk);
-  outline-offset: 2px;
-  box-shadow: 0 0 0 2px var(--color-sand), 0 0 0 6px var(--color-dusk);
+  outline: 1.5px solid var(--color-gold-dark);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 4px rgb(217 164 65 / 0.16);
 }
 main:focus { outline: none; box-shadow: none; }
 
