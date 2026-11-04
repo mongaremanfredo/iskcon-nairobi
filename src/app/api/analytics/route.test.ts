@@ -1,11 +1,10 @@
 import { NextRequest } from "next/server";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-const { createSheetsClient } = vi.hoisted(() => ({ createSheetsClient: vi.fn() }));
+const { sheets } = vi.hoisted(() => ({ sheets: vi.fn() }));
 
-vi.mock("@/lib/googleSheets", () => ({
-  createSheetsClient,
-  ensureSheetWithHeader: vi.fn(),
+vi.mock("googleapis", () => ({
+  google: { sheets, auth: { JWT: vi.fn() } },
 }));
 
 import { POST } from "./route";
@@ -21,7 +20,7 @@ function pageView() {
 describe("analytics write guard", () => {
   afterEach(() => {
     vi.unstubAllEnvs();
-    createSheetsClient.mockClear();
+    sheets.mockClear();
   });
 
   it("does not touch Google Sheets during local development", async () => {
@@ -30,7 +29,7 @@ describe("analytics write guard", () => {
     const response = await POST(pageView());
 
     expect(response.status).toBe(200);
-    expect(createSheetsClient).not.toHaveBeenCalled();
+    expect(sheets).not.toHaveBeenCalled();
   });
 
   it("does not touch Google Sheets when disabled on a production build", async () => {
@@ -40,6 +39,6 @@ describe("analytics write guard", () => {
     const response = await POST(pageView());
 
     expect(response.status).toBe(200);
-    expect(createSheetsClient).not.toHaveBeenCalled();
+    expect(sheets).not.toHaveBeenCalled();
   });
 });

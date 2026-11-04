@@ -1,5 +1,6 @@
+import { google } from "googleapis";
+import { createHash } from "crypto";
 import { asSheetText } from "@/lib/security";
-import { createGoogleSheetsApi } from "@/lib/googleSheets";
 
 export const PUSH_SHEET_NAME = "PushSubscriptions";
 const pushEndpointLocks = new Set<string>();
@@ -18,7 +19,7 @@ type PushSheetRef = {
   sheetId: number;
 };
 
-function getSheets() {
+function getAuth() {
   const clientEmail = process.env.GOOGLE_SERVICE_ACCOUNT_EMAIL;
   const rawPrivateKey = process.env.GOOGLE_PRIVATE_KEY;
 
@@ -26,7 +27,13 @@ function getSheets() {
     throw new Error("Push subscription backend is not configured.");
   }
 
-  return createGoogleSheetsApi();
+  const privateKey = process.env.GOOGLE_PRIVATE_KEY!.replace(/\\n/g, "\n");
+
+  return new google.auth.JWT({
+    email: clientEmail,
+    key: privateKey,
+    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+  });
 }
 
 function getSpreadsheetId() {
@@ -35,6 +42,10 @@ function getSpreadsheetId() {
     process.env.CONTACT_SHEET_ID ||
     ""
   );
+}
+
+function getSheets() {
+  return google.sheets({ version: "v4", auth: getAuth() });
 }
 
 export async function ensurePushSheet(): Promise<PushSheetRef> {
@@ -133,7 +144,7 @@ export async function upsertPushSubscription(input: {
   calendarEnabled?: boolean;
   noticeboardEnabled?: boolean;
 }): Promise<boolean> {
-  const lockKey = input.endpoint;
+  const lockKey = createHash("sha256").update(input.endpoint).digest("hex");
   if (pushEndpointLocks.has(lockKey)) {
     return false;
   }

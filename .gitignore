@@ -53,8 +53,3 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /tests/e2e/__screenshots__/
-/dist/
-.cloudflare/
-/.open-next/
-.wrangler/
-/cloudflare-env.d.ts
