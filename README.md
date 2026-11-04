@@ -29,6 +29,7 @@ The local dev server runs at `http://localhost:3000`.
 - `docs/CONTENT_GUIDE.md` explains where to add pages, festivals, notices, blog posts, images, and sheet-backed forms.
 - `docs/ASSET_SOURCES.md` records non-temple library assets that should be reviewed or replaced when final photography is available.
 - `docs/PWA_GUIDE.md` records offline caching, update behavior, Android icon rules, notification links, and the mobile verification checklist.
+- `docs/TEMPLE_SHEET_CUTOVER.md` records how to move live form storage and email alerts to the temple-owned Google Sheet.
 
 ## Environment Variables
 
