@@ -147,7 +147,7 @@ export default function Navigation() {
           <nav className="flex items-center justify-between gap-6 max-[900px]:gap-3">
             <Link
               href="/"
-              className="nav-brand flex shrink-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
+              className="nav-brand flex shrink-0 items-end gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:items-center max-[900px]:gap-2"
               onClick={handleBrandClick}
             >
               <BrandLogo
