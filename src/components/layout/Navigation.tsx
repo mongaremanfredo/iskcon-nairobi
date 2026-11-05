@@ -147,12 +147,12 @@ export default function Navigation() {
           <nav className="flex items-center justify-between gap-6 max-[900px]:gap-3">
             <Link
               href="/"
-              className="nav-brand flex shrink-0 items-end gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:items-center max-[900px]:gap-2"
+              className="nav-brand flex shrink-0 items-center gap-2.5 text-sand no-underline transition-colors hover:text-white max-[900px]:gap-2"
               onClick={handleBrandClick}
             >
               <BrandLogo
                 className={cn(
-                  "nav-brand-logo min-[901px]:-translate-y-px transition-[width,height,transform] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
+                  "nav-brand-logo transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                   solidNav
                     ? "h-[46px] w-[50px] max-[900px]:h-[42px] max-[900px]:w-[45px]"
                     : "h-[68px] w-[73px] max-[900px]:h-[48px] max-[900px]:w-[52px]"
