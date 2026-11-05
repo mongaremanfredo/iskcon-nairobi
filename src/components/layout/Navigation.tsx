@@ -169,7 +169,7 @@ export default function Navigation() {
                 </span>
                 <span
                   className={cn(
-                    "nav-brand-expansion max-w-[13rem] whitespace-nowrap font-body text-[0.54rem] font-semibold leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:hidden",
+                    "nav-brand-expansion whitespace-nowrap font-body text-xs font-medium leading-tight text-sand/85 drop-shadow-sm transition-opacity max-[900px]:hidden",
                     solidNav ? "opacity-80" : "opacity-95"
                   )}
                 >
