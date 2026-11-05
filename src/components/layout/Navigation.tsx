@@ -152,7 +152,7 @@ export default function Navigation() {
             >
               <BrandLogo
                 className={cn(
-                  "nav-brand-logo transition-[width,height] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
+                  "nav-brand-logo min-[901px]:-translate-y-px transition-[width,height,transform] duration-300 [filter:saturate(1.08)_contrast(1.12)]",
                   solidNav
                     ? "h-[46px] w-[50px] max-[900px]:h-[42px] max-[900px]:w-[45px]"
                     : "h-[68px] w-[73px] max-[900px]:h-[48px] max-[900px]:w-[52px]"
