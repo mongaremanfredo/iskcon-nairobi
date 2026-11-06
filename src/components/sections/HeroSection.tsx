@@ -1,30 +1,18 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Image, { getImageProps } from "next/image";
 import Link from "next/link";
 import { ArrowDown } from "lucide-react";
 import { cn } from "@/lib/utils";
-import KirtanSafariRegistrationModal, {
-  openKirtanSafariRegistration,
-} from "./KirtanSafariRegistrationModal";
-import { useKirtanSafariState } from "@/hooks/useKirtanSafariState";
 import "./HeroSection.css";
 
-type HeroCta =
-  | {
-      label: string;
-      variant: "primary" | "ghost";
-      href: string;
-      action?: never;
-    }
-  | {
-      label: string;
-      variant: "primary" | "ghost";
-      action: "kirtanRegistration";
-      href?: never;
-    };
+type HeroCta = {
+  label: string;
+  variant: "primary" | "ghost";
+  href: string;
+};
 
 type HeroImage = {
   src: string;
@@ -34,25 +22,25 @@ type HeroImage = {
   mobilePosition?: string;
   eyebrow: string;
   tagline: string;
-  description: string;
+  description?: string;
+  details?: [string, string];
   ctas: HeroCta[];
   durationMs?: number;
 };
 
 const baseHeroImages: HeroImage[] = [
   {
-    src: "/images/home-kirtan-safari-illustration-hero.png",
-    mobileSrc: "/images/home-kirtan-safari-illustration-hero-mobile.png",
-    alt: "Illustration of devotees performing kirtan outdoors in Nairobi at sunset",
+    src: "/images/hero-kartik-desktop.webp",
+    mobileSrc: "/images/hero-kartik-mobile.webp",
+    alt: "Radha and Krishna surrounded by flowers and glowing lamps for Kartik",
     position: "center center",
     mobilePosition: "center center",
-    eyebrow: "Kirtan Safari 2026",
-    tagline: "Every word a song, every step a dance.",
-    description:
-      "Join the four-day Kirtan Safari celebration at Hare Krishna Temple Nairobi, beginning with Adivas on 27 August.",
+    eyebrow: "At ISKCON Nairobi",
+    tagline: "Come offer a lamp to Lord Krishna.",
+    details: ["26 October - 24 November 2026", "Daily at 7:30 AM and 7:30 PM"],
     ctas: [
-      { label: "Register Free", variant: "primary", action: "kirtanRegistration" },
-      { href: "/blog/sri-nama-sankirtana-adhivasa", label: "Begin the Mood", variant: "ghost" },
+      { href: "/visit", label: "Plan Your Visit", variant: "primary" },
+      { href: "/festivals", label: "Explore Festivals", variant: "ghost" },
     ],
     durationMs: 10000,
   },
@@ -97,7 +85,7 @@ function HeroPicture({ image, isFirst }: { image: HeroImage; isFirst: boolean })
     return <Image src={image.src} alt={image.alt} fill sizes="100vw" loading="eager" fetchPriority={isFirst ? "high" : "auto"} className={className} style={style} />;
   }
 
-  // Art direction: phones get a separately composed crop of this illustration.
+  // Art direction: phones get a separately composed hero image.
   const common = { alt: image.alt, fill: true, sizes: "100vw" };
   const { props: desktop } = getImageProps({ ...common, src: image.src });
   const { props: mobile } = getImageProps({ ...common, src: image.mobileSrc });
@@ -117,72 +105,7 @@ export default function HeroSection() {
   // shortly before it appears, so a visitor who leaves early never pays for it.
   const [readySlides, setReadySlides] = useState(() => new Set([0]));
   const rotationRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const festivalState = useKirtanSafariState();
-
-  const heroImages = useMemo(() => {
-    const original = baseHeroImages[0];
-    let festivalSlide: HeroImage = original;
-
-    if (festivalState.phase === "live") {
-      const dayNumber = festivalState.currentDayIndex + 1;
-      const dayCopy = [
-        {
-          tagline: "The festival mood begins with Adivas.",
-          description: "Join the opening kirtan and welcome four days centered on the holy name at Hare Krishna Temple Nairobi.",
-        },
-        {
-          tagline: "Balarama Purnima resounds in Nairobi.",
-          description: "Day two brings kirtan, worship, association, and prasadam. The festival is open, and you are welcome.",
-        },
-        {
-          tagline: "The holy name moves through the city.",
-          description: "Join day three for kirtan, special Harinam, devotee association, and prasadam.",
-        },
-        {
-          tagline: "One final day, one continuous kirtan.",
-          description: "Gather for the closing day of Kirtan Safari and carry the festival mood through the holy name.",
-        },
-      ][Math.max(0, Math.min(dayNumber - 1, 3))];
-      festivalSlide = {
-        ...original,
-        eyebrow: `Kirtan Safari Live · Day ${dayNumber} of 4`,
-        tagline: dayCopy.tagline,
-        description: dayCopy.description,
-        ctas: [
-          { label: "Join Us Today", variant: "primary", action: "kirtanRegistration" },
-          { label: "Live Programme", variant: "ghost", href: "/festivals/kirtan-safari#live" },
-        ],
-      };
-    } else if (festivalState.phase === "between-days") {
-      festivalSlide = {
-        ...original,
-        eyebrow: "Kirtan Safari Continues",
-        tagline: "The kirtan continues tomorrow.",
-        description: festivalState.nextDay
-          ? `Return for ${festivalState.nextDay.theme} at Hare Krishna Temple Nairobi.`
-          : "Return for the next Kirtan Safari programme at Hare Krishna Temple Nairobi.",
-        ctas: [
-          { label: "Join Us Tomorrow", variant: "primary", action: "kirtanRegistration" },
-          { label: "View Programme", variant: "ghost", href: "/festivals/kirtan-safari#live" },
-        ],
-      };
-    } else if (festivalState.phase === "concluded") {
-      festivalSlide = {
-        ...original,
-        eyebrow: "Kirtan Safari at ISKCON Nairobi",
-        tagline: "Four Days, One Holy Name",
-        description: "Relive the 2026 gathering and discover Kirtan Safari as a recurring celebration of kirtan, association, prasadam, and service.",
-        ctas: [
-          { label: "Relive Kirtan Safari 2026", variant: "primary", href: "/festivals/kirtan-safari" },
-          { label: "Explore Festivals", variant: "ghost", href: "/festivals" },
-        ],
-      };
-    }
-
-    return festivalState.phase === "concluded"
-      ? [...baseHeroImages.slice(1), festivalSlide]
-      : [festivalSlide, ...baseHeroImages.slice(1)];
-  }, [festivalState.currentDayIndex, festivalState.nextDay, festivalState.phase]);
+  const heroImages = baseHeroImages;
 
   useEffect(() => {
     const connection = (navigator as Navigator & { connection?: { saveData?: boolean } }).connection;
@@ -222,7 +145,6 @@ export default function HeroSection() {
 
   return (
     <section className="home-hero relative w-full h-[88svh] min-h-[620px] max-h-[1000px] overflow-hidden sm:h-screen sm:min-h-[600px]">
-      <KirtanSafariRegistrationModal />
       {/* The visible tagline rotates with each slide, so the page heading stays
           fixed for search engines and screen readers. */}
       <h1 className="sr-only">ISKCON Nairobi: Sri Sri Radha Bankebihari Temple</h1>
@@ -251,8 +173,21 @@ export default function HeroSection() {
       <div className="relative z-10 h-full flex flex-col">
         {/* Main Content */}
         <div className="hero-main flex-1 flex items-end pb-4 section-padding content-width sm:pb-10 lg:pb-14">
-          <div className="hero-copy max-w-3xl">
+          <div className={cn("hero-copy max-w-3xl", currentImage === 0 && "hero-copy-kartik")}>
             {/* Entrances use CSS only, so this copy shows without waiting for JavaScript. */}
+            {currentImage === 0 ? (
+              <div className="hero-kartik-copy motion-safe:animate-fade-up [animation-fill-mode:both]">
+                <span className="hero-kartik-eyebrow eyebrow text-gold">{currentHero.eyebrow}</span>
+                <h2 className="hero-kartik-title font-display text-temple-cream text-shadow">Kartik</h2>
+                <p className="hero-kartik-invitation font-editorial text-temple-cream/95 text-shadow">
+                  {currentHero.tagline}
+                </p>
+                <div className="hero-kartik-details font-body text-white/85">
+                  {currentHero.details?.map((detail) => <span key={detail}>{detail}</span>)}
+                </div>
+              </div>
+            ) : (
+              <>
             {/* Eyebrow */}
             <div className="hero-eyebrow flex items-center gap-3 mb-4 motion-safe:animate-fade-up [animation-fill-mode:both]">
               <span className="eyebrow text-gold">{currentHero.eyebrow}</span>
@@ -272,29 +207,20 @@ export default function HeroSection() {
                 {currentHero.description}
               </p>
             </div>
+              </>
+            )}
 
             {/* CTA Buttons */}
             <div className="hero-ctas flex flex-col gap-3 mt-8 motion-safe:animate-fade-up [animation-delay:300ms] [animation-fill-mode:both] sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
-              {currentHero.ctas.map((cta) =>
-                cta.action === "kirtanRegistration" ? (
-                  <button
-                    key={cta.label}
-                    type="button"
-                    className={cta.variant === "primary" ? "btn-primary" : "btn-ghost"}
-                    onClick={openKirtanSafariRegistration}
-                  >
-                    {cta.label}
-                  </button>
-                ) : (
-                  <Link
-                    key={cta.href}
-                    href={cta.href}
-                    className={cta.variant === "primary" ? "btn-primary" : "btn-ghost"}
-                  >
-                    {cta.label}
-                  </Link>
-                )
-              )}
+              {currentHero.ctas.map((cta) => (
+                <Link
+                  key={cta.href}
+                  href={cta.href}
+                  className={cta.variant === "primary" ? "btn-primary" : "btn-ghost"}
+                >
+                  {cta.label}
+                </Link>
+              ))}
             </div>
           </div>
         </div>

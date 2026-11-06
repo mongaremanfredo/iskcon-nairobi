@@ -1,3 +1,64 @@
+/* Kartik leads with the invitation; dates and lamp times stay readable over the altar. */
+.home-hero .hero-kartik-eyebrow {
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.home-hero .hero-kartik-title {
+  font-size: clamp(4.5rem, 7vw, 7.25rem);
+  font-weight: 600;
+  line-height: 0.95;
+}
+
+.home-hero .hero-kartik-invitation {
+  max-width: 36rem;
+  margin-top: 1rem;
+  font-size: clamp(1.35rem, 2.3vw, 1.9rem);
+  font-style: italic;
+  line-height: 1.25;
+}
+
+.home-hero .hero-kartik-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.1rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 1.25rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid rgba(214, 156, 43, 0.75);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.home-hero .hero-copy-kartik .hero-ctas {
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 640px) {
+  .home-hero .hero-kartik-title {
+    font-size: 3.45rem;
+  }
+
+  .home-hero .hero-kartik-invitation {
+    max-width: 20rem;
+    margin-top: 0.7rem;
+    font-size: 1.35rem;
+  }
+
+  .home-hero .hero-kartik-details {
+    display: grid;
+    gap: 0.15rem;
+    margin-top: 0.9rem;
+    padding-top: 0.7rem;
+    font-size: 0.82rem;
+  }
+
+  .home-hero .hero-copy-kartik .hero-ctas {
+    margin-top: 1.25rem;
+  }
+}
+
 @media (max-width: 640px) {
   .home-hero .hero-bg-image {
     object-position: var(--hero-mobile-position) !important;
