@@ -22,8 +22,7 @@ type HeroImage = {
   mobilePosition?: string;
   eyebrow: string;
   tagline: string;
-  description?: string;
-  details?: [string, string];
+  description: string;
   ctas: HeroCta[];
   durationMs?: number;
 };
@@ -35,9 +34,9 @@ const baseHeroImages: HeroImage[] = [
     alt: "Radha and Krishna surrounded by flowers and glowing lamps for Kartik",
     position: "center center",
     mobilePosition: "center center",
-    eyebrow: "At ISKCON Nairobi",
+    eyebrow: "Kartik at ISKCON Nairobi",
     tagline: "Come offer a lamp to Lord Krishna.",
-    details: ["26 October - 24 November 2026", "Daily at 7:30 AM and 7:30 PM"],
+    description: "26 October - 24 November 2026. Lamp offerings daily at 7:30 AM and 7:30 PM.",
     ctas: [
       { href: "/visit", label: "Plan Your Visit", variant: "primary" },
       { href: "/festivals", label: "Explore Festivals", variant: "ghost" },
@@ -173,21 +172,8 @@ export default function HeroSection() {
       <div className="relative z-10 h-full flex flex-col">
         {/* Main Content */}
         <div className="hero-main flex-1 flex items-end pb-4 section-padding content-width sm:pb-10 lg:pb-14">
-          <div className={cn("hero-copy max-w-3xl", currentImage === 0 && "hero-copy-kartik")}>
+          <div className="hero-copy max-w-3xl">
             {/* Entrances use CSS only, so this copy shows without waiting for JavaScript. */}
-            {currentImage === 0 ? (
-              <div className="hero-kartik-copy motion-safe:animate-fade-up [animation-fill-mode:both]">
-                <span className="hero-kartik-eyebrow eyebrow text-gold">{currentHero.eyebrow}</span>
-                <h2 className="hero-kartik-title font-display text-temple-cream text-shadow">Kartik</h2>
-                <p className="hero-kartik-invitation font-editorial text-temple-cream/95 text-shadow">
-                  {currentHero.tagline}
-                </p>
-                <div className="hero-kartik-details font-body text-white/85">
-                  {currentHero.details?.map((detail) => <span key={detail}>{detail}</span>)}
-                </div>
-              </div>
-            ) : (
-              <>
             {/* Eyebrow */}
             <div className="hero-eyebrow flex items-center gap-3 mb-4 motion-safe:animate-fade-up [animation-fill-mode:both]">
               <span className="eyebrow text-gold">{currentHero.eyebrow}</span>
@@ -207,8 +193,6 @@ export default function HeroSection() {
                 {currentHero.description}
               </p>
             </div>
-              </>
-            )}
 
             {/* CTA Buttons */}
             <div className="hero-ctas flex flex-col gap-3 mt-8 motion-safe:animate-fade-up [animation-delay:300ms] [animation-fill-mode:both] sm:mt-10 sm:flex-row sm:flex-wrap sm:gap-4">
