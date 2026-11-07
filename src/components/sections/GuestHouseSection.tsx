@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Wind, Coffee, Star } from "lucide-react";
 import { guestRooms } from "@/data/site";
@@ -47,20 +46,6 @@ export default function GuestHouseSection() {
               key={room.name}
               className="group w-[78vw] max-w-72 shrink-0 snap-start sm:w-auto sm:max-w-none bg-white/5 border border-white/10 hover:border-gold/40 transition-all duration-300 overflow-hidden"
             >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  src={room.image}
-                  alt={room.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                />
-                {/* Price tag */}
-                <div className="absolute top-4 right-4 bg-temple-brown/90 backdrop-blur-sm px-3 py-1.5 border border-gold/30">
-                  <p className="font-display text-gold text-base font-semibold">{room.price}</p>
-                  {room.priceUSD && <p className="font-body text-white/70 text-xs text-right">per night</p>}
-                </div>
-              </div>
-
               {/* Content */}
               <div className="p-5">
                 <h3 className="font-display text-temple-cream text-lg font-semibold mb-1">{room.name}</h3>

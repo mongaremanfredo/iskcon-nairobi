@@ -1,4 +1,3 @@
-import Image from "next/image";
 import PageHero from "@/components/ui/PageHero";
 import GuestHouseEnquiryForm from "@/components/sections/GuestHouseEnquiryForm";
 import { guestRooms, templeInfo } from "@/data/site";
@@ -66,13 +65,6 @@ export default function GuestHousePage() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {guestRooms.map((room) => (
               <div key={room.name} className="card-surface hover:shadow-card-hover hover:border-gold/30 transition-all overflow-hidden group">
-                <div className="relative h-56 overflow-hidden">
-                  <Image width={1600} height={1200} sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" src={room.image} alt={room.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                  <div className="absolute top-4 right-4 bg-white/95 px-3 py-2 text-center shadow-sm">
-                    <p className="font-display text-gold font-bold text-lg leading-none">{room.price}</p>
-                    <p className="font-body text-ink/75 text-xs mt-0.5">confirm with office</p>
-                  </div>
-                </div>
                 <div className="p-7">
                   <div className="flex items-start justify-between mb-1">
                     <h3 className="font-display text-xl font-semibold text-ink">{room.name}</h3>
